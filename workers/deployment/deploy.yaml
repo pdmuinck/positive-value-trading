@@ -1,4 +1,4 @@
-apiversion: v1
+apiVersion: v1
 kind: Service
 metadata:
     name: kambi-worker
@@ -15,7 +15,7 @@ spec:
         tier: backend
         role: worker
 ---
-apiversion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: kambi-worker
