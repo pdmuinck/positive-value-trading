@@ -1,0 +1,27 @@
+const axios = require('axios')
+
+const environment = process.env.NODE_ENV
+
+const KAMBI_SERVICE_IP = environment === 'development' ? 'localhost' : '10.0.35.203'
+const KAMBI_SERVICE_PORT = '3000'
+
+const orchestrator = {}
+
+orchestrator.sendToProvider = async(provider, eventId, body) => {
+   
+    if(provider.toUpperCase() === 'KAMBI') {
+        const result = await axios.get('http://' + 'localhost' + ':' + KAMBI_SERVICE_PORT + '/bookmakers/' + body.book + '/events/' + eventId + '/betoffers').then(response => response.data).catch(error => console.log(error))
+        
+        return result
+
+    } else {
+
+    }
+
+
+}
+
+module.exports = orchestrator
+
+
+
