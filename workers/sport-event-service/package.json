@@ -1,0 +1,25 @@
+{
+  "name": "sport-event-service",
+  "version": "1.0.0",
+  "description": "collects all bookmaker event ids for given sport event",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "kambi",
+    "sports book"
+  ],
+  "author": "Pieterjan De Muinck",
+  "license": "MIT",
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
