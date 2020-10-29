@@ -1,5 +1,4 @@
 const event = require('../services/event')
-const betoffer = require('../services/betoffer')
 
 module.exports = function(server) {
 

@@ -1,12 +1,29 @@
 const axios = require('axios')
+const CronJob = require('cron').CronJob
+
+const environment = process.env.NODE_ENV
+const WORKER_INTERFACE_IP = 'localhost'
+const WORKER_INTERFACE_PORT = 3001
+
+
+const requests = [
+    axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/KAMBI/books/UNIBET_BELGIUM/events').then(response => response.data).catch(error => console.log(error)),
+    axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/SBTECH/books/BETFIRST/events').then(response => response.data).catch(error => console.log(error)),
+    axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/BET_RADAR/books/BET_RADAR/events').then(response => response.data).catch(error => console.log(error)),
+]
 
 const event = {}
+
+event.job = new CronJob('10 * * * * *', () => {
+    Promise.all(requests).then(function(values) {
+        console.log(values)
+    })
+}, null, true)
 
 event.getEvents = async () => {
 
 
-    // cron job that searches for events in sportradar, kambi, sbtech workers and merges them
-
+    // cron job that searches for events in sportradar, kambi, sbtech workers and merges them, stores them in cache and db
 
 
     const data = await axios.get('https://lsc.fn.sportradar.com/betradar/en/Europe:Berlin/gismo/event_fullfeed').then(response => response.data)
