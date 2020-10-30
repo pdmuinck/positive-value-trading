@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-  # Backend / Database
   kambi:
     image: kambi
     build: ../../workers/kambi-service
@@ -10,15 +9,45 @@ services:
       - 3000:3000
     expose:
       - 3000
-
-  # Backend / API
-  worker-interface:
-    image: api
-    build: ../../workers/worker-interface
+  
+  sbtech:
+    image: sbtech
+    build: ../../workers/sbtech-service
     restart: always
     ports:
       - 3001:3001
+    expose:
+      - 3001
+  
+  betradar:
+    image: betradar
+    build: ../../workers/betradar-service
+    restart: always
+    ports:
+      - 3002:3002
+    expose:
+      - 3002
+    
+  sport-event:
+    image: sport-event
+    build: ../../workers/sport-event-service
+    restart: always
+    ports:
+      - 3003:3003
+    expose:
+      - 3003
+
+  worker-interface:
+    image: worker-interface
+    build: ../../workers/worker-interface
+    restart: always
+    ports:
+      - 3009:3009
     depends_on:
       - kambi
+      - sbtech
+      - sport-event
     environment:
       - NODE_ENV=development
+    expose:
+      - 3009
