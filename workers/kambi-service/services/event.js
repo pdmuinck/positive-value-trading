@@ -30,9 +30,11 @@ event.getEvents = async (book, sports) => {
 
     if(!bookmakerInfo) throw new Error('Book not found: ' + book)
     
-    if(sports) {
+    if(sports && Array.isArray(sports)) {
         const sportsUpperCase = sports.map(sport => sport.toUpperCase())
         return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
+    } else if(sports) {
+        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
     } else {
         return resolve(Object.values(requests).map(url => createRequest(url, book.toUpperCase(), bookmakerInfo)))
     }

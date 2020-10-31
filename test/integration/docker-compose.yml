@@ -27,15 +27,6 @@ services:
       - 3002:3002
     expose:
       - 3002
-    
-  sport-event:
-    image: sport-event
-    build: ../../workers/sport-event-service
-    restart: always
-    ports:
-      - 3003:3003
-    expose:
-      - 3003
 
   worker-interface:
     image: worker-interface
@@ -46,8 +37,41 @@ services:
     depends_on:
       - kambi
       - sbtech
-      - sport-event
+      - betradar
+      - pinnacle
     environment:
       - NODE_ENV=development
     expose:
       - 3009
+
+  event:
+    image: event
+    build: ../../schedulers/events
+    restart: always
+    ports:
+      - 3003:3003
+    depends_on:
+      - worker-interface
+    expose:
+      - 3003
+
+  betoffer:
+    image: betoffer
+    build: ../../schedulers/betoffers
+    restart: always
+    ports:
+      - 3004:3004
+    depends_on:
+      - worker-interface
+      - event
+    expose:
+      - 3004
+
+  pinnacle:
+    image: pinnacle
+    build: ../../workers/pinnacle-service
+    restart: always
+    ports:
+      - 3005:3005
+    expose:
+      - 3005

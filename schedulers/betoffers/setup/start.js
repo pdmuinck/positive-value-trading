@@ -1,5 +1,5 @@
 module.exports = function(server) {
-    server.listen('3009', (error) => {
+    server.listen('3004', (error) => {
         if (error) {
           console.error('ERROR - Unable to start server.')
         } else {

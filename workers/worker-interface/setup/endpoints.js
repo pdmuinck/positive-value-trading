@@ -11,7 +11,7 @@ module.exports = function(server) {
     })
 
     server.get('/providers/:provider/books/:book/events', async (req, resp) => {
-        await orchestrator.getEvents(req.params.provider, req.params.book)
+        await orchestrator.getEvents(req.params.provider, req.params.book, req.query.sport)
         .then(response => resp.send(response))
         .catch(error => resp.status(404).send(error.message))
     })

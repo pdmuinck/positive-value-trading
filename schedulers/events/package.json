@@ -1,10 +1,10 @@
 {
-  "name": "worker-interface-test",
+  "name": "betoffers",
   "version": "1.0.0",
-  "description": "Integration test project for worker-interface",
+  "description": "collects all bookmaker betoffers at interval",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha"
   },
   "keywords": [
     "kambi",
@@ -15,14 +15,13 @@
   "devDependencies": {
     "axios": "^0.19.2",
     "chai": "^4.2.0",
-    "jest": "^26.6.1",
     "mocha": "^8.1.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "cron": "^1.8.2",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
-    "util": "^0.12.3"
+    "node-cache": "^5.1.2"
   }
 }

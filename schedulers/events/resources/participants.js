@@ -1,4 +1,6 @@
 participants = {
+
+    /*
     // italy seria a
     "Sampdoria": {kambi: 1000000098, sbtech: 969, meridianbet: 231, altenar: 'Sampdoria', bwin: 2515397, betway: 'Sampdoria', betcenter: 211953},
     "SPAL": {kambi: 1000309882, sbtech: 1130, meridianbet: 434, altenar: 'Spal', bwin: 2518641, betway: 'SPAL', betcenter: 208544},
@@ -42,55 +44,59 @@ participants = {
     "Real Betis": {kambi: 1000000169, sbtech: 6018, meridianbet: 342, altenar: 'Real Betis', bwin: 2515379, betway: 'Real Betis', betcenter: 788},
     "Celta Vigo": {kambi: 1000000127, sbtech: 315, meridianbet: 352, altenar: 'Celta Vigo', bwin: 2515171, betway: 'Celta Vigo', betcenter: 105237},
     "Real Sociedad": {kambi: 1000000162, sbtech: 6485, meridianbet: 353, altenar: 'Real Sociedad', bwin: 2515382, betway: 'Real Sociedad', becenter: 781},
-    
+    */
     // england
-    "Stoke City": {kambi: 1000047250, sbtech: 384, meridianbet: 162, altenar: 'Stoke', bwin: 2515430, betway: 'Stoke City', betcenter: 104789},
-    "Barnsley": {kambi: 1000010031, sbtech: 556, meridianbet: 814, altenar: 'Barnsley', bwin: 2515137, betway: 'Barnsley', betcenter: 104005},
-    "Burnley": {kambi: 1000026643, sbtech: 381, meridianbet: 802, altenar: 'Burnley', bwin: 2515163, betway: 'Burnley', betcenter: 104066},
-    "Sheffield United": {kambi: 1000000056,sbtech:  3251,meridianbet:  801, altenar: 'Sheff Utd', bwin: 2515414, betway: 'Sheffield United', betcenter: 104300},
+    "Gillingham FC": {betradar: 482161},
+    "Rotherham United": {betradar: 27405},
+    "Sunderland AFC": {betradar: 10935263},
+    "Accrington Stanley": {betradar: 933192},
+    "Stoke City": {betradar: 7577, kambi: 1000047250, sbtech: 384, meridianbet: 162, altenar: 'Stoke', bwin: 2515430, betway: 'Stoke City', betcenter: 104789},
+    "Barnsley": {betradar: 6002, kambi: 1000010031, sbtech: 556, meridianbet: 814, altenar: 'Barnsley', bwin: 2515137, betway: 'Barnsley', betcenter: 104005},
+    "Burnley": {betradar: 1463748, kambi: 1000026643, sbtech: 381, meridianbet: 802, altenar: 'Burnley', bwin: 2515163, betway: 'Burnley', betcenter: 104066},
+    "Sheffield United": {betradar: 756878, kambi: 1000000056,sbtech:  3251,meridianbet:  801, altenar: 'Sheff Utd', bwin: 2515414, betway: 'Sheffield United', betcenter: 104300},
     "Arsenal": {kambi: 1000000085, sbtech: 248, meridianbet: 153, altenar: 'Arsenal', bwin: 2515210, betway: 'Arsenal', betcenter: 105292},
-    "Norwich City": {kambi: 1000078305, sbtech: 241, meridianbet: 816, altenar: 'Norwich', bwin: 2515341, betway: 'Norwich City', betcenter: 104968},
-    "West Ham United": {kambi: 1000000082, sbtech: 376, meridianbet: 164, altenar: 'West Ham', bwin: 2515477, betway: 'West Ham United', betcenter: 105086},
-    "Chelsea": {kambi: 1000000080, sbtech: 231, meridianbet: 151, altenar: 'Chelsea', bwin: 2515214, betway: 'Chelsea', betcenter: 104337},
-    "Preston": {kambi: 1000000138, sbtech: 385, meridianbet: 806, altenar: 'Preston North End', bwin: 2520527, betway: 'Preston North End', betcenter: 104399},
-    "Queens Park Rangers": {kambi: 1000061424, sbtech: 34922, meridianbet: 807, altenar: 'Queens Park Rangers', bwin: 2522343, betway: 'Queens Park Rangers', betcenter: 104138},
+    "Norwich City": {betradar: 5984, kambi: 1000078305, sbtech: 241, meridianbet: 816, altenar: 'Norwich', bwin: 2515341, betway: 'Norwich City', betcenter: 104968},
+    "West Ham United": {betradar: 4865, kambi: 1000000082, sbtech: 376, meridianbet: 164, altenar: 'West Ham', bwin: 2515477, betway: 'West Ham United', betcenter: 105086},
+    "Chelsea": {betradar: 4870, kambi: 1000000080, sbtech: 231, meridianbet: 151, altenar: 'Chelsea', bwin: 2515214, betway: 'Chelsea', betcenter: 104337},
+    "Preston": {betradar: 5994, kambi: 1000000138, sbtech: 385, meridianbet: 806, altenar: 'Preston North End', bwin: 2520527, betway: 'Preston North End', betcenter: 104399},
+    "Queens Park Rangers": {betradar: 6182, kambi: 1000061424, sbtech: 34922, meridianbet: 807, altenar: 'Queens Park Rangers', bwin: 2522343, betway: 'Queens Park Rangers', betcenter: 104138},
     "Fulham": {kambi: 1000000103, sbtech: 228, meridianbet: 160, altenar: 'Fulham', bwin: 2515248, betway: 'Fulham', betcenter: 105632},
-    "Brentford": {kambi: 1000069183, sbtech: 536, meridianbet: 851, altenar: 'Brentford',bwin:  2515158, betway: 'Brentford', betcenter: 106076},
-    "Wigan Athletic": {kambi: 1000000137, sbtech: 435, meridianbet: 167, altenar: 'Wigan', bwin: 2515478, betway: 'Wigan Athletic', betcenter: 104732},
-    "Liverpool": {kambi: 1000000087, sbtech: 246, meridianbet: 152, altenar: 'Liverpool', bwin: 2515223, betway: 'Liverpool', betcenter: 162},
+    "Brentford": {betradar: 7231210, kambi: 1000069183, sbtech: 536, meridianbet: 851, altenar: 'Brentford',bwin:  2515158, betway: 'Brentford', betcenter: 106076},
+    "Wigan Athletic": {betradar: 6047, kambi: 1000000137, sbtech: 435, meridianbet: 167, altenar: 'Wigan', bwin: 2515478, betway: 'Wigan Athletic', betcenter: 104732},
+    "Liverpool": {betradar: 4878, kambi: 1000000087, sbtech: 246, meridianbet: 152, altenar: 'Liverpool', bwin: 2515223, betway: 'Liverpool', betcenter: 162},
     "Aston Villa": {kambi: 1000000045, sbtech: 232, meridianbet: 155, altenar: 'Aston Villa', bwin: 2515128, betway: 'Aston Villa', betcenter: 104085},
-    "Derby County": {kambi: 1000022830, sbtech: 391, meridianbet: 811, altenar: 'Derby', bwin: 2515199, betway: 'Derby County', betcenter: 104209},
-    "Middlesbrough": {kambi: 1000000084, sbtech: 244, meridianbet: 158, altenar: 'Middlesbrough', bwin: 2515322, betway: 'Middlesbrough', betcenter: 106581},
+    "Derby County": {betradar: 115271, kambi: 1000022830, sbtech: 391, meridianbet: 811, altenar: 'Derby', bwin: 2515199, betway: 'Derby County', betcenter: 104209},
+    "Middlesbrough": {betradar: 928832, kambi: 1000000084, sbtech: 244, meridianbet: 158, altenar: 'Middlesbrough', bwin: 2515322, betway: 'Middlesbrough', betcenter: 106581},
     "Wolves": {kambi: 1000000071, sbtech: 375, meridianbet: 798, altenar: 'Wolverhampton', bwin: 2520526, betway: 'Wolverhampton Wanderers', betcenter: 104264},
-    "Watford": {kambi: 1000000070, sbtech: 371, meridianbet: 818, altenar: 'Watford', bwin: 2515474, betway: 'Watford',betcenter:  106074},
-    "Luton Town": {kambi: 1000015615, sbtech: 543, meridianbet: 870, altenar: 'Luton',bwin:  2515311, betway: 'Luton Town', betcenter: 106372},
+    "Watford": {betradar: 53797, kambi: 1000000070, sbtech: 371, meridianbet: 818, altenar: 'Watford', bwin: 2515474, betway: 'Watford',betcenter:  106074},
+    "Luton Town": {betradar: 525121, kambi: 1000015615, sbtech: 543, meridianbet: 870, altenar: 'Luton',bwin:  2515311, betway: 'Luton Town', betcenter: 106372},
     "Reading": {kambi: 1000000020, sbtech: 370, meridianbet: 800, altenar: 'Reading', bwin: 2515378, betway: 'Reading',betcenter:  106075},
     "Leicester City": {kambi: 1000040947, sbtech: 389, meridianbet: 822, altenar: 'Leicester',bwin:  2515305, betway: 'Leicester City', betcenter: 105645},
     "Crystal Palace": {kambi: 1000013415, sbtech: 233, meridianbet: 809, altenar: 'Crystal Palace', bwin: 2515191, betway: 'Crystal Palace', betcenter: 104291},
-    "Cardiff City": {kambi: 1000000019, sbtech: 6011, meridianbet: 803, altenar: 'Cardiff', bwin: 2519257, betway: 'Cardiff City', betcenter: 104302},
+    "Cardiff City": {betradar: 185891, kambi: 1000000019, sbtech: 6011, meridianbet: 803, altenar: 'Cardiff', bwin: 2519257, betway: 'Cardiff City', betcenter: 104302},
     "Charlton Athletic": {kambi: 1000000079, sbtech: 227, meridianbet: 819, altenar: 'Charlton', bwin: 2520006, betway: 'Charlton Athletic', betcenter: 104235},
-    "Sheffield Wednesday": {kambi: 1000007489, sbtech: 620, meridianbet: 812, altenar: 'Sheffield Wednesday', bwin: 2515415, betway: 'Sheffield Wednesday', betcenter: 106077},
+    "Sheffield Wednesday": {betradar: 5995, kambi: 1000007489, sbtech: 620, meridianbet: 812, altenar: 'Sheffield Wednesday', bwin: 2515415, betway: 'Sheffield Wednesday', betcenter: 106077},
     "West Brom": {kambi: 1000000072, sbtech: 831, meridianbet: 170, altenar: 'West Bromwich', bwin: 2515476, betway: 'West Bromwich Albion', betcenter: 106580},
     "Newcastle United": {kambi: 1000000044, sbtech: 238, meridianbet: 168, altenar: 'Newcastle', bwin: 2515337, betway: 'Newcastle United', betcenter: 105633},
-    "Blackburn Rovers": {kambi: 1000000088, sbtech: 237, meridianbet: 165, altenar: 'Blackburn', bwin: 2519528, betway: 'Blackburn Rovers', betcenter: 106080},
+    "Blackburn Rovers": {betradar: 5981, kambi: 1000000088, sbtech: 237, meridianbet: 165, altenar: 'Blackburn', bwin: 2519528, betway: 'Blackburn Rovers', betcenter: 106080},
     "Leeds United": {kambi: 1000007584, sbtech: 379, meridianbet: 829, altenar: 'Leeds', bwin: 2515304, betway: 'Leeds United', betcenter:  105028},
-    "Manchester City": {kambi: 1000000139, sbtech: 240, meridianbet: 218, altenar: 'Man City', bwin: 2515317, betway: 'Manchester City', betcenter:  177},
+    "Manchester City": {betradar: 4861, kambi: 1000000139, sbtech: 240, meridianbet: 218, altenar: 'Man City', bwin: 2515317, betway: 'Manchester City', betcenter:  177},
     "Manchester United": {kambi: 1000000086, sbtech: 235, meridianbet: 154, altenar: 'Man Utd', bwin: 2515318, betway: 'Manchester United', betcenter:  104728},
-    "Millwall": {kambi: 1000034681, sbtech: 388, meridianbet: 825, altenar: 'Millwall', bwin: 2515323, betway: 'Millwall', betcenter:  104466},
-    "Swansea City": {kambi: 1000009871, sbtech: 562, meridianbet: 805, altenar: 'Swansea', bwin: 2515438, betway: 'Swansea City', betcenter:  104296},
-    "Birmingham City": {kambi: 1000000068, sbtech: 243, meridianbet: 799, altenar: 'Birmingham', bwin: 2515143, betway: 'Birmingham City', betcenter:  104299},
-    "Huddersfield Town": {kambi: 1000085937, sbtech: 548, meridianbet: 836, altenar: 'Huddersfield', bwin: 2519331, betway: 'Huddersfield Town', betcenter:  104113},
-    "Nottingham Forest": {kambi: 1000000046, sbtech: 22200, meridianbet: 821, altenar: 'Nottingham Forest', bwin: 2515342, betway: 'Nottingham Forest', betcenter:  106078},
+    "Millwall": {betradar: 53795, kambi: 1000034681, sbtech: 388, meridianbet: 825, altenar: 'Millwall', bwin: 2515323, betway: 'Millwall', betcenter:  104466},
+    "Swansea City": {betradar: 794585, kambi: 1000009871, sbtech: 562, meridianbet: 805, altenar: 'Swansea', bwin: 2515438, betway: 'Swansea City', betcenter:  104296},
+    "Birmingham City": {betradar: 6090, kambi: 1000000068, sbtech: 243, meridianbet: 799, altenar: 'Birmingham', bwin: 2515143, betway: 'Birmingham City', betcenter:  104299},
+    "Huddersfield Town": {betradar: 5989, kambi: 1000085937, sbtech: 548, meridianbet: 836, altenar: 'Huddersfield', bwin: 2519331, betway: 'Huddersfield Town', betcenter:  104113},
+    "Nottingham Forest": {betradar: 5982, kambi: 1000000046, sbtech: 22200, meridianbet: 821, altenar: 'Nottingham Forest', bwin: 2515342, betway: 'Nottingham Forest', betcenter:  106078},
     "Hull City": {kambi: 1000066582, sbtech: 539, meridianbet: 156, altenar: 'Hull City', bwin: 2515280, betway: 'Hull City', betcenter:  104006},
     "Tottenham Hotspur": {kambi: 1000000083, sbtech: 242, meridianbet: 166, altenar: 'Tottenham', bwin: 2520525, betway: 'Tottenham Hotspur', betcenter:  104381},
     "Everton": {kambi: 1000000047, sbtech: 239, meridianbet: 157, altenar: 'Everton', bwin: 2515217, betway: 'Everton', betcenter:  104369},
     "Brighton and Hove Albion": {kambi: 1000074063, sbtech: 372, meridianbet: 841, altenar: 'Brighton', bwin: 2522401, betway: 'Brighton & Hove Albion', betcenter:  104435},
     "Southampton": {kambi: 1000000081, sbtech: 247, meridianbet: 817, altenar: 'Southampton', bwin: 2515232, betway: 'Southampton', betcenter:  104792},
-    "Bristol City": {kambi: 1000028839, sbtech: 8860, meridianbet: 810, altenar: 'Bristol', bwin: 2515160, betway: 'Bristol City', betcenter: 106079},
-    "Bournemouth": {kambi: 1000052183, sbtech: 545, meridianbet: 869, altenar: 'Bournemouth', bwin: 2515154, betway: 'AFC Bournemouth', betcenter: 104727},
+    "Bristol City": {betradar: 849212, kambi: 1000028839, sbtech: 8860, meridianbet: 810, altenar: 'Bristol', bwin: 2515160, betway: 'Bristol City', betcenter: 106079},
+    "Bournemouth": {betradar: 841600, kambi: 1000052183, sbtech: 545, meridianbet: 869, altenar: 'Bournemouth', bwin: 2515154, betway: 'AFC Bournemouth', betcenter: 104727},
     "Oxford United (n)": {kambi: 1000035938, sbtech: 35627, meridianbet: 1096, altenar: 'Oxford United', betway: 'Oxford United', betcenter: 104434 },
-    "Wycombe": {kambi: 1000000021, sbtech: 571, meridianbet: 847, altenar: 'Wycombe', betway: 'Wycombe Wanderers', betcenter: 104440},
-    
+    "Wycombe": {betradar: 15270199, kambi: 1000000021, sbtech: 571, meridianbet: 847, altenar: 'Wycombe', betway: 'Wycombe Wanderers', betcenter: 104440},
+    /*
     // portugal
     "Rio Ave FC": {kambi: 1000048489, sbtech: 1371, meridianbet: 502, altenar: 'Rio Ave', bwin: 2515385, betway: 'Rio Ave', betcenter: 223932},
     "Braga": {kambi: 1000000238, sbtech: 1366, meridianbet: 247, altenar: 'Braga', bwin: 2523034, betway: 'Braga', betcenter: 654},
@@ -1820,7 +1826,7 @@ participants = {
     "Troy Merritt": {     },
     "David Horsey": {     },
     "Callum Hill": {     },
-    */
+    
     
     // ice hocky
     "Kalininskiy Front": {kambi: 1006228483, sbtech: 803675, meridianbet: 301085,   betway: 'Kalininsky Front', betcenter: 247362},
@@ -2019,7 +2025,7 @@ participants = {
     
     
     
-    
+*/
     
     
     }

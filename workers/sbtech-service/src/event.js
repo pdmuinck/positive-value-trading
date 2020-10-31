@@ -1,5 +1,6 @@
 const axios = require('axios')
 const bookmakers = require('./bookmakers')
+const Token = require('./token')
 
 const sportMap = {
     "FOOTBALL": "1", // soccer
@@ -23,31 +24,8 @@ const sportMap = {
 
 const event = {}
 
-async function getToken(book) {
-
-    const requests = []
-
-    const bookmaker = bookmakers[book.toUpperCase()]
-    let apiV2 = false
-    if(bookmaker.tokenUrl.includes('v2')) apiV2 = true
-
-    if(apiV2) {
-        requests.push(axios.get(bookmaker.tokenUrl).then(res => res.data.token).catch(error => null))
-    } else {
-        requests.push(axios.get(bookmaker.tokenUrl).then(res => res.data.split('ApiAccessToken = \'')[1].replace('\'', '')).catch(error => null))
-    }
-
-    let token
-
-    await Promise.all(requests).then((values) => {
-        token = values[0]
-    })
-
-    return token
-}
-
 event.getEvents = async (book, sports) => {
-    const token = await getToken(book)
+    const token = await Token.getToken(book, bookmakers)
     
     let requests = []
 
@@ -93,7 +71,7 @@ function createRequest(book, sport, token) {
     }
 
     return pages.map(page => {
-        return axios.post(bookmaker.dataUrl, page, headers).then(response => {return {provider: 'SBTECH', book: book, page: page.pagination, events: response.data.events}}).catch(error => null)
+        return axios.post(bookmaker.dataUrl, page, headers).then(response => {return {provider: 'SBTECH', book: book, page: page.pagination, events: response.data.events}}).catch(error => console.log(error))
     })
 }
 
