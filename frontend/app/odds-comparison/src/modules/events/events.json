@@ -1,0 +1,1514 @@
+[
+    {
+      "participants": [
+        "Leicester City",
+        "Wolves"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T14:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 318659997,
+      "pinnacleEventId": 1197303135,
+      "kambiEvent": {
+        "id": 1006715452,
+        "participants": [
+          {
+            "id": 1000040947,
+            "home": true
+          },
+          {
+            "id": 1000000071,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237479"
+      }
+    },
+    {
+      "participants": [
+        "Manchester City",
+        "Liverpool"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T16:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 327659997,
+      "pinnacleEventId": 1197303137,
+      "kambiEvent": {
+        "id": 1006715456,
+        "participants": [
+          {
+            "id": 1000000139,
+            "home": true
+          },
+          {
+            "id": 1000000087,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237483"
+      }
+    },
+    {
+      "participants": [
+        "West Ham United",
+        "Fulham"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 253859997,
+      "pinnacleEventId": 1197303138,
+      "kambiEvent": {
+        "id": 1006715467,
+        "participants": [
+          {
+            "id": 1000000082,
+            "home": true
+          },
+          {
+            "id": 1000000103,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237484"
+      }
+    },
+    {
+      "participants": [
+        "Everton",
+        "Manchester United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T12:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 226859997,
+      "pinnacleEventId": 1197303140,
+      "kambiEvent": {
+        "id": 1006715454,
+        "participants": [
+          {
+            "id": 1000000047,
+            "home": true
+          },
+          {
+            "id": 1000000086,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237486"
+      }
+    },
+    {
+      "participants": [
+        "Crystal Palace",
+        "Leeds United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1197303141,
+      "kambiEvent": {
+        "id": 1006715450,
+        "participants": [
+          {
+            "id": 1000013415,
+            "home": true
+          },
+          {
+            "id": 1000007584,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237485"
+      }
+    },
+    {
+      "participants": [
+        "Chelsea",
+        "Sheffield United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 244859997,
+      "pinnacleEventId": 1197303143,
+      "kambiEvent": {
+        "id": 1006715451,
+        "participants": [
+          {
+            "id": 1000000080,
+            "home": true
+          },
+          {
+            "id": 1000000056,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237482"
+      }
+    },
+    {
+      "participants": [
+        "Southampton",
+        "Newcastle United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 167459997,
+      "pinnacleEventId": 1197303145,
+      "kambiEvent": {
+        "id": 1006715455,
+        "participants": [
+          {
+            "id": 1000000081,
+            "home": true
+          },
+          {
+            "id": 1000000044,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237487"
+      }
+    },
+    {
+      "participants": [
+        "Leicester City",
+        "Braga"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1198323269,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Arsenal",
+        "Molde Fk"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1198323271,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Birmingham City",
+        "Wycombe"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1198759374,
+      "kambiEvent": {
+        "id": 1006721061,
+        "participants": [
+          {
+            "id": 1000000068,
+            "home": true
+          },
+          {
+            "id": 1000000021,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279346"
+      }
+    },
+    {
+      "participants": [
+        "West Brom",
+        "Tottenham Hotspur"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 322259997,
+      "pinnacleEventId": 1199779406,
+      "kambiEvent": {
+        "id": 1006715468,
+        "participants": [
+          {
+            "id": 1000000072,
+            "home": true
+          },
+          {
+            "id": 1000000083,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237481"
+      }
+    },
+    {
+      "participants": [
+        "Brighton and Hove Albion",
+        "Burnley"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 158459997,
+      "pinnacleEventId": 1199779777,
+      "kambiEvent": {
+        "id": 1006715448,
+        "participants": [
+          {
+            "id": 1000074063,
+            "home": true
+          },
+          {
+            "id": 1000026643,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237480"
+      }
+    },
+    {
+      "participants": [
+        "Cardiff City",
+        "Bristol City"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-06T18:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 160259997,
+      "pinnacleEventId": 1199806789,
+      "kambiEvent": {
+        "id": 1006721048,
+        "participants": [
+          {
+            "id": 1000000019,
+            "home": true
+          },
+          {
+            "id": 1000028839,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331799"
+      }
+    },
+    {
+      "participants": [
+        "Arsenal",
+        "Aston Villa"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T19:15:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 337559997,
+      "pinnacleEventId": 1199819408,
+      "kambiEvent": {
+        "id": 1006715449,
+        "participants": [
+          {
+            "id": 1000000085,
+            "home": true
+          },
+          {
+            "id": 1000000045,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20303945"
+      }
+    },
+    {
+      "participants": [
+        "Ludogorets 1947",
+        "Tottenham Hotspur"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T17:55:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 73559997,
+      "pinnacleEventId": 1199930440,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Reading",
+        "Stoke City"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T12:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 226859997,
+      "pinnacleEventId": 1200400413,
+      "kambiEvent": {
+        "id": 1006721051,
+        "participants": [
+          {
+            "id": 1000000020,
+            "home": true
+          },
+          {
+            "id": 1000047250,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331801"
+      }
+    },
+    {
+      "participants": [
+        "Nottingham Forest",
+        "Wycombe"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461882,
+      "kambiEvent": {
+        "id": 1006721052,
+        "participants": [
+          {
+            "id": 1000000046,
+            "home": true
+          },
+          {
+            "id": 1000000021,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331820"
+      }
+    },
+    {
+      "participants": [
+        "Norwich City",
+        "Swansea City"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461883,
+      "kambiEvent": {
+        "id": 1006721049,
+        "participants": [
+          {
+            "id": 1000078305,
+            "home": true
+          },
+          {
+            "id": 1000009871,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331815"
+      }
+    },
+    {
+      "participants": [
+        "Derby County",
+        "Barnsley"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461884,
+      "kambiEvent": {
+        "id": 1006721047,
+        "participants": [
+          {
+            "id": 1000022830,
+            "home": true
+          },
+          {
+            "id": 1000010031,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331811"
+      }
+    },
+    {
+      "participants": [
+        "Watford",
+        "Coventry"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461886,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Brentford",
+        "Middlesbrough"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461887,
+      "kambiEvent": {
+        "id": 1006721045,
+        "participants": [
+          {
+            "id": 1000069183,
+            "home": true
+          },
+          {
+            "id": 1000000084,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331808"
+      }
+    },
+    {
+      "participants": [
+        "Rotherham",
+        "Preston"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461889,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Blackburn Rovers",
+        "Queens Park Rangers"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461903,
+      "kambiEvent": {
+        "id": 1006721046,
+        "participants": [
+          {
+            "id": 1000000088,
+            "home": true
+          },
+          {
+            "id": 1000061424,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331805"
+      }
+    },
+    {
+      "participants": [
+        "Birmingham City",
+        "Bournemouth"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461905,
+      "kambiEvent": {
+        "id": 1006721043,
+        "participants": [
+          {
+            "id": 1000000068,
+            "home": true
+          },
+          {
+            "id": 1000052183,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331803"
+      }
+    },
+    {
+      "participants": [
+        "Huddersfield Town",
+        "Luton Town"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461907,
+      "kambiEvent": {
+        "id": 1006721050,
+        "participants": [
+          {
+            "id": 1000085937,
+            "home": true
+          },
+          {
+            "id": 1000015615,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331813"
+      }
+    },
+    {
+      "participants": [
+        "Sheffield Wednesday",
+        "Millwall"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1200461908,
+      "kambiEvent": {
+        "id": 1006721053,
+        "participants": [
+          {
+            "id": 1000007489,
+            "home": true
+          },
+          {
+            "id": 1000034681,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20331818"
+      }
+    },
+    {
+      "participants": [
+        "Chelsea",
+        "Rennes"
+      ],
+      "league": "UEFA - Champions League",
+      "sport": "Soccer",
+      "start": "2020-11-04T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -5340003,
+      "pinnacleEventId": 1201754190,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Chelsea",
+        "Rennes"
+      ],
+      "league": "UEFA - Champions League",
+      "sport": "Soccer",
+      "start": "2020-11-04T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -5340003,
+      "pinnacleEventId": 1201754200,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Leicester City",
+        "Braga"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1201810852,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Leicester City",
+        "Braga"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1201810854,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Arsenal",
+        "Molde Fk"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1201812357,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Arsenal",
+        "Molde Fk"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 81059997,
+      "pinnacleEventId": 1201812359,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Ludogorets 1947",
+        "Tottenham Hotspur"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T17:55:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 73559997,
+      "pinnacleEventId": 1201819812,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Ludogorets 1947",
+        "Tottenham Hotspur"
+      ],
+      "league": "UEFA - Europa League",
+      "sport": "Soccer",
+      "start": "2020-11-05T17:55:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 73559997,
+      "pinnacleEventId": 1201819818,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "West Brom",
+        "Tottenham Hotspur"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 322259997,
+      "pinnacleEventId": 1203018197,
+      "kambiEvent": {
+        "id": 1006715468,
+        "participants": [
+          {
+            "id": 1000000072,
+            "home": true
+          },
+          {
+            "id": 1000000083,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237481"
+      }
+    },
+    {
+      "participants": [
+        "Leicester City",
+        "Wolves"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T14:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 318659997,
+      "pinnacleEventId": 1203018219,
+      "kambiEvent": {
+        "id": 1006715452,
+        "participants": [
+          {
+            "id": 1000040947,
+            "home": true
+          },
+          {
+            "id": 1000000071,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237479"
+      }
+    },
+    {
+      "participants": [
+        "Manchester City",
+        "Liverpool"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T16:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 327659997,
+      "pinnacleEventId": 1203018256,
+      "kambiEvent": {
+        "id": 1006715456,
+        "participants": [
+          {
+            "id": 1000000139,
+            "home": true
+          },
+          {
+            "id": 1000000087,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237483"
+      }
+    },
+    {
+      "participants": [
+        "Crystal Palace",
+        "Leeds United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1203018308,
+      "kambiEvent": {
+        "id": 1006715450,
+        "participants": [
+          {
+            "id": 1000013415,
+            "home": true
+          },
+          {
+            "id": 1000007584,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237485"
+      }
+    },
+    {
+      "participants": [
+        "Everton",
+        "Manchester United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T12:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 226859997,
+      "pinnacleEventId": 1203018313,
+      "kambiEvent": {
+        "id": 1006715454,
+        "participants": [
+          {
+            "id": 1000000047,
+            "home": true
+          },
+          {
+            "id": 1000000086,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237486"
+      }
+    },
+    {
+      "participants": [
+        "Brighton and Hove Albion",
+        "Burnley"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 158459997,
+      "pinnacleEventId": 1203018315,
+      "kambiEvent": {
+        "id": 1006715448,
+        "participants": [
+          {
+            "id": 1000074063,
+            "home": true
+          },
+          {
+            "id": 1000026643,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237480"
+      }
+    },
+    {
+      "participants": [
+        "Chelsea",
+        "Sheffield United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 244859997,
+      "pinnacleEventId": 1203018354,
+      "kambiEvent": {
+        "id": 1006715451,
+        "participants": [
+          {
+            "id": 1000000080,
+            "home": true
+          },
+          {
+            "id": 1000000056,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237482"
+      }
+    },
+    {
+      "participants": [
+        "West Ham United",
+        "Fulham"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 253859997,
+      "pinnacleEventId": 1203018379,
+      "kambiEvent": {
+        "id": 1006715467,
+        "participants": [
+          {
+            "id": 1000000082,
+            "home": true
+          },
+          {
+            "id": 1000000103,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237484"
+      }
+    },
+    {
+      "participants": [
+        "Southampton",
+        "Newcastle United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 167459997,
+      "pinnacleEventId": 1203018435,
+      "kambiEvent": {
+        "id": 1006715455,
+        "participants": [
+          {
+            "id": 1000000081,
+            "home": true
+          },
+          {
+            "id": 1000000044,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237487"
+      }
+    },
+    {
+      "participants": [
+        "West Brom",
+        "Tottenham Hotspur"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 322259997,
+      "pinnacleEventId": 1203024151,
+      "kambiEvent": {
+        "id": 1006715468,
+        "participants": [
+          {
+            "id": 1000000072,
+            "home": true
+          },
+          {
+            "id": 1000000083,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237481"
+      }
+    },
+    {
+      "participants": [
+        "Leicester City",
+        "Wolves"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T14:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 318659997,
+      "pinnacleEventId": 1203024170,
+      "kambiEvent": {
+        "id": 1006715452,
+        "participants": [
+          {
+            "id": 1000040947,
+            "home": true
+          },
+          {
+            "id": 1000000071,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237479"
+      }
+    },
+    {
+      "participants": [
+        "Manchester City",
+        "Liverpool"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T16:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 327659997,
+      "pinnacleEventId": 1203024199,
+      "kambiEvent": {
+        "id": 1006715456,
+        "participants": [
+          {
+            "id": 1000000139,
+            "home": true
+          },
+          {
+            "id": 1000000087,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237483"
+      }
+    },
+    {
+      "participants": [
+        "Arsenal",
+        "Aston Villa"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-08T19:15:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 337559997,
+      "pinnacleEventId": 1203024218,
+      "kambiEvent": {
+        "id": 1006715449,
+        "participants": [
+          {
+            "id": 1000000085,
+            "home": true
+          },
+          {
+            "id": 1000000045,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20303945"
+      }
+    },
+    {
+      "participants": [
+        "Crystal Palace",
+        "Leeds United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T15:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 235859997,
+      "pinnacleEventId": 1203024251,
+      "kambiEvent": {
+        "id": 1006715450,
+        "participants": [
+          {
+            "id": 1000013415,
+            "home": true
+          },
+          {
+            "id": 1000007584,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237485"
+      }
+    },
+    {
+      "participants": [
+        "Everton",
+        "Manchester United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T12:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 226859997,
+      "pinnacleEventId": 1203024255,
+      "kambiEvent": {
+        "id": 1006715454,
+        "participants": [
+          {
+            "id": 1000000047,
+            "home": true
+          },
+          {
+            "id": 1000000086,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237486"
+      }
+    },
+    {
+      "participants": [
+        "Brighton and Hove Albion",
+        "Burnley"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 158459997,
+      "pinnacleEventId": 1203024265,
+      "kambiEvent": {
+        "id": 1006715448,
+        "participants": [
+          {
+            "id": 1000074063,
+            "home": true
+          },
+          {
+            "id": 1000026643,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237480"
+      }
+    },
+    {
+      "participants": [
+        "Chelsea",
+        "Sheffield United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T17:30:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 244859997,
+      "pinnacleEventId": 1203024293,
+      "kambiEvent": {
+        "id": 1006715451,
+        "participants": [
+          {
+            "id": 1000000080,
+            "home": true
+          },
+          {
+            "id": 1000000056,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237482"
+      }
+    },
+    {
+      "participants": [
+        "West Ham United",
+        "Fulham"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-07T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 253859997,
+      "pinnacleEventId": 1203024310,
+      "kambiEvent": {
+        "id": 1006715467,
+        "participants": [
+          {
+            "id": 1000000082,
+            "home": true
+          },
+          {
+            "id": 1000000103,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237484"
+      }
+    },
+    {
+      "participants": [
+        "Southampton",
+        "Newcastle United"
+      ],
+      "league": "England - Premier League",
+      "sport": "Soccer",
+      "start": "2020-11-06T20:00:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": 167459997,
+      "pinnacleEventId": 1203024381,
+      "kambiEvent": {
+        "id": 1006715455,
+        "participants": [
+          {
+            "id": 1000000081,
+            "home": true
+          },
+          {
+            "id": 1000000044,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20237487"
+      }
+    },
+    {
+      "participants": [
+        "Derby County",
+        "Queens Park Rangers"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303160,
+      "kambiEvent": {
+        "id": 1006721064,
+        "participants": [
+          {
+            "id": 1000022830,
+            "home": true
+          },
+          {
+            "id": 1000061424,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279345"
+      }
+    },
+    {
+      "participants": [
+        "Nottingham Forest",
+        "Coventry"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303170,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Birmingham City",
+        "Wycombe"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303172,
+      "kambiEvent": {
+        "id": 1006721061,
+        "participants": [
+          {
+            "id": 1000000068,
+            "home": true
+          },
+          {
+            "id": 1000000021,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279346"
+      }
+    },
+    {
+      "participants": [
+        "Derby County",
+        "Queens Park Rangers"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303189,
+      "kambiEvent": {
+        "id": 1006721064,
+        "participants": [
+          {
+            "id": 1000022830,
+            "home": true
+          },
+          {
+            "id": 1000061424,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279345"
+      }
+    },
+    {
+      "participants": [
+        "Nottingham Forest",
+        "Coventry"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303198,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    },
+    {
+      "participants": [
+        "Birmingham City",
+        "Wycombe"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203303207,
+      "kambiEvent": {
+        "id": 1006721061,
+        "participants": [
+          {
+            "id": 1000000068,
+            "home": true
+          },
+          {
+            "id": 1000000021,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279346"
+      }
+    },
+    {
+      "participants": [
+        "Derby County",
+        "Queens Park Rangers"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203306562,
+      "kambiEvent": {
+        "id": 1006721064,
+        "participants": [
+          {
+            "id": 1000022830,
+            "home": true
+          },
+          {
+            "id": 1000061424,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279345"
+      }
+    },
+    {
+      "participants": [
+        "Birmingham City",
+        "Wycombe"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203306669,
+      "kambiEvent": {
+        "id": 1006721061,
+        "participants": [
+          {
+            "id": 1000000068,
+            "home": true
+          },
+          {
+            "id": 1000000021,
+            "home": false
+          }
+        ]
+      },
+      "sbtechEvent": {
+        "id": "20279346"
+      }
+    },
+    {
+      "participants": [
+        "Nottingham Forest",
+        "Coventry"
+      ],
+      "league": "England - Championship",
+      "sport": "Soccer",
+      "start": "2020-11-04T19:45:00.000Z",
+      "current_date": "2020-11-04T21:29:00.003Z",
+      "timeBeforeStart": -6240003,
+      "pinnacleEventId": 1203306702,
+      "kambiEvent": null,
+      "sbtechEvent": null
+    }
+  ]

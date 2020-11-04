@@ -1,0 +1,4870 @@
+[
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303137",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303137,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.03",
+          "fairPrice": "2.07",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303137,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.42",
+          "fairPrice": "3.49",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303137,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "4.24",
+          "fairPrice": "4.33",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303135",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303135,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.37",
+          "fairPrice": "2.42",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303135,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.54",
+          "fairPrice": "3.61",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303135,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.17",
+          "fairPrice": "3.23",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303138",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303138,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.87",
+          "fairPrice": "1.91",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303138,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.25",
+          "fairPrice": "4.34",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303138,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.99",
+          "fairPrice": "4.07",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303140",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303140,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "3.02",
+          "fairPrice": "3.08",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303140,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.46",
+          "fairPrice": "2.51",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303140,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.56",
+          "fairPrice": "3.63",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461887",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461887,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.82",
+          "fairPrice": "1.89",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461887,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.66",
+          "fairPrice": "4.83",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461887,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.68",
+          "fairPrice": "3.81",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461884",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461884,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.55",
+          "fairPrice": "2.63",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461884,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.03",
+          "fairPrice": "3.13",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461884,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.22",
+          "fairPrice": "3.33",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200400413",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200400413,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.99",
+          "fairPrice": "3.09",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200400413,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.69",
+          "fairPrice": "2.78",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200400413,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.06",
+          "fairPrice": "3.16",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303145",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303145,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.99",
+          "fairPrice": "2.03",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303145,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.07",
+          "fairPrice": "4.16",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303145,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.66",
+          "fairPrice": "3.74",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303141",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303141,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.98",
+          "fairPrice": "3.04",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303141,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.52",
+          "fairPrice": "2.57",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303141,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.49",
+          "fairPrice": "3.56",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461907",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461907,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.38",
+          "fairPrice": "2.46",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461907,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.34",
+          "fairPrice": "3.45",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461907,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.19",
+          "fairPrice": "3.30",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461883",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461883,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.16",
+          "fairPrice": "2.23",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461883,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.78",
+          "fairPrice": "3.91",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461883,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.27",
+          "fairPrice": "3.38",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461905",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461905,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "3.84",
+          "fairPrice": "3.97",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461905,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.15",
+          "fairPrice": "2.22",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461905,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.24",
+          "fairPrice": "3.35",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461908",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461908,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.77",
+          "fairPrice": "2.86",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461908,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.78",
+          "fairPrice": "2.87",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461908,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.20",
+          "fairPrice": "3.31",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1199806789",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199806789,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.25",
+          "fairPrice": "2.31",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199806789,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.36",
+          "fairPrice": "3.46",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199806789,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.49",
+          "fairPrice": "3.59",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1199779406",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779406,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "6.59",
+          "fairPrice": "6.75",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779406,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "1.54",
+          "fairPrice": "1.58",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779406,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "4.47",
+          "fairPrice": "4.58",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1198323271",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323271,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.29",
+          "fairPrice": "1.36",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323271,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "9.54",
+          "fairPrice": "10.04",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323271,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "5.79",
+          "fairPrice": "6.10",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1198323269",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323269,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.79",
+          "fairPrice": "1.88",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323269,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.67",
+          "fairPrice": "4.89",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198323269,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.64",
+          "fairPrice": "3.81",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1198708361",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198708361,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.66",
+          "fairPrice": "2.73",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198708361,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.90",
+          "fairPrice": "2.98",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1198708361,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.26",
+          "fairPrice": "3.35",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1197303143",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303143,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.40",
+          "fairPrice": "1.44",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303143,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "8.48",
+          "fairPrice": "8.71",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1197303143,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "5.14",
+          "fairPrice": "5.28",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461903",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461903,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.88",
+          "fairPrice": "1.95",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461903,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.23",
+          "fairPrice": "4.39",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461903,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.72",
+          "fairPrice": "3.86",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461889",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461889,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "3.14",
+          "fairPrice": "3.24",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461889,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "2.45",
+          "fairPrice": "2.53",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461889,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.27",
+          "fairPrice": "3.38",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461886",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461886,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.67",
+          "fairPrice": "1.72",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461886,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "5.64",
+          "fairPrice": "5.82",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461886,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.92",
+          "fairPrice": "4.04",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1200461882",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461882,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.61",
+          "fairPrice": "1.67",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461882,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "6.42",
+          "fairPrice": "6.66",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1200461882,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.83",
+          "fairPrice": "3.98",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721044",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 801,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 67,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": null,
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721044",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 351,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 67,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721044,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": null,
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1199819408",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199819408,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.75",
+          "fairPrice": "1.79",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199819408,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "5.12",
+          "fairPrice": "5.23",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199819408,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.92",
+          "fairPrice": "4.01",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1199930440",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199930440,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "8.07",
+          "fairPrice": "8.49",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199930440,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "1.36",
+          "fairPrice": "1.43",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199930440,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "5.20",
+          "fairPrice": "5.47",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1199779777",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779777,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.92",
+          "fairPrice": "1.96",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779777,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "4.39",
+          "fairPrice": "4.48",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1199779777,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.68",
+          "fairPrice": "3.75",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018313"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018354"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018308"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018197"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018315"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024170",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024170,
+          "product": "moneyline_full_time",
+          "price": "2.46",
+          "fairPrice": "2.53",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024170,
+          "product": "moneyline_full_time",
+          "price": "1.61",
+          "fairPrice": "2.53",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018379"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018435"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024199",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024199,
+          "product": "moneyline_full_time",
+          "price": "1.57",
+          "fairPrice": "1.62",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024199,
+          "product": "moneyline_full_time",
+          "price": "2.55",
+          "fairPrice": "1.62",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024218",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024218,
+          "product": "moneyline_full_time",
+          "price": "1.29",
+          "fairPrice": "1.33",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024218,
+          "product": "moneyline_full_time",
+          "price": "3.90",
+          "fairPrice": "1.33",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024255",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024255,
+          "product": "moneyline_full_time",
+          "price": "1.76",
+          "fairPrice": "1.81",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024255,
+          "product": "moneyline_full_time",
+          "price": "2.16",
+          "fairPrice": "1.81",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024265",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024265,
+          "product": "moneyline_full_time",
+          "price": "1.40",
+          "fairPrice": "1.44",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024265,
+          "product": "moneyline_full_time",
+          "price": "3.15",
+          "fairPrice": "1.44",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721065",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 5.6,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 1.29,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 8,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024293",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024293,
+          "product": "moneyline_full_time",
+          "price": "1.14",
+          "fairPrice": "1.18",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024293,
+          "product": "moneyline_full_time",
+          "price": "6.50",
+          "fairPrice": "1.18",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024151",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024151,
+          "product": "moneyline_full_time",
+          "price": "1.21",
+          "fairPrice": "1.25",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024151,
+          "product": "moneyline_full_time",
+          "price": "4.80",
+          "fairPrice": "1.25",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201754200",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754200,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.11",
+          "fairPrice": "1.15",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754200,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "38.23",
+          "fairPrice": "39.70",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754200,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "8.97",
+          "fairPrice": "9.32",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303175",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303175,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "17.61",
+          "fairPrice": "18.33",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303175,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "1.42",
+          "fairPrice": "1.48",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303175,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.57",
+          "fairPrice": "3.72",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303210",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303210,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.18",
+          "fairPrice": "1.24",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303210,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "31.87",
+          "fairPrice": "33.50",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303210,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "5.80",
+          "fairPrice": "6.10",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721065",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 5.3,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 1.29,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721065,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 7.5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203306669",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306669,
+          "product": "moneyline_full_time",
+          "price": "1.03",
+          "fairPrice": "1.07",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306669,
+          "product": "moneyline_full_time",
+          "price": "15.50",
+          "fairPrice": "1.07",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203306673"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203307885"
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721064",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.65,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721061",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.17,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 5.8,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 21,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201754190",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754190,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.11",
+          "fairPrice": "1.15",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754190,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "39.66",
+          "fairPrice": "41.14",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201754190,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "8.99",
+          "fairPrice": "9.33",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721061",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.17,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 5.6,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721061,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 18,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201812357",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201812357,
+          "product": "moneyline_full_time",
+          "price": "1.10",
+          "fairPrice": "1.15",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201812357,
+          "product": "moneyline_full_time",
+          "price": "7.50",
+          "fairPrice": "1.15",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018256"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203306562",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306562,
+          "product": "moneyline_full_time",
+          "price": "1.72",
+          "fairPrice": "1.80",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306562,
+          "product": "moneyline_full_time",
+          "price": "2.14",
+          "fairPrice": "1.80",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203018219"
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721064",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721064,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.6,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024251",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024251,
+          "product": "moneyline_full_time",
+          "price": "2.10",
+          "fairPrice": "2.17",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024251,
+          "product": "moneyline_full_time",
+          "price": "1.79",
+          "fairPrice": "2.17",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203307925"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201810854"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237479",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.6,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.4,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237483",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.4,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 4.2,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237483",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.45,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237483",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 4.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237479",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.35,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237479",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237486",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.6,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303180",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303180,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "3.05",
+          "fairPrice": "3.16",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303180,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "5.23",
+          "fairPrice": "5.42",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303180,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "1.93",
+          "fairPrice": "2.00",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201819812",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201819812,
+          "product": "moneyline_full_time",
+          "price": "6.25",
+          "fairPrice": "6.53",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201819812,
+          "product": "moneyline_full_time",
+          "price": "1.13",
+          "fairPrice": "6.53",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237485",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.55,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201812359"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237482",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 5.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.4,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 8.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237482",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 5.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.41,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237482",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 8.75,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237484",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 4.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237487",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.65,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20279350"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024310",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024310,
+          "product": "moneyline_full_time",
+          "price": "3.15",
+          "fairPrice": "3.25",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024310,
+          "product": "moneyline_full_time",
+          "price": "1.40",
+          "fairPrice": "3.25",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203024381",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024381,
+          "product": "moneyline_full_time",
+          "price": "1.45",
+          "fairPrice": "1.50",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203024381,
+          "product": "moneyline_full_time",
+          "price": "2.90",
+          "fairPrice": "1.50",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203306637"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331805",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331808",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.65,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.83,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.65,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331803",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3.8,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.15,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20279350"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203307892"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20303945",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.9,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.74,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303198",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303198,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.33",
+          "fairPrice": "1.41",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303198,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "12.48",
+          "fairPrice": "13.19",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303198,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "4.44",
+          "fairPrice": "4.69",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331818",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.8,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.8,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331813",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.4,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.35,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.2,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331808",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.7,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.83,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331808",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237481",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 1.57,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 6.75,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 4.45,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203306702",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306702,
+          "product": "moneyline_full_time",
+          "price": "1.05",
+          "fairPrice": "1.10",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203306702,
+          "product": "moneyline_full_time",
+          "price": "10.50",
+          "fairPrice": "1.10",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331805",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331805",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237485",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.95,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237485",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.45,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303160",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303160,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.81",
+          "fairPrice": "2.92",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303160,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.49",
+          "fairPrice": "3.63",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303160,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "2.52",
+          "fairPrice": "2.62",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237487",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.1,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237487",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.7,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303172",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303172,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.86",
+          "fairPrice": "1.93",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303172,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "5.78",
+          "fairPrice": "6.00",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303172,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.05",
+          "fairPrice": "3.17",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201810852",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201810852,
+          "product": "moneyline_full_time",
+          "price": "3.50",
+          "fairPrice": "3.69",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1201810852,
+          "product": "moneyline_full_time",
+          "price": "1.30",
+          "fairPrice": "3.69",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237484",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.95,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237484",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.86,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331818",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.75,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331818",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.8,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237486",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.45,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237486",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20237480",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.45,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.95,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331811",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.55,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331815",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.8,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303207",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303207,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "1.20",
+          "fairPrice": "1.27",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303207,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "18.69",
+          "fairPrice": "19.81",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303207,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "5.77",
+          "fairPrice": "6.12",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331803",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.3,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3.85,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331803",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.15,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303170",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303170,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.11",
+          "fairPrice": "2.20",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303170,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.88",
+          "fairPrice": "4.04",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303170,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "3.24",
+          "fairPrice": "3.37",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331801",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.1,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.7,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331820",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 6.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.6,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.95,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20331799",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.35,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303202"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1201819818"
+    },
+    {
+      "provider": "PINNACLE",
+      "book": "PINNACLE",
+      "eventId": "1203303189",
+      "data": [
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303189,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": "2.77",
+          "fairPrice": "2.91",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303189,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": "3.44",
+          "fairPrice": "3.62",
+          "open": false
+        },
+        {
+          "provider": "PINNACLE",
+          "eventId": 1203303189,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": "2.50",
+          "fairPrice": "2.63",
+          "open": false
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237481",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 6.5,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 1.55,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237481",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 4.35,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331813",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.4,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331813",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20303945",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.76,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 5.25,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BETFIRST",
+          "eventId": "20303945",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.95,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331801",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 2.7,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.05,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331801",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331799",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.45,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.35,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331799",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331811",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.2,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.55,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331811",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331820",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.9,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.6,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331820",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 6.5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20237480",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 4.35,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.65,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20237480",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20279346"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20279347"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20279347"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20279345"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20279346"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BETFIRST",
+      "eventId": "20279345"
+    },
+    {
+      "provider": "SBTECH",
+      "book": "BET777",
+      "eventId": "20331815",
+      "data": [
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "2",
+          "price": 3.75,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "1",
+          "price": 2.15,
+          "open": true
+        },
+        {
+          "provider": "SBTECH",
+          "book": "BET777",
+          "eventId": "20331815",
+          "product": "moneyline_full_time",
+          "points": null,
+          "betOption": "X",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721047",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.1,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.9,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715455",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.85,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.7,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721047",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.1,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721047,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.9,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715467",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.84,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.85,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.2,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715467",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.84,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.85,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715467,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.2,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721052",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.57,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 6.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715454",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.43,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715468",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 6.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4.3,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 1.53,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721046",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.87,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715452",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.35,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.35,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715451",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.38,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 8.5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715450",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 3.05,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.35,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.38,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715452",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.35,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715452,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.35,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715451",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.38,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715451,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 8.5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721045",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.77,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.6,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721050",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.25,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715449",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.68,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715455",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.85,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.7,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715455,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.3,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721043",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 3.65,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.12,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721050",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.25,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721050,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721048",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.16,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.4,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721043",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 3.65,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721043,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.12,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721051",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.63,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721049",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.16,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.55,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721053",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.75,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.1,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.65,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721045",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.77,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721045,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.6,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715449",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.68,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715449,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 5,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715456",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.95,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4.25,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.4,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715448",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006721049",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.16,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.15,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006721049,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.55,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715448",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715448,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721051",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721051,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.63,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715454",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.9,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715454,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.43,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721052",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.57,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.75,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721052,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 6.25,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006715450",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 3.05,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.35,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006715450,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.38,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721046",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.87,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.55,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721046,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 4,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715468",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 6.5,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4.3,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715468,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 1.53,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721053",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.75,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.1,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721053,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 2.65,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "NAPOLEON_GAMES",
+      "eventId": "1006715456",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 1.95,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 4.25,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "NAPOLEON_GAMES",
+          "eventId": 1006715456,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.4,
+          "open": true
+        }
+      ]
+    },
+    {
+      "provider": "KAMBI",
+      "book": "UNIBET_BELGIUM",
+      "eventId": "1006721048",
+      "data": [
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "1",
+          "price": 2.16,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "X",
+          "price": 3.4,
+          "open": true
+        },
+        {
+          "provider": "KAMBI",
+          "book": "UNIBET_BELGIUM",
+          "eventId": 1006721048,
+          "product": "moneyline_full_time",
+          "betOption": "2",
+          "price": 3.25,
+          "open": true
+        }
+      ]
+    }
+  ]

@@ -13,61 +13,47 @@ const betoffer = {}
 
 const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 
-job = new CronJob('*/30 * * * * *', async () => {
+job = new CronJob('*/55 * * * * *', async () => {
     const events = await axios.get('http://' + EVENT_IP + ':' + EVENT_PORT + '/events').then(response => response.data).catch(error => console.log(error))
-    const eventBetOfferRequests = events.map(event => createRequests(event))
-    eventBetOfferRequests.forEach(eventBetOfferRequest => {
-        requestBetOffers(eventBetOfferRequest)
-    })
+    events.forEach(event => fire(event))
     
 }, null, true)
 
-async function requestBetOffers(eventBetOfferRequest) {
-    Promise.all(eventBetOfferRequest).then(values => {
-        console.log(values)
-        cache.mset(values)
-        // merge gambling products for given event. start simple with 1X2
-    })
-}
-
-function createRequests(event) {
-    const eventKey = event.pinnacleEventId
-    requests = []
+function fire(event) {
 
     if(event.pinnacleEventId) {
-        requests.push(axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
         + '/providers/PINNACLE/books/PINNACLE/events/' + event.pinnacleEventId + '/betoffers')
         .then(response => {
-            return {key: eventKey, val: response.data}
-        }))
+            cache.set('PINNACLE' + event.pinnacleEventId, response.data)
+        })
     }
     if(event.kambiEvent && event.kambiEvent.id) {
-        requests.push(axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
         + '/providers/KAMBI/books/UNIBET_BELGIUM/events/' + event.kambiEvent.id + '/betoffers')
         .then(response => {
-            return {key: eventKey, val: response.data}
-        }))
+            cache.set('UNIBET_BELGIUM' + event.kambiEvent.id, response.data)
+        })
 
-        requests.push(axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
         + '/providers/KAMBI/books/NAPOLEON_GAMES/events/' + event.kambiEvent.id + '/betoffers')
         .then(response => {
-            return {key: eventKey, val: response.data}
-        }))
+            cache.set('NAPOLEON' + event.kambiEvent.id, response.data)
+        })
     }
     if(event.sbtechEvent && event.sbtechEvent.id) {
-        requests.push(axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
         + '/providers/SBTECH/books/BETFIRST/events/' + parseInt(event.sbtechEvent.id) + '/betoffers')
         .then(response => {
-            return {key: eventKey, val: response.data}
-        }))
+            cache.set('BETFIRST' + event.sbtechEvent.id, response.data)
+        })
 
-        requests.push(axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
         + '/providers/SBTECH/books/BET777/events/' + parseInt(event.sbtechEvent.id) + '/betoffers')
         .then(response => {
-            return {key: eventKey, val: response.data}
-        }))
+            cache.set('BET777' + event.sbtechEvent.id, response.data)
+        })
     }
-    return requests
 }
 
 betoffer.getBetOffers = async () => {
