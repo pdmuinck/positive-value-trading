@@ -1,0 +1,25 @@
+body {
+
+    background-color: aqua;
+    color: black;
+    font-family: "acuta","Bell MT","BellMT","Georgia",sans-serif;
+}
+
+.l-user {
+    background-color: black;
+    color: white;
+    
+}
+
+.price {
+    text-align: center;
+}
+
+.datetime {
+    font-size: 0.5rem;
+    padding: 5px;
+}
+
+.event {
+    padding-bottom: 12px;
+}

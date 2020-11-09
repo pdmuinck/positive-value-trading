@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './participant.css'
+
 
 function Participants({participants}) {
 
