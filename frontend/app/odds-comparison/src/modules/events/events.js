@@ -7,19 +7,9 @@ import Tab from '@material-ui/core/Tab';
 
 
 function Events() {
-    const bookmakers = [
-        {id: 'UNIBET_BELGIUM', logo: '/assets/unibet.png', alt: 'unibet_be'}, 
-        {id: 'NAPOLEON_GAMES', logo: '/assets/napoleon_games.png', alt: 'napoleon'},
-        {id: 'PINNACLE', logo: '/assets/pinnacle.png', alt: 'pinnacle'}, 
-        {id: 'BET777', logo: '/assets/bet777.png', alt: 'bet777'}, 
-        {id: 'BETFIRST', logo: '/assets/betfirst.png', alt: 'betfirst'}
-    ]
+    const bookmakers = Api.getBookmakers()
+    const tabs = Api.getSports()
 
-    const tabs = ['SOCCER', 'BASKETBALL', 'TENNIS']
-
-    
-        
-    
     const [events, setEvents] = React.useState()
     const [value, setValue] = React.useState(0)
 
@@ -27,22 +17,18 @@ function Events() {
         setValue(newValue)
       }
 
-    useInterval(() => {
-        async function getEvents() {
-            const events = Api.getEvents()
-            setEvents(events)
-        }
+    async function getEvents() {
+        const events = Api.getEvents(tabs[value])
+        setEvents(events)
+    }
 
+    useInterval(() => {
         getEvents()
     }, 60 * 100)
 
     React.useEffect(() => {
-        async function getSport() {
-
-        }
-        getSport()
+        getEvents()
     }, [value])
-
 
     return(
         <div>

@@ -7,13 +7,14 @@ function BetOffers({event, bookmakers}) {
 
     const [betOffers, setBetOffers] = React.useState()
 
+    async function getBetOffers() {
+        const betOffers = api.getBetOffers(event, bookmakers)
+        setBetOffers(betOffers) 
+    }
+
     useInterval(() => {
-        async function getBetOffers() {
-            const betOffers = api.getBetOffers(event, bookmakers)
-            setBetOffers(betOffers) 
-        }
         getBetOffers()
-    }, 60*100)
+    }, 10*100)
 
     return (
         <tr class="event">
