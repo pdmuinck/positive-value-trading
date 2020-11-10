@@ -78,7 +78,11 @@ event.getEvents = async (book, sports) => {
 }
 
 function createRequest(id) {
-    return axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + id + '/matchups', options).then(response => {return {provider: 'PINNACLE', events: response.data}}).catch(error => null)
+    return axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + id + '/matchups', options).then(response => transform(response.data)).catch(error => null)
+}
+
+function transform(events) {
+    return events.map(event => { return {id: event.id, startTime: event.startTime, sport: event.league.sport.name, league: event.league.name, participants: event.participants.map(participant => participant.name)}})
 }
 
 async function resolve(requests) {

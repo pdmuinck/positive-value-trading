@@ -41,7 +41,15 @@ event.getEvents = async (book, sports) => {
 }
 
 function createRequest(url, bookmakerName, bookmakerInfo) {
-    return axios.get(url.replace('{book}', bookmakerInfo.code).replace('{host}', bookmakerInfo.host)).then(response => {return {provider: 'KAMBI', book: bookmakerName, events: response.data.events}}).catch(error => null)
+    return axios.get(url.replace('{book}', bookmakerInfo.code).replace('{host}', bookmakerInfo.host)).then(response => transform(response.data.events)).catch(error => null)
+}
+
+function transform(events) {
+    return events.map(event => {return {
+        id: event.id, 
+        participants: event.participants.map(participant => {return {
+            id: participant.participantId, 
+            name: participant.name}})}})
 }
 
 async function resolve(requests) {

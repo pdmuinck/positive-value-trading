@@ -71,8 +71,12 @@ function createRequest(book, sport, token) {
     }
 
     return pages.map(page => {
-        return axios.post(bookmaker.dataUrl, page, headers).then(response => {return {provider: 'SBTECH', book: book, page: page.pagination, events: response.data.events}}).catch(error => console.log(error))
+        return axios.post(bookmaker.dataUrl, page, headers).then(response => transform(response.data.events)).catch(error => console.log(error))
     })
+
+    function transform(events) {
+        return events.map(event => {return {id: event.id, participants: event.participants.map(participant => {return {id: participant.id, name: participant.name}})}})
+    }
 }
 
 module.exports = event

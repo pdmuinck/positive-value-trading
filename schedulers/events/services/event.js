@@ -32,8 +32,8 @@ event.job = new CronJob('*/10 * * * * *', () => {
 async function merge(providers) {
     const currentDate = new Date()
     const mergedEvents = []
-    const pinnacleEvents = providers.filter(provider => provider.provider === 'PINNACLE').map(provider => provider.data).flat().map(event => event.events).flat()
-    const kambiEvents = providers.filter(provider => provider.provider === 'KAMBI').map(provider => provider.data).flat()[0].events
+    const pinnacleEvents = providers.filter(provider => provider.provider === 'PINNACLE').map(provider => provider.events)
+    const kambiEvents = providers.filter(provider => provider.provider === 'KAMBI').map(provider => provider.events)
     const sbtechEvents = providers.filter(provider => provider.provider === 'SBTECH').map(provider => provider.data).flat().map(event => event.events).flat()
 
     pinnacleEvents.forEach(pinnacleEvent => {
