@@ -36,7 +36,6 @@ function parse(eventId, betOffers) {
             return getPricesFromBetOffer(moneylineFullTimeBetOffers[0])
         }
 
-        
         /*const specialBetOffers = betOffers.filter(betOffer => subEvents.map(event => event.id).includes(betOffer.matchupId))
         
         specialBetOffers.forEach(betOffer => {
@@ -55,9 +54,7 @@ function parse(eventId, betOffers) {
 }
 
 function getBetOfferById(betOffers, id) {
-
     return betOffers.filter(betOffer => betOffer.key === id)
-
 }
 
 function getPricesFromBetOffer(betOffer) {
@@ -66,18 +63,16 @@ function getPricesFromBetOffer(betOffer) {
     
     if(betOffer.key === 's;0;m') product = 'moneyline_full_time'
 
-    const prices = []
-
     const open = betOffer.status ? betOffer.status.toUpperCase() === 'OPEN' ? true : false : false
 
     const fairPrices = calculateFairPrices(betOffer.prices)
 
-    betOffer.prices.forEach(price => {
+    const prices = betOffer.prices.map(price => {
         const fairPrice = fairPrices.filter(fairPrice => fairPrice.designation === price.designation)[0]
-        prices.push({provider: 'PINNACLE', eventId: betOffer.matchupId, product: product, points: price.points, betOption: clean(price.designation), price: toDecimalOdds(price.price), fairPrice: fairPrice.fairPrice, open: open})
+        return {points: price.points, betOption: clean(price.designation), price: toDecimalOdds(price.price), fairPrice: fairPrice.fairPrice, open: open}
     })
 
-    return prices
+    return {product: product, prices: prices}
 }
 
 function toDecimalOdds(americanOdds) {

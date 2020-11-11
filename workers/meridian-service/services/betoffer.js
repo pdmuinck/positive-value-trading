@@ -1,49 +1,37 @@
 const axios = require('axios')
-const bookmakers = require('../resources/bookmakers.json')
-const betofferTypes = require('../resources/betoffer-type.json')
 
 const betoffer = {}
 
-betoffer.getBetOffersByBookMakerAndEventIdandBetOfferType = async (book, eventId, type) => {
+betoffer.getBetOffersForEventId = async (eventId) => {
 
-    const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
+    const url = 'https://meridianbet.be/sails/events/' + eventId
 
-    if(!bookmakerInfo) throw new Error('Book not found: ' + book)
-
-    let url = 'https://{host}/offering/v2018/{book}'.replace('{host}', bookmakerInfo.host).replace('{book}', bookmakerInfo.code)  + '/betoffer/event/' + eventId + '.json'
-
-    if(type) {
-        url += '?type=' + betofferTypes[type]
-    }
-
-    const betOffers = await axios.get(url).then(response => response.data.betOffers)
+    const betOffers = await axios.get(url).then(response => response.data.market)
                             .catch(error => console.log(error))
     
     if(betOffers) {
-
-        const moneylineFullTimeBetOffers = findBetOfferById(betOffers, 1001159858)
-
+        const moneylineFullTimeBetOffers = findBetOfferById(betOffers, '3999')
         if(moneylineFullTimeBetOffers && moneylineFullTimeBetOffers[0]) {
-            return getPricesFromBetOffer(book, moneylineFullTimeBetOffers[0])
+            return getPricesFromBetOffer(moneylineFullTimeBetOffers[0])
         }
     }
 }
-function getPricesFromBetOffer(book, betOffer) {
-    const values = []
+function getPricesFromBetOffer( betOffer) {
     let product
-    if(betOffer.criterion.id === 1001159858) product = 'moneyline_full_time'
+    if(betOffer.templateId === '3999') product = 'moneyline_full_time'
 
-    betOffer.outcomes.forEach(outcome => {
-        let betOption = outcome.englishLabel
-        const odds = outcome.odds / 1000
-        const open = outcome.status === 'OPEN' ? true : false
-        values.push({provider: 'KAMBI', book: book, eventId: betOffer.eventId, product: product, points: outcome.line ? outcome.line / 1000 : undefined, betOption: betOption, price: odds, open: open})
+    const prices = betOffer.selection.map(outcome => {
+        const betOption = outcome.nameTranslations.filter(translation => translation.locale === 'en').map(translation => translation.translation)[0]
+        const odds = outcome.price
+        const open = outcome.state === 'ACTIVE' ? true : false
+        return {betOption: betOption, odds: odds, open: open}
     })
-    return values
+
+    return {product: product, prices: prices}
 }
 
 function findBetOfferById(betOffers, id) {
-    return betOffers.filter(betOffer => betOffer.criterion.id === id)
+    return betOffers.filter(betOffer => betOffer.templateId === id)
 } 
 
 

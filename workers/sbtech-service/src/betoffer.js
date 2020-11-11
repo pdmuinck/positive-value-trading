@@ -22,10 +22,7 @@ betOffer.getByBookAndEventId = async (book, eventId) => {
     const result = await axios.post(bookmakers[book.toUpperCase()].oddsUrl, sbtechPayload, options).then(res => parse(book.toUpperCase(), res.data.markets.filter(market => market.eventId === eventId))).catch(error => console.log(error))
 
     return result
-
 }
-
-
 
 function cleanBetOption(outcome) {
     if(outcome === 'Home') return '1'
@@ -44,26 +41,18 @@ function parse(book, markets) {
 }
 
 function getBetOfferById(betOffers, id) {
-
     return betOffers.filter(betOffer => betOffer.marketType.id === id)
-
 }
 
 function getPricesFromBetOffer(betOffer, book) {
-
     let product
-
     if(betOffer.marketType.id === '1_0') product = 'moneyline_full_time'
 
-    const values = []
-    
-    betOffer.selections.forEach(selection => {
-
-        values.push({provider: 'SBTECH', book: book, eventId: betOffer.eventId, product: product, points: selection.points, betOption: cleanBetOption(selection.outcomeType), price: selection.trueOdds, open: !selection.isDisabled})
-
+    const prices = betOffer.selections.map(selection => {
+        return {points: selection.points, betOption: cleanBetOption(selection.outcomeType), odds: selection.trueOdds, open: !selection.isDisabled}
     })
 
-    return values
+    return {product: product, prices: prices}
 }
 
 module.exports = betOffer

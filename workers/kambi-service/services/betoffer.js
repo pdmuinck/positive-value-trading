@@ -33,13 +33,13 @@ function getPricesFromBetOffer(book, betOffer) {
     let product
     if(betOffer.criterion.id === 1001159858) product = 'moneyline_full_time'
 
-    betOffer.outcomes.forEach(outcome => {
+    const prices = betOffer.outcomes.map(outcome => {
         let betOption = outcome.englishLabel
         const odds = outcome.odds / 1000
         const open = outcome.status === 'OPEN' ? true : false
-        values.push({provider: 'KAMBI', book: book, eventId: betOffer.eventId, product: product, points: outcome.line ? outcome.line / 1000 : undefined, betOption: betOption, price: odds, open: open})
+        return {betOption: betOption, odds: odds, open: open}
     })
-    return values
+    return {product: product, prices: prices}
 }
 
 function findBetOfferById(betOffers, id) {

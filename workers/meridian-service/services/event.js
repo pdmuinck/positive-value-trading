@@ -8,53 +8,32 @@ const yyyy = bla.getFullYear();
 const today = [yyyy, mm, dd].join("-")
 
 const requests = {
-    
-    "FOOTBALL": "https://meridianbet.be/sails/sidebar-sport/58/" + today,
-    
-    "BASKETBALL": "https://meridianbet.be/sails/sidebar-sport/55/" + today,
-    
-    "TABLE_TENNIS": "https://meridianbet.be/sails/sidebar-sport/89/" + today,
-    
-    "CS": "https://meridianbet.be/sails/sidebar-sport/130/" + today,
-    
-    "DOTA": "https://meridianbet.be/sails/sidebar-sport/132/" + today,
-    
-    "LOL": "https://meridianbet.be/sails/sidebar-sport/134/" + today,
-    
-    "STARTCRAFT": "https://meridianbet.be/sails/sidebar-sport/137/" + today,
-    
-    "RAINBOW_SIX": "https://meridianbet.be/sails/sidebar-sport/138/" + today,
-    
-    "TENNIS": "https://meridianbet.be/sails/sidebar-sport/56/" + today,
-    
-    "VOLLEYBALL": "https://meridianbet.be/sails/sidebar-sport/54/" + today,
-    
-    "HOCKEY": "https://meridianbet.be/sails/sidebar-sport/59/" + today,
-    
-    "AMERICAN_FOOTBALL": "https://meridianbet.be/sails/sidebar-sport/80/" + today,
-    
-    "AUSSIE_RULES": "https://meridianbet.be/sails/sidebar-sport/120/" + today,
-    
-    "BASEBALL": "https://meridianbet.be/sails/sidebar-sport/63/" + today,
-    
-    "BOXING": "https://meridianbet.be/sails/sidebar-sport/76/" + today,
-    
-    "CRICKET": "https://meridianbet.be/sails/sidebar-sport/66/" + today,
-    
-    "GOLF": "https://meridianbet.be/sails/sidebar-sport/85/" + today,
-    
-    "MMA": "https://meridianbet.be/sails/sidebar-sport/87/" + today,
-    
-    "RUGBY_LEAGUE": "https://meridianbet.be/sails/sidebar-sport/94/" + today,
-    "RUGBY_UNION": "https://meridianbet.be/sails/sidebar-sport/65/" + today,
-    
-    "SNOOKER": "https://meridianbet.be/sails/sidebar-sport/69/" + today,
+    "FOOTBALL": "https://meridianbet.be/sails/sport/58",
+    "BASKETBALL": "https://meridianbet.be/sails/sport/55",
+    "TABLE_TENNIS": "https://meridianbet.be/sails/sport/89",  
+    "CS": "https://meridianbet.be/sails/sport/130",
+    "DOTA": "https://meridianbet.be/sails/sport/132",
+    "LOL": "https://meridianbet.be/sails/sport/134",
+    "STARTCRAFT": "https://meridianbet.be/sails/sport/137",
+    "RAINBOW_SIX": "https://meridianbet.be/sails/sport/138",
+    "TENNIS": "https://meridianbet.be/sails/sport/56",
+    "VOLLEYBALL": "https://meridianbet.be/sails/sport/54",
+    "HOCKEY": "https://meridianbet.be/sails/sport/59",
+    "AMERICAN_FOOTBALL": "https://meridianbet.be/sails/sport/80",
+    "AUSSIE_RULES": "https://meridianbet.be/sails/sport/120",
+    "BASEBALL": "https://meridianbet.be/sails/sport/63",
+    "BOXING": "https://meridianbet.be/sails/sport/76",
+    "CRICKET": "https://meridianbet.be/sails/sport/66",
+    "GOLF": "https://meridianbet.be/sails/sport/85",
+    "MMA": "https://meridianbet.be/sails/sport/87",
+    "RUGBY_LEAGUE": "https://meridianbet.be/sails/sport/94",
+    "RUGBY_UNION": "https://meridianbet.be/sails/sport/65",
+    "SNOOKER": "https://meridianbet.be/sails/sport/69",
 } 
 
 const event = {}
 
-event.getEvents = async (book, sports) => {
-
+event.getEvents = async (sports) => {
     if(sports && Array.isArray(sports)) {
         const sportsUpperCase = sports.map(sport => sport.toUpperCase())
         return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1])))
@@ -66,11 +45,11 @@ event.getEvents = async (book, sports) => {
 }
 
 function createRequest(url) {
-    return axios.get(url).then(response => transform(response.data.regions.map(region => region.leagues).flat().map(league => league.events).flat())).catch(error => null)
+    return axios.get(url).then(response => transform(response.data.events.map(events => events.events).flat())).catch(error => null)
 }
 
 function transform(events) {
-    return events.map(event => {return {id: event.id, participants: event.team.map(team => {return {id: team.id, name: team.name}})}})
+    return events.map(event => {return {id: event.id, participants: event.team}})
 }
 
 async function resolve(requests) {
