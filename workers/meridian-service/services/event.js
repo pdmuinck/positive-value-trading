@@ -1,47 +1,76 @@
-const axios = require('axios')
-const bookmakers = require('../resources/bookmakers.json')
+const axios = require("axios")
+
+const bla = new Date()
+const dd = String(bla.getDate()).padStart(2, "0");
+const mm = String(bla.getMonth() + 1).padStart(2, "0"); //January is 0!
+const yyyy = bla.getFullYear();
+
+const today = [yyyy, mm, dd].join("-")
 
 const requests = {
-    "FOOTBALL": 'https://{host}/offering/v2018/{book}/event/group/1000093190.json?includeParticipants=true&lang=en_GB&market=BE',
-    "BASKETBALL": 'https://{host}/offering/v2018/{book}/event/group/1000093204.json?includeParticipants=true&lang=en_GB&market=BE',
-    "AMERICAN_FOOTBALL": 'https://{host}/offering/v2018/{book}/event/group/1000093199.json?includeParticipants=true&lang=en_GB&market=BE',
-    "TENNIS": 'https://{host}/offering/v2018/{book}/event/group/1000093193.json?includeParticipants=true&lang=en_GB&market=BE',
-    "TABLE_TENNIS": 'https://{host}/offering/v2018/{book}/event/group/1000093215.json?includeParticipants=true&lang=en_GB&market=BE',
-    "DARTS": 'https://{host}/offering/v2018/{book}/event/group/1000093225.json?includeParticipants=true&lang=en_GB&market=BE',
-    "ICE_HOCKEY": 'https://{host}/offering/v2018/{book}/event/group/1000093191.json?includeParticipants=true&lang=en_GB&market=BE',
-    "AUSTRALIAN_RULES": 'https://{host}/offering/v2018/{book}/event/group/1000449347.json?includeParticipants=true&lang=en_GB&market=BE',
-    "BOXING": 'https://{host}/offering/v2018/{book}/event/group/1000093201.json?includeParticipants=true&lang=en_GB&market=BE',
-    "CRICKET": 'https://{host}/offering/v2018/{book}/event/group/1000093178.json?includeParticipants=true&lang=en_GB&market=BE',
-    "ESPORTS": 'https://{host}/offering/v2018/{book}/event/group/2000077768.json?includeParticipants=true&lang=en_GB&market=BE',
-    "GOLF": 'https://{host}/offering/v2018/{book}/event/group/1000093187.json?includeParticipants=true&lang=en_GB&market=BE',
-    "hostBALL": 'https://{host}/offering/v2018/{book}/event/group/1000093211.json?includeParticipants=true&lang=en_GB&market=BE',
-    "RUGBY_LEAGUE": 'https://{host}/offering/v2018/{book}/event/group/1000154363.json?includeParticipants=true&lang=en_GB&market=BE',
-    "RUGBY_UNION": 'https://{host}/offering/v2018/{book}/event/group/1000093230.json?includeParticipants=true&lang=en_GB&market=BE',
-    "SNOOKER": 'https://{host}/offering/v2018/{book}/event/group/1000093176.json?includeParticipants=true&lang=en_GB&market=BE',
-    "MMA": 'https://{host}/offering/v2018/{book}/event/group/1000093238.json?includeParticipants=true&lang=en_GB&market=BE',
-    "VOLLEYBALL": 'https://{host}/offering/v2018/{book}/event/group/1000093214.json?includeParticipants=true&lang=en_GB&market=BE',
-    "WRESTLING": 'https://{host}/offering/v2018/{book}/event/group/2000089034.json?includeParticipants=true&lang=en_GB&market=BE',
-}
+    
+    "FOOTBALL": "https://meridianbet.be/sails/sidebar-sport/58/" + today,
+    
+    "BASKETBALL": "https://meridianbet.be/sails/sidebar-sport/55/" + today,
+    
+    "TABLE_TENNIS": "https://meridianbet.be/sails/sidebar-sport/89/" + today,
+    
+    "CS": "https://meridianbet.be/sails/sidebar-sport/130/" + today,
+    
+    "DOTA": "https://meridianbet.be/sails/sidebar-sport/132/" + today,
+    
+    "LOL": "https://meridianbet.be/sails/sidebar-sport/134/" + today,
+    
+    "STARTCRAFT": "https://meridianbet.be/sails/sidebar-sport/137/" + today,
+    
+    "RAINBOW_SIX": "https://meridianbet.be/sails/sidebar-sport/138/" + today,
+    
+    "TENNIS": "https://meridianbet.be/sails/sidebar-sport/56/" + today,
+    
+    "VOLLEYBALL": "https://meridianbet.be/sails/sidebar-sport/54/" + today,
+    
+    "HOCKEY": "https://meridianbet.be/sails/sidebar-sport/59/" + today,
+    
+    "AMERICAN_FOOTBALL": "https://meridianbet.be/sails/sidebar-sport/80/" + today,
+    
+    "AUSSIE_RULES": "https://meridianbet.be/sails/sidebar-sport/120/" + today,
+    
+    "BASEBALL": "https://meridianbet.be/sails/sidebar-sport/63/" + today,
+    
+    "BOXING": "https://meridianbet.be/sails/sidebar-sport/76/" + today,
+    
+    "CRICKET": "https://meridianbet.be/sails/sidebar-sport/66/" + today,
+    
+    "GOLF": "https://meridianbet.be/sails/sidebar-sport/85/" + today,
+    
+    "MMA": "https://meridianbet.be/sails/sidebar-sport/87/" + today,
+    
+    "RUGBY_LEAGUE": "https://meridianbet.be/sails/sidebar-sport/94/" + today,
+    "RUGBY_UNION": "https://meridianbet.be/sails/sidebar-sport/65/" + today,
+    
+    "SNOOKER": "https://meridianbet.be/sails/sidebar-sport/69/" + today,
+} 
 
 const event = {}
 
 event.getEvents = async (book, sports) => {
-    const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
 
-    if(!bookmakerInfo) throw new Error('Book not found: ' + book)
-    
     if(sports && Array.isArray(sports)) {
         const sportsUpperCase = sports.map(sport => sport.toUpperCase())
-        return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1])))
     } else if(sports) {
-        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1])))
     } else {
-        return resolve(Object.values(requests).map(url => createRequest(url, book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.values(requests).map(url => createRequest(url)))
     }
 }
 
-function createRequest(url, bookmakerName, bookmakerInfo) {
-    return axios.get(url.replace('{book}', bookmakerInfo.code).replace('{host}', bookmakerInfo.host)).then(response => {return {provider: 'KAMBI', book: bookmakerName, events: response.data.events}}).catch(error => null)
+function createRequest(url) {
+    return axios.get(url).then(response => transform(response.data.regions.map(region => region.leagues).flat().map(league => league.events).flat())).catch(error => null)
+}
+
+function transform(events) {
+    return events.map(event => {return {id: event.id, participants: event.team.map(team => {return {id: team.id, name: team.name}})}})
 }
 
 async function resolve(requests) {

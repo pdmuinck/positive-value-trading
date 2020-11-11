@@ -34,7 +34,7 @@ async function merge(providers) {
     const mergedEvents = []
     const pinnacleEvents = providers.filter(provider => provider.provider === 'PINNACLE').map(provider => provider.events)
     const kambiEvents = providers.filter(provider => provider.provider === 'KAMBI').map(provider => provider.events)
-    const sbtechEvents = providers.filter(provider => provider.provider === 'SBTECH').map(provider => provider.data).flat().map(event => event.events).flat()
+    const sbtechEvents = providers.filter(provider => provider.provider === 'SBTECH').map(provider => provider.events)
 
     pinnacleEvents.forEach(pinnacleEvent => {
 
