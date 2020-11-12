@@ -15,4 +15,10 @@ module.exports = function(server) {
         .catch(error => resp.status(404).send(error.message))
     })
 
+    server.get('/sports/:sport/participants', async (req, resp) => {
+        await event.getParticipantsBySport(req.params.sport)
+        .then(response => resp.send(response))
+        .catch(error => resp.status(500).send(error.message))
+    })
+
 } 

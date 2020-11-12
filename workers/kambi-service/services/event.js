@@ -25,6 +25,24 @@ const requests = {
 
 const event = {}
 
+event.getParticipantsBySport = async (sport) => {
+    const url = requests[sport.toUpperCase()]
+    const bookmakerInfo = bookmakers['UNIBET_BELGIUM']
+    const results = await axios.get(url.replace('{book}', 'ubbe').replace('{host}', bookmakerInfo.host)).then(
+        response => transform(response.data.events)
+    ).catch(error => null)
+    return results
+}
+
+event.getParticipantsBySportAndCountryAndLeague = async (sport, country, league) => {
+    const url = requests[sport.toUpperCase()]
+    const bookmakerInfo = bookmakers['UNIBET_BELGIUM']
+    const results = await axios.get(url.replace('{book}', 'ubbe').replace('{host}', bookmakerInfo.host)).then(
+        response => transform(response.data.events)
+    ).catch(error => null)
+    return results
+}
+
 event.getEvents = async (book, sports) => {
     const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
 

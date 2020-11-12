@@ -56,3 +56,7 @@ INFO: Unsupported notification method: $/setTraceNotification
 2020.11.11 19:31:12 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2020.11.12 06:44:31 INFO  Started: Metals version 0.9.5 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
 2020.11.12 06:44:32 INFO  time: initialize in 0.96s
+2020.11.12 06:44:37 WARN  Build server is not auto-connectable.
+2020.11.12 06:44:37 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.11.12 12:08:11 INFO  Started: Metals version 0.9.5 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.11.12 12:08:12 INFO  time: initialize in 1.38s

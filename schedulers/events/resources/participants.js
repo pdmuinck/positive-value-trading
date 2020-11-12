@@ -47,7 +47,7 @@ participants = {
     */
     // england
     "Gillingham FC": {betradar: 482161},
-    "Rotherham United": {betradar: 27405},
+    "Rotherham United": {pinnacle: 'Rotherham', betradar: 27405},
     "Sunderland AFC": {betradar: 10935263},
     "Accrington Stanley": {betradar: 933192},
     "Stoke City": {betradar: 7577, kambi: 1000047250, sbtech: 384, meridianbet: 162, altenar: 'Stoke', bwin: 2515430, betway: 'Stoke City', betcenter: 104789},
@@ -67,7 +67,7 @@ participants = {
     "Aston Villa": {kambi: 1000000045, sbtech: 232, meridianbet: 155, altenar: 'Aston Villa', bwin: 2515128, betway: 'Aston Villa', betcenter: 104085},
     "Derby County": {betradar: 115271, kambi: 1000022830, sbtech: 391, meridianbet: 811, altenar: 'Derby', bwin: 2515199, betway: 'Derby County', betcenter: 104209},
     "Middlesbrough": {betradar: 928832, kambi: 1000000084, sbtech: 244, meridianbet: 158, altenar: 'Middlesbrough', bwin: 2515322, betway: 'Middlesbrough', betcenter: 106581},
-    "Wolves": {kambi: 1000000071, sbtech: 375, meridianbet: 798, altenar: 'Wolverhampton', bwin: 2520526, betway: 'Wolverhampton Wanderers', betcenter: 104264},
+    "Wolverhampton Wanderers": {kambi: 1000000071, sbtech: 375, meridianbet: 798, altenar: 'Wolverhampton', bwin: 2520526, betway: 'Wolverhampton Wanderers', betcenter: 104264},
     "Watford": {betradar: 53797, kambi: 1000000070, sbtech: 371, meridianbet: 818, altenar: 'Watford', bwin: 2515474, betway: 'Watford',betcenter:  106074},
     "Luton Town": {betradar: 525121, kambi: 1000015615, sbtech: 543, meridianbet: 870, altenar: 'Luton',bwin:  2515311, betway: 'Luton Town', betcenter: 106372},
     "Reading": {kambi: 1000000020, sbtech: 370, meridianbet: 800, altenar: 'Reading', bwin: 2515378, betway: 'Reading',betcenter:  106075},

@@ -15,25 +15,25 @@ const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2,
 
 job = new CronJob('*/55 * * * * *', async () => {
     const events = await axios.get('http://' + EVENT_IP + ':' + EVENT_PORT + '/events').then(response => response.data).catch(error => console.log(error))
-    events.map(event => event.eventIds).forEach(event => fire(event))
+    events.forEach(event => fire(event))
     
 }, null, true)
 
-function fire(eventMapping) {
-    eventMapping.forEach(event => {
-        if(event.eventId) {
-            axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-            + '/providers/' + event.provider + '/books/' + event.book + '/events/' + event.eventId + '/betoffers')
-            .then(response => {
-                console.log('betoffer found')
-                cache.set([event.provider, event.book, event.eventId].join(';'), response.data)
-            })
-        }
-    })
+async function fire(eventGroup) {
+    if(eventGroup.eventKey) {
+        const requests = eventGroup.eventIds.filter(event => event.eventId)
+        .map(event => axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+        + '/providers/' + event.provider + '/books/' + event.book + '/events/' + event.eventId + '/betoffers')
+        .then(response => response.data))
+
+        Promise.all(requests).then(values => {
+            cache.set(eventGroup.eventKey, values)
+        })
+    }
 }
 
 betoffer.getBetOffers = async () => {
-    return Object.values(cache.mget(cache.keys()))
+    return cache.mget(cache.keys())
 }
 
 betoffer.getBetOffersByEventId = async (eventId) => {

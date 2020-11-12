@@ -1,5 +1,6 @@
 [
   {
+    "eventKey": "2020-11-14;15:00;Hull City;Burton Albion",
     "startDate": "2020-11-14",
     "startTime": "15:00",
     "participants": [
@@ -40,6 +41,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Stoke City;Huddersfield Town",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -80,6 +82,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;17:30;Tottenham Hotspur;Manchester City",
     "startDate": "2020-11-21",
     "startTime": "17:30",
     "participants": [
@@ -90,12 +93,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715447
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715447
       },
       {
         "book": "BETFIRST",
@@ -120,6 +123,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Barnsley;Nottingham Forest",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -160,6 +164,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-26;17:55;Molde FK;Arsenal",
     "startDate": "2020-11-26",
     "startTime": "17:55",
     "participants": [
@@ -200,6 +205,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Wycombe;Brentford",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -240,6 +246,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-24;17:55;Rennes;Chelsea",
     "startDate": "2020-11-24",
     "startTime": "17:55",
     "participants": [
@@ -280,67 +287,7 @@
     ]
   },
   {
-    "startDate": "2020-12-21",
-    "startTime": "17:00",
-    "participants": [
-      "Manchester City",
-      "Liverpool",
-      "Chelsea",
-      "Manchester United",
-      "Everton",
-      "Tottenham",
-      "Arsenal",
-      "Leicester",
-      "Burnley",
-      "Brighton",
-      "Brentford",
-      "West Ham",
-      "Newcastle",
-      "Aston Villa",
-      "Fulham",
-      "Bristol City",
-      "Stoke City",
-      "Millwall",
-      "Sheffield Wednesday",
-      "Preston",
-      "Bournemouth",
-      "Barnsley",
-      "Lincoln City"
-    ],
-    "eventIds": [
-      {
-        "book": "UNIBET_BELGIUM",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "NAPOLEON_GAMES",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "BETFIRST",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "BET777",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "PINNACLE",
-        "provider": "PINNACLE",
-        "eventId": 1178100717
-      },
-      {
-        "book": "MERIDIAN",
-        "provider": "MERIDIAN",
-        "eventId": null
-      }
-    ]
-  },
-  {
+    "eventKey": "2020-11-21;15:00;Bristol City;Derby County",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -381,6 +328,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-14;15:00;AFC Wimbledon;Wigan Athletic",
     "startDate": "2020-11-14",
     "startTime": "15:00",
     "participants": [
@@ -421,6 +369,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-20;19:45;Coventry;Birmingham City",
     "startDate": "2020-11-20",
     "startTime": "19:45",
     "participants": [
@@ -461,6 +410,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-22;16:30;Leeds United;Arsenal",
     "startDate": "2020-11-22",
     "startTime": "16:30",
     "participants": [
@@ -471,12 +421,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715440
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715440
       },
       {
         "book": "BETFIRST",
@@ -501,6 +451,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-24;17:55;Chelsea;Sevilla",
     "startDate": "2020-11-24",
     "startTime": "17:55",
     "participants": [
@@ -541,6 +492,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-24;20:00;Manchester United;Basaksehir",
     "startDate": "2020-11-24",
     "startTime": "20:00",
     "participants": [
@@ -581,6 +533,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-25;17:55;Olympiakos;Manchester City",
     "startDate": "2020-11-25",
     "startTime": "17:55",
     "participants": [
@@ -621,6 +574,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-25;20:00;Liverpool;Atalanta BC",
     "startDate": "2020-11-25",
     "startTime": "20:00",
     "participants": [
@@ -661,6 +615,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Preston;Sheffield Wednesday",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -701,6 +656,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Liverpool;Leicester City",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -741,6 +697,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-14;15:00;Northampton Town;Accrington Stanley",
     "startDate": "2020-11-14",
     "startTime": "15:00",
     "participants": [
@@ -781,6 +738,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Queens Park Rangers;Watford",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -821,6 +779,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Luton Town;Blackburn Rovers",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -861,6 +820,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Aston Villa;Brighton and Hove Albion",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -871,12 +831,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715439
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715439
       },
       {
         "book": "BETFIRST",
@@ -901,6 +861,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-22;14:00;Sheffield United;West Ham United",
     "startDate": "2020-11-22",
     "startTime": "14:00",
     "participants": [
@@ -911,12 +872,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715444
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715444
       },
       {
         "book": "BETFIRST",
@@ -941,6 +902,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Manchester United;West Brom",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -981,6 +943,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-26;20:00;Tottenham Hotspur;Ludogorets 1947",
     "startDate": "2020-11-26",
     "startTime": "20:00",
     "participants": [
@@ -1021,6 +984,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;12:30;Bournemouth;Reading",
     "startDate": "2020-11-21",
     "startTime": "12:30",
     "participants": [
@@ -1061,6 +1025,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Millwall;Cardiff City",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1101,6 +1066,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Middlesbrough;Norwich City",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1141,6 +1107,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Burnley;Crystal Palace",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1151,12 +1118,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715438
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715438
       },
       {
         "book": "BETFIRST",
@@ -1181,116 +1148,7 @@
     ]
   },
   {
-    "startDate": "2020-11-24",
-    "startTime": "17:55",
-    "participants": [
-      "Bayern Munich",
-      "Manchester City",
-      "Liverpool",
-      "Paris Saint-Germain",
-      "Real Madrid",
-      "Juventus",
-      "Barcelona",
-      "Manchester United",
-      "Chelsea",
-      "Atletico Madrid",
-      "Borussia Dortmund",
-      "Inter Milan",
-      "Atalanta",
-      "RB Leipzig",
-      "Sevilla",
-      "Ajax Amsterdam",
-      "Lazio",
-      "FC Porto",
-      "Borussia Monchengladbach",
-      "Zenit St Petersburg",
-      "Istanbul Basaksehir",
-      "Shakhtar Donetsk",
-      "Marseille",
-      "Club Brugge",
-      "Olympiacos",
-      "Ferencvaros",
-      "Midtjylland",
-      "Dynamo Kiev",
-      "FC Krasnodar",
-      "Red Bull Salzburg"
-    ],
-    "eventIds": [
-      {
-        "book": "UNIBET_BELGIUM",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "NAPOLEON_GAMES",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "BETFIRST",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "BET777",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "PINNACLE",
-        "provider": "PINNACLE",
-        "eventId": 1160999121
-      },
-      {
-        "book": "MERIDIAN",
-        "provider": "MERIDIAN",
-        "eventId": null
-      }
-    ]
-  },
-  {
-    "startDate": "2020-11-24",
-    "startTime": "20:00",
-    "participants": [
-      "Paris Saint-Germain",
-      "Manchester United",
-      "RB Leipzig",
-      "Istanbul Basaksehir"
-    ],
-    "eventIds": [
-      {
-        "book": "UNIBET_BELGIUM",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "NAPOLEON_GAMES",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "BETFIRST",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "BET777",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "PINNACLE",
-        "provider": "PINNACLE",
-        "eventId": 1188247868
-      },
-      {
-        "book": "MERIDIAN",
-        "provider": "MERIDIAN",
-        "eventId": null
-      }
-    ]
-  },
-  {
+    "eventKey": "2020-11-21;12:30;Newcastle United;Chelsea",
     "startDate": "2020-11-21",
     "startTime": "12:30",
     "participants": [
@@ -1301,12 +1159,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715445
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715445
       },
       {
         "book": "BETFIRST",
@@ -1331,6 +1189,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Fulham;Everton",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1341,12 +1200,12 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715441
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715441
       },
       {
         "book": "BETFIRST",
@@ -1371,64 +1230,7 @@
     ]
   },
   {
-    "startDate": "2020-11-21",
-    "startTime": "15:00",
-    "participants": [
-      "Manchester City",
-      "Liverpool",
-      "Manchester United",
-      "Chelsea",
-      "Arsenal",
-      "Tottenham",
-      "Leicester",
-      "Wolves",
-      "Everton",
-      "Leeds",
-      "Southampton",
-      "Brighton",
-      "Burnley",
-      "Crystal Palace",
-      "Newcastle",
-      "Sheffield United",
-      "West Ham United",
-      "Fullham",
-      "Aston Villa",
-      "West Brom"
-    ],
-    "eventIds": [
-      {
-        "book": "UNIBET_BELGIUM",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "NAPOLEON_GAMES",
-        "provider": "KAMBI",
-        "eventId": null
-      },
-      {
-        "book": "BETFIRST",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "BET777",
-        "provider": "SBTECH",
-        "eventId": null
-      },
-      {
-        "book": "PINNACLE",
-        "provider": "PINNACLE",
-        "eventId": 1150413745
-      },
-      {
-        "book": "MERIDIAN",
-        "provider": "MERIDIAN",
-        "eventId": null
-      }
-    ]
-  },
-  {
+    "eventKey": "2020-11-21;15:00;Swansea City;Rotherham",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1469,6 +1271,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-26;17:55;Braga;Leicester City",
     "startDate": "2020-11-26",
     "startTime": "17:55",
     "participants": [
@@ -1509,6 +1312,7 @@
     ]
   },
   {
+    "eventKey": "2020-11-21;15:00;Wolverhampton Wanderers;Southampton",
     "startDate": "2020-11-21",
     "startTime": "15:00",
     "participants": [
@@ -1519,22 +1323,22 @@
       {
         "book": "UNIBET_BELGIUM",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715446
       },
       {
         "book": "NAPOLEON_GAMES",
         "provider": "KAMBI",
-        "eventId": null
+        "eventId": 1006715446
       },
       {
         "book": "BETFIRST",
         "provider": "SBTECH",
-        "eventId": null
+        "eventId": "20334824"
       },
       {
         "book": "BET777",
         "provider": "SBTECH",
-        "eventId": null
+        "eventId": "20334824"
       },
       {
         "book": "PINNACLE",

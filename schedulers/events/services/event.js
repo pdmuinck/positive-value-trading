@@ -55,7 +55,7 @@ async function merge(providers) {
             const kambiEvent = findEvent(kambiParticipants, kambiEvents)
             const sbtechEvent = findEvent(sbtechParticipants, sbtechEvents)
             
-            const meridianbetEvent = findEvent(meridianbetParticipants, providers.filter(response => response.provider === 'MERIDIANBET').map(response => response.events).flat())
+            const meridianbetEvent = findEvent(meridianbetParticipants, providers.filter(response => response.provider === 'MERIDIAN').map(response => response.events).flat())
             const altenarEvent = findEvent(altenarParticipants, providers.filter(response => response.provider === 'ALTENAR').map(response => response.events).flat())
             const bwinEvent = findEvent(bwinParticipants, providers.filter(response => response.provider === 'BWIN').map(response => response.events).flat())
             const betwayEvent = findEvent(betwayParticipants, providers.filter(response => response.provider === 'BETWAY').map(response => response.events).flat())
@@ -68,6 +68,7 @@ async function merge(providers) {
             mergedEvents.push({
                 key: eventKey,
                 val: {
+                    eventKey: eventKey,
                     startDate: startDate,
                     startTime: startTime,
                     participants: participants,
@@ -86,9 +87,9 @@ async function merge(providers) {
 
     cache.flushAll()
 
-    console.log('found events: ' + mergedEvents.length)
+    console.log('found events: ' + mergedEvents.filter(event => event.val.participants.length == 2).length)
 
-    cache.mset(mergedEvents)
+    cache.mset(mergedEvents.filter(event => event.val.participants.length == 2))
 
 }
 
