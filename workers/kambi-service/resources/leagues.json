@@ -1,0 +1,1332 @@
+[
+    {
+      "id": 1000093656,
+      "name": "NFL",
+      "sport": "AMERICAN_FOOTBALL"
+    },
+    {
+      "id": 1000093655,
+      "name": "NCAAF",
+      "sport": "AMERICAN_FOOTBALL"
+    },
+    {
+      "id": 1000093652,
+      "name": "NBA",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000093451,
+      "name": "Euroleague",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000093654,
+      "name": "NCAAB",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000124700,
+      "name": "ABA League",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000050596,
+      "name": "LNB",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000050611,
+      "name": "NBB",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000087267,
+      "name": "Paulista (W)",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000093449,
+      "name": "EuroCup",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000095365,
+      "name": "Korisliiga",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000094821,
+      "name": "LNB Pro A",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000094172,
+      "name": "BBL",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000094714,
+      "name": "Lega A",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000443916,
+      "name": "Energa Basket Liga",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000066240,
+      "name": "Baloncesto Superior Nacional",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 1000094189,
+      "name": "Liga ACB",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000050577,
+      "name": "Liga Uruguaya",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000057932,
+      "name": "LPB",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000052031,
+      "name": "VTB United League",
+      "sport": "BASKETBALL"
+    },
+    {
+      "id": 2000052329,
+      "name": "ATP Finals",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000091007,
+      "name": "Sofia",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 1000098183,
+      "name": "Linz",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000091008,
+      "name": "Sofia",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000081387,
+      "name": "Bratislava",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000089493,
+      "name": "Cary",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 1000096469,
+      "name": "Australian Open",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 1000096472,
+      "name": "Australian Open Women",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000070701,
+      "name": "Linz",
+      "sport": "TENNIS"
+    },
+    {
+      "id": 2000123906,
+      "name": "Moscow Liga Pro",
+      "sport": "TABLE_TENNIS"
+    },
+    {
+      "id": 2000123878,
+      "name": "Men Singles",
+      "sport": "TABLE_TENNIS"
+    },
+    {
+      "id": 2000052042,
+      "name": "Men Singles",
+      "sport": "TABLE_TENNIS"
+    },
+    {
+      "id": 1000093381,
+      "name": "Champions League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094985,
+      "name": "Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094981,
+      "name": "The Championship",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094984,
+      "name": "FA Cup",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094982,
+      "name": "League One",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094987,
+      "name": "League Two",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094986,
+      "name": "EFL Cup",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095485,
+      "name": "National League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050126,
+      "name": "National League North",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095001,
+      "name": "Serie A",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095002,
+      "name": "Serie B",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094998,
+      "name": "TIM Cup",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000079607,
+      "name": "Serie C Girone A",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000079608,
+      "name": "Serie C Girone B",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000079609,
+      "name": "Serie C Girone C",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095049,
+      "name": "La Liga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094708,
+      "name": "La Liga 2",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094994,
+      "name": "Bundesliga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094993,
+      "name": "2. Bundesliga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000355562,
+      "name": "3. Liga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094995,
+      "name": "DFB Pokal",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094991,
+      "name": "Ligue 1",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094568,
+      "name": "Ligue 2",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094825,
+      "name": "Championnat National",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095590,
+      "name": "Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000051609,
+      "name": "PFL",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095047,
+      "name": "Scottish Premiership",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095045,
+      "name": "Championship",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000280417,
+      "name": "League One",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000280418,
+      "name": "League Two",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094254,
+      "name": "Scottish Cup",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095062,
+      "name": "Süper Lig",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000385219,
+      "name": "Ekstraklasa",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000348167,
+      "name": "I Liga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095016,
+      "name": "Puchar Polski",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000182606,
+      "name": "A-League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000064681,
+      "name": "NPL South Australia",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000120055,
+      "name": "Queensland Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000066140,
+      "name": "African Nations Cup Qualification",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050561,
+      "name": "Primera Division",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000345237,
+      "name": "Bundesliga",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000051381,
+      "name": "Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094965,
+      "name": "Jupiler Pro League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000358593,
+      "name": "Proximus League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000094873,
+      "name": "Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000093247,
+      "name": "Nacional B",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094569,
+      "name": "Série A",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094431,
+      "name": "Série B",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000093998,
+      "name": "Copa do Brasil",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000383831,
+      "name": "PFL 1",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000449742,
+      "name": "Liga BetPlay Dimayor",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000093399,
+      "name": "Copa Libertadores",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094975,
+      "name": "First League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094978,
+      "name": "Superligaen",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094976,
+      "name": "1st Division",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000088288,
+      "name": "2nd Division Pulje 1",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000088289,
+      "name": "2nd Division Pulje 2",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000117846,
+      "name": "Euro 2020 Qualification",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000051195,
+      "name": "Europa League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095112,
+      "name": "Veikkausliigan Qualification",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094996,
+      "name": "Super League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094271,
+      "name": "Cup",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094997,
+      "name": "NB 1",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000051571,
+      "name": "NB 2",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000093570,
+      "name": "International Friendly Matches",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050214,
+      "name": "Liga Leumit",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095645,
+      "name": "J1-League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000152623,
+      "name": "J2-League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000067441,
+      "name": "J3-League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000451251,
+      "name": "Liga de Expansion MX",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094980,
+      "name": "Eredivisie",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095127,
+      "name": "Eerste Divisie",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095010,
+      "name": "Eliteserien",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095003,
+      "name": "OBOS-ligaen",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000055546,
+      "name": "LPF",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050115,
+      "name": "Primera Division",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000058729,
+      "name": "Campeonato de Portugal",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095499,
+      "name": "Liga I",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000095935,
+      "name": "Liga II",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095805,
+      "name": "Cupa Romaniei",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000315962,
+      "name": "S-League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000250636,
+      "name": "SA Premier Soccer League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000097834,
+      "name": "In the Spotlight",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000097843,
+      "name": "International Awards",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000097836,
+      "name": "Managers",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095057,
+      "name": "Allsvenskan",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095052,
+      "name": "Superettan",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094744,
+      "name": "Division 1 N",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000094745,
+      "name": "Division 1 S",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000176396,
+      "name": "Damallsvenskan (W)",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095020,
+      "name": "Super League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000113672,
+      "name": "UEFA Nations League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000095063,
+      "name": "MLS",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050118,
+      "name": "Primera Division",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000069842,
+      "name": "3rd Division",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000050125,
+      "name": "Premier League",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000116272,
+      "name": "World Cup 2022",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000086370,
+      "name": "World Cup Qualifying - South America",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 2000124080,
+      "name": "eSports Battle (2x4min)",
+      "sport": "FOOTBALL"
+    },
+    {
+      "id": 1000235346,
+      "name": "Grand Slam of Darts",
+      "sport": "DARTS"
+    },
+    {
+      "id": 1000093681,
+      "name": "PDC World Championship",
+      "sport": "DARTS"
+    },
+    {
+      "id": 1000093657,
+      "name": "NHL",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000094964,
+      "name": "Liiga",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000094439,
+      "name": "Mestis",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000437980,
+      "name": "KHL",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000094967,
+      "name": "Fjordkraft-ligaen",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000094968,
+      "name": "SHL",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000094598,
+      "name": "Hockeyallsvenskan",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 2000122534,
+      "name": "ATG HockeyEttan",
+      "sport": "ICE_HOCKEY"
+    },
+    {
+      "id": 1000093883,
+      "name": "UFC",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 2000052254,
+      "name": "KSW",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 2000050782,
+      "name": "Bellator",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 2000124031,
+      "name": "Fame MMA",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 2000063150,
+      "name": "Glory",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 2000091553,
+      "name": "Unconfirmed Fights",
+      "sport": "MARTIAL_ARTS"
+    },
+    {
+      "id": 1000470474,
+      "name": "AFL",
+      "sport": "AUSTRALIAN_RULES"
+    },
+    {
+      "id": 1000094877,
+      "name": "Elitserien",
+      "sport": "BANDY"
+    },
+    {
+      "id": 1000093616,
+      "name": "MLB",
+      "sport": "BASEBALL"
+    },
+    {
+      "id": 2000050854,
+      "name": "Upcoming Fights",
+      "sport": "BOXING"
+    },
+    {
+      "id": 2000091527,
+      "name": "Unconfirmed Fights",
+      "sport": "BOXING"
+    },
+    {
+      "id": 2000117137,
+      "name": "Matches",
+      "sport": "CHESS"
+    },
+    {
+      "id": 2000092588,
+      "name": "Pakistan Super League",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000091469,
+      "name": "T20 Big Bash League (W)",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000091990,
+      "name": "ICC T20 World Cup 2021",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000121195,
+      "name": "ICC World Cup 2023",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000125174,
+      "name": "Matches",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000125182,
+      "name": "Matches",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000125183,
+      "name": "Series",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000092189,
+      "name": "Plunket Shield",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000068063,
+      "name": "T20 Big Bash League",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000054280,
+      "name": "Series",
+      "sport": "CRICKET"
+    },
+    {
+      "id": 2000051976,
+      "name": "Classification",
+      "sport": "CYCLING"
+    },
+    {
+      "id": 2000116779,
+      "name": "ESEA Advanced EU",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000116654,
+      "name": "ESEA Advanced NA",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000123428,
+      "name": "Flashpoint",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000124259,
+      "name": "Golden League",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000127933,
+      "name": "Intel Extreme Masters Asia",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000127192,
+      "name": "Intel Extreme Masters EU",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000116832,
+      "name": "Intel Extreme Masters NA",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000127934,
+      "name": "Intel Extreme Masters OCE",
+      "sport": "COUNTER_STRIKE"
+    },
+    {
+      "id": 2000127912,
+      "name": "EPIC League Div. 1",
+      "sport": "DOTA"
+    },
+    {
+      "id": 2000124533,
+      "name": "Realms Collide",
+      "sport": "DOTA"
+    },
+    {
+      "id": 2000122612,
+      "name": "Iberian Cup",
+      "sport": "LEAGUE_OF_LEGENDS"
+    },
+    {
+      "id": 2000117710,
+      "name": "NEST",
+      "sport": "LEAGUE_OF_LEGENDS"
+    },
+    {
+      "id": 2000127916,
+      "name": "Continental Series EU",
+      "sport": "PUBG"
+    },
+    {
+      "id": 2000127917,
+      "name": "Continental Series NA",
+      "sport": "PUBG"
+    },
+    {
+      "id": 2000121179,
+      "name": "Afreeca Starleague",
+      "sport": "STARCRAFT"
+    },
+    {
+      "id": 2000117839,
+      "name": "DreamHack Masters",
+      "sport": "STARCRAFT"
+    },
+    {
+      "id": 1000094957,
+      "name": "Superligan",
+      "sport": "FLOORBALL"
+    },
+    {
+      "id": 2000087313,
+      "name": "All-Ireland Senior Championship",
+      "sport": "GAA_FOOTBALL"
+    },
+    {
+      "id": 2000118573,
+      "name": "Connacht Senior Championship",
+      "sport": "GAA_FOOTBALL"
+    },
+    {
+      "id": 2000118574,
+      "name": "Leinster Senior Championship",
+      "sport": "GAA_FOOTBALL"
+    },
+    {
+      "id": 2000118572,
+      "name": "Ulster Senior Championship",
+      "sport": "GAA_FOOTBALL"
+    },
+    {
+      "id": 2000087314,
+      "name": "All-Ireland Senior Championship",
+      "sport": "GAA_HURLING"
+    },
+    {
+      "id": 2000118577,
+      "name": "Leinster Senior Championship",
+      "sport": "GAA_HURLING"
+    },
+    {
+      "id": 2000118576,
+      "name": "Munster Senior Championship",
+      "sport": "GAA_HURLING"
+    },
+    {
+      "id": 2000126316,
+      "name": "Masters Tournament",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000126313,
+      "name": "The Open Championship",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000127153,
+      "name": "Challenge de Cadiz",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000128073,
+      "name": "Aramco Saudi Ladies International",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000127578,
+      "name": "The Match III",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000127174,
+      "name": "Ryder Cup",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000127176,
+      "name": "Solheim Cup",
+      "sport": "GOLF"
+    },
+    {
+      "id": 2000127175,
+      "name": "Presidents Cup",
+      "sport": "GOLF"
+    },
+    {
+      "id": 1000093933,
+      "name": "World Championship",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 1000174369,
+      "name": "European Championship (W)",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 1000174358,
+      "name": "Champions League (W)",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 1000094198,
+      "name": "Herre Håndbold Ligaen",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 1000094826,
+      "name": "LNH D1",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 1000094868,
+      "name": "Liga ASOBAL",
+      "sport": "HANDBALL"
+    },
+    {
+      "id": 2000119932,
+      "name": "Free Practice",
+      "sport": "FORMULA_1"
+    },
+    {
+      "id": 2000050138,
+      "name": "Qualification",
+      "sport": "FORMULA_1"
+    },
+    {
+      "id": 2000050139,
+      "name": "Race",
+      "sport": "FORMULA_1"
+    },
+    {
+      "id": 2000050140,
+      "name": "Season Bets",
+      "sport": "FORMULA_1"
+    },
+    {
+      "id": 2000050232,
+      "name": "Grand Prix",
+      "sport": "SPEEDWAY"
+    },
+    {
+      "id": 2000056543,
+      "name": "Overall",
+      "sport": "OLYMPIC_GAMES"
+    },
+    {
+      "id": 2000061975,
+      "name": "Elections",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000061982,
+      "name": "In the Spotlight",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000115737,
+      "name": "In the Spotlight",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000115736,
+      "name": "Laws & Referendums",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000061917,
+      "name": "Elections",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000061918,
+      "name": "Elections",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000061977,
+      "name": "Elections",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000061984,
+      "name": "In the Spotlight",
+      "sport": "POLITICS"
+    },
+    {
+      "id": 2000056807,
+      "name": "Tournament Bets",
+      "sport": "POOL"
+    },
+    {
+      "id": 2000050687,
+      "name": "NRL",
+      "sport": "RUGBY_LEAGUE"
+    },
+    {
+      "id": 2000061880,
+      "name": "State of Origin",
+      "sport": "RUGBY_LEAGUE"
+    },
+    {
+      "id": 2000115952,
+      "name": "State of Origin (W)",
+      "sport": "RUGBY_LEAGUE"
+    },
+    {
+      "id": 1000154364,
+      "name": "Super League",
+      "sport": "RUGBY_LEAGUE"
+    },
+    {
+      "id": 1000093963,
+      "name": "Rugby World Cup 2023",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000127492,
+      "name": "Autumn Nations Cup",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 1000094823,
+      "name": "Top 14",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 1000094824,
+      "name": "Pro D2",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000063589,
+      "name": "Lions Tour",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000055709,
+      "name": "Mitre 10 Cup",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000050248,
+      "name": "Pro 14",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000127074,
+      "name": "Super Rugby Unlocked",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000127914,
+      "name": "Tri Nations",
+      "sport": "RUGBY_UNION"
+    },
+    {
+      "id": 2000066686,
+      "name": "German Masters Qualifiers",
+      "sport": "SNOOKER"
+    },
+    {
+      "id": 2000099492,
+      "name": "Northern Ireland Open",
+      "sport": "SNOOKER"
+    },
+    {
+      "id": 1000093884,
+      "name": "UK Championship",
+      "sport": "SNOOKER"
+    },
+    {
+      "id": 1000093920,
+      "name": "World Championship",
+      "sport": "SNOOKER"
+    },
+    {
+      "id": 2000062069,
+      "name": "Awards & Prizes",
+      "sport": "NON_SPORT"
+    },
+    {
+      "id": 2000096331,
+      "name": "Strictly Come Dancing",
+      "sport": "NON_SPORT"
+    },
+    {
+      "id": 2000051998,
+      "name": "1st League",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000052648,
+      "name": "Superliga",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000056814,
+      "name": "Superliga (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000221419,
+      "name": "Challenge Cup",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000095813,
+      "name": "Mestaruusliiga",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000094820,
+      "name": "Ligue A",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000215948,
+      "name": "Ligue A (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000050529,
+      "name": "Bundesliga",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000050530,
+      "name": "Bundesliga (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000206841,
+      "name": "Serie A1 (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000094696,
+      "name": "SuperLega",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000421780,
+      "name": "TAURON Liga (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000421776,
+      "name": "PlusLiga",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000123903,
+      "name": "Liga Pro",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000051972,
+      "name": "Super League",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000052144,
+      "name": "Super League (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000096716,
+      "name": "Efelerligi",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 2000096717,
+      "name": "Sultanlarligi (W)",
+      "sport": "VOLLEYBALL"
+    },
+    {
+      "id": 1000217871,
+      "name": "Men",
+      "sport": "BIATHLON"
+    },
+    {
+      "id": 1000217872,
+      "name": "Women",
+      "sport": "BIATHLON"
+    },
+    {
+      "id": 1000217863,
+      "name": "Men",
+      "sport": "ALPINE_SKIING"
+    },
+    {
+      "id": 1000217864,
+      "name": "Women",
+      "sport": "ALPINE_SKIING"
+    },
+    {
+      "id": 2000072304,
+      "name": "Ski Classics",
+      "sport": "CROSS_COUNTRY_SKIING"
+    },
+    {
+      "id": 2000097232,
+      "name": "Men",
+      "sport": "SKI_JUMPING"
+    },
+    {
+      "id": 2000114997,
+      "name": "-Raw",
+      "sport": "SPORTS_ENTERTAINMENT"
+    },
+    {
+      "id": 2000091229,
+      "name": "-Survivor Series",
+      "sport": "SPORTS_ENTERTAINMENT"
+    },
+    {
+      "id": 2000093077,
+      "name": "Money in the Bank",
+      "sport": "SPORTS_ENTERTAINMENT"
+    },
+    {
+      "id": 2000093691,
+      "name": "Props/Futures",
+      "sport": "SPORTS_ENTERTAINMENT"
+    },
+    {
+      "id": 2000090869,
+      "name": "Royal Rumble",
+      "sport": "SPORTS_ENTERTAINMENT"
+    },
+    {
+      "id": 2000090870,
+      "name": "WrestleMania",
+      "sport": "SPORTS_ENTERTAINMENT"
+    }
+  ]

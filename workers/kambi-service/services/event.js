@@ -25,22 +25,26 @@ const requests = {
 
 const event = {}
 
-event.getParticipantsBySport = async (sport) => {
-    const url = requests[sport.toUpperCase()]
-    const bookmakerInfo = bookmakers['UNIBET_BELGIUM']
-    const results = await axios.get(url.replace('{book}', 'ubbe').replace('{host}', bookmakerInfo.host)).then(
-        response => transform(response.data.events)
-    ).catch(error => null)
-    return results
+event.getParticipantByGroup = async (group) => {
+    return await axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/' + group + '.json?includeParticipants=true').then(response => response.data.events.map(event => event.participants.map(participant => {return {id: participant.participantId, name: participant.name}}))).catch(error => null)
 }
 
-event.getParticipantsBySportAndCountryAndLeague = async (sport, country, league) => {
-    const url = requests[sport.toUpperCase()]
-    const bookmakerInfo = bookmakers['UNIBET_BELGIUM']
-    const results = await axios.get(url.replace('{book}', 'ubbe').replace('{host}', bookmakerInfo.host)).then(
-        response => transform(response.data.events)
-    ).catch(error => null)
-    return results
+event.getGroups = async () => {
+    await axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/group.json').then(response => transformGroups(response.data.group.groups)).catch(error => null)
+    return tester
+}
+
+const tester = []
+
+function transformGroups(parent) {
+    parent.forEach(test => {
+        if(test.groups) {
+            return transformGroups(test.groups)
+        } else {
+            console.log(test)
+            tester.push({id: test.id, name: test.name, sport: test.sport})
+        }
+    })
 }
 
 event.getEvents = async (book, sports) => {
