@@ -14,6 +14,9 @@ const BETRADAR_PORT = 3002
 const PINNACLE_IP = 'pinnacle'
 const PINNACLE_PORT = 3005
 
+const MERIDIAN_IP = 'meridian'
+const MERIDIAN_PORT = 3006
+
 const orchestrator = {}
 
 orchestrator.getBetOffers = async(provider, eventId, book) => {
@@ -26,6 +29,8 @@ orchestrator.getBetOffers = async(provider, eventId, book) => {
         return await axios.get('http://' + BETRADAR_IP + ':' + BETRADAR_PORT + '/bookmakers/' + book + '/events/' + eventId + '/betoffers').then(response => response.data).catch(error => console.log(error))
     } else if(provider.toUpperCase() === 'PINNACLE') {
         return await axios.get('http://' + PINNACLE_IP + ':' + PINNACLE_PORT + '/bookmakers/' + book + '/events/' + eventId + '/betoffers').then(response => response.data).catch(error => console.log(error))
+    } else if(provider.toUpperCase() === 'MERIDIAN') {
+        return await axios.get('http://' + MERIDIAN_IP + ':' + MERIDIAN_PORT + '/bookmakers/' + book + '/events/' + eventId + '/betoffers').then(response => response.data).catch(error => console.log(error))
     }
 
 
@@ -41,6 +46,8 @@ orchestrator.getEvents = async(provider, book, sport) => {
         return await axios.get('http://' + BETRADAR_IP + ':' + BETRADAR_PORT + '/bookmakers/' + book + '/events?sport=' + sport).then(response => response.data).catch(error => console.log(error))
     } else if(provider.toUpperCase() === 'PINNACLE') {
         return await axios.get('http://' + PINNACLE_IP + ':' + PINNACLE_PORT + '/bookmakers/' + book + '/events?sport=' + sport).then(response => response.data).catch(error => console.log(error))
+    } else if(provider.toUpperCase() === 'MERIDIAN') {
+        return await axios.get('http://' + MERIDIAN_IP + ':' + MERIDIAN_PORT + '/bookmakers/' + book + '/events?sport=' + sport).then(response => response.data).catch(error => console.log(error))
     }
 }
 

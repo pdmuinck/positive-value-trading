@@ -16,7 +16,7 @@ const requests = [
     axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/KAMBI/books/UNIBET_BELGIUM/events?sport=FOOTBALL').then(response => response.data).catch(error => console.log(error)),
     axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/SBTECH/books/BETFIRST/events?sport=FOOTBALL').then(response => response.data).catch(error => console.log(error)),
     axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/PINNACLE/books/PINNACLE/events?sport=FOOTBALL').then(response => response.data).catch(error => console.log(error)),
-    axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/MERIDIANBET/books/MERIDIANBET/events?sport=FOOTBALL').then(response => response.data).catch(error => console.log(error)),
+    axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT + '/providers/MERIDIANBET/books/MERIDIAN/events?sport=FOOTBALL').then(response => response.data).catch(error => console.log(error)),
 ]
 
 const event = {}
@@ -32,9 +32,9 @@ event.job = new CronJob('*/10 * * * * *', () => {
 async function merge(providers) {
     const currentDate = new Date()
     const mergedEvents = []
-    const pinnacleEvents = providers.filter(provider => provider.provider === 'PINNACLE').map(provider => provider.events)
-    const kambiEvents = providers.filter(provider => provider.provider === 'KAMBI').map(provider => provider.events)
-    const sbtechEvents = providers.filter(provider => provider.provider === 'SBTECH').map(provider => provider.events)
+    const pinnacleEvents = providers.filter(provider => provider.provider === 'PINNACLE').map(provider => provider.events).flat()
+    const kambiEvents = providers.filter(provider => provider.provider === 'KAMBI').map(provider => provider.events).flat()
+    const sbtechEvents = providers.filter(provider => provider.provider === 'SBTECH').map(provider => provider.events).flat()
 
     pinnacleEvents.forEach(pinnacleEvent => {
 
@@ -52,39 +52,33 @@ async function merge(providers) {
             const betwayParticipants = participantMapping.map(mapping => mapping.betway)
             const betcenterParticipants = participantMapping.map(mapping => mapping.betcenter)
 
-            const kambiEvent = findEvent('KAMBI', kambiParticipants, kambiEvents)
-            const sbtechEvent = findEvent('SBTECH', sbtechParticipants, sbtechEvents)
+            const kambiEvent = findEvent(kambiParticipants, kambiEvents)
+            const sbtechEvent = findEvent(sbtechParticipants, sbtechEvents)
             
-            const meridianbetEvent = findEvent('MERIDIANBET', meridianbetParticipants, providers.filter(response => response.provider === 'MERIDIANBET').map(response => response.events).flat())
-            const altenarEvent = findEvent('ALTENAR', altenarParticipants, providers.filter(response => response.provider === 'ALTENAR').map(response => response.events).flat())
-            const bwinEvent = findEvent('BWIN', bwinParticipants, providers.filter(response => response.provider === 'BWIN').map(response => response.events).flat())
-            const betwayEvent = findEvent('BETWAY', betwayParticipants, providers.filter(response => response.provider === 'BETWAY').map(response => response.events).flat())
-            const betcenterEvent = findEvent('BETCENTER', betcenterParticipants, providers.filter(response => response.provider === 'BETCENTER').map(response => response.events).flat())
+            const meridianbetEvent = findEvent(meridianbetParticipants, providers.filter(response => response.provider === 'MERIDIANBET').map(response => response.events).flat())
+            const altenarEvent = findEvent(altenarParticipants, providers.filter(response => response.provider === 'ALTENAR').map(response => response.events).flat())
+            const bwinEvent = findEvent(bwinParticipants, providers.filter(response => response.provider === 'BWIN').map(response => response.events).flat())
+            const betwayEvent = findEvent(betwayParticipants, providers.filter(response => response.provider === 'BETWAY').map(response => response.events).flat())
+            const betcenterEvent = findEvent(betcenterParticipants, providers.filter(response => response.provider === 'BETCENTER').map(response => response.events).flat())
 
             const startDate = pinnacleEvent.startTime.split('T')[0]
             const startTime = pinnacleEvent.startTime.split('T')[1].slice(0, 5)
-            const participants = pinnacleEvent.participants.map(participant => participant.name).flat()
+            const participants = pinnacleEvent.participants
             const eventKey = [startDate, startTime, participants[0], participants[1]].join(';')
             mergedEvents.push({
                 key: eventKey,
                 val: {
-                    participants: participants,
-                    league: pinnacleEvent.league.name,
-                    sport: pinnacleEvent.league.sport.name, 
                     startDate: startDate,
                     startTime: startTime,
-                    current_date: currentDate,
-                    timeBeforeStart: new Date(pinnacleEvent.startTime) - currentDate,
-                    pinnacleEventId: pinnacleEvent.id,
-                    //pinnacleSubEvents: pinnacleSubEvents.map(event => event.special),
-                    kambiEvent: kambiEvent ? {id: kambiEvent.id, participants: kambiEvent.participants.map(participant => {return {id: participant.participantId, home: participant.home}})} : null,
-                    sbtechEvent: sbtechEvent ? {id: sbtechEvent.id, tokens: providers.filter(response => response.provider === 'SBTECH')[0].tokens} : null,
-                    altenarEventId: altenarEvent ? altenarEvent.Id : null,
-                    meridianbetEventId: meridianbetEvent ? meridianbetEvent.id : null,
-                    bwinEventId: bwinEvent ? bwinEvent.id : null,
-                    betwayEventId: betwayEvent ? betwayEvent.Id : null,
-                    betcenterEventId: betcenterEvent ? betcenterEvent.id : null,
-                    sportradarEventId: betcenterEvent ? betcenterEvent.statisticsId : null
+                    participants: participants,
+                    eventIds: [
+                        {book: 'UNIBET_BELGIUM', provider: 'KAMBI', eventId: kambiEvent ? kambiEvent.id : null},
+                        {book: 'NAPOLEON_GAMES', provider: 'KAMBI', eventId: kambiEvent ? kambiEvent.id : null},
+                        {book: 'BETFIRST', provider: 'SBTECH', eventId: sbtechEvent ? sbtechEvent.id : null},
+                        {book: 'BET777', provider: 'SBTECH', eventId: sbtechEvent ? sbtechEvent.id : null},
+                        {book: 'PINNACLE', provider: 'PINNACLE', eventId: pinnacleEvent.id},
+                        {book: 'MERIDIAN', provider: 'MERIDIAN', eventId: meridianbetEvent ?   meridianbetEvent.id : null}
+                    ]
                 }
             })
         }
@@ -92,32 +86,18 @@ async function merge(providers) {
 
     cache.flushAll()
 
-    console.log('found events: ' + mergedEvents.filter(event => event.val.participants.length === 2).length)
+    console.log('found events: ' + mergedEvents.length)
 
-    cache.mset(mergedEvents.filter(event => event.val.participants.length === 2))
+    cache.mset(mergedEvents)
 
 }
 
-function findEvent(provider, participants, events) {
+function findEvent(participants, events) {
 
     for(let i = 0; i < events.length; i++) {
         const event = events[i]
         
-        let participantIds
-
-        if(provider === 'ALTENAR') {
-            participantIds = event.Competitors.map(participant => participant.Name)
-        } else if(provider === 'KAMBI' || provider === 'BWIN') {
-            participantIds = event.participants.map(participant => participant.participantId)
-        } else if(provider === 'SBTECH') {
-            participantIds = event.participants.map(participant => participant.id)
-        } else if(provider === 'MERIDIANBET') {
-            participantIds = event.team.map(team => team.id)
-        } else if(provider === 'BETWAY') {
-            participantIds = [event.HomeTeamName, event.AwayTeamName]
-        } else if(provider === 'BETCENTER') {
-            participantIds = event.teams.map(team => team.id)
-        }
+        const participantIds = event.participants.map(participant => participant.id)
 
         if(participants[0] == participantIds[0] && participants[1] == participantIds[1]) {
             return event
@@ -126,16 +106,12 @@ function findEvent(provider, participants, events) {
 }
 
 function getParticipantsMapping(pinnacleParticipants) {
-    participantMap = []
+    const map = []
     pinnacleParticipants.forEach(participant => {
-        const mapping = participants[participant.name]
-        if(mapping) {
-            participantMap.push(participants[participant.name])
-        } else {
-            //console.log(participant.name)
-        }
+        const mappedParticipant = participants[participant]
+        if(mappedParticipant) map.push(mappedParticipant)
     })
-    return participantMap
+    return map
 }
 
 event.getEvents = async () => {

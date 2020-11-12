@@ -28,6 +28,15 @@ services:
     expose:
       - 3002
 
+  meridian:
+    image: meridian
+    build: ../../workers/meridian-service
+    restart: always
+    ports:
+      - 3006:3006
+    expose:
+      - 3006
+
   worker-interface:
     image: worker-interface
     build: ../../workers/worker-interface

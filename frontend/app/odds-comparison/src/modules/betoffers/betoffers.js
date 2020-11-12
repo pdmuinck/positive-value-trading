@@ -19,8 +19,8 @@ function BetOffers({event, bookmakers}) {
     return (
         <tr class="event">
             <td > 
-                <div class="datetime">{event.start.split('T')[0]}</div>
-                <div class="datetime">{event.start.split('T')[1].slice(0,5)}</div>
+                <div class="datetime">{event.startDate}</div>
+                <div class="datetime">{event.startTime}</div>
             </td>
             <td>{event.participants.map(participant => {
                 return(

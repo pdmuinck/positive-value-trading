@@ -15,45 +15,21 @@ const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2,
 
 job = new CronJob('*/55 * * * * *', async () => {
     const events = await axios.get('http://' + EVENT_IP + ':' + EVENT_PORT + '/events').then(response => response.data).catch(error => console.log(error))
-    events.forEach(event => fire(event))
+    events.map(event => event.eventIds).forEach(event => fire(event))
     
 }, null, true)
 
-function fire(event) {
-
-    if(event.pinnacleEventId) {
-        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-        + '/providers/PINNACLE/books/PINNACLE/events/' + event.pinnacleEventId + '/betoffers')
-        .then(response => {
-            cache.set('PINNACLE' + event.pinnacleEventId, response.data)
-        })
-    }
-    if(event.kambiEvent && event.kambiEvent.id) {
-        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-        + '/providers/KAMBI/books/UNIBET_BELGIUM/events/' + event.kambiEvent.id + '/betoffers')
-        .then(response => {
-            cache.set('UNIBET_BELGIUM' + event.kambiEvent.id, response.data)
-        })
-
-        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-        + '/providers/KAMBI/books/NAPOLEON_GAMES/events/' + event.kambiEvent.id + '/betoffers')
-        .then(response => {
-            cache.set('NAPOLEON' + event.kambiEvent.id, response.data)
-        })
-    }
-    if(event.sbtechEvent && event.sbtechEvent.id) {
-        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-        + '/providers/SBTECH/books/BETFIRST/events/' + parseInt(event.sbtechEvent.id) + '/betoffers')
-        .then(response => {
-            cache.set('BETFIRST' + event.sbtechEvent.id, response.data)
-        })
-
-        axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
-        + '/providers/SBTECH/books/BET777/events/' + parseInt(event.sbtechEvent.id) + '/betoffers')
-        .then(response => {
-            cache.set('BET777' + event.sbtechEvent.id, response.data)
-        })
-    }
+function fire(eventMapping) {
+    eventMapping.forEach(event => {
+        if(event.eventId) {
+            axios.get('http://' + WORKER_INTERFACE_IP + ':' + WORKER_INTERFACE_PORT 
+            + '/providers/' + event.provider + '/books/' + event.book + '/events/' + event.eventId + '/betoffers')
+            .then(response => {
+                console.log('betoffer found')
+                cache.set([event.provider, event.book, event.eventId].join(';'), response.data)
+            })
+        }
+    })
 }
 
 betoffer.getBetOffers = async () => {
