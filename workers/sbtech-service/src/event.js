@@ -24,6 +24,25 @@ const sportMap = {
 
 const event = {}
 
+event.getParticipants = async (league) => {
+    const token = await Token.getToken('BETFIRST', bookmakers)
+
+    const headers = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+            'locale': 'en'
+        }
+    }
+
+    const body = {"eventState":"Mixed","eventTypes":["Fixture","AggregateFixture"],"ids":[]}
+
+    body.ids = [league]
+
+    return await axios.post('https://sbapi.sbtech.com/betfirst/sportscontent/sportsbook/v1/Events/GetByLeagueId', body, headers)
+    .then(response => response.data.events.map(event => event.participants.map(participant => {return {id: participant.id, name: participant.name.toUpperCase()}}))).catch(error => null)
+}
+
 event.getEvents = async (book, sports) => {
     const token = await Token.getToken(book, bookmakers)
     
