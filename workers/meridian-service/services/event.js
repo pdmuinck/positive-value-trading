@@ -1,4 +1,5 @@
 const axios = require("axios")
+const leagues = require('../resources/leagues.json')
 
 const bla = new Date()
 const dd = String(bla.getDate()).padStart(2, "0");
@@ -32,6 +33,11 @@ const requests = {
 } 
 
 const event = {}
+
+event.getParticipants = async (leagueId) => {
+    const url = leagues.filter(league => league.id == leagueId)[0].url
+    return await axios.get(url).then(response => response.data[0].events.map(event => event.team)).catch(error => null)
+}
 
 event.getEvents = async (sports) => {
     if(sports && Array.isArray(sports)) {
