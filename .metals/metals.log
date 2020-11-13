@@ -75,3 +75,5 @@ INFO: Unsupported notification method: $/setTraceNotification
 2020.11.13 13:00:43 INFO  time: initialize in 1.23s
 2020.11.13 13:00:48 WARN  Build server is not auto-connectable.
 2020.11.13 13:00:48 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+nov 13, 2020 2:53:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification

@@ -13,6 +13,13 @@ module.exports = function(server) {
         await betoffer.getByEventId(req.params.eventId)
         .then(response => resp.send({provider: 'PINNACLE', book: req.params.book, eventId: req.params.eventId, betOffers: response}))
         .catch(error => resp.status(404).send(error.message))
+    }),
+
+    server.get('/leagues/:league/participants', async (req, resp) => {
+        await event.getParticipants(req.params.league)
+        //.then(response => resp.send(response.flat().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)))
+        .then(response => resp.send(response.flat().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)))
+        .catch(error => resp.status(404).send(error.message))
     })
 
 } 
