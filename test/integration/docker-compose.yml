@@ -84,3 +84,14 @@ services:
       - 3005:3005
     expose:
       - 3005
+  
+  participant:
+    image: participant
+    build: ../../participant-service
+    restart: always
+    depends_on:
+      - worker-interface
+    ports:
+      - 3080:3080
+    expose:
+      - 3080

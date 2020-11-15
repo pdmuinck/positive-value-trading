@@ -1,0 +1,54 @@
+[
+  {
+    "provider": "KAMBI",
+    "participants": [
+      {
+        "id": 1000000051,
+        "name": "AJAX"
+      },
+      {
+        "id": 1000087101,
+        "name": "HERACLES ALMELO"
+      }
+    ]
+  },
+  {
+    "provider": "SBTECH",
+    "participants": [
+      {
+        "id": "1936",
+        "name": "AJAX"
+      },
+      {
+        "id": "2184",
+        "name": "HERACLES"
+      }
+    ]
+  },
+  {
+    "provider": "PINNACLE",
+    "participants": [
+      {
+        "id": "AJAX",
+        "name": "AJAX"
+      },
+      {
+        "id": "HERACLES ALMELO",
+        "name": "HERACLES ALMELO"
+      }
+    ]
+  },
+  {
+    "provider": "MERIDIAN",
+    "participants": [
+      {
+        "id": "259463",
+        "name": "Ajax Amsterdam"
+      },
+      {
+        "id": "258708",
+        "name": "Heracles Almelo"
+      }
+    ]
+  }
+]

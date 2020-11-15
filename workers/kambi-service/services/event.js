@@ -26,7 +26,7 @@ const requests = {
 const event = {}
 
 event.getParticipantByGroup = async (group) => {
-    return await axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/' + group + '.json?includeParticipants=true').then(response => response.data.events.map(event => event.participants.map(participant => {return {id: participant.participantId, name: participant.name.toUpperCase()}}))).catch(error => null)
+    return await axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/' + group + '.json?includeParticipants=true').then(response => response.data.events.filter(event => event.tags.includes('MATCH')).map(event => event.participants.map(participant => {return {id: participant.participantId, name: participant.name.toUpperCase()}}))).catch(error => null)
 }
 
 event.getGroups = async () => {
