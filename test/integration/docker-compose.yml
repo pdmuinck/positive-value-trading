@@ -35,7 +35,16 @@ services:
     ports:
       - 3006:3006
     expose:
-      - 3006
+      - 3006,
+
+  betcenter:
+    image: betcenter
+    build: ../../workers/betcenter-service
+    restart: always
+    ports:
+      - 3007:3007
+    expose:
+      - 3007
 
   worker-interface:
     image: worker-interface

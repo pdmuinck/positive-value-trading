@@ -12,7 +12,7 @@ participant.getByLeague = async(league) => {
 participant.getByLeagueDev = async(league) => {
     let results
     await Promise.all(leagues[league.toUpperCase()]).then(values => {
-        results = values
+        results = mapper.map(values)
     })
     return results
 }
