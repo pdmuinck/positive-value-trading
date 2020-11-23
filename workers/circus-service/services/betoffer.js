@@ -1,5 +1,6 @@
 const WebSocket = require("ws")
 const NodeCache = require('node-cache')
+const event = require('./event')
 const ttlSeconds = 60 * 1 * 1
 const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 
@@ -12,7 +13,7 @@ circusWS.on('open', function open() {
 const betoffer = {}
 
 betoffer.findByEventId =  async (eventId) => {
-    return cache.get('test')
+    return cache.get(eventId)
 }
 
 circusWS.on('message', function incoming(data) {
@@ -20,13 +21,24 @@ circusWS.on('message', function incoming(data) {
     // if statement because we receive more messages than data packets
     if(JSON.parse(bla.Message)["$type"] === 'APR.Packets.DataPacket, APR.Packets') {
         console.log('renew betoffer cache')
-        cache.set('test', JSON.parse(JSON.parse(bla.Message).Requests["$values"][0].Content))
+        const event = JSON.parse(JSON.parse(bla.Message).Requests["$values"][0].Content).LeagueDataSource.LeagueItems[0].EventItems[0]
+        console.log(event.EventId)
+        cache.set(event.EventId, event.MarketItems)
     }
 })
 
-setInterval(() => {
-    console.log('send circus betoffer request')
-    circusWS.send(JSON.stringify({"Id":"f7ae76a9-dce9-6e84-4a3f-8053ae3e389e","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"e5344f60-0ef9-d326-3a4c-72b2b3b589b6\",\"Requests\":[{\"Id\":\"fab32c95-6c69-eef9-e61d-6cd1b3a4bca9\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"nl\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"IncludeSportList\\\":true,\\\"EventType\\\":1,\\\"SportId\\\":844,\\\"RegionId\\\":0,\\\"LeagueId\\\":54210798,\\\"EventId\\\":2320394901}}\"}],\"Groups\":[]}"}))
-}, 10000)
+/*
+setInterval(async () => {
+    const events = await event.getBySport('FOOTBALL')
+    console.log(events)
+    if(events) {
+        events.forEach(event => {
+            console.log('send circus betoffer request')
+            circusWS.send(JSON.stringify({"Id":"f7ae76a9-dce9-6e84-4a3f-8053ae3e389e","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"e5344f60-0ef9-d326-3a4c-72b2b3b589b6\",\"Requests\":[{\"Id\":\"fab32c95-6c69-eef9-e61d-6cd1b3a4bca9\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"IncludeSportList\\\":true,\\\"EventType\\\":0,\\\"SportId\\\":0,\\\"RegionId\\\":0,\\\"LeagueId\\\":0,\\\"EventId\\\":" + event.id + "}}\"}],\"Groups\":[]}"}))
+        })
+    }
+
+}, 20000)
+*/
 
 module.exports = betoffer

@@ -10,7 +10,7 @@ module.exports = function(server) {
     }),
 
     server.get('/events/:eventId/betoffers', async (req, resp) => {
-        await betoffer.findByEventId(req.params.eventId)
+        await event.getBetOffersByEventId(req.params.eventId)
         .then(response => resp.send({provider: 'CIRCUS', book: 'CIRCUS', eventId: req.params.eventId, betOffers: response}))
         .catch(error => resp.status(404).send(error.message))
     })
