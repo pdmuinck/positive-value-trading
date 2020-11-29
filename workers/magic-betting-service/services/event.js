@@ -18,6 +18,7 @@ async function launchChrome() {
 
 const event = {}
 
+
 event.getBySport = async (sport) => {
     let circusWS = new WebSocket(cache.get('API-URL'), null, {rejectUnauthorized: false})
 
@@ -58,11 +59,19 @@ event.getBySport = async (sport) => {
             const test = data.substring(12)
             const test2 = test.substring(0, test.length - 1)
             const test3 = test2.substring(test2.indexOf('{'))
-            cache.set('test', test3.replace('\\\\\\', ''))
+            const test4 = test3.replace('\\u0000\"', '')
+            let s = test4.replace(/\\n/g, "\\n")  
+               .replace(/\\'/g, "\\'")
+               .replace(/\\"/g, '\\"')
+               .replace(/\\&/g, "\\&")
+               .replace(/\\r/g, "\\r")
+               .replace(/\\t/g, "\\t")
+               .replace(/\\b/g, "\\b")
+               .replace(/\\f/g, "\\f")
+               .replace(/\\/g, "")
+            s = s.replace(/[\u0000-\u0019]+/g,"")
+            cache.set('test', JSON.parse(s))
         }
-        
-        //JSON.parse(JSON.stringify(data.substring(1)))
-        //cache.set('FOOTBALL', data)
     })
 
     return cache.get('test')
