@@ -5,13 +5,13 @@ module.exports = function(server) {
 
     server.get('/events', async (req, resp) => {
         await event.getEvents()
-        .then(response => resp.send({provider: 'LADBROKES', book: 'LADBROKES', events: response}))
+        .then(response => resp.send({provider: 'BINGOAL', book: 'BINGOAL', events: response}))
         .catch(error => resp.status(404).send(error.message))
     }),
 
     server.get('/events/:eventId/betoffers', async (req, resp) => {
         await betoffer.findByEventId(req.params.eventId)
-        .then(response => resp.send({provider: 'BETCENTER', book: 'BETCENTER', eventId: req.params.eventId, betOffers: response}))
+        .then(response => resp.send({provider: 'BINGOAL', book: 'BINGOAL', eventId: req.params.eventId, betOffers: response}))
         .catch(error => resp.status(404).send(error.message))
     })
 
