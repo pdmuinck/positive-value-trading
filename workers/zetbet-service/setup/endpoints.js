@@ -3,7 +3,7 @@ const event = require('../test')
 module.exports = function(server) {
 
     server.get('/events', async (req, resp) => {
-        await event.getById('indexLinks')
+        await event.getByIdEuroTierce('indexLinks')
         .then(response => resp.send({provider: 'ZETBET', events: response}))
         .catch(error => resp.status(404).send(error.message))
     }),

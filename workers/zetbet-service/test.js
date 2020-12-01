@@ -41,3 +41,17 @@ function parseBets(data) {
     return JSON.parse(JSON.safeStringify(root.querySelectorAll('.pmq-cote')))
     //return JSON.parse(JSON.safeStringify(root.querySelectorAll('a').filter(htmlElement => htmlElement.rawAttrs.includes('betting'))))
 }
+
+event.getByIdEuroTierce = async (id) => {
+    return axios.get('https://sports.eurotierce.be/nl/event/3326165-milan-ac-celtic-glasgow').then(response => testparse(response.data))
+}
+
+function testparse(data) {
+    const root = parser.parse(data)
+    return JSON.parse(JSON.safeStringify(root.querySelectorAll('.odds-question')))
+
+    // bettype: snc-odds-actor
+    // bet product: odds-question-label
+    // odds-question
+    return root.querySelectorAll('.snc-odds-odd')
+}
