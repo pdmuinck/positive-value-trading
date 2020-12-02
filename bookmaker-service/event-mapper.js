@@ -36,7 +36,7 @@ eventMapper.map = function(providers) {
                 }
                 // search other providers
                 providers.filter(otherProvider => otherProvider.provider.toUpperCase() !== provider.provider.toUpperCase()).forEach(otherProvider => {
-                    otherProvider.events.forEach(otherEvent => {
+                    otherProvider.events.filter(event => event.participants && event.participants.length === 2).forEach(otherEvent => {
                         otherFoundParticipants = []
                         if(otherProvider.provider.toUpperCase() === 'KAMBI') {
                             otherEvent.participants.forEach(participant => {
