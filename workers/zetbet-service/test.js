@@ -53,5 +53,7 @@ function testparse(data) {
     // bettype: snc-odds-actor
     // bet product: odds-question-label
     // odds-question
+    // price: snc-odds-odd nb-load
+    
     return root.querySelectorAll('.snc-odds-odd')
 }

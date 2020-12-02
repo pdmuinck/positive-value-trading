@@ -1,0 +1,77 @@
+[
+    {
+        "id": 40815,
+        "name": "JUPILER_PRO_LEAGUE",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40253,
+        "name": "PREMIER_LEAGUE",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40817,
+        "name": "THE_CHAMPIONSHIP",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40822,
+        "name": "LEAGUE_ONE",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40823,
+        "name": "LEAGUE_TWO",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 56687,
+        "name": "FA Cup",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40030,
+        "name": "Serie A",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 42884,
+        "name": "Serie B",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40031,
+        "name": "La liga",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 44411,
+        "name": "Segunda",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40481,
+        "name": "Bundesliga",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40820,
+        "name": "Bundesliga 2",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 40032,
+        "name": "Ligue 1",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 52971,
+        "name": "Ligue 2",
+        "sport": "FOOTBALL"
+    },
+    {
+        "id": 41372,
+        "name": "Eredivisie",
+        "sport": "FOOTBALL"
+    }
+]
