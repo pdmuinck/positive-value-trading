@@ -7,7 +7,7 @@ eventMapper.map = function(providers) {
     const entries = Object.entries(participants)
     const result = {}
     providers.forEach(provider => {
-        provider.events.forEach(event => {
+        provider.events.filter(event => event.participants && event.participants.length === 2).forEach(event => {
             foundParticipants = []
             if(provider.provider.toUpperCase() === 'KAMBI') {
                 event.participants.forEach(participant => {
@@ -18,7 +18,7 @@ eventMapper.map = function(providers) {
                 })
             } else if(provider.provider.toUpperCase() === 'SBTECH') {
                 event.participants.forEach(participant => {
-                    const foundParticipant = entries.filter(entry => entry[1].sbtech === participant.id).map(entry => entry[0])
+                    const foundParticipant = entries.filter(entry => entry[1].sbtech == participant.id).map(entry => entry[0])
                     if(foundParticipant[0]) {
                         foundParticipants.push(foundParticipant[0])
                     }
@@ -47,7 +47,7 @@ eventMapper.map = function(providers) {
                             })
                         } else if(otherProvider.provider.toUpperCase() === 'SBTECH') {
                             otherEvent.participants.forEach(participant => {
-                                const foundParticipant = entries.filter(entry => entry[1].sbtech === participant.id).map(entry => entry[0])
+                                const foundParticipant = entries.filter(entry => entry[1].sbtech == participant.id).map(entry => entry[0])
                                 if(foundParticipant[0]) {
                                     otherFoundParticipants.push(foundParticipant[0])
                                 }
