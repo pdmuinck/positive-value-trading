@@ -1,6 +1,7 @@
 const axios = require('axios')
 const bookmakers = require('./bookmakers.json')
 const leagues = require('./leagues.json')
+const betOfferTypes = require('./betoffer-type.json')
 
 
 const requests = {
@@ -28,6 +29,28 @@ const requests = {
 
 const kambi = {}
 
+kambi.getBetOffersForBookAndEventId = async (book, eventId) => {
+    const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
+    if(!bookmakerInfo) throw new Error('Book not found: ' + book)
+    let url = 'https://{host}/offering/v2018/{book}'.replace('{host}', bookmakerInfo.host).replace('{book}', bookmakerInfo.code)  + '/betoffer/event/' + eventId + '.json'
+
+    /*
+    if(type) {
+        url += '?type=' + betOfferTypes[type]
+    }
+    */
+
+    const betOffers = await axios.get(url).then(response => response.data.betOffers)
+                            .catch(error => console.log(error))
+    
+    if(betOffers) {
+        const moneylineFullTimeBetOffers = findBetOfferById(betOffers, 1001159858)
+        if(moneylineFullTimeBetOffers && moneylineFullTimeBetOffers[0]) {
+            return getPricesFromBetOffer(moneylineFullTimeBetOffers[0])
+        }
+    }
+}
+
 kambi.getParticipantsForCompetition = async (book, competition) => {
     const groupId = leagues.filter(league => league.name.toUpperCase() === competition).map(league => league.id)
     return await axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/' + groupId + '.json?includeParticipants=true').then(response => response.data.events.filter(event => event.tags.includes('MATCH')).map(event => event.participants.map(participant => {return {id: participant.participantId, name: participant.name.toUpperCase()}}))).catch(error => null)
@@ -40,15 +63,32 @@ kambi.getEventsForBookAndSport = async (book, sports) => {
     
     if(sports && Array.isArray(sports)) {
         const sportsUpperCase = sports.map(sport => sport.toUpperCase())
-        return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1], bookmakerInfo)))
     } else if(sports) {
-        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1], book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1], bookmakerInfo)))
     } else {
-        return resolve(Object.values(requests).map(url => createRequest(url, book.toUpperCase(), bookmakerInfo)))
+        return resolve(Object.values(requests).map(url => createRequest(url, bookmakerInfo)))
     }
 }
 
-function createRequest(url, bookmakerName, bookmakerInfo) {
+function getPricesFromBetOffer(betOffer) {
+    let product
+    if(betOffer.criterion.id === 1001159858) product = 'moneyline_full_time'
+
+    const prices = betOffer.outcomes.map(outcome => {
+        let betOption = outcome.englishLabel
+        const odds = outcome.odds / 1000
+        const open = outcome.status === 'OPEN' ? true : false
+        return {betOption: betOption, odds: odds, open: open}
+    })
+    return {product: product, prices: prices}
+}
+
+function findBetOfferById(betOffers, id) {
+    return betOffers.filter(betOffer => betOffer.criterion.id === id)
+} 
+
+function createRequest(url, bookmakerInfo) {
     return axios.get(url.replace('{book}', bookmakerInfo.code).replace('{host}', bookmakerInfo.host)).then(response => transform(response.data.events)).catch(error => null)
 }
 
