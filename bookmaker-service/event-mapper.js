@@ -4,73 +4,61 @@ const eventMapper = {}
 
 
 eventMapper.map = function(providers) {
-    const entries = Object.entries(participants)
     const result = {}
     providers.forEach(provider => {
         provider.events.filter(event => event.participants && event.participants.length === 2).forEach(event => {
-            foundParticipants = []
-            if(provider.provider.toUpperCase() === 'KAMBI') {
-                event.participants.forEach(participant => {
-                    const foundParticipant = entries.filter(entry => entry[1].kambi === participant.id).map(entry => entry[0])
-                    if(foundParticipant[0]) {
-                        foundParticipants.push(foundParticipant[0])
-                    }
-                })
-            } else if(provider.provider.toUpperCase() === 'SBTECH') {
-                event.participants.forEach(participant => {
-                    const foundParticipant = entries.filter(entry => entry[1].sbtech == participant.id).map(entry => entry[0])
-                    if(foundParticipant[0]) {
-                        foundParticipants.push(foundParticipant[0])
-                    }
-                })
-            }
+            const foundParticipants = findParticipants(event, provider.provider.toLowerCase())
             if(foundParticipants.length === 2) {
                 const eventKey = foundParticipants.join(';')
                 let mappedEvent = result[eventKey]
                 if(!mappedEvent) {
-                    if(provider.provider.toUpperCase() === 'KAMBI') {
-                        mappedEvent = result[eventKey] = {kambi: event.id}
-                    } else if(provider.provider.toUpperCase() === 'SBTECH') {
-                        mappedEvent = result[eventKey] = {sbtech: event.id}
-                    }
+                    result[eventKey] = {}
+                    result[eventKey][provider.provider.toLowerCase()] = event.id
+                    mappedEvent = result[eventKey]
                 }
                 // search other providers
                 providers.filter(otherProvider => otherProvider.provider.toUpperCase() !== provider.provider.toUpperCase()).forEach(otherProvider => {
                     otherProvider.events.filter(event => event.participants && event.participants.length === 2).forEach(otherEvent => {
-                        otherFoundParticipants = []
-                        if(otherProvider.provider.toUpperCase() === 'KAMBI') {
-                            otherEvent.participants.forEach(participant => {
-                                const foundParticipant = entries.filter(entry => entry[1].kambi === participant.id).map(entry => entry[0])
-                                if(foundParticipant[0]) {
-                                    otherFoundParticipants.push(foundParticipant[0])
-                                }
-                            })
-                        } else if(otherProvider.provider.toUpperCase() === 'SBTECH') {
-                            otherEvent.participants.forEach(participant => {
-                                const foundParticipant = entries.filter(entry => entry[1].sbtech == participant.id).map(entry => entry[0])
-                                if(foundParticipant[0]) {
-                                    otherFoundParticipants.push(foundParticipant[0])
-                                }
-                            })
-                        }
+                        const otherFoundParticipants = findParticipants(otherEvent, otherProvider.provider.toLowerCase())
                         if(otherFoundParticipants) {
                             const otherEventKey = otherFoundParticipants.join(';')
                             if(otherEventKey === eventKey) {
-                                if(otherProvider.provider.toUpperCase() === 'KAMBI') {
-                                    mappedEvent.kambi = otherEvent.id
-                                } else if(otherProvider.provider.toUpperCase() === 'SBTECH') {
-                                    mappedEvent.sbtech = otherEvent.id
-                                }
+                                mappedEvent[otherProvider.provider.toLowerCase()] = otherEvent.id
                             }
                         }
                     })
                 })
-
             }
         })
-        
     })
     return result
+
+}
+
+function findParticipants(event, provider) {
+    const entries = Object.entries(participants)
+    foundParticipants = []
+    if(provider === 'kambi') {
+        const homeId = event.participants.filter(participant => participant.home).map(participant => participant.id)[0]
+        const awayId = event.participants.filter(participant => participant.id !== homeId).map(participant => participant.id)[0]        
+        let foundParticipant = entries.filter(entry => entry[1][provider] == homeId).map(entry => entry[0])
+        if(foundParticipant[0]) {
+            foundParticipants.push(foundParticipant[0])
+        }
+        foundParticipant = entries.filter(entry => entry[1][provider] == awayId).map(entry => entry[0])
+        if(foundParticipant[0]) {
+            foundParticipants.push(foundParticipant[0])
+        }
+        return foundParticipants
+    } else {
+        event.participants.forEach(participant => {
+            const foundParticipant = entries.filter(entry => entry[1][provider] == participant.id).map(entry => entry[0])
+            if(foundParticipant[0]) {
+                foundParticipants.push(foundParticipant[0])
+            }
+        })
+        return foundParticipants
+    }
 
 }
 

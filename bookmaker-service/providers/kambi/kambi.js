@@ -97,6 +97,7 @@ function transform(events) {
         id: event.id, 
         participants: event.participants.map(participant => {return {
             id: participant.participantId, 
+            home: participant.home,
             name: participant.name}})}})
 }
 
