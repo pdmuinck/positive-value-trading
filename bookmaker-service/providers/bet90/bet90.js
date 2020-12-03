@@ -23,10 +23,16 @@ bet90.getEventsForBookAndSport = async (book, sport) => {
 }
 
 function transform(events) {
-    const test = parser.parse(events).querySelectorAll('.first-team').map(event => event.parentNode.id)
-    console.log(test)
-    
-    return JSON.parse(JSON.safeStringify(parser.parse(events).querySelectorAll('.first-team')))
+    const parsedEvents = []
+    const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+    const secondTeams = parser.parse(events).querySelectorAll('.second-team').map(team => {return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+    const stats = parser.parse(events).querySelectorAll('.hg_nx_btn_stats').map(stat => {return {id: stat.parentNode.parentNode.parentNode.id, participantIds: stat.rawAttrs}})
+    firstTeams.forEach(team => {
+        const secondTeam = secondTeams.filter(secondTeam => secondTeam.id === team.id)[0]
+        const stat = stats.filter(stat => stat.id === team.id)[0]
+        parsedEvents.push({id: team.id, participants: [{id: stat.participantIds.split('team1id="')[1].split('\"\r\n')[0], name: team.team1}, {id: stat.participantIds.split('team2id="')[1].split('\"')[0], name: secondTeam.team1}]})
+    })
+    return parsedEvents
 }
 
 JSON.safeStringify = (obj, indent = 2) => {
