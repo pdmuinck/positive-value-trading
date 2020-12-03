@@ -6,7 +6,8 @@ const api = {}
 api.getEventsBySport = async (sport) => {
     const requests = [
         getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport),
-        getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport)
+        getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport),
+        getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport)
     ]
 
     let results
@@ -55,7 +56,7 @@ async function getParticipantsForProviderAndBookAndCompetition(provider, book, c
 async function getEventsByProviderAndBookAndSport(provider, book, sport) {
     const providerApi = require('./providers/' + provider + '/' + provider + '.js')
     const events = await providerApi.getEventsForBookAndSport(book, sport)
-    return {provider: provider, book: book, events: events.flat()}
+    return {provider: provider, book: book, events: events}
 }
 
 module.exports = api

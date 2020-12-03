@@ -77,7 +77,7 @@ sbtech.getEventsForBookAndSport = async (book, sports) => {
     await Promise.all(requests).then((values) => {
         events = values
     })
-    return events
+    return events.flat()
 }
 
 function cleanBetOption(outcome) {

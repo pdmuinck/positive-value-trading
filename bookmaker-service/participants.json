@@ -1,6 +1,6 @@
 {
-    "CHELSEA": {"kambi": 1000000080, "sbtech": 231},
-    "LEEDS": {"kambi": 1000007584, "sbtech": 379},
-    "BLACKBURN": {"kambi": 1000000088, "sbtech": 237},
-    "MILLWALL": {"kambi": 1000034681, "sbtech": 388}
+    "CHELSEA": {"kambi": 1000000080, "sbtech": 231, "altenar": "Chelsea"},
+    "LEEDS": {"kambi": 1000007584, "sbtech": 379, "altenar": "Leeds"},
+    "BLACKBURN": {"kambi": 1000000088, "sbtech": 237, "altenar": "Blackburn"},
+    "MILLWALL": {"kambi": 1000034681, "sbtech": 388, "altenar": "Millwall"}
 }

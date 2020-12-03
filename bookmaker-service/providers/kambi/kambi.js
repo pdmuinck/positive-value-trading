@@ -58,17 +58,8 @@ kambi.getParticipantsForCompetition = async (book, competition) => {
 
 kambi.getEventsForBookAndSport = async (book, sports) => {
     const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
-
     if(!bookmakerInfo) throw new Error('Book not found: ' + book)
-    
-    if(sports && Array.isArray(sports)) {
-        const sportsUpperCase = sports.map(sport => sport.toUpperCase())
-        return resolve(Object.entries(requests).filter(pair => sportsUpperCase.includes(pair[0])).map(pair => createRequest(pair[1], bookmakerInfo)))
-    } else if(sports) {
-        return resolve(Object.entries(requests).filter(pair => sports.toUpperCase() === pair[0]).map(pair => createRequest(pair[1], bookmakerInfo)))
-    } else {
-        return resolve(Object.values(requests).map(url => createRequest(url, bookmakerInfo)))
-    }
+    return resolve(Object.values(requests).map(url => createRequest(url, bookmakerInfo)))
 }
 
 function getPricesFromBetOffer(betOffer) {
@@ -106,7 +97,7 @@ async function resolve(requests) {
     await Promise.all(requests).then((values) => {
         events = values
     })
-    return events
+    return events.flat()
 }
 
 

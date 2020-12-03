@@ -40,7 +40,7 @@ function findParticipants(event, provider) {
     foundParticipants = []
     if(provider === 'kambi') {
         const homeId = event.participants.filter(participant => participant.home).map(participant => participant.id)[0]
-        const awayId = event.participants.filter(participant => participant.id !== homeId).map(participant => participant.id)[0]        
+        const awayId = event.participants.filter(participant => participant.id !== homeId).map(participant => participant.id)[0]
         let foundParticipant = entries.filter(entry => entry[1][provider] == homeId).map(entry => entry[0])
         if(foundParticipant[0]) {
             foundParticipants.push(foundParticipant[0])

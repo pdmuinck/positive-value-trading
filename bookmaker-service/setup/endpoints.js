@@ -4,7 +4,7 @@ module.exports = function(server) {
 
     server.get('/providers/:provider/bookmakers/:book/sports/:sport/events', async (req, resp) => {
         await api.getEventsByProviderAndBookAndSport(req.params.provider, req.params.book, req.params.sport)
-        .then(response => resp.send({provider: req.params.provider, book: req.params.book, events: response}))
+        .then(response => resp.send((response)))
         .catch(error => resp.status(404).send(error.message))
     })
 
