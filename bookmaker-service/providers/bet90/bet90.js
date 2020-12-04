@@ -12,13 +12,39 @@ const sports = {
     "FOOTBALL": 1
 }
 
-
-
 bet90 = {}
 
 bet90.getEventsForBookAndSport = async (book, sport) => {
-    const payload = {leagueId:117, categoryId:32, sportId:sports[sport.toUpperCase()]}
-    return axios.post('https://bet90.be/Sports/SportLeagueGames', payload, headers).then(response => transform(response.data)).catch(error => console.log(error))
+    const requests = [
+        //spain
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:117, categoryId:32, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:276, categoryId:32, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        // germany
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:30, categoryId:19, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:75, categoryId:19, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        
+        // england
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:56, categoryId:34, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:173, categoryId:34, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:321, categoryId:34, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:338, categoryId:34, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        //serie a
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:401, categoryId:4, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        // france
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:119, categoryId:62, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        // netherlands
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:307, categoryId:79, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+        // belgium
+        axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:457, categoryId:20, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
+    ]
+
+    let results
+
+    await Promise.all(requests).then(values => {
+        results = values.flat()
+    })
+
+    return results
     
 }
 

@@ -7,7 +7,9 @@ api.getEventsBySport = async (sport) => {
     const requests = [
         getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport),
         getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport),
-        getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport)
+        getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport),
+        getEventsByProviderAndBookAndSport('bet90', 'bet90', sport),
+        getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport),
     ]
 
     let results
