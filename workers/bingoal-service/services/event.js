@@ -1,5 +1,4 @@
 const axios = require('axios')
-const https = require('https')
 
 const sports = {
     "FOOTBALL": 1

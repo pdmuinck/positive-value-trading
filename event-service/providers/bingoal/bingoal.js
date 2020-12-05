@@ -10,7 +10,7 @@ const headers = {
 }
 
 bingoal.getEventsForBookAndSport = async (book, sport) => {
-    return axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=35', headers).then(response => transform(response.data)).catch(error => console.log(error))
+    return axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=25', headers).then(response => transform(response.data)).catch(error => console.log(error))
 }
 
 function transform(events) {

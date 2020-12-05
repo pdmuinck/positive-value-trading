@@ -1,9 +1,23 @@
 const mapper = require('./mapper')
 const eventMapper = require('./event-mapper')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 
 const api = {}
 
+getEvents('FOOTBALL').then(response => eventCache.set('FOOTBALL', response)).catch(error => console.log(error))
+
+setInterval(async () => {
+    const footballEvents = getEvents('FOOTBALL')
+    eventCache.set('FOOTBALL', footballEvents)
+}, 60000)
+
 api.getEventsBySport = async (sport) => {
+    return eventCache.get(sport.toUpperCase())
+}
+
+async function getEvents(sport) {
     const requests = [
         getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport),
         getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport),

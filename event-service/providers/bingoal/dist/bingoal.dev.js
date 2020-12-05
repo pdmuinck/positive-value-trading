@@ -15,7 +15,7 @@ bingoal.getEventsForBookAndSport = function _callee(book, sport) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          return _context.abrupt("return", axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=35', headers).then(function (response) {
+          return _context.abrupt("return", axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=25', headers).then(function (response) {
             return transform(response.data);
           })["catch"](function (error) {
             return console.log(error);
