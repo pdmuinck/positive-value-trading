@@ -2,6 +2,8 @@
 
 var axios = require('axios');
 
+var leagues = require('./leagues');
+
 var sports = {
   "FOOTBALL": 1,
   "TENNIS": 2,
@@ -21,7 +23,6 @@ var sports = {
 };
 var betcenterHeaders = {
   headers: {
-    "Accept": "application/json, text/plain, */*",
     "x-language": 2,
     "x-brand": 7,
     "x-location": 21,
@@ -32,24 +33,35 @@ var betcenterHeaders = {
 var betcenter = {};
 
 betcenter.getEventsForBookAndSport = function _callee(book, sport) {
-  var betcenterPayload;
+  var requests, events;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          betcenterPayload = {
-            "sportId": sports[sport.toUpperCase()],
-            "gameTypes": [1, 4],
-            "limit": 20000,
-            "jurisdictionId": 30
-          };
-          return _context.abrupt("return", axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(function (response) {
-            return transform(response.data.games);
-          })["catch"](function (error) {
-            return null;
+          requests = leagues.map(function (league) {
+            var betcenterPayload = {
+              "leagueIds": [league.id],
+              "sportId": sports[sport.toUpperCase()],
+              "gameTypes": [1, 4],
+              "limit": 20000,
+              "jurisdictionId": 30
+            };
+            return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(function (response) {
+              return transform(response.data.games);
+            })["catch"](function (error) {
+              return null;
+            });
+          });
+          events = [];
+          _context.next = 4;
+          return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
+            events = values.flat();
           }));
 
-        case 2:
+        case 4:
+          return _context.abrupt("return", events);
+
+        case 5:
         case "end":
           return _context.stop();
       }

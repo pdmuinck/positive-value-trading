@@ -13,27 +13,25 @@ var eventCache = new NodeCache({
   useClones: false
 });
 var api = {};
+setTimeout(function () {
+  console.log('About to get events');
+  getEvents('FOOTBALL');
+}, 10000);
 setInterval(function _callee() {
-  var footballEvents;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
-          return regeneratorRuntime.awrap(getEvents('FOOTBALL'));
+          console.log('About to get events');
+          getEvents('FOOTBALL');
 
         case 2:
-          footballEvents = _context.sent;
-          eventCache.flushAll();
-          eventCache.set('FOOTBALL', footballEvents);
-
-        case 5:
         case "end":
           return _context.stop();
       }
     }
   });
-}, 60000);
+}, 5 * 60000);
 
 api.getEventsBySport = function _callee2(sport) {
   return regeneratorRuntime.async(function _callee2$(_context2) {
@@ -56,16 +54,17 @@ function getEvents(sport) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('circus', 'circus', sport), getEventsByProviderAndBookAndSport('goldenvegas', 'goldenvegas', sport)];
+          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport)];
           _context3.next = 3;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = eventMapper.map(values);
           }));
 
         case 3:
+          eventCache.set(sport.toUpperCase(), results);
           return _context3.abrupt("return", results);
 
-        case 4:
+        case 5:
         case "end":
           return _context3.stop();
       }
@@ -186,13 +185,14 @@ function getEventsByProviderAndBookAndSport(provider, book, sport) {
 
         case 3:
           events = _context9.sent;
+          console.log('found ' + provider);
           return _context9.abrupt("return", {
             provider: provider,
             book: book,
             events: events
           });
 
-        case 5:
+        case 6:
         case "end":
           return _context9.stop();
       }

@@ -6,11 +6,16 @@ const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds *
 
 const api = {}
 
+setTimeout(() => {
+    console.log('About to get events')
+    getEvents('FOOTBALL')
+}, 10000)
+
+
 setInterval(async () => {
-    const footballEvents = await getEvents('FOOTBALL')
-    eventCache.flushAll()
-    eventCache.set('FOOTBALL', footballEvents)
-}, 60000)
+    console.log('About to get events')
+    getEvents('FOOTBALL')
+}, 5 * 60000)
 
 api.getEventsBySport = async (sport) => {
     return eventCache.get(sport.toUpperCase())
@@ -21,10 +26,9 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport),
         getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport),
         getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport),
+        getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport),
         getEventsByProviderAndBookAndSport('bet90', 'bet90', sport),
-        getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport),
-        getEventsByProviderAndBookAndSport('circus', 'circus', sport),
-        getEventsByProviderAndBookAndSport('goldenvegas', 'goldenvegas', sport)
+        getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport)
     ]
 
     let results
@@ -32,6 +36,8 @@ async function getEvents(sport) {
     await Promise.all(requests).then(values => {
         results = eventMapper.map(values)
     })
+
+    eventCache.set(sport.toUpperCase(), results)
 
     return results
 }
@@ -73,6 +79,7 @@ async function getParticipantsForProviderAndBookAndCompetition(provider, book, c
 async function getEventsByProviderAndBookAndSport(provider, book, sport) {
     const providerApi = require('./providers/' + provider + '/' + provider + '.js')
     const events = await providerApi.getEventsForBookAndSport(book, sport)
+    console.log('found ' + provider)
     return {provider: provider, book: book, events: events}
 }
 

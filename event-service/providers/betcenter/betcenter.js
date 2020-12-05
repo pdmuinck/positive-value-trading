@@ -1,4 +1,5 @@
 const axios = require('axios')
+const leagues = require('./leagues')
 
 const sports = {
     "FOOTBALL": 1,
@@ -20,7 +21,6 @@ const sports = {
 
 const betcenterHeaders = {
     headers: {
-        "Accept": "application/json, text/plain, */*",
         "x-language": 2,
         "x-brand": 7,
         "x-location": 21,
@@ -32,8 +32,15 @@ const betcenterHeaders = {
 const betcenter = {}
 
 betcenter.getEventsForBookAndSport = async(book, sport) => {
-    const betcenterPayload = {"sportId":sports[sport.toUpperCase()],"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
-    return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games)).catch(error => null)
+    const requests = leagues.map(league => {
+        const betcenterPayload = {"leagueIds": [league.id], "sportId":sports[sport.toUpperCase()],"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
+        return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games)).catch(error => null)
+    })
+    let events = []
+    await Promise.all(requests).then(values => {
+        events = values.flat()
+    })
+    return events
 }
 
 function transform(games) {
