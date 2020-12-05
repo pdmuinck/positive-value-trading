@@ -2,7 +2,10 @@
 
 var betconstruct = require('../providers/betconstruct/betconstruct');
 
+var magicbetting = require('../providers/magicbetting/magicbetting');
+
 betconstruct.openWebSocket();
+magicbetting.open();
 
 module.exports = function (server) {
   server.listen('3000', function (error) {

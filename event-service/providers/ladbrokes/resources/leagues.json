@@ -1,0 +1,31 @@
+[
+    {
+        "name": "PREMIER_LEAGUE",
+        "id": "ing-premier-league"
+    },
+    {
+        "name": "JUPILER_PRO_LEAGUE",
+        "id": "be-jupiler-league1"
+    },
+    {
+        "id": "it-serie-a",
+        "name": "SERIE_A"
+    },
+    {
+        "id": "ing-championship",
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": "de-bundesliga",
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": "fr-ligue-1",
+        "name": "LIGUE_1"
+    },
+    {
+        "id": "nl-eredivisie1",
+        "name": "EREDIVISIE"
+    }
+
+]

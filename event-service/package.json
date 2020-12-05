@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chrome-launcher": "^0.13.4",
+    "chrome-remote-interface": "^0.28.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-cache": "^5.1.2",
