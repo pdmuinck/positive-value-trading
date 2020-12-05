@@ -1,6 +1,6 @@
 {
-    "CHELSEA": {"kambi": 1000000080, "sbtech": 231, "altenar": "Chelsea", "bet90": "164", "betcenter": 104337},
-    "LEEDS": {"kambi": 1000007584, "sbtech": 379, "altenar": "Leeds", "bet90": "48862", "betcenter": 105028},
+    "CHELSEA": {"kambi": 1000000080, "sbtech": 231, "altenar": "Chelsea", "bet90": "164", "betcenter": 104337, "circus": "Chelsea"},
+    "LEEDS": {"kambi": 1000007584, "sbtech": 379, "altenar": "Leeds", "bet90": "48862", "betcenter": 105028, "circus": "Leeds"},
     "BLACKBURN": {"kambi": 1000000088, "sbtech": 237, "altenar": "Blackburn", "bet90": "3943"},
     "MILLWALL": {"kambi": 1000034681, "sbtech": 388, "altenar": "Millwall", "bet90": "99332"}
 }

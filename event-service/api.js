@@ -24,6 +24,7 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport),
         getEventsByProviderAndBookAndSport('bet90', 'bet90', sport),
         getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport),
+        getEventsByProviderAndBookAndSport('circus', 'circus', sport)
     ]
 
     let results

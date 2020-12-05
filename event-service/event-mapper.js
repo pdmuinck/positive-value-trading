@@ -6,30 +6,34 @@ const eventMapper = {}
 eventMapper.map = function(providers) {
     const result = {}
     providers.forEach(provider => {
-        provider.events.filter(event => event.participants && event.participants.length === 2).forEach(event => {
-            const foundParticipants = findParticipants(event, provider.provider.toLowerCase())
-            if(foundParticipants.length === 2) {
-                const eventKey = foundParticipants.join(';')
-                let mappedEvent = result[eventKey]
-                if(!mappedEvent) {
-                    result[eventKey] = {}
-                    result[eventKey][provider.provider.toLowerCase()] = event.id
-                    mappedEvent = result[eventKey]
-                }
-                // search other providers
-                providers.filter(otherProvider => otherProvider.provider.toUpperCase() !== provider.provider.toUpperCase()).forEach(otherProvider => {
-                    otherProvider.events.filter(event => event.participants && event.participants.length === 2).forEach(otherEvent => {
-                        const otherFoundParticipants = findParticipants(otherEvent, otherProvider.provider.toLowerCase())
-                        if(otherFoundParticipants) {
-                            const otherEventKey = otherFoundParticipants.join(';')
-                            if(otherEventKey === eventKey) {
-                                mappedEvent[otherProvider.provider.toLowerCase()] = otherEvent.id
-                            }
+        if(provider.events) {
+            provider.events.filter(event => event.participants && event.participants.length === 2).forEach(event => {
+                const foundParticipants = findParticipants(event, provider.provider.toLowerCase())
+                if(foundParticipants.length === 2) {
+                    const eventKey = foundParticipants.join(';')
+                    let mappedEvent = result[eventKey]
+                    if(!mappedEvent) {
+                        result[eventKey] = {}
+                        result[eventKey][provider.provider.toLowerCase()] = event.id
+                        mappedEvent = result[eventKey]
+                    }
+                    // search other providers
+                    providers.filter(otherProvider => otherProvider.provider.toUpperCase() !== provider.provider.toUpperCase()).forEach(otherProvider => {
+                        if(otherProvider.events) {
+                            otherProvider.events.filter(event => event.participants && event.participants.length === 2).forEach(otherEvent => {
+                                const otherFoundParticipants = findParticipants(otherEvent, otherProvider.provider.toLowerCase())
+                                if(otherFoundParticipants) {
+                                    const otherEventKey = otherFoundParticipants.join(';')
+                                    if(otherEventKey === eventKey) {
+                                        mappedEvent[otherProvider.provider.toLowerCase()] = otherEvent.id
+                                    }
+                                }
+                            })
                         }
                     })
-                })
-            }
-        })
+                }
+            })
+        }
     })
     return result
 
