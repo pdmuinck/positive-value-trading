@@ -6,10 +6,9 @@ const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds *
 
 const api = {}
 
-getEvents('FOOTBALL').then(response => eventCache.set('FOOTBALL', response)).catch(error => console.log(error))
-
 setInterval(async () => {
-    const footballEvents = getEvents('FOOTBALL')
+    const footballEvents = await getEvents('FOOTBALL')
+    eventCache.flushAll()
     eventCache.set('FOOTBALL', footballEvents)
 }, 60000)
 
@@ -24,7 +23,8 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport),
         getEventsByProviderAndBookAndSport('bet90', 'bet90', sport),
         getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport),
-        getEventsByProviderAndBookAndSport('circus', 'circus', sport)
+        getEventsByProviderAndBookAndSport('circus', 'circus', sport),
+        getEventsByProviderAndBookAndSport('goldenvegas', 'goldenvegas', sport)
     ]
 
     let results

@@ -13,21 +13,21 @@ var eventCache = new NodeCache({
   useClones: false
 });
 var api = {};
-getEvents('FOOTBALL').then(function (response) {
-  return eventCache.set('FOOTBALL', response);
-})["catch"](function (error) {
-  return console.log(error);
-});
 setInterval(function _callee() {
   var footballEvents;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          footballEvents = getEvents('FOOTBALL');
-          eventCache.set('FOOTBALL', footballEvents);
+          _context.next = 2;
+          return regeneratorRuntime.awrap(getEvents('FOOTBALL'));
 
         case 2:
+          footballEvents = _context.sent;
+          eventCache.flushAll();
+          eventCache.set('FOOTBALL', footballEvents);
+
+        case 5:
         case "end":
           return _context.stop();
       }
@@ -56,7 +56,7 @@ function getEvents(sport) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('circus', 'circus', sport)];
+          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('circus', 'circus', sport), getEventsByProviderAndBookAndSport('goldenvegas', 'goldenvegas', sport)];
           _context3.next = 3;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = eventMapper.map(values);
