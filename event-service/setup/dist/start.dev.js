@@ -4,6 +4,8 @@ var betconstruct = require('../providers/betconstruct/betconstruct');
 
 var magicbetting = require('../providers/magicbetting/magicbetting');
 
+var starcasino = require('../providers/starcasino/starcasino');
+
 betconstruct.openWebSocket();
 magicbetting.open();
 

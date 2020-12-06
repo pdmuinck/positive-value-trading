@@ -1,4 +1,5 @@
 const axios = require('axios')
+const leagues = require('./resources/leagues.json')
 
 const sports = {
     "FOOTBALL": 1
@@ -7,7 +8,12 @@ const sports = {
 const scooore = {}
 
 scooore.getEventsForBookAndSport = async (book, sport) => {
-    return axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/18340.1-0.json').then(response => transform(response.data.markets)).catch(error => null)
+    const requests = leagues.map(league => axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(response => transform(response.data.markets)).catch(error => null))
+    let results
+    await Promise.all(requests).then(values => {
+        results = values.flat()
+    })
+    return results
 }
 
 function transform(events) {

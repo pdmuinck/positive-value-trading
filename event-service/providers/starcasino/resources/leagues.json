@@ -1,0 +1,46 @@
+[
+    {
+        "id": 566,
+        "name": "CHAMPIONS_LEAGUE"
+    },
+    {
+        "id": 538,
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": 539,
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": 1843,
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": 1844,
+        "name": "LEAGUE_TWO"
+    },
+    {
+        "id": 545,
+        "name": "LA_LIGA"
+    },
+    {
+        "id": 541,
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": 543,
+        "name": "SERIE_A"
+    },
+    {
+        "id": 548,
+        "name": "LIGUE_1"
+    },
+    {
+        "id": 1957,
+        "name": "EREDIVISIE"
+    },
+    {
+        "id": 557,
+        "name": "JUPILER_PRO_LEAGUE"
+    }
+]

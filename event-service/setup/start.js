@@ -1,5 +1,6 @@
 const betconstruct = require('../providers/betconstruct/betconstruct')
 const magicbetting = require('../providers/magicbetting/magicbetting')
+const starcasino = require('../providers/starcasino/starcasino')
 
 betconstruct.openWebSocket()
 magicbetting.open()

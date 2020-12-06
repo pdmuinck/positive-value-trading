@@ -1,0 +1,30 @@
+[
+    {
+        "id": 23104,
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": 18340,
+        "name": "JUPILER_PRO_LEAGUE"
+    },
+    {
+        "id": 23651,
+        "name": "LIGUE_1"
+    },
+    {
+        "id": 23738,
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": 5712,
+        "name": "SERIE_A"
+    },
+    {
+        "id": 23127,
+        "name": "LA_LIGA"
+    },
+    {
+        "id": 21463,
+        "name": "EREDIVISIE"
+    }
+]

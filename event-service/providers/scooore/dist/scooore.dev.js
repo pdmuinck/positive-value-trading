@@ -2,23 +2,35 @@
 
 var axios = require('axios');
 
+var leagues = require('./resources/leagues.json');
+
 var sports = {
   "FOOTBALL": 1
 };
 var scooore = {};
 
 scooore.getEventsForBookAndSport = function _callee(book, sport) {
+  var requests, results;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          return _context.abrupt("return", axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/18340.1-0.json').then(function (response) {
-            return transform(response.data.markets);
-          })["catch"](function (error) {
-            return null;
+          requests = leagues.map(function (league) {
+            return axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(function (response) {
+              return transform(response.data.markets);
+            })["catch"](function (error) {
+              return null;
+            });
+          });
+          _context.next = 3;
+          return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
+            results = values.flat();
           }));
 
-        case 1:
+        case 3:
+          return _context.abrupt("return", results);
+
+        case 4:
         case "end":
           return _context.stop();
       }
