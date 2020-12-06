@@ -9,7 +9,7 @@ const api = {}
 setTimeout(() => {
     console.log('About to get events')
     getEvents('FOOTBALL')
-}, 10000)
+}, 1* 60000)
 
 
 setInterval(async () => {
@@ -29,7 +29,11 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport),
         getEventsByProviderAndBookAndSport('bet90', 'bet90', sport),
         getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport),
-        getEventsByProviderAndBookAndSport('ladbrokes', 'ladbrokes', sport)
+        getEventsByProviderAndBookAndSport('ladbrokes', 'ladbrokes', sport),
+        getEventsByProviderAndBookAndSport('magicbetting', 'magicbetting', sport),
+        getEventsByProviderAndBookAndSport('meridian', 'meridian', sport),
+        getEventsByProviderAndBookAndSport('pinnacle', 'pinnacle', sport),
+        getEventsByProviderAndBookAndSport('scooore', 'scooore', sport)
     ]
 
     let results

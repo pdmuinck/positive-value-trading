@@ -16,7 +16,7 @@ var api = {};
 setTimeout(function () {
   console.log('About to get events');
   getEvents('FOOTBALL');
-}, 10000);
+}, 1 * 60000);
 setInterval(function _callee() {
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
@@ -54,7 +54,7 @@ function getEvents(sport) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('ladbrokes', 'ladbrokes', sport)];
+          requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('ladbrokes', 'ladbrokes', sport), getEventsByProviderAndBookAndSport('magicbetting', 'magicbetting', sport), getEventsByProviderAndBookAndSport('meridian', 'meridian', sport), getEventsByProviderAndBookAndSport('pinnacle', 'pinnacle', sport), getEventsByProviderAndBookAndSport('scooore', 'scooore', sport)];
           _context3.next = 3;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = eventMapper.map(values);

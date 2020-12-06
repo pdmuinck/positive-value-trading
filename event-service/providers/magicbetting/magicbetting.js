@@ -27,11 +27,13 @@ magicbetting.open = () => {
 
 
 magicbetting.getEventsForBookAndSport = async (sport) => {
-    return Object.values(cache.mget(cache.get('EVENTS')))
+    if(cache.get('EVENTS')) {
+        return Object.values(cache.mget(cache.get('EVENTS')))
+    }
 }
 
 setInterval(async () => {
-    findApi()
+    if(!cache.get('EVENTS')) findApi()
 }, 20000)
 
 async function findApi() {

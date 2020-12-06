@@ -49,9 +49,14 @@ magicbetting.getEventsForBookAndSport = function _callee(sport) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
+          if (!cache.get('EVENTS')) {
+            _context2.next = 2;
+            break;
+          }
+
           return _context2.abrupt("return", Object.values(cache.mget(cache.get('EVENTS'))));
 
-        case 1:
+        case 2:
         case "end":
           return _context2.stop();
       }
@@ -64,7 +69,7 @@ setInterval(function _callee2() {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          findApi();
+          if (!cache.get('EVENTS')) findApi();
 
         case 1:
         case "end":
