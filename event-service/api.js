@@ -33,7 +33,9 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('magicbetting', 'magicbetting', sport),
         getEventsByProviderAndBookAndSport('meridian', 'meridian', sport),
         getEventsByProviderAndBookAndSport('pinnacle', 'pinnacle', sport),
-        getEventsByProviderAndBookAndSport('scooore', 'scooore', sport)
+        getEventsByProviderAndBookAndSport('scooore', 'scooore', sport),
+        getEventsByProviderAndBookAndSport('starcasino', 'starcasino', sport),
+        getEventsByProviderAndBookAndSport('stanleybet', 'stanleybet', sport),
     ]
 
     let results

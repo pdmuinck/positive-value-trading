@@ -29,11 +29,8 @@ starWS.on('message', function incoming(data) {
   var bla = JSON.parse(data);
 
   if (bla.data.data) {
-    console.log('received data message');
     var events = bla.data.data.game;
-    var eventIds = Object.keys(bla.data.data.game);
     Object.entries(events).forEach(function (entry) {
-      console.log('insert event id: ' + entry[0]);
       var event = entry[1];
       cache.set(entry[0], {
         id: event.id,

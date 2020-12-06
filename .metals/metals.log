@@ -148,3 +148,30 @@ INFO: Unsupported notification method: $/setTraceNotification
 2020.12.05 07:34:59 WARN  Build server is not auto-connectable.
 2020.12.05 07:34:59 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2020.12.05 07:52:24 INFO  shutting down Metals
+2020.12.05 07:54:17 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.05 07:54:17 INFO  time: initialize in 0.73s
+2020.12.05 07:54:18 WARN  Build server is not auto-connectable.
+2020.12.05 07:54:18 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+dec 05, 2020 9:12:01 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.12.05 11:56:57 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.05 11:56:59 INFO  time: initialize in 1.64s
+2020.12.05 11:57:04 WARN  Build server is not auto-connectable.
+2020.12.05 11:57:04 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.12.05 12:08:24 INFO  shutting down Metals
+2020.12.05 12:10:21 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.05 12:10:22 INFO  time: initialize in 1.09s
+2020.12.05 12:10:24 WARN  Build server is not auto-connectable.
+2020.12.05 12:10:24 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.12.05 20:56:43 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.05 20:56:44 INFO  time: initialize in 1.05s
+2020.12.05 20:56:49 WARN  Build server is not auto-connectable.
+2020.12.05 20:56:49 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.12.06 07:23:35 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.06 07:23:36 INFO  time: initialize in 1.21s
+2020.12.06 07:23:43 WARN  Build server is not auto-connectable.
+2020.12.06 07:23:43 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.12.06 12:22:40 INFO  Started: Metals version 0.9.7 in workspace 'C:\RADWorkspace\personal\data-ingest' for client vscode.
+2020.12.06 12:22:42 INFO  time: initialize in 1.47s
+2020.12.06 12:22:48 WARN  Build server is not auto-connectable.
+2020.12.06 12:22:48 WARN  no build tool detected in workspace 'C:\RADWorkspace\personal\data-ingest'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 

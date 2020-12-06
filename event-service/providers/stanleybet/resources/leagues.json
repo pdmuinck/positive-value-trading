@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": 42,
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": 33,
+        "name": "SERIE_A"
+    },
+    {
+        "id": 36,
+        "name": "LA_LIGA"
+    },
+    {
+        "id": 4,
+        "name": "LIGUE_1"
+    },
+    {
+        "id": 38,
+        "name": "JUPILER_PRO_LEAGUE"
+    },
+    {
+        "id": 39,
+        "name": "EREDIVISIE"
+    },
+    {
+        "id": 2,
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": 3,
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": 84,
+        "name": "LEAGUE_TWO"
+    }
+]

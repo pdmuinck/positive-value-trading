@@ -1,23 +1,17 @@
 const axios = require('axios')
 
-
-
 const options = {
     headers: {
         'X-API-KEY': 'CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R'
     }
 }
-
-
 const requests = {
     'FOOTBALL': {
         id: 29
     },
-    
     'BASKETBALL': {
         id: 4 
     },
-
     'AMERICAN_FOOTBALL': {
         id: 15
     },

@@ -4,6 +4,7 @@ const ttlSeconds = 60 * 1 * 1
 const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 const CDP = require('chrome-remote-interface')
 const chromeLauncher = require('chrome-launcher');
+const magicbetting = require("../../../event-service/providers/magicbetting/magicbetting")
 
 async function launchChrome() {
     return await chromeLauncher.launch({
@@ -19,27 +20,10 @@ async function launchChrome() {
 const event = {}
 
 
-event.getBySport = async (sport) => {
+event.getEventsForBookAndSport = async (book, sport) => {
     let circusWS = new WebSocket(cache.get('API-URL'), null, {rejectUnauthorized: false})
 
-    
-
-
     circusWS.on('open', function open() {
-        //circusWS.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:10000,10000\n\n\u0000"]))
-        /*
-            circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/user/request-response\ndestination:/user/request-response\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/user/error\ndestination:/user/error\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/systemconfiguration/paymentMethods\ndestination:/api/systemconfiguration/paymentMethods\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/sports/homepage\ndestination:/api/sports/homepage\nlocale:nl\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/all-sports-with-events\ndestination:/api/items/list/all-sports-with-events\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/cms-coupons-homepage\ndestination:/api/items/list/cms-coupons-homepage\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/nl/promotionlocations/458\ndestination:/api/nl/promotionlocations/458\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/match-sports-with-live-match-events\ndestination:/api/items/list/match-sports-with-live-match-events\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/match-sports-with-future-match-events\ndestination:/api/items/list/match-sports-with-future-match-events\n\n\u0000"]))
-        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/systeminformation/initialisation\ndestination:/api/systeminformation/initialisation\n\n\u0000"]))
-        
-        */
 
         // lists the event together with market ids
         
@@ -76,6 +60,10 @@ event.getBySport = async (sport) => {
 
     return cache.get('test')
 
+}
+
+magicbetting.open = () => {
+    console.log('open magicbetting')
 }
 
 setInterval(async () => {

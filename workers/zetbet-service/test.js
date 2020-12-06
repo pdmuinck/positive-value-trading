@@ -1,6 +1,5 @@
 const axios = require('axios')
 const parser = require('node-html-parser')
-const circularJson = require('circular-json')
 
 /*
 axios.get('https://www.zebet.be/en/competition/6674-champions_league').then(response => console.log(parse(response.data)))

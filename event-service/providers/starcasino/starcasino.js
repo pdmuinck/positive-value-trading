@@ -14,11 +14,8 @@ starWS.on('open', function open() {
 starWS.on('message', function incoming(data) {
     const bla = JSON.parse(data)
     if(bla.data.data) {
-        console.log('received data message')
         const events = bla.data.data.game
-        const eventIds = Object.keys(bla.data.data.game)
         Object.entries(events).forEach(entry => {
-            console.log('insert event id: ' + entry[0])
             const event = entry[1]
             cache.set(entry[0], {id: event.id, participants: [{id: event.team1_id, name: event.team1_name}, {id: event.team2_id, name: event.team2_name}]})
         })
