@@ -1,4 +1,5 @@
 const axios = require('axios')
+const leagues = require('./resources/leagues.json')
 const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1
 const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
@@ -63,8 +64,9 @@ const requests = {
 
 const event = {}
 
-event.getParticipants = async (league) => {
-    const url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + league + '/matchups'
+event.getParticipantsForCompetition = async (competition) => {
+    const id = leagues.filter(league => league[competition.toUpperCase()]).id
+    const url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + id + '/matchups'
     return await axios.get(url, options).then(response => response.data.map(event => event.participants.map(participant => {return {id: participant.name.toUpperCase(), name: participant.name.toUpperCase()}}))).catch(error => null)
 }
 

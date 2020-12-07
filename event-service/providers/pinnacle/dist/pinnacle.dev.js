@@ -2,6 +2,8 @@
 
 var axios = require('axios');
 
+var leagues = require('./resources/leagues.json');
+
 var NodeCache = require('node-cache');
 
 var ttlSeconds = 60 * 1 * 1;
@@ -67,14 +69,17 @@ var requests = {
 };
 var event = {};
 
-event.getParticipants = function _callee(league) {
-  var url;
+event.getParticipantsForCompetition = function _callee(competition) {
+  var id, url;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + league + '/matchups';
-          _context.next = 3;
+          id = leagues.filter(function (league) {
+            return league[competition.toUpperCase()];
+          }).id;
+          url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + id + '/matchups';
+          _context.next = 4;
           return regeneratorRuntime.awrap(axios.get(url, options).then(function (response) {
             return response.data.map(function (event) {
               return event.participants.map(function (participant) {
@@ -88,10 +93,10 @@ event.getParticipants = function _callee(league) {
             return null;
           }));
 
-        case 3:
+        case 4:
           return _context.abrupt("return", _context.sent);
 
-        case 4:
+        case 5:
         case "end":
           return _context.stop();
       }

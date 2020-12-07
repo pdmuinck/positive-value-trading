@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1980,
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": 1977,
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": 1957,
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": 1958,
+        "name": "LEAGUE_TWO"
+    },
+    {
+        "id": 2436,
+        "name": "SERIE_A"
+    },
+    {
+        "id": 2438,
+        "name": "SERIE_B"
+    },
+    {
+        "id": 2196,
+        "name": "LA_LIGA"
+    },
+    {
+        "id": 2432,
+        "name": "LA_LIGA_2"
+    },
+    {
+        "id": 1817,
+        "name": "JUPILER_PRO_LEAGUE"
+    },
+    {
+        "id": 1842,
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": 1843,
+        "name": "BUNDESLIGA_2"
+    },
+    {
+        "id": 2036,
+        "name": "LIGUE_1"
+    },
+    {
+        "id": 2037,
+        "name": "LIGUE_2"
+    },
+    {
+        "id": 1928,
+        "name": "EREDIVISIE"
+    }
+]
