@@ -1,4 +1,8 @@
 const axios = require('axios')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 const options = {
     headers: {
@@ -65,7 +69,10 @@ event.getParticipants = async (league) => {
 }
 
 event.getEventsForBookAndSport = async (book, sport) => {
-    return axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(response => transform(response.data)).catch(error => null)
+    if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
+    const events = await axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(response => transform(response.data)).catch(error => null)
+    eventCache.set('EVENTS', events)
+    return events
 }
 
 function transform(events) {

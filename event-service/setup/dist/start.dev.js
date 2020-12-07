@@ -8,16 +8,27 @@ var starcasino = require('../providers/starcasino/starcasino');
 
 var zetbet = require('../providers/zetbet/zetbet');
 
-betconstruct.openWebSocket();
-magicbetting.open();
-zetbet.open();
+module.exports = function _callee(server) {
+  return regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          //await zetbet.open()
+          server.listen('3000', function (error) {
+            betconstruct.openWebSocket();
+            magicbetting.open();
 
-module.exports = function (server) {
-  server.listen('3000', function (error) {
-    if (error) {
-      console.error('ERROR - Unable to start server.');
-    } else {
-      console.info("INFO - Server started on");
+            if (error) {
+              console.error('ERROR - Unable to start server.');
+            } else {
+              console.info("INFO - Server started on");
+            }
+          });
+
+        case 1:
+        case "end":
+          return _context.stop();
+      }
     }
   });
 };

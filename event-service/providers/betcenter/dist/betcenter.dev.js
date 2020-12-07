@@ -4,6 +4,14 @@ var axios = require('axios');
 
 var leagues = require('./leagues');
 
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
 var sports = {
   "FOOTBALL": 1,
   "TENNIS": 2,
@@ -38,6 +46,14 @@ betcenter.getEventsForBookAndSport = function _callee(book, sport) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          if (!eventCache.get('EVENTS')) {
+            _context.next = 2;
+            break;
+          }
+
+          return _context.abrupt("return", eventCache.get('EVENTS'));
+
+        case 2:
           requests = leagues.map(function (league) {
             var betcenterPayload = {
               "leagueIds": [league.id],
@@ -53,15 +69,16 @@ betcenter.getEventsForBookAndSport = function _callee(book, sport) {
             });
           });
           events = [];
-          _context.next = 4;
+          _context.next = 6;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             events = values.flat();
+            eventCache.set('EVENTS', events);
           }));
 
-        case 4:
+        case 6:
           return _context.abrupt("return", events);
 
-        case 5:
+        case 7:
         case "end":
           return _context.stop();
       }

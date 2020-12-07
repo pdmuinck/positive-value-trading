@@ -4,6 +4,14 @@ var axios = require("axios");
 
 var leagues = require('./resources/leagues.json');
 
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
 var bla = new Date();
 var dd = String(bla.getDate()).padStart(2, "0");
 var mm = String(bla.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -65,17 +73,32 @@ event.getParticipants = function _callee(leagueId) {
 };
 
 event.getEventsForBookAndSport = function _callee2(book, sport) {
+  var events;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          return _context2.abrupt("return", resolve(Object.entries(requests).filter(function (pair) {
+          if (!eventCache.get('EVENTS')) {
+            _context2.next = 2;
+            break;
+          }
+
+          return _context2.abrupt("return", eventCache.get('EVENTS'));
+
+        case 2:
+          _context2.next = 4;
+          return regeneratorRuntime.awrap(resolve(Object.entries(requests).filter(function (pair) {
             return sport.toUpperCase() === pair[0];
           }).map(function (pair) {
             return createRequest(pair[1]);
           })));
 
-        case 1:
+        case 4:
+          events = _context2.sent;
+          eventCache.set('EVENTS', events);
+          return _context2.abrupt("return", events);
+
+        case 7:
         case "end":
           return _context2.stop();
       }

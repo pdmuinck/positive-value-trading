@@ -2,6 +2,14 @@
 
 var axios = require('axios');
 
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
 var options = {
   headers: {
     'X-API-KEY': 'CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R'
@@ -92,17 +100,32 @@ event.getParticipants = function _callee(league) {
 };
 
 event.getEventsForBookAndSport = function _callee2(book, sport) {
+  var events;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          return _context2.abrupt("return", axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(function (response) {
+          if (!eventCache.get('EVENTS')) {
+            _context2.next = 2;
+            break;
+          }
+
+          return _context2.abrupt("return", eventCache.get('EVENTS'));
+
+        case 2:
+          _context2.next = 4;
+          return regeneratorRuntime.awrap(axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(function (response) {
             return transform(response.data);
           })["catch"](function (error) {
             return null;
           }));
 
-        case 1:
+        case 4:
+          events = _context2.sent;
+          eventCache.set('EVENTS', events);
+          return _context2.abrupt("return", events);
+
+        case 7:
         case "end":
           return _context2.stop();
       }

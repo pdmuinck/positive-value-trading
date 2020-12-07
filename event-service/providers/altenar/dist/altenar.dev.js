@@ -1,0 +1,66 @@
+"use strict";
+
+var axios = require('axios');
+
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
+var altenar = {};
+var sports = {
+  "FOOTBALL": 1
+};
+
+altenar.getEventsForBookAndSport = function _callee(book, sport) {
+  var events;
+  return regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          if (!eventCache.get('EVENTS')) {
+            _context.next = 2;
+            break;
+          }
+
+          return _context.abrupt("return", eventCache.get('EVENTS'));
+
+        case 2:
+          _context.next = 4;
+          return regeneratorRuntime.awrap(axios.get('https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-120&langId=1&skinName=' + book + '&configId=1&culture=en&countryCode=BE&deviceType=Mobile&numformat=en&sportids={sportId}&categoryids=0&group=AllEvents&period=periodall&withLive=true&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A28%3A00.000Z'.replace('{sportId}', sports[sport.toUpperCase()])).then(function (response) {
+            return parse(response.data.Result.Items[0].Events);
+          })["catch"](function (error) {
+            return null;
+          }));
+
+        case 4:
+          events = _context.sent;
+          eventCache.set('EVENTS', events);
+          return _context.abrupt("return", events);
+
+        case 7:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+};
+
+function parse(events) {
+  return events.map(function (event) {
+    return {
+      id: event.Id,
+      participants: event.Competitors.map(function (competitor) {
+        return {
+          id: competitor.Name,
+          name: competitor.Name
+        };
+      })
+    };
+  });
+}
+
+module.exports = altenar;

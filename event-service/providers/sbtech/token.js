@@ -8,8 +8,7 @@ const tokenCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds *
 
 const token = {}
 
-token.getToken = async (book, bookmakers) => {
-
+async function getToken(book, bookmakers) {
     const token = tokenCache.get(book.toUpperCase())
 
     if(!token) {
@@ -31,13 +30,19 @@ token.getToken = async (book, bookmakers) => {
             token = values[0]
         })
 
-        tokenCache.set(book.toUpperCase(), token)
-    
-        return token
+        if(token) {
+            tokenCache.set(book.toUpperCase(), token)
+            return token
+        } else {
+            getToken(book, bookmakers)
+        }
     } else {
         return token
     }
+}
 
+token.getToken = async (book, bookmakers) => {
+    return getToken(book, bookmakers)
 }
 
 module.exports = token

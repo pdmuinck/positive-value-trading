@@ -50,13 +50,16 @@ magicbetting.getEventsForBookAndSport = function _callee(sport) {
       switch (_context2.prev = _context2.next) {
         case 0:
           if (!cache.get('EVENTS')) {
-            _context2.next = 2;
+            _context2.next = 4;
             break;
           }
 
           return _context2.abrupt("return", Object.values(cache.mget(cache.get('EVENTS'))));
 
-        case 2:
+        case 4:
+          return _context2.abrupt("return", []);
+
+        case 5:
         case "end":
           return _context2.stop();
       }
@@ -69,7 +72,9 @@ setInterval(function _callee2() {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          if (!cache.get('EVENTS')) findApi();
+          if (!cache.get('EVENTS')) {
+            findApi();
+          }
 
         case 1:
         case "end":
@@ -77,7 +82,7 @@ setInterval(function _callee2() {
       }
     }
   });
-}, 20000);
+}, 10000);
 
 function findApi() {
   var chrome, protocol, Network, Page;
@@ -105,8 +110,6 @@ function findApi() {
           _context4.next = 11;
           return regeneratorRuntime.awrap(Network.webSocketCreated(function (params) {
             if (params.url.includes('magicbetting')) {
-              console.log('found api');
-              console.log('create websocket');
               websocket = new WebSocket(params.url, null, {
                 rejectUnauthorized: false
               });
@@ -188,8 +191,6 @@ function findApi() {
     }
   });
 }
-
-function cleanMessage(message) {}
 
 magicbetting.getBetOffersByEventId = function _callee3(eventId) {
   return regeneratorRuntime.async(function _callee3$(_context5) {

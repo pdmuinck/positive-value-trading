@@ -2,6 +2,9 @@ const axios = require('axios')
 const bookmakers = require('./bookmakers')
 const Token = require('./token')
 const leagues = require('./leagues.json')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 
 const sportMap = {
     "FOOTBALL": "1", // soccer
@@ -36,7 +39,10 @@ sbtech.getBetOffersForBookAndEventId = async(book, eventId) => {
         }
     }
     const result = await axios.post(bookmakers[book.toUpperCase()].oddsUrl, sbtechPayload, headers).then(res => parse(book.toUpperCase(), res.data.markets.filter(market => market.eventId === eventId))).catch(error => console.log(error))
+    if(result) eventCache.set('EVENTS', result)
     return result
+    
+
 }
 
 sbtech.getParticipantsForCompetition = async (book, competition) => {
@@ -56,28 +62,19 @@ sbtech.getParticipantsForCompetition = async (book, competition) => {
 }
 
 sbtech.getEventsForBookAndSport = async (book, sports) => {
-    const token = await Token.getToken(book, bookmakers)
-    
-    let requests = []
-
-    if(sports && Array.isArray(sports)) {
-        sports.forEach(sport => {
-            const axiosRequests = createRequest(book, sportMap[sport.toUpperCase()], token)
-            axiosRequests.forEach(req => requests.push(req))
+    if(!eventCache.get('EVENTS')) {
+        const token = await Token.getToken(book, bookmakers)
+        if(!token) return 
+        const requests = createRequest(book, sportMap[sports.toUpperCase()], token)
+        let events
+        await Promise.all(requests).then((values) => {
+            events = values.flat()
+            eventCache.set('EVENTS', events)
         })
-    } else if(sports) {
-        requests = createRequest(book, sportMap[sports.toUpperCase()], token)
+        return events
     } else {
-        Object.keys(sportMap).forEach(key => {
-            requests = createRequest(book, sportMap[key], token)
-        })
+        return eventCache.get('EVENTS')
     }
-
-    let events
-    await Promise.all(requests).then((values) => {
-        events = values
-    })
-    return events.flat()
 }
 
 function cleanBetOption(outcome) {

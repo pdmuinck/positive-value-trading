@@ -1,5 +1,9 @@
 const axios = require("axios")
 const leagues = require('./resources/leagues.json')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 const bla = new Date()
 const dd = String(bla.getDate()).padStart(2, "0");
@@ -40,7 +44,10 @@ event.getParticipants = async (leagueId) => {
 }
 
 event.getEventsForBookAndSport = async (book, sport) => {
-    return resolve(Object.entries(requests).filter(pair => sport.toUpperCase() === pair[0]).map(pair => createRequest(pair[1])))
+    if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
+    const events = await resolve(Object.entries(requests).filter(pair => sport.toUpperCase() === pair[0]).map(pair => createRequest(pair[1])))
+    eventCache.set('EVENTS', events)
+    return events
 }
 
 function createRequest(url) {

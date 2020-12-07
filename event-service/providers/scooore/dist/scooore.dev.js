@@ -4,6 +4,14 @@ var axios = require('axios');
 
 var leagues = require('./resources/leagues.json');
 
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
 var sports = {
   "FOOTBALL": 1
 };
@@ -15,6 +23,14 @@ scooore.getEventsForBookAndSport = function _callee(book, sport) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          if (!eventCache.get('EVENTS')) {
+            _context.next = 2;
+            break;
+          }
+
+          return _context.abrupt("return", eventCache.get('EVENTS'));
+
+        case 2:
           requests = leagues.map(function (league) {
             return axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(function (response) {
               return transform(response.data.markets);
@@ -22,15 +38,16 @@ scooore.getEventsForBookAndSport = function _callee(book, sport) {
               return null;
             });
           });
-          _context.next = 3;
+          _context.next = 5;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = values.flat();
+            eventCache.set('EVENTS', results);
           }));
 
-        case 3:
+        case 5:
           return _context.abrupt("return", results);
 
-        case 4:
+        case 6:
         case "end":
           return _context.stop();
       }

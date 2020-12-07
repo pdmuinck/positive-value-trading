@@ -13,36 +13,17 @@ var eventCache = new NodeCache({
   useClones: false
 });
 var api = {};
-setTimeout(function () {
-  console.log('About to get events');
-  getEvents('FOOTBALL');
-}, 1 * 60000);
-setInterval(function _callee() {
+
+api.getEventsBySport = function _callee(sport) {
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log('About to get events');
-          getEvents('FOOTBALL');
-
-        case 2:
-        case "end":
-          return _context.stop();
-      }
-    }
-  });
-}, 5 * 60000);
-
-api.getEventsBySport = function _callee2(sport) {
-  return regeneratorRuntime.async(function _callee2$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          return _context2.abrupt("return", eventCache.get(sport.toUpperCase()));
+          return _context.abrupt("return", getEvents(sport));
 
         case 1:
         case "end":
-          return _context2.stop();
+          return _context.stop();
       }
     }
   });
@@ -50,38 +31,61 @@ api.getEventsBySport = function _callee2(sport) {
 
 function getEvents(sport) {
   var requests, results;
-  return regeneratorRuntime.async(function getEvents$(_context3) {
+  return regeneratorRuntime.async(function getEvents$(_context2) {
     while (1) {
-      switch (_context3.prev = _context3.next) {
+      switch (_context2.prev = _context2.next) {
         case 0:
+          if (!eventCache.get(sport.toUpperCase())) {
+            _context2.next = 2;
+            break;
+          }
+
+          return _context2.abrupt("return", eventCache.get(sport.toUpperCase()));
+
+        case 2:
           requests = [getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport), getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport), getEventsByProviderAndBookAndSport('altenar', 'goldenpalace', sport), getEventsByProviderAndBookAndSport('betconstruct', 'circus', sport), getEventsByProviderAndBookAndSport('bet90', 'bet90', sport), getEventsByProviderAndBookAndSport('betcenter', 'betcenter', sport), getEventsByProviderAndBookAndSport('ladbrokes', 'ladbrokes', sport), getEventsByProviderAndBookAndSport('magicbetting', 'magicbetting', sport), getEventsByProviderAndBookAndSport('meridian', 'meridian', sport), getEventsByProviderAndBookAndSport('pinnacle', 'pinnacle', sport), getEventsByProviderAndBookAndSport('scooore', 'scooore', sport), getEventsByProviderAndBookAndSport('starcasino', 'starcasino', sport), getEventsByProviderAndBookAndSport('stanleybet', 'stanleybet', sport)];
-          _context3.next = 3;
+          _context2.next = 5;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = eventMapper.map(values);
           }));
 
-        case 3:
-          eventCache.set(sport.toUpperCase(), results);
-          return _context3.abrupt("return", results);
-
         case 5:
+          eventCache.set(sport.toUpperCase(), results);
+          return _context2.abrupt("return", results);
+
+        case 7:
         case "end":
-          return _context3.stop();
+          return _context2.stop();
       }
     }
   });
 }
 
-api.getBetOffers = function _callee3(provider, book, eventId) {
+api.getBetOffers = function _callee2(provider, book, eventId) {
   var providerApi;
+  return regeneratorRuntime.async(function _callee2$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          providerApi = require('./providers/' + provider + '/' + provider + '.js');
+          return _context3.abrupt("return", providerApi.getBetOffersForBookAndEventId(book, eventId));
+
+        case 2:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  });
+};
+
+api.getEventsByProviderAndBookAndSport = function _callee3(provider, book, sport) {
   return regeneratorRuntime.async(function _callee3$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
         case 0:
-          providerApi = require('./providers/' + provider + '/' + provider + '.js');
-          return _context4.abrupt("return", providerApi.getBetOffersForBookAndEventId(book, eventId));
+          return _context4.abrupt("return", getEventsByProviderAndBookAndSport(provider, book, sport));
 
-        case 2:
+        case 1:
         case "end":
           return _context4.stop();
       }
@@ -89,12 +93,12 @@ api.getBetOffers = function _callee3(provider, book, eventId) {
   });
 };
 
-api.getEventsByProviderAndBookAndSport = function _callee4(provider, book, sport) {
+api.getParticipantsForProviderAndBookAndCompetition = function _callee4(provider, book, competition) {
   return regeneratorRuntime.async(function _callee4$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
-          return _context5.abrupt("return", getEventsByProviderAndBookAndSport(provider, book, sport));
+          return _context5.abrupt("return", getParticipantsForProviderAndBookAndCompetition(provider, book, competition));
 
         case 1:
         case "end":
@@ -104,14 +108,22 @@ api.getEventsByProviderAndBookAndSport = function _callee4(provider, book, sport
   });
 };
 
-api.getParticipantsForProviderAndBookAndCompetition = function _callee5(provider, book, competition) {
+api.getParticipantsByCompetition = function _callee5(competition) {
+  var requests, results;
   return regeneratorRuntime.async(function _callee5$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
-          return _context6.abrupt("return", getParticipantsForProviderAndBookAndCompetition(provider, book, competition));
+          requests = [getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition), getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition)];
+          _context6.next = 3;
+          return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
+            results = mapper.map(values);
+          }));
 
-        case 1:
+        case 3:
+          return _context6.abrupt("return", results);
+
+        case 4:
         case "end":
           return _context6.stop();
       }
@@ -119,42 +131,19 @@ api.getParticipantsForProviderAndBookAndCompetition = function _callee5(provider
   });
 };
 
-api.getParticipantsByCompetition = function _callee6(competition) {
-  var requests, results;
-  return regeneratorRuntime.async(function _callee6$(_context7) {
+function getParticipantsForProviderAndBookAndCompetition(provider, book, competition) {
+  var providerApi;
+  return regeneratorRuntime.async(function getParticipantsForProviderAndBookAndCompetition$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
         case 0:
-          requests = [getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition), getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition)];
-          _context7.next = 3;
-          return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
-            results = mapper.map(values);
-          }));
-
-        case 3:
-          return _context7.abrupt("return", results);
-
-        case 4:
-        case "end":
-          return _context7.stop();
-      }
-    }
-  });
-};
-
-function getParticipantsForProviderAndBookAndCompetition(provider, book, competition) {
-  var providerApi;
-  return regeneratorRuntime.async(function getParticipantsForProviderAndBookAndCompetition$(_context8) {
-    while (1) {
-      switch (_context8.prev = _context8.next) {
-        case 0:
           providerApi = require('./providers/' + provider + '/' + provider + '.js');
-          _context8.next = 3;
+          _context7.next = 3;
           return regeneratorRuntime.awrap(providerApi.getParticipantsForCompetition(book, competition));
 
         case 3:
-          participants = _context8.sent;
-          return _context8.abrupt("return", {
+          participants = _context7.sent;
+          return _context7.abrupt("return", {
             provider: provider,
             book: book,
             competition: competition,
@@ -167,7 +156,7 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
 
         case 5:
         case "end":
-          return _context8.stop();
+          return _context7.stop();
       }
     }
   });
@@ -175,18 +164,18 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
 
 function getEventsByProviderAndBookAndSport(provider, book, sport) {
   var providerApi, events;
-  return regeneratorRuntime.async(function getEventsByProviderAndBookAndSport$(_context9) {
+  return regeneratorRuntime.async(function getEventsByProviderAndBookAndSport$(_context8) {
     while (1) {
-      switch (_context9.prev = _context9.next) {
+      switch (_context8.prev = _context8.next) {
         case 0:
           providerApi = require('./providers/' + provider + '/' + provider + '.js');
-          _context9.next = 3;
+          _context8.next = 3;
           return regeneratorRuntime.awrap(providerApi.getEventsForBookAndSport(book, sport));
 
         case 3:
-          events = _context9.sent;
+          events = _context8.sent;
           console.log('found ' + provider);
-          return _context9.abrupt("return", {
+          return _context8.abrupt("return", {
             provider: provider,
             book: book,
             events: events
@@ -194,7 +183,7 @@ function getEventsByProviderAndBookAndSport(provider, book, sport) {
 
         case 6:
         case "end":
-          return _context9.stop();
+          return _context8.stop();
       }
     }
   });

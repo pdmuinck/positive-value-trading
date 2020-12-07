@@ -1,5 +1,9 @@
 const axios = require('axios')
 const leagues = require('./leagues')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 const sports = {
     "FOOTBALL": 1,
@@ -32,6 +36,7 @@ const betcenterHeaders = {
 const betcenter = {}
 
 betcenter.getEventsForBookAndSport = async(book, sport) => {
+    if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = leagues.map(league => {
         const betcenterPayload = {"leagueIds": [league.id], "sportId":sports[sport.toUpperCase()],"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
         return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games)).catch(error => null)
@@ -39,6 +44,7 @@ betcenter.getEventsForBookAndSport = async(book, sport) => {
     let events = []
     await Promise.all(requests).then(values => {
         events = values.flat()
+        eventCache.set('EVENTS', events)
     })
     return events
 }

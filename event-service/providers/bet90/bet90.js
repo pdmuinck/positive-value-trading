@@ -1,5 +1,9 @@
 const axios = require('axios')
 const parser = require('node-html-parser')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 const headers = {
     headers: {
@@ -15,6 +19,7 @@ const sports = {
 bet90 = {}
 
 bet90.getEventsForBookAndSport = async (book, sport) => {
+    if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = [
         //spain
         axios.post('https://bet90.be/Sports/SportLeagueGames', {leagueId:117, categoryId:32, sportId:sports[sport.toUpperCase()]}, headers).then(response => transform(response.data)).catch(error => console.log(error)),
@@ -42,6 +47,7 @@ bet90.getEventsForBookAndSport = async (book, sport) => {
 
     await Promise.all(requests).then(values => {
         results = values.flat()
+        eventCache.set('EVENTS', results)
     })
 
     return results

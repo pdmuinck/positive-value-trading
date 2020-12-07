@@ -10,7 +10,7 @@ var leagues = require('./resources/leagues.json');
 
 var NodeCache = require('node-cache');
 
-var ttlSeconds = 60 * 1 * 1;
+var ttlSeconds = 60 * 60 * 1;
 var eventCache = new NodeCache({
   stdTTL: ttlSeconds,
   checkperiod: ttlSeconds * 0.2,
@@ -37,31 +37,21 @@ JSON.safeStringify = function (obj) {
 var zetbet = {};
 
 zetbet.getEventsForBookAndSport = function _callee(book, sport) {
-  var eventIds, storedEventIds, foundKeys, notFoundKeys;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          eventIds = eventCache.get('EVENTS');
-          storedEventIds = eventDetailCache.keys();
-
-          if (!(eventIds && storedEventIds)) {
-            _context.next = 6;
+          if (!eventDetailCache.keys()) {
+            _context.next = 4;
             break;
           }
 
-          notFoundKeys = eventIds.filter(function (id) {
-            return !storedEventIds.includes(id);
-          });
-          foundKeys = eventIds.filter(function (id) {
-            return storedEventIds.includes(id);
-          });
-          return _context.abrupt("return", Object.values(eventDetailCache.mget(foundKeys)));
-
-        case 6:
           return _context.abrupt("return", Object.values(eventDetailCache.mget(eventDetailCache.keys())));
 
-        case 7:
+        case 4:
+          return _context.abrupt("return", []);
+
+        case 5:
         case "end":
           return _context.stop();
       }
@@ -80,28 +70,12 @@ function parse(data) {
   });
 }
 
-setTimeout(function () {
-  getEvents();
-}, 1 * 5000);
-
-function getEvents() {
-  var leagueRequests, eventIds, requests, results;
-  return regeneratorRuntime.async(function getEvents$(_context2) {
+function getEventDetails(eventIds) {
+  var requests, results;
+  return regeneratorRuntime.async(function getEventDetails$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          leagueRequests = leagues.map(function (league) {
-            return axios.get('https://www.zebet.be/en/competition/' + league.id).then(function (response) {
-              return parse(response.data);
-            });
-          });
-          _context2.next = 3;
-          return regeneratorRuntime.awrap(Promise.all(leagueRequests).then(function (values) {
-            eventIds = values.flat();
-            eventCache.set('EVENTS', eventIds);
-          }));
-
-        case 3:
           requests = eventIds.map(function (id) {
             if (!eventDetailCache.get(id)) {
               return axios.get('https://www.zebet.be' + id).then(function (response) {
@@ -112,18 +86,46 @@ function getEvents() {
             }
           });
           console.log('About to get events: ' + requests.length);
-          _context2.next = 7;
+          _context2.next = 4;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = values.flat();
             console.log('found zetbet events');
           }));
 
-        case 7:
+        case 4:
           return _context2.abrupt("return", results);
 
-        case 8:
+        case 5:
         case "end":
           return _context2.stop();
+      }
+    }
+  });
+}
+
+function getEventIds() {
+  var leagueRequests, eventIds;
+  return regeneratorRuntime.async(function getEventIds$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          leagueRequests = leagues.map(function (league) {
+            return axios.get('https://www.zebet.be/en/competition/' + league.id).then(function (response) {
+              return parse(response.data);
+            });
+          });
+          _context3.next = 3;
+          return regeneratorRuntime.awrap(Promise.all(leagueRequests).then(function (values) {
+            eventIds = values.flat();
+            eventCache.set('EVENTS', eventIds);
+          }));
+
+        case 3:
+          return _context3.abrupt("return", eventIds);
+
+        case 4:
+        case "end":
+          return _context3.stop();
       }
     }
   });
@@ -146,23 +148,48 @@ function parseBets(data) {
 }
 
 zetbet.getByIdEuroTierce = function _callee2(id) {
-  return regeneratorRuntime.async(function _callee2$(_context3) {
+  return regeneratorRuntime.async(function _callee2$(_context4) {
     while (1) {
-      switch (_context3.prev = _context3.next) {
+      switch (_context4.prev = _context4.next) {
         case 0:
-          return _context3.abrupt("return", axios.get('https://sports.eurotierce.be/nl/event/3326165-milan-ac-celtic-glasgow').then(function (response) {
+          return _context4.abrupt("return", axios.get('https://sports.eurotierce.be/nl/event/3326165-milan-ac-celtic-glasgow').then(function (response) {
             return parseEvent(response.data);
           }));
 
         case 1:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   });
 };
 
-zetbet.open = function () {};
+zetbet.open = function _callee3() {
+  var eventIds;
+  return regeneratorRuntime.async(function _callee3$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          console.log('Wait for zetbet');
+          _context5.next = 3;
+          return regeneratorRuntime.awrap(getEventIds());
+
+        case 3:
+          eventIds = _context5.sent;
+          console.log('zetbet event ids found: ' + eventIds.length);
+          _context5.next = 7;
+          return regeneratorRuntime.awrap(getEventDetails(eventIds));
+
+        case 7:
+          console.log('zetbet events found');
+
+        case 8:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  });
+};
 
 function parseEvent(data) {
   var root = parser.parse(data);

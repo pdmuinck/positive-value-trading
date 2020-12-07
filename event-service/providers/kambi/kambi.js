@@ -2,6 +2,10 @@ const axios = require('axios')
 const bookmakers = require('./bookmakers.json')
 const leagues = require('./leagues.json')
 const betOfferTypes = require('./betoffer-type.json')
+const NodeCache = require('node-cache')
+const ttlSeconds = 60 * 1 * 1
+const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 
 const requests = {
@@ -57,9 +61,20 @@ kambi.getParticipantsForCompetition = async (book, competition) => {
 }
 
 kambi.getEventsForBookAndSport = async (book, sports) => {
-    const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
-    if(!bookmakerInfo) throw new Error('Book not found: ' + book)
-    return resolve(Object.values(requests).map(url => createRequest(url, bookmakerInfo)))
+    if(!eventCache.get('EVENTS')) {
+        const bookmakerInfo = Object.entries(bookmakers).filter(pair => pair[0] === book.toUpperCase()).map(pair => pair[1])[0]
+        if(!bookmakerInfo) throw new Error('Book not found: ' + book)
+        const calls = Object.values(requests).map(url => createRequest(url, bookmakerInfo))
+        let events
+        await Promise.all(calls).then((values) => {
+            events = values.flat()
+            eventCache.set('EVENTS', events)
+        })
+        return events
+    } else {
+        return eventCache.get('EVENTS')
+    }
+
 }
 
 function getPricesFromBetOffer(betOffer) {
@@ -92,13 +107,6 @@ function transform(events) {
             name: participant.name}})}})
 }
 
-async function resolve(requests) {
-    let events
-    await Promise.all(requests).then((values) => {
-        events = values
-    })
-    return events.flat()
-}
 
 
 module.exports = kambi

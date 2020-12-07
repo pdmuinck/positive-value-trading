@@ -29,14 +29,18 @@ magicbetting.open = () => {
 magicbetting.getEventsForBookAndSport = async (sport) => {
     if(cache.get('EVENTS')) {
         return Object.values(cache.mget(cache.get('EVENTS')))
+    } else {
+        return []
     }
 }
 
 setInterval(async () => {
-    if(!cache.get('EVENTS')) findApi()
-}, 20000)
+    if(!cache.get('EVENTS')){ 
+        findApi()}
+}, 10000)
 
 async function findApi() {
+
     await chromeLauncher.killAll()
     const chrome = await launchChrome()
     
@@ -48,8 +52,6 @@ async function findApi() {
 
     await Network.webSocketCreated((params) => {
         if(params.url.includes('magicbetting')) {
-            console.log('found api')
-            console.log('create websocket')
             websocket = new WebSocket(params.url, null, {rejectUnauthorized: false})
             websocket.on('open', function open() {                
                 websocket.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/soccer-all-match-events-grouped-by-type\ndestination:/api/eventgroups/soccer-all-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
@@ -113,10 +115,6 @@ async function findApi() {
     await Page.enable()
     await Page.navigate({url: 'https://magicbetting.be/home'})
     await Page.loadEventFired()
-}
-
-function cleanMessage(message) {
-    
 }
 
 magicbetting.getBetOffersByEventId = async (eventId) => {

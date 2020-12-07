@@ -6,22 +6,12 @@ const eventCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds *
 
 const api = {}
 
-setTimeout(() => {
-    console.log('About to get events')
-    getEvents('FOOTBALL')
-}, 1* 60000)
-
-
-setInterval(async () => {
-    console.log('About to get events')
-    getEvents('FOOTBALL')
-}, 5 * 60000)
-
 api.getEventsBySport = async (sport) => {
-    return eventCache.get(sport.toUpperCase())
+    return getEvents(sport)
 }
 
 async function getEvents(sport) {
+    if(eventCache.get(sport.toUpperCase())) return eventCache.get(sport.toUpperCase())
     const requests = [
         getEventsByProviderAndBookAndSport('kambi', 'unibet_belgium', sport),
         getEventsByProviderAndBookAndSport('sbtech', 'betfirst', sport),
@@ -43,9 +33,7 @@ async function getEvents(sport) {
     await Promise.all(requests).then(values => {
         results = eventMapper.map(values)
     })
-
     eventCache.set(sport.toUpperCase(), results)
-
     return results
 }
 
