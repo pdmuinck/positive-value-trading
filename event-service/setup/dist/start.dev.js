@@ -17,6 +17,7 @@ module.exports = function _callee(server) {
           server.listen('3000', function (error) {
             betconstruct.openWebSocket();
             magicbetting.open();
+            starcasino.openWebSocket();
 
             if (error) {
               console.error('ERROR - Unable to start server.');

@@ -8,6 +8,7 @@ module.exports = async function(server) {
   server.listen('3000', (error) => {
     betconstruct.openWebSocket()
     magicbetting.open()
+    starcasino.openWebSocket()
       if (error) {
         console.error('ERROR - Unable to start server.')
       } else {
