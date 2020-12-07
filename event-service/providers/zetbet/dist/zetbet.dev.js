@@ -5,15 +5,22 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 var axios = require('axios');
 
 var parser = require('node-html-parser');
-/*
-axios.get('https://www.zebet.be/en/competition/6674-champions_league').then(response => console.log(parse(response.data)))
 
-function parse(data) {
-    const root = parser.parse(data)
-    return root.querySelectorAll('a').map(htmlElement => htmlElement.rawAttrs).filter(url => url.includes('event')).map(link => link.split('\n')[0].split('href=')[1].replace(/"/g, ''))
-}
-*/
+var leagues = require('./resources/leagues.json');
 
+var NodeCache = require('node-cache');
+
+var ttlSeconds = 60 * 1 * 1;
+var eventCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
+var eventDetailCache = new NodeCache({
+  stdTTL: ttlSeconds,
+  checkperiod: ttlSeconds * 0.2,
+  useClones: false
+});
 
 JSON.safeStringify = function (obj) {
   var indent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
@@ -29,18 +36,32 @@ JSON.safeStringify = function (obj) {
 
 var zetbet = {};
 
-zetbet.getById = function _callee(id) {
+zetbet.getEventsForBookAndSport = function _callee(book, sport) {
+  var eventIds, storedEventIds, foundKeys, notFoundKeys;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          return _context.abrupt("return", axios.get('https://www.zebet.be/en/event/wjaz1-fk_krasnodar_rennes').then(function (response) {
-            return parseBets(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }));
+          eventIds = eventCache.get('EVENTS');
+          storedEventIds = eventDetailCache.keys();
 
-        case 1:
+          if (!(eventIds && storedEventIds)) {
+            _context.next = 6;
+            break;
+          }
+
+          notFoundKeys = eventIds.filter(function (id) {
+            return !storedEventIds.includes(id);
+          });
+          foundKeys = eventIds.filter(function (id) {
+            return storedEventIds.includes(id);
+          });
+          return _context.abrupt("return", Object.values(eventDetailCache.mget(foundKeys)));
+
+        case 6:
+          return _context.abrupt("return", Object.values(eventDetailCache.mget(eventDetailCache.keys())));
+
+        case 7:
         case "end":
           return _context.stop();
       }
@@ -48,32 +69,89 @@ zetbet.getById = function _callee(id) {
   });
 };
 
-zetbet.getEventsForBookAndSport = function _callee2(book, sport) {
-  return regeneratorRuntime.async(function _callee2$(_context2) {
+function parse(data) {
+  var root = parser.parse(data);
+  return root.querySelectorAll('a').map(function (htmlElement) {
+    return htmlElement.rawAttrs;
+  }).filter(function (url) {
+    return url.includes('event');
+  }).map(function (link) {
+    return link.split('\n')[0].split('href=')[1].replace(/"/g, '');
+  });
+}
+
+setTimeout(function () {
+  getEvents();
+}, 1 * 5000);
+
+function getEvents() {
+  var leagueRequests, eventIds, requests, results;
+  return regeneratorRuntime.async(function getEvents$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
+          leagueRequests = leagues.map(function (league) {
+            return axios.get('https://www.zebet.be/en/competition/' + league.id).then(function (response) {
+              return parse(response.data);
+            });
+          });
+          _context2.next = 3;
+          return regeneratorRuntime.awrap(Promise.all(leagueRequests).then(function (values) {
+            eventIds = values.flat();
+            eventCache.set('EVENTS', eventIds);
+          }));
+
+        case 3:
+          requests = eventIds.map(function (id) {
+            if (!eventDetailCache.get(id)) {
+              return axios.get('https://www.zebet.be' + id).then(function (response) {
+                return parseEvents(id, response.data);
+              })["catch"](function (error) {
+                return console.log(error);
+              });
+            }
+          });
+          console.log('About to get events: ' + requests.length);
+          _context2.next = 7;
+          return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
+            results = values.flat();
+            console.log('found zetbet events');
+          }));
+
+        case 7:
+          return _context2.abrupt("return", results);
+
+        case 8:
         case "end":
           return _context2.stop();
       }
     }
   });
-};
+}
 
 module.exports = zetbet;
 
-function parseBets(data) {
+function parseEvents(id, data) {
   var root = parser.parse(data);
+  var event = {
+    id: id,
+    participants: JSON.parse(JSON.safeStringify(root.querySelector('title'))).childNodes[0].rawText.split(' - ')[0].split(' / ')
+  };
+  eventDetailCache.set(id, event);
+  return event;
+}
+
+function parseBets(data) {
   return JSON.parse(JSON.safeStringify(root.querySelectorAll('.pmq-cote'))); //return JSON.parse(JSON.safeStringify(root.querySelectorAll('a').filter(htmlElement => htmlElement.rawAttrs.includes('betting'))))
 }
 
-zetbet.getByIdEuroTierce = function _callee3(id) {
-  return regeneratorRuntime.async(function _callee3$(_context3) {
+zetbet.getByIdEuroTierce = function _callee2(id) {
+  return regeneratorRuntime.async(function _callee2$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
           return _context3.abrupt("return", axios.get('https://sports.eurotierce.be/nl/event/3326165-milan-ac-celtic-glasgow').then(function (response) {
-            return testparse(response.data);
+            return parseEvent(response.data);
           }));
 
         case 1:
@@ -84,7 +162,9 @@ zetbet.getByIdEuroTierce = function _callee3(id) {
   });
 };
 
-function testparse(data) {
+zetbet.open = function () {};
+
+function parseEvent(data) {
   var root = parser.parse(data);
   return JSON.parse(JSON.safeStringify(root.querySelectorAll('.odds-question'))); // bettype: snc-odds-actor
   // bet product: odds-question-label

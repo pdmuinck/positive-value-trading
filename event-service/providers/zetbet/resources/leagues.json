@@ -1,0 +1,55 @@
+[
+    {
+        "id": "6675-europa_league",
+        "name": "EUROPA_LEAGUE"
+    },
+    {
+        "id": "6674-champions_league",
+        "name": "CHAMPIONS_LEAGUE"
+    },
+    {
+        "id": "306-primera_division",
+        "name": "LA_LIGA"
+    },
+    {
+        "id": "94-premier_league",
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": "268-bundesliga",
+        "name": "BUNDESLIGA"
+    },
+
+    {
+        "id": "96-ligue_1",
+        "name": "LIGUE_1"
+    },
+    {
+        "id": "1288-league_one",
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": "2244-league_two",
+        "name": "LEAGUE_TWO"
+    },
+    {
+        "id": "202-championship",
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": "267-bundesliga_2",
+        "name": "BUNDESLIGA_2"
+    },
+    {
+        "id": "305-serie_a",
+        "name": "SERIE_A"
+    },
+    {
+        "id": "102-eredivisie",
+        "name": "EREDIVISIE"
+    },
+    {
+        "id": "101-pro_league_1a",
+        "name": "JUPILER_PRO_LEAGUE"
+    }
+]

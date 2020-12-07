@@ -6,8 +6,11 @@ var magicbetting = require('../providers/magicbetting/magicbetting');
 
 var starcasino = require('../providers/starcasino/starcasino');
 
+var zetbet = require('../providers/zetbet/zetbet');
+
 betconstruct.openWebSocket();
 magicbetting.open();
+zetbet.open();
 
 module.exports = function (server) {
   server.listen('3000', function (error) {
