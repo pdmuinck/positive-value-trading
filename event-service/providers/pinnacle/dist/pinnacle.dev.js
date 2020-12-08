@@ -18,70 +18,42 @@ var options = {
   }
 };
 var requests = {
-  'FOOTBALL': {
-    id: 29
-  },
-  'BASKETBALL': {
-    id: 4
-  },
-  'AMERICAN_FOOTBALL': {
-    id: 15
-  },
-  'TENNIS': {
-    id: 33
-  },
-  'ESPORTS': {
-    id: 12
-  },
-  'MMA': {
-    id: 22
-  },
-  'BASEBALL': {
-    id: 3
-  },
-  'AUSSIE_RULES': {
-    id: 39
-  },
-  'BOXING': {
-    id: 6
-  },
-  'CRICKET': {
-    id: 8
-  },
-  'GOLF': {
-    id: 17
-  },
-  'ICE_HOCKEY': {
-    id: 19
-  },
-  'RUGBY_LEAGUE': {
-    id: 26
-  },
-  'RUGBY_UNION': {
-    id: 27
-  },
-  'SNOOKER': {
-    id: 28
-  },
-  'DARTS': {
-    id: 10
-  }
+  'FOOTBALL': 29,
+  'BASKETBALL': 4,
+  'AMERICAN_FOOTBALL': 15,
+  'TENNIS': 33,
+  'ESPORTS': 12,
+  'MMA': 22,
+  'BASEBALL': 3,
+  'AUSSIE_RULES': 39,
+  'BOXING': 6,
+  'CRICKET': 8,
+  'GOLF': 17,
+  'ICE_HOCKEY': 19,
+  'RUGBY_LEAGUE': 26,
+  'RUGBY_UNION': 27,
+  'SNOOKER': 28,
+  'DARTS': 10
 };
 var event = {};
 
-event.getParticipantsForCompetition = function _callee(competition) {
+event.getParticipantsForCompetition = function _callee(book, competition) {
   var id, url;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           id = leagues.filter(function (league) {
-            return league[competition.toUpperCase()];
-          }).id;
+            return league.name === competition.toUpperCase();
+          }).map(function (league) {
+            return league.id;
+          });
           url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + id + '/matchups';
           _context.next = 4;
           return regeneratorRuntime.awrap(axios.get(url, options).then(function (response) {
-            return response.data.map(function (event) {
+            return response.data.filter(function (event) {
+              return !event.parentId;
+            }).map(function (event) {
               return event.participants.map(function (participant) {
                 return {
                   id: participant.name.toUpperCase(),
@@ -119,7 +91,7 @@ event.getEventsForBookAndSport = function _callee2(book, sport) {
 
         case 2:
           _context2.next = 4;
-          return regeneratorRuntime.awrap(axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(function (response) {
+          return regeneratorRuntime.awrap(axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()] + '/matchups', options).then(function (response) {
             return transform(response.data);
           })["catch"](function (error) {
             return null;

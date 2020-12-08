@@ -11,68 +11,35 @@ const options = {
     }
 }
 const requests = {
-    'FOOTBALL': {
-        id: 29
-    },
-    'BASKETBALL': {
-        id: 4 
-    },
-    'AMERICAN_FOOTBALL': {
-        id: 15
-    },
-    'TENNIS': {
-        id: 33
-    },
-    'ESPORTS': {
-        id: 12
-    },
-    'MMA': {
-        id: 22
-    },
-    'BASEBALL': {
-        id: 3
-    },
-    'AUSSIE_RULES': {
-        id: 39
-    },
-    'BOXING': {
-        id: 6
-    },
-    'CRICKET': {
-        id: 8
-    },
-    'GOLF': {
-        id: 17
-    },
-    'ICE_HOCKEY': {
-        id: 19
-    },
-    'RUGBY_LEAGUE': {
-        id: 26
-    },
-    'RUGBY_UNION': {
-        id: 27
-    },
-    'SNOOKER': {
-        id: 28
-    },
-    'DARTS': {
-        id: 10
-    }
-
+    'FOOTBALL': 29,
+    'BASKETBALL': 4,
+    'AMERICAN_FOOTBALL': 15,
+    'TENNIS': 33,
+    'ESPORTS': 12,
+    'MMA': 22,
+    'BASEBALL': 3,
+    'AUSSIE_RULES': 39,
+    'BOXING': 6,
+    'CRICKET': 8,
+    'GOLF': 17,
+    'ICE_HOCKEY': 19,
+    'RUGBY_LEAGUE': 26,
+    'RUGBY_UNION': 27,
+    'SNOOKER': 28,
+    'DARTS': 10
 }
 
 const event = {}
 
-event.getParticipantsForCompetition = async (competition) => {
-    const id = leagues.filter(league => league[competition.toUpperCase()]).id
+event.getParticipantsForCompetition = async (book, competition) => {
+    const id = leagues.filter(league => league.name === competition.toUpperCase()).map(league => league.id)
     const url = 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/' + id + '/matchups'
-    return await axios.get(url, options).then(response => response.data.map(event => event.participants.map(participant => {return {id: participant.name.toUpperCase(), name: participant.name.toUpperCase()}}))).catch(error => null)
+    return await axios.get(url, options).then(response => response.data.filter(event => !event.parentId).map(event => event.participants.map(participant => {return {id: participant.name.toUpperCase(), name: participant.name.toUpperCase()}}))).catch(error => null)
 }
 
 event.getEventsForBookAndSport = async (book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
-    const events = await axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()].id + '/matchups', options).then(response => transform(response.data)).catch(error => null)
+    const events = await axios.get('https://guest.api.arcadia.pinnacle.com/0.1/sports/' + requests[sport.toUpperCase()] + '/matchups', options).then(response => transform(response.data)).catch(error => null)
     eventCache.set('EVENTS', events)
     return events
 }

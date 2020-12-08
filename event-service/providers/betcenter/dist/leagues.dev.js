@@ -8,42 +8,42 @@ var leagues = [{
   "name": "PROXIMUS_LEAGUE"
 }, {
   "id": 6855,
-  "name": "Ligue 1"
+  "name": "LIGUE_1"
 }, {
   "id": 6857,
-  "name": "Ligue 2"
+  "name": "LIGUE_2"
 }, {
   "id": 6843,
-  "name": "Bundesliga"
+  "name": "BUNDESLIGA"
 }, {
   "id": 6845,
-  "name": "Bundesliga 2"
+  "name": "BUNDESLIGA_2"
 }, {
   "id": 6823,
-  "name": "Premier League"
+  "name": "PREMIER_LEAGUE"
 }, {
   "id": 6825,
-  "name": "Championship"
+  "name": "CHAMPIONSHIP"
 }, {
   "id": 6826,
-  "name": "League One"
+  "name": "LEAGUE_ONE"
 }, {
   "id": 6827,
-  "name": "League Two"
+  "name": "LEAGUE_TWO"
 }, {
   "id": 7134,
-  "name": "Serie A"
+  "name": "SERIE_A"
 }, {
   "id": 7125,
-  "name": "Serie B"
+  "name": "SERIE_B"
 }, {
   "id": 6938,
-  "name": "La Liga"
+  "name": "LA_LIGA"
 }, {
   "id": 6939,
-  "name": "La Liga 2"
+  "name": "LA_LIGA_2"
 }, {
   "id": 6931,
-  "name": "Eredivisie"
+  "name": "EREDIVISIE"
 }];
 module.exports = leagues;

@@ -53,15 +53,16 @@ api.getParticipantsForProviderAndBookAndCompetition = async (provider, book, com
 api.getParticipantsByCompetition = async (competition) => {
     const requests = [
         getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition),
-        getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition)
+        getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition),
+        getParticipantsForProviderAndBookAndCompetition('pinnacle', 'pinnacle', competition),
+        getParticipantsForProviderAndBookAndCompetition('altenar', 'goldenpalace', competition),
+        getParticipantsForProviderAndBookAndCompetition('bet90', 'bet90', competition),
+        getParticipantsForProviderAndBookAndCompetition('betcenter', 'betcenter', competition),
     ]
-
     let results
-
     await Promise.all(requests).then(values => {
         results = mapper.map(values)
     })
-
     return results
 }
 

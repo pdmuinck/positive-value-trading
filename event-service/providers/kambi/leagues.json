@@ -161,7 +161,7 @@
     },
     {
       "id": 1000093381,
-      "name": "Champions League",
+      "name": "CHAMPIONS_LEAGUE",
       "sport": "FOOTBALL"
     },
     {
@@ -171,7 +171,7 @@
     },
     {
       "id": 1000094981,
-      "name": "THE_CHAMPIONSHIP",
+      "name": "CHAMPIONSHIP",
       "sport": "FOOTBALL"
     },
     {
@@ -266,12 +266,12 @@
     },
     {
       "id": 1000094991,
-      "name": "Ligue 1",
+      "name": "LIGUE_1",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094568,
-      "name": "Ligue 2",
+      "name": "LIGUE_2",
       "sport": "FOOTBALL"
     },
     {
@@ -356,27 +356,27 @@
     },
     {
       "id": 2000050561,
-      "name": "Primera Division",
+      "name": "LA_LIGA",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000345237,
-      "name": "Bundesliga",
+      "name": "BUNDESLIGA",
       "sport": "FOOTBALL"
     },
     {
       "id": 2000051381,
-      "name": "Premier League",
+      "name": "PREMIER_LEAGUE_OTHER",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094965,
-      "name": "Jupiler Pro League",
+      "name": "JUPILER_PRO_LEAGUE",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000358593,
-      "name": "Proximus League",
+      "name": "PROXIMUS_LEAGUE",
       "sport": "FOOTBALL"
     },
     {
@@ -391,12 +391,12 @@
     },
     {
       "id": 1000094569,
-      "name": "Série A",
+      "name": "SERIE_A",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094431,
-      "name": "Série B",
+      "name": "SERIE_B",
       "sport": "FOOTBALL"
     },
     {
@@ -451,7 +451,7 @@
     },
     {
       "id": 2000051195,
-      "name": "Europa League",
+      "name": "EUROPA_LEAGUE",
       "sport": "FOOTBALL"
     },
     {
@@ -511,7 +511,7 @@
     },
     {
       "id": 1000094980,
-      "name": "Eredivisie",
+      "name": "EREDIVISIE",
       "sport": "FOOTBALL"
     },
     {

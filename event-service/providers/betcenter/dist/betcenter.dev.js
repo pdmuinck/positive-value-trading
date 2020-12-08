@@ -40,18 +40,60 @@ var betcenterHeaders = {
 };
 var betcenter = {};
 
-betcenter.getEventsForBookAndSport = function _callee(book, sport) {
-  var requests, events;
+betcenter.getParticipantsForCompetition = function _callee(book, competition) {
+  var league, payload;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          }).map(function (league) {
+            return league.id;
+          });
+          console.log(league);
+          payload = {
+            "leagueIds": league,
+            "gameTypes": [7],
+            "jurisdictionId": 30
+          };
+          return _context.abrupt("return", axios.post('https://oddsservice.betcenter.be/odds/getGames/8', payload, betcenterHeaders).then(function (response) {
+            return parseParticipants(response.data);
+          })["catch"](function (error) {
+            return null;
+          }));
+
+        case 4:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+};
+
+function parseParticipants(events) {
+  return events.games.map(function (event) {
+    return event.teams.map(function (team) {
+      return {
+        id: team.id,
+        name: team.name
+      };
+    });
+  });
+}
+
+betcenter.getEventsForBookAndSport = function _callee2(book, sport) {
+  var requests, events;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
           if (!eventCache.get('EVENTS')) {
-            _context.next = 2;
+            _context2.next = 2;
             break;
           }
 
-          return _context.abrupt("return", eventCache.get('EVENTS'));
+          return _context2.abrupt("return", eventCache.get('EVENTS'));
 
         case 2:
           requests = leagues.map(function (league) {
@@ -69,18 +111,18 @@ betcenter.getEventsForBookAndSport = function _callee(book, sport) {
             });
           });
           events = [];
-          _context.next = 6;
+          _context2.next = 6;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             events = values.flat();
             eventCache.set('EVENTS', events);
           }));
 
         case 6:
-          return _context.abrupt("return", events);
+          return _context2.abrupt("return", events);
 
         case 7:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
     }
   });

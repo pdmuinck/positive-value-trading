@@ -35,6 +35,17 @@ const betcenterHeaders = {
 
 const betcenter = {}
 
+betcenter.getParticipantsForCompetition = async(book, competition) => {
+    const league = leagues.filter(league => league.name === competition.toUpperCase()).map(league => league.id)
+    console.log(league)
+    const payload = {"leagueIds":league,"gameTypes":[7],"jurisdictionId":30}
+    return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', payload, betcenterHeaders).then(response => parseParticipants(response.data)).catch(error => null)
+}
+
+function parseParticipants(events) {
+    return events.games.map(event => event.teams.map(team => {return {id: team.id, name: team.name}}))
+}
+
 betcenter.getEventsForBookAndSport = async(book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = leagues.map(league => {

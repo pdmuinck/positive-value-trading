@@ -114,7 +114,7 @@ api.getParticipantsByCompetition = function _callee5(competition) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
-          requests = [getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition), getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition)];
+          requests = [getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition), getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition), getParticipantsForProviderAndBookAndCompetition('pinnacle', 'pinnacle', competition), getParticipantsForProviderAndBookAndCompetition('altenar', 'goldenpalace', competition), getParticipantsForProviderAndBookAndCompetition('bet90', 'bet90', competition), getParticipantsForProviderAndBookAndCompetition('betcenter', 'betcenter', competition)];
           _context6.next = 3;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = mapper.map(values);

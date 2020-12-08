@@ -10,6 +10,9 @@ var eventCache = new NodeCache({
   checkperiod: ttlSeconds * 0.2,
   useClones: false
 });
+
+var leagues = require('./resources/leagues.json');
+
 var altenar = {};
 var sports = {
   "FOOTBALL": 1
@@ -49,14 +52,55 @@ altenar.getEventsForBookAndSport = function _callee(book, sport) {
   });
 };
 
+altenar.getParticipantsForCompetition = function _callee2(book, competition) {
+  var id, url;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          id = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          }).map(function (league) {
+            return league.id;
+          })[0];
+          url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1&skinName=goldenpalace&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0&champids=' + id + '&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z';
+          _context2.next = 4;
+          return regeneratorRuntime.awrap(axios.get(url).then(function (response) {
+            return parseParticipants(response.data.Result.Items[0].Events);
+          })["catch"](function (error) {
+            return console.log(error);
+          }));
+
+        case 4:
+          return _context2.abrupt("return", _context2.sent);
+
+        case 5:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+};
+
+function parseParticipants(events) {
+  return events.map(function (event) {
+    return event.Competitors.map(function (competitor) {
+      return {
+        id: competitor.Name.toUpperCase(),
+        name: competitor.Name.toUpperCase()
+      };
+    });
+  });
+}
+
 function parse(events) {
   return events.map(function (event) {
     return {
       id: event.Id,
       participants: event.Competitors.map(function (competitor) {
         return {
-          id: competitor.Name,
-          name: competitor.Name
+          id: competitor.Name.toUpperCase(),
+          name: competitor.Name.toUpperCase()
         };
       })
     };
