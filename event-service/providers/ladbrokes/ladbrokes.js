@@ -30,6 +30,16 @@ ladbrokes.getEventsForBookAndSport = async (book, sport) => {
     return results
 }
 
+ladbrokes.getParticipantsForCompetition = async(book, competition) => {
+    const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
+    return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(response => parseParticipants(response.data.result.dataGroupList)).catch(error => console.log(error))
+}
+
+function parseParticipants(dataGroupList) {
+    const events = parse(dataGroupList)
+    return events.map(event => event.participants).flat()
+}
+
 function parse(dataGroupList) {
     const events = []
     dataGroupList.forEach(dataGroup => {

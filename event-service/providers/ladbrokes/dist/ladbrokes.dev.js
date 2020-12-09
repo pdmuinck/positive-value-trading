@@ -63,6 +63,36 @@ ladbrokes.getEventsForBookAndSport = function _callee(book, sport) {
   });
 };
 
+ladbrokes.getParticipantsForCompetition = function _callee2(book, competition) {
+  var league;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          })[0];
+          return _context2.abrupt("return", axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(function (response) {
+            return parseParticipants(response.data.result.dataGroupList);
+          })["catch"](function (error) {
+            return console.log(error);
+          }));
+
+        case 2:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+};
+
+function parseParticipants(dataGroupList) {
+  var events = parse(dataGroupList);
+  return events.map(function (event) {
+    return event.participants;
+  }).flat();
+}
+
 function parse(dataGroupList) {
   var events = [];
   dataGroupList.forEach(function (dataGroup) {

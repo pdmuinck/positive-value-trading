@@ -58,6 +58,8 @@ api.getParticipantsByCompetition = async (competition) => {
         getParticipantsForProviderAndBookAndCompetition('altenar', 'goldenpalace', competition),
         getParticipantsForProviderAndBookAndCompetition('bet90', 'bet90', competition),
         getParticipantsForProviderAndBookAndCompetition('betcenter', 'betcenter', competition),
+        getParticipantsForProviderAndBookAndCompetition('betconstruct', 'circus', competition),
+        getParticipantsForProviderAndBookAndCompetition('ladbrokes', 'ladbrokes', competition),
     ]
     let results
     await Promise.all(requests).then(values => {

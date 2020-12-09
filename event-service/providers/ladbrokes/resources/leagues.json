@@ -26,6 +26,10 @@
     {
         "id": "nl-eredivisie1",
         "name": "EREDIVISIE"
+    },
+    {
+        "id": "es-liga",
+        "name": "LA_LIGA"
     }
 
 ]
