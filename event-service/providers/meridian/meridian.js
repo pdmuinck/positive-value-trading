@@ -38,8 +38,8 @@ const requests = {
 
 const event = {}
 
-event.getParticipants = async (leagueId) => {
-    const url = leagues.filter(league => league.id == leagueId)[0].url
+event.getParticipantsForCompetition = async (book, competition) => {
+    const url = leagues.filter(league => league.name === competition.toUpperCase())[0].url
     return await axios.get(url).then(response => response.data[0].events.map(event => event.team)).catch(error => null)
 }
 

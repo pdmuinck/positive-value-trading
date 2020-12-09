@@ -15,6 +15,8 @@ var CDP = require('chrome-remote-interface');
 
 var chromeLauncher = require('chrome-launcher');
 
+var leagues = require('./resources/leagues');
+
 function launchChrome() {
   return regeneratorRuntime.async(function launchChrome$(_context) {
     while (1) {
@@ -67,10 +69,32 @@ magicbetting.getEventsForBookAndSport = function _callee(sport) {
   });
 };
 
-setInterval(function _callee2() {
+magicbetting.getParticipantsForCompetition = function _callee2(book, competition) {
+  var league;
   return regeneratorRuntime.async(function _callee2$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
+        case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          })[0];
+          console.log(league);
+          return _context3.abrupt("return", cache.get(league.id).map(function (event) {
+            return event.participants;
+          }).flat());
+
+        case 3:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  });
+};
+
+setInterval(function _callee3() {
+  return regeneratorRuntime.async(function _callee3$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
         case 0:
           if (!cache.get('EVENTS')) {
             findApi();
@@ -78,7 +102,7 @@ setInterval(function _callee2() {
 
         case 1:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   });
@@ -86,28 +110,28 @@ setInterval(function _callee2() {
 
 function findApi() {
   var chrome, protocol, Network, Page;
-  return regeneratorRuntime.async(function findApi$(_context4) {
+  return regeneratorRuntime.async(function findApi$(_context5) {
     while (1) {
-      switch (_context4.prev = _context4.next) {
+      switch (_context5.prev = _context5.next) {
         case 0:
-          _context4.next = 2;
+          _context5.next = 2;
           return regeneratorRuntime.awrap(chromeLauncher.killAll());
 
         case 2:
-          _context4.next = 4;
+          _context5.next = 4;
           return regeneratorRuntime.awrap(launchChrome());
 
         case 4:
-          chrome = _context4.sent;
-          _context4.next = 7;
+          chrome = _context5.sent;
+          _context5.next = 7;
           return regeneratorRuntime.awrap(CDP({
             port: chrome.port
           }));
 
         case 7:
-          protocol = _context4.sent;
+          protocol = _context5.sent;
           Network = protocol.Network, Page = protocol.Page;
-          _context4.next = 11;
+          _context5.next = 11;
           return regeneratorRuntime.awrap(Network.webSocketCreated(function (params) {
             if (params.url.includes('magicbetting')) {
               websocket = new WebSocket(params.url, null, {
@@ -152,13 +176,23 @@ function findApi() {
                   _s = _s.replace(/[\u0000-\u0019]+/g, "");
 
                   try {
-                    var event = JSON.parse(_s);
+                    var parsedEvent = JSON.parse(_s);
+                    var event = {
+                      id: parsedEvent.id,
+                      participants: parsedEvent.participants,
+                      leagueId: parsedEvent.typeId
+                    };
+                    var leagueEvents = cache.get(event.leagueId);
+
+                    if (leagueEvents) {
+                      leagueEvents.push(event);
+                      cache.set(event.leagueId, leagueEvents);
+                    } else {
+                      cache.set(event.leagueId, [event]);
+                    }
 
                     if (!cache.get(event.id)) {
-                      cache.set(event.id, {
-                        id: event.id,
-                        participants: event.participants
-                      });
+                      cache.set(event.id, event);
                     }
                   } catch (e) {}
                 }
@@ -167,41 +201,41 @@ function findApi() {
           }));
 
         case 11:
-          _context4.next = 13;
+          _context5.next = 13;
           return regeneratorRuntime.awrap(Network.enable());
 
         case 13:
-          _context4.next = 15;
+          _context5.next = 15;
           return regeneratorRuntime.awrap(Page.enable());
 
         case 15:
-          _context4.next = 17;
+          _context5.next = 17;
           return regeneratorRuntime.awrap(Page.navigate({
             url: 'https://magicbetting.be/home'
           }));
 
         case 17:
-          _context4.next = 19;
+          _context5.next = 19;
           return regeneratorRuntime.awrap(Page.loadEventFired());
 
         case 19:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
     }
   });
 }
 
-magicbetting.getBetOffersByEventId = function _callee3(eventId) {
-  return regeneratorRuntime.async(function _callee3$(_context5) {
+magicbetting.getBetOffersByEventId = function _callee4(eventId) {
+  return regeneratorRuntime.async(function _callee4$(_context6) {
     while (1) {
-      switch (_context5.prev = _context5.next) {
+      switch (_context6.prev = _context6.next) {
         case 0:
-          return _context5.abrupt("return", cache.get(eventId));
+          return _context6.abrupt("return", cache.get(eventId));
 
         case 1:
         case "end":
-          return _context5.stop();
+          return _context6.stop();
       }
     }
   });

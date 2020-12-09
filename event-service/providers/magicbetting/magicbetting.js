@@ -3,7 +3,8 @@ const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1
 const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 const CDP = require('chrome-remote-interface')
-const chromeLauncher = require('chrome-launcher');
+const chromeLauncher = require('chrome-launcher')
+const leagues = require('./resources/leagues')
 
 async function launchChrome() {
     return await chromeLauncher.launch({
@@ -25,13 +26,18 @@ magicbetting.open = () => {
     findApi()
 }
 
-
 magicbetting.getEventsForBookAndSport = async (sport) => {
     if(cache.get('EVENTS')) {
         return Object.values(cache.mget(cache.get('EVENTS')))
     } else {
         return []
     }
+}
+
+magicbetting.getParticipantsForCompetition = async(book, competition) => {
+    const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
+    console.log(league)
+    return cache.get(league.id).map(event => event.participants).flat()
 }
 
 setInterval(async () => {
@@ -98,9 +104,17 @@ async function findApi() {
                        .replace(/\\/g, "")
                     s = s.replace(/[\u0000-\u0019]+/g,"")
                     try {
-                        const event = JSON.parse(s)
+                        const parsedEvent = JSON.parse(s)
+                        const event = {id: parsedEvent.id, participants: parsedEvent.participants, leagueId: parsedEvent.typeId}
+                        const leagueEvents = cache.get(event.leagueId)
+                        if(leagueEvents) {
+                            leagueEvents.push(event)
+                            cache.set(event.leagueId, leagueEvents)
+                        } else {
+                            cache.set(event.leagueId, [event])
+                        }
                         if(!cache.get(event.id)) {
-                            cache.set(event.id, {id: event.id, participants: event.participants})
+                            cache.set(event.id, event)
                         }
                     } catch(e) {
                     }

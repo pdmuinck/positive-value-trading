@@ -8,6 +8,8 @@ var starcasino = require('../providers/starcasino/starcasino');
 
 var zetbet = require('../providers/zetbet/zetbet');
 
+var betway = require('../providers/betway/betway');
+
 module.exports = function _callee(server) {
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
@@ -15,6 +17,7 @@ module.exports = function _callee(server) {
         case 0:
           //await zetbet.open()
           server.listen('3000', function (error) {
+            betway.getEventsForBookAndSport('betway', 'FOOTBALL');
             betconstruct.openWebSocket();
             magicbetting.open();
             starcasino.openWebSocket();

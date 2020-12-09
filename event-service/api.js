@@ -26,6 +26,7 @@ async function getEvents(sport) {
         getEventsByProviderAndBookAndSport('scooore', 'scooore', sport),
         getEventsByProviderAndBookAndSport('starcasino', 'starcasino', sport),
         getEventsByProviderAndBookAndSport('stanleybet', 'stanleybet', sport),
+        getEventsByProviderAndBookAndSport('betway', 'betway', sport),
     ]
 
     let results
@@ -60,6 +61,12 @@ api.getParticipantsByCompetition = async (competition) => {
         getParticipantsForProviderAndBookAndCompetition('betcenter', 'betcenter', competition),
         getParticipantsForProviderAndBookAndCompetition('betconstruct', 'circus', competition),
         getParticipantsForProviderAndBookAndCompetition('ladbrokes', 'ladbrokes', competition),
+        getParticipantsForProviderAndBookAndCompetition('magicbetting', 'magicbetting', competition),
+        getParticipantsForProviderAndBookAndCompetition('meridian', 'meridian', competition),
+        getParticipantsForProviderAndBookAndCompetition('scooore', 'scooore', competition),
+        getParticipantsForProviderAndBookAndCompetition('stanleybet', 'stanleybet', competition),
+        getParticipantsForProviderAndBookAndCompetition('starcasino', 'starcasino', competition),
+        getParticipantsForProviderAndBookAndCompetition('betway', 'betway', competition),
     ]
     let results
     await Promise.all(requests).then(values => {

@@ -1,0 +1,50 @@
+[
+    {
+        "id": "soccer-int10-sb_type_19161",
+        "name": "CHAMPIONS_LEAGUE"
+    },
+    {
+        "id": "soccer-uk-sb_type_19157",
+        "name": "PREMIER_LEAGUE"
+    },
+    {
+        "id": "soccer-uk-sb_type_19156",
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": "soccer-uk-sb_type_19326",
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": "soccer-uk-sb_type_19300",
+        "name": "LEAGUE_TWO"
+    },
+    {
+        "id": "soccer-be-sb_type_19372",
+        "name": "JUPILER_PRO_LEAGUE"
+    },
+    {
+        "id": "soccer-be-sb_type_47017",
+        "name": "PROXIMUS_LEAGUE"
+    },
+    {
+        "id": "soccer-nl-sb_type_19358",
+        "name": "EREDIVISIE"
+    },
+    {
+        "id": "soccer-fr-sb_type_19327",
+        "name": "LIGUE_1"
+    },
+    {
+        "id": "soccer-es-sb_type_19160",
+        "name": "LA_LIGA"
+    },
+    {
+        "id": "soccer-de-sb_type_19158",
+        "name": "BUNDESLIGA"
+    },
+    {
+        "id": "soccer-it-sb_type_19159",
+        "name": "SERIE_A"
+    }    
+]

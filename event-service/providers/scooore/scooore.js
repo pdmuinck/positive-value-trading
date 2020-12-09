@@ -22,6 +22,17 @@ scooore.getEventsForBookAndSport = async (book, sport) => {
     return results
 }
 
+scooore.getParticipantsForCompetition = async(book, competition) => {
+    const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
+    console.log(league)
+    return axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(response => parseParticipants(response.data.markets)).catch(error => null)
+}
+
+function parseParticipants(events) {
+    const parsedEvents = transform(events)
+    return parsedEvents.map(event => event.participants)
+}
+
 function transform(events) {
     return events.map(event => {return {id: event.idfoevent, participants: [{id: event.participantname_home, name: event.participantname_home}, {id: event.participantname_away, name: event.participantname_away}]}})
 }

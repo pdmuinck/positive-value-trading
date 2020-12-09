@@ -43,14 +43,14 @@ var requests = {
 };
 var event = {};
 
-event.getParticipants = function _callee(leagueId) {
+event.getParticipantsForCompetition = function _callee(book, competition) {
   var url;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           url = leagues.filter(function (league) {
-            return league.id == leagueId;
+            return league.name === competition.toUpperCase();
           })[0].url;
           _context.next = 3;
           return regeneratorRuntime.awrap(axios.get(url).then(function (response) {

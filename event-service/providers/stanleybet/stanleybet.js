@@ -18,6 +18,13 @@ const headers = {
 
 const stanleybet = {}
 
+stanleybet.getParticipantsForCompetition = async(book, competition) => {
+    const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
+    const body = 'callCount=1\nnextReverseAjaxIndex=0\nc0-scriptName=IF_GetAvvenimenti\nc0-methodName=getEventi\nc0-id=0\nc0-param0=number:6\nc0-param1=string:\nc0-param2=string:\nc0-param3=number:1\nc0-param4=number:' + league.id + '\nc0-param5=boolean:false\nc0-param6=string:STANLEYBET\nc0-param7=number:0\nc0-param8=number:0\nc0-param9=string:nl\nbatchId=8\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=jUP0TgbNU12ga86ZyrjLTrS8NRSwl721Uon/AVY2Uon-upTglJydk\n'
+    return axios.post(getEventsUrl, body, headers).then(response => parseParticipants(response.data, league.id)).catch(error => console.log(error))
+    
+}
+
 stanleybet.getEventsForBookAndSport = async (book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = leagues.map(league => {
@@ -30,6 +37,11 @@ stanleybet.getEventsForBookAndSport = async (book, sport) => {
         eventCache.set('EVENTS', results)
     })
     return results
+}
+
+function parseParticipants(eventData, realLeagueId) {
+    const events = transform(eventData, realLeagueId)
+    return events.map(event => event.participants)
 }
 
 function transform(eventData, realLeagueId) {

@@ -27,21 +27,31 @@ starWS.on('open', function open() {
 });
 starWS.on('message', function incoming(data) {
   var bla = JSON.parse(data);
+  var leagueId = bla.rid;
+  var leagueEvents = cache.get(leagueId);
 
   if (bla.data.data) {
     var events = bla.data.data.game;
     Object.entries(events).forEach(function (entry) {
-      var event = entry[1];
-      cache.set(entry[0], {
-        id: event.id,
+      var rawEvent = entry[1];
+      var event = {
+        id: rawEvent.id,
         participants: [{
-          id: event.team1_id,
-          name: event.team1_name
+          id: rawEvent.team1_id,
+          name: rawEvent.team1_name
         }, {
-          id: event.team2_id,
-          name: event.team2_name
+          id: rawEvent.team2_id,
+          name: rawEvent.team2_name
         }]
-      });
+      };
+      cache.set(entry[0], event);
+
+      if (leagueEvents) {
+        leagueEvents.push(event);
+        cache.set(leagueId, leagueEvents);
+      } else {
+        cache.set(leagueId, [event]);
+      }
     });
   }
 });
@@ -66,7 +76,7 @@ setInterval(function () {
         },
         "subscribe": false
       },
-      "rid": "160621315266616"
+      "rid": league.id
     }));
   }); //starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id","show_type","markets_count","start_ts","is_live","is_blocked","is_neutral_venue","team1_id","team2_id","game_number","text_info","is_stat_available","type","info","team1_name","team2_name","tv_info","stats","add_info_name"],"market":["id","col_count","type","name_template","sequence","point_sequence","express_id","cashout","display_key","display_sub_key","group_id","name","group_name","order","extra_info","group_order"],"event":["order","id","type_1","type","type_id","original_order","name","price","nonrunner","ew_allowed","sp_enabled","extra_info","base","home_value","away_value","display_column"]},"where":{"game":{},"sport":{"id":1},"region":{},"competition":{"id":566}},"subscribe":false},"rid":"160621315266616"}))
 }, 10000);
@@ -86,6 +96,27 @@ starcasino.getEventsForBookAndSport = function _callee(sport) {
         case 1:
         case "end":
           return _context.stop();
+      }
+    }
+  });
+};
+
+starcasino.getParticipantsForCompetition = function _callee2(book, competition) {
+  var league;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          })[0];
+          return _context2.abrupt("return", cache.get(league.id).map(function (event) {
+            return event.participants;
+          }).flat());
+
+        case 2:
+        case "end":
+          return _context2.stop();
       }
     }
   });

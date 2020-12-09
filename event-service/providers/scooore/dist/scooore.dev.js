@@ -55,6 +55,37 @@ scooore.getEventsForBookAndSport = function _callee(book, sport) {
   });
 };
 
+scooore.getParticipantsForCompetition = function _callee2(book, competition) {
+  var league;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition.toUpperCase();
+          })[0];
+          console.log(league);
+          return _context2.abrupt("return", axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(function (response) {
+            return parseParticipants(response.data.markets);
+          })["catch"](function (error) {
+            return null;
+          }));
+
+        case 3:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+};
+
+function parseParticipants(events) {
+  var parsedEvents = transform(events);
+  return parsedEvents.map(function (event) {
+    return event.participants;
+  });
+}
+
 function transform(events) {
   return events.map(function (event) {
     return {

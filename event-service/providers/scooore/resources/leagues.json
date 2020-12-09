@@ -4,6 +4,22 @@
         "name": "PREMIER_LEAGUE"
     },
     {
+        "id": 23990,
+        "name": "CHAMPIONSHIP"
+    },
+    {
+        "id": 23959,
+        "name": "LEAGUE_ONE"
+    },
+    {
+        "id": 23991,
+        "name": "LEAGUE_TWO"
+    },
+    {
+        "id": 17322,
+        "name": "PROXIMUS_LEAGUE"
+    },
+    {
         "id": 18340,
         "name": "JUPILER_PRO_LEAGUE"
     },
