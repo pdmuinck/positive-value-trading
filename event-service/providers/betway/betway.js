@@ -17,7 +17,8 @@ betway.getEventsForBookAndSport = async(book, sport) => {
 
 betway.getParticipantsForCompetition = async(book, competition) => {
     const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
-    return eventCache.get(league.id).map(event => event.participants)
+    const cacheResult = eventCache.get(league.id)
+    cacheResult ? cacheResult.map(event => event.participants) : []
 }
 
 function parseEvents(events) {

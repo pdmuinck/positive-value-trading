@@ -53,17 +53,15 @@ altenar.getEventsForBookAndSport = function _callee(book, sport) {
 };
 
 altenar.getParticipantsForCompetition = function _callee2(book, competition) {
-  var id, url;
+  var league, url;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          id = leagues.filter(function (league) {
+          league = leagues.filter(function (league) {
             return league.name === competition.toUpperCase();
-          }).map(function (league) {
-            return league.id;
           })[0];
-          url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1&skinName=goldenpalace&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0&champids=' + id + '&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z';
+          url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1&skinName=goldenpalace&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0&champids=' + league.id + '&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z';
           _context2.next = 4;
           return regeneratorRuntime.awrap(axios.get(url).then(function (response) {
             return parseParticipants(response.data.Result.Items[0].Events);

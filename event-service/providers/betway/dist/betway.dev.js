@@ -63,7 +63,7 @@ betway.getEventsForBookAndSport = function _callee(book, sport) {
 };
 
 betway.getParticipantsForCompetition = function _callee2(book, competition) {
-  var league;
+  var league, cacheResult;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -71,11 +71,12 @@ betway.getParticipantsForCompetition = function _callee2(book, competition) {
           league = leagues.filter(function (league) {
             return league.name === competition.toUpperCase();
           })[0];
-          return _context2.abrupt("return", eventCache.get(league.id).map(function (event) {
+          cacheResult = eventCache.get(league.id);
+          cacheResult ? cacheResult.map(function (event) {
             return event.participants;
-          }));
+          }) : [];
 
-        case 2:
+        case 3:
         case "end":
           return _context2.stop();
       }
