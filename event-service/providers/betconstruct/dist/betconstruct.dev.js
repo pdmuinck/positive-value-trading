@@ -12,6 +12,11 @@ var cache = new NodeCache({
   checkperiod: ttlSeconds * 0.2,
   useClones: false
 });
+
+var leagues = require('./resources/leagues.json');
+
+var sports = require('./resources/sports');
+
 websocket = new WebSocket(bookmakers['CIRCUS']);
 websocket.on('open', function open() {
   websocket.send(JSON.stringify({
@@ -22,33 +27,70 @@ websocket.on('open', function open() {
   })); // send football request
 
   console.log('betconstruct is open');
-  websocket.send(JSON.stringify(websocket.send(JSON.stringify({
-    "Id": "f523d44b-d825-f9ff-ff02-aa3ae9f0f24b",
+  var leagueIds = leagues.map(function (league) {
+    return league.id;
+  }).flat().join(',');
+  websocket.send(JSON.stringify({
+    "Id": "36701684-e389-bdbc-ea1d-804acb40e169",
     "TTL": 10,
     "MessageType": 1000,
-    "Message": "{\"Direction\":1,\"Id\":\"960eed4c-b820-64bb-8592-1114ee3f3d19\",\"Requests\":[{\"Id\":\"53c1e25b-2397-5a49-cbfb-570e9f748f22\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":1000,\\\"EventType\\\":0,\\\"PlayerFavoritesLeagueIds\\\":[],\\\"SportId\\\":844,\\\"PeriodicFilter\\\":-1}}\"}],\"Groups\":[]}"
-  }))));
+    "Message": "{\"Direction\":1,\"Id\":\"ef6b43a6-3f69-da7f-b962-644100e612ed\",\"Requests\":[{\"Id\":\"ba7ecb09-731f-87eb-0f46-a38a8d8efc3e\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":1000,\\\"EventType\\\":0,\\\"RequestString\\\":\\\"LeagueIds=" + leagueIds + "&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"
+  }));
 });
 websocket.on('message', function incoming(data) {
   var bla = JSON.parse(data); // if statement because we receive more messages than data packets
 
   if (JSON.parse(bla.Message)["$type"] === 'APR.Packets.DataPacket, APR.Packets') {
     var response = JSON.parse(JSON.parse(bla.Message).Requests["$values"][0].Content);
-    var events = response.LeagueDataSource.LeagueItems.map(function (league) {
-      return league.EventItems;
-    }).flat().map(function (event) {
+
+    var _leagues = response.LeagueDataSource.LeagueItems.map(function (league) {
       return {
-        id: event.EventId,
-        participants: [{
-          id: event.Team1Name,
-          name: event.Team1Name
-        }, {
-          id: event.Team2Name,
-          name: event.Team2Name
-        }]
+        sportId: league.SportId,
+        events: league.EventItems.map(function (event) {
+          return {
+            id: event.EventId,
+            leagueId: event.LeagueId,
+            participants: [{
+              id: event.Team1Name,
+              name: event.Team1Name
+            }, {
+              id: event.Team2Name,
+              name: event.Team2Name
+            }]
+          };
+        })
       };
+    }).flat();
+
+    _leagues.forEach(function (league) {
+      return league.events.forEach(function (event) {
+        return event["sportId"] = league.sportId;
+      });
     });
-    cache.set('FOOTBALL', events);
+
+    var events = _leagues.map(function (league) {
+      return league.events;
+    }).flat();
+
+    events.forEach(function (event) {
+      var sportEvents = cache.get(event.sportId);
+      var leagueEvents = cache.get(event.leagueId);
+
+      if (leagueEvents) {
+        leagueEvents.push(event);
+        cache.set(event.leagueId, leagueEvents);
+      } else {
+        cache.set(event.leagueId, [event]);
+      }
+
+      if (sportEvents) {
+        sportEvents.push(event);
+        cache.set(event.sportId, sportEvents);
+      } else {
+        if (!event.sportId) console.log(event);
+        cache.set(event.sportId, [event]);
+      }
+    });
   }
 });
 var betconstruct = {};
@@ -58,21 +100,22 @@ betconstruct.openWebSocket = function () {
 };
 
 betconstruct.getEventsForBookAndSport = function _callee(book, sport) {
-  var result;
+  var id, result;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          result = cache.get(sport.toUpperCase());
+          id = sports[sport.toUpperCase()];
+          result = cache.get(id);
 
           if (!result) {
-            _context.next = 3;
+            _context.next = 4;
             break;
           }
 
           return _context.abrupt("return", result);
 
-        case 3:
+        case 4:
         case "end":
           return _context.stop();
       }
@@ -80,12 +123,36 @@ betconstruct.getEventsForBookAndSport = function _callee(book, sport) {
   });
 };
 
+betconstruct.getParticipantsForCompetition = function _callee2(book, competition) {
+  var league;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          league = leagues.filter(function (league) {
+            return league.name === competition;
+          })[0];
+          return _context2.abrupt("return", cache.get(league.id).map(function (event) {
+            return event.participants;
+          }).flat());
+
+        case 2:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+};
+
 setInterval(function () {
+  var leagueIds = leagues.map(function (league) {
+    return league.id;
+  }).flat().join(',');
   websocket.send(JSON.stringify({
-    "Id": "f523d44b-d825-f9ff-ff02-aa3ae9f0f24b",
+    "Id": "36701684-e389-bdbc-ea1d-804acb40e169",
     "TTL": 10,
     "MessageType": 1000,
-    "Message": "{\"Direction\":1,\"Id\":\"960eed4c-b820-64bb-8592-1114ee3f3d19\",\"Requests\":[{\"Id\":\"53c1e25b-2397-5a49-cbfb-570e9f748f22\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":1000,\\\"EventType\\\":0,\\\"PlayerFavoritesLeagueIds\\\":[],\\\"SportId\\\":844,\\\"PeriodicFilter\\\":-1}}\"}],\"Groups\":[]}"
+    "Message": "{\"Direction\":1,\"Id\":\"ef6b43a6-3f69-da7f-b962-644100e612ed\",\"Requests\":[{\"Id\":\"ba7ecb09-731f-87eb-0f46-a38a8d8efc3e\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":1000,\\\"EventType\\\":0,\\\"RequestString\\\":\\\"LeagueIds=" + leagueIds + "&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"
   }));
-}, 10000);
+}, 60000);
 module.exports = betconstruct;
