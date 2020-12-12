@@ -236,22 +236,22 @@
     },
     {
       "id": 1000095049,
-      "name": "La Liga",
+      "name": "LA_LIGA",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094708,
-      "name": "La Liga 2",
+      "name": "SEGUNDA",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094994,
-      "name": "Bundesliga",
+      "name": "BUNDESLIGA",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000094993,
-      "name": "2. Bundesliga",
+      "name": "BUNDESLIGA_2",
       "sport": "FOOTBALL"
     },
     {
@@ -291,22 +291,22 @@
     },
     {
       "id": 1000095047,
-      "name": "Scottish Premiership",
+      "name": "SCOTTISH_PREMIERSHIP",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000095045,
-      "name": "Championship",
+      "name": "CHAMPIONSHIP_SCO",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000280417,
-      "name": "League One",
+      "name": "LEAGUE_ONE_SCO",
       "sport": "FOOTBALL"
     },
     {
       "id": 1000280418,
-      "name": "League Two",
+      "name": "LEAGUE_TWO_SCO",
       "sport": "FOOTBALL"
     },
     {

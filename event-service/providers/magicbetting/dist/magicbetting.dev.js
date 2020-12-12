@@ -70,7 +70,7 @@ magicbetting.getEventsForBookAndSport = function _callee(sport) {
 };
 
 magicbetting.getParticipantsForCompetition = function _callee2(book, competition) {
-  var league;
+  var league, cacheResult;
   return regeneratorRuntime.async(function _callee2$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -78,10 +78,10 @@ magicbetting.getParticipantsForCompetition = function _callee2(book, competition
           league = leagues.filter(function (league) {
             return league.name === competition.toUpperCase();
           })[0];
-          console.log(league);
-          return _context3.abrupt("return", cache.get(league.id).map(function (event) {
+          cacheResult = cache.get(league.id);
+          return _context3.abrupt("return", cacheResult ? cacheResult.map(function (event) {
             return event.participants;
-          }).flat());
+          }).flat() : []);
 
         case 3:
         case "end":

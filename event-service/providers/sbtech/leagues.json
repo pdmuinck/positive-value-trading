@@ -26,52 +26,52 @@
     },
     {
         "id": 56687,
-        "name": "FA Cup",
+        "name": "FA_CUP",
         "sport": "FOOTBALL"
     },
     {
         "id": 40030,
-        "name": "Serie A",
+        "name": "SERIE_A",
         "sport": "FOOTBALL"
     },
     {
         "id": 42884,
-        "name": "Serie B",
+        "name": "SERIE_B",
         "sport": "FOOTBALL"
     },
     {
         "id": 40031,
-        "name": "La liga",
+        "name": "LA_LIGA",
         "sport": "FOOTBALL"
     },
     {
         "id": 44411,
-        "name": "Segunda",
+        "name": "SEGUNDA",
         "sport": "FOOTBALL"
     },
     {
         "id": 40481,
-        "name": "Bundesliga",
+        "name": "BUNDESLIGA",
         "sport": "FOOTBALL"
     },
     {
         "id": 40820,
-        "name": "Bundesliga 2",
+        "name": "BUNDESLIGA_2",
         "sport": "FOOTBALL"
     },
     {
         "id": 40032,
-        "name": "Ligue 1",
+        "name": "LIGUE_1",
         "sport": "FOOTBALL"
     },
     {
         "id": 52971,
-        "name": "Ligue 2",
+        "name": "LIGUE_2",
         "sport": "FOOTBALL"
     },
     {
         "id": 41372,
-        "name": "Eredivisie",
+        "name": "EREDIVISIE",
         "sport": "FOOTBALL"
     }
 ]

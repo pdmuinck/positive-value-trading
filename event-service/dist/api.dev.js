@@ -109,21 +109,31 @@ api.getParticipantsForProviderAndBookAndCompetition = function _callee4(provider
 };
 
 api.getParticipantsByCompetition = function _callee5(competition) {
-  var requests, results;
+  var league, requests, results;
   return regeneratorRuntime.async(function _callee5$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
+          league = require('./participants/' + competition.toUpperCase() + '.json');
+
+          if (!league) {
+            _context6.next = 3;
+            break;
+          }
+
+          return _context6.abrupt("return", league);
+
+        case 3:
           requests = [getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition), getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition), getParticipantsForProviderAndBookAndCompetition('pinnacle', 'pinnacle', competition), getParticipantsForProviderAndBookAndCompetition('altenar', 'goldenpalace', competition), getParticipantsForProviderAndBookAndCompetition('bet90', 'bet90', competition), getParticipantsForProviderAndBookAndCompetition('betcenter', 'betcenter', competition), getParticipantsForProviderAndBookAndCompetition('betconstruct', 'circus', competition), getParticipantsForProviderAndBookAndCompetition('ladbrokes', 'ladbrokes', competition), getParticipantsForProviderAndBookAndCompetition('magicbetting', 'magicbetting', competition), getParticipantsForProviderAndBookAndCompetition('meridian', 'meridian', competition), getParticipantsForProviderAndBookAndCompetition('scooore', 'scooore', competition), getParticipantsForProviderAndBookAndCompetition('stanleybet', 'stanleybet', competition), getParticipantsForProviderAndBookAndCompetition('starcasino', 'starcasino', competition), getParticipantsForProviderAndBookAndCompetition('betway', 'betway', competition)];
-          _context6.next = 3;
+          _context6.next = 6;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = mapper.map(values);
           }));
 
-        case 3:
+        case 6:
           return _context6.abrupt("return", results);
 
-        case 4:
+        case 7:
         case "end":
           return _context6.stop();
       }
@@ -143,6 +153,12 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
 
         case 3:
           participants = _context7.sent;
+
+          if (!participants) {
+            _context7.next = 6;
+            break;
+          }
+
           return _context7.abrupt("return", {
             provider: provider,
             book: book,
@@ -154,7 +170,7 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
             })
           });
 
-        case 5:
+        case 6:
         case "end":
           return _context7.stop();
       }

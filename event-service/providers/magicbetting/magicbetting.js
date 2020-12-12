@@ -36,8 +36,8 @@ magicbetting.getEventsForBookAndSport = async (sport) => {
 
 magicbetting.getParticipantsForCompetition = async(book, competition) => {
     const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
-    console.log(league)
-    return cache.get(league.id).map(event => event.participants).flat()
+    const cacheResult = cache.get(league.id)
+    return cacheResult ? cacheResult.map(event => event.participants).flat() : []
 }
 
 setInterval(async () => {

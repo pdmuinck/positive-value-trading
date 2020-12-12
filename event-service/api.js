@@ -52,6 +52,8 @@ api.getParticipantsForProviderAndBookAndCompetition = async (provider, book, com
 }
 
 api.getParticipantsByCompetition = async (competition) => {
+    const league = require('./participants/' + competition.toUpperCase() + '.json')
+    if(league) return league
     const requests = [
         getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition),
         getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition),
@@ -78,7 +80,9 @@ api.getParticipantsByCompetition = async (competition) => {
 async function getParticipantsForProviderAndBookAndCompetition(provider, book, competition) {
     const providerApi = require('./providers/' + provider + '/' + provider + '.js')
     participants = await providerApi.getParticipantsForCompetition(book, competition)
-    return {provider: provider, book: book, competition: competition, participants: participants.flat().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)}
+    if(participants) {
+        return {provider: provider, book: book, competition: competition, participants: participants.flat().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)}
+    }
 }
 
 async function getEventsByProviderAndBookAndSport(provider, book, sport) {

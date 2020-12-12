@@ -72,9 +72,9 @@ betway.getParticipantsForCompetition = function _callee2(book, competition) {
             return league.name === competition.toUpperCase();
           })[0];
           cacheResult = eventCache.get(league.id);
-          cacheResult ? cacheResult.map(function (event) {
+          return _context2.abrupt("return", cacheResult ? cacheResult.map(function (event) {
             return event.participants;
-          }) : [];
+          }) : []);
 
         case 3:
         case "end":

@@ -59,7 +59,8 @@ betconstruct.getEventsForBookAndSport = async (book, sport) => {
 
 betconstruct.getParticipantsForCompetition = async(book, competition) => {
     const league = leagues.filter(league => league.name === competition)[0]
-    return cache.get(league.id).map(event => event.participants).flat()
+    const cacheResult = cache.get(league.id)
+    return cacheResult ? cacheResult.map(event => event.participants).flat() : []
 }
 
 setInterval(() => {

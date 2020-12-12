@@ -4,6 +4,14 @@
         "id": "ing-premier-league"
     },
     {
+        "name": "LEAGUE_ONE",
+        "id": "ing-league-one"
+    },
+    {
+        "name": "LEAGUE_TWO",
+        "id": "ing-league-two"
+    },
+    {
         "name": "JUPILER_PRO_LEAGUE",
         "id": "be-jupiler-league1"
     },

@@ -41,7 +41,7 @@ var leagues = [{
   "name": "LA_LIGA"
 }, {
   "id": 6939,
-  "name": "LA_LIGA_2"
+  "name": "SEGUNDA"
 }, {
   "id": 6931,
   "name": "EREDIVISIE"

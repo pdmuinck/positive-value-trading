@@ -102,7 +102,7 @@ starcasino.getEventsForBookAndSport = function _callee(sport) {
 };
 
 starcasino.getParticipantsForCompetition = function _callee2(book, competition) {
-  var league;
+  var league, cacheResult;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -110,11 +110,12 @@ starcasino.getParticipantsForCompetition = function _callee2(book, competition) 
           league = leagues.filter(function (league) {
             return league.name === competition.toUpperCase();
           })[0];
-          return _context2.abrupt("return", cache.get(league.id).map(function (event) {
+          cacheResult = cache.get(league.id);
+          return _context2.abrupt("return", cacheResult ? cacheResult.map(function (event) {
             return event.participants;
-          }).flat());
+          }).flat() : []);
 
-        case 2:
+        case 3:
         case "end":
           return _context2.stop();
       }

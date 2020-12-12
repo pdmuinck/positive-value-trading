@@ -53,7 +53,7 @@ const leagues = [
     },
     {
         "id": 6939,
-        "name": "LA_LIGA_2"
+        "name": "SEGUNDA"
     },
     {
         "id": 6931,

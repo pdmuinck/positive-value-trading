@@ -11,13 +11,19 @@ module.exports = function(server) {
     server.get('/providers/:provider/bookmakers/:book/competitions/:competition/participants', async (req, resp) => {
         await api.getParticipantsForProviderAndBookAndCompetition(req.params.provider, req.params.book, req.params.competition)
         .then(response => resp.send(response))
-        .catch(error => resp.status(500).send(error.message))
+        .catch(error => {
+            console.log(error)
+            resp.status(500).send(error.message)
+        })
     })
 
     server.get('/competitions/:competition/participants', async (req, resp) => {
         await api.getParticipantsByCompetition(req.params.competition)
         .then(response => resp.send(response))
-        .catch(error => resp.status(500).send(error.message))
+        .catch(error => {
+            console.log(error)
+            resp.status(500).send(error.message)
+        })
     })
 
     server.get('/sports/:sport/events', async (req, resp) => {
