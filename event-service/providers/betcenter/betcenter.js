@@ -37,7 +37,6 @@ const betcenter = {}
 
 betcenter.getParticipantsForCompetition = async(book, competition) => {
     const league = leagues.filter(league => league.name === competition.toUpperCase()).map(league => league.id)
-    console.log(league)
     const payload = {"leagueIds":league,"gameTypes":[7],"jurisdictionId":30}
     return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', payload, betcenterHeaders).then(response => parseParticipants(response.data)).catch(error => null)
 }
@@ -50,7 +49,7 @@ betcenter.getEventsForBookAndSport = async(book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = leagues.map(league => {
         const betcenterPayload = {"leagueIds": [league.id], "sportId":sports[sport.toUpperCase()],"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
-        return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games)).catch(error => null)
+        return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games, league)).catch(error => null)
     })
     let events = []
     await Promise.all(requests).then(values => {
@@ -60,8 +59,8 @@ betcenter.getEventsForBookAndSport = async(book, sport) => {
     return events
 }
 
-function transform(games) {
-    return games.map(game => {return {id: game.id, participants: game.teams.map(team => {return {id: team.id, name: team.name}})}})
+function transform(games, league) {
+    return games.map(game => {return {id: game.id, league: league, participants: game.teams.map(team => {return {id: team.id, name: team.name}})}})
 }
 
 module.exports = betcenter

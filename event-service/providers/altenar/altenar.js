@@ -29,7 +29,7 @@ function parseParticipants(events) {
 }
 
 function parse(events) {
-    return events.map(event => { return {id: event.Id, participants: event.Competitors.map(competitor => {return {id: competitor.Name.toUpperCase(), name: competitor.Name.toUpperCase()}})}})
+    return events.map(event => { return {id: event.Id, league: leagues.filter(league => league.id === event.ChampId).map(league => league.name)[0], participants: event.Competitors.map(competitor => {return {id: competitor.Name.toUpperCase(), name: competitor.Name.toUpperCase()}})}})
 }
 
 module.exports = altenar

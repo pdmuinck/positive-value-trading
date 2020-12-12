@@ -112,110 +112,17 @@ bet90.getEventsForBookAndSport = function _callee2(book, sport) {
           return _context2.abrupt("return", eventCache.get('EVENTS'));
 
         case 2:
-          requests = [//spain
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 117,
-            categoryId: 32,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 276,
-            categoryId: 32,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), // germany
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 30,
-            categoryId: 19,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 75,
-            categoryId: 19,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), // england
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 56,
-            categoryId: 34,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 173,
-            categoryId: 34,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 321,
-            categoryId: 34,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 338,
-            categoryId: 34,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), //serie a
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 401,
-            categoryId: 4,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), // france
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 119,
-            categoryId: 62,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), // netherlands
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 307,
-            categoryId: 79,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          }), // belgium
-          axios.post('https://bet90.be/Sports/SportLeagueGames', {
-            leagueId: 457,
-            categoryId: 20,
-            sportId: sports[sport.toUpperCase()]
-          }, headers).then(function (response) {
-            return transform(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          })];
+          requests = leagues.map(function (league) {
+            return axios.post('https://bet90.be/Sports/SportLeagueGames', {
+              leagueId: league.id,
+              categoryId: league.categoryId,
+              sportId: sports[sport.toUpperCase()]
+            }, headers).then(function (response) {
+              return transform(response.data, league.name);
+            })["catch"](function (error) {
+              return console.log(error);
+            });
+          }).flat();
           _context2.next = 5;
           return regeneratorRuntime.awrap(Promise.all(requests).then(function (values) {
             results = values.flat();
@@ -233,7 +140,7 @@ bet90.getEventsForBookAndSport = function _callee2(book, sport) {
   });
 };
 
-function transform(events) {
+function transform(events, league) {
   var parsedEvents = [];
   var firstTeams = parser.parse(events).querySelectorAll('.first-team').map(function (team) {
     return {
@@ -262,6 +169,7 @@ function transform(events) {
     })[0];
     parsedEvents.push({
       id: team.id,
+      league: league,
       participants: [{
         id: stat.participantIds.split('team1id="')[1].split('\"\r\n')[0],
         name: team.team1

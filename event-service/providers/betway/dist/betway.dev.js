@@ -90,6 +90,11 @@ function parseEvents(events) {
     return {
       id: event.Id,
       leagueId: event.GroupCName,
+      league: leagues.filter(function (league) {
+        return league.id === event.GroupCName;
+      }).map(function (league) {
+        return league.name;
+      })[0],
       participants: [{
         id: event.HomeTeamName,
         name: event.HomeTeamName

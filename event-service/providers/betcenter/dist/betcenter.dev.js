@@ -51,7 +51,6 @@ betcenter.getParticipantsForCompetition = function _callee(book, competition) {
           }).map(function (league) {
             return league.id;
           });
-          console.log(league);
           payload = {
             "leagueIds": league,
             "gameTypes": [7],
@@ -63,7 +62,7 @@ betcenter.getParticipantsForCompetition = function _callee(book, competition) {
             return null;
           }));
 
-        case 4:
+        case 3:
         case "end":
           return _context.stop();
       }
@@ -105,7 +104,7 @@ betcenter.getEventsForBookAndSport = function _callee2(book, sport) {
               "jurisdictionId": 30
             };
             return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(function (response) {
-              return transform(response.data.games);
+              return transform(response.data.games, league);
             })["catch"](function (error) {
               return null;
             });
@@ -128,10 +127,11 @@ betcenter.getEventsForBookAndSport = function _callee2(book, sport) {
   });
 };
 
-function transform(games) {
+function transform(games, league) {
   return games.map(function (game) {
     return {
       id: game.id,
+      league: league,
       participants: game.teams.map(function (team) {
         return {
           id: team.id,

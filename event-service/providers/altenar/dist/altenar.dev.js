@@ -95,6 +95,11 @@ function parse(events) {
   return events.map(function (event) {
     return {
       id: event.Id,
+      league: leagues.filter(function (league) {
+        return league.id === event.ChampId;
+      }).map(function (league) {
+        return league.name;
+      })[0],
       participants: event.Competitors.map(function (competitor) {
         return {
           id: competitor.Name.toUpperCase(),

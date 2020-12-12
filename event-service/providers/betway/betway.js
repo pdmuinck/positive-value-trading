@@ -23,7 +23,7 @@ betway.getParticipantsForCompetition = async(book, competition) => {
 
 function parseEvents(events) {
     console.log('parse events')
-    const parsedEvents = events.map(event => {return {id: event.Id, leagueId: event.GroupCName, participants: [{id: event.HomeTeamName, name: event.HomeTeamName}, {id: event.AwayTeamName, name: event.AwayTeamName}]}})
+    const parsedEvents = events.map(event => {return {id: event.Id, leagueId: event.GroupCName, league: leagues.filter(league => league.id === event.GroupCName).map(league => league.name)[0], participants: [{id: event.HomeTeamName, name: event.HomeTeamName}, {id: event.AwayTeamName, name: event.AwayTeamName}]}})
     eventCache.set('FOOTBALL', parsedEvents)
     parsedEvents.forEach(event => {
         const leagueEvents = eventCache.get(event.leagueId)

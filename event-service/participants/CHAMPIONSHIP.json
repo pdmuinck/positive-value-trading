@@ -1,23 +1,23 @@
 {
     "AFC BOURNEMOUTH": {
       "ladbrokes": "AFC Bournemouth",
-      "meridian": "257619",
-      "betway": "AFC Bournemouth"
+      "meridian": "257619"
     },
     "BARNSLEY": {
+      "kambi": 1000010031,
       "sbtech": "556",
       "pinnacle": "BARNSLEY",
       "betconstruct": "Barnsley",
       "ladbrokes": "Barnsley",
       "magicbetting": "9040753",
       "meridian": "814",
-      "stanleybet": "Barnsley",
-      "betway": "Barnsley"
+      "starcasino": 924
     },
     "BARNSLEY FC": {
       "betcenter": 104005
     },
     "BIRMINGHAM": {
+      "kambi": 1000000068,
       "sbtech": "243",
       "betconstruct": "Birmingham"
     },
@@ -28,49 +28,50 @@
       "ladbrokes": "Birmingham City",
       "magicbetting": "9046322",
       "meridian": "258927",
-      "stanleybet": "Birmingham City",
-      "betway": "Birmingham City"
+      "starcasino": 623
     },
     "BLACKBURN": {
       "sbtech": "237",
       "betconstruct": "Blackburn"
     },
     "BLACKBURN ROVERS": {
+      "kambi": 1000000088,
       "pinnacle": "BLACKBURN ROVERS",
       "bet90": "3943",
       "betcenter": 106080,
       "ladbrokes": "Blackburn Rovers",
       "magicbetting": "9046142",
       "meridian": "258519",
-      "stanleybet": "Blackburn Rovers",
-      "betway": "Blackburn Rovers"
+      "starcasino": 389
     },
     "BOURNEMOUTH": {
+      "kambi": 1000052183,
       "sbtech": "545",
       "pinnacle": "BOURNEMOUTH",
       "bet90": "579818",
       "betconstruct": "Bournemouth",
       "magicbetting": "9045324",
-      "stanleybet": "Bournemouth"
+      "starcasino": 880
     },
     "BOURNEMOUTH AFC": {
       "betcenter": 104727
     },
     "BRENTFORD": {
+      "kambi": 1000069183,
       "sbtech": "536",
       "pinnacle": "BRENTFORD",
       "betconstruct": "Brentford",
       "magicbetting": "9046341",
-      "betway": "Brentford"
+      "starcasino": 882
     },
     "BRENTFORD FC": {
       "bet90": "4329",
       "betcenter": 106076,
       "ladbrokes": "Brentford FC",
-      "meridian": "302158",
-      "stanleybet": "Brentford Fc"
+      "meridian": "302158"
     },
     "BRISTOL CITY": {
+      "kambi": 1000028839,
       "sbtech": "8860",
       "pinnacle": "BRISTOL CITY",
       "bet90": "2534",
@@ -79,13 +80,13 @@
       "ladbrokes": "Bristol City",
       "magicbetting": "9042090",
       "meridian": "810",
-      "stanleybet": "Bristol City",
-      "betway": "Bristol City"
+      "starcasino": 927
     },
     "CARDIFF": {
       "betconstruct": "Cardiff"
     },
     "CARDIFF CITY": {
+      "kambi": 1000000019,
       "sbtech": "6011",
       "pinnacle": "CARDIFF CITY",
       "bet90": "2532",
@@ -93,8 +94,7 @@
       "ladbrokes": "Cardiff City",
       "magicbetting": "9058020",
       "meridian": "261520",
-      "stanleybet": "Cardiff City",
-      "betway": "Cardiff City"
+      "starcasino": 929
     },
     "COVENTRY": {
       "sbtech": "382",
@@ -104,12 +104,13 @@
       "magicbetting": "9044688"
     },
     "COVENTRY CITY": {
+      "kambi": 1000069937,
       "ladbrokes": "Coventry City",
       "meridian": "332555",
-      "stanleybet": "Coventry City",
-      "betway": "Coventry City"
+      "starcasino": 930
     },
     "DERBY COUNTY": {
+      "kambi": 1000022830,
       "sbtech": "391",
       "pinnacle": "DERBY COUNTY",
       "bet90": "2697",
@@ -118,8 +119,7 @@
       "ladbrokes": "Derby County",
       "magicbetting": "9046176",
       "meridian": "258518",
-      "stanleybet": "Derby County",
-      "betway": "Derby County"
+      "starcasino": 932
     },
     "FC BARNSLEY": {
       "bet90": "1999"
@@ -135,18 +135,19 @@
       "magicbetting": "9046649"
     },
     "HUDDERSFIELD TOWN": {
+      "kambi": 1000085937,
       "sbtech": "548",
       "pinnacle": "HUDDERSFIELD TOWN",
       "bet90": "3944",
       "ladbrokes": "Huddersfield Town",
       "meridian": "272190",
-      "stanleybet": "Huddersfield Town",
-      "betway": "Huddersfield Town"
+      "starcasino": 898
     },
     "LUTON": {
       "betconstruct": "Luton"
     },
     "LUTON TOWN": {
+      "kambi": 1000015615,
       "sbtech": "543",
       "pinnacle": "LUTON TOWN",
       "bet90": "439900",
@@ -154,16 +155,15 @@
       "ladbrokes": "Luton Town",
       "magicbetting": "9060003",
       "meridian": "272195",
-      "stanleybet": "Luton Town",
-      "betway": "Luton Town"
+      "starcasino": 1308
     },
     "MIDDLESBROUGH": {
+      "kambi": 1000000084,
       "sbtech": "244",
       "pinnacle": "MIDDLESBROUGH",
       "betconstruct": "Middlesbrough",
       "magicbetting": "9046319",
-      "stanleybet": "Middlesbrough",
-      "betway": "Middlesbrough"
+      "starcasino": 938
     },
     "MIDDLESBROUGH FC": {
       "betcenter": 106581,
@@ -171,12 +171,12 @@
       "meridian": "266120"
     },
     "MILLWALL": {
+      "kambi": 1000034681,
       "sbtech": "388",
       "pinnacle": "MILLWALL",
       "betconstruct": "Millwall",
       "magicbetting": "9046653",
-      "stanleybet": "Millwall",
-      "betway": "Millwall"
+      "starcasino": 939
     },
     "MILLWALL FC": {
       "bet90": "99332",
@@ -186,21 +186,22 @@
     },
     "NORWICH": {
       "sbtech": "241",
-      "betconstruct": "Norwich",
-      "stanleybet": "Norwich"
+      "betconstruct": "Norwich"
     },
     "NORWICH CITY": {
+      "kambi": 1000078305,
       "pinnacle": "NORWICH CITY",
       "bet90": "4328",
       "betcenter": 104968,
       "magicbetting": "9042352",
-      "betway": "Norwich City"
+      "starcasino": 398
     },
     "NORWICH CITY FC": {
       "ladbrokes": "Norwich City FC",
       "meridian": "300413"
     },
     "NOTTINGHAM FOREST": {
+      "kambi": 1000000046,
       "sbtech": "22200",
       "pinnacle": "NOTTINGHAM FOREST",
       "bet90": "1107",
@@ -209,8 +210,7 @@
       "ladbrokes": "Nottingham Forest",
       "magicbetting": "9044458",
       "meridian": "272187",
-      "stanleybet": "Nottingham Forest",
-      "betway": "Nottingham Forest"
+      "starcasino": 940
     },
     "PRESTON": {
       "sbtech": "385",
@@ -219,12 +219,12 @@
       "magicbetting": "9045541"
     },
     "PRESTON NORTH END": {
+      "kambi": 1000000138,
       "bet90": "2696",
       "betcenter": 104399,
       "ladbrokes": "Preston North End",
       "meridian": "325409",
-      "stanleybet": "Preston North End",
-      "betway": "Preston North End"
+      "starcasino": 909
     },
     "QPR": {
       "betconstruct": "QPR",
@@ -234,27 +234,26 @@
       "betcenter": 104138
     },
     "QUEENS PARK RANGERS": {
+      "kambi": 1000061424,
       "sbtech": "34922",
       "pinnacle": "QUEENS PARK RANGERS",
       "bet90": "1562",
       "ladbrokes": "Queens Park Rangers",
       "meridian": "262516",
-      "stanleybet": "Queens Park Rangers",
-      "starcasino": 399,
-      "betway": "Queens Park Rangers"
+      "starcasino": 399
     },
     "READING": {
+      "kambi": 1000000020,
       "sbtech": "370",
       "pinnacle": "READING",
       "betconstruct": "Reading",
       "magicbetting": "9046154",
-      "betway": "Reading"
+      "starcasino": 943
     },
     "READING FC": {
       "betcenter": 106075,
       "ladbrokes": "Reading FC",
-      "meridian": "258711",
-      "stanleybet": "Reading Fc"
+      "meridian": "258711"
     },
     "ROTHERHAM": {
       "sbtech": "390",
@@ -263,12 +262,12 @@
       "magicbetting": "9043617"
     },
     "ROTHERHAM UNITED": {
+      "kambi": 1000073439,
       "bet90": "2529",
       "betcenter": 104449,
       "ladbrokes": "Rotherham United",
       "meridian": "333152",
-      "stanleybet": "Rotherham United",
-      "betway": "Rotherham United"
+      "starcasino": 911
     },
     "SHEFF WED": {
       "betconstruct": "Sheff Wed"
@@ -280,18 +279,19 @@
       "betcenter": 106077
     },
     "SHEFFIELD WEDNESDAY": {
+      "kambi": 1000007489,
       "pinnacle": "SHEFFIELD WEDNESDAY",
       "bet90": "3559",
       "ladbrokes": "Sheffield Wednesday",
       "magicbetting": "9041976",
       "meridian": "263306",
-      "stanleybet": "Sheffield Wednesday",
-      "betway": "Sheffield Wednesday"
+      "starcasino": 914
     },
     "STOKE": {
       "betconstruct": "Stoke"
     },
     "STOKE CITY": {
+      "kambi": 1000047250,
       "sbtech": "384",
       "pinnacle": "STOKE CITY",
       "bet90": "274767",
@@ -299,9 +299,7 @@
       "ladbrokes": "Stoke City",
       "magicbetting": "9044387",
       "meridian": "258712",
-      "stanleybet": "Stoke City",
-      "starcasino": 400,
-      "betway": "Stoke City"
+      "starcasino": 400
     },
     "SWANSEA": {
       "sbtech": "562",
@@ -309,22 +307,22 @@
       "magicbetting": "9041167"
     },
     "SWANSEA CITY": {
+      "kambi": 1000009871,
       "pinnacle": "SWANSEA CITY",
       "bet90": "274768",
       "betcenter": 104296,
       "ladbrokes": "Swansea City",
       "meridian": "258710",
-      "stanleybet": "Swansea City",
-      "betway": "Swansea City"
+      "starcasino": 402
     },
     "WATFORD": {
+      "kambi": 1000000070,
       "sbtech": "371",
       "pinnacle": "WATFORD",
       "bet90": "579817",
       "betconstruct": "Watford",
       "magicbetting": "9058249",
-      "stanleybet": "Watford",
-      "betway": "Watford"
+      "starcasino": 945
     },
     "WATFORD FC": {
       "betcenter": 106074,
@@ -338,11 +336,11 @@
       "betconstruct": "Wycombe"
     },
     "WYCOMBE WANDERERS": {
+      "kambi": 1000000021,
       "betcenter": 104440,
       "ladbrokes": "Wycombe Wanderers",
       "magicbetting": "9044459",
       "meridian": "325297",
-      "stanleybet": "Wycombe Wanderers",
-      "betway": "Wycombe Wanderers"
+      "starcasino": 922
     }
   }

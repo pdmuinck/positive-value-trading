@@ -50,6 +50,11 @@ websocket.on('message', function incoming(data) {
           return {
             id: event.EventId,
             leagueId: event.LeagueId,
+            league: _leagues.filter(function (league) {
+              return league.id === event.leagueId;
+            }).map(function (league) {
+              return league.name;
+            })[0],
             participants: [{
               id: event.Team1Name,
               name: event.Team1Name
