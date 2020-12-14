@@ -11,7 +11,7 @@ mapper.map = (participants) => {
                     mappedParticipant = result[participant.name.toUpperCase()]
                     if(!mappedParticipant){
                         result[participant.name.toUpperCase()] = {}
-                        result[participant.name.toUpperCase()][provider.toLowerCase()] = participant.id
+                        result[participant.name.toUpperCase()][provider.toLowerCase()] = [participant.id]
                         mappedParticipant = result[participant.name.toUpperCase()]
                     }
                 }
@@ -19,7 +19,7 @@ mapper.map = (participants) => {
                     otherBook.participants.forEach(otherParticipant => {
                         otherProvider = otherBook.provider.toLowerCase()
                         if(otherParticipant && otherParticipant.name &&  participant.name && otherParticipant.name.toUpperCase() === participant.name.toUpperCase()){
-                            mappedParticipant[otherProvider] = otherParticipant.id
+                            mappedParticipant[otherProvider] = [otherParticipant.id]
                         }
                     })
                 })

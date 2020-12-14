@@ -52,8 +52,8 @@ api.getParticipantsForProviderAndBookAndCompetition = async (provider, book, com
 }
 
 api.getParticipantsByCompetition = async (competition) => {
-    const league = require('./participants/' + competition.toUpperCase() + '.json')
-    if(league) return league
+    //const league = require('./participants/' + competition.toUpperCase() + '.json')
+    //if(league) return league
     const requests = [
         getParticipantsForProviderAndBookAndCompetition('kambi', 'unibet_belgium', competition),
         getParticipantsForProviderAndBookAndCompetition('sbtech', 'betfirst', competition),

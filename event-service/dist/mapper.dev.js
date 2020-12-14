@@ -15,7 +15,7 @@ mapper.map = function (participants) {
 
           if (!mappedParticipant) {
             result[participant.name.toUpperCase()] = {};
-            result[participant.name.toUpperCase()][provider.toLowerCase()] = participant.id;
+            result[participant.name.toUpperCase()][provider.toLowerCase()] = [participant.id];
             mappedParticipant = result[participant.name.toUpperCase()];
           }
         }
@@ -27,7 +27,7 @@ mapper.map = function (participants) {
             otherProvider = otherBook.provider.toLowerCase();
 
             if (otherParticipant && otherParticipant.name && participant.name && otherParticipant.name.toUpperCase() === participant.name.toUpperCase()) {
-              mappedParticipant[otherProvider] = otherParticipant.id;
+              mappedParticipant[otherProvider] = [otherParticipant.id];
             }
           });
         });
