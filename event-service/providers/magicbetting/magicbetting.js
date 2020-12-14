@@ -105,7 +105,9 @@ async function findApi() {
                     s = s.replace(/[\u0000-\u0019]+/g,"")
                     try {
                         const parsedEvent = JSON.parse(s)
-                        const event = {id: parsedEvent.id, participants: parsedEvent.participants, leagueId: parsedEvent.typeId}
+                        const leagueId = parsedEvent.typeId
+                        const league = leagues.filter(league => league.id === leagueId).map(league => league.name)[0]
+                        const event = {id: parsedEvent.id, participants: parsedEvent.participants, leagueId: parsedEvent.typeId, league: league}
                         const leagueEvents = cache.get(event.leagueId)
                         if(leagueEvents) {
                             leagueEvents.push(event)

@@ -33,7 +33,7 @@ scooore.getEventsForBookAndSport = function _callee(book, sport) {
         case 2:
           requests = leagues.map(function (league) {
             return axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(function (response) {
-              return transform(response.data.markets);
+              return transform(response.data.markets, league);
             })["catch"](function (error) {
               return null;
             });
@@ -66,7 +66,7 @@ scooore.getParticipantsForCompetition = function _callee2(book, competition) {
           })[0];
           console.log(league);
           return _context2.abrupt("return", axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + league.id + '.1-0.json').then(function (response) {
-            return parseParticipants(response.data.markets);
+            return parseParticipants(response.data.markets, league);
           })["catch"](function (error) {
             return null;
           }));
@@ -79,17 +79,18 @@ scooore.getParticipantsForCompetition = function _callee2(book, competition) {
   });
 };
 
-function parseParticipants(events) {
-  var parsedEvents = transform(events);
+function parseParticipants(events, league) {
+  var parsedEvents = transform(events, league);
   return parsedEvents.map(function (event) {
     return event.participants;
   });
 }
 
-function transform(events) {
+function transform(events, league) {
   return events.map(function (event) {
     return {
       id: event.idfoevent,
+      league: league.name,
       participants: [{
         id: event.participantname_home,
         name: event.participantname_home

@@ -221,6 +221,11 @@ function transform(events) {
   return events.map(function (event) {
     return {
       id: event.id,
+      league: leagues.filter(function (league) {
+        return league.id === event.groupId;
+      }).map(function (league) {
+        return league.name;
+      })[0],
       participants: event.participants.map(function (participant) {
         return {
           id: participant.participantId,

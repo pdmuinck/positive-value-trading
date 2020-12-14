@@ -14,12 +14,13 @@ starWS.on('open', function open() {
 starWS.on('message', function incoming(data) {
     const bla = JSON.parse(data)
     const leagueId = bla.rid
+    const league = leagues.filter(league => league.id === leagueId).map(league => league.name)[0]
     const leagueEvents = cache.get(leagueId)
     if(bla.data.data) {
         const events = bla.data.data.game
         Object.entries(events).forEach(entry => {
             const rawEvent = entry[1]
-            const event = {id: rawEvent.id, participants: [{id: rawEvent.team1_id, name: rawEvent.team1_name}, {id: rawEvent.team2_id, name: rawEvent.team2_name}]}
+            const event = {id: rawEvent.id, league: league, participants: [{id: rawEvent.team1_id, name: rawEvent.team1_name}, {id: rawEvent.team2_id, name: rawEvent.team2_name}]}
             cache.set(entry[0], event)
             if(leagueEvents) {
                 leagueEvents.push(event)

@@ -40,7 +40,7 @@ ladbrokes.getEventsForBookAndSport = function _callee(book, sport) {
         case 2:
           requests = leagues.map(function (league) {
             return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(function (response) {
-              return parse(response.data.result.dataGroupList);
+              return parse(response.data.result.dataGroupList, league.name);
             })["catch"](function (error) {
               return console.log(error);
             });
@@ -73,7 +73,7 @@ ladbrokes.getParticipantsForCompetition = function _callee2(book, competition) {
             return league.name === competition.toUpperCase();
           })[0];
           return _context2.abrupt("return", axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(function (response) {
-            return parseParticipants(response.data.result.dataGroupList);
+            return parseParticipants(response.data.result.dataGroupList, league.name);
           })["catch"](function (error) {
             return console.log(error);
           }));
@@ -86,19 +86,20 @@ ladbrokes.getParticipantsForCompetition = function _callee2(book, competition) {
   });
 };
 
-function parseParticipants(dataGroupList) {
-  var events = parse(dataGroupList);
+function parseParticipants(dataGroupList, league) {
+  var events = parse(dataGroupList, league);
   return events.map(function (event) {
     return event.participants;
   }).flat();
 }
 
-function parse(dataGroupList) {
+function parse(dataGroupList, league) {
   var events = [];
   dataGroupList.forEach(function (dataGroup) {
     dataGroup.itemList.forEach(function (item) {
       events.push({
         id: item.eventInfo.aliasUrl,
+        league: league,
         participants: [{
           id: item.eventInfo.teamHome.description,
           name: item.eventInfo.teamHome.description

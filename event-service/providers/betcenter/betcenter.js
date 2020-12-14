@@ -49,7 +49,7 @@ betcenter.getEventsForBookAndSport = async(book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
     const requests = leagues.map(league => {
         const betcenterPayload = {"leagueIds": [league.id], "sportId":sports[sport.toUpperCase()],"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
-        return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games, league)).catch(error => null)
+        return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(response => transform(response.data.games, league.name)).catch(error => null)
     })
     let events = []
     await Promise.all(requests).then(values => {

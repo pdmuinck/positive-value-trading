@@ -104,7 +104,7 @@ betcenter.getEventsForBookAndSport = function _callee2(book, sport) {
               "jurisdictionId": 30
             };
             return axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders).then(function (response) {
-              return transform(response.data.games, league);
+              return transform(response.data.games, league.name);
             })["catch"](function (error) {
               return null;
             });

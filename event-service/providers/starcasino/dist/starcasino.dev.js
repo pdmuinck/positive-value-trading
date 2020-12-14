@@ -28,6 +28,11 @@ starWS.on('open', function open() {
 starWS.on('message', function incoming(data) {
   var bla = JSON.parse(data);
   var leagueId = bla.rid;
+  var league = leagues.filter(function (league) {
+    return league.id === leagueId;
+  }).map(function (league) {
+    return league.name;
+  })[0];
   var leagueEvents = cache.get(leagueId);
 
   if (bla.data.data) {
@@ -36,6 +41,7 @@ starWS.on('message', function incoming(data) {
       var rawEvent = entry[1];
       var event = {
         id: rawEvent.id,
+        league: league,
         participants: [{
           id: rawEvent.team1_id,
           name: rawEvent.team1_name

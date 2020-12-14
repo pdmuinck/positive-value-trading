@@ -45,7 +45,7 @@ event.getEventsForBookAndSport = async (book, sport) => {
 }
 
 function transform(events) {
-    return events.filter(event => event.participants.length === 2).map(event => { return {id: event.id, startTime: event.startTime, sport: event.league.sport.name, league: event.league.name, participants: event.participants.map(participant => participant.name)}})
+    return events.filter(event => event.participants.length === 2).map(event => { return {id: event.id, startTime: event.startTime, sport: event.league.sport.name, league: leagues.filter(league => league.id === event.league.id).map(league => league.name)[0], participants: event.participants.map(participant => participant.name)}})
 }
 
 module.exports = event

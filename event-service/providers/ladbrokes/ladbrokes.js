@@ -21,7 +21,7 @@ const headers = {
 
 ladbrokes.getEventsForBookAndSport = async (book, sport) => {
     if(eventCache.get('EVENTS')) return eventCache.get('EVENTS')
-    const requests = leagues.map(league => axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(response => parse(response.data.result.dataGroupList)).catch(error => console.log(error)))
+    const requests = leagues.map(league => axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(response => parse(response.data.result.dataGroupList, league.name)).catch(error => console.log(error)))
     let results = []
     await Promise.all(requests).then(values => {
         results = values.flat()
@@ -32,20 +32,21 @@ ladbrokes.getEventsForBookAndSport = async (book, sport) => {
 
 ladbrokes.getParticipantsForCompetition = async(book, competition) => {
     const league = leagues.filter(league => league.name === competition.toUpperCase())[0]
-    return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(response => parseParticipants(response.data.result.dataGroupList)).catch(error => console.log(error))
+    return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/' + league.id + '?prematch=1&live=0', headers).then(response => parseParticipants(response.data.result.dataGroupList, league.name)).catch(error => console.log(error))
 }
 
-function parseParticipants(dataGroupList) {
-    const events = parse(dataGroupList)
+function parseParticipants(dataGroupList, league) {
+    const events = parse(dataGroupList, league)
     return events.map(event => event.participants).flat()
 }
 
-function parse(dataGroupList) {
+function parse(dataGroupList, league) {
     const events = []
     dataGroupList.forEach(dataGroup => {
         dataGroup.itemList.forEach(item => {
             events.push({
                 id: item.eventInfo.aliasUrl,
+                league: league,
                 participants: [
                     {id: item.eventInfo.teamHome.description, name: item.eventInfo.teamHome.description}, 
                     {id: item.eventInfo.teamAway.description, name: item.eventInfo.teamAway.description}

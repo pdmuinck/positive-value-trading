@@ -55,7 +55,7 @@ function createRequest(url) {
 }
 
 function transform(events) {
-    return events.map(event => {return {id: event.id, participants: event.team}})
+    return events.map(event => {return {id: event.id, league: leagues.filter(league => league.id === event.leagueId).map(league => league.name)[0], participants: event.team}})
 }
 
 async function resolve(requests) {

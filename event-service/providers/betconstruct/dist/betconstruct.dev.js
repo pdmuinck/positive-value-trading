@@ -42,15 +42,14 @@ websocket.on('message', function incoming(data) {
 
   if (JSON.parse(bla.Message)["$type"] === 'APR.Packets.DataPacket, APR.Packets') {
     var response = JSON.parse(JSON.parse(bla.Message).Requests["$values"][0].Content);
-
-    var _leagues = response.LeagueDataSource.LeagueItems.map(function (league) {
+    var test = response.LeagueDataSource.LeagueItems.map(function (league) {
       return {
         sportId: league.SportId,
         events: league.EventItems.map(function (event) {
           return {
             id: event.EventId,
             leagueId: event.LeagueId,
-            league: _leagues.filter(function (league) {
+            league: leagues.filter(function (league) {
               return league.id === event.leagueId;
             }).map(function (league) {
               return league.name;
@@ -66,20 +65,23 @@ websocket.on('message', function incoming(data) {
         })
       };
     }).flat();
-
-    _leagues.forEach(function (league) {
+    test.forEach(function (league) {
       return league.events.forEach(function (event) {
         return event["sportId"] = league.sportId;
       });
     });
-
-    var events = _leagues.map(function (league) {
+    var events = test.map(function (league) {
       return league.events;
     }).flat();
-
     events.forEach(function (event) {
       var sportEvents = cache.get(event.sportId);
       var leagueEvents = cache.get(event.leagueId);
+      var league = leagues.filter(function (league) {
+        return league.id === event.leagueId;
+      }).map(function (league) {
+        return league.name;
+      })[0];
+      event["league"] = league;
 
       if (leagueEvents) {
         leagueEvents.push(event);

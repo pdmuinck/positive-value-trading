@@ -21,17 +21,19 @@ websocket.on('message', function incoming(data) {
     // if statement because we receive more messages than data packets
     if(JSON.parse(bla.Message)["$type"] === 'APR.Packets.DataPacket, APR.Packets') {
         const response =  JSON.parse(JSON.parse(bla.Message).Requests["$values"][0].Content)
-        const leagues = response.LeagueDataSource.LeagueItems.map(league => {return {
+        const test = response.LeagueDataSource.LeagueItems.map(league => {return {
             sportId: league.SportId, events: league.EventItems.map(event => {return {
                 id: event.EventId, leagueId: event.LeagueId, 
                 league: leagues.filter(league => league.id === event.leagueId).map(league => league.name)[0], 
                 participants: [{id: event.Team1Name, name: event.Team1Name}, 
                     {id: event.Team2Name, name: event.Team2Name}]}})}}).flat()
-        leagues.forEach(league => league.events.forEach(event => event["sportId"] = league.sportId))
-        const events = leagues.map(league => league.events).flat()
+        test.forEach(league => league.events.forEach(event => event["sportId"] = league.sportId))
+        const events = test.map(league => league.events).flat()
         events.forEach(event => {
             const sportEvents = cache.get(event.sportId)
             const leagueEvents = cache.get(event.leagueId)
+            const league = leagues.filter(league => league.id === event.leagueId).map(league => league.name)[0]
+            event["league"] = league
             if(leagueEvents) {
                 leagueEvents.push(event)
                 cache.set(event.leagueId, leagueEvents)

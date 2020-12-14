@@ -118,7 +118,11 @@ function transform(events) {
       id: event.id,
       startTime: event.startTime,
       sport: event.league.sport.name,
-      league: event.league.name,
+      league: leagues.filter(function (league) {
+        return league.id === event.league.id;
+      }).map(function (league) {
+        return league.name;
+      })[0],
       participants: event.participants.map(function (participant) {
         return participant.name;
       })

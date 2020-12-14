@@ -101,6 +101,7 @@ function createRequest(url, bookmakerInfo) {
 function transform(events) {
     return events.map(event => {return {
         id: event.id, 
+        league: leagues.filter(league => league.id === event.groupId).map(league => league.name)[0],
         participants: event.participants.map(participant => {return {
             id: participant.participantId, 
             home: participant.home,

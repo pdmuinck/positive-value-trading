@@ -62,7 +62,7 @@ stanleybet.getEventsForBookAndSport = function _callee2(book, sport) {
           requests = leagues.map(function (league) {
             var body = 'callCount=1\nnextReverseAjaxIndex=0\nc0-scriptName=IF_GetAvvenimenti\nc0-methodName=getEventi\nc0-id=0\nc0-param0=number:6\nc0-param1=string:\nc0-param2=string:\nc0-param3=number:1\nc0-param4=number:' + league.id + '\nc0-param5=boolean:false\nc0-param6=string:STANLEYBET\nc0-param7=number:0\nc0-param8=number:0\nc0-param9=string:nl\nbatchId=8\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=jUP0TgbNU12ga86ZyrjLTrS8NRSwl721Uon/AVY2Uon-upTglJydk\n';
             return axios.post(getEventsUrl, body, headers).then(function (response) {
-              return transform(response.data, league.id);
+              return transform(response.data, league);
             })["catch"](function (error) {
               return console.log(error);
             });
@@ -91,7 +91,7 @@ function parseParticipants(eventData, realLeagueId) {
   });
 }
 
-function transform(eventData, realLeagueId) {
+function transform(eventData, league) {
   var events = eventData.split('alias').filter(function (event) {
     return event.includes('avv:');
   });
@@ -112,7 +112,8 @@ function transform(eventData, realLeagueId) {
         };
       }),
       leagueId: leagueId,
-      realLeagueId: realLeagueId
+      realLeagueId: league.id,
+      league: league.name
     };
   });
 }

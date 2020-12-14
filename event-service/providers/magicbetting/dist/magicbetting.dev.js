@@ -177,10 +177,17 @@ function findApi() {
 
                   try {
                     var parsedEvent = JSON.parse(_s);
+                    var leagueId = parsedEvent.typeId;
+                    var league = leagues.filter(function (league) {
+                      return league.id === leagueId;
+                    }).map(function (league) {
+                      return league.name;
+                    })[0];
                     var event = {
                       id: parsedEvent.id,
                       participants: parsedEvent.participants,
-                      leagueId: parsedEvent.typeId
+                      leagueId: parsedEvent.typeId,
+                      league: league
                     };
                     var leagueEvents = cache.get(event.leagueId);
 
