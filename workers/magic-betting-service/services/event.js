@@ -4,7 +4,7 @@ const ttlSeconds = 60 * 1 * 1
 const cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
 const CDP = require('chrome-remote-interface')
 const chromeLauncher = require('chrome-launcher');
-const magicbetting = require("../../../event-service/providers/magicbetting/magicbetting")
+const magicbetting = require("../../../valuebet-service/providers/magicbetting/magicbetting")
 
 async function launchChrome() {
     return await chromeLauncher.launch({

@@ -1,9 +1,9 @@
-const express = require('express')
+
 const endpoints = require('./setup/endpoints')
 const middlewares = require('./setup/middlewares')
 const start = require('./setup/start')
 
-process.on('warning', e => console.warn(e.stack));
+process.on('warning', e =
 
 const server = express()
 
