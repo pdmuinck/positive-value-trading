@@ -1,22 +1,34 @@
 class BetOffer {
     private readonly _betType: string
-    private readonly _betOptions: BetOption[]
     private readonly _eventId: number
     private readonly _bookMaker: string
+    private readonly _betOptionName: string
+    private readonly _price: number
+    private readonly _line: number
 
-    constructor(betType, betOptions, eventId, bookMaker) {
+    constructor(betType, eventId, bookMaker, betOptionName, price, line) {
+        this._betOptionName = betOptionName
+        this._price = price
+        this._line = line
         this._betType = betType
-        this._betOptions = betOptions
         this._eventId = eventId
         this._bookMaker = bookMaker
     }
 
-    get betType(){
-        return this._betType
+    get betOptionName(){
+        return this._betOptionName
     }
 
-    get betOptions(){
-        return this._betOptions
+    get price(){
+        return this._price
+    }
+
+    get line(){
+        return this._line
+    }
+
+    get betType(){
+        return this._betType
     }
 
     get eventId() {
@@ -28,29 +40,11 @@ class BetOffer {
     }
 }
 
-class BetOption {
-    private readonly _betOptionName: string
-    private readonly _price: number
-
-    constructor(betOptionName, price) {
-        this._betOptionName = betOptionName
-        this._price = price
-    }
-
-    get betOptionName(){
-        return this._betOptionName
-    }
-
-    get price(){
-        return this._price
-    }
-}
-
 const BetType = {
     '_1X2': {betOptions: 3, name: '1X2'},
     'MONEY_LINE': 2,
-    'OVER_UNDER': 3,
-    'HANDICAP': 4
+    'OVER_UNDER_TOTAL_GOALS': {betOptions: 2, name: "OVER_UNDER_TOTAL_GOALS"},
+    'HANDICAP_GOALS': {betOptions: 2, name: "HANDICAP_GOALS"}
 }
 
 const BookMaker = {
@@ -67,5 +61,5 @@ class BetOfferPublished {
 }
 
 export {
-    BetOffer, BetOfferPublished, BookMaker, BetOption, BetType
+    BetOfferPublished, BookMaker, BetOffer, BetType
 }
