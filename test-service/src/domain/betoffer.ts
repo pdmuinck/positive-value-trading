@@ -4,15 +4,17 @@ class BetOffer {
     private readonly _bookMaker: string
     private readonly _betOptionName: string
     private readonly _price: number
+    private readonly _vigFreePrice: number
     private readonly _line: number
 
-    constructor(betType: BetType, eventId, bookMaker, betOptionName, price, line) {
+    constructor(betType: BetType, eventId, bookMaker, betOptionName, price, line, vigFreePrice?: number) {
         this._betOptionName = betOptionName
         this._price = price
         this._line = line
         this._betType = betType
         this._eventId = eventId
         this._bookMaker = bookMaker
+        this._vigFreePrice = vigFreePrice
     }
 
     get betOptionName(){
@@ -37,6 +39,10 @@ class BetOffer {
 
     get bookMaker(){
         return this._bookMaker
+    }
+
+    get vigFreePrice(){
+        return this._vigFreePrice
     }
 }
 enum BetType {

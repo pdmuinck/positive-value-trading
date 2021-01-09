@@ -45,6 +45,8 @@ export class KambiParser {
                 return 'UNDER'
         }
     }
+
+
 }
 
 export class SbtechParser {
@@ -257,5 +259,71 @@ export class MeridianParser {
             default:
                 return BetType.UNKNOWN
         }
+    }
+}
+
+export class PinnacleParser {
+    static parse(bookMaker, apiResponse): BetOffer[] {
+        if(!apiResponse) return []
+        return apiResponse.map(offer => PinnacleParser.parseBetOffers(bookMaker, offer)).flat()
+    }
+
+    private static parseBetOffers(bookMaker, offer): BetOffer[] {
+        const betOffers = []
+        const eventId = offer.matchupId
+        const betType = PinnacleParser.determineBetType(offer.key)
+        const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices)
+        offer.prices.forEach(price => {
+            const outcome = PinnacleParser.determineOutcome(price.designation.toUpperCase())
+            const line = price.points ? price.points : NaN
+            const odds = this.toDecimalOdds(price.price)
+            betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, odds, line,
+                vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice))
+        })
+        return betOffers
+    }
+
+    private static determineBetType(key): BetType {
+        if(key === 's;0;m') return BetType._1X2
+        if(key.includes('s;0;ou')) return BetType.OVER_UNDER
+    }
+
+    static toDecimalOdds(americanOdds): number {
+
+        if(americanOdds < 0) {
+            return parseFloat(((100 / Math.abs(americanOdds)) + 1).toFixed(2))
+        } else {
+            return parseFloat(((americanOdds / 100) + 1).toFixed(2))
+        }
+
+    }
+
+    private static determineOutcome(outcome: string) {
+        switch(outcome) {
+            case 'HOME':
+                return '1'
+            case 'AWAY':
+                return '2'
+            case 'DRAW':
+                return 'X'
+            default:
+                return outcome
+        }
+    }
+
+    private static calculateVigFreePrices(prices) {
+        const sum = prices.map(price => this.toDecimalOdds(price.price))
+        let vig = 0
+
+        sum.forEach(bla => {
+            vig += 1/bla
+        })
+        const vigFreePrices = []
+        prices.forEach(price => {
+            const outcomeType = this.determineOutcome(price.designation.toUpperCase())
+            const vigFreePrice = this.toDecimalOdds(price.price) / vig
+            vigFreePrices.push({outcomeType: outcomeType, vigFreePrice: vigFreePrice})
+        })
+        return vigFreePrices
     }
 }

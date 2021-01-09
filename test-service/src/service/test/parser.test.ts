@@ -1,6 +1,14 @@
 const expect = require('chai').expect
-import {altenar, betcenter, kambi, ladbrokes, sbtech, meridian} from './test-data'
-import {KambiParser, SbtechParser, AltenarParser, BetcenterParser, LadbrokesParser, MeridianParser} from '../parser'
+import {altenar, betcenter, kambi, ladbrokes, sbtech, meridian, pinnacle} from './test-data'
+import {
+    KambiParser,
+    SbtechParser,
+    AltenarParser,
+    BetcenterParser,
+    LadbrokesParser,
+    MeridianParser,
+    PinnacleParser
+} from '../parser'
 import {BetOffer, BetType} from "../../domain/betoffer";
 
 describe('Kambi Parser Tests', function() {
@@ -120,6 +128,26 @@ describe('MERIDIAN parser tests', function() {
                 book, 'UNDER', 1.98, 2.5),
             new BetOffer(BetType.OVER_UNDER, "8817779",
                 book, 'OVER', 1.83, 2.5),
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+    })
+})
+
+describe('PINNACLE parser tests', function() {
+    it('should parse betoffers', function() {
+        const book = 'meridian'
+        const betOffers = PinnacleParser.parse(book, pinnacle)
+        const expected = [
+            new BetOffer(BetType._1X2, 1235631053,
+                book, '1', PinnacleParser.toDecimalOdds(-176), NaN),
+            new BetOffer(BetType._1X2, 1235631053,
+                book, '2', PinnacleParser.toDecimalOdds(542), NaN),
+            new BetOffer(BetType._1X2, 1235631053,
+                book, 'X', PinnacleParser.toDecimalOdds(310), NaN),
+            new BetOffer(BetType.OVER_UNDER, 1235631053,
+                book, 'OVER', PinnacleParser.toDecimalOdds(-102), 2.5),
+            new BetOffer(BetType.OVER_UNDER, 1235631053,
+                book, 'UNDER', PinnacleParser.toDecimalOdds(-112), 2.5)
         ]
         expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
     })
