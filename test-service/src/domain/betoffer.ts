@@ -1,12 +1,12 @@
 class BetOffer {
-    private readonly _betType: string
+    private readonly _betType: BetType
     private readonly _eventId: number
     private readonly _bookMaker: string
     private readonly _betOptionName: string
     private readonly _price: number
     private readonly _line: number
 
-    constructor(betType, eventId, bookMaker, betOptionName, price, line) {
+    constructor(betType: BetType, eventId, bookMaker, betOptionName, price, line) {
         this._betOptionName = betOptionName
         this._price = price
         this._line = line
@@ -39,12 +39,12 @@ class BetOffer {
         return this._bookMaker
     }
 }
-
-const BetType = {
-    '_1X2': {betOptions: 3, name: '1X2'},
-    'MONEY_LINE': 2,
-    'OVER_UNDER_TOTAL_GOALS': {betOptions: 2, name: "OVER_UNDER_TOTAL_GOALS"},
-    'HANDICAP_GOALS': {betOptions: 2, name: "HANDICAP_GOALS"}
+enum BetType {
+    _1X2 = '1X2',
+    DOUBLE_CHANCE = 'DOUBLE_CHANCE',
+    OVER_UNDER = 'OVER_UNDER',
+    HANDICAP= 'HANDICAP',
+    UNKNOWN = 'UNKNOWN'
 }
 
 const BookMaker = {

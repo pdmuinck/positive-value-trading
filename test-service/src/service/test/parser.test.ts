@@ -1,20 +1,23 @@
 const expect = require('chai').expect
-import {kambi, sbtech} from './test-data'
-import {KambiParser, SbtechParser} from '../parser'
-import {BetType} from "../../domain/betoffer";
-
+import {altenar, betcenter, kambi, ladbrokes, sbtech, meridian} from './test-data'
+import {KambiParser, SbtechParser, AltenarParser, BetcenterParser, LadbrokesParser, MeridianParser} from '../parser'
+import {BetOffer, BetType} from "../../domain/betoffer";
 
 describe('Kambi Parser Tests', function() {
     describe('#parse', function() {
         it('should parse betoffers', function() {
             const book = 'UNIBET_BE'
             const betOffers = KambiParser.parse(book, kambi)
-            const betOffers_1X2 = betOffers.filter(betOffer => betOffer.betType === BetType._1X2.name)
-            assert1X2(betOffers_1X2, 8.80, 4.0, 1.47, 1006478884, book)
-            assertTotalGoals(betOffers, BetType.OVER_UNDER_TOTAL_GOALS, 2.12, 1.72, 2.5, 2.5,
-                'OVER', 'UNDER', 1006478884, book)
-            assertTotalGoals(betOffers, BetType.HANDICAP_GOALS, 1.93, 1.89, 0.5, -0.5,
-                '1', '2', 1007031368, book)
+            const expected = [
+                new BetOffer(BetType._1X2, 1006478884, book, '1', 8.80, NaN),
+                new BetOffer(BetType._1X2, 1006478884, book, 'X', 4.0, NaN),
+                new BetOffer(BetType._1X2, 1006478884, book, '2', 1.47, NaN),
+                new BetOffer(BetType.OVER_UNDER, 1006478884, book, 'OVER', 2.12, 2.5),
+                new BetOffer(BetType.OVER_UNDER, 1006478884, book, 'UNDER', 1.72, 2.5),
+                new BetOffer(BetType.HANDICAP, 1007031368, book, '1', 1.93, 0.5),
+                new BetOffer(BetType.HANDICAP, 1007031368, book, '2', 1.89, -0.5)
+            ]
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
         })
     })
 })
@@ -23,44 +26,103 @@ describe('SBTECH parser tests', function() {
     it('should parse betoffers', function() {
         const book = 'BETFIRST'
         const betOffers = SbtechParser.parse(book, sbtech)
-        assert1X2(betOffers, 1.86956522, 3.8, 4.75, '19522273', book)
-        assertTotalGoals(betOffers, BetType.OVER_UNDER_TOTAL_GOALS, 2.17357752, 1.70343413, 2.5, 2.5,
-            'OVER', 'UNDER', '21112532', book)
+        const expected = [
+            new BetOffer(BetType._1X2, '19522273', book, 'X', 3.8, NaN),
+            new BetOffer(BetType._1X2, '19522273', book, '2', 4.75, NaN),
+            new BetOffer(BetType._1X2, '19522273', book, '1', 1.86956522, NaN),
+            new BetOffer(BetType.OVER_UNDER, '21112532', book, 'UNDER', 1.70343413, 2.5),
+            new BetOffer(BetType.OVER_UNDER, '21112532', book, 'OVER', 2.17357752, 2.5),
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
     })
 })
 
-function assert1X2(betOffers, expectedPrice1, expectedPriceX, expectedPrice2, eventId, bookMaker) {
-    const betOffers_1X2 = betOffers.filter(betOffer => betOffer.betType === BetType._1X2.name)
-    expect(betOffers_1X2.length).to.equal(BetType._1X2.betOptions)
-    const betOption_1 = betOffers_1X2.filter(betOffer => betOffer.betOptionName ===  '1')[0]
-    const betOption_X = betOffers_1X2.filter(betOffer => betOffer.betOptionName ===  'X')[0]
-    const betOption_2 = betOffers_1X2.filter(betOffer => betOffer.betOptionName ===  '2')[0]
-    expect(betOption_1.price).to.equal(expectedPrice1)
-    expect(betOption_X.price).to.equal(expectedPriceX)
-    expect(betOption_2.price).to.equal(expectedPrice2)
-    expect(betOption_2.line).to.be.NaN
-    expect(betOption_1.line).to.be.NaN
-    expect(betOption_X.line).to.be.NaN
-    expect(betOption_2.eventId).to.equal(eventId)
-    expect(betOption_1.eventId).to.equal(eventId)
-    expect(betOption_X.eventId).to.equal(eventId)
-    expect(betOption_2.bookMaker).to.equal(bookMaker)
-    expect(betOption_1.bookMaker).to.equal(bookMaker)
-    expect(betOption_X.bookMaker).to.equal(bookMaker)
-}
+describe('ALTENAR parser tests', function() {
+    it('should parse betoffers', function() {
+        const book = 'goldenpalace'
+        const betOffers = AltenarParser.parse(book, altenar)
+        const expected = [
+            new BetOffer(BetType._1X2, 200001404193, book, '1', 3.1, NaN),
+            new BetOffer(BetType._1X2, 200001404193, book, 'X', 3.65, NaN),
+            new BetOffer(BetType._1X2, 200001404193, book, '2', 2.16, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, '1X', 1.64, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, '12', 1.28, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, 'X2', 1.35, NaN),
+            new BetOffer(BetType.HANDICAP, 200001404193, book, '1', 2.7, -0.25),
+            new BetOffer(BetType.HANDICAP, 200001404193, book, '2', 1.45, 0.25),
+            new BetOffer(BetType.OVER_UNDER, 200001404193, book, 'OVER', 1.02, 0.5),
+            new BetOffer(BetType.OVER_UNDER, 200001404193, book, 'UNDER', 10.0, 0.5)
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+    })
+})
 
-function assertTotalGoals(betOffers, betType, expectedPrice1, expectedPrice2, line1, line2, label1, label2,
-                          eventId, book){
-    const betOffersFiltered = betOffers.filter(betOffer => betOffer.betType === betType.name)
-    expect(betOffersFiltered.length).to.equal(betType.betOptions)
-    const betOption_1 = betOffersFiltered.filter(betOffer => betOffer.betOptionName ===  label1)[0]
-    const betOption_2 = betOffersFiltered.filter(betOffer => betOffer.betOptionName ===  label2)[0]
-    expect(betOption_1.price).to.equal(expectedPrice1)
-    expect(betOption_2.price).to.equal(expectedPrice2)
-    expect(betOption_1.line).to.equal(line1)
-    expect(betOption_2.line).to.equal(line2)
-    expect(betOption_1.bookMaker).to.equal(book)
-    expect(betOption_2.bookMaker).to.equal(book)
-    expect(betOption_1.eventId).to.equal(eventId)
-    expect(betOption_2.eventId).to.equal(eventId)
-}
+describe('BETCENTER parser tests', function() {
+    it('should parse betoffers', function() {
+        const book = 'betcenter'
+        const betOffers = BetcenterParser.parse(book, betcenter)
+        const expected = [
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '1', 1.92, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.50, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '2', 4.11, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, "barcellona-paris-saint-germain-202102162100", book, '1X', 1.25, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, "barcellona-paris-saint-germain-202102162100", book, '12', 1.30, NaN),
+            new BetOffer(BetType.DOUBLE_CHANCE, "barcellona-paris-saint-germain-202102162100", book, 'X2', 1.88, NaN),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'OVER', 1.67, 2.5),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'UNDER', 2.12, 2.5)
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+    })
+})
+
+describe('LADBROKES parser tests', function() {
+    it('should parse betoffers', function() {
+        const book = 'meridian'
+        const betOffers = LadbrokesParser.parse(book, ladbrokes)
+        const expected = [
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '1', 2.3, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.65, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '2', 2.90, NaN),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'OVER', 1.45, 2.5),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'UNDER', 2.55, 2.5),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '1', 2.3, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.65, NaN),
+            new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '2', 2.90, NaN),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'OVER', 1.45, 2.5),
+            new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'UNDER', 2.55, 2.5)
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+    })
+})
+
+describe('MERIDIAN parser tests', function() {
+    it('should parse betoffers', function() {
+        const book = 'meridian'
+        const betOffers = MeridianParser.parse(book, meridian)
+        const expected = [
+            new BetOffer(BetType._1X2, "8817779",
+                book, '1', 4.4, NaN),
+            new BetOffer(BetType._1X2, "8817779",
+                book, 'X', 3.75, NaN),
+            new BetOffer(BetType._1X2, "8817779",
+                book, '2', 1.83, NaN),
+            new BetOffer(BetType.OVER_UNDER, "8817779",
+                book, 'UNDER', 1.98, 2.5),
+            new BetOffer(BetType.OVER_UNDER, "8817779",
+                book, 'OVER', 1.83, 2.5),
+            new BetOffer(BetType._1X2, "8817779",
+                book, '1', 4.4, NaN),
+            new BetOffer(BetType._1X2, "8817779",
+                book, 'X', 3.75, NaN),
+            new BetOffer(BetType._1X2, "8817779",
+                book, '2', 1.83, NaN),
+            new BetOffer(BetType.OVER_UNDER, "8817779",
+                book, 'UNDER', 1.98, 2.5),
+            new BetOffer(BetType.OVER_UNDER, "8817779",
+                book, 'OVER', 1.83, 2.5),
+        ]
+        expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+    })
+})
+
+

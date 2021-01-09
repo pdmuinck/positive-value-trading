@@ -3,7 +3,7 @@ const KAMBI_BOOKMAKERS = require('./kambi/bookmakers.json')
 const KAMBI_LEAGUES = require('./kambi/leagues.json')
 const axios = require('axios')
 
-class KambiScraper {
+export class KambiScraper {
     static async getBetOffersByBook(book: string) {
         const bookmaker = KAMBI_BOOKMAKERS[book.toUpperCase()]
         const requests = KAMBI_LEAGUES.map(league => {
@@ -26,6 +26,9 @@ class KambiScraper {
     }
 }
 
-module.exports = {
-    KambiScraper: KambiScraper
+
+export class SbtechScraper {
+    static async getBetOfferByBook(book: string){
+
+    }
 }
