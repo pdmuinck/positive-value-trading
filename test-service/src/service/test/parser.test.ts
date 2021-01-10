@@ -135,19 +135,19 @@ describe('MERIDIAN parser tests', function() {
 
 describe('PINNACLE parser tests', function() {
     it('should parse betoffers', function() {
-        const book = 'meridian'
+        const book = 'pinnacle'
         const betOffers = PinnacleParser.parse(book, pinnacle)
         const expected = [
             new BetOffer(BetType._1X2, 1235631053,
-                book, '1', PinnacleParser.toDecimalOdds(-176), NaN),
+                book, '1', PinnacleParser.toDecimalOdds(-176), NaN, 1.51),
             new BetOffer(BetType._1X2, 1235631053,
-                book, '2', PinnacleParser.toDecimalOdds(542), NaN),
+                book, '2', PinnacleParser.toDecimalOdds(542), NaN, 6.19),
             new BetOffer(BetType._1X2, 1235631053,
-                book, 'X', PinnacleParser.toDecimalOdds(310), NaN),
+                book, 'X', PinnacleParser.toDecimalOdds(310), NaN, 3.96),
             new BetOffer(BetType.OVER_UNDER, 1235631053,
-                book, 'OVER', PinnacleParser.toDecimalOdds(-102), 2.5),
+                book, 'OVER', PinnacleParser.toDecimalOdds(-102), 2.5, 1.91),
             new BetOffer(BetType.OVER_UNDER, 1235631053,
-                book, 'UNDER', PinnacleParser.toDecimalOdds(-112), 2.5)
+                book, 'UNDER', PinnacleParser.toDecimalOdds(-112), 2.5, 1.83)
         ]
         expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
     })

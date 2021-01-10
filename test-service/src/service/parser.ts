@@ -278,7 +278,7 @@ export class PinnacleParser {
             const line = price.points ? price.points : NaN
             const odds = this.toDecimalOdds(price.price)
             betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, odds, line,
-                vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice))
+                parseFloat(vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice)))
         })
         return betOffers
     }
@@ -312,17 +312,18 @@ export class PinnacleParser {
     }
 
     private static calculateVigFreePrices(prices) {
-        const sum = prices.map(price => this.toDecimalOdds(price.price))
+        const decimalOdds = prices.map(price => this.toDecimalOdds(price.price))
         let vig = 0
 
-        sum.forEach(bla => {
-            vig += 1/bla
+        decimalOdds.forEach(odd => {
+            vig += 1/odd
         })
+
         const vigFreePrices = []
         prices.forEach(price => {
             const outcomeType = this.determineOutcome(price.designation.toUpperCase())
             const vigFreePrice = this.toDecimalOdds(price.price) / vig
-            vigFreePrices.push({outcomeType: outcomeType, vigFreePrice: vigFreePrice})
+            vigFreePrices.push({outcomeType: outcomeType, vigFreePrice: vigFreePrice.toFixed(2)})
         })
         return vigFreePrices
     }
