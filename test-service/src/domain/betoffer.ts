@@ -1,7 +1,219 @@
-class BetOffer {
+
+export class SportEvent {
+    private readonly _startDateTime: Date
+    private readonly _competition: SportCompetition
+    private readonly _sport: Sport
+    private readonly _eventIds: Map<string, string>
+    private readonly _betOffers: Map<string, Map<BookMaker, BetOffer>>
+    private readonly _closingLines: Map<string, Map<BookMaker, BetOffer>>
+    private readonly _participants: Participant[]
+
+    constructor(startDateTime, competition, sport, eventIds, betOffers, closingLines, participants){
+        this._startDateTime = startDateTime
+        this._betOffers = betOffers
+        this._eventIds = eventIds
+        this._sport = sport
+        this._competition = competition
+        this._betOffers = betOffers
+        this._closingLines = closingLines
+        this._participants = participants
+    }
+
+    get startDateTime(){
+        return this._startDateTime
+    }
+
+    get competition(){
+        return this._competition
+    }
+
+    get sport(){
+        return this._sport
+    }
+
+    get eventIds() {
+        return this._eventIds
+    }
+
+    get betOffers() {
+        return this._betOffers
+    }
+
+    get closingLines(){
+        return this._closingLines
+    }
+    get participants(){
+        return this._participants
+    }
+
+    registerBetOffer(betOffer: BetOffer): BetOfferRegistered {
+        return this.registerBetOfferInCollection(betOffer, this._betOffers)
+    }
+
+    registerClosingLine(betOffer: BetOffer): ClosingLineRegistered {
+        return this.registerBetOfferInCollection(betOffer, this._closingLines)
+    }
+
+    private registerBetOfferInCollection(betOffer: BetOffer, betOfferCollection) {
+        if(Object.values(this._eventIds).includes(betOffer.eventId)) {
+            const key = getKeyFromBetOffer(betOffer)
+            const betOffers = betOfferCollection[key]
+            if(betOffers) {
+                betOffers[betOffer.bookMaker] = betOffer
+                betOfferCollection[key] = betOffers
+            } else {
+                const toRegister = {}
+                toRegister[betOffer.bookMaker] = betOffer
+                betOfferCollection[key] = toRegister
+            }
+            return new BetOfferRegistered(betOffer)
+        }
+    }
+
+    detectValueBets(betOfferKey?: string): ValueBetFoundEvent[] {
+        if(betOfferKey) {
+            return this.findValue(betOfferKey)
+        } else {
+            const foundValueBets = []
+            Object.keys(this._betOffers).forEach(betOfferKey => {
+                const valueBets = this.findValue(betOfferKey)
+                if(valueBets) foundValueBets.push(valueBets[0])
+            })
+            return foundValueBets
+        }
+    }
+
+    private findValue(betOfferKey): ValueBetFoundEvent[]{
+        const pinnacleBetOffer = this._betOffers[betOfferKey][BookMaker.PINNACLE]
+        if(pinnacleBetOffer) {
+            return Object.keys(this._betOffers[betOfferKey]).map((bookmaker) => {
+                if(bookmaker != BookMaker.PINNACLE) {
+                    const betOffer = this._betOffers[betOfferKey][bookmaker]
+                    const value = (1 / pinnacleBetOffer.vigFreePrice * betOffer.price) - 1
+                    if (value > 0) {
+                        return new ValueBetFoundEvent(betOffer, value)
+                    }
+                }
+            })
+        }
+    }
+
+    calculateMetrics(tradedBetOffer: TradedBetOffer, closingLine: ClosingLineRegistered): PerformanceMetric {
+        if(closingLine.bookMaker === BookMaker.PINNACLE) {
+            // only check closing line pinnacle or other sharp, because that is the best guess of outcome game
+            const realValue = (1 / closingLine.betOffer.vigFreePrice + tradedBetOffer.betOffer.price) - 1
+            return new PerformanceMetric(realValue, tradedBetOffer)
+        }
+    }
+}
+
+export class PerformanceMetric {
+    private readonly _realValue: number
+    private readonly _tradedBetOffer: TradedBetOffer
+
+    constructor(realValue, tradedBetOffer) {
+        this._realValue = realValue
+        this._tradedBetOffer = tradedBetOffer
+    }
+
+    get realValue() {
+        return this._realValue
+    }
+
+    get tradedBetOffer() {
+        return this._tradedBetOffer
+    }
+}
+
+export class TradedBetOffer {
+    private readonly _stake: number
+    private readonly _dateTimeOfTrade: Date
+    private readonly _betOffer: BetOffer
+    private readonly _value: number
+
+    constructor(stake, dateTimeOfTrade, betOffer, value) {
+        this._stake = stake
+        this._dateTimeOfTrade = dateTimeOfTrade
+        this._betOffer = betOffer
+        this._value = value
+    }
+
+    get stake() {
+        return this._stake
+    }
+
+    get dateTimeOfTrade(){
+        return this._dateTimeOfTrade
+
+    }
+
+    get betOffer(){
+        return this._betOffer
+    }
+
+    get value(){
+        return this._value
+    }
+}
+
+export class Participant {
+    private readonly _name: string
+
+    constructor(name) {
+        this._name = name
+    }
+
+    get name(){
+        return this._name
+    }
+}
+
+function getKeyFromBetOffer(betOffer: BetOffer): string {
+    return [betOffer.betType, betOffer.betOptionName, betOffer.line].join(';')
+}
+
+export class BetOfferRegistered{
+    private readonly _betOffer: BetOffer
+
+    constructor(betOffer) {
+        this._betOffer = betOffer
+    }
+
+    get betOffer(){
+        return this._betOffer
+    }
+
+    get bookMaker(){
+        return this._betOffer.bookMaker
+    }
+}
+
+export class ClosingLineRegistered extends BetOfferRegistered {
+    constructor(betOffer) {
+        super(betOffer);
+    }
+}
+
+export enum SportCompetition {
+    JUPILER_PRO_LEAGUE='JUPILER_PRO_LEAGUE',
+    SERIE_A = 'SERIE_A',
+    LA_LIGA = 'LA_LIGA',
+    BUNDESLIGA= 'BUNDESLIGA',
+    PREMIER_LEAGUE = 'PREMIER_LEAGUE',
+    EREDIVISIE = 'EREDIVISIE',
+    LIGUE_1 = 'LIGUE_1'
+}
+
+export enum Sport {
+    FOOTBALL='FOOTBALL',
+    TENNIS='TENNIS',
+    BASKETBALL = 'BASKETBALL'
+}
+
+export class BetOffer {
     private readonly _betType: BetType
     private readonly _eventId: number
-    private readonly _bookMaker: string
+    private readonly _bookMaker: BookMaker
     private readonly _betOptionName: string
     private readonly _price: number
     private readonly _vigFreePrice: number
@@ -45,7 +257,8 @@ class BetOffer {
         return this._vigFreePrice
     }
 }
-enum BetType {
+
+export enum BetType {
     _1X2 = '1X2',
     DOUBLE_CHANCE = 'DOUBLE_CHANCE',
     OVER_UNDER = 'OVER_UNDER',
@@ -53,19 +266,26 @@ enum BetType {
     UNKNOWN = 'UNKNOWN'
 }
 
-const BookMaker = {
-    'UNIBET_BELGIUM': 1,
-    'NAPOLEON_GAMES': 2
+export enum BookMaker {
+    UNIBET_BELGIUM= 'UNIBET_BELGIUM',
+    NAPOLEON_GAMES = 'NAPOLEON_GAMES',
+    PINNACLE= 'PINNACLE'
 }
 
-class BetOfferPublished {
-    betOfferId: number
+export class ValueBetFoundEvent {
+    private readonly _betOffer: BetOffer
+    private readonly _value: number
 
-    constructor(betOfferId) {
-        this.betOfferId = betOfferId
+    constructor(betOffer: BetOffer, value: number){
+        this._betOffer = betOffer
+        this._value = value
     }
-}
 
-export {
-    BetOfferPublished, BookMaker, BetOffer, BetType
+    get betOffer(){
+        return this._betOffer
+    }
+
+    get value() {
+        return this._value
+    }
 }
