@@ -269,7 +269,12 @@ export enum BetType {
 export enum BookMaker {
     UNIBET_BELGIUM= 'UNIBET_BELGIUM',
     NAPOLEON_GAMES = 'NAPOLEON_GAMES',
-    PINNACLE= 'PINNACLE'
+    PINNACLE= 'PINNACLE',
+    BETFIRST= 'BETFIRST',
+    GOLDEN_PALACE = 'GOLDEN_PALACE',
+    BETCENTER = 'BETCENTER',
+    LADBROKES = 'LADBROKES',
+    MERIDIAN = 'MERIDIAN'
 }
 
 export class ValueBetFoundEvent {

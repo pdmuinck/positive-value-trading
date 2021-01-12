@@ -1,12 +1,13 @@
-import {BetOffer, BetType} from '../domain/betoffer'
+import {BetOffer, BetType, BookMaker} from '../domain/betoffer'
+import {ApiResponse} from "../client/scraper";
 
 export class KambiParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse.betOffers) return []
-        return apiResponse.betOffers.map(betOffer => this.transformToBetOffers(bookMaker, betOffer)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.betOffers) return []
+        return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.bookmaker, betOffer)).flat()
     }
 
-    static transformToBetOffers(bookMaker, betOfferContent): BetOffer[] {
+    static transformToBetOffers(bookMaker: BookMaker, betOfferContent): BetOffer[] {
         const typeId = betOfferContent.criterion.id
         const betOfferType = this.determineBetOfferType(typeId)
         const eventId = betOfferContent.eventId
@@ -50,12 +51,12 @@ export class KambiParser {
 }
 
 export class SbtechParser {
-    static parse(bookmaker, apiResponse): BetOffer[] {
-        if(!apiResponse.markets) return []
-        return apiResponse.markets.map(market => SbtechParser.transformToBetOffer(bookmaker, market)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.markets) return []
+        return apiResponse.data.markets.map(market => SbtechParser.transformToBetOffer(apiResponse.bookmaker, market)).flat()
     }
 
-    private static transformToBetOffer(bookmaker, market: any): BetOffer[] {
+    private static transformToBetOffer(bookmaker: BookMaker, market: any): BetOffer[] {
         const typeId = market.marketType.id
         const betOfferType = SbtechParser.determineBetOfferType(typeId)
         const eventId = market.eventId
@@ -96,12 +97,12 @@ export class SbtechParser {
 }
 
 export class AltenarParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse.Result) return []
-        return apiResponse.Result.Items[0].Events.map(event => AltenarParser.transformToBetOffer(bookMaker, event)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.Result) return []
+        return apiResponse.data.Result.Items[0].Events.map(event => AltenarParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
     }
 
-    private static transformToBetOffer(bookMaker, event): BetOffer[] {
+    private static transformToBetOffer(bookMaker: BookMaker, event): BetOffer[] {
         const betOffers = []
         const eventId = event.Id
         event.Items.map(item => {
@@ -131,12 +132,12 @@ export class AltenarParser {
 }
 
 export class BetcenterParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse.games) return []
-        return apiResponse.games.map(event => BetcenterParser.transformToBetOffer(bookMaker, event)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.games) return []
+        return apiResponse.data.games.map(event => BetcenterParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
     }
 
-    private static transformToBetOffer(bookMaker, event): BetOffer[] {
+    private static transformToBetOffer(bookMaker: BookMaker, event): BetOffer[] {
         const betOffers = []
         event.markets.forEach(market => {
             const betType = BetcenterParser.determineBetType(market.id)
@@ -187,13 +188,13 @@ export class BetcenterParser {
 }
 
 export class LadbrokesParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse.result.dataGroupList) return []
-        return apiResponse.result.dataGroupList.map(group => group.itemList).flat()
-            .map(event => LadbrokesParser.transformToBetOffer(bookMaker, event)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.result.dataGroupList) return []
+        return apiResponse.data.result.dataGroupList.map(group => group.itemList).flat()
+            .map(event => LadbrokesParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
     }
 
-    private static transformToBetOffer(bookMaker: string, event): BetOffer[] {
+    private static transformToBetOffer(bookMaker: BookMaker, event): BetOffer[] {
         const betOffers = []
         const eventId = event.eventInfo.aliasUrl
         event.betGroupList[0].oddGroupList.forEach(market => {
@@ -224,14 +225,14 @@ export class LadbrokesParser {
 }
 
 export class MeridianParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse.events) return []
-        return apiResponse.events.map(date => date.events).flat()
-            .map(event => MeridianParser.parseBetOffers(bookMaker, event))
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.events) return []
+        return apiResponse.data.events.map(date => date.events).flat()
+            .map(event => MeridianParser.parseBetOffers(apiResponse.bookmaker, event))
             .flat()
     }
 
-    private static parseBetOffers(bookMaker, event): BetOffer[] {
+    private static parseBetOffers(bookMaker: BookMaker, event): BetOffer[] {
         const betOffers = []
         const eventId = event.id
         event.market.forEach(betOffer => {
@@ -263,12 +264,12 @@ export class MeridianParser {
 }
 
 export class PinnacleParser {
-    static parse(bookMaker, apiResponse): BetOffer[] {
-        if(!apiResponse) return []
-        return apiResponse.map(offer => PinnacleParser.parseBetOffers(bookMaker, offer)).flat()
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data) return []
+        return apiResponse.data.map(offer => PinnacleParser.parseBetOffers(apiResponse.bookmaker, offer)).flat()
     }
 
-    private static parseBetOffers(bookMaker, offer): BetOffer[] {
+    private static parseBetOffers(bookMaker: BookMaker, offer): BetOffer[] {
         const betOffers = []
         const eventId = offer.matchupId
         const betType = PinnacleParser.determineBetType(offer.key)
