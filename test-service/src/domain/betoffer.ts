@@ -3,7 +3,7 @@ export class SportEvent {
     private readonly _startDateTime: Date
     private readonly _competition: SportCompetition
     private readonly _sport: Sport
-    private readonly _eventIds: Map<string, string>
+    private readonly _eventIds: Map<BookMaker, string>
     private readonly _betOffers: Map<string, Map<BookMaker, BetOffer>>
     private readonly _closingLines: Map<string, Map<BookMaker, BetOffer>>
     private readonly _participants: Participant[]

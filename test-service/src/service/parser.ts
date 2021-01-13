@@ -18,6 +18,7 @@ export class KambiParser {
             const line = outcome.line / 1000
             betOffers.push(new BetOffer(betOfferType, eventId, bookMaker, outcomeType, price, line))
         })
+        console.log(betOffers)
         return betOffers
     }
 

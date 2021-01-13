@@ -1,5 +1,5 @@
 import {ApiResponse, Scraper} from "../client/scraper";
-import {BetOffer, BookMaker} from "../domain/betoffer";
+import {BetOffer, BookMaker, SportEvent, ValueBetFoundEvent} from "../domain/betoffer";
 import {
     AltenarParser,
     BetcenterParser,
@@ -12,20 +12,37 @@ import {
 
 const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1
-const sportEvents = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
+const sportEventsCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
+const bookmakerEventIdCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
 
 export class ValueBetService {
 
-    constructor(){
-        // create sport events with mapped events across bookmakers and no betoffers yet.
+    private readonly _scraper: Scraper
+
+    constructor(scraper: Scraper, sportEvents: SportEvent[]){
+        this._scraper = scraper
+        sportEvents.forEach(sportEvent => {
+            const eventKey = [sportEvent.startDateTime, sportEvent.participants.map(participant => participant.name).join(';')].join(';')
+            sportEventsCache.set(eventKey, sportEvent)
+            Object.keys(sportEvent.eventIds).forEach(bookmaker => {
+                bookmakerEventIdCache.set([bookmaker, sportEvent.eventIds[bookmaker]].join(';'), eventKey)
+            })
+        })
     }
 
-    async searchForValueBets(){
+    async searchForValueBets(): Promise<ValueBetFoundEvent[]>{
         const apiResponses = await this.scrape()
         const betOffers: BetOffer[] = apiResponses.map(apiResponse => this.parse(apiResponse)).flat()
-        // now link the betoffers with sportevents
-        // trigger value bet detection
-        // register found value bets
+        betOffers.forEach(betOffer => {
+            const eventKey = bookmakerEventIdCache.get([betOffer.bookMaker, betOffer.eventId].join(';'))
+            const sportEvent: SportEvent = sportEventsCache.get(eventKey)
+            sportEvent.registerBetOffer(betOffer)
+            sportEventsCache.set(eventKey, sportEvent)
+        })
+        const sportEvents: SportEvent[] = Object.values(sportEventsCache.mget(sportEventsCache.keys()))
+        const valueBets: ValueBetFoundEvent[] = sportEvents.map(sportEvent => sportEvent.detectValueBets()).flat()
+        // produce kafka messages
+        return valueBets
     }
 
     private parse(apiResponse: ApiResponse): BetOffer[] {
@@ -53,7 +70,7 @@ export class ValueBetService {
 
     private async scrape(): Promise<ApiResponse[]> {
         const scrapeRequests = Object.keys(BookMaker).map(key => {
-            return Scraper.getBetOffersByBook(BookMaker[key])
+            return this._scraper.getBetOffersByBook(BookMaker[key])
         })
         const results: ApiResponse[] = []
         await Promise.all(scrapeRequests).then(apiResponses => {

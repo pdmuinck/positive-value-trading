@@ -15,7 +15,9 @@ describe('SportEvent Test', function() {
         const participant_club = new Participant('CLUB_BRUGGE')
         const participant_anderlecht = new Participant('ANDERLECHT')
         const today = new Date()
-        const eventMap = {'UNIBET_BELGIUM': '123', 'PINNACLE': '12345'}
+        const eventMap = {}
+        eventMap[BookMaker.UNIBET_BELGIUM] = '123'
+        eventMap[BookMaker.PINNACLE] = '12345'
 
         const ubbe_1X2_1: BetOffer = new BetOffer(BetType._1X2, '123', BookMaker.UNIBET_BELGIUM,
             '1', 8.80, NaN)
