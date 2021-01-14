@@ -55,8 +55,8 @@ export class SportEvent {
     }
 
     private registerBetOfferInCollection(betOffer: BetOffer, betOfferCollection) {
-        if(Object.values(this._eventIds).includes(betOffer.eventId)) {
-            const key = getKeyFromBetOffer(betOffer)
+        if(Object.values(this._eventIds).includes(betOffer.eventId.toString())) {
+            const key = betOffer.key
             const betOffers = betOfferCollection[key]
             if(betOffers) {
                 betOffers[betOffer.bookMaker] = betOffer
@@ -77,16 +77,17 @@ export class SportEvent {
             const foundValueBets = []
             Object.keys(this._betOffers).forEach(betOfferKey => {
                 const valueBets = this.findValue(betOfferKey)
-                if(valueBets) foundValueBets.push(valueBets[0])
+                if(valueBets) foundValueBets.push(valueBets.filter(valueBet => valueBet))
             })
-            return foundValueBets
+            return foundValueBets.flat()
         }
     }
 
     private findValue(betOfferKey): ValueBetFoundEvent[]{
         const pinnacleBetOffer = this._betOffers[betOfferKey][BookMaker.PINNACLE]
         if(pinnacleBetOffer) {
-            return Object.keys(this._betOffers[betOfferKey]).map((bookmaker) => {
+            return Object.keys(this._betOffers[betOfferKey]).filter(bookmaker => bookmaker != BookMaker.PINNACLE)
+                .map(bookmaker => {
                 if(bookmaker != BookMaker.PINNACLE) {
                     const betOffer = this._betOffers[betOfferKey][bookmaker]
                     const value = (1 / pinnacleBetOffer.vigFreePrice * betOffer.price) - 1
@@ -166,10 +167,6 @@ export class Participant {
     get name(){
         return this._name
     }
-}
-
-function getKeyFromBetOffer(betOffer: BetOffer): string {
-    return [betOffer.betType, betOffer.betOptionName, betOffer.line].join(';')
 }
 
 export class BetOfferRegistered{
@@ -255,6 +252,10 @@ export class BetOffer {
 
     get vigFreePrice(){
         return this._vigFreePrice
+    }
+
+    get key(){
+        return [this._betType, this._betOptionName, this._line].join(';')
     }
 }
 

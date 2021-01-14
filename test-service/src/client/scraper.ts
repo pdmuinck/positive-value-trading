@@ -19,22 +19,14 @@ export class Scraper {
 }
 
 export class FakeScraper extends Scraper {
-    constructor(){super()}
+    private readonly _testData
+    constructor(testData){
+        super()
+        this._testData = testData
+    }
 
     async getBetOffersByBook(bookmaker: BookMaker): Promise<ApiResponse[]> {
-        switch(bookmaker){
-            case BookMaker.UNIBET_BELGIUM:
-                return [
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, require('./kambi/unibet_betoffer_type_2_fake.json')),
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, require('./kambi/unibet_betoffer_type_6.json')),
-                ]
-            case BookMaker.PINNACLE:
-                return [
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, require('./pinnacle/pinnacle_betoffer_fake.json')),
-                ]
-            default:
-                return []
-        }
+        return this._testData[bookmaker]
     }
 }
 

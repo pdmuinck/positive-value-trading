@@ -12,21 +12,25 @@ import {
 
 const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1
-const sportEventsCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
-const bookmakerEventIdCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
+
 
 export class ValueBetService {
+
+    private _sportEventsCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
+    private _bookmakerEventIdCache = new NodeCache({ stdTTL: ttlSeconds * 60 * 24, checkperiod: ttlSeconds * 0.2, useClones: false })
 
     private readonly _scraper: Scraper
 
     constructor(scraper: Scraper, sportEvents: SportEvent[]){
         this._scraper = scraper
         sportEvents.forEach(sportEvent => {
-            const eventKey = [sportEvent.startDateTime, sportEvent.participants.map(participant => participant.name).join(';')].join(';')
-            sportEventsCache.set(eventKey, sportEvent)
-            Object.keys(sportEvent.eventIds).forEach(bookmaker => {
-                bookmakerEventIdCache.set([bookmaker, sportEvent.eventIds[bookmaker]].join(';'), eventKey)
-            })
+            if(sportEvent.startDateTime && sportEvent.participants && sportEvent.participants.length == 2) {
+                const eventKey = [sportEvent.startDateTime, sportEvent.participants.map(participant => participant.name).join(';')].join(';')
+                this._sportEventsCache.set(eventKey, sportEvent)
+                Object.keys(sportEvent.eventIds).forEach(bookmaker => {
+                    this._bookmakerEventIdCache.set([bookmaker, sportEvent.eventIds[bookmaker]].join(';'), eventKey)
+                })
+            }
         })
     }
 
@@ -34,12 +38,16 @@ export class ValueBetService {
         const apiResponses = await this.scrape()
         const betOffers: BetOffer[] = apiResponses.map(apiResponse => this.parse(apiResponse)).flat()
         betOffers.forEach(betOffer => {
-            const eventKey = bookmakerEventIdCache.get([betOffer.bookMaker, betOffer.eventId].join(';'))
-            const sportEvent: SportEvent = sportEventsCache.get(eventKey)
-            sportEvent.registerBetOffer(betOffer)
-            sportEventsCache.set(eventKey, sportEvent)
+            if(betOffer && betOffer.betType) {
+                const eventKey = this._bookmakerEventIdCache.get([betOffer.bookMaker, betOffer.eventId].join(';'))
+                if(eventKey) {
+                    const sportEvent: SportEvent = this._sportEventsCache.get(eventKey)
+                    sportEvent.registerBetOffer(betOffer)
+                    this._sportEventsCache.set(eventKey, sportEvent)
+                }
+            }
         })
-        const sportEvents: SportEvent[] = Object.values(sportEventsCache.mget(sportEventsCache.keys()))
+        const sportEvents: SportEvent[] = Object.values(this._sportEventsCache.mget(this._sportEventsCache.keys()))
         const valueBets: ValueBetFoundEvent[] = sportEvents.map(sportEvent => sportEvent.detectValueBets()).flat()
         // produce kafka messages
         return valueBets
@@ -72,15 +80,19 @@ export class ValueBetService {
         const scrapeRequests = Object.keys(BookMaker).map(key => {
             return this._scraper.getBetOffersByBook(BookMaker[key])
         })
-        const results: ApiResponse[] = []
+        let results: ApiResponse[] = []
         await Promise.all(scrapeRequests).then(apiResponses => {
-            apiResponses.forEach(response => {
-                for(let i = 0; i < response.length; i++){
-                    results.push(response[i])
-                }
-            })
+            results = apiResponses.filter(apiResponse => apiResponse).flat()
         })
         return results
+    }
+
+    get sportEvents(): SportEvent[] {
+        return Object.values(this._sportEventsCache.mget(this._sportEventsCache.keys()))
+    }
+
+    get bookmakerEventCache() {
+        return Object.values(this._bookmakerEventIdCache.mget(this._bookmakerEventIdCache.keys()))
     }
 
 

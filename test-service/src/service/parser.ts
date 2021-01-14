@@ -12,13 +12,14 @@ export class KambiParser {
         const betOfferType = this.determineBetOfferType(typeId)
         const eventId = betOfferContent.eventId
         const betOffers = []
-        betOfferContent.outcomes.forEach(outcome => {
-            const outcomeType = this.determineOutcomeType(outcome.type)
-            const price = Math.round(outcome.odds + Number.EPSILON) / 1000
-            const line = outcome.line / 1000
-            betOffers.push(new BetOffer(betOfferType, eventId, bookMaker, outcomeType, price, line))
-        })
-        console.log(betOffers)
+        if(betOfferContent.outcomes) {
+            betOfferContent.outcomes.forEach(outcome => {
+                const outcomeType = this.determineOutcomeType(outcome.type)
+                const price = Math.round(outcome.odds + Number.EPSILON) / 1000
+                const line = outcome.line / 1000
+                betOffers.push(new BetOffer(betOfferType, eventId, bookMaker, outcomeType, price, line))
+            })
+        }
         return betOffers
     }
 
@@ -266,7 +267,7 @@ export class MeridianParser {
 
 export class PinnacleParser {
     static parse(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data) return []
+        if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
         return apiResponse.data.map(offer => PinnacleParser.parseBetOffers(apiResponse.bookmaker, offer)).flat()
     }
 
