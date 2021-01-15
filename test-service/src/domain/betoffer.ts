@@ -202,16 +202,8 @@ export enum SportCompetition {
 }
 
 export enum Sport {
-    FOOTBALL='FOOTBALL',
-    TENNIS='TENNIS',
-    BASKETBALL = 'BASKETBALL'
+    FOOTBALL='FOOTBALL'
 }
-
-
-
-export const sportCompetitionMap = {}
-sportCompetitionMap[Sport.FOOTBALL] = [SportCompetition.JUPILER_PRO_LEAGUE, SportCompetition.SERIE_A,
-    SportCompetition.BUNDESLIGA, SportCompetition.LA_LIGA, SportCompetition.PREMIER_LEAGUE, SportCompetition.LIGUE_1]
 
 
 export class BetOffer {
@@ -283,6 +275,11 @@ export enum BookMaker {
     BETCENTER = 'BETCENTER',
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN'
+}
+
+export enum Provider {
+    KAMBI='KAMBI',
+    SBTECH='SBTECH'
 }
 
 export class BookmakerClient {

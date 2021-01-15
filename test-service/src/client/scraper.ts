@@ -1,17 +1,20 @@
-import {BookMaker, Participant, SportCompetition} from "../domain/betoffer";
-import {bookmakers} from "./bookmakers";
+import {BookMaker, Participant, Sport, SportCompetition} from "../domain/betoffer";
+import {clients} from "./bookmakers";
 
 export class Scraper {
     constructor(){}
 
-    async getBetOffersByBook(bookmaker: BookMaker): Promise<ApiResponse[]> {
-        const requests: ApiResponse[] = bookmakers[bookmaker].betOffers
+    async getBetOffersByBook(bookmaker: BookMaker, sport: Sport, competition: SportCompetition): Promise<ApiResponse[]> {
+        const requests = clients[bookmaker].sports.filter(sportMap => sportMap.sport === sport)
+            .map(sportMap => sportMap.competitions).flat()
+            .filter(competitionMap => competitionMap.competition === competition)
+            .map(competitionMap => competitionMap.betOfferRequests).flat()
         return this.getApiResponses(requests)
     }
 
-    async getParticipantsForCompetition(bookmaker: BookMaker, competition: SportCompetition): Promise<ApiResponse[]>{
-        bookmakers[bookmaker].competitions
-        const requests: ApiResponse[] = bookmakers[bookmaker].participants
+    async getParticipantsForCompetition(bookmaker: BookMaker, sport: Sport, competition: SportCompetition): Promise<ApiResponse[]>{
+        const requests = clients[bookmaker].sports.filter(sportMap => sportMap.sport === sport).map(sportMap => sportMap.competitions).flat()
+            .filter(competition => competition.competition === competition).map(competition => competition.particpantRequests).flat()
         return this.getApiResponses(requests)
     }
 
