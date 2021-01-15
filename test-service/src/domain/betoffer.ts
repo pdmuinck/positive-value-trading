@@ -207,6 +207,13 @@ export enum Sport {
     BASKETBALL = 'BASKETBALL'
 }
 
+
+
+export const sportCompetitionMap = {}
+sportCompetitionMap[Sport.FOOTBALL] = [SportCompetition.JUPILER_PRO_LEAGUE, SportCompetition.SERIE_A,
+    SportCompetition.BUNDESLIGA, SportCompetition.LA_LIGA, SportCompetition.PREMIER_LEAGUE, SportCompetition.LIGUE_1]
+
+
 export class BetOffer {
     private readonly _betType: BetType
     private readonly _eventId: number
@@ -277,6 +284,73 @@ export enum BookMaker {
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN'
 }
+
+export class BookmakerClient {
+    private readonly _bookmaker: BookMaker
+    private readonly _sports: BookmakerClientSport[]
+
+    constructor(bookmaker: BookMaker, sports: BookmakerClientSport[]){
+        this._bookmaker = bookmaker
+        this._sports = sports
+    }
+
+    get bookmaker(){
+        return this._bookmaker
+    }
+
+    get sports() {
+        return this._sports
+    }
+}
+
+export class BookmakerClientSport {
+    private readonly _sport: Sport
+    private readonly _competitions: BookmakerClientCompetition[]
+
+    constructor(sport: Sport, competitions: BookmakerClientCompetition[]){
+        this._sport = sport
+        this._competitions = competitions
+    }
+
+    get sport(){
+        return this._sport
+    }
+
+    get competitions(){
+        return this._competitions
+    }
+}
+
+export class BookmakerClientCompetition {
+    private readonly _competition: SportCompetition
+    private readonly _betOfferRequests: []
+    private readonly _participantRequests: []
+    private readonly _eventRequests: []
+
+    constructor(competition: SportCompetition, betOfferRequests, participantRequests, eventRequests) {
+        this._competition = competition
+        this._betOfferRequests = betOfferRequests
+        this._eventRequests = eventRequests
+        this._participantRequests = participantRequests
+    }
+
+    get competition(){
+        return this._competition
+    }
+
+    get betOfferRequests(){
+        return this._betOfferRequests
+    }
+
+    get particpantRequests(){
+        return this._participantRequests
+    }
+
+    get eventRequests(){
+        return this._eventRequests
+    }
+}
+
 
 export class ValueBetFoundEvent {
     private readonly _betOffer: BetOffer

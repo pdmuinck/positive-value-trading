@@ -1,11 +1,21 @@
-import {BookMaker} from "../domain/betoffer";
+import {BookMaker, Participant, SportCompetition} from "../domain/betoffer";
 import {bookmakers} from "./bookmakers";
 
 export class Scraper {
     constructor(){}
 
     async getBetOffersByBook(bookmaker: BookMaker): Promise<ApiResponse[]> {
-        const requests: ApiResponse[] = bookmakers[bookmaker]
+        const requests: ApiResponse[] = bookmakers[bookmaker].betOffers
+        return this.getApiResponses(requests)
+    }
+
+    async getParticipantsForCompetition(bookmaker: BookMaker, competition: SportCompetition): Promise<ApiResponse[]>{
+        bookmakers[bookmaker].competitions
+        const requests: ApiResponse[] = bookmakers[bookmaker].participants
+        return this.getApiResponses(requests)
+    }
+
+    async getApiResponses(requests){
         const apiResponses = []
         if(requests){
             await Promise.all(requests).then(responses => {
