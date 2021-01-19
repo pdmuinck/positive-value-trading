@@ -1,25 +1,25 @@
 import {ApiResponse} from "../../client/scraper";
-
-const expect = require('chai').expect
-import {altenar, betcenter, kambi, ladbrokes, sbtech, meridian, pinnacle} from './test-data'
+import {altenar, betcenter, kambi, ladbrokes, meridian, pinnacle, sbtech} from './test-data'
 import {
-    KambiParser,
-    SbtechParser,
     AltenarParser,
     BetcenterParser,
+    KambiParser,
     LadbrokesParser,
     MeridianParser,
-    PinnacleParser
+    PinnacleParser,
+    SbtechParser
 } from '../parser'
-import {BetOffer, BetType, BookMaker} from "../../domain/betoffer";
+import {BetOffer, BetType, Bookmaker, IdType, RequestType} from "../../domain/betoffer";
+
+const expect = require('chai').expect
 
 describe('Parser tests', function() {
 
     describe('Kambi Parser Tests', function() {
         describe('#parse', function() {
             it('should parse betoffers', function() {
-                const book = BookMaker.UNIBET_BELGIUM
-                const betOffers = KambiParser.parse(new ApiResponse(book, kambi))
+                const book = Bookmaker.UNIBET_BELGIUM
+                const betOffers = KambiParser.parse(new ApiResponse(book, kambi, RequestType.BET_OFFER, IdType.BET_OFFER))
                 const expected = [
                     new BetOffer(BetType._1X2, 1006478884, book, '1', 8.80, NaN),
                     new BetOffer(BetType._1X2, 1006478884, book, 'X', 4.0, NaN),
@@ -36,8 +36,8 @@ describe('Parser tests', function() {
 
     describe('SBTECH parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.BETFIRST
-            const betOffers = SbtechParser.parse(new ApiResponse(book, sbtech))
+            const book = Bookmaker.BETFIRST
+            const betOffers = SbtechParser.parse(new ApiResponse(book, sbtech, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, '19522273', book, 'X', 3.8, NaN),
                 new BetOffer(BetType._1X2, '19522273', book, '2', 4.75, NaN),
@@ -51,8 +51,8 @@ describe('Parser tests', function() {
 
     describe('ALTENAR parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.GOLDEN_PALACE
-            const betOffers = AltenarParser.parse(new ApiResponse(book, altenar))
+            const book = Bookmaker.GOLDEN_PALACE
+            const betOffers = AltenarParser.parse(new ApiResponse(book, altenar, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, 200001404193, book, '1', 3.1, NaN),
                 new BetOffer(BetType._1X2, 200001404193, book, 'X', 3.65, NaN),
@@ -71,8 +71,8 @@ describe('Parser tests', function() {
 
     describe('BETCENTER parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.BETCENTER
-            const betOffers = BetcenterParser.parse(new ApiResponse(book, betcenter))
+            const book = Bookmaker.BETCENTER
+            const betOffers = BetcenterParser.parse(new ApiResponse(book, betcenter, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, 3140760552, book, '1', 1.92, NaN),
                 new BetOffer(BetType._1X2, 3140760552, book, 'X', 3.50, NaN),
@@ -89,8 +89,8 @@ describe('Parser tests', function() {
 
     describe('LADBROKES parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.LADBROKES
-            const betOffers = LadbrokesParser.parse(new ApiResponse(book, ladbrokes))
+            const book = Bookmaker.LADBROKES
+            const betOffers = LadbrokesParser.parse(new ApiResponse(book, ladbrokes, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '1', 2.3, NaN),
                 new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.65, NaN),
@@ -109,8 +109,8 @@ describe('Parser tests', function() {
 
     describe('MERIDIAN parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.MERIDIAN
-            const betOffers = MeridianParser.parse(new ApiResponse(book, meridian))
+            const book = Bookmaker.MERIDIAN
+            const betOffers = MeridianParser.parse(new ApiResponse(book, meridian, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, "8817779",
                     book, '1', 4.4, NaN),
@@ -139,8 +139,8 @@ describe('Parser tests', function() {
 
     describe('PINNACLE parser tests', function() {
         it('should parse betoffers', function() {
-            const book = BookMaker.PINNACLE
-            const betOffers = PinnacleParser.parse(new ApiResponse(book, pinnacle))
+            const book = Bookmaker.PINNACLE
+            const betOffers = PinnacleParser.parse(new ApiResponse(book, pinnacle, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, 1235631053,
                     book, '1', PinnacleParser.toDecimalOdds(-176), NaN, 1.51),

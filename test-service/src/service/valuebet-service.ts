@@ -1,5 +1,5 @@
 import {ApiResponse, Scraper} from "../client/scraper";
-import {BetOffer, BookMaker, SportEvent, ValueBetFoundEvent} from "../domain/betoffer";
+import {BetOffer, Bookmaker, BookmakerId, SportEvent, SportName, ValueBetFoundEvent} from "../domain/betoffer";
 import {
     AltenarParser,
     BetcenterParser,
@@ -27,15 +27,15 @@ export class ValueBetService {
             if(sportEvent.startDateTime && sportEvent.participants && sportEvent.participants.length == 2) {
                 const eventKey = [sportEvent.startDateTime, sportEvent.participants.map(participant => participant.name).join(';')].join(';')
                 this._sportEventsCache.set(eventKey, sportEvent)
-                Object.keys(sportEvent.eventIds).forEach(bookmaker => {
-                    this._bookmakerEventIdCache.set([bookmaker, sportEvent.eventIds[bookmaker]].join(';'), eventKey)
+                sportEvent.bookmakerIds.forEach(bookmakerId => {
+                    this._bookmakerEventIdCache.set([bookmakerId.bookmaker, bookmakerId.id].join(';'), eventKey)
                 })
             }
         })
     }
 
     async searchForValueBets(): Promise<ValueBetFoundEvent[]>{
-        const apiResponses = await this.scrape()
+        const apiResponses = await this._scraper.getBetOffers(SportName.FOOTBALL)
         const betOffers: BetOffer[] = apiResponses.map(apiResponse => this.parse(apiResponse)).flat()
         betOffers.forEach(betOffer => {
             if(betOffer && betOffer.betType) {
@@ -54,37 +54,30 @@ export class ValueBetService {
     }
 
     private parse(apiResponse: ApiResponse): BetOffer[] {
-        switch(apiResponse.bookmaker) {
-            case BookMaker.BETCENTER:
-                return BetcenterParser.parse(apiResponse)
-            case BookMaker.PINNACLE:
-                return PinnacleParser.parse(apiResponse)
-            case BookMaker.UNIBET_BELGIUM:
-                return KambiParser.parse(apiResponse)
-            case BookMaker.NAPOLEON_GAMES:
-                return KambiParser.parse(apiResponse)
-            case BookMaker.GOLDEN_PALACE:
-                return AltenarParser.parse(apiResponse)
-            case BookMaker.BETFIRST:
-                return SbtechParser.parse(apiResponse)
-            case BookMaker.LADBROKES:
-                return LadbrokesParser.parse(apiResponse)
-            case BookMaker.MERIDIAN:
-                return MeridianParser.parse(apiResponse)
-            default:
-                return []
+        if(apiResponse){
+            switch(apiResponse.bookmaker) {
+                case Bookmaker.BETCENTER:
+                    return BetcenterParser.parse(apiResponse)
+                case Bookmaker.PINNACLE:
+                    return PinnacleParser.parse(apiResponse)
+                case Bookmaker.UNIBET_BELGIUM:
+                    return KambiParser.parse(apiResponse)
+                case Bookmaker.NAPOLEON_GAMES:
+                    return KambiParser.parse(apiResponse)
+                case Bookmaker.GOLDEN_PALACE:
+                    return AltenarParser.parse(apiResponse)
+                case Bookmaker.BETFIRST:
+                    return SbtechParser.parse(apiResponse)
+                case Bookmaker.LADBROKES:
+                    return LadbrokesParser.parse(apiResponse)
+                case Bookmaker.MERIDIAN:
+                    return MeridianParser.parse(apiResponse)
+                default:
+                    return []
+            }
+        } else {
+            return []
         }
-    }
-
-    private async scrape(): Promise<ApiResponse[]> {
-        const scrapeRequests = Object.keys(BookMaker).map(key => {
-            return this._scraper.getBetOffersByBook(BookMaker[key])
-        })
-        let results: ApiResponse[] = []
-        await Promise.all(scrapeRequests).then(apiResponses => {
-            results = apiResponses.filter(apiResponse => apiResponse).flat()
-        })
-        return results
     }
 
     get sportEvents(): SportEvent[] {

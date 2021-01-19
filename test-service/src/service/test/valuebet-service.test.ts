@@ -1,6 +1,15 @@
-import {BetOffer, BetType, BookMaker, Participant, Sport, SportCompetition, SportEvent} from "../../domain/betoffer";
+import {
+    Bookmaker,
+    BookmakerId,
+    CompetitionName,
+    IdType,
+    RequestType,
+    SportEvent,
+    SportName
+} from "../../domain/betoffer";
 import {ValueBetService} from "../valuebet-service";
 import {ApiResponse, FakeScraper} from "../../client/scraper";
+import {jupilerProLeagueParticipants} from "../../client/config";
 
 const expect = require('chai').expect
 
@@ -9,40 +18,47 @@ const expect = require('chai').expect
 describe('ValueBetService tests', function() {
     describe('searchForValueBet', function() {
         const today = new Date()
-        const eventMap = {}
-        eventMap[BookMaker.UNIBET_BELGIUM] = '1006478884'
-        eventMap[BookMaker.PINNACLE] = '1239809328'
-        const participant_club = new Participant('CLUB_BRUGGE')
-        const participant_anderlecht = new Participant('ANDERLECHT')
-        const sportEvents = [
-            new SportEvent(today, SportCompetition.JUPILER_PRO_LEAGUE, Sport.FOOTBALL, eventMap,
-                {}, {}, [participant_club, participant_anderlecht])
+
+        const eventBookmakerIds = [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1006478884", IdType.EVENT),
+            new BookmakerId(Bookmaker.PINNACLE, "1239809328", IdType.EVENT)
         ]
+
+        const sportEvents = [
+            new SportEvent(today, CompetitionName.JUPILER_PRO_LEAGUE, SportName.FOOTBALL, eventBookmakerIds,
+                {}, {}, [jupilerProLeagueParticipants[0], jupilerProLeagueParticipants[1]])
+        ]
+
         it('should detect value bets ', async function() {
             const apiData = {
                 "UNIBET_BELGIUM": [
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_2_fake.json')),
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_6.json')),
+                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_2_fake.json'),
+                        RequestType.BET_OFFER, IdType.BET_OFFER),
+                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_6.json'),
+                        RequestType.BET_OFFER,
+                        IdType.BET_OFFER),
                 ],
                 "PINNACLE": [
-                        new ApiResponse(BookMaker.PINNACLE, require('../../client/pinnacle/pinnacle_betoffer_fake.json')),
+                        new ApiResponse(Bookmaker.PINNACLE, require('../../client/pinnacle/pinnacle_betoffer_fake.json'),
+                            RequestType.BET_OFFER, IdType.BET_OFFER),
                 ]
             }
 
             const fakeScraper = new FakeScraper(apiData)
             const service = new ValueBetService(fakeScraper, sportEvents)
             const valueBets = await service.searchForValueBets()
+            expect(valueBets).to.be.have.lengthOf.at.least(1)
             expect(valueBets.filter(valueBet => valueBet.value > 0).length).to.equal(valueBets.length)
             expect(valueBets.filter(valueBet => valueBet.betOffer).length).to.equal(valueBets.length)
         })
         it('should skip bad api responses', async function() {
             const apiData = {
                 "UNIBET_BELGIUM": [
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, {"shitty": 123}),
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, {"shitty": 123}),
+                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
+                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
                 ],
                 "PINNACLE": [
-                    new ApiResponse(BookMaker.PINNACLE, {"shitty": 123}),
+                    new ApiResponse(Bookmaker.PINNACLE, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
                 ]
             }
 
@@ -50,7 +66,7 @@ describe('ValueBetService tests', function() {
             const service = new ValueBetService(fakeScraper, sportEvents)
             service.searchForValueBets()
             const sportEventsInService: SportEvent[] = service.sportEvents
-            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[BookMaker.UNIBET_BELGIUM]).length)
+            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Bookmaker.UNIBET_BELGIUM]).length)
                 .is.equal(sportEventsInService.length)
 
         })
@@ -78,7 +94,7 @@ describe('ValueBetService tests', function() {
 
             const apiData = {
                 "UNIBET_BELGIUM": [
-                    new ApiResponse(BookMaker.UNIBET_BELGIUM, betOffer_unibet)
+                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, betOffer_unibet, RequestType.BET_OFFER, IdType.BET_OFFER)
                 ]
             }
 
@@ -86,7 +102,7 @@ describe('ValueBetService tests', function() {
             const service = new ValueBetService(fakeScraper, sportEvents)
             service.searchForValueBets()
             const sportEventsInService: SportEvent[] = service.sportEvents
-            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[BookMaker.UNIBET_BELGIUM]).length)
+            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Bookmaker.UNIBET_BELGIUM]).length)
                 .is.equal(sportEventsInService.length)
 
         })
@@ -94,11 +110,11 @@ describe('ValueBetService tests', function() {
     describe('constructor', function() {
         it('should skip sport events without participants or start date', async function(){
             const sportEvents = [
-                new SportEvent(new Date(), SportCompetition.JUPILER_PRO_LEAGUE, Sport.FOOTBALL, {},
+                new SportEvent(new Date(), CompetitionName.JUPILER_PRO_LEAGUE, SportName.FOOTBALL, [],
                     {}, {}, null),
-                new SportEvent(new Date(), SportCompetition.JUPILER_PRO_LEAGUE, Sport.FOOTBALL, {},
+                new SportEvent(new Date(), CompetitionName.JUPILER_PRO_LEAGUE, SportName.FOOTBALL, [],
                     {}, {}, []),
-                new SportEvent(null, SportCompetition.JUPILER_PRO_LEAGUE, Sport.FOOTBALL, {},
+                new SportEvent(null, CompetitionName.JUPILER_PRO_LEAGUE, SportName.FOOTBALL, [],
                     {}, {}, [1, 2])
             ]
             const fakeScraper = new FakeScraper({})
@@ -111,8 +127,8 @@ describe('ValueBetService tests', function() {
 
         it('it should skip bookmaker mapping when no event map', async function(){
             const sportEvents = [
-                new SportEvent(new Date(), SportCompetition.JUPILER_PRO_LEAGUE, Sport.FOOTBALL, {},
-                    {}, {}, [new Participant('test'), new Participant('bla')]),
+                new SportEvent(new Date(), CompetitionName.JUPILER_PRO_LEAGUE, SportName.FOOTBALL, [],
+                    {}, {}, [jupilerProLeagueParticipants[0], jupilerProLeagueParticipants[1]]),
             ]
             const fakeScraper = new FakeScraper({})
             const service = new ValueBetService(fakeScraper, sportEvents)

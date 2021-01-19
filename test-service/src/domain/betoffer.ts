@@ -1,17 +1,128 @@
+export class Sport{
+    private readonly _name: SportName
+    private readonly _bookmakerIds: BookmakerId[]
+    private readonly _competitions: Competition[]
+
+    constructor(name: SportName, bookmakerIds: BookmakerId[], competitions: Competition[]) {
+        this._name = name
+        this._bookmakerIds = bookmakerIds
+        this._competitions = competitions
+    }
+
+    get name(){
+        return this._name
+    }
+
+    get bookmakerIds(){
+        return this._bookmakerIds
+    }
+
+    get competitions(){
+        return this._competitions
+    }
+}
+
+export enum IdType {
+    BET_OFFER = 'BET_OFFER',
+    PARTICIPANT = 'PARTICIPANT',
+    EVENT = 'EVENT',
+    COMPETITION = 'COMPETITION',
+    SPORT = 'SPORT'
+}
+
+export enum RequestType {
+    BET_OFFER,
+    EVENT,
+    PARTICIPANT
+}
+
+export enum SportName{
+    FOOTBALL= 'FOOTBALL'
+}
+
+export class Competition{
+    private readonly _name: CompetitionName
+    private readonly _bookmakerIds: BookmakerId[]
+    private readonly _participants: Participant[]
+
+    constructor(name: CompetitionName, bookmakerIds: BookmakerId[], participants: Participant[]) {
+        this._name = name
+        this._bookmakerIds = bookmakerIds
+        this._participants = participants
+    }
+
+    get name(){
+        return this._name
+    }
+
+    get bookmakerIds(){
+        return this._bookmakerIds
+    }
+
+    get participants(){
+        return this._participants
+    }
+}
+
+export class BookmakerId {
+    private readonly _bookmaker: Bookmaker
+    private readonly _id: string
+    private readonly _idType: IdType
+
+    constructor(bookmaker: Bookmaker, id: string, idType: IdType){
+        this._bookmaker = bookmaker
+        this._id = id
+        this._idType = idType
+    }
+
+    get bookmaker(){
+        return this._bookmaker
+    }
+
+    get id(){
+        return this._id
+    }
+
+    get idType() {
+        return this._idType
+    }
+}
+
+export enum ParticipantName {
+    CLUB_BRUGGE = "Club Brugge KV",
+    ANDERLECHT = "R.S.C Anderlecht",
+    STANDARD_LIEGE = "Standard Liège",
+    MOESKROEN = "Royal Excel Mouscron",
+    CERCLE_BRUGGE = "Cercle Brugge K.S.V.",
+    SINT_TRUIDEN = "Sint-Truidense V.V.",
+    OHL = "Oud-Heverlee Leuven",
+    BEERSCHOT = "K Beerschot VA",
+    EUPEN = "K.A.S. Eupen",
+    GENT = "K.A.A. Gent",
+    GENK = "K.R.C. Genk",
+    ANTWERP = "Royal Antwerp F.C.",
+    WAASLAND_BEVEREN = "Waasland-Beveren",
+    CHARLEROI = "R. Charleroi S.C.",
+    OOSTENDE = "K.V. Oostende",
+    ZULTE_WAREGEM = "S.V. Zulte Waregem",
+    KORTRIJK = "K.V. Kortrijk",
+    MECHELEN = "K.V. Mechelen"
+}
+
 
 export class SportEvent {
     private readonly _startDateTime: Date
-    private readonly _competition: SportCompetition
-    private readonly _sport: Sport
-    private readonly _eventIds: Map<BookMaker, string>
-    private readonly _betOffers: Map<string, Map<BookMaker, BetOffer>>
-    private readonly _closingLines: Map<string, Map<BookMaker, BetOffer>>
+    private readonly _competition: CompetitionName
+    private readonly _sport: SportName
+    private readonly _bookmakerIds: BookmakerId[]
+    private readonly _betOffers: Map<string, Map<Bookmaker, BetOffer>>
+    private readonly _closingLines: Map<string, Map<Bookmaker, BetOffer>>
     private readonly _participants: Participant[]
 
-    constructor(startDateTime, competition, sport, eventIds, betOffers, closingLines, participants){
+    constructor(startDateTime, competition: CompetitionName, sport: SportName, bookmakerIds: BookmakerId[], betOffers, closingLines, participants){
         this._startDateTime = startDateTime
         this._betOffers = betOffers
-        this._eventIds = eventIds
+        this._bookmakerIds = bookmakerIds
         this._sport = sport
         this._competition = competition
         this._betOffers = betOffers
@@ -31,8 +142,8 @@ export class SportEvent {
         return this._sport
     }
 
-    get eventIds() {
-        return this._eventIds
+    get bookmakerIds() {
+        return this._bookmakerIds
     }
 
     get betOffers() {
@@ -55,7 +166,7 @@ export class SportEvent {
     }
 
     private registerBetOfferInCollection(betOffer: BetOffer, betOfferCollection) {
-        if(Object.values(this._eventIds).includes(betOffer.eventId.toString())) {
+        if(this._bookmakerIds.map(bookmakerId => bookmakerId.id).flat().includes(betOffer.eventId.toString())) {
             const key = betOffer.key
             const betOffers = betOfferCollection[key]
             if(betOffers) {
@@ -84,11 +195,11 @@ export class SportEvent {
     }
 
     private findValue(betOfferKey): ValueBetFoundEvent[]{
-        const pinnacleBetOffer = this._betOffers[betOfferKey][BookMaker.PINNACLE]
+        const pinnacleBetOffer = this._betOffers[betOfferKey][Bookmaker.PINNACLE]
         if(pinnacleBetOffer) {
-            return Object.keys(this._betOffers[betOfferKey]).filter(bookmaker => bookmaker != BookMaker.PINNACLE)
+            return Object.keys(this._betOffers[betOfferKey]).filter(bookmaker => bookmaker != Bookmaker.PINNACLE)
                 .map(bookmaker => {
-                if(bookmaker != BookMaker.PINNACLE) {
+                if(bookmaker != Bookmaker.PINNACLE) {
                     const betOffer = this._betOffers[betOfferKey][bookmaker]
                     const value = (1 / pinnacleBetOffer.vigFreePrice * betOffer.price) - 1
                     if (value > 0) {
@@ -100,7 +211,7 @@ export class SportEvent {
     }
 
     calculateMetrics(tradedBetOffer: TradedBetOffer, closingLine: ClosingLineRegistered): PerformanceMetric {
-        if(closingLine.bookMaker === BookMaker.PINNACLE) {
+        if(closingLine.bookMaker === Bookmaker.PINNACLE) {
             // only check closing line pinnacle or other sharp, because that is the best guess of outcome game
             const realValue = (1 / closingLine.betOffer.vigFreePrice + tradedBetOffer.betOffer.price) - 1
             return new PerformanceMetric(realValue, tradedBetOffer)
@@ -159,13 +270,19 @@ export class TradedBetOffer {
 
 export class Participant {
     private readonly _name: string
+    private readonly _bookmakerIds: BookmakerId[]
 
-    constructor(name) {
+    constructor(name: string, bookmakerIds: BookmakerId[]) {
         this._name = name
+        this._bookmakerIds = bookmakerIds
     }
 
     get name(){
         return this._name
+    }
+
+    get bookmakerIds(){
+        return this._bookmakerIds
     }
 }
 
@@ -191,7 +308,7 @@ export class ClosingLineRegistered extends BetOfferRegistered {
     }
 }
 
-export enum SportCompetition {
+export enum CompetitionName {
     JUPILER_PRO_LEAGUE='JUPILER_PRO_LEAGUE',
     SERIE_A = 'SERIE_A',
     LA_LIGA = 'LA_LIGA',
@@ -201,15 +318,10 @@ export enum SportCompetition {
     LIGUE_1 = 'LIGUE_1'
 }
 
-export enum Sport {
-    FOOTBALL='FOOTBALL'
-}
-
-
 export class BetOffer {
     private readonly _betType: BetType
     private readonly _eventId: number
-    private readonly _bookMaker: BookMaker
+    private readonly _bookMaker: Bookmaker
     private readonly _betOptionName: string
     private readonly _price: number
     private readonly _vigFreePrice: number
@@ -266,88 +378,23 @@ export enum BetType {
     UNKNOWN = 'UNKNOWN'
 }
 
-export enum BookMaker {
+
+export enum Bookmaker {
     UNIBET_BELGIUM= 'UNIBET_BELGIUM',
     NAPOLEON_GAMES = 'NAPOLEON_GAMES',
     PINNACLE= 'PINNACLE',
-    BETFIRST= 'BETFIRST',
+    BETFIRST= 'betfirst',
     GOLDEN_PALACE = 'GOLDEN_PALACE',
     BETCENTER = 'BETCENTER',
     LADBROKES = 'LADBROKES',
-    MERIDIAN = 'MERIDIAN'
+    MERIDIAN = 'MERIDIAN',
+    BET777 = 'bet777'
 }
 
 export enum Provider {
     KAMBI='KAMBI',
     SBTECH='SBTECH'
 }
-
-export class BookmakerClient {
-    private readonly _bookmaker: BookMaker
-    private readonly _sports: BookmakerClientSport[]
-
-    constructor(bookmaker: BookMaker, sports: BookmakerClientSport[]){
-        this._bookmaker = bookmaker
-        this._sports = sports
-    }
-
-    get bookmaker(){
-        return this._bookmaker
-    }
-
-    get sports() {
-        return this._sports
-    }
-}
-
-export class BookmakerClientSport {
-    private readonly _sport: Sport
-    private readonly _competitions: BookmakerClientCompetition[]
-
-    constructor(sport: Sport, competitions: BookmakerClientCompetition[]){
-        this._sport = sport
-        this._competitions = competitions
-    }
-
-    get sport(){
-        return this._sport
-    }
-
-    get competitions(){
-        return this._competitions
-    }
-}
-
-export class BookmakerClientCompetition {
-    private readonly _competition: SportCompetition
-    private readonly _betOfferRequests: []
-    private readonly _participantRequests: []
-    private readonly _eventRequests: []
-
-    constructor(competition: SportCompetition, betOfferRequests, participantRequests, eventRequests) {
-        this._competition = competition
-        this._betOfferRequests = betOfferRequests
-        this._eventRequests = eventRequests
-        this._participantRequests = participantRequests
-    }
-
-    get competition(){
-        return this._competition
-    }
-
-    get betOfferRequests(){
-        return this._betOfferRequests
-    }
-
-    get particpantRequests(){
-        return this._participantRequests
-    }
-
-    get eventRequests(){
-        return this._eventRequests
-    }
-}
-
 
 export class ValueBetFoundEvent {
     private readonly _betOffer: BetOffer

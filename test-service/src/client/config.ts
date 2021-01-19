@@ -1,120 +1,113 @@
-import {BookMaker, Participant, Provider, Sport, SportCompetition} from "../domain/betoffer";
+import {
+    Bookmaker,
+    BookmakerId,
+    Competition,
+    CompetitionName,
+    IdType,
+    Participant,
+    ParticipantName,
+    Sport,
+    SportName
+} from "../domain/betoffer";
 
-const competitions = {}
-competitions[Sport.FOOTBALL] = {}
-competitions[Sport.FOOTBALL][SportCompetition.JUPILER_PRO_LEAGUE] = {}
-competitions[Sport.FOOTBALL][SportCompetition.EREDIVISIE] = {}
-competitions[Sport.FOOTBALL][SportCompetition.PREMIER_LEAGUE] = {}
-competitions[Sport.FOOTBALL][SportCompetition.SERIE_A] = {}
-competitions[Sport.FOOTBALL][SportCompetition.LIGUE_1] = {}
-competitions[Sport.FOOTBALL][SportCompetition.BUNDESLIGA] = {}
-competitions[Sport.FOOTBALL][SportCompetition.LA_LIGA] = {}
+export const jupilerProLeagueParticipants = [
+    new Participant(ParticipantName.CLUB_BRUGGE, [
+        new BookmakerId(Bookmaker.UNIBET_BELGIUM, "123", IdType.PARTICIPANT),
+        new BookmakerId(Bookmaker.NAPOLEON_GAMES, "123", IdType.PARTICIPANT),
+        new BookmakerId(Bookmaker.PINNACLE, "3489379", IdType.PARTICIPANT),
+    ]),
+    new Participant(ParticipantName.ANDERLECHT, [
+        new BookmakerId(Bookmaker.UNIBET_BELGIUM, "333", IdType.PARTICIPANT),
+        new BookmakerId(Bookmaker.NAPOLEON_GAMES, "333", IdType.PARTICIPANT),
+        new BookmakerId(Bookmaker.PINNACLE, "9398479", IdType.PARTICIPANT),
+    ])
+]
 
-competitions[Sport.FOOTBALL][SportCompetition.JUPILER_PRO_LEAGUE][Provider.KAMBI] = 1000094965
-competitions[Sport.FOOTBALL][SportCompetition.EREDIVISIE][Provider.KAMBI] = 1000094980
-competitions[Sport.FOOTBALL][SportCompetition.PREMIER_LEAGUE][Provider.KAMBI] = 1000094985
-competitions[Sport.FOOTBALL][SportCompetition.SERIE_A][Provider.KAMBI] = 1000095001
-competitions[Sport.FOOTBALL][SportCompetition.LIGUE_1][Provider.KAMBI] = 1000094991
-competitions[Sport.FOOTBALL][SportCompetition.BUNDESLIGA][Provider.KAMBI] = 1000345237
-competitions[Sport.FOOTBALL][SportCompetition.LA_LIGA][Provider.KAMBI] = 2000050115
+const eredivisieParticipants = []
+const bundesligaParticipants = []
+const laLigaParticipants = []
+const ligue1Participants = []
+const premierLeagueParticipants = []
+const serieAParticipants = []
 
-competitions[Sport.FOOTBALL][SportCompetition.JUPILER_PRO_LEAGUE][Provider.SBTECH] = 40815
-competitions[Sport.FOOTBALL][SportCompetition.EREDIVISIE][Provider.SBTECH] = 41372
-competitions[Sport.FOOTBALL][SportCompetition.PREMIER_LEAGUE][Provider.SBTECH] = 40253
-competitions[Sport.FOOTBALL][SportCompetition.SERIE_A][Provider.SBTECH] = 40030
-competitions[Sport.FOOTBALL][SportCompetition.LIGUE_1][Provider.SBTECH] = 40032
-competitions[Sport.FOOTBALL][SportCompetition.BUNDESLIGA][Provider.SBTECH] = 40820
-competitions[Sport.FOOTBALL][SportCompetition.LA_LIGA][Provider.SBTECH] = 40031
-
-competitions[Sport.FOOTBALL][SportCompetition.JUPILER_PRO_LEAGUE][BookMaker.PINNACLE] = 40815
-competitions[Sport.FOOTBALL][SportCompetition.EREDIVISIE][BookMaker.PINNACLE] = 41372
-competitions[Sport.FOOTBALL][SportCompetition.PREMIER_LEAGUE][BookMaker.PINNACLE] = 40253
-competitions[Sport.FOOTBALL][SportCompetition.SERIE_A][BookMaker.PINNACLE] = 40030
-competitions[Sport.FOOTBALL][SportCompetition.LIGUE_1][BookMaker.PINNACLE] = 40032
-competitions[Sport.FOOTBALL][SportCompetition.BUNDESLIGA][BookMaker.PINNACLE] = 40820
-competitions[Sport.FOOTBALL][SportCompetition.LA_LIGA][BookMaker.PINNACLE] = 40031
-
-export class BookmakerSportMap {
-    private readonly _sport: Sport
-    private readonly _competitions: BookmakerCompetitionMap[]
-
-    constructor(sport: Sport, competitions: BookmakerCompetitionMap[]) {
-        this._sport = sport
-        this._competitions = competitions
-    }
-
-    get sport() {
-        return this._sport
-    }
-
-    get competitions() {
-        return this._competitions
-    }
-}
-
-export class BookmakerCompetitionMap {
-    private readonly _competition: SportCompetition
-    private readonly _bookmakerIds
-    private readonly _participants: BookmakerParticipantMap[]
-
-    constructor(competition: SportCompetition, bookmakerIds, participants: BookmakerParticipantMap[]){
-        this._competition = competition
-        this._bookmakerIds = bookmakerIds
-        this._participants = participants
-    }
-
-    get bookmakerIds() {
-        return this._bookmakerIds
-    }
-
-    get participants() {
-        return this._participants
-    }
-
-    get competition() {
-        return this._competition
-    }
-}
-
-export class BookmakerParticipantMap {
-    private readonly _participant: Participant
-    private readonly _bookmakerIds
-
-    constructor(participant: Participant, bookmakerIds) {
-        this._participant = participant
-        this._bookmakerIds = bookmakerIds
-    }
-
-    get participant() {
-        return this._participant
-    }
-
-    get bookmakerIds() {
-        return this._bookmakerIds
-    }
-}
-
-const bookmakerMaps: BookmakerSportMap[] = [
-        new BookmakerSportMap(
-        Sport.FOOTBALL,
+const footballCompetitions = [
+    new Competition(
+        CompetitionName.JUPILER_PRO_LEAGUE,
         [
-            new BookmakerCompetitionMap(
-                SportCompetition.JUPILER_PRO_LEAGUE,
-                competitions[Sport.FOOTBALL][SportCompetition.JUPILER_PRO_LEAGUE],
-                [
-                    new BookmakerParticipantMap(
-                        new Participant("CLUB_BRUGGE"),
-                        {}
-                    )
-                ]
-            )
-        ]
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094965", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40815", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "1817", IdType.COMPETITION)
+        ],
+        jupilerProLeagueParticipants
+    ),
+    new Competition(
+        CompetitionName.EREDIVISIE,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094980", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "41372", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "1928", IdType.COMPETITION)
+        ],
+        eredivisieParticipants
+    ),
+    new Competition(
+        CompetitionName.BUNDESLIGA,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000345237", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40820", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "1842", IdType.COMPETITION)
+        ],
+        bundesligaParticipants
+    ),
+    new Competition(
+        CompetitionName.LA_LIGA,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "2000050115", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40031", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "2196", IdType.COMPETITION)
+        ],
+        laLigaParticipants
+    ),
+    new Competition(
+        CompetitionName.LIGUE_1,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094991", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40032", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "2036", IdType.COMPETITION)
+        ],
+        ligue1Participants
+    ),
+    new Competition(
+        CompetitionName.PREMIER_LEAGUE,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094985", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40253", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "1980", IdType.COMPETITION)
+        ],
+        premierLeagueParticipants
+    ),
+    new Competition(
+        CompetitionName.SERIE_A,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000095001", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BETFIRST, "40030", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.PINNACLE, "2436", IdType.COMPETITION)
+        ],
+        serieAParticipants
     )
 ]
 
+export const sports = [
+    new Sport(
+        SportName.FOOTBALL,
+        [
+            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000093190", IdType.SPORT),
+            new BookmakerId(Bookmaker.NAPOLEON_GAMES, "1000093190", IdType.SPORT),
+            new BookmakerId(Bookmaker.PINNACLE, "29", IdType.SPORT),
+            new BookmakerId(Bookmaker.BETFIRST, "1", IdType.SPORT),
+            new BookmakerId(Bookmaker.BET777, "1", IdType.SPORT)
+        ],
+        footballCompetitions
+    )
+]
 
-
-export {
-    bookmakerMaps
-}
 
