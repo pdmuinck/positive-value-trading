@@ -79,7 +79,7 @@ api.getParticipantsByCompetition = async (competition) => {
 
 async function getParticipantsForProviderAndBookAndCompetition(provider, book, competition) {
     const providerApi = require('./providers/' + provider + '/' + provider + '.js')
-    participants = await providerApi.getParticipantsForCompetition(book, competition)
+    jupilerProLeagueParticipantsRaw = await providerApi.getParticipantsForCompetition(book, competition)
     if(participants) {
         return {provider: provider, book: book, competition: competition, participants: participants.flat().filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)}
     }

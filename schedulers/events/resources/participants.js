@@ -1,4 +1,4 @@
-participants = {
+jupilerProLeagueParticipantsRaw = {
 
     /*
     // italy seria a

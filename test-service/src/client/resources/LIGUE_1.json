@@ -1,0 +1,564 @@
+{
+    "AC MILAN": {
+      "scooore": "AC Milan"
+    },
+    "ACF FIORENTINA": {
+      "scooore": "ACF Fiorentina"
+    },
+    "ALANYASPOR": {
+      "scooore": "Alanyaspor"
+    },
+    "ANGERS": {
+      "kambi": 1000075897,
+      "sbtech": "1348",
+      "betconstruct": "Angers"
+    },
+    "ANGERS SCO": {
+      "pinnacle": "ANGERS SCO",
+      "ladbrokes": "Angers SCO",
+      "meridian": "258628",
+      "starcasino": 411
+    },
+    "ANTALYASPOR AS": {
+      "scooore": "Antalyaspor AS"
+    },
+    "ARSENAL FC": {
+      "scooore": "Arsenal FC"
+    },
+    "AS MONACO": {
+      "pinnacle": "AS MONACO",
+      "bet90": "2537",
+      "starcasino": 412
+    },
+    "AS MONACO FC": {
+      "betcenter": 198196,
+      "ladbrokes": "AS Monaco FC",
+      "meridian": "330826"
+    },
+    "AS ROMA": {
+      "scooore": "AS Roma"
+    },
+    "AS SAINT ETIENNE": {
+      "betcenter": 105660
+    },
+    "AS SAINT-&#201;TIENNE": {
+      "bet90": "2094"
+    },
+    "AS SAINT-ETIENNE": {
+      "ladbrokes": "AS Saint-Etienne",
+      "meridian": "260501",
+      "starcasino": 414
+    },
+    "ATALANTA BC": {
+      "scooore": "Atalanta BC"
+    },
+    "AWAY TEAMS (SUNDAY 7 MATCHES)": {
+      "pinnacle": "AWAY TEAMS (SUNDAY 7 MATCHES)"
+    },
+    "AZ ALKMAAR": {
+      "scooore": "AZ Alkmaar"
+    },
+    "BESIKTAS JK": {
+      "scooore": "Besiktas JK"
+    },
+    "BOLOGNA FC": {
+      "scooore": "Bologna FC"
+    },
+    "BORDEAUX": {
+      "kambi": 1000000121,
+      "sbtech": "1356",
+      "pinnacle": "BORDEAUX",
+      "betcenter": 423,
+      "betconstruct": "Bordeaux",
+      "magicbetting": "9045294",
+      "stanleybet": "Bordeaux"
+    },
+    "BREST": {
+      "kambi": 1000008577,
+      "sbtech": "30310",
+      "pinnacle": "BREST",
+      "magicbetting": "9046358",
+      "stanleybet": "Brest"
+    },
+    "BRIGHTON & HOVE ALBION FC": {
+      "scooore": "Brighton & Hove Albion FC"
+    },
+    "BURNLEY FC": {
+      "scooore": "Burnley FC"
+    },
+    "BUYUKSEHIR BELEDIYE ERZURUMSPOR": {
+      "scooore": "Buyuksehir Belediye Erzurumspor"
+    },
+    "CADIZ CF": {
+      "scooore": "Cadiz CF"
+    },
+    "CAGLIARI CALCIO": {
+      "scooore": "Cagliari Calcio"
+    },
+    "CLUB BRUGGE": {
+      "scooore": "Club Brugge"
+    },
+    "CRYSTAL PALACE FC": {
+      "scooore": "Crystal Palace FC"
+    },
+    "DIGIONE": {
+      "stanleybet": "Digione"
+    },
+    "DIJON": {
+      "kambi": 1000092063,
+      "sbtech": "267",
+      "pinnacle": "DIJON",
+      "betconstruct": "Dijon",
+      "magicbetting": "9045528",
+      "starcasino": 419
+    },
+    "DIJON FCO": {
+      "bet90": "2541",
+      "betcenter": 104270,
+      "ladbrokes": "Dijon FCO",
+      "meridian": "258228",
+      "scooore": "Dijon Fco"
+    },
+    "ELCHE CF": {
+      "scooore": "Elche CF"
+    },
+    "FC BARCELONA": {
+      "scooore": "FC Barcelona"
+    },
+    "FC GIRONDINS BORDEAUX": {
+      "bet90": "2091",
+      "ladbrokes": "FC Girondins Bordeaux",
+      "meridian": "258415",
+      "scooore": "FC Girondins Bordeaux"
+    },
+    "FC LORIENT": {
+      "bet90": "2459",
+      "betcenter": 104795,
+      "ladbrokes": "FC Lorient",
+      "meridian": "294980",
+      "scooore": "FC Lorient"
+    },
+    "FC LYON": {
+      "ladbrokes": "FC Lyon"
+    },
+    "FC METZ": {
+      "bet90": "545",
+      "betcenter": 104658,
+      "ladbrokes": "FC Metz",
+      "magicbetting": "9046364",
+      "meridian": "261305",
+      "scooore": "FC Metz"
+    },
+    "FC NANTES": {
+      "bet90": "609",
+      "betcenter": 104796,
+      "ladbrokes": "FC Nantes",
+      "meridian": "258288",
+      "scooore": "FC Nantes"
+    },
+    "FC STADE RENNES": {
+      "bet90": "2540"
+    },
+    "FC TWENTE ENSCHEDE": {
+      "scooore": "FC Twente Enschede"
+    },
+    "FC UTRECHT": {
+      "scooore": "FC Utrecht"
+    },
+    "FEYENOORD ROTTERDAM": {
+      "scooore": "Feyenoord Rotterdam"
+    },
+    "FULHAM FC": {
+      "scooore": "Fulham FC"
+    },
+    "GAZIANTEP FK": {
+      "scooore": "Gaziantep FK"
+    },
+    "GENCLERBIRLIGI SK": {
+      "scooore": "Genclerbirligi SK"
+    },
+    "GENOA CFC": {
+      "scooore": "Genoa Cfc"
+    },
+    "GIRONDINS DE BORDEAUX": {
+      "starcasino": 446
+    },
+    "GRANADA CF": {
+      "scooore": "Granada CF"
+    },
+    "HOME TEAMS (SUNDAY 7 MATCHES)": {
+      "pinnacle": "HOME TEAMS (SUNDAY 7 MATCHES)"
+    },
+    "INTER MILANO": {
+      "scooore": "Inter Milano"
+    },
+    "ISTANBUL BASAKSEHIR": {
+      "scooore": "Istanbul Basaksehir"
+    },
+    "JUVENTUS TURIN": {
+      "scooore": "Juventus Turin"
+    },
+    "KAA GENT": {
+      "scooore": "KAA Gent"
+    },
+    "KV MECHELEN": {
+      "scooore": "KV Mechelen"
+    },
+    "LEICESTER CITY FC": {
+      "scooore": "Leicester City FC"
+    },
+    "LENS": {
+      "kambi": 1000000157,
+      "sbtech": "265",
+      "pinnacle": "LENS",
+      "starcasino": 436
+    },
+    "LEVANTE UD": {
+      "scooore": "Levante UD"
+    },
+    "LIGUE 1 20/21": {
+      "meridian": "335574"
+    },
+    "LIGUE 1 2020/21": {
+      "betconstruct": "Ligue 1 2020/21"
+    },
+    "LILLE": {
+      "kambi": 1000000283,
+      "sbtech": "275",
+      "pinnacle": "LILLE",
+      "betconstruct": "Lille",
+      "magicbetting": "9045480",
+      "stanleybet": "Lille"
+    },
+    "LILLE OSC": {
+      "betcenter": 105083,
+      "starcasino": 430
+    },
+    "LIONE": {
+      "stanleybet": "Lione"
+    },
+    "LIVERPOOL FC": {
+      "scooore": "Liverpool FC"
+    },
+    "LOMMEL SK": {
+      "scooore": "Lommel SK"
+    },
+    "LORIENT": {
+      "kambi": 1000000266,
+      "sbtech": "1505",
+      "pinnacle": "LORIENT",
+      "betconstruct": "Lorient",
+      "magicbetting": "9046365",
+      "stanleybet": "Lorient",
+      "starcasino": 424
+    },
+    "LOSC LILLE": {
+      "bet90": "2539",
+      "ladbrokes": "LOSC Lille",
+      "meridian": "259467",
+      "scooore": "Losc Lille"
+    },
+    "LYON": {
+      "kambi": 1000000120,
+      "sbtech": "1344",
+      "pinnacle": "LYON",
+      "magicbetting": "9040908"
+    },
+    "MARSEILLE": {
+      "kambi": 1000000122,
+      "sbtech": "1347",
+      "pinnacle": "MARSEILLE",
+      "betconstruct": "Marseille"
+    },
+    "METZ": {
+      "kambi": 1000000022,
+      "sbtech": "1355",
+      "pinnacle": "METZ",
+      "betconstruct": "Metz",
+      "stanleybet": "Metz",
+      "starcasino": 425
+    },
+    "MONACO": {
+      "kambi": 1000000030,
+      "sbtech": "270",
+      "betconstruct": "Monaco"
+    },
+    "MONTPELLIER": {
+      "kambi": 1000015759,
+      "sbtech": "272",
+      "betconstruct": "Montpellier",
+      "magicbetting": "9042523",
+      "starcasino": 431
+    },
+    "MONTPELLIER HSC": {
+      "pinnacle": "MONTPELLIER HSC",
+      "bet90": "1496",
+      "betcenter": 104427,
+      "ladbrokes": "Montpellier HSC",
+      "meridian": "258227"
+    },
+    "NANTES": {
+      "kambi": 1000000032,
+      "sbtech": "277",
+      "pinnacle": "NANTES",
+      "betconstruct": "Nantes",
+      "magicbetting": "9045344",
+      "stanleybet": "Nantes",
+      "starcasino": 426
+    },
+    "NICE": {
+      "kambi": 1000000340,
+      "sbtech": "1346",
+      "pinnacle": "NICE",
+      "betconstruct": "Nice",
+      "magicbetting": "9046543"
+    },
+    "NIMES": {
+      "sbtech": "1360",
+      "magicbetting": "9042486",
+      "stanleybet": "Nimes"
+    },
+    "NIMES OLYMPIQUE": {
+      "pinnacle": "NIMES OLYMPIQUE",
+      "betconstruct": "Nimes Olympique",
+      "starcasino": 6014
+    },
+    "NIZZA": {
+      "stanleybet": "Nizza"
+    },
+    "NÎMES OLYMPIQUE": {
+      "kambi": 1000004694
+    },
+    "OGC NICE": {
+      "betcenter": 104846,
+      "ladbrokes": "OGC Nice",
+      "meridian": "257775",
+      "scooore": "OGC Nice"
+    },
+    "OGC NICE ": {
+      "starcasino": 432
+    },
+    "OGC NIZZA": {
+      "bet90": "1797"
+    },
+    "OLYMPIC LYONNAIS": {
+      "betconstruct": "Olympic Lyonnais"
+    },
+    "OLYMPIQUE DE MARSEILLE ": {
+      "starcasino": 433
+    },
+    "OLYMPIQUE LYON": {
+      "bet90": "610",
+      "betcenter": 429
+    },
+    "OLYMPIQUE LYONNAIS": {
+      "meridian": "284429",
+      "scooore": "Olympique Lyonnais",
+      "starcasino": 434
+    },
+    "OLYMPIQUE MARSEI.": {
+      "betcenter": 106263
+    },
+    "OLYMPIQUE MARSEILLE": {
+      "bet90": "2095",
+      "ladbrokes": "Olympique Marseille",
+      "meridian": "257432"
+    },
+    "OLYMPIQUE NIMES": {
+      "bet90": "267010",
+      "betcenter": 104240,
+      "ladbrokes": "Olympique Nimes",
+      "meridian": "284428",
+      "scooore": "Olympique Nimes"
+    },
+    "PARIS S.G.": {
+      "magicbetting": "9050309"
+    },
+    "PARIS SAINT GERMAIN": {
+      "pinnacle": "PARIS SAINT GERMAIN"
+    },
+    "PARIS SAINT-GERMAIN": {
+      "bet90": "1745",
+      "stanleybet": "Paris Saint-germain",
+      "starcasino": 435
+    },
+    "PARIS SAINT-GERMAIN FC": {
+      "ladbrokes": "Paris Saint-Germain FC",
+      "meridian": "328904",
+      "scooore": "Paris Saint-Germain FC"
+    },
+    "PARIS SG": {
+      "kambi": 1000000033,
+      "sbtech": "273",
+      "betcenter": 425
+    },
+    "PARMA CALCIO": {
+      "scooore": "Parma Calcio"
+    },
+    "PSG": {
+      "betconstruct": "PSG"
+    },
+    "PSV EINDHOVEN": {
+      "scooore": "PSV Eindhoven"
+    },
+    "RACING STRASBOURG": {
+      "betcenter": 104281
+    },
+    "RC CELTA DE VIGO": {
+      "scooore": "RC Celta de Vigo"
+    },
+    "RC LENS": {
+      "bet90": "574923",
+      "betcenter": 104283,
+      "betconstruct": "RC Lens",
+      "ladbrokes": "RC Lens",
+      "magicbetting": "9040958",
+      "meridian": "294972"
+    },
+    "RC STRASBOURG ALSACE": {
+      "bet90": "94324",
+      "ladbrokes": "RC Strasbourg Alsace",
+      "meridian": "258629",
+      "scooore": "RC Strasbourg Alsace"
+    },
+    "REAL BETIS BALOMPIE": {
+      "scooore": "Real Betis Balompie"
+    },
+    "REAL SOCIEDAD": {
+      "scooore": "Real Sociedad"
+    },
+    "REIMS": {
+      "kambi": 1000052923,
+      "sbtech": "1510",
+      "pinnacle": "REIMS",
+      "betconstruct": "Reims",
+      "stanleybet": "Reims"
+    },
+    "RENNES": {
+      "kambi": 1000000023,
+      "pinnacle": "RENNES",
+      "betconstruct": "Rennes",
+      "magicbetting": "9045283",
+      "stanleybet": "Rennes"
+    },
+    "RFC SERAING": {
+      "scooore": "RFC Seraing"
+    },
+    "ROYAL ANTWERP FC": {
+      "scooore": "Royal Antwerp FC"
+    },
+    "RWD MOLENBEEK 47": {
+      "scooore": "Rwd Molenbeek 47"
+    },
+    "SAINT-ETIENNE": {
+      "betconstruct": "Saint-Etienne"
+    },
+    "SAINT-ÉTIENNE": {
+      "kambi": 1000000158
+    },
+    "SAMPDORIA GENOA": {
+      "scooore": "Sampdoria Genoa"
+    },
+    "SC HEERENVEEN": {
+      "scooore": "SC Heerenveen"
+    },
+    "SCO ANGERS": {
+      "bet90": "1746",
+      "betcenter": 106267
+    },
+    "SD EIBAR": {
+      "scooore": "SD Eibar"
+    },
+    "SHEFFIELD UNITED FC": {
+      "scooore": "Sheffield United FC"
+    },
+    "SIVASSPOR": {
+      "scooore": "Sivasspor"
+    },
+    "SOUTHAMPTON FC": {
+      "scooore": "Southampton FC"
+    },
+    "SPARTA ROTTERDAM": {
+      "scooore": "Sparta Rotterdam"
+    },
+    "SSC NAPOLI": {
+      "scooore": "SSC Napoli"
+    },
+    "ST ETIENNE": {
+      "pinnacle": "ST ETIENNE"
+    },
+    "ST. ETIENNE": {
+      "sbtech": "437"
+    },
+    "STADE BREST": {
+      "betcenter": 104215
+    },
+    "STADE BRESTOIS": {
+      "betconstruct": "Stade Brestois",
+      "starcasino": 439
+    },
+    "STADE BRESTOIS 29": {
+      "bet90": "436937",
+      "ladbrokes": "Stade Brestois 29",
+      "meridian": "284424",
+      "scooore": "Stade Brestois 29"
+    },
+    "STADE REIMS": {
+      "bet90": "267011",
+      "betcenter": 104207,
+      "ladbrokes": "Stade Reims",
+      "magicbetting": "9046684",
+      "meridian": "330828",
+      "scooore": "Stade Reims",
+      "starcasino": 441
+    },
+    "STADE RENNAIS": {
+      "starcasino": 442
+    },
+    "STADE RENNAIS FC": {
+      "ladbrokes": "Stade Rennais FC",
+      "meridian": "330827",
+      "scooore": "Stade Rennais FC"
+    },
+    "STADE RENNES": {
+      "sbtech": "2524",
+      "betcenter": 106266
+    },
+    "STANDARD DE LIÈGE": {
+      "scooore": "Standard de Liège"
+    },
+    "STRASBOURG": {
+      "kambi": 1000000034,
+      "sbtech": "1861",
+      "pinnacle": "STRASBOURG",
+      "betconstruct": "Strasbourg",
+      "magicbetting": "9053820"
+    },
+    "STRASBOURG ALSACE": {
+      "starcasino": 4536
+    },
+    "STRASBURGO": {
+      "stanleybet": "Strasburgo"
+    },
+    "TOTTENHAM HOTSPUR FC": {
+      "scooore": "Tottenham Hotspur FC"
+    },
+    "UNION SAINT-GILLOISE": {
+      "scooore": "Union Saint-Gilloise"
+    },
+    "VILLARREAL CF": {
+      "scooore": "Villarreal CF"
+    },
+    "VITESSE ARNHEM": {
+      "scooore": "Vitesse Arnhem"
+    },
+    "VVV VENLO": {
+      "scooore": "VVV Venlo"
+    },
+    "WAASLAND-BEVEREN": {
+      "scooore": "Waasland-Beveren"
+    },
+    "WILLEM II TILBURG": {
+      "scooore": "Willem II Tilburg"
+    }
+  }

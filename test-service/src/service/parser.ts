@@ -1,6 +1,37 @@
 import {BetOffer, BetType, Bookmaker} from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
 
+export class Parser {
+    static parse(apiResponse: ApiResponse): BetOffer[] {
+        if(apiResponse){
+            switch(apiResponse.bookmaker) {
+                case Bookmaker.BETCENTER:
+                    return BetcenterParser.parse(apiResponse)
+                case Bookmaker.PINNACLE:
+                    return PinnacleParser.parse(apiResponse)
+                case Bookmaker.UNIBET_BELGIUM:
+                    return KambiParser.parse(apiResponse)
+                case Bookmaker.NAPOLEON_GAMES:
+                    return KambiParser.parse(apiResponse)
+                case Bookmaker.GOLDEN_PALACE:
+                    return AltenarParser.parse(apiResponse)
+                case Bookmaker.BETFIRST:
+                    return SbtechParser.parse(apiResponse)
+                case Bookmaker.BET777:
+                    return SbtechParser.parse(apiResponse)
+                case Bookmaker.LADBROKES:
+                    return LadbrokesParser.parse(apiResponse)
+                case Bookmaker.MERIDIAN:
+                    return MeridianParser.parse(apiResponse)
+                default:
+                    return []
+            }
+        } else {
+            return []
+        }
+    }
+}
+
 export class KambiParser {
     static parse(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data.betOffers) return []
@@ -10,6 +41,7 @@ export class KambiParser {
     static transformToBetOffers(bookMaker: Bookmaker, betOfferContent): BetOffer[] {
         const typeId = betOfferContent.criterion.id
         const betOfferType = this.determineBetOfferType(typeId)
+        if(!betOfferType) return []
         const eventId = betOfferContent.eventId
         const betOffers = []
         if(betOfferContent.outcomes) {
@@ -61,6 +93,7 @@ export class SbtechParser {
     private static transformToBetOffer(bookmaker: Bookmaker, market: any): BetOffer[] {
         const typeId = market.marketType.id
         const betOfferType = SbtechParser.determineBetOfferType(typeId)
+        if(!betOfferType) return []
         const eventId = market.eventId
         const betOffers = []
         market.selections.forEach(selection => {
@@ -109,18 +142,20 @@ export class AltenarParser {
         const eventId = event.Id
         event.Items.map(item => {
             const betType = AltenarParser.determineBetType(item.MarketTypeId)
-            item.Items.forEach(option => {
-                const price = option.Price
-                let outcome = option.Name.toUpperCase()
-                let line = item.SpecialOddsValue === '' ? NaN : parseFloat(item.SpecialOddsValue)
-                if(betType === BetType.HANDICAP) {
-                    outcome = option.Name.split('(')[0].trim().toUpperCase()
-                    line = parseFloat(option.Name.split('(')[1].split(')')[0].trim().toUpperCase())
-                } else if(betType === BetType.OVER_UNDER){
-                    outcome = outcome.includes('OVER') ? 'OVER' : 'UNDER'
-                }
-                betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, price, line))
-            })
+            if(betType) {
+                item.Items.forEach(option => {
+                    const price = option.Price
+                    let outcome = option.Name.toUpperCase()
+                    let line = item.SpecialOddsValue === '' ? NaN : parseFloat(item.SpecialOddsValue)
+                    if(betType === BetType.HANDICAP) {
+                        outcome = option.Name.split('(')[0].trim().toUpperCase()
+                        line = parseFloat(option.Name.split('(')[1].split(')')[0].trim().toUpperCase())
+                    } else if(betType === BetType.OVER_UNDER){
+                        outcome = outcome.includes('OVER') ? 'OVER' : 'UNDER'
+                    }
+                    betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, price, line))
+                })
+            }
         })
         return betOffers
     }
@@ -144,14 +179,16 @@ export class BetcenterParser {
         event.markets.forEach(market => {
             const betType = BetcenterParser.determineBetType(market.id)
             const line = BetcenterParser.determineBetLine(market, betType)
-            market.tips.forEach(tip => {
-                let outcome = tip.text.toUpperCase()
-                const price = tip.odds / 100
-                if(betType === BetType.OVER_UNDER) {
-                    outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
-                }
-                betOffers.push(new BetOffer(betType, event.id, bookMaker, outcome, price, line))
-            })
+            if(betType) {
+                market.tips.forEach(tip => {
+                    let outcome = tip.text.toUpperCase()
+                    const price = tip.odds / 100
+                    if(betType === BetType.OVER_UNDER) {
+                        outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
+                    }
+                    betOffers.push(new BetOffer(betType, event.id, bookMaker, outcome, price, line))
+                })
+            }
         })
         return betOffers
     }
@@ -268,13 +305,15 @@ export class MeridianParser {
 export class PinnacleParser {
     static parse(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        return apiResponse.data.map(offer => PinnacleParser.parseBetOffers(apiResponse.bookmaker, offer)).flat()
+        return apiResponse.data.filter(offer => offer.prices.filter(price => price.designation).length > 0)
+            .map(offer => PinnacleParser.parseBetOffers(apiResponse.bookmaker, offer)).flat()
     }
 
     private static parseBetOffers(bookMaker: Bookmaker, offer): BetOffer[] {
         const betOffers = []
         const eventId = offer.matchupId
         const betType = PinnacleParser.determineBetType(offer.key)
+        if(betType === BetType.UNKNOWN) return []
         const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices)
         offer.prices.forEach(price => {
             const outcome = PinnacleParser.determineOutcome(price.designation.toUpperCase())
@@ -289,6 +328,7 @@ export class PinnacleParser {
     private static determineBetType(key): BetType {
         if(key === 's;0;m') return BetType._1X2
         if(key.includes('s;0;ou')) return BetType.OVER_UNDER
+        return BetType.UNKNOWN
     }
 
     static toDecimalOdds(americanOdds): number {

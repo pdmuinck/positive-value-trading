@@ -1,14 +1,6 @@
-import {ApiResponse, Scraper} from "../client/scraper";
-import {BetOffer, Bookmaker, BookmakerId, SportEvent, SportName, ValueBetFoundEvent} from "../domain/betoffer";
-import {
-    AltenarParser,
-    BetcenterParser,
-    KambiParser,
-    LadbrokesParser,
-    MeridianParser,
-    PinnacleParser,
-    SbtechParser
-} from "./parser";
+import {Scraper} from "../client/scraper";
+import {BetOffer, SportEvent, SportName, ValueBetFoundEvent} from "../domain/betoffer";
+import { Parser } from "./parser";
 
 const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1
@@ -36,7 +28,7 @@ export class ValueBetService {
 
     async searchForValueBets(): Promise<ValueBetFoundEvent[]>{
         const apiResponses = await this._scraper.getBetOffers(SportName.FOOTBALL)
-        const betOffers: BetOffer[] = apiResponses.map(apiResponse => this.parse(apiResponse)).flat()
+        const betOffers: BetOffer[] = apiResponses.map(apiResponse => Parser.parse(apiResponse)).flat()
         betOffers.forEach(betOffer => {
             if(betOffer && betOffer.betType) {
                 const eventKey = this._bookmakerEventIdCache.get([betOffer.bookMaker, betOffer.eventId].join(';'))
@@ -51,33 +43,6 @@ export class ValueBetService {
         const valueBets: ValueBetFoundEvent[] = sportEvents.map(sportEvent => sportEvent.detectValueBets()).flat()
         // produce kafka messages
         return valueBets
-    }
-
-    private parse(apiResponse: ApiResponse): BetOffer[] {
-        if(apiResponse){
-            switch(apiResponse.bookmaker) {
-                case Bookmaker.BETCENTER:
-                    return BetcenterParser.parse(apiResponse)
-                case Bookmaker.PINNACLE:
-                    return PinnacleParser.parse(apiResponse)
-                case Bookmaker.UNIBET_BELGIUM:
-                    return KambiParser.parse(apiResponse)
-                case Bookmaker.NAPOLEON_GAMES:
-                    return KambiParser.parse(apiResponse)
-                case Bookmaker.GOLDEN_PALACE:
-                    return AltenarParser.parse(apiResponse)
-                case Bookmaker.BETFIRST:
-                    return SbtechParser.parse(apiResponse)
-                case Bookmaker.LADBROKES:
-                    return LadbrokesParser.parse(apiResponse)
-                case Bookmaker.MERIDIAN:
-                    return MeridianParser.parse(apiResponse)
-                default:
-                    return []
-            }
-        } else {
-            return []
-        }
     }
 
     get sportEvents(): SportEvent[] {

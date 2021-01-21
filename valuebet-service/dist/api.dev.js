@@ -144,9 +144,9 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
           return regeneratorRuntime.awrap(providerApi.getParticipantsForCompetition(book, competition));
 
         case 3:
-          participants = _context7.sent;
+          jupilerProLeagueParticipantsRaw = _context7.sent;
 
-          if (!participants) {
+          if (!jupilerProLeagueParticipantsRaw) {
             _context7.next = 6;
             break;
           }
@@ -155,7 +155,7 @@ function getParticipantsForProviderAndBookAndCompetition(provider, book, competi
             provider: provider,
             book: book,
             competition: competition,
-            participants: participants.flat().filter(function (v, i, a) {
+            participants: jupilerProLeagueParticipantsRaw.flat().filter(function (v, i, a) {
               return a.findIndex(function (t) {
                 return t.id === v.id;
               }) === i;

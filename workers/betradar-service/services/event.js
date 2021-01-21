@@ -29,7 +29,7 @@ event.getEvents = async () => {
     
                         matches.forEach(match => {
     
-                            participants = []
+                            jupilerProLeagueParticipantsRaw = []
     
                             participants.push({id: match.teams.home._id,name: match.teams.home.mediumname})
                             participants.push({id: match.teams.away._id,name: match.teams.away.mediumname}) 

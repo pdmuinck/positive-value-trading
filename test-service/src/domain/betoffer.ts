@@ -378,7 +378,6 @@ export enum BetType {
     UNKNOWN = 'UNKNOWN'
 }
 
-
 export enum Bookmaker {
     UNIBET_BELGIUM= 'UNIBET_BELGIUM',
     NAPOLEON_GAMES = 'NAPOLEON_GAMES',
@@ -388,12 +387,33 @@ export enum Bookmaker {
     BETCENTER = 'BETCENTER',
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN',
-    BET777 = 'bet777'
+    BET777 = 'bet777',
+    BET90 = 'BET90',
+    MAGIC_BETTING = 'MAGIC_BETTING',
+    STAR_CASINO = 'STAR_CASINO',
+    SCOOORE = 'SCOOORE',
+    CIRCUS = 'CIRCUS',
+    STANLEYBET = 'STANLEYBET'
+
 }
 
-export enum Provider {
-    KAMBI='KAMBI',
-    SBTECH='SBTECH'
+export class Provider {
+    static readonly KAMBI = new Provider('KAMBI', [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES])
+    static readonly SBTECH = new Provider('SBTECH', [Bookmaker.BETFIRST, Bookmaker.BET777])
+    static readonly OTHER = new Provider('OTHER', [Bookmaker.BETCENTER, Bookmaker.BET90, Bookmaker.PINNACLE])
+
+    // private to disallow creating other instances of this type
+    private constructor(private readonly key: string, public readonly bookmakers: Bookmaker[]) {
+    }
+
+    toString() {
+        return this.key
+    }
+
+    static keys(): Provider[] {
+        return [this.KAMBI, this.SBTECH, this.OTHER]
+    }
+
 }
 
 export class ValueBetFoundEvent {

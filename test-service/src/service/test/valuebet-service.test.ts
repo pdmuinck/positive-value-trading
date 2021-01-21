@@ -13,8 +13,6 @@ import {jupilerProLeagueParticipants} from "../../client/config";
 
 const expect = require('chai').expect
 
-
-
 describe('ValueBetService tests', function() {
     describe('searchForValueBet', function() {
         const today = new Date()

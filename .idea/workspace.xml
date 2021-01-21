@@ -2,112 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1c779c3-30f1-4114-b20f-f020ab780724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/positive-value-trading.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/client/kambi.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/domain/betoffer-service.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/domain/betoffers.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/domain/predictions.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/domain/valuebets.sc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-finder-system/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/client/kambi/sports.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/client/scraper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/domain/betoffer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/bookmakers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/leagues.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/service/betoffer-service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/azure-pipelines.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/dist/api.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/dist/api.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/dist/event-mapper.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/dist/event-mapper.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/dist/index.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/dist/index.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/dist/mapper.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/dist/mapper.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/event-mapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/event-mapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/mapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/mapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/BUNDESLIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/BUNDESLIGA.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/CHAMPIONSHIP.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/CHAMPIONSHIP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/EREDIVISIE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/EREDIVISIE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/JUPILER_PRO_LEAGUE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/JUPILER_PRO_LEAGUE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/LA_LIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/LA_LIGA.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/LIGUE_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/LIGUE_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/PREMIER_LEAGUE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/PREMIER_LEAGUE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/participants/SERIE_A.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/SERIE_A.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/altenar/altenar.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/altenar/altenar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/altenar/dist/altenar.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/altenar/dist/altenar.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/altenar/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/altenar/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/bet90/bet90.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bet90/bet90.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/bet90/dist/bet90.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bet90/dist/bet90.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/bet90/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bet90/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betcenter/betcenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betcenter/betcenter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betcenter/dist/betcenter.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betcenter/dist/betcenter.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betcenter/dist/leagues.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betcenter/dist/leagues.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betcenter/leagues.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betcenter/leagues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/betconstruct.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/betconstruct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/bookmakers.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/bookmakers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/dist/betconstruct.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/dist/betconstruct.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/dist/bookmakers.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/dist/bookmakers.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betconstruct/resources/sports.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/resources/sports.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betway/betway.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betway/betway.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betway/dist/betway.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betway/dist/betway.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/betway/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betway/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/bingoal/bingoal.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bingoal/bingoal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/bingoal/dist/bingoal.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bingoal/dist/bingoal.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/kambi/betoffer-type.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/betoffer-type.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/kambi/bookmakers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/client/kambi/bookmakers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/kambi/dist/kambi.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/dist/kambi.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/kambi/kambi.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/kambi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/kambi/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/client/kambi/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/ladbrokes/dist/ladbrokes.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/ladbrokes/dist/ladbrokes.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/ladbrokes/ladbrokes.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/ladbrokes/ladbrokes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/ladbrokes/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/ladbrokes/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/magicbetting/dist/magicbetting.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/magicbetting/dist/magicbetting.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/magicbetting/magicbetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/magicbetting/magicbetting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/magicbetting/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/magicbetting/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/meridian/dist/meridian.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/meridian/dist/meridian.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/meridian/meridian.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/meridian/meridian.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/meridian/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/meridian/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/pinnacle/dist/pinnacle.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/pinnacle/dist/pinnacle.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/pinnacle/pinnacle.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/pinnacle/pinnacle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/pinnacle/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/pinnacle/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/bookmakers.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/bookmakers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/dist/sbtech.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/dist/sbtech.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/dist/token.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/dist/token.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/sbtech.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/sbtech.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/sbtech/token.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/scooore/dist/scooore.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/scooore/dist/scooore.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/scooore/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/scooore/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/scooore/scooore.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/scooore/scooore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/stanleybet/dist/stanleybet.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/stanleybet/dist/stanleybet.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/stanleybet/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/stanleybet/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/stanleybet/stanleybet.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/stanleybet/stanleybet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/starcasino/dist/starcasino.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/starcasino/dist/starcasino.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/starcasino/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/starcasino/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/starcasino/starcasino.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/starcasino/starcasino.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/zetbet/dist/zetbet.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/zetbet/dist/zetbet.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/zetbet/resources/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/zetbet/resources/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/providers/zetbet/zetbet.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/zetbet/zetbet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/setup/dist/endpoints.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/setup/dist/endpoints.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/setup/dist/start.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/setup/dist/start.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/setup/endpoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/setup/endpoints.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/setup/middlewares.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/setup/middlewares.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/setup/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/setup/start.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-service/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workers/magic-betting-service/services/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/workers/magic-betting-service/services/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/BUNDESLIGA.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/CHAMPIONSHIP.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/EREDIVISIE.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/LA_LIGA.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/LIGUE_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/PREMIER_LEAGUE.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/SERIE_A.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/client/resources/jupiler_pro_league.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedulers/events/resources/participants.js" beforeDir="false" afterPath="$PROJECT_DIR$/schedulers/events/resources/participants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/client/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/domain/betoffer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/domain/betoffer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/service/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/parser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/service/valuebet-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/valuebet-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/get-betradar.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/integration/get-betradar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/dist/api.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/dist/api.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/participants/JUPILER_PRO_LEAGUE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/participants/JUPILER_PRO_LEAGUE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/betradar-service/services/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/workers/betradar-service/services/event.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/node-typescript-starter" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -144,29 +59,30 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Scala" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node-typescript-starter/src/service" />
+    <property name="js.last.introduce.type" value="CONST" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-service/src/client/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node-typescript-starter/node_modules/mocha" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/test-service/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="scala_project_settings_configurable.last_selected_tab_index" value="0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/valuebet-service/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/test-service/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test-service/src/client/resources" />
+      <recent name="$PROJECT_DIR$/test-service/src/client/sbtech" />
+      <recent name="$PROJECT_DIR$/test-service" />
       <recent name="$PROJECT_DIR$/node-typescript-starter/src/service" />
       <recent name="$PROJECT_DIR$/node-typescript-starter/src/client" />
-      <recent name="$PROJECT_DIR$/node-typescript-starter/src/domain" />
-      <recent name="$PROJECT_DIR$/node-typescript-starter/src" />
-      <recent name="$PROJECT_DIR$/node-typescript-starter/src/setup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/node-typescript-starter/src/service/test" />
@@ -175,7 +91,7 @@
       <recent name="$PROJECT_DIR$/valuebet-finder-system/domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858">
+  <component name="RunManager" selected="Mocha.scraper should call third party api.getBetOffers.should return results for all bookies">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -187,23 +103,6 @@
       <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Kambi Parser Tests" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node-typescript-starter/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/node-typescript-starter</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/node-typescript-starter/src/service/test/parser.test.ts</test-file>
-      <test-names>
-        <name value="Kambi Parser Tests" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/node-typescript-starter/tsconfig.json" />
       </method>
     </configuration>
     <configuration name="Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" type="mocha-javascript-test-runner" nameIsGenerated="true">
@@ -223,6 +122,80 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="Parser tests" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>exports</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
+      <test-names>
+        <name value="Parser tests" />
+      </test-names>
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
+    <configuration name="Parser tests.PINNACLE parser tests.should parse betoffers" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>exports</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
+      <test-names>
+        <name value="Parser tests" />
+        <name value="PINNACLE parser tests" />
+        <name value="should parse betoffers" />
+      </test-names>
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
+    <configuration name="ValueBetService tests.searchForValueBet.should skip bad api responses" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>exports</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts</test-file>
+      <test-names>
+        <name value="ValueBetService tests" />
+        <name value="searchForValueBet" />
+        <name value="should skip bad api responses" />
+      </test-names>
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
+    <configuration name="ValueBetService tests.searchForValueBet.should skip betoffers with no bet type" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>exports</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts</test-file>
+      <test-names>
+        <name value="ValueBetService tests" />
+        <name value="searchForValueBet" />
+        <name value="should skip betoffers with no bet type" />
+      </test-names>
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
     <configuration default="true" type="mocha-javascript-test-runner">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -234,16 +207,43 @@
       <test-directory />
       <recursive>false</recursive>
       <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/node-typescript-starter/tsconfig.json" />
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
+    <configuration name="scraper should call third party api.getBetOffers.should return results for all bookies" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>exports</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</test-file>
+      <test-names>
+        <name value="scraper should call third party api" />
+        <name value="getBetOffers" />
+        <name value="should return results for all bookies" />
+      </test-names>
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Mocha.Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" />
-      <item itemvalue="Mocha.Kambi Parser Tests" />
+      <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should skip bad api responses" />
+      <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should skip betoffers with no bet type" />
+      <item itemvalue="Mocha.Parser tests" />
+      <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return results for all bookies" />
+      <item itemvalue="Mocha.Parser tests.PINNACLE parser tests.should parse betoffers" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Mocha.Kambi Parser Tests" />
+        <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return results for all bookies" />
+        <item itemvalue="Mocha.Parser tests.PINNACLE parser tests.should parse betoffers" />
+        <item itemvalue="Mocha.Parser tests" />
+        <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should skip betoffers with no bet type" />
+        <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should skip bad api responses" />
       </list>
     </recent_temporary>
   </component>
@@ -263,8 +263,96 @@
       <workItem from="1609421958820" duration="178000" />
       <workItem from="1609422140182" duration="3563000" />
       <workItem from="1609490949716" duration="9748000" />
-      <workItem from="1609698240554" duration="9542000" />
+      <workItem from="1609698240554" duration="9784000" />
+      <workItem from="1609964559684" duration="9690000" />
+      <workItem from="1610048601141" duration="5512000" />
+      <workItem from="1610121664099" duration="8721000" />
+      <workItem from="1610200332773" duration="3240000" />
+      <workItem from="1610218483056" duration="6902000" />
+      <workItem from="1610310982220" duration="3332000" />
+      <workItem from="1610394295950" duration="11762000" />
+      <workItem from="1610481108176" duration="6410000" />
+      <workItem from="1610565259668" duration="7050000" />
+      <workItem from="1610653148337" duration="6516000" />
+      <workItem from="1610695230256" duration="5819000" />
+      <workItem from="1610708572901" duration="6447000" />
+      <workItem from="1610727298056" duration="4601000" />
+      <workItem from="1610807953413" duration="16303000" />
+      <workItem from="1611037794511" duration="598000" />
+      <workItem from="1611082410209" duration="8451000" />
+      <workItem from="1611244439458" duration="7995000" />
     </task>
+    <task id="LOCAL-00001" summary="Parse betcenter, ladbrokes and meridian">
+      <created>1610203701314</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610203701314</updated>
+    </task>
+    <task id="LOCAL-00002" summary="vig free prices on pinnacle">
+      <created>1610228775047</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610228775047</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add vig free prices on pinnacle">
+      <created>1610313974597</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610313974597</updated>
+    </task>
+    <task id="LOCAL-00004" summary="move logic to betoffer domain and add tests for it">
+      <created>1610405693820</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610405693820</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create the scrapers, value bet service and modify the parsers">
+      <created>1610487434226</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610487434226</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finalize value bet service, just started creating tests">
+      <created>1610573596762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610573596762</updated>
+    </task>
+    <task id="LOCAL-00007" summary="make sure code is covered by tests in value bet service">
+      <created>1610659213575</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610659213575</updated>
+    </task>
+    <task id="LOCAL-00008" summary="create decent client for scraping">
+      <created>1610701124293</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610701124293</updated>
+    </task>
+    <task id="LOCAL-00009" summary="create bookmaker config mappings">
+      <created>1610716890536</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610716890536</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix the scrapers: kambi, sbtech and pinnacle">
+      <created>1611090872151</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1611090872151</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,20 +370,38 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Parse betcenter, ladbrokes and meridian" />
+    <MESSAGE value="vig free prices on pinnacle" />
+    <MESSAGE value="add vig free prices on pinnacle" />
+    <MESSAGE value="move logic to betoffer domain and add tests for it" />
+    <MESSAGE value="create the scrapers, value bet service and modify the parsers" />
+    <MESSAGE value="finalize value bet service, just started creating tests" />
+    <MESSAGE value="make sure code is covered by tests in value bet service" />
+    <MESSAGE value="create decent client for scraping" />
+    <MESSAGE value="create bookmaker config mappings" />
+    <MESSAGE value="fix the scrapers: kambi, sbtech and pinnacle" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the scrapers: kambi, sbtech and pinnacle" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node-typescript-starter/src/service/parser.ts</url>
           <line>4</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node-typescript-starter/src/service/parser.ts</url>
           <line>5</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <condition expression="price.designation === undefined" language="TypeScript" />
+          <url>file://$PROJECT_DIR$/test-service/src/service/parser.ts</url>
+          <line>366</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

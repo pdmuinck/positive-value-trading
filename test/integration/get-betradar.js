@@ -13,7 +13,7 @@ console.dir = function(d) { //
 async function test() {
     const data = await axios.get('https://lsc.fn.sportradar.com/betradar/en/Europe:Berlin/gismo/event_fullfeed').then(response => response.data)
 
-    participants = []
+    jupilerProLeagueParticipantsRaw = []
             
     data.doc[0].data.forEach(sport => {
     

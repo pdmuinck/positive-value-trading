@@ -6,22 +6,29 @@ import {
     IdType,
     Participant,
     ParticipantName,
+    Provider,
     Sport,
     SportName
-} from "../domain/betoffer";
+} from "../domain/betoffer"
 
-export const jupilerProLeagueParticipants = [
-    new Participant(ParticipantName.CLUB_BRUGGE, [
-        new BookmakerId(Bookmaker.UNIBET_BELGIUM, "123", IdType.PARTICIPANT),
-        new BookmakerId(Bookmaker.NAPOLEON_GAMES, "123", IdType.PARTICIPANT),
-        new BookmakerId(Bookmaker.PINNACLE, "3489379", IdType.PARTICIPANT),
-    ]),
-    new Participant(ParticipantName.ANDERLECHT, [
-        new BookmakerId(Bookmaker.UNIBET_BELGIUM, "333", IdType.PARTICIPANT),
-        new BookmakerId(Bookmaker.NAPOLEON_GAMES, "333", IdType.PARTICIPANT),
-        new BookmakerId(Bookmaker.PINNACLE, "9398479", IdType.PARTICIPANT),
-    ])
-]
+export const jupilerProLeagueParticipants: Participant[] = toParticipants(require('../client/resources/JUPILER_PRO_LEAGUE.json'))
+
+function toParticipants(rawData): Participant[] {
+    const participants = []
+    Object.keys(rawData).map(key => {
+        const participantName: ParticipantName = ParticipantName[key]
+        const bookmakerIds: BookmakerId[] = []
+        Provider.keys().forEach(provider => {
+            provider.bookmakers.forEach(bookmaker => {
+                const bookmakerId: BookmakerId = new BookmakerId(bookmaker, provider !== Provider.OTHER ?
+                    rawData[provider.toString()] : rawData[bookmaker], IdType.PARTICIPANT)
+                bookmakerIds.push(bookmakerId)
+            })
+        })
+        participants.push(new Participant(participantName, bookmakerIds))
+    })
+    return participants
+}
 
 const eredivisieParticipants = []
 const bundesligaParticipants = []
