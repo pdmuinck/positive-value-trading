@@ -11,21 +11,27 @@ import {
     SportName
 } from "../domain/betoffer"
 
-export const jupilerProLeagueParticipants: Participant[] = toParticipants(require('../client/resources/JUPILER_PRO_LEAGUE.json'))
+import {jupilerProLeagueParticipantsRaw} from "./resources/jupiler_pro_league";
+
+export const jupilerProLeagueParticipants: Participant[] = toParticipants(jupilerProLeagueParticipantsRaw)
 
 function toParticipants(rawData): Participant[] {
     const participants = []
-    Object.keys(rawData).map(key => {
-        const participantName: ParticipantName = ParticipantName[key]
+    Object.keys(rawData).forEach((key: ParticipantName) => {
         const bookmakerIds: BookmakerId[] = []
         Provider.keys().forEach(provider => {
             provider.bookmakers.forEach(bookmaker => {
-                const bookmakerId: BookmakerId = new BookmakerId(bookmaker, provider !== Provider.OTHER ?
-                    rawData[provider.toString()] : rawData[bookmaker], IdType.PARTICIPANT)
-                bookmakerIds.push(bookmakerId)
+                let ids = []
+                if(provider !== Provider.OTHER) {
+                    ids = rawData[key][provider.toString()]
+                } else {
+                    ids = rawData[key][bookmaker]
+                }
+                ids?.forEach(id => bookmakerIds.push(
+                    new BookmakerId(bookmaker, id.toString(), IdType.PARTICIPANT)))
             })
         })
-        participants.push(new Participant(participantName, bookmakerIds))
+        participants.push(new Participant(key, bookmakerIds))
     })
     return participants
 }

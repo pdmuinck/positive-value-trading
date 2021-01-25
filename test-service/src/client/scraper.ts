@@ -24,12 +24,12 @@ export class Scraper {
         return await this.getApiResponses(requests.flat())
     }
 
-    async getParticipants(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName): Promise<ApiResponse[]>{
+    async getParticipants(sportName: SportName, competitionName: CompetitionName): Promise<ApiResponse[]>{
         const requests = sports.filter(sport => sport.name === sportName)
             .map(sport => sport.competitions).flat()
             .filter(competition => competition.name === competitionName)
             .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.PARTICIPANT))
-        return await this.getApiResponses(requests)
+        return await this.getApiResponses(requests.flat())
     }
 
     async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName): Promise<ApiResponse[]>{
@@ -101,7 +101,7 @@ export class Scraper {
                         .catch(error => {return new ApiResponse(bookmaker, null, requestType, bookmakerId.idType)})]
                 })
 
-            case RequestType.EVENT || requestType === RequestType.PARTICIPANT:
+            default:
                 return [
                     axios('https://eu-offering.kambicdn.org/offering/v2018/' + kambiBooks[bookmaker] + '/event/group/'
                         + groupId + '.json?includeParticipants=true')

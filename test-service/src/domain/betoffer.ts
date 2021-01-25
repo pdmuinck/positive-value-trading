@@ -31,9 +31,9 @@ export enum IdType {
 }
 
 export enum RequestType {
-    BET_OFFER,
-    EVENT,
-    PARTICIPANT
+    BET_OFFER = "BET_OFFER",
+    EVENT = "EVENT",
+    PARTICIPANT = "PARTICIPANT"
 }
 
 export enum SportName{
