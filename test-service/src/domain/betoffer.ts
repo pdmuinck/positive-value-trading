@@ -89,6 +89,7 @@ export class BookmakerId {
 }
 
 export enum ParticipantName {
+    NOT_FOUND = "Not Found",
     CLUB_BRUGGE = "Club Brugge KV",
     ANDERLECHT = "R.S.C Anderlecht",
     STANDARD_LIEGE = "Standard Liège",
@@ -269,10 +270,10 @@ export class TradedBetOffer {
 }
 
 export class Participant {
-    private readonly _name: string
+    private readonly _name: ParticipantName
     private readonly _bookmakerIds: BookmakerId[]
 
-    constructor(name: string, bookmakerIds: BookmakerId[]) {
+    constructor(name: ParticipantName, bookmakerIds: BookmakerId[]) {
         this._name = name
         this._bookmakerIds = bookmakerIds
     }
@@ -383,7 +384,7 @@ export enum Bookmaker {
     NAPOLEON_GAMES = 'NAPOLEON_GAMES',
     PINNACLE= 'PINNACLE',
     BETFIRST= 'betfirst',
-    GOLDEN_PALACE = 'GOLDEN_PALACE',
+    GOLDEN_PALACE = 'goldenpalace',
     BETCENTER = 'BETCENTER',
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN',

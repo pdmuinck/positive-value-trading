@@ -1,6 +1,7 @@
 import {BetOffer, Bookmaker, CompetitionName, Participant, SportName} from "../../domain/betoffer";
 import {Scraper} from "../../client/scraper";
 import {Parser} from "../parser";
+import {ParticipantMapper} from "../mapper";
 
 const expect = require('chai').expect
 
@@ -25,8 +26,9 @@ describe("scraper should call third party api", function(){
             const scraper = new Scraper()
             const results = await scraper.getParticipants(SportName.FOOTBALL, CompetitionName.JUPILER_PRO_LEAGUE)
             const participants: Participant[] = results.map(result => Parser.parse(result)).flat()
-            expect(participants).to.not.equal(undefined)
-
+            const result = ParticipantMapper.mapParticipants(participants)
+            expect(result).not.to.equal(undefined)
+            console.log(result)
         })
     })
 })

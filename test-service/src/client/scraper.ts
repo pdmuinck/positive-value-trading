@@ -53,8 +53,29 @@ export class Scraper {
                     return this.toSbtechRequests(bookmakerId, requestType)
                 case Bookmaker.BETFIRST:
                     return this.toSbtechRequests(bookmakerId, requestType)
+                case Bookmaker.GOLDEN_PALACE:
+                    return this.toAltenarRequests(bookmakerId, requestType)
             }
         })
+    }
+
+    toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        let url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents'
+        const params = {
+            params: {
+                timezoneOffset: 60,
+                langId: 1,
+                skinName: bookmakerId.bookmaker,
+                configId: 1,
+                culture: "en-GB",
+                deviceType: "Mobile",
+                numformat: "en",
+                sportids: bookmakerId.idType === IdType.SPORT ? bookmakerId.id : "0",
+                categoryids: "0",
+                champids: bookmakerId.idType === IdType.COMPETITION ? bookmakerId.id : "0",
+            }
+        }
+            //"&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
     }
 
     toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {

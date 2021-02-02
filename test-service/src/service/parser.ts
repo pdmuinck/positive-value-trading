@@ -1,5 +1,15 @@
-import {BetOffer, BetType, Bookmaker, BookmakerId, IdType, Participant, RequestType} from '../domain/betoffer'
+import {
+    BetOffer,
+    BetType,
+    Bookmaker,
+    BookmakerId,
+    IdType,
+    Participant,
+    ParticipantName,
+    RequestType
+} from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
+import {participantMap} from "./mapper";
 
 export class Event {
     private readonly _startTime
@@ -72,13 +82,14 @@ export class KambiParser {
         if(!apiResponse.data.events) return []
         return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => event.participants)
             .flat().map(participant => new Participant(
-            participant.name, [new BookmakerId(apiResponse.bookmaker, participant.participantId, IdType.PARTICIPANT)]))
+                getParticipantName(participant.name.toUpperCase()), [
+                    new BookmakerId(apiResponse.bookmaker, participant.participantId, IdType.PARTICIPANT)]))
     }
 
     static parseEvents(apiResponse: ApiResponse): Event[] {
         if(!apiResponse.data.events) return []
         return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => {
-            const participants = event.participants.map(participant => new Participant(participant.name,
+            const participants = event.participants.map(participant => new Participant(getParticipantName(participant.name),
                 [new BookmakerId(apiResponse.bookmaker, participant.participantId, IdType.PARTICIPANT)]))
             return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.start, participants)
         })
@@ -149,7 +160,7 @@ export class SbtechParser {
 
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {
         if(!apiResponse.data.events) return []
-        return apiResponse.data.events.map(event => event.participants.map(participant => new Participant(participant.name,
+        return apiResponse.data.events.map(event => event.participants.map(participant => new Participant(getParticipantName(participant.name),
             [new BookmakerId(apiResponse.bookmaker, participant.id, IdType.PARTICIPANT)]))).flat()
     }
 
@@ -162,7 +173,7 @@ export class SbtechParser {
         if(!apiResponse.data.events) return []
         return apiResponse.data.events.map(event => {
             const participants = event.participants.map(participant => {
-                new Participant(participant.name, [new BookmakerId(apiResponse.bookmaker, participant.id, IdType.PARTICIPANT)])
+                new Participant(getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.id, IdType.PARTICIPANT)])
             })
             return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.startEventDate, participants)
         })
@@ -210,7 +221,38 @@ export class SbtechParser {
 }
 
 export class AltenarParser {
-    static parse(apiResponse: ApiResponse): BetOffer[] {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+        }
+
+    }
+
+    private static parseEvents(apiResponse: ApiResponse): Event[] {
+        if(!apiResponse.data.Result) return []
+        return apiResponse.data.Result.Items[0].Events.map(event => new Event(
+            new BookmakerId(apiResponse.bookmaker, event.Id, IdType.EVENT),
+            event.EventDate,
+            event.Competitors.map(competitor => new Participant(
+                getParticipantName(competitor.Name),
+                [new BookmakerId(apiResponse.bookmaker, competitor.Name, IdType.PARTICIPANT)]
+            ))
+        )).flat()
+    }
+
+    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        if(!apiResponse.data.Result) return []
+        return apiResponse.data.Result.Items[0].Events.map(event => event.Competitors.map(participant => new Participant(
+            getParticipantName(participant.Name), [new BookmakerId(apiResponse.bookmaker, participant.Name,
+                IdType.PARTICIPANT)]))).flat()
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data.Result) return []
         return apiResponse.data.Result.Items[0].Events.map(event => AltenarParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
     }
@@ -380,6 +422,17 @@ export class MeridianParser {
     }
 }
 
+function getParticipantName(name: string): ParticipantName{
+    let found
+    Object.keys(participantMap).forEach(key => {
+        if(participantMap[key].includes(name.toUpperCase())) {
+            found = key
+        }
+    })
+    if(found) return found
+    return ParticipantName.NOT_FOUND
+}
+
 export class PinnacleParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType){
@@ -396,7 +449,7 @@ export class PinnacleParser {
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
         return apiResponse.data.filter(event => !event.parentId).map(event => {
             const participants: Participant[] = event.participants.map(participant => {
-                new Participant(participant.name, [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)])
+                new Participant(getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)])
             })
             return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.startTime, participants)
         })
@@ -405,7 +458,7 @@ export class PinnacleParser {
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
         return apiResponse.data.filter(event => !event.parentId).map(event => event.participants.map(participant => new Participant(
-            participant.name, [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)]
+            getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)]
         ))).flat()
     }
 
