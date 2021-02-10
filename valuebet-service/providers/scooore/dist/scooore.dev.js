@@ -2,7 +2,7 @@
 
 var axios = require('axios');
 
-var leagues = require('./resources/leagues.json');
+var leagues = require('./resources/leagues.ts');
 
 var NodeCache = require('node-cache');
 

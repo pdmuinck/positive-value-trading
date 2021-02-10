@@ -6,7 +6,7 @@ var axios = require('axios');
 
 var parser = require('node-html-parser');
 
-var leagues = require('./resources/leagues.json');
+var leagues = require('./resources/leagues.ts');
 
 var NodeCache = require('node-cache');
 

@@ -4,7 +4,7 @@ var WebSocket = require("ws");
 
 var NodeCache = require('node-cache');
 
-var leagues = require('./resources/leagues.json');
+var leagues = require('./resources/leagues.ts');
 
 var ttlSeconds = 60 * 1 * 1;
 var cache = new NodeCache({

@@ -4,7 +4,7 @@ var axios = require('axios');
 
 var bookmakers = require('./bookmakers.json');
 
-var leagues = require('./leagues.json');
+var leagues = require('./leagues.ts');
 
 var betOfferTypes = require('./betoffer-type.json');
 

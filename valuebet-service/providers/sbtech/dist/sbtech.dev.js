@@ -6,7 +6,7 @@ var bookmakers = require('./bookmakers');
 
 var Token = require('./token');
 
-var leagues = require('./leagues.json');
+var leagues = require('./leagues.ts');
 
 var NodeCache = require('node-cache');
 

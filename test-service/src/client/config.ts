@@ -50,7 +50,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094965", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40815", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1817", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000490", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000490", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "457", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants
     ),
@@ -60,7 +61,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094980", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "41372", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1928", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000282", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000282", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "307", IdType.COMPETITION)
         ],
         eredivisieParticipants
     ),
@@ -70,7 +72,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000345237", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40820", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1842", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000279", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000279", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "30", IdType.COMPETITION)
         ],
         bundesligaParticipants
     ),
@@ -80,7 +83,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "2000050115", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40031", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2196", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000149", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000149", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "117", IdType.COMPETITION)
         ],
         laLigaParticipants
     ),
@@ -90,7 +94,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094991", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40032", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2036", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000104", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000104", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "119", IdType.COMPETITION)
         ],
         ligue1Participants
     ),
@@ -100,7 +105,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000094985", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40253", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1980", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000097", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000097", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "56", IdType.COMPETITION)
         ],
         premierLeagueParticipants
     ),
@@ -110,7 +116,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000095001", IdType.COMPETITION),
             new BookmakerId(Bookmaker.BETFIRST, "40030", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2436", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000283", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000283", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.BET90, "401", IdType.COMPETITION)
         ],
         serieAParticipants
     )
@@ -125,7 +132,8 @@ export const sports = [
             new BookmakerId(Bookmaker.PINNACLE, "29", IdType.SPORT),
             new BookmakerId(Bookmaker.BETFIRST, "1", IdType.SPORT),
             new BookmakerId(Bookmaker.BET777, "1", IdType.SPORT),
-            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1", IdType.SPORT)
+            new BookmakerId(Bookmaker.GOLDEN_PALACE, "1", IdType.SPORT),
+            new BookmakerId(Bookmaker.BET90, "1", IdType.SPORT)
         ],
         footballCompetitions
     )

@@ -11,6 +11,8 @@ import {
 import {ApiResponse} from "../client/scraper";
 import {participantMap} from "./mapper";
 
+const parser = require('node-html-parser')
+
 export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
@@ -57,6 +59,8 @@ export class Parser {
                     return LadbrokesParser.parse(apiResponse)
                 case Bookmaker.MERIDIAN:
                     return MeridianParser.parse(apiResponse)
+                case Bookmaker.BET90:
+                    return Bet90Parser.parse(apiResponse)
                 default:
                     return []
             }
@@ -239,7 +243,7 @@ export class AltenarParser {
             new BookmakerId(apiResponse.bookmaker, event.Id, IdType.EVENT),
             event.EventDate,
             event.Competitors.map(competitor => new Participant(
-                getParticipantName(competitor.Name),
+                getParticipantName(competitor.Name.toUpperCase()),
                 [new BookmakerId(apiResponse.bookmaker, competitor.Name, IdType.PARTICIPANT)]
             ))
         )).flat()
@@ -431,6 +435,76 @@ function getParticipantName(name: string): ParticipantName{
     })
     if(found) return found
     return ParticipantName.NOT_FOUND
+}
+
+export class Bet90Parser {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
+    }
+
+    private static parseParticipants(apiResponse: ApiResponse): Participant[]{
+        if(!apiResponse.data) return []
+        const events = apiResponse.data
+        const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {
+            return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+        const secondTeams = parser.parse(events).querySelectorAll('.second-team').map(team =>
+        {return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+        const stats = parser.parse(events).querySelectorAll('.hg_nx_btn_stats').map(stat =>
+        {return {id: stat.parentNode.parentNode.parentNode.id, participantIds: stat.rawAttrs}})
+        return this.parseTeams(firstTeams, secondTeams, stats)
+    }
+
+    private static parseTeams(firstTeams, secondTeams, stats): Participant[] {
+        const participants: Participant[] = []
+        firstTeams.forEach(team => {
+            const secondTeam = secondTeams.filter(secondTeam => secondTeam.id === team.id)[0]
+            const stat = stats.filter(stat => stat.id === team.id)[0]
+            const id = stat.participantIds.split('team1id="')[1].split('\"\r\n')[0]
+            const id2 = stat.participantIds.split('team2id="')[1].split('\"')[0]
+            participants.push(new Participant(getParticipantName(team.team1),
+                [new BookmakerId(Bookmaker.BET90, id, IdType.PARTICIPANT)]))
+            participants.push(new Participant(getParticipantName(secondTeam.team1),
+                [new BookmakerId(Bookmaker.BET90, id2, IdType.PARTICIPANT)]))
+        })
+        return participants.flat()
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[]{
+        return []
+    }
+
+    private static parseEvents(apiResponse: ApiResponse): Event[] {
+        if(!apiResponse.data) return []
+        const events = apiResponse.data
+        const parsedEvents: Event[] = []
+        const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {
+            return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+        const secondTeams = parser.parse(events).querySelectorAll('.second-team').map(team => {
+            return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
+        const stats = parser.parse(events).querySelectorAll('.hg_nx_btn_stats').map(stat => {
+            return {id: stat.parentNode.parentNode.parentNode.id, participantIds: stat.rawAttrs}})
+        firstTeams.forEach(team => {
+            const secondTeam = secondTeams.filter(secondTeam => secondTeam.id === team.id)[0]
+            const stat = stats.filter(stat => stat.id === team.id)[0]
+            const participantId = stat.participantIds.split('team1id="')[1].split('\"\r\n')[0]
+            const participantId2 = stat.participantIds.split('team2id="')[1].split('\"')[0]
+            const participants = [new Participant(getParticipantName(team.team1),
+                [new BookmakerId(Bookmaker.BET90, participantId, IdType.PARTICIPANT)]),
+                new Participant(getParticipantName(team.team1),
+                    [new BookmakerId(Bookmaker.BET90, participantId2, IdType.PARTICIPANT)])
+            ]
+            const parsedEvent = new Event(new BookmakerId(Bookmaker.BET90, team.id, IdType.EVENT), undefined, participants)
+            parsedEvents.push(parsedEvent)
+        })
+        return parsedEvents
+    }
 }
 
 export class PinnacleParser {

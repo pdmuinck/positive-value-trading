@@ -13,7 +13,7 @@ var cache = new NodeCache({
   useClones: false
 });
 
-var leagues = require('./resources/leagues.json');
+var leagues = require('./resources/leagues.ts');
 
 var sports = require('./resources/sports');
 

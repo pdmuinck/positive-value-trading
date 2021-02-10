@@ -10,7 +10,8 @@ import {
 } from "../domain/betoffer"
 import {sports} from "./config"
 import axios from "axios"
-import {SbtechTokenRepository} from "./sbtech/token";
+import {SbtechTokenRepository} from "./sbtech/token"
+import {bet90Map} from "./bet90/leagues";
 
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
@@ -55,27 +56,34 @@ export class Scraper {
                     return this.toSbtechRequests(bookmakerId, requestType)
                 case Bookmaker.GOLDEN_PALACE:
                     return this.toAltenarRequests(bookmakerId, requestType)
+                case Bookmaker.BET90:
+                    return this.toBet90Requests(bookmakerId, requestType)
             }
         })
     }
 
-    toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        let url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents'
-        const params = {
-            params: {
-                timezoneOffset: 60,
-                langId: 1,
-                skinName: bookmakerId.bookmaker,
-                configId: 1,
-                culture: "en-GB",
-                deviceType: "Mobile",
-                numformat: "en",
-                sportids: bookmakerId.idType === IdType.SPORT ? bookmakerId.id : "0",
-                categoryids: "0",
-                champids: bookmakerId.idType === IdType.COMPETITION ? bookmakerId.id : "0",
+    toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const headers = {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json; charset=UTF-8',
             }
         }
-            //"&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
+        const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
+        const body = {leagueId: bookmakerId.id, categoryId: map.categoryId, sportId: map.sport}
+        return [axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
+            .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+    }
+
+    toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1' +
+            '&skinName=goldenpalace&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0' +
+            '&champids=' + bookmakerId.id  +'&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none' +
+            '&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
+        return [axios.get(url)
+            .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
     }
 
     toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -94,8 +102,8 @@ export class Scraper {
             axios.get(
                 url,
                 requestConfig
-            ).then(response => {return new ApiResponse(Bookmaker.PINNACLE, response.data, requestType, bookmakerId.idType)})
-                .catch(error => {return new ApiResponse(Bookmaker.PINNACLE, null, requestType, bookmakerId.idType)})
+            ).then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+                .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})
         ]
     }
 
