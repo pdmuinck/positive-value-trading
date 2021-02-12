@@ -486,7 +486,24 @@ export class Bet90Parser {
         const parsedEvents: Event[] = []
 
         const eventsParsed = parser.parse(events)
+        eventsParsed.querySelectorAll('.dropd').map(eventNode => {
+            const eventId = eventNode.parentNode.childNodes.filter(node => node.classNames &&
+                node.classNames.includes("dropd"))[0].rawAttrs.split('"')[1]
+            const time = eventNode.childNodes.filter(node => node.classNames && node.classNames.includes("sportsTime"))[0]
+                .childNodes[1].childNodes[0].rawText
+            const homeTeamName = eventNode.childNodes.filter(node => node.classNames
+                && node.classNames.includes("first-team"))[0].childNodes[1].childNodes[0].rawText
+            const awayTeamName = eventNode.childNodes.filter(node => node.classNames
+                && node.classNames.includes("second-team"))[0].childNodes[1].childNodes[0].rawText
+            const homeTeamId = eventNode.childNodes.filter(node => node.classNames
+                && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[1].split('id="')[1]
+            const awayTeamId = eventNode.childNodes.filter(node => node.classNames
+                && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[2].split('id="')[1]
+            console.log(eventNode)
+
+        })
         eventsParsed.querySelectorAll('.first-date-in-table').map(dateNode => {
+            const date = dateNode.childNodes[1].childNodes[1].childNodes[0].rawText
             console.log(dateNode)
         })
         const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {

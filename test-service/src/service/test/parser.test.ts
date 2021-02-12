@@ -173,8 +173,6 @@ describe('Parser tests', function() {
     describe("BET90 parser tests", function(){
         it("should parse events", function() {
             const events: Event[] = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.EVENT, IdType.SPORT))
-
-            console.log(events)
         })
     })
 })
