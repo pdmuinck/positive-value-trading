@@ -1,4 +1,7 @@
-const kambi = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.pinnacle = exports.meridian = exports.ladbrokes = exports.betcenter = exports.altenar = exports.sbtech = exports.kambi = void 0;
+var kambi = {
     "betOffers": [
         {
             "id": 2234427563,
@@ -179,9 +182,9 @@ const kambi = {
             "cashOutStatus": "ENABLED"
         },
     ]
-}
-
-const sbtech = {
+};
+exports.kambi = kambi;
+var sbtech = {
     "events": [],
     "leagues": [],
     "regions": [],
@@ -426,9 +429,9 @@ const sbtech = {
             "playerMapping": null
         },
     ]
-}
-
-const altenar = {
+};
+exports.sbtech = sbtech;
+var altenar = {
     "Result": {
         "Items": [
             {
@@ -734,9 +737,9 @@ const altenar = {
             }
         ]
     }
-}
-
-const betcenter = {
+};
+exports.altenar = altenar;
+var betcenter = {
     "games": [
         {
             "id": 3140760552,
@@ -903,12 +906,12 @@ const betcenter = {
                         }
                     ]
                 }
-                ]
+            ]
         }
-        ]
-}
-
-const ladbrokes = {
+    ]
+};
+exports.betcenter = betcenter;
+var ladbrokes = {
     "code": 1,
     "description": "ok",
     "result": {
@@ -1399,9 +1402,9 @@ const ladbrokes = {
             }
         ]
     }
-}
-
-const meridian = {
+};
+exports.ladbrokes = ladbrokes;
+var meridian = {
     "events": [
         {
             "events": [
@@ -2358,9 +2361,9 @@ const meridian = {
             "hasMore": true
         }
     ]
-}
-
-const pinnacle = [
+};
+exports.meridian = meridian;
+var pinnacle = [
     {
         "cutoffAt": "2021-01-16T15:00:00+00:00",
         "isAlternate": false,
@@ -2417,8 +2420,5 @@ const pinnacle = [
         "type": "total",
         "version": 1248545110
     }
-]
-
-export {
-    kambi, sbtech, altenar, betcenter, ladbrokes, meridian, pinnacle
-}
+];
+exports.pinnacle = pinnacle;

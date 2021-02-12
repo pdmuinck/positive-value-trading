@@ -1,0 +1,58 @@
+[
+  {
+    "cutoffAt": "2021-01-16T15:00:00+00:00",
+    "isAlternate": false,
+    "key": "s;0;m",
+    "limits": [
+      {
+        "amount": 300,
+        "type": "maxRiskStake"
+      }
+    ],
+    "matchupId": 1235631053,
+    "period": 0,
+    "prices": [
+      {
+        "designation": "home",
+        "price": -176
+      },
+      {
+        "designation": "away",
+        "price": 542
+      },
+      {
+        "designation": "draw",
+        "price": 310.0
+      }
+    ],
+    "type": "moneyline",
+    "version": 1248545110
+  },
+  {
+    "cutoffAt": "2021-01-16T15:00:00+00:00",
+    "isAlternate": false,
+    "key": "s;0;ou;2.5",
+    "limits": [
+      {
+        "amount": 150,
+        "type": "maxRiskStake"
+      }
+    ],
+    "matchupId": 1235631053,
+    "period": 0,
+    "prices": [
+      {
+        "designation": "over",
+        "points": 2.5,
+        "price": -102
+      },
+      {
+        "designation": "under",
+        "points": 2.5,
+        "price": -112
+      }
+    ],
+    "type": "total",
+    "version": 1248545110
+  }
+]

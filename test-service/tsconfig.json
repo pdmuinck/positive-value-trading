@@ -6,7 +6,9 @@
     "sourceMap": true,
     "lib": [
       "es2019"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "files": [
     "./node_modules/@types/mocha/index.d.ts",

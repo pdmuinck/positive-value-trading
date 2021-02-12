@@ -1,0 +1,958 @@
+{
+  "events": [
+    {
+      "events": [
+        {
+          "team": [
+            {
+              "id": "333150",
+              "name": "Rochdale AFC"
+            },
+            {
+              "id": "258928",
+              "name": "Crewe Alexandra"
+            }
+          ],
+          "teamHomeTranslations": [],
+          "teamAwayTranslations": [],
+          "regionNameSlugs": [
+            {
+              "locale": "fr",
+              "slug": "angleterre"
+            },
+            {
+              "locale": "nl",
+              "slug": "engeland"
+            },
+            {
+              "locale": "en",
+              "slug": "english"
+            },
+            {
+              "locale": "tr",
+              "slug": "ingilizce"
+            },
+            {
+              "locale": "sr",
+              "slug": "engleska"
+            },
+            {
+              "locale": "de",
+              "slug": "english"
+            },
+            {
+              "locale": "pt",
+              "slug": "english"
+            },
+            {
+              "locale": "es",
+              "slug": "inglaterra"
+            },
+            {
+              "locale": "el",
+              "slug": "αγγλια"
+            }
+          ],
+          "sportNameSlugs": [
+            {
+              "locale": "fr",
+              "slug": "football"
+            },
+            {
+              "locale": "nl",
+              "slug": "voetbal"
+            },
+            {
+              "locale": "en",
+              "slug": "football"
+            },
+            {
+              "locale": "tr",
+              "slug": "futbol"
+            },
+            {
+              "locale": "sr",
+              "slug": "fudbal"
+            },
+            {
+              "locale": "de",
+              "slug": "fußball"
+            },
+            {
+              "locale": "pt",
+              "slug": "futebol"
+            },
+            {
+              "locale": "es",
+              "slug": "fútbol"
+            },
+            {
+              "locale": "el",
+              "slug": "ποδοσφαιρο"
+            }
+          ],
+          "liveShortMarkets": [],
+          "id": "8817779",
+          "code": "0772",
+          "templateId": "1501",
+          "templateName": "BR Football TOP1",
+          "state": "ACTIVE",
+          "creationTime": "2021-01-07T12:59:14.829+01:00",
+          "startTime": "2021-01-09T15:00:00.000Z",
+          "offerType": "STANDARD_BET",
+          "leagueId": 123,
+          "leagueName": "English League One",
+          "sportId": 58,
+          "sportName": "Football",
+          "iconName": "football",
+          "betradarEventId": 3555741,
+          "feedBetradarunified": true,
+          "isBetradarUnifiedOutright": false,
+          "betradarUnified": {
+            "locale": "sr",
+            "type": "match",
+            "id": "25207956"
+          },
+          "setEventOrder": "0",
+          "isRecommended": false,
+          "topMatch": false,
+          "periodDuration": "",
+          "name": "Rochdale AFC - Crewe Alexandra",
+          "regionId": "1",
+          "regionName": "English",
+          "leagueNameSlug": "league-one",
+          "powerLeaguesPriority": 9999,
+          "hasMarket": true,
+          "firstMarketPrice": "4.4",
+          "isPowerLeague": false,
+          "isVisibleStandard": true,
+          "isVisibleLive": false,
+          "isVisibleRacing": false,
+          "mostPlayed": false,
+          "numberOfActiveSelections": 1215,
+          "createdAt": "2021-01-09T05:18:11.725Z",
+          "updatedAt": "2021-01-09T11:28:26.220Z",
+          "currentMinute": null,
+          "inc": 6259,
+          "isLowPriorityChange": false,
+          "skipCreatingLeagueNameSlug": true,
+          "skipCreatingRegionNameSlug": true,
+          "skipCreatingSportNameSlug": true,
+          "wasStandardActive": false,
+          "wasTopMatch": false,
+          "market": [
+            {
+              "selection": [
+                {
+                  "name": "[[Rival1]]",
+                  "price": "4.4",
+                  "state": "ACTIVE",
+                  "activationPrice": "3.7",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "1"
+                    }
+                  ]
+                },
+                {
+                  "name": "draw",
+                  "price": "3.75",
+                  "state": "ACTIVE",
+                  "activationPrice": "3.4",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "X"
+                    }
+                  ]
+                },
+                {
+                  "name": "[[Rival2]]",
+                  "price": "1.83",
+                  "state": "ACTIVE",
+                  "activationPrice": "2.12",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "2"
+                    }
+                  ]
+                }
+              ],
+              "id": "186443261",
+              "name": "Final Score",
+              "templateId": "3999",
+              "templateName": "1x2",
+              "state": "ACTIVE",
+              "creationTime": "2021-01-07T12:59:15.057+01:00",
+              "activationTime": "2021-01-07T12:59:15.057+01:00",
+              "winnerPrice": "0.0",
+              "nameTranslations": [
+                {
+                  "locale": "fr",
+                  "translation": "Résultat Final"
+                },
+                {
+                  "locale": "nl",
+                  "translation": "Eindresultaat"
+                },
+                {
+                  "locale": "en",
+                  "translation": "Final Score"
+                },
+                {
+                  "locale": "tr",
+                  "translation": "Son skor"
+                },
+                {
+                  "locale": "sr",
+                  "translation": "Konačan Ishod"
+                },
+                {
+                  "locale": "de",
+                  "translation": "Endergebnis"
+                },
+                {
+                  "locale": "pt",
+                  "translation": "Resultado Final"
+                },
+                {
+                  "locale": "es",
+                  "translation": "Resultado Final"
+                },
+                {
+                  "locale": "el",
+                  "translation": "Τελικο Αποτελεσμα"
+                }
+              ],
+              "inc": 6258,
+              "overUnder": null,
+              "handicap": null
+            },
+            {
+              "selection": [
+                {
+                  "name": "[[under]]",
+                  "price": "1.98",
+                  "state": "ACTIVE",
+                  "activationPrice": "1.82",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "Moins"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "Onder"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "Under"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "altı"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "Manje"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "Unter"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "Menos"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "Menos"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "Under"
+                    }
+                  ]
+                },
+                {
+                  "name": "[[over]]",
+                  "price": "1.83",
+                  "state": "ACTIVE",
+                  "activationPrice": "1.98",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "Plus"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "Meer"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "Over"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "üzerinde"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "Više"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "Über"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "Mais"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "Más"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "Over"
+                    }
+                  ]
+                }
+              ],
+              "id": "186443435",
+              "name": "Total",
+              "templateId": "4004",
+              "templateName": "Total",
+              "state": "ACTIVE",
+              "creationTime": "2021-01-07T13:00:05.728+01:00",
+              "activationTime": "2021-01-07T13:00:05.728+01:00",
+              "overUnder": "2.5",
+              "activationOverUnder": "2.5",
+              "winnerPrice": "0.0",
+              "nameTranslations": [
+                {
+                  "locale": "fr",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "nl",
+                  "translation": "Totaal"
+                },
+                {
+                  "locale": "en",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "tr",
+                  "translation": "Toplam"
+                },
+                {
+                  "locale": "sr",
+                  "translation": "Ukupno"
+                },
+                {
+                  "locale": "de",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "pt",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "es",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "el",
+                  "translation": "Σύνολο"
+                }
+              ],
+              "inc": 4930,
+              "handicap": null
+            }
+          ]
+        }
+      ],
+      "range": {
+        "start": "2021-01-09T15:00:00.000Z",
+        "end": "2021-01-09T16:00:00.000Z"
+      },
+      "hasMore": true
+    },
+    {
+      "events": [
+        {
+          "team": [
+            {
+              "id": "333150",
+              "name": "Rochdale AFC"
+            },
+            {
+              "id": "258928",
+              "name": "Crewe Alexandra"
+            }
+          ],
+          "teamHomeTranslations": [],
+          "teamAwayTranslations": [],
+          "regionNameSlugs": [
+            {
+              "locale": "fr",
+              "slug": "angleterre"
+            },
+            {
+              "locale": "nl",
+              "slug": "engeland"
+            },
+            {
+              "locale": "en",
+              "slug": "english"
+            },
+            {
+              "locale": "tr",
+              "slug": "ingilizce"
+            },
+            {
+              "locale": "sr",
+              "slug": "engleska"
+            },
+            {
+              "locale": "de",
+              "slug": "english"
+            },
+            {
+              "locale": "pt",
+              "slug": "english"
+            },
+            {
+              "locale": "es",
+              "slug": "inglaterra"
+            },
+            {
+              "locale": "el",
+              "slug": "αγγλια"
+            }
+          ],
+          "sportNameSlugs": [
+            {
+              "locale": "fr",
+              "slug": "football"
+            },
+            {
+              "locale": "nl",
+              "slug": "voetbal"
+            },
+            {
+              "locale": "en",
+              "slug": "football"
+            },
+            {
+              "locale": "tr",
+              "slug": "futbol"
+            },
+            {
+              "locale": "sr",
+              "slug": "fudbal"
+            },
+            {
+              "locale": "de",
+              "slug": "fußball"
+            },
+            {
+              "locale": "pt",
+              "slug": "futebol"
+            },
+            {
+              "locale": "es",
+              "slug": "fútbol"
+            },
+            {
+              "locale": "el",
+              "slug": "ποδοσφαιρο"
+            }
+          ],
+          "liveShortMarkets": [],
+          "id": "8817779",
+          "code": "0772",
+          "templateId": "1501",
+          "templateName": "BR Football TOP1",
+          "state": "ACTIVE",
+          "creationTime": "2021-01-07T12:59:14.829+01:00",
+          "startTime": "2021-01-09T15:00:00.000Z",
+          "offerType": "STANDARD_BET",
+          "leagueId": 123,
+          "leagueName": "English League One",
+          "sportId": 58,
+          "sportName": "Football",
+          "iconName": "football",
+          "betradarEventId": 3555741,
+          "feedBetradarunified": true,
+          "isBetradarUnifiedOutright": false,
+          "betradarUnified": {
+            "locale": "sr",
+            "type": "match",
+            "id": "25207956"
+          },
+          "setEventOrder": "0",
+          "isRecommended": false,
+          "topMatch": false,
+          "periodDuration": "",
+          "name": "Rochdale AFC - Crewe Alexandra",
+          "regionId": "1",
+          "regionName": "English",
+          "leagueNameSlug": "league-one",
+          "powerLeaguesPriority": 9999,
+          "hasMarket": true,
+          "firstMarketPrice": "4.4",
+          "isPowerLeague": false,
+          "isVisibleStandard": true,
+          "isVisibleLive": false,
+          "isVisibleRacing": false,
+          "mostPlayed": false,
+          "numberOfActiveSelections": 1215,
+          "createdAt": "2021-01-09T05:18:11.725Z",
+          "updatedAt": "2021-01-09T11:28:26.220Z",
+          "currentMinute": null,
+          "inc": 6259,
+          "isLowPriorityChange": false,
+          "skipCreatingLeagueNameSlug": true,
+          "skipCreatingRegionNameSlug": true,
+          "skipCreatingSportNameSlug": true,
+          "wasStandardActive": false,
+          "wasTopMatch": false,
+          "market": [
+            {
+              "selection": [
+                {
+                  "name": "[[Rival1]]",
+                  "price": "4.4",
+                  "state": "ACTIVE",
+                  "activationPrice": "3.7",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "1"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "1"
+                    }
+                  ]
+                },
+                {
+                  "name": "draw",
+                  "price": "3.75",
+                  "state": "ACTIVE",
+                  "activationPrice": "3.4",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "X"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "X"
+                    }
+                  ]
+                },
+                {
+                  "name": "[[Rival2]]",
+                  "price": "1.83",
+                  "state": "ACTIVE",
+                  "activationPrice": "2.12",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "2"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "2"
+                    }
+                  ]
+                }
+              ],
+              "id": "186443261",
+              "name": "Final Score",
+              "templateId": "3999",
+              "templateName": "1x2",
+              "state": "ACTIVE",
+              "creationTime": "2021-01-07T12:59:15.057+01:00",
+              "activationTime": "2021-01-07T12:59:15.057+01:00",
+              "winnerPrice": "0.0",
+              "nameTranslations": [
+                {
+                  "locale": "fr",
+                  "translation": "Résultat Final"
+                },
+                {
+                  "locale": "nl",
+                  "translation": "Eindresultaat"
+                },
+                {
+                  "locale": "en",
+                  "translation": "Final Score"
+                },
+                {
+                  "locale": "tr",
+                  "translation": "Son skor"
+                },
+                {
+                  "locale": "sr",
+                  "translation": "Konačan Ishod"
+                },
+                {
+                  "locale": "de",
+                  "translation": "Endergebnis"
+                },
+                {
+                  "locale": "pt",
+                  "translation": "Resultado Final"
+                },
+                {
+                  "locale": "es",
+                  "translation": "Resultado Final"
+                },
+                {
+                  "locale": "el",
+                  "translation": "Τελικο Αποτελεσμα"
+                }
+              ],
+              "inc": 6258,
+              "overUnder": null,
+              "handicap": null
+            },
+            {
+              "selection": [
+                {
+                  "name": "[[under]]",
+                  "price": "1.98",
+                  "state": "ACTIVE",
+                  "activationPrice": "1.82",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "Moins"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "Onder"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "Under"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "altı"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "Manje"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "Unter"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "Menos"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "Menos"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "Under"
+                    }
+                  ]
+                },
+                {
+                  "name": "[[over]]",
+                  "price": "1.83",
+                  "state": "ACTIVE",
+                  "activationPrice": "1.98",
+                  "nameTranslations": [
+                    {
+                      "locale": "fr",
+                      "translation": "Plus"
+                    },
+                    {
+                      "locale": "nl",
+                      "translation": "Meer"
+                    },
+                    {
+                      "locale": "en",
+                      "translation": "Over"
+                    },
+                    {
+                      "locale": "tr",
+                      "translation": "üzerinde"
+                    },
+                    {
+                      "locale": "sr",
+                      "translation": "Više"
+                    },
+                    {
+                      "locale": "de",
+                      "translation": "Über"
+                    },
+                    {
+                      "locale": "pt",
+                      "translation": "Mais"
+                    },
+                    {
+                      "locale": "es",
+                      "translation": "Más"
+                    },
+                    {
+                      "locale": "el",
+                      "translation": "Over"
+                    }
+                  ]
+                }
+              ],
+              "id": "186443435",
+              "name": "Total",
+              "templateId": "4004",
+              "templateName": "Total",
+              "state": "ACTIVE",
+              "creationTime": "2021-01-07T13:00:05.728+01:00",
+              "activationTime": "2021-01-07T13:00:05.728+01:00",
+              "overUnder": "2.5",
+              "activationOverUnder": "2.5",
+              "winnerPrice": "0.0",
+              "nameTranslations": [
+                {
+                  "locale": "fr",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "nl",
+                  "translation": "Totaal"
+                },
+                {
+                  "locale": "en",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "tr",
+                  "translation": "Toplam"
+                },
+                {
+                  "locale": "sr",
+                  "translation": "Ukupno"
+                },
+                {
+                  "locale": "de",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "pt",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "es",
+                  "translation": "Total"
+                },
+                {
+                  "locale": "el",
+                  "translation": "Σύνολο"
+                }
+              ],
+              "inc": 4930,
+              "handicap": null
+            }
+          ]
+        }
+      ],
+      "range": {
+        "start": "2021-01-09T15:00:00.000Z",
+        "end": "2021-01-09T16:00:00.000Z"
+      },
+      "hasMore": true
+    }
+  ]
+}

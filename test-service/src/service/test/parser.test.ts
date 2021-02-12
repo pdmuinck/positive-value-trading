@@ -1,19 +1,31 @@
 import {ApiResponse} from "../../client/scraper";
-import {altenar, betcenter, kambi, ladbrokes, meridian, pinnacle, sbtech} from './test-data'
+import pinnacle from "./resources/pinnacle.json"
+import kambi from "./resources/kambi.json"
+import sbtech from "./resources/sbtech.json"
+import bet90 from "./resources/bet90.json"
+import betcenter from "./resources/betcenter.json"
+import ladbrokes from "./resources/ladbrokes.json"
+import meridian from "./resources/meridian.json"
+import altenar from "./resources/altenar.json"
+
 import {
     AltenarParser,
+    Bet90Parser,
     BetcenterParser,
     KambiParser,
     LadbrokesParser,
     MeridianParser,
     PinnacleParser,
     SbtechParser
-} from '../parser'
+} from '../parser';
 import {BetOffer, BetType, Bookmaker, IdType, RequestType} from "../../domain/betoffer";
+
+import {Event} from '../parser'
 
 const expect = require('chai').expect
 
 describe('Parser tests', function() {
+
 
     describe('Kambi Parser Tests', function() {
         describe('#parse', function() {
@@ -158,8 +170,13 @@ describe('Parser tests', function() {
     })
 
 
+    describe("BET90 parser tests", function(){
+        it("should parse events", function() {
+            const events: Event[] = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.EVENT, IdType.SPORT))
 
-
+            console.log(events)
+        })
+    })
 })
 
 

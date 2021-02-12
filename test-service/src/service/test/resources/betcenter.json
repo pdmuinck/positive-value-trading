@@ -1,0 +1,171 @@
+{
+  "games": [
+    {
+      "id": 3140760552,
+      "follows": 0,
+      "alternativeIds": [
+        23031527,
+        3140607762
+      ],
+      "statisticsId": 23031527,
+      "isTopGame": true,
+      "hasVideo": false,
+      "teams": [
+        {
+          "order": 0,
+          "id": 104734,
+          "name": "SV Zulte Waregem",
+          "textId": 1099511858087
+        },
+        {
+          "order": 1,
+          "id": 104362,
+          "name": "Royal Mouscron",
+          "textId": 1099511857678
+        }
+      ],
+      "startTime": "2021-01-09T15:15:00Z",
+      "type": 4,
+      "sport": 1,
+      "leagueInfo": {
+        "id": 6898,
+        "name": "Belgium Pro League"
+      },
+      "countryInfo": {
+        "id": 15,
+        "name": "Belgium"
+      },
+      "gameInfo": {
+        "score": "",
+        "standings": [],
+        "penalties": [],
+        "timings": {
+          "clock": 0,
+          "unit": ""
+        },
+        "legInfos": {
+          "count": 0,
+          "current": 0,
+          "hasOvertimeLeg": false
+        }
+      },
+      "bettingAllowedUntil": "2021-01-09T15:15:00Z",
+      "markets": [
+        {
+          "id": 22242,
+          "follows": 140544583925760,
+          "alternativeIds": [],
+          "categoryIds": [
+            1
+          ],
+          "subcategoryIds": [
+            1
+          ],
+          "text": "Who will win the match?",
+          "textId": 5497558141104,
+          "isPrimary": true,
+          "isRunningEvent": false,
+          "combiCat": 1,
+          "tips": [
+            {
+              "id": 2224201,
+              "oddsId": 3140760552,
+              "text": "1",
+              "textId": 6597069771651,
+              "odds": 192
+            },
+            {
+              "id": 2224202,
+              "oddsId": 3140760552,
+              "text": "X",
+              "textId": 6597069771652,
+              "odds": 350
+            },
+            {
+              "id": 2224203,
+              "oddsId": 3140760552,
+              "text": "2",
+              "textId": 6597069771653,
+              "odds": 411
+            }
+          ]
+        },
+        {
+          "id": 22522,
+          "follows": 140544583925760,
+          "alternativeIds": [],
+          "categoryIds": [
+            1
+          ],
+          "subcategoryIds": [
+            5
+          ],
+          "text": "Double Chance",
+          "textId": 5497558141132,
+          "isPrimary": false,
+          "isRunningEvent": false,
+          "combiCat": 1,
+          "tips": [
+            {
+              "id": 2252201,
+              "oddsId": 3570335162,
+              "text": "1X",
+              "textId": 6597069771184,
+              "odds": 125
+            },
+            {
+              "id": 2252202,
+              "oddsId": 3570335162,
+              "text": "12",
+              "textId": 6597069771185,
+              "odds": 130
+            },
+            {
+              "id": 2252203,
+              "oddsId": 3570335162,
+              "text": "x2",
+              "textId": 6597069771186,
+              "odds": 188
+            }
+          ]
+        },
+        {
+          "id": 22252,
+          "follows": 140544583925760,
+          "alternativeIds": [],
+          "categoryIds": [
+            1,
+            2
+          ],
+          "subcategoryIds": [
+            9,
+            4
+          ],
+          "text": "Over + / Under - 2.5",
+          "textId": 5497558141105,
+          "isPrimary": false,
+          "isRunningEvent": false,
+          "anchor": 2.5,
+          "oddsBalance": 45,
+          "combiCat": 1,
+          "tips": [
+            {
+              "id": 2225201,
+              "oddsId": 3570333522,
+              "text": "3+",
+              "textId": 6597069771654,
+              "odds": 167
+            },
+            {
+              "id": 2225203,
+              "oddsId": 3570333522,
+              "text": "0-2",
+              "textId": 6597069771655,
+              "odds": 212
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

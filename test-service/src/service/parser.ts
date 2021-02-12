@@ -484,6 +484,11 @@ export class Bet90Parser {
         if(!apiResponse.data) return []
         const events = apiResponse.data
         const parsedEvents: Event[] = []
+
+        const eventsParsed = parser.parse(events)
+        eventsParsed.querySelectorAll('.first-date-in-table').map(dateNode => {
+            console.log(dateNode)
+        })
         const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {
             return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
         const secondTeams = parser.parse(events).querySelectorAll('.second-team').map(team => {
