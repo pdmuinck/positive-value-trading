@@ -486,45 +486,39 @@ export class Bet90Parser {
         const parsedEvents: Event[] = []
 
         const eventsParsed = parser.parse(events)
-        eventsParsed.querySelectorAll('.dropd').map(eventNode => {
-            const eventId = eventNode.parentNode.childNodes.filter(node => node.classNames &&
-                node.classNames.includes("dropd"))[0].rawAttrs.split('"')[1]
-            const time = eventNode.childNodes.filter(node => node.classNames && node.classNames.includes("sportsTime"))[0]
-                .childNodes[1].childNodes[0].rawText
-            const homeTeamName = eventNode.childNodes.filter(node => node.classNames
-                && node.classNames.includes("first-team"))[0].childNodes[1].childNodes[0].rawText
-            const awayTeamName = eventNode.childNodes.filter(node => node.classNames
-                && node.classNames.includes("second-team"))[0].childNodes[1].childNodes[0].rawText
-            const homeTeamId = eventNode.childNodes.filter(node => node.classNames
-                && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[1].split('id="')[1]
-            const awayTeamId = eventNode.childNodes.filter(node => node.classNames
-                && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[2].split('id="')[1]
-            console.log(eventNode)
 
-        })
-        eventsParsed.querySelectorAll('.first-date-in-table').map(dateNode => {
-            const date = dateNode.childNodes[1].childNodes[1].childNodes[0].rawText
-            console.log(dateNode)
-        })
-        const firstTeams = parser.parse(events).querySelectorAll('.first-team').map(team => {
-            return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
-        const secondTeams = parser.parse(events).querySelectorAll('.second-team').map(team => {
-            return {id: team.parentNode.id, team1: team.childNodes[1].childNodes[0].rawText}})
-        const stats = parser.parse(events).querySelectorAll('.hg_nx_btn_stats').map(stat => {
-            return {id: stat.parentNode.parentNode.parentNode.id, participantIds: stat.rawAttrs}})
-        firstTeams.forEach(team => {
-            const secondTeam = secondTeams.filter(secondTeam => secondTeam.id === team.id)[0]
-            const stat = stats.filter(stat => stat.id === team.id)[0]
-            const participantId = stat.participantIds.split('team1id="')[1].split('\"\r\n')[0]
-            const participantId2 = stat.participantIds.split('team2id="')[1].split('\"')[0]
-            const participants = [new Participant(getParticipantName(team.team1),
-                [new BookmakerId(Bookmaker.BET90, participantId, IdType.PARTICIPANT)]),
-                new Participant(getParticipantName(team.team1),
-                    [new BookmakerId(Bookmaker.BET90, participantId2, IdType.PARTICIPANT)])
-            ]
-            const parsedEvent = new Event(new BookmakerId(Bookmaker.BET90, team.id, IdType.EVENT), undefined, participants)
-            parsedEvents.push(parsedEvent)
-        })
+        const rows = eventsParsed.querySelectorAll('.divTableBody').map(row => row.childNodes)
+
+        let gameDate = ""
+
+        for(const i in rows) {
+            const row = rows[i]
+            if(row.length === 3) {
+                gameDate = row[1].childNodes.filter(child => child.classNames && child.classNames.includes("GameDate"))[0]
+                    .childNodes[0].rawText
+            } else {
+                const eventNode = row.filter(el => el.classNames && el.classNames.includes("dropd"))[0]
+                const eventId = eventNode.parentNode.childNodes.filter(node => node.classNames &&
+                    node.classNames.includes("dropd"))[0].rawAttrs.split('"')[1]
+                const time = eventNode.childNodes.filter(node => node.classNames && node.classNames.includes("sportsTime"))[0]
+                    .childNodes[1].childNodes[0].rawText
+                const homeTeamName = eventNode.childNodes.filter(node => node.classNames
+                    && node.classNames.includes("first-team"))[0].childNodes[1].childNodes[0].rawText
+                const awayTeamName = eventNode.childNodes.filter(node => node.classNames
+                    && node.classNames.includes("second-team"))[0].childNodes[1].childNodes[0].rawText
+                const homeTeamId = eventNode.childNodes.filter(node => node.classNames
+                    && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[1].split('id="')[1]
+                const awayTeamId = eventNode.childNodes.filter(node => node.classNames
+                    && node.classNames.includes("league_cell_5"))[0].childNodes[3].childNodes[1].rawAttrs.split("data-team")[2].split('id="')[1]
+
+                parsedEvents.push(new Event(new BookmakerId(Bookmaker.BET90, eventId, IdType.EVENT),
+                    gameDate + "T" + time, [new Participant(getParticipantName(homeTeamName),
+                        [new BookmakerId(Bookmaker.BET90, homeTeamId, IdType.PARTICIPANT)]),
+                        new Participant(getParticipantName(awayTeamName),
+                            [new BookmakerId(Bookmaker.BET90, awayTeamId, IdType.PARTICIPANT)])
+                    ]))
+            }
+        }
         return parsedEvents
     }
 }
