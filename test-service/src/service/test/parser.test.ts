@@ -12,15 +12,23 @@ import {
     AltenarParser,
     Bet90Parser,
     BetcenterParser,
+    Event,
     KambiParser,
     LadbrokesParser,
     MeridianParser,
     PinnacleParser,
     SbtechParser
 } from '../parser';
-import {BetOffer, BetType, Bookmaker, IdType, RequestType} from "../../domain/betoffer";
-
-import {Event} from '../parser'
+import {
+    BetOffer,
+    BetType,
+    Bookmaker,
+    BookmakerId,
+    IdType,
+    Participant,
+    ParticipantName,
+    RequestType
+} from "../../domain/betoffer";
 
 const expect = require('chai').expect
 
@@ -173,6 +181,59 @@ describe('Parser tests', function() {
     describe("BET90 parser tests", function(){
         it("should parse events", function() {
             const events: Event[] = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.EVENT, IdType.SPORT))
+            const expected: Event[] = [
+                new Event(new BookmakerId(Bookmaker.BET90, "1105655", IdType.EVENT), "12-2-2021T20:45",
+                    [new Participant(ParticipantName.OHL, [new BookmakerId(
+                        Bookmaker.BET90, "579135", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.KORTRIJK, [new BookmakerId(
+                            Bookmaker.BET90, "5308", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105649", IdType.EVENT), "13-2-2021T16:15",
+                    [new Participant(ParticipantName.WAASLAND_BEVEREN, [new BookmakerId(
+                        Bookmaker.BET90, "6690", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.EUPEN, [new BookmakerId(
+                            Bookmaker.BET90, "4558", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105650", IdType.EVENT), "13-2-2021T18:30",
+                    [new Participant(ParticipantName.SINT_TRUIDEN, [new BookmakerId(
+                        Bookmaker.BET90, "6131", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.ZULTE_WAREGEM, [new BookmakerId(
+                            Bookmaker.BET90, "6689", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105645", IdType.EVENT), "13-2-2021T20:45",
+                    [new Participant(ParticipantName.OOSTENDE, [new BookmakerId(
+                        Bookmaker.BET90, "4030", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.GENK, [new BookmakerId(
+                            Bookmaker.BET90, "4025", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105646", IdType.EVENT), "14-2-2021T13:30",
+                    [new Participant(ParticipantName.STANDARD_LIEGE, [new BookmakerId(
+                        Bookmaker.BET90, "4028", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.ANTWERP, [new BookmakerId(
+                            Bookmaker.BET90, "93017", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105662", IdType.EVENT), "14-2-2021T16:00",
+                    [new Participant(ParticipantName.BEERSCHOT, [new BookmakerId(
+                        Bookmaker.BET90, "579134", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.MECHELEN, [new BookmakerId(
+                            Bookmaker.BET90, "4557", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105659", IdType.EVENT), "14-2-2021T18:15",
+                    [new Participant(ParticipantName.CHARLEROI, [new BookmakerId(
+                        Bookmaker.BET90, "4027", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.CLUB_BRUGGE, [new BookmakerId(
+                            Bookmaker.BET90, "4029", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105661", IdType.EVENT), "14-2-2021T20:45",
+                    [new Participant(ParticipantName.CERCLE_BRUGGE, [new BookmakerId(
+                        Bookmaker.BET90, "270736", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.ANDERLECHT, [new BookmakerId(
+                            Bookmaker.BET90, "5309", IdType.PARTICIPANT)])]),
+                new Event(new BookmakerId(Bookmaker.BET90, "1105652", IdType.EVENT), "15-2-2021T20:45",
+                    [new Participant(ParticipantName.GENT, [new BookmakerId(
+                        Bookmaker.BET90, "7687", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.MOESKROEN, [new BookmakerId(
+                            Bookmaker.BET90, "6132", IdType.PARTICIPANT)])]),
+
+
+
+            ]
+
+
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
         })
     })
 })
