@@ -440,6 +440,8 @@ function getParticipantName(name: string): ParticipantName{
 export class Bet90Parser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
+            case RequestType.SPECIAL_BET_OFFER:
+                return this.parseSpecialBetOffers(apiResponse)
             case RequestType.BET_OFFER:
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
@@ -455,8 +457,51 @@ export class Bet90Parser {
         return events.map(event => event.participants).flat()
     }
 
-    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[]{
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const eventsParsed = parser.parse(apiResponse.data)
         return []
+    }
+
+    private static parseSpecialBetOffers(apiResponse: ApiResponse): BetOffer[]{
+        const betOffers = apiResponse.data.data
+        const betOffersParsed = parser.parse(betOffers)
+        const betOffersFound: BetOffer[] = []
+        betOffersParsed.querySelectorAll('.betTitle').forEach(bet => {
+            const betType: BetType = Bet90Parser.determineBetType(bet.childNodes[0].rawText.trim())
+            if(betType !== BetType.UNKNOWN) {
+                const line = BetType.OVER_UNDER === betType ? bet.childNodes[0].rawText.trim().split(' ')[1] : NaN
+                const prices = bet.parentNode.parentNode.querySelectorAll('.point')
+                prices.forEach(price => {
+                    const priceValue = price.childNodes[0].rawText.trim()
+                    const betOption = price.parentNode.querySelectorAll('span.text')[0].childNodes[0].rawText.trim()
+                    betOffersFound.push(new BetOffer(betType, apiResponse.data.id, apiResponse.bookmaker,
+                        betOption === '+' ? "OVER" : betOption === "-" ? "UNDER": betOption, priceValue.replace(",", "."), line))
+                })
+            }
+        })
+        return betOffersFound
+    }
+
+    private static determineBetType(betTypeString: string): BetType {
+        switch(betTypeString.toUpperCase()) {
+            case "DOPPELTE CHANCE":
+                return BetType.DOUBLE_CHANCE
+            case "&#220;BER/UNTER 2,5":
+                return BetType.OVER_UNDER
+            case "&#220;BER/UNTER 0,5":
+                return BetType.OVER_UNDER
+            case "&#220;BER/UNTER 1,5":
+                return BetType.OVER_UNDER
+            case "&#220;BER/UNTER 3,5":
+                return BetType.OVER_UNDER
+            case "&#220;BER/UNTER 4,5":
+                return BetType.OVER_UNDER
+            case "&#220;BER/UNTER 5,5":
+                return BetType.OVER_UNDER
+            default:
+                return BetType.UNKNOWN
+
+        }
     }
 
     private static parseEvents(apiResponse: ApiResponse): Event[] {
@@ -504,6 +549,8 @@ export class Bet90Parser {
         }
         return parsedEvents
     }
+
+
 }
 
 export class PinnacleParser {

@@ -69,11 +69,20 @@ export class Scraper {
                 'Content-Type': 'application/json; charset=UTF-8',
             }
         }
-        const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
-        const body = {leagueId: bookmakerId.id, categoryId: map.categoryId, sportId: map.sport}
-        return [axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
-            .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
-            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+        switch(requestType) {
+            case RequestType.BET_OFFER:
+                return [axios.get('https://bet90.be/Bet/SpecialBetsCustomer', headers)
+                    .then(response => {return new ApiResponse(bookmakerId.bookmaker,
+                        {data: response.data, id: bookmakerId.id}, requestType, bookmakerId
+                            .idType)})]
+            default:
+                const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
+                const body = {leagueId: bookmakerId.id, categoryId: map.categoryId, sportId: map.sport}
+                return [axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
+                    .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+                    .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+        }
+
     }
 
     toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType) {

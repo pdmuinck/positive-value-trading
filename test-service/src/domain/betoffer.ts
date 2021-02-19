@@ -32,6 +32,7 @@ export enum IdType {
 
 export enum RequestType {
     BET_OFFER = "BET_OFFER",
+    SPECIAL_BET_OFFER = "SPECIAL_BET_OFFER",
     EVENT = "EVENT",
     PARTICIPANT = "PARTICIPANT"
 }
