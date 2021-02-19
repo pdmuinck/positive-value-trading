@@ -232,7 +232,8 @@ describe('Parser tests', function() {
         })
 
         it("should parse betoffers", function (){
-            const betOffers = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, {data: bet90.betoffers, id: "id"}, RequestType.SPECIAL_BET_OFFER, IdType.SPORT))
+            const specialBetOffers = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, {data: bet90.betoffers, id: "id"}, RequestType.SPECIAL_BET_OFFER, IdType.SPORT))
+            const betOffers = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.BET_OFFER, IdType.EVENT))
 
         })
     })

@@ -459,7 +459,19 @@ export class Bet90Parser {
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const eventsParsed = parser.parse(apiResponse.data)
-        return []
+        const foundBetOffers = []
+
+        eventsParsed.querySelectorAll('.dropd').forEach(event => {
+            const eventId = event.rawAttrs.split('"')[1]
+            const betOffers = event.querySelectorAll('.point')
+            for(const i in betOffers){
+                const betOffer = betOffers[i]
+                foundBetOffers.push(new BetOffer(BetType._1X2, eventId, apiResponse.bookmaker,
+                    i === "0" ? "1" : i === "1" ? "X" : "2", betOffer.childNodes[0].rawText.trim().replace(",", "."), NaN))
+
+            }
+        })
+        return foundBetOffers
     }
 
     private static parseSpecialBetOffers(apiResponse: ApiResponse): BetOffer[]{
