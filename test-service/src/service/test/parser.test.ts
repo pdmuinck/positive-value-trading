@@ -233,8 +233,67 @@ describe('Parser tests', function() {
 
         it("should parse betoffers", function (){
             const specialBetOffers = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, {data: bet90.betoffers, id: "id"}, RequestType.SPECIAL_BET_OFFER, IdType.SPORT))
+            const expected = [
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "1.50", "2.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "2.55", "2.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "1.05", "0.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "9.00", "0.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "1.15", "1.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "5.20", "1.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "2.20", "3.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "1.65", "3.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "3.40", "4.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "1.30", "4.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "OVER", "6.50", "5.5"),
+                new BetOffer(BetType.OVER_UNDER, "id", Bookmaker.BET90, "UNDER", "1.10", "5.5"),
+                new BetOffer(BetType.DOUBLE_CHANCE, "id", Bookmaker.BET90, "1X", "1.07", NaN),
+                new BetOffer(BetType.DOUBLE_CHANCE, "id", Bookmaker.BET90, "12", "1.14", NaN),
+                new BetOffer(BetType.DOUBLE_CHANCE, "id", Bookmaker.BET90, "X2", "3.55", NaN)
+            ]
+
+            expect(JSON.stringify(specialBetOffers)).to.equal(JSON.stringify(expected))
+
             const betOffers = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.BET_OFFER, IdType.EVENT))
 
+            const expectedBetOffers = [
+                new BetOffer(BetType._1X2, "1105655", Bookmaker.BET90, "1", "2.55", NaN),
+                new BetOffer(BetType._1X2, "1105655", Bookmaker.BET90, "X", "3.50", NaN),
+                new BetOffer(BetType._1X2, "1105655", Bookmaker.BET90, "2", "2.40", NaN),
+
+                new BetOffer(BetType._1X2, "1105649", Bookmaker.BET90, "1", "3.10", NaN),
+                new BetOffer(BetType._1X2, "1105649", Bookmaker.BET90, "X", "3.50", NaN),
+                new BetOffer(BetType._1X2, "1105649", Bookmaker.BET90, "2", "2.15", NaN),
+
+                new BetOffer(BetType._1X2, "1105650", Bookmaker.BET90, "1", "2.05", NaN),
+                new BetOffer(BetType._1X2, "1105650", Bookmaker.BET90, "X", "3.50", NaN),
+                new BetOffer(BetType._1X2, "1105650", Bookmaker.BET90, "2", "3.40", NaN),
+
+                new BetOffer(BetType._1X2, "1105645", Bookmaker.BET90, "1", "2.55", NaN),
+                new BetOffer(BetType._1X2, "1105645", Bookmaker.BET90, "X", "3.60", NaN),
+                new BetOffer(BetType._1X2, "1105645", Bookmaker.BET90, "2", "2.40", NaN),
+
+                new BetOffer(BetType._1X2, "1105646", Bookmaker.BET90, "1", "2.05", NaN),
+                new BetOffer(BetType._1X2, "1105646", Bookmaker.BET90, "X", "3.40", NaN),
+                new BetOffer(BetType._1X2, "1105646", Bookmaker.BET90, "2", "3.40", NaN),
+
+                new BetOffer(BetType._1X2, "1105662", Bookmaker.BET90, "1", "3.15", NaN),
+                new BetOffer(BetType._1X2, "1105662", Bookmaker.BET90, "X", "3.25", NaN),
+                new BetOffer(BetType._1X2, "1105662", Bookmaker.BET90, "2", "2.25", NaN),
+
+                new BetOffer(BetType._1X2, "1105659", Bookmaker.BET90, "1", "5.40", NaN),
+                new BetOffer(BetType._1X2, "1105659", Bookmaker.BET90, "X", "3.75", NaN),
+                new BetOffer(BetType._1X2, "1105659", Bookmaker.BET90, "2", "1.60", NaN),
+
+                new BetOffer(BetType._1X2, "1105661", Bookmaker.BET90, "1", "3.90", NaN),
+                new BetOffer(BetType._1X2, "1105661", Bookmaker.BET90, "X", "3.60", NaN),
+                new BetOffer(BetType._1X2, "1105661", Bookmaker.BET90, "2", "1.85", NaN),
+
+                new BetOffer(BetType._1X2, "1105652", Bookmaker.BET90, "1", "1.50", NaN),
+                new BetOffer(BetType._1X2, "1105652", Bookmaker.BET90, "X", "4.30", NaN),
+                new BetOffer(BetType._1X2, "1105652", Bookmaker.BET90, "2", "5.70", NaN),
+            ]
+
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expectedBetOffers))
         })
     })
 })

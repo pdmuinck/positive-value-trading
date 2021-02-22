@@ -481,13 +481,14 @@ export class Bet90Parser {
         betOffersParsed.querySelectorAll('.betTitle').forEach(bet => {
             const betType: BetType = Bet90Parser.determineBetType(bet.childNodes[0].rawText.trim())
             if(betType !== BetType.UNKNOWN) {
-                const line = BetType.OVER_UNDER === betType ? bet.childNodes[0].rawText.trim().split(' ')[1] : NaN
+                const line = BetType.OVER_UNDER === betType ? bet.childNodes[0].rawText.trim().split(' ')[1].replace(",", ".") : NaN
                 const prices = bet.parentNode.parentNode.querySelectorAll('.point')
                 prices.forEach(price => {
                     const priceValue = price.childNodes[0].rawText.trim()
                     const betOption = price.parentNode.querySelectorAll('span.text')[0].childNodes[0].rawText.trim()
                     betOffersFound.push(new BetOffer(betType, apiResponse.data.id, apiResponse.bookmaker,
-                        betOption === '+' ? "OVER" : betOption === "-" ? "UNDER": betOption, priceValue.replace(",", "."), line))
+                        betOption === '+' ? "OVER" : betOption === "-" ? "UNDER": betOption,
+                        priceValue.replace(",", "."), line))
                 })
             }
         })
