@@ -27,7 +27,8 @@ export enum IdType {
     PARTICIPANT = 'PARTICIPANT',
     EVENT = 'EVENT',
     COMPETITION = 'COMPETITION',
-    SPORT = 'SPORT'
+    SPORT = 'SPORT',
+    MARKET = 'MARKET'
 }
 
 export enum RequestType {
@@ -108,7 +109,9 @@ export enum ParticipantName {
     OOSTENDE = "K.V. Oostende",
     ZULTE_WAREGEM = "S.V. Zulte Waregem",
     KORTRIJK = "K.V. Kortrijk",
-    MECHELEN = "K.V. Mechelen"
+    MECHELEN = "K.V. Mechelen",
+    CHELSEA = "CHELSEA",
+    WOLVERHAMPTON = "WOLVERHAMPTON"
 }
 
 

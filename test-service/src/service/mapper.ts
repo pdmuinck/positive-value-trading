@@ -25,6 +25,9 @@ participantMap[ParticipantName.KORTRIJK] = ["KV KORTRIJK", "KORTRIJK", "K.V. KOR
 participantMap[ParticipantName.ZULTE_WAREGEM] = ["SV ZULTE-WAREGEM", "ZULTE WAREGEM", "S.V. ZULTE WAREGEM", "SV ZULTE WAREGEM"]
 participantMap[ParticipantName.BEERSCHOT] = ["KFCO BEERSCHOT-WILRIJK", "BEERSCHOT", "K. BEERSCHOT VA", "K BEERSCHOT VA"]
 
+participantMap[ParticipantName.CHELSEA] = ["CHELSEA"]
+participantMap[ParticipantName.WOLVERHAMPTON] = ["WOLVES"]
+
 export class ParticipantMapper {
     static mapParticipants(participants: Participant[]): Participant[]{
         const merged: Participant[] = []

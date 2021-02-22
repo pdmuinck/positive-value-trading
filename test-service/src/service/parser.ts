@@ -17,11 +17,13 @@ export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
     private readonly _id: BookmakerId
+    private readonly _marketIds: BookmakerId[]
 
-    constructor(id: BookmakerId, startTime, participants: Participant[]){
+    constructor(id: BookmakerId, startTime, participants: Participant[], marketIds?: BookmakerId[]){
         this._id = id
         this._startTime = startTime
         this._participants = participants
+        this._marketIds = marketIds
     }
 
     get id(){
@@ -34,6 +36,10 @@ export class Event {
 
     get participants(){
         return this._participants
+    }
+
+    get marketIds(){
+        return this._marketIds
     }
 }
 

@@ -160,7 +160,7 @@ describe('Parser tests', function() {
     describe('PINNACLE parser tests', function() {
         it('should parse betoffers', function() {
             const book = Bookmaker.PINNACLE
-            const betOffers = PinnacleParser.parse(new ApiResponse(book, pinnacle, RequestType.BET_OFFER, IdType.BET_OFFER))
+            const betOffers = PinnacleParser.parse(new ApiResponse(book, pinnacle.betOffers, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, 1235631053,
                     book, '1', PinnacleParser.toDecimalOdds(-176), NaN, 1.51),
@@ -174,6 +174,21 @@ describe('Parser tests', function() {
                     book, 'UNDER', PinnacleParser.toDecimalOdds(-112), 2.5, 1.83)
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse events', function() {
+
+            const events = PinnacleParser.parse(new ApiResponse(Bookmaker.PINNACLE, pinnacle.events, RequestType.EVENT, IdType.EVENT))
+            const expected = [
+                new Event(new BookmakerId(Bookmaker.PINNACLE, "1245514434", IdType.EVENT), "2021-01-26T19:45:00+00:00",
+                    [
+                        new Participant(ParticipantName.CHELSEA, [new BookmakerId(Bookmaker.PINNACLE, "CHELSEA", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.WOLVERHAMPTON, [new BookmakerId(Bookmaker.PINNACLE, "WOLVES", IdType.PARTICIPANT)])
+                    ],
+                    [new BookmakerId(Bookmaker.PINNACLE, "1246015261", IdType.MARKET),
+                    new BookmakerId(Bookmaker.PINNACLE, "1246015198", IdType.MARKET)])
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
         })
     })
 
@@ -229,6 +244,33 @@ describe('Parser tests', function() {
                             Bookmaker.BET90, "6132", IdType.PARTICIPANT)])]),
             ]
             expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it("should parse participants", function() {
+            const expected = [
+                new Participant(ParticipantName.OHL, [new BookmakerId(Bookmaker.BET90, "579135", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.KORTRIJK, [new BookmakerId(Bookmaker.BET90, "5308", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.WAASLAND_BEVEREN, [new BookmakerId(Bookmaker.BET90, "6690", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.EUPEN, [new BookmakerId(Bookmaker.BET90, "4558", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.SINT_TRUIDEN, [new BookmakerId(Bookmaker.BET90, "6131", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.ZULTE_WAREGEM, [new BookmakerId(Bookmaker.BET90, "6689", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.OOSTENDE, [new BookmakerId(Bookmaker.BET90, "4030", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.GENK, [new BookmakerId(Bookmaker.BET90, "4025", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.STANDARD_LIEGE, [new BookmakerId(Bookmaker.BET90, "4028", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.ANTWERP, [new BookmakerId(Bookmaker.BET90, "93017", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.BEERSCHOT, [new BookmakerId(Bookmaker.BET90, "579134", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.MECHELEN, [new BookmakerId(Bookmaker.BET90, "4557", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.CHARLEROI, [new BookmakerId(Bookmaker.BET90, "4027", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.CLUB_BRUGGE, [new BookmakerId(Bookmaker.BET90, "4029", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.CERCLE_BRUGGE, [new BookmakerId(Bookmaker.BET90, "270736", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.ANDERLECHT, [new BookmakerId(Bookmaker.BET90, "5309", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.GENT, [new BookmakerId(Bookmaker.BET90, "7687", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.MOESKROEN, [new BookmakerId(Bookmaker.BET90, "6132", IdType.PARTICIPANT)])
+            ]
+
+            const participants = Bet90Parser.parse(new ApiResponse(Bookmaker.BET90, bet90.events, RequestType.PARTICIPANT, IdType.EVENT))
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+
         })
 
         it("should parse betoffers", function (){
