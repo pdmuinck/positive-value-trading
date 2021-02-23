@@ -105,6 +105,31 @@ describe('Parser tests', function() {
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
         })
+
+        it('should parse events', function() {
+            const events = BetcenterParser.parse(new ApiResponse(Bookmaker.BETCENTER, betcenter, RequestType.EVENT, IdType.EVENT))
+            const expected = [
+                new Event(new BookmakerId(Bookmaker.BETCENTER, "3140760552", IdType.EVENT), "2021-01-09T15:15:00Z",
+                    [
+                        new Participant(ParticipantName.ZULTE_WAREGEM,
+                            [new BookmakerId(Bookmaker.BETCENTER, "104734", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.MOESKROEN,
+                            [new BookmakerId(Bookmaker.BETCENTER, "104362", IdType.PARTICIPANT)])
+                    ])
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse participants', function() {
+            const participants = BetcenterParser.parse(new ApiResponse(Bookmaker.BETCENTER, betcenter, RequestType.PARTICIPANT, IdType.EVENT))
+            const expected = [
+                new Participant(ParticipantName.ZULTE_WAREGEM,
+                    [new BookmakerId(Bookmaker.BETCENTER, "104734", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.MOESKROEN,
+                    [new BookmakerId(Bookmaker.BETCENTER, "104362", IdType.PARTICIPANT)])
+            ]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+        })
     })
 
     describe('LADBROKES parser tests', function() {
@@ -116,21 +141,40 @@ describe('Parser tests', function() {
                 new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.65, NaN),
                 new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '2', 2.90, NaN),
                 new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'OVER', 1.45, 2.5),
-                new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'UNDER', 2.55, 2.5),
-                new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '1', 2.3, NaN),
-                new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, 'X', 3.65, NaN),
-                new BetOffer(BetType._1X2, "barcellona-paris-saint-germain-202102162100", book, '2', 2.90, NaN),
-                new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'OVER', 1.45, 2.5),
                 new BetOffer(BetType.OVER_UNDER, "barcellona-paris-saint-germain-202102162100", book, 'UNDER', 2.55, 2.5)
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse events', function() {
+            const events = LadbrokesParser.parse(new ApiResponse(Bookmaker.LADBROKES, ladbrokes, RequestType.EVENT, IdType.EVENT))
+            const expected = [
+                new Event(
+                    new BookmakerId(Bookmaker.LADBROKES, "barcellona-paris-saint-germain-202102162100", IdType.EVENT),
+                    "1613505600000",
+                    [new Participant(ParticipantName.CHARLEROI,
+                        [new BookmakerId(Bookmaker.LADBROKES, "CHARLEROI", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.ANDERLECHT,
+                            [new BookmakerId(Bookmaker.LADBROKES, "ANDERLECHT", IdType.PARTICIPANT)])]
+                )
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse participants', function() {
+            const participants = LadbrokesParser.parse(new ApiResponse(Bookmaker.LADBROKES, ladbrokes, RequestType.PARTICIPANT, IdType.EVENT))
+            const expected = [new Participant(ParticipantName.CHARLEROI,
+                [new BookmakerId(Bookmaker.LADBROKES, "CHARLEROI", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.ANDERLECHT,
+                    [new BookmakerId(Bookmaker.LADBROKES, "ANDERLECHT", IdType.PARTICIPANT)])]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
         })
     })
 
     describe('MERIDIAN parser tests', function() {
         it('should parse betoffers', function() {
             const book = Bookmaker.MERIDIAN
-            const betOffers = MeridianParser.parse(new ApiResponse(book, meridian, RequestType.BET_OFFER, IdType.BET_OFFER))
+            const betOffers = MeridianParser.parse(new ApiResponse(book, meridian.betoffers, RequestType.BET_OFFER, IdType.BET_OFFER))
             const expected = [
                 new BetOffer(BetType._1X2, "8817779",
                     book, '1', 4.4, NaN),
@@ -154,6 +198,27 @@ describe('Parser tests', function() {
                     book, 'OVER', 1.83, 2.5),
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse events', function() {
+            const events = MeridianParser.parse(new ApiResponse(Bookmaker.MERIDIAN, meridian.events, RequestType.EVENT, IdType.EVENT))
+            const expected = [
+                new Event(new BookmakerId(Bookmaker.MERIDIAN, "9015186", IdType.EVENT), "2021-02-26T19:45:00.000Z",
+                    [new Participant(ParticipantName.CHARLEROI,
+                        [new BookmakerId(Bookmaker.MERIDIAN, "329006", IdType.PARTICIPANT)]),
+                    new Participant(ParticipantName.GENK,
+                        [new BookmakerId(Bookmaker.MERIDIAN, "995", IdType.PARTICIPANT)])])
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse participants', function() {
+            const participants = MeridianParser.parse(new ApiResponse(Bookmaker.MERIDIAN, meridian.events, RequestType.PARTICIPANT, IdType.EVENT))
+            const expected = [new Participant(ParticipantName.CHARLEROI,
+                [new BookmakerId(Bookmaker.MERIDIAN, "329006", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.GENK,
+                    [new BookmakerId(Bookmaker.MERIDIAN, "995", IdType.PARTICIPANT)])]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
         })
     })
 
@@ -177,7 +242,6 @@ describe('Parser tests', function() {
         })
 
         it('should parse events', function() {
-
             const events = PinnacleParser.parse(new ApiResponse(Bookmaker.PINNACLE, pinnacle.events, RequestType.EVENT, IdType.EVENT))
             const expected = [
                 new Event(new BookmakerId(Bookmaker.PINNACLE, "1245514434", IdType.EVENT), "2021-01-26T19:45:00+00:00",
@@ -190,8 +254,16 @@ describe('Parser tests', function() {
             ]
             expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
         })
-    })
 
+        it('should parse participants', function() {
+            const participants = PinnacleParser.parse(new ApiResponse(Bookmaker.PINNACLE, pinnacle.events, RequestType.PARTICIPANT, IdType.EVENT))
+            const expected = [
+                new Participant(ParticipantName.ANDERLECHT, [new BookmakerId(Bookmaker.PINNACLE, "ANDERLECHT", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.CHARLEROI, [new BookmakerId(Bookmaker.PINNACLE, "CHARLEROI", IdType.PARTICIPANT)])
+            ]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+        })
+    })
 
     describe("BET90 parser tests", function(){
         it("should parse events", function() {

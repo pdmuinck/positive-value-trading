@@ -299,27 +299,53 @@ export class AltenarParser {
 }
 
 export class BetcenterParser {
-    static parse<T>(apiResponse: ApiResponse): T[] {
-        if(!apiResponse.data.games) return []
-        return apiResponse.data.games.map(event => BetcenterParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
     }
 
-    private static transformToBetOffer(bookMaker: Bookmaker, event): BetOffer[] {
-        const betOffers = []
-        event.markets.forEach(market => {
-            const betType = BetcenterParser.determineBetType(market.id)
-            const line = BetcenterParser.determineBetLine(market, betType)
-            if(betType) {
-                market.tips.forEach(tip => {
-                    let outcome = tip.text.toUpperCase()
-                    const price = tip.odds / 100
-                    if(betType === BetType.OVER_UNDER) {
-                        outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
-                    }
-                    betOffers.push(new BetOffer(betType, event.id, bookMaker, outcome, price, line))
-                })
-            }
+    private static parseEvents(apiResponse: ApiResponse): Event[]{
+        if(!apiResponse.data.games) return []
+        return apiResponse.data.games.map(event => {
+            const participants = event.teams.map(team => {
+                return new Participant(getParticipantName(team.name),
+                    [new BookmakerId(Bookmaker.BETCENTER, team.id.toString(), IdType.PARTICIPANT)])
+            })
+            return new Event(new BookmakerId(Bookmaker.BETCENTER, event.id.toString(), IdType.EVENT), event.startTime, participants)
         })
+    }
+
+    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.games) return []
+        const betOffers = []
+        apiResponse.data.games.forEach(event => {
+            event.markets.forEach(market => {
+                const betType = BetcenterParser.determineBetType(market.id)
+                const line = BetcenterParser.determineBetLine(market, betType)
+                if(betType) {
+                    market.tips.forEach(tip => {
+                        let outcome = tip.text.toUpperCase()
+                        const price = tip.odds / 100
+                        if(betType === BetType.OVER_UNDER) {
+                            outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
+                        }
+                        betOffers.push(new BetOffer(betType, event.id, Bookmaker.BETCENTER, outcome, price, line))
+                    })
+                }
+            })
+        })
+
         return betOffers
     }
 
@@ -357,26 +383,57 @@ export class BetcenterParser {
 }
 
 export class LadbrokesParser {
-    static parse(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data.result.dataGroupList) return []
-        return apiResponse.data.result.dataGroupList.map(group => group.itemList).flat()
-            .map(event => LadbrokesParser.transformToBetOffer(apiResponse.bookmaker, event)).flat()
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
+
+        return
     }
 
-    private static transformToBetOffer(bookMaker: Bookmaker, event): BetOffer[] {
+    private static parseEvents(apiResponse: ApiResponse): Event[]{
+        if(!apiResponse.data.result.dataGroupList) return []
+        return apiResponse.data.result.dataGroupList.map(group => group.itemList).flat()
+            .map(event => {
+                const eventId = event.eventInfo.aliasUrl
+                const participants = [
+                    new Participant(getParticipantName(event.eventInfo.teamHome.description),
+                        [new BookmakerId(Bookmaker.LADBROKES, event.eventInfo.teamHome.description.toUpperCase(), IdType.PARTICIPANT)]),
+                    new Participant(getParticipantName(event.eventInfo.teamAway.description),
+                        [new BookmakerId(Bookmaker.LADBROKES, event.eventInfo.teamAway.description.toUpperCase(), IdType.PARTICIPANT)])
+                ]
+                return new Event(new BookmakerId(Bookmaker.LADBROKES, eventId, IdType.EVENT), event.eventInfo.eventData.toString(), participants)
+            }).flat()
+    }
+
+    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.result.dataGroupList) return []
         const betOffers = []
-        const eventId = event.eventInfo.aliasUrl
-        event.betGroupList[0].oddGroupList.forEach(market => {
-            const betType = LadbrokesParser.determineBetOfferType(market.betId)
-            if(betType !== BetType.UNKNOWN) {
-                const line = market.additionalDescription ? parseFloat(market.additionalDescription.toUpperCase().trim()): NaN
-                market.oddList.forEach(option => {
-                    const outcome = option.oddDescription.toUpperCase()
-                    const price = option.oddValue / 100
-                    betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, price, line))
+        apiResponse.data.result.dataGroupList.map(group => group.itemList).flat()
+            .forEach(event => {
+                const eventId = event.eventInfo.aliasUrl
+                event.betGroupList[0].oddGroupList.forEach(market => {
+                    const betType = LadbrokesParser.determineBetOfferType(market.betId)
+                    if(betType !== BetType.UNKNOWN) {
+                        const line = market.additionalDescription ? parseFloat(market.additionalDescription.toUpperCase().trim()): NaN
+                        market.oddList.forEach(option => {
+                            const outcome = option.oddDescription.toUpperCase()
+                            const price = option.oddValue / 100
+                            betOffers.push(new BetOffer(betType, eventId, Bookmaker.LADBROKES, outcome, price, line))
+                        })
+                    }
                 })
-            }
-        })
+            })
         return betOffers
     }
 
@@ -394,26 +451,48 @@ export class LadbrokesParser {
 }
 
 export class MeridianParser {
-    static parse(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data.events) return []
-        return apiResponse.data.events.map(date => date.events).flat()
-            .map(event => MeridianParser.parseBetOffers(apiResponse.bookmaker, event))
-            .flat()
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
     }
 
-    private static parseBetOffers(bookMaker: Bookmaker, event): BetOffer[] {
+    private static parseEvents(apiResponse: ApiResponse): Event[] {
+        if(!apiResponse.data[0].events) return []
+        return apiResponse.data[0].events.map(event => {
+            const participants = event.team.map(team => {
+                return new Participant(getParticipantName(team.name), [new BookmakerId(Bookmaker.MERIDIAN, team.id, IdType.PARTICIPANT)])
+            })
+            return new Event(new BookmakerId(Bookmaker.MERIDIAN, event.id, IdType.EVENT), event.startTime, participants)
+        })
+    }
+
+    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events: Event[] = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        if(!apiResponse.data.events) return []
         const betOffers = []
-        const eventId = event.id
-        event.market.forEach(betOffer => {
-            const betType = MeridianParser.determineBetType(betOffer.templateId)
-            if(betType !== BetType.UNKNOWN) {
-                const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : NaN
-                betOffer.selection.forEach(option => {
-                    const price = parseFloat(option.price)
-                    const outcome = option.nameTranslations.filter(trans => trans.locale === 'en')[0].translation.toUpperCase()
-                    betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, price, line))
-                })
-            }
+        apiResponse.data.events.map(date => date.events).flat().forEach(event => {
+            const eventId = event.id
+            event.market.forEach(betOffer => {
+                const betType = MeridianParser.determineBetType(betOffer.templateId)
+                if(betType !== BetType.UNKNOWN) {
+                    const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : NaN
+                    betOffer.selection.forEach(option => {
+                        const price = parseFloat(option.price)
+                        const outcome = option.nameTranslations.filter(trans => trans.locale === 'en')[0].translation.toUpperCase()
+                        betOffers.push(new BetOffer(betType, eventId, Bookmaker.MERIDIAN, outcome, price, line))
+                    })
+                }
+            })
         })
         return betOffers
     }
@@ -589,32 +668,33 @@ export class PinnacleParser {
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
         const parsedEvents = {}
         apiResponse.data.filter(event => !event.parentId).forEach(event => {
-            parsedEvents[event.id] = this.parseEvent(event)
+            parsedEvents[event.id] = this.parseEvent(event, undefined)
         })
         apiResponse.data.filter(event => event.parentId).forEach(event => {
             const parsedEvent = parsedEvents[event.parentId]
             if(parsedEvent) {
-                parsedEvent.marketIds.push(new BookmakerId(Bookmaker.PINNACLE, event.id, IdType.MARKET))
+                parsedEvent.marketIds.push(new BookmakerId(Bookmaker.PINNACLE, event.id.toString(), IdType.MARKET))
             } else {
                 const parent = event.parent
-                parsedEvents[parent.id] = this.parseEvent(parent)
+                parsedEvents[parent.id] = this.parseEvent(parent, event.id.toString())
             }
         })
         return Object.values(parsedEvents)
     }
 
-    private static parseEvent(event): Event {
+    private static parseEvent(event, marketId): Event {
         const participants: Participant[] = event.participants.map(participant => {
-            return new Participant(getParticipantName(participant.name), [new BookmakerId(Bookmaker.PINNACLE, participant.name.toUpperCase(), IdType.PARTICIPANT)])
+            return new Participant(getParticipantName(participant.name),
+                [new BookmakerId(Bookmaker.PINNACLE, participant.name.toUpperCase(), IdType.PARTICIPANT)])
         })
-        return new Event(new BookmakerId(Bookmaker.PINNACLE, event.id, IdType.EVENT), event.startTime, participants, [])
+        return new Event(new BookmakerId(Bookmaker.PINNACLE, event.id.toString(), IdType.EVENT), event.startTime, participants,
+            marketId ? [new BookmakerId(Bookmaker.PINNACLE, marketId, IdType.MARKET)] : [])
     }
 
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        return apiResponse.data.filter(event => !event.parentId).map(event => event.participants.map(participant => new Participant(
-            getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)]
-        ))).flat()
+        const events: Event[] = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
     }
 
     private static parseOffers(apiResponse: ApiResponse): BetOffer[] {
