@@ -182,8 +182,8 @@ describe('Parser tests', function() {
             const expected = [
                 new Event(new BookmakerId(Bookmaker.PINNACLE, "1245514434", IdType.EVENT), "2021-01-26T19:45:00+00:00",
                     [
-                        new Participant(ParticipantName.CHELSEA, [new BookmakerId(Bookmaker.PINNACLE, "CHELSEA", IdType.PARTICIPANT)]),
-                        new Participant(ParticipantName.WOLVERHAMPTON, [new BookmakerId(Bookmaker.PINNACLE, "WOLVES", IdType.PARTICIPANT)])
+                        new Participant(ParticipantName.ANDERLECHT, [new BookmakerId(Bookmaker.PINNACLE, "ANDERLECHT", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.CHARLEROI, [new BookmakerId(Bookmaker.PINNACLE, "CHARLEROI", IdType.PARTICIPANT)])
                     ],
                     [new BookmakerId(Bookmaker.PINNACLE, "1246015261", IdType.MARKET),
                     new BookmakerId(Bookmaker.PINNACLE, "1246015198", IdType.MARKET)])

@@ -434,6 +434,7 @@ export class MeridianParser {
 
 function getParticipantName(name: string): ParticipantName{
     let found
+    const test = Object.keys(participantMap)
     Object.keys(participantMap).forEach(key => {
         if(participantMap[key].includes(name.toUpperCase())) {
             found = key
@@ -586,12 +587,27 @@ export class PinnacleParser {
 
     private static parseEvents(apiResponse: ApiResponse): Event[]{
         if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        return apiResponse.data.filter(event => !event.parentId).map(event => {
-            const participants: Participant[] = event.participants.map(participant => {
-                new Participant(getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.name, IdType.PARTICIPANT)])
-            })
-            return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.startTime, participants)
+        const parsedEvents = {}
+        apiResponse.data.filter(event => !event.parentId).forEach(event => {
+            parsedEvents[event.id] = this.parseEvent(event)
         })
+        apiResponse.data.filter(event => event.parentId).forEach(event => {
+            const parsedEvent = parsedEvents[event.parentId]
+            if(parsedEvent) {
+                parsedEvent.marketIds.push(new BookmakerId(Bookmaker.PINNACLE, event.id, IdType.MARKET))
+            } else {
+                const parent = event.parent
+                parsedEvents[parent.id] = this.parseEvent(parent)
+            }
+        })
+        return Object.values(parsedEvents)
+    }
+
+    private static parseEvent(event): Event {
+        const participants: Participant[] = event.participants.map(participant => {
+            return new Participant(getParticipantName(participant.name), [new BookmakerId(Bookmaker.PINNACLE, participant.name.toUpperCase(), IdType.PARTICIPANT)])
+        })
+        return new Event(new BookmakerId(Bookmaker.PINNACLE, event.id, IdType.EVENT), event.startTime, participants, [])
     }
 
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {
