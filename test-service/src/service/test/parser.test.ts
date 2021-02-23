@@ -39,7 +39,7 @@ describe('Parser tests', function() {
         describe('#parse', function() {
             it('should parse betoffers', function() {
                 const book = Bookmaker.UNIBET_BELGIUM
-                const betOffers = KambiParser.parse(new ApiResponse(book, kambi, RequestType.BET_OFFER, IdType.BET_OFFER))
+                const betOffers = KambiParser.parse(new ApiResponse(book, kambi.betoffers, RequestType.BET_OFFER, IdType.BET_OFFER))
                 const expected = [
                     new BetOffer(BetType._1X2, 1006478884, book, '1', 8.80, NaN),
                     new BetOffer(BetType._1X2, 1006478884, book, 'X', 4.0, NaN),
@@ -50,6 +50,31 @@ describe('Parser tests', function() {
                     new BetOffer(BetType.HANDICAP, 1007031368, book, '2', 1.89, -0.5)
                 ]
                 expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+            })
+
+            it('should parse events', function() {
+                const events = KambiParser.parse(new ApiResponse(Bookmaker.UNIBET_BELGIUM, kambi.test, RequestType.EVENT, IdType.BET_OFFER))
+                const expected = [
+                    new Event(new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1007294061", IdType.EVENT), "2021-02-26T19:45:00Z",
+                        [
+                            new Participant(ParticipantName.CHARLEROI,
+                                [new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1002206222", IdType.PARTICIPANT)]),
+                            new Participant(ParticipantName.GENK,
+                                [new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000000234", IdType.PARTICIPANT)])
+                        ])
+                ]
+                expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+            })
+
+            it('should parse participants', function() {
+                const participants = KambiParser.parse(new ApiResponse(Bookmaker.UNIBET_BELGIUM, kambi.test, RequestType.PARTICIPANT, IdType.BET_OFFER))
+                const expected = [
+                    new Participant(ParticipantName.CHARLEROI,
+                        [new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1002206222", IdType.PARTICIPANT)]),
+                    new Participant(ParticipantName.GENK,
+                        [new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1000000234", IdType.PARTICIPANT)])
+                ]
+                expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
             })
         })
     })
@@ -66,6 +91,31 @@ describe('Parser tests', function() {
                 new BetOffer(BetType.OVER_UNDER, '21112532', book, 'OVER', 2.17357752, 2.5),
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse events', function() {
+            const events = SbtechParser.parse(new ApiResponse(Bookmaker.BETFIRST, sbtech, RequestType.EVENT, IdType.BET_OFFER))
+            const expected = [
+                new Event(new BookmakerId(Bookmaker.BETFIRST, "21410549", IdType.EVENT), "2021-01-26T17:45:00Z",
+                    [
+                        new Participant(ParticipantName.WAASLAND_BEVEREN,
+                            [new BookmakerId(Bookmaker.BETFIRST, "78925", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.MECHELEN,
+                            [new BookmakerId(Bookmaker.BETFIRST, "6246", IdType.PARTICIPANT)])
+                    ])
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse participants', function() {
+            const participants = SbtechParser.parse(new ApiResponse(Bookmaker.BETFIRST, sbtech, RequestType.PARTICIPANT, IdType.BET_OFFER))
+            const expected = [
+                new Participant(ParticipantName.WAASLAND_BEVEREN,
+                    [new BookmakerId(Bookmaker.BETFIRST, "78925", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.MECHELEN,
+                    [new BookmakerId(Bookmaker.BETFIRST, "6246", IdType.PARTICIPANT)])
+            ]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
         })
     })
 
@@ -86,6 +136,31 @@ describe('Parser tests', function() {
                 new BetOffer(BetType.OVER_UNDER, 200001404193, book, 'UNDER', 10.0, 0.5)
             ]
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse events', function() {
+            const events = AltenarParser.parse(new ApiResponse(Bookmaker.GOLDEN_PALACE, altenar, RequestType.EVENT, IdType.BET_OFFER))
+            const expected = [
+                new Event(new BookmakerId(Bookmaker.GOLDEN_PALACE, "200001404193", IdType.EVENT), "2021-02-16T20:00:00Z",
+                    [
+                        new Participant(ParticipantName.CHARLEROI,
+                            [new BookmakerId(Bookmaker.GOLDEN_PALACE, "CHARLEROI", IdType.PARTICIPANT)]),
+                        new Participant(ParticipantName.ANDERLECHT,
+                            [new BookmakerId(Bookmaker.GOLDEN_PALACE, "ANDERLECHT", IdType.PARTICIPANT)])
+                    ])
+            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+        })
+
+        it('should parse participants', function() {
+            const participants = AltenarParser.parse(new ApiResponse(Bookmaker.GOLDEN_PALACE, altenar, RequestType.PARTICIPANT, IdType.BET_OFFER))
+            const expected = [
+                new Participant(ParticipantName.CHARLEROI,
+                    [new BookmakerId(Bookmaker.GOLDEN_PALACE, "CHARLEROI", IdType.PARTICIPANT)]),
+                new Participant(ParticipantName.ANDERLECHT,
+                    [new BookmakerId(Bookmaker.GOLDEN_PALACE, "ANDERLECHT", IdType.PARTICIPANT)])
+            ]
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
         })
     })
 

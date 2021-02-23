@@ -93,15 +93,15 @@ export class KambiParser {
         return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => event.participants)
             .flat().map(participant => new Participant(
                 getParticipantName(participant.name.toUpperCase()), [
-                    new BookmakerId(apiResponse.bookmaker, participant.participantId, IdType.PARTICIPANT)]))
+                    new BookmakerId(apiResponse.bookmaker, participant.participantId.toString(), IdType.PARTICIPANT)]))
     }
 
     static parseEvents(apiResponse: ApiResponse): Event[] {
         if(!apiResponse.data.events) return []
         return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => {
             const participants = event.participants.map(participant => new Participant(getParticipantName(participant.name),
-                [new BookmakerId(apiResponse.bookmaker, participant.participantId, IdType.PARTICIPANT)]))
-            return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.start, participants)
+                [new BookmakerId(apiResponse.bookmaker, participant.participantId.toString(), IdType.PARTICIPANT)]))
+            return new Event(new BookmakerId(apiResponse.bookmaker, event.id.toString(), IdType.EVENT), event.start, participants)
         })
     }
 
@@ -183,7 +183,8 @@ export class SbtechParser {
         if(!apiResponse.data.events) return []
         return apiResponse.data.events.map(event => {
             const participants = event.participants.map(participant => {
-                new Participant(getParticipantName(participant.name), [new BookmakerId(apiResponse.bookmaker, participant.id, IdType.PARTICIPANT)])
+                return new Participant(getParticipantName(participant.name),
+                    [new BookmakerId(apiResponse.bookmaker, participant.id, IdType.PARTICIPANT)])
             })
             return new Event(new BookmakerId(apiResponse.bookmaker, event.id, IdType.EVENT), event.startEventDate, participants)
         })
@@ -246,11 +247,11 @@ export class AltenarParser {
     private static parseEvents(apiResponse: ApiResponse): Event[] {
         if(!apiResponse.data.Result) return []
         return apiResponse.data.Result.Items[0].Events.map(event => new Event(
-            new BookmakerId(apiResponse.bookmaker, event.Id, IdType.EVENT),
+            new BookmakerId(apiResponse.bookmaker, event.Id.toString(), IdType.EVENT),
             event.EventDate,
             event.Competitors.map(competitor => new Participant(
                 getParticipantName(competitor.Name.toUpperCase()),
-                [new BookmakerId(apiResponse.bookmaker, competitor.Name, IdType.PARTICIPANT)]
+                [new BookmakerId(apiResponse.bookmaker, competitor.Name.toUpperCase(), IdType.PARTICIPANT)]
             ))
         )).flat()
     }
@@ -258,7 +259,7 @@ export class AltenarParser {
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {
         if(!apiResponse.data.Result) return []
         return apiResponse.data.Result.Items[0].Events.map(event => event.Competitors.map(participant => new Participant(
-            getParticipantName(participant.Name), [new BookmakerId(apiResponse.bookmaker, participant.Name,
+            getParticipantName(participant.Name), [new BookmakerId(apiResponse.bookmaker, participant.Name.toUpperCase(),
                 IdType.PARTICIPANT)]))).flat()
     }
 

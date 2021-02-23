@@ -1,5 +1,138 @@
 {
-  "events": [],
+  "events": [
+    {
+      "players": [],
+      "id": "21410549",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Waasland-Beveren vs KV Mechelen",
+      "betslipLine": "Waasland-Beveren vs KV Mechelen",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 827,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "78925",
+          "name": "Waasland-Beveren",
+          "venueRole": "Home",
+          "country": "World",
+          "metadata": {
+            "retailRotNumber": "908"
+          }
+        },
+        {
+          "id": "6246",
+          "name": "KV Mechelen",
+          "venueRole": "Away",
+          "country": "World",
+          "metadata": {
+            "retailRotNumber": "909"
+          }
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "4258",
+          "name": "Corners",
+          "order": 40,
+          "marketsCount": 9,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "4260",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 31,
+          "linesCount": 44,
+          "isPlayerProps": false
+        },
+        {
+          "id": "4261",
+          "name": "Specials",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "4262",
+          "name": "Period",
+          "order": 70,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "4264",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 14,
+          "linesCount": 39,
+          "isPlayerProps": false
+        },
+        {
+          "id": "12046",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 21,
+          "linesCount": 34,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 96,
+      "marketLinesCount": 140,
+      "startEventDate": "2021-01-26T17:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031395",
+          "mediaType": "MatchTracker",
+          "blockedCountryCodes": []
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031395",
+          "mediaType": "Scoreboard",
+          "blockedCountryCodes": []
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031395",
+          "mediaType": "Stats",
+          "blockedCountryCodes": []
+        }
+      ],
+      "totalActiveMarketsCount": 96,
+      "coupons": [],
+      "isYourBetAvailable": true
+    }
+  ],
   "leagues": [],
   "regions": [],
   "markets": [
