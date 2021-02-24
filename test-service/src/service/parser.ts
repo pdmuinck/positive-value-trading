@@ -76,6 +76,39 @@ export class Parser {
     }
 }
 
+export class CircusParser {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
+    }
+
+    static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    static parseEvents(apiResponse: ApiResponse): Event[] {
+        const response =  JSON.parse(JSON.parse(apiResponse.data.Message).Requests["$values"][0].Content)
+        return response.LeagueDataSource.LeagueItems.map(league => league.EventItems).map(event => {
+            const participants = [new Participant(getParticipantName(event.Team1Name),
+                [new BookmakerId(Bookmaker.CIRCUS, event.Team1Name.toUpperCase(), IdType.PARTICIPANT)]),
+                new Participant(getParticipantName(event.Team2Name),
+                    [new BookmakerId(Bookmaker.CIRCUS, event.Team2Name.toUpperCase(), IdType.PARTICIPANT)])]
+            return new Event(new BookmakerId(Bookmaker.CIRCUS, event.id.toString(), IdType.EVENT), "", participants)
+        }).flat()
+    }
+
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        return []
+    }
+}
+
 export class KambiParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {

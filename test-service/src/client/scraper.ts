@@ -14,7 +14,6 @@ import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {circusConfig, WebSocketConfig} from "./circus/config";
 
-const WebSocket = require("ws")
 const WebSocketAwait = require("ws-await")
 
 export class Scraper {
@@ -38,27 +37,38 @@ export class Scraper {
     }
 
     async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName){
-        const requests = sports.filter(sport => sport.name === sportName)
-            .map(sport => sport.competitions).flat()
-            .filter(competition => competition.name === competitionName)
-            .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.EVENT))
-        return await this.getApiResponses(requests.flat())
+        switch(bookmaker){
+            case Bookmaker.CIRCUS:
+                return await this.connnectToWebSocket(circusConfig, RequestType.EVENT)
+            default:
+                const requests = sports.filter(sport => sport.name === sportName)
+                    .map(sport => sport.competitions).flat()
+                    .filter(competition => competition.name === competitionName)
+                    .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.EVENT))
+                return await this.getApiResponses(requests.flat())
+
+        }
     }
 
-    async connnectToWebSocket(config: WebSocketConfig, requestType: RequestType): Promise<ApiResponse[]> {
+    async connnectToWebSocket(config: WebSocketConfig, requestType: RequestType) {
+        const apiResponses: ApiResponse[] = []
         const options = {
-            packMessage: null,
-            unpackMessage: null,
-            extractAwaitId: null
+            unpackMessage: data => {
+                const parsedJson = JSON.parse(data)
+                console.log(parsedJson)
+                apiResponses.push(new ApiResponse(Bookmaker.CIRCUS, parsedJson, requestType, IdType.EVENT))
+            },
+            awaitTimeout: 10000,
         }
         const webSocket = new WebSocketAwait(config.url, options)
-        if (webSocket.readyState !== webSocket.OPEN) {
-            try {
-                await this.waitForOpenConnection(webSocket)
-                return [webSocket.sendAwait(config.connectMessage).then(response => new ApiResponse(Bookmaker.CIRCUS, response.data, RequestType.EVENT, IdType.EVENT)).catch(error => console.log(error))]
-            } catch (err) { console.error(err) }
-        } else {
-            return [webSocket.sendAwait(config.connectMessage).then(response => new ApiResponse(Bookmaker.CIRCUS, response.data, RequestType.EVENT, IdType.EVENT)).catch(error => console.log(error))]
+        try {
+            await this.waitForOpenConnection(webSocket)
+            webSocket.sendAwait(circusConfig.connectMessage)
+            await webSocket.sendAwait(circusConfig.requestFootballMessage)
+        } catch (err) {
+            console.error(err)
+            webSocket.close()
+            return apiResponses
         }
     }
 
@@ -99,8 +109,6 @@ export class Scraper {
                     return this.toAltenarRequests(bookmakerId, requestType)
                 case Bookmaker.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
-                case Bookmaker.CIRCUS:
-                    return this.connnectToWebSocket(circusConfig, requestType)
             }
         })
     }

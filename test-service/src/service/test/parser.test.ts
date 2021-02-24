@@ -34,6 +34,10 @@ const expect = require('chai').expect
 
 describe('Parser tests', function() {
 
+    describe('Circus Parser Tests', function() {
+
+    })
+
 
     describe('Kambi Parser Tests', function() {
         describe('#parse', function() {
