@@ -51,7 +51,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40815", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1817", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000490", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "457", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "457", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "227875758", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants
     ),
@@ -133,7 +134,8 @@ export const sports = [
             new BookmakerId(Bookmaker.BETFIRST, "1", IdType.SPORT),
             new BookmakerId(Bookmaker.BET777, "1", IdType.SPORT),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1", IdType.SPORT),
-            new BookmakerId(Bookmaker.BET90, "1", IdType.SPORT)
+            new BookmakerId(Bookmaker.BET90, "1", IdType.SPORT),
+            new BookmakerId(Bookmaker.CIRCUS, "201", IdType.SPORT)
         ],
         footballCompetitions
     )

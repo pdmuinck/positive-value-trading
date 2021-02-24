@@ -31,4 +31,13 @@ describe("scraper should call third party api", function(){
             console.log(result)
         })
     })
+
+    describe("getEvents", function() {
+        this.timeout(20000)
+        it("should return events with bookmaker ids", async function() {
+            const scraper = new Scraper()
+            const results = await scraper.getEvents(Bookmaker.CIRCUS, SportName.FOOTBALL, CompetitionName.JUPILER_PRO_LEAGUE)
+            expect(results).not.to.equal(undefined)
+        })
+    })
 })

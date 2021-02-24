@@ -23,7 +23,8 @@
     "node-html-parser": "^2.1.0",
     "nodemon": "1.11.0",
     "typescript-eslint-parser": "^22.0.0",
-    "ws": "^7.4.2"
+    "ws": "^7.4.3",
+    "ws-await": "^4.2.1"
   },
   "devDependencies": {
     "@types/mocha": "^8.2.0",

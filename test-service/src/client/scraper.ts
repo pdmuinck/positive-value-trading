@@ -12,6 +12,10 @@ import {sports} from "./config"
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
+import {circusConfig, WebSocketConfig} from "./circus/config";
+
+const WebSocket = require("ws")
+const WebSocketAwait = require("ws-await")
 
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
@@ -33,12 +37,49 @@ export class Scraper {
         return await this.getApiResponses(requests.flat())
     }
 
-    async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName): Promise<ApiResponse[]>{
+    async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName){
         const requests = sports.filter(sport => sport.name === sportName)
             .map(sport => sport.competitions).flat()
             .filter(competition => competition.name === competitionName)
             .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.EVENT))
-        return await this.getApiResponses(requests)
+        return await this.getApiResponses(requests.flat())
+    }
+
+    async connnectToWebSocket(config: WebSocketConfig, requestType: RequestType): Promise<ApiResponse[]> {
+        const options = {
+            packMessage: null,
+            unpackMessage: null,
+            extractAwaitId: null
+        }
+        const webSocket = new WebSocketAwait(config.url, options)
+        if (webSocket.readyState !== webSocket.OPEN) {
+            try {
+                await this.waitForOpenConnection(webSocket)
+                return [webSocket.sendAwait(config.connectMessage).then(response => new ApiResponse(Bookmaker.CIRCUS, response.data, RequestType.EVENT, IdType.EVENT)).catch(error => console.log(error))]
+            } catch (err) { console.error(err) }
+        } else {
+            return [webSocket.sendAwait(config.connectMessage).then(response => new ApiResponse(Bookmaker.CIRCUS, response.data, RequestType.EVENT, IdType.EVENT)).catch(error => console.log(error))]
+        }
+    }
+
+    waitForOpenConnection(socket) {
+        return new Promise((resolve, reject) => {
+            const maxNumberOfAttempts = 10
+            const intervalTime = 200 //ms
+
+            let currentAttempt = 0
+            const interval = setInterval(() => {
+                if (currentAttempt > maxNumberOfAttempts - 1) {
+                    clearInterval(interval)
+                    reject(new Error('Maximum number of attempts exceeded'))
+                } else if (socket.readyState === socket.OPEN) {
+                    clearInterval(interval)
+                    // @ts-ignore
+                    resolve()
+                }
+                currentAttempt++
+            }, intervalTime)
+        })
     }
 
     toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
@@ -58,6 +99,8 @@ export class Scraper {
                     return this.toAltenarRequests(bookmakerId, requestType)
                 case Bookmaker.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
+                case Bookmaker.CIRCUS:
+                    return this.connnectToWebSocket(circusConfig, requestType)
             }
         })
     }
