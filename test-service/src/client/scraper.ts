@@ -58,7 +58,7 @@ export class Scraper {
                 console.log(parsedJson)
                 apiResponses.push(new ApiResponse(Bookmaker.CIRCUS, parsedJson, requestType, IdType.EVENT))
             },
-            awaitTimeout: 10000,
+            awaitTimeout: 2000,
         }
         const webSocket = new WebSocketAwait(config.url, options)
         try {

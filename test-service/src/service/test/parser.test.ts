@@ -7,11 +7,13 @@ import betcenter from "./resources/betcenter.json"
 import ladbrokes from "./resources/ladbrokes.json"
 import meridian from "./resources/meridian.json"
 import altenar from "./resources/altenar.json"
+import circus from "./resources/circus.json"
 
 import {
     AltenarParser,
     Bet90Parser,
     BetcenterParser,
+    CircusParser,
     Event,
     KambiParser,
     LadbrokesParser,
@@ -35,7 +37,12 @@ const expect = require('chai').expect
 describe('Parser tests', function() {
 
     describe('Circus Parser Tests', function() {
+        it("should parse events", function() {
+            const events = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.EVENT, IdType.EVENT))
+            const expected = [
 
+            ]
+        })
     })
 
 
