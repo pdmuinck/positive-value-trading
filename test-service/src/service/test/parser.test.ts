@@ -9,6 +9,7 @@ import meridian from "./resources/meridian.json"
 import altenar from "./resources/altenar.json"
 import circus from "./resources/circus.json"
 import circusEventsExpected from "./resources/circus/expected_events.json"
+import circusBetOffersExpected from "./resources/circus/expected_betoffers.json"
 
 import {
     AltenarParser,
@@ -50,8 +51,7 @@ describe('Parser tests', function() {
 
             it("should parse betoffers", function() {
                 const betOffers = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.BET_OFFER, IdType.BET_OFFER))
-                expect(JSON.stringify(betOffers)).to.equal(JSON.stringify("ci"))
-
+                expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(circusBetOffersExpected))
             })
     })
 

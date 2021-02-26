@@ -67,6 +67,8 @@ export class Parser {
                     return MeridianParser.parse(apiResponse)
                 case Bookmaker.BET90:
                     return Bet90Parser.parse(apiResponse)
+                case Bookmaker.CIRCUS:
+                    return CircusParser.parse(apiResponse)
                 default:
                     return []
             }
@@ -112,8 +114,14 @@ export class CircusParser {
             .filter(event => event.DefaultMarketType === "P1XP2").map(event => event.MarketItems).flat().forEach(marketItem => {
                 const betType: BetType = this.determineBetOfferType(marketItem.BetType)
                 marketItem.OutcomeItems.forEach(outcomeItem => {
+                    let betOption = outcomeItem.Name
+                    if(betType === BetType._1X2) {
+                        if(outcomeItem.OrderPosition === 1) betOption = "1"
+                        if(outcomeItem.OrderPosition === 2) betOption = "X"
+                        if(outcomeItem.OrderPosition === 3) betOption = "2"
+                    }
                     const line = outcomeItem.Base ? outcomeItem.Base : NaN
-                    betOffers.push(new BetOffer(betType, marketItem.EventId, Bookmaker.CIRCUS, outcomeItem.Name, outcomeItem.Odd, line))
+                    betOffers.push(new BetOffer(betType, marketItem.EventId, Bookmaker.CIRCUS, betOption, outcomeItem.Odd, line))
                 })
         })
         return betOffers
@@ -123,8 +131,10 @@ export class CircusParser {
         switch(typeId){
             case "P1XP2":
                 return BetType._1X2
-            case "total-OverUnde":
+            case "total-OverUnder":
                 return BetType.OVER_UNDER
+            case "1X12X2":
+                return BetType.DOUBLE_CHANCE
         }
     }
 }
