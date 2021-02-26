@@ -1,0 +1,542 @@
+[
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303149501",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-26T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "R CHARLEROI SC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KRC GENK",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303149301",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-27T15:15:00Z",
+    "_participants": [
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "WAASLAND-BEVEREN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303149101",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-27T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV OSTEND",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV MECHELEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303149701",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-27T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV KORTRIJK",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "SV ZULTE WAREGEM",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303148701",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-28T12:30:00Z",
+    "_participants": [
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "STANDARD LIÈGE",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "RSC ANDERLECHT",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303149901",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-28T15:00:00Z",
+    "_participants": [
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "BEERSCHOT AC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "ROYAL MOUSCRON",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303148901",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-28T17:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "GHENT",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "CLUB BRUGES",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303150101",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-02-28T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "SINT-TRUIDEN VV",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KAS EUPEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303150301",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-01T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "OUD-HEVERLEE LEUVEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "R ANTWERP FC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303151901",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-05T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "R CHARLEROI SC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "SINT-TRUIDEN VV",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303151701",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-06T15:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KAS EUPEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "OUD-HEVERLEE LEUVEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303152101",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-06T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "WAASLAND-BEVEREN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "BEERSCHOT AC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303151301",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-06T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "R ANTWERP FC",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV KORTRIJK",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303151501",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-07T12:30:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "ROYAL MOUSCRON",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "STANDARD LIÈGE",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303150501",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-07T15:00:00Z",
+    "_participants": [
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "CLUB BRUGES",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "SV ZULTE WAREGEM",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303150701",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-07T17:15:00Z",
+    "_participants": [
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "RSC ANDERLECHT",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV MECHELEN",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303151101",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-07T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KRC GENK",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_bookmaker": "CIRCUS",
+      "_id": "2303150901",
+      "_idType": "EVENT"
+    },
+    "_startTime": "2021-03-08T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "GHENT",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_bookmaker": "CIRCUS",
+            "_id": "KV OSTEND",
+            "_idType": "PARTICIPANT"
+          }
+        ]
+      }
+    ]
+  }
+]

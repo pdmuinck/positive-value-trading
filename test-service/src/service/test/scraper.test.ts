@@ -1,8 +1,7 @@
-import {BetOffer, Bookmaker, CompetitionName, Participant, RequestType, SportName} from "../../domain/betoffer";
+import {BetOffer, Bookmaker, CompetitionName, Participant, SportName} from "../../domain/betoffer";
 import {Scraper} from "../../client/scraper";
 import {Parser} from "../parser";
 import {ParticipantMapper} from "../mapper";
-import {circusConfig} from "../../client/circus/config";
 
 const expect = require('chai').expect
 
@@ -38,7 +37,7 @@ describe("scraper should call third party api", function(){
         this.timeout(20000)
         it("should return events with bookmaker ids",  async function() {
             const scraper = new Scraper()
-            const results = await scraper.connnectToWebSocket(circusConfig, RequestType.EVENT)
+            const results = await scraper.getEvents(Bookmaker.CIRCUS, SportName.FOOTBALL, CompetitionName.JUPILER_PRO_LEAGUE)
             console.log(results)
 
 

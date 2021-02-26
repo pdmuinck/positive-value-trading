@@ -94,13 +94,14 @@ export class CircusParser {
     }
 
     static parseEvents(apiResponse: ApiResponse): Event[] {
-        const response =  JSON.parse(JSON.parse(apiResponse.data.Message).Requests["$values"][0].Content)
-        return response.LeagueDataSource.LeagueItems.map(league => league.EventItems).map(event => {
+        const response =  JSON.parse(JSON.parse(apiResponse.data.Message).Requests[0].Content)
+        return response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
+            .filter(event => event.DefaultMarketType === "P1XP2").map(event => {
             const participants = [new Participant(getParticipantName(event.Team1Name),
                 [new BookmakerId(Bookmaker.CIRCUS, event.Team1Name.toUpperCase(), IdType.PARTICIPANT)]),
                 new Participant(getParticipantName(event.Team2Name),
                     [new BookmakerId(Bookmaker.CIRCUS, event.Team2Name.toUpperCase(), IdType.PARTICIPANT)])]
-            return new Event(new BookmakerId(Bookmaker.CIRCUS, event.id.toString(), IdType.EVENT), "", participants)
+            return new Event(new BookmakerId(Bookmaker.CIRCUS, event.EventId.toString(), IdType.EVENT), event.StartDate, participants)
         }).flat()
     }
 

@@ -8,6 +8,7 @@ import ladbrokes from "./resources/ladbrokes.json"
 import meridian from "./resources/meridian.json"
 import altenar from "./resources/altenar.json"
 import circus from "./resources/circus.json"
+import circusEventsExpected from "./resources/circus/expected_events.json"
 
 import {
     AltenarParser,
@@ -39,10 +40,13 @@ describe('Parser tests', function() {
     describe('Circus Parser Tests', function() {
         it("should parse events", function() {
             const events = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.EVENT, IdType.EVENT))
-            const expected = [
-
-            ]
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(circusEventsExpected))
         })
+
+            it("should parse participants", function() {
+                const participants = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.PARTICIPANT, IdType.EVENT))
+                expect(JSON.stringify(participants)).to.equal(JSON.stringify(circusEventsExpected.map(event => event._participants).flat()))
+            })
     })
 
 

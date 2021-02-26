@@ -63,7 +63,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "41372", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1928", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000282", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "307", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "307", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "54375423", IdType.COMPETITION)
         ],
         eredivisieParticipants
     ),
@@ -74,7 +75,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40820", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1842", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000279", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "30", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "30", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "54297345", IdType.COMPETITION)
         ],
         bundesligaParticipants
     ),
@@ -85,7 +87,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40031", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2196", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000149", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "117", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "117", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "1397387603", IdType.COMPETITION)
         ],
         laLigaParticipants
     ),
@@ -96,7 +99,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40032", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2036", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000104", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "119", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "119", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "54287323", IdType.COMPETITION)
         ],
         ligue1Participants
     ),
@@ -107,7 +111,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40253", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "1980", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000097", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "56", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "56", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "54210798", IdType.COMPETITION)
         ],
         premierLeagueParticipants
     ),
@@ -118,7 +123,8 @@ const footballCompetitions = [
             new BookmakerId(Bookmaker.BETFIRST, "40030", IdType.COMPETITION),
             new BookmakerId(Bookmaker.PINNACLE, "2436", IdType.COMPETITION),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1000000283", IdType.COMPETITION),
-            new BookmakerId(Bookmaker.BET90, "401", IdType.COMPETITION)
+            new BookmakerId(Bookmaker.BET90, "401", IdType.COMPETITION),
+            new BookmakerId(Bookmaker.CIRCUS, "54344509", IdType.COMPETITION)
         ],
         serieAParticipants
     )
@@ -135,7 +141,7 @@ export const sports = [
             new BookmakerId(Bookmaker.BET777, "1", IdType.SPORT),
             new BookmakerId(Bookmaker.GOLDEN_PALACE, "1", IdType.SPORT),
             new BookmakerId(Bookmaker.BET90, "1", IdType.SPORT),
-            new BookmakerId(Bookmaker.CIRCUS, "201", IdType.SPORT)
+            new BookmakerId(Bookmaker.CIRCUS, "844", IdType.SPORT)
         ],
         footballCompetitions
     )

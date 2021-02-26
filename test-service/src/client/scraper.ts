@@ -39,7 +39,16 @@ export class Scraper {
     async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName){
         switch(bookmaker){
             case Bookmaker.CIRCUS:
-                return await this.connnectToWebSocket(circusConfig, RequestType.EVENT)
+                const leagueId: BookmakerId = sports.filter(sport => sport.name === sportName)
+                    .map(sport => sport.competitions).flat()
+                    .filter(competition => competition.name === competitionName)
+                    .map(competition => competition.bookmakerIds).flat()
+                    .filter(bookmakerId => bookmakerId.bookmaker === Bookmaker.CIRCUS)[0]
+
+                const sportId: BookmakerId = sports.filter(sport => sport.name === sportName)
+                    .map(sport => sport.bookmakerIds).flat().filter(bookmakerId => bookmakerId.bookmaker === Bookmaker.CIRCUS)[0]
+
+                return await this.connnectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
             default:
                 const requests = sports.filter(sport => sport.name === sportName)
                     .map(sport => sport.competitions).flat()
@@ -50,12 +59,11 @@ export class Scraper {
         }
     }
 
-    async connnectToWebSocket(config: WebSocketConfig, requestType: RequestType) {
+    async connnectToWebSocket(sportId: BookmakerId, leagueId: BookmakerId, config: WebSocketConfig, requestType: RequestType) {
         const apiResponses: ApiResponse[] = []
         const options = {
             unpackMessage: data => {
                 const parsedJson = JSON.parse(data)
-                console.log(parsedJson)
                 apiResponses.push(new ApiResponse(Bookmaker.CIRCUS, parsedJson, requestType, IdType.EVENT))
             },
             awaitTimeout: 2000,
@@ -64,11 +72,11 @@ export class Scraper {
         try {
             await this.waitForOpenConnection(webSocket)
             webSocket.sendAwait(circusConfig.connectMessage)
-            await webSocket.sendAwait(circusConfig.requestFootballMessage)
+            await webSocket.sendAwait(circusConfig.getEventRequestMessage(sportId.id, leagueId.id))
         } catch (err) {
             console.error(err)
             webSocket.close()
-            return apiResponses
+            return apiResponses.filter(response => response.data.MessageType === 1000)[0]
         }
     }
 
