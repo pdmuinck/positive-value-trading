@@ -106,7 +106,26 @@ export class CircusParser {
     }
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        return []
+        const response =  JSON.parse(JSON.parse(apiResponse.data.Message).Requests[0].Content)
+        const betOffers: BetOffer[] = []
+        response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
+            .filter(event => event.DefaultMarketType === "P1XP2").map(event => event.MarketItems).flat().forEach(marketItem => {
+                const betType: BetType = this.determineBetOfferType(marketItem.BetType)
+                marketItem.OutcomeItems.forEach(outcomeItem => {
+                    const line = outcomeItem.Base ? outcomeItem.Base : NaN
+                    betOffers.push(new BetOffer(betType, marketItem.EventId, Bookmaker.CIRCUS, outcomeItem.Name, outcomeItem.Odd, line))
+                })
+        })
+        return betOffers
+    }
+
+    private static determineBetOfferType(typeId): BetType  {
+        switch(typeId){
+            case "P1XP2":
+                return BetType._1X2
+            case "total-OverUnde":
+                return BetType.OVER_UNDER
+        }
     }
 }
 

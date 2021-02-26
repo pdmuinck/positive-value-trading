@@ -47,6 +47,12 @@ describe('Parser tests', function() {
                 const participants = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.PARTICIPANT, IdType.EVENT))
                 expect(JSON.stringify(participants)).to.equal(JSON.stringify(circusEventsExpected.map(event => event._participants).flat()))
             })
+
+            it("should parse betoffers", function() {
+                const betOffers = CircusParser.parse(new ApiResponse(Bookmaker.CIRCUS, circus, RequestType.BET_OFFER, IdType.BET_OFFER))
+                expect(JSON.stringify(betOffers)).to.equal(JSON.stringify("ci"))
+
+            })
     })
 
 
