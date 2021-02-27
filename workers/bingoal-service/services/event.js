@@ -23,8 +23,44 @@ const headers = {
 }
 
 event.getEvents = async () => {
+    //https://www.bingoal.be/generated/sportHome_uof3.json
     return await axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=35', headers).then(response => response.data).catch(error => console.log(error))
 }
+
+async function test() {
+    const events = await axios.get("https://www.bingoal.be/nl/Sport").then(response => {
+        const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
+        console.log(cookie)
+        const headers = {
+            headers : {
+                "Cookie": cookie
+            }
+        }
+        const ieVars = response.data.split("var _ie")[1]
+        const k = ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
+        return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=35", headers)
+    }).then(response => response.data).catch(error => console.log(error))
+    console.log(events)
+}
+
+test()
+
+/*
+			_licenseRequired = "sport",
+			_cameFromDomain = "sport",
+			_cameFromSameDomain = 1,
+			_token = "6C2CAD7C7D5E585119FCBCA3CB308DFA9F38FB79D2354B58E869BE7F32D9C6C929D01BC95812975A4516DBD4FC595307A562C83367A563FFA75AAC54069CAF2DD08427012A26E4246315F49D286B7F1E797879591DAD672A870BDE14D84C7ED3A642060BE1AC521824D74204E2B82E6ECC56128D12E080A2A79160B3053CADEBAFDE51D918E3373AEAC8B229756EBA717D18B4BF521AACAA3843E2FCEED4FE4C40F84C742519F37240EFF15D32EAB613CC159B40ABB1050DA3B9BEE3C1B0DCEA",
+			_requestLicense = 0,
+			_is21 = 0,
+			_resourcesPath = "https://resources.bingoal.be/",
+			_GAPrefix = false,
+			_allowAnalyticsCookies = true,
+			_defaultStakeHorses = 1.00,
+			_enableItsmeRegistration = 1,
+			_enableItsmeVerification = 0,
+			_itsmeServiceCode = "BINGOALPRD_SHAREDATA",
+			_itsmeProjectCode = "eTPj9D3qN6",
+ */
 
 // func=detail&id=35--4016
 

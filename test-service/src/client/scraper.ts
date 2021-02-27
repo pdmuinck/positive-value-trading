@@ -117,8 +117,26 @@ export class Scraper {
                     return this.toAltenarRequests(bookmakerId, requestType)
                 case Bookmaker.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
+                case Bookmaker.BINGOAL:
+                    return this.toBingoalRequests(bookmakerId, requestType)
             }
         })
+    }
+
+    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
+            const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
+            const headers = {
+                headers : {
+                    "Cookie": cookie
+                }
+            }
+            const ieVars = response.data.split("var _ie")[1]
+            const k = ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
+            return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=" + (RequestType.BET_OFFER ? "detail" : "sport")
+                + "&id=" + bookmakerId.id, headers)
+        }).then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
     }
 
     toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {

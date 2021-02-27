@@ -10,16 +10,18 @@ import altenar from "./resources/altenar.json"
 import circus from "./resources/circus.json"
 import circusEventsExpected from "./resources/circus/expected_events.json"
 import circusBetOffersExpected from "./resources/circus/expected_betoffers.json"
+import bingoal from './resources/bingoal/response.json'
+import bingoalEventsExpected from './resources/bingoal/expected_events.json'
 
 import {
     AltenarParser,
     Bet90Parser,
-    BetcenterParser,
+    BetcenterParser, BingoalParser,
     CircusParser,
     Event,
     KambiParser,
     LadbrokesParser,
-    MeridianParser,
+    MeridianParser, Parser,
     PinnacleParser,
     SbtechParser
 } from '../parser';
@@ -37,6 +39,23 @@ import {
 const expect = require('chai').expect
 
 describe('Parser tests', function() {
+
+    describe('Bingoal Parser Tests', function() {
+        it("should parse events", function() {
+            const events = Parser.parse(new ApiResponse(Bookmaker.BINGOAL, bingoal, RequestType.EVENT, IdType.EVENT))
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(bingoalEventsExpected))
+        })
+
+        it("should parse participants", function() {
+            const participants = Parser.parse(new ApiResponse(Bookmaker.BINGOAL, bingoal, RequestType.PARTICIPANT, IdType.EVENT))
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(bingoalEventsExpected.map(event => event._participants).flat()))
+        })
+
+        it("should parse betoffers", function() {
+            const betOffers = Parser.parse(new ApiResponse(Bookmaker.BINGOAL, bingoal, RequestType.BET_OFFER, IdType.BET_OFFER))
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(circusBetOffersExpected))
+        })
+    })
 
     describe('Circus Parser Tests', function() {
         it("should parse events", function() {

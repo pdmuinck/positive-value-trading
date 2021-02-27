@@ -69,12 +69,88 @@ export class Parser {
                     return Bet90Parser.parse(apiResponse)
                 case Bookmaker.CIRCUS:
                     return CircusParser.parse(apiResponse)
+                case Bookmaker.BINGOAL:
+                    return BingoalParser.parse(apiResponse)
                 default:
                     return []
             }
         } else {
             return []
         }
+    }
+}
+
+export class BetradarParser {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
+    }
+
+    static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    static parseEvents(apiResponse: ApiResponse): Event[] {
+        // expected bingoal response
+        return apiResponse.data.sports.map(sport => sport.matches).flat().map(match => {
+            const participants = [
+                new Participant(getParticipantName(match.team1.name),
+                    [new BookmakerId(Bookmaker.BETRADAR, match.team1.betradarID.toString(), IdType.PARTICIPANT)]),
+                new Participant(getParticipantName(match.team2.name),
+                    [new BookmakerId(Bookmaker.BETRADAR, match.team2.betradarID.toString(), IdType.PARTICIPANT)]),
+            ]
+            new Event(new BookmakerId(Bookmaker.BETRADAR, match.betradarID.toString(), IdType.EVENT), match.date, participants)
+        })
+    }
+
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const betOffers: BetOffer[] = []
+        return betOffers
+    }
+}
+
+export class BingoalParser {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+            case RequestType.PARTICIPANT:
+                return this.parseParticipants(apiResponse)
+        }
+    }
+
+    static parseParticipants(apiResponse: ApiResponse): Participant[] {
+        const events = this.parseEvents(apiResponse)
+        return events.map(event => event.participants).flat()
+    }
+
+    static parseEvents(apiResponse: ApiResponse): Event[] {
+        return apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).map(match => {
+            const participants = [
+                new Participant(getParticipantName(match.team1.name),
+                    [new BookmakerId(Bookmaker.BINGOAL, match.team1.ID, IdType.PARTICIPANT)]),
+                new Participant(getParticipantName(match.team2.name),
+                    [new BookmakerId(Bookmaker.BINGOAL, match.team2.ID, IdType.PARTICIPANT)]),
+            ]
+            return new Event(new BookmakerId(Bookmaker.BINGOAL, match.ID, IdType.EVENT), match.date, participants)
+        })
+    }
+
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const betOffers: BetOffer[] = []
+        apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).forEach(match => {
+
+        })
+        return betOffers
     }
 }
 

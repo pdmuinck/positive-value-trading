@@ -398,7 +398,9 @@ export enum Bookmaker {
     STAR_CASINO = 'STAR_CASINO',
     SCOOORE = 'SCOOORE',
     CIRCUS = 'CIRCUS',
-    STANLEYBET = 'STANLEYBET'
+    STANLEYBET = 'STANLEYBET',
+    BINGOAL = 'BINGOAL',
+    BETRADAR = 'BETRADAR'
 
 }
 
