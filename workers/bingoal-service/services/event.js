@@ -28,19 +28,38 @@ event.getEvents = async () => {
 }
 
 async function test() {
-    const events = await axios.get("https://www.bingoal.be/nl/Sport").then(response => {
-        const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
-        console.log(cookie)
-        const headers = {
-            headers : {
-                "Cookie": cookie
-            }
+    const http = require('http')
+    const express = require("express")
+    const fs = require('fs')
+    const path = require("path")
+
+    const PORT=8080
+    const server = express()
+
+    server.get("/", (req, resp) => {
+        resp.sendFile(path.join(__dirname+'/index.html'))
+    })
+
+    server.get("/config.json", (req, resp) => {
+        resp.send({"IMSConfig":{"pasUrl":"https://login.magicbetting.be/jswrapper/integration.js.php?casino=magicbetting","serviceType":"GamePlay","systemId":118},"analytics":{"googleAnalytics":{"trackingId":"UA-107696522-2"},"gtm":{"enableGaToGtm":true,"id":"GTM-5RC8FVS"}},"bonuses":{"acca":true,"etb":false,"freebets":true,"prewager":false},"externalLinks":{"urls":{"cookieConsent":{"cookiesPolicy":"auto|{{baseUrl}}/{{lang}}/cookies-policy"},"footer":{"cookiesPolicy":"auto|{{baseUrl}}/{{lang}}/cookies-policy","gambleClinic":"222|http://www.gokkliniek.be","gamingCommission":{"openStrategy":"222","urlTemplate":{"fr":"https://www.gamingcommission.be/opencms/opencms/jhksweb_fr/protection/forbid/free/index.html","nl":"https://www.gamingcommission.be/opencms/opencms/jhksweb_nl/protection/forbid/free/"}},"gokhulp":{"openStrategy":"222","urlTemplate":{"fr":"https://www.gamingcommission.be/opencms/opencms/jhksweb_fr/protection/forbid/free/index.html","nl":"https://www.gamingcommission.be/opencms/opencms/jhksweb_nl/protection/forbid/free/"}},"playtech":"222|https://www.playtech.com","privacyPolicy":"auto|{{baseUrl}}/{{lang}}/privacy-policy","termsAndConditionsOnline":"auto|{{baseUrl}}/{{lang}}/tc-online"},"loginDialog":{"forgotDetails":"auto|{{baseUrl}}/{{lang}}/my-account/forgot_password","register":"auto|{{baseUrl}}/{{lang}}/register"},"mainNavigation":{"promotions":"222|https://promo.magicbetting.be/?utm_source=website\u0026utm_medium=homepage\u0026utm_campaign=link"},"myAccount":{"changePassword":"auto|{{baseUrl}}/{{lang}}/my-account/change_password?{{parameters}}","changePin":"auto|{{baseUrl}}/{{lang}}/my-account/change-pin?{{parameters}}","deposit":"auto|{{baseUrl}}/{{lang}}/my-account/deposit?{{parameters}}","depositLimits":"auto|{{baseUrl}}/{{lang}}/my-account/limits?{{parameters}}","promotions":"auto|{{baseUrl}}/{{lang}}/payment/my-promotions?{{parameters}}","selfExclusion":"auto|{{baseUrl}}/{{lang}}/my-account/self_exclusion?{{parameters}}","transactionHistory":"auto|{{baseUrl}}/{{lang}}/my-account/transaction-history?{{parameters}}","updateMyDetails":"auto|{{baseUrl}}/{{lang}}/my-account/update_details?{{parameters}}","withdraw":"auto|{{baseUrl}}/{{lang}}/my-account/withdraw?{{parameters}}"},"userAuthenticationInfo":{"register":"auto|{{baseUrl}}/{{lang}}/register"}},"values":{"baseUrl":" https://portal.magicbetting.be","parameters":"product=sport"}}})
+    })
+
+    server.get("/api/info", (req, resp) => {
+        resp.send({"entropy":-501477318,"origins":["*:*"],"cookie_needed":true,"websocket":true})
+    })
+
+    server.get("/api/*", (req, resp) => {
+        console.log(req.params)
+        resp.status(101).send("hello")
+    })
+
+    server.listen('8080', (error) => {
+        if (error) {
+            console.error('ERROR - Unable to start server.')
+        } else {
+            console.info(`INFO - Server started on`)
         }
-        const ieVars = response.data.split("var _ie")[1]
-        const k = ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
-        return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=35", headers)
-    }).then(response => response.data).catch(error => console.log(error))
-    console.log(events)
+    })
 }
 
 test()
