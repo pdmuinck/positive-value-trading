@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const KAMBI_SPORTS = require('./kambi/sports.json');
 const KAMBI_BOOKMAKERS = require('./kambi/bookmakers.json');
-const KAMBI_LEAGUES = require('./kambi/leagues.ts');
+const KAMBI_LEAGUES = require('./kambi/leagues.json');
 const axios = require('axios');
 class KambiScraper {
     static getBetOffersByBook(book) {

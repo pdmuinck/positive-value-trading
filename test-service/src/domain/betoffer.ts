@@ -1,3 +1,5 @@
+import {Bookmaker, Provider} from "../service/bookmaker";
+
 export class Sport{
     private readonly _name: SportName
     private readonly _bookmakerIds: BookmakerId[]
@@ -70,11 +72,13 @@ export class BookmakerId {
     private readonly _bookmaker: Bookmaker
     private readonly _id: string
     private readonly _idType: IdType
+    private readonly _provider: Provider
 
-    constructor(bookmaker: Bookmaker, id: string, idType: IdType){
+    constructor(provider: Provider, id: string, idType: IdType, bookmaker: Bookmaker = undefined){
         this._bookmaker = bookmaker
         this._id = id
         this._idType = idType
+        this._provider = provider
     }
 
     get bookmaker(){
@@ -87,6 +91,10 @@ export class BookmakerId {
 
     get idType() {
         return this._idType
+    }
+
+    get provider() {
+        return this._provider
     }
 }
 
@@ -379,49 +387,8 @@ export enum BetType {
     _1X2 = '1X2',
     DOUBLE_CHANCE = 'DOUBLE_CHANCE',
     OVER_UNDER = 'OVER_UNDER',
-    HANDICAP= 'HANDICAP',
+    HANDICAP = 'HANDICAP',
     UNKNOWN = 'UNKNOWN'
-}
-
-export enum Bookmaker {
-    UNIBET_BELGIUM= 'UNIBET_BELGIUM',
-    NAPOLEON_GAMES = 'NAPOLEON_GAMES',
-    PINNACLE= 'PINNACLE',
-    BETFIRST= 'betfirst',
-    GOLDEN_PALACE = 'goldenpalace',
-    BETCENTER = 'BETCENTER',
-    LADBROKES = 'LADBROKES',
-    MERIDIAN = 'MERIDIAN',
-    BET777 = 'bet777',
-    BET90 = 'BET90',
-    MAGIC_BETTING = 'MAGIC_BETTING',
-    STAR_CASINO = 'STAR_CASINO',
-    SCOOORE = 'SCOOORE',
-    CIRCUS = 'CIRCUS',
-    STANLEYBET = 'STANLEYBET',
-    BINGOAL = 'BINGOAL',
-    BETRADAR = 'BETRADAR',
-    GOLDENVEGAS = "GOLDENVEGAS"
-
-}
-
-export class Provider {
-    static readonly KAMBI = new Provider('KAMBI', [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES])
-    static readonly SBTECH = new Provider('SBTECH', [Bookmaker.BETFIRST, Bookmaker.BET777])
-    static readonly OTHER = new Provider('OTHER', [Bookmaker.BETCENTER, Bookmaker.BET90, Bookmaker.PINNACLE])
-
-    // private to disallow creating other instances of this type
-    private constructor(private readonly key: string, public readonly bookmakers: Bookmaker[]) {
-    }
-
-    toString() {
-        return this.key
-    }
-
-    static keys(): Provider[] {
-        return [this.KAMBI, this.SBTECH, this.OTHER]
-    }
-
 }
 
 export class ValueBetFoundEvent {

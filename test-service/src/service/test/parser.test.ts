@@ -28,13 +28,14 @@ import {
 import {
     BetOffer,
     BetType,
-    Bookmaker,
     BookmakerId,
     IdType,
     Participant,
     ParticipantName,
     RequestType
 } from "../../domain/betoffer";
+
+import {Bookmaker} from "../bookmaker";
 
 const expect = require('chai').expect
 

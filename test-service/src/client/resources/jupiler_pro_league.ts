@@ -1,4 +1,5 @@
-import {Bookmaker, Participant, ParticipantName} from "../../domain/betoffer";
+import {Participant, ParticipantName} from "../../domain/betoffer";
+import {Bookmaker} from "../../service/bookmaker";
 
 export const jupilerProLeagueParticipantsRaw = {}
 

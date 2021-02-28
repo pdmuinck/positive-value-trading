@@ -1,4 +1,4 @@
-import {Bookmaker} from "../../domain/betoffer";
+import {Bookmaker} from "../../service/bookmaker";
 
 const axios = require('axios')
 const NodeCache = require('node-cache')

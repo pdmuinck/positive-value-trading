@@ -1,5 +1,4 @@
 import {
-    Bookmaker,
     BookmakerId,
     CompetitionName,
     IdType,
@@ -10,6 +9,7 @@ import {
 import {ValueBetService} from "../valuebet-service";
 import {ApiResponse, FakeScraper} from "../../client/scraper";
 import {jupilerProLeagueParticipants} from "../../client/config";
+import {Bookmaker} from "../bookmaker";
 
 const expect = require('chai').expect
 

@@ -1,18 +1,10 @@
-import {
-    BetType,
-    Bookmaker,
-    BookmakerId,
-    CompetitionName,
-    IdType,
-    RequestType,
-    Sport,
-    SportName
-} from "../domain/betoffer"
+import {BetType, BookmakerId, CompetitionName, IdType, RequestType, Sport, SportName} from "../domain/betoffer"
 import {sports} from "./config"
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {circusConfig, goldenVegasConfig, magicBettingConfig, WebSocketConfig} from "./websocket/config";
+import {Bookmaker, Provider} from "../service/bookmaker";
 
 const WebSocketAwait = require("ws-await")
 
@@ -20,6 +12,24 @@ export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
     constructor(){
         this._sbtechTokenRepository = new SbtechTokenRepository()
+    }
+
+    async getEventsForProviderByLeague(leagueId: BookmakerId) {
+        const provider = leagueId.provider
+        switch(provider) {
+            case Provider.KAMBI:
+                return await this.getApiResponses(this.toKambiRequests(leagueId, RequestType.EVENT))
+            case Provider.SBTECH:
+                return await this.getApiResponses(this.toSbtechRequests(leagueId, RequestType.EVENT))
+            case Provider.ALTENAR:
+                return await this.getApiResponses(this.toAltenarRequests(leagueId, RequestType.EVENT))
+            case Provider.PINNACLE:
+                return await this.getApiResponses(this.toPinnacleRequests(leagueId, RequestType.EVENT))
+            case Provider.BINGOAL:
+                return await this.getApiResponses(this.toBingoalRequests(leagueId, RequestType.EVENT))
+            case Provider.BET90:
+                return await this.getApiResponses(this.toBet90Requests(leagueId, RequestType.EVENT))
+        }
     }
 
     async getBetOffers(sportName: SportName, competition?: CompetitionName): Promise<ApiResponse[]> {
@@ -49,16 +59,17 @@ export class Scraper {
             .map(sport => sport.bookmakerIds).flat().filter(bookmakerId => bookmakerId.bookmaker === bookmaker)[0]
     }
 
-    async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName){
-        const leagueId: BookmakerId = this.getLeagueIdForBook(bookmaker, sportName, competitionName)
-        const sportId: BookmakerId = this.getSportIdForBook(bookmaker, sportName)
-        switch(bookmaker){
-            case Bookmaker.CIRCUS:
-                return await this.connectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
-            case Bookmaker.MAGIC_BETTING:
+    async getEvents(sportId: BookmakerId, leagueId: BookmakerId){
+        switch(leagueId.provider){
+            case Provider.BETCONSTRUCT:
+                if(leagueId.bookmaker === Bookmaker.CIRCUS) {
+                    return await this.connectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
+                } else if(leagueId.bookmaker === Bookmaker.GOLDENVEGAS) {
+                    return await this.connectToWebSocket(sportId, leagueId, goldenVegasConfig, RequestType.EVENT)
+                }
+            case Provider.MAGIC_BETTING:
                 return await this.connectToWebSocket(sportId, leagueId, magicBettingConfig, RequestType.EVENT)
-            case Bookmaker.GOLDENVEGAS:
-                return await this.connectToWebSocket(sportId, leagueId, goldenVegasConfig, RequestType.EVENT)
+
             default:
                 const requests = sports.filter(sport => sport.name === sportName)
                     .map(sport => sport.competitions).flat()

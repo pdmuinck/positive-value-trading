@@ -1,7 +1,6 @@
 import {
     BetOffer,
     BetType,
-    Bookmaker,
     BookmakerId,
     IdType,
     Participant,
@@ -10,6 +9,7 @@ import {
 } from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
 import {participantMap} from "./mapper";
+import {Bookmaker} from "./bookmaker";
 
 const parser = require('node-html-parser')
 

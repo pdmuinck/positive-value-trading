@@ -1,4 +1,4 @@
-import {Bookmaker} from "../../domain/betoffer"
+import {Bookmaker} from "../../service/bookmaker";
 
 export class WebSocketConfig {
     private readonly _bookmaker: Bookmaker
