@@ -12,7 +12,7 @@ import {sports} from "./config"
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
-import {circusConfig, WebSocketConfig} from "./circus/config";
+import {circusConfig, goldenVegasConfig, magicBettingConfig, WebSocketConfig} from "./websocket/config";
 
 const WebSocketAwait = require("ws-await")
 
@@ -36,19 +36,29 @@ export class Scraper {
         return await this.getApiResponses(requests.flat())
     }
 
+    getLeagueIdForBook(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName): BookmakerId {
+        return sports.filter(sport => sport.name === sportName)
+            .map(sport => sport.competitions).flat()
+            .filter(competition => competition.name === competitionName)
+            .map(competition => competition.bookmakerIds).flat()
+            .filter(bookmakerId => bookmakerId.bookmaker === bookmaker)[0]
+    }
+
+    getSportIdForBook(bookmaker: Bookmaker, sportName: SportName): BookmakerId {
+        return sports.filter(sport => sport.name === sportName)
+            .map(sport => sport.bookmakerIds).flat().filter(bookmakerId => bookmakerId.bookmaker === bookmaker)[0]
+    }
+
     async getEvents(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName){
+        const leagueId: BookmakerId = this.getLeagueIdForBook(bookmaker, sportName, competitionName)
+        const sportId: BookmakerId = this.getSportIdForBook(bookmaker, sportName)
         switch(bookmaker){
             case Bookmaker.CIRCUS:
-                const leagueId: BookmakerId = sports.filter(sport => sport.name === sportName)
-                    .map(sport => sport.competitions).flat()
-                    .filter(competition => competition.name === competitionName)
-                    .map(competition => competition.bookmakerIds).flat()
-                    .filter(bookmakerId => bookmakerId.bookmaker === Bookmaker.CIRCUS)[0]
-
-                const sportId: BookmakerId = sports.filter(sport => sport.name === sportName)
-                    .map(sport => sport.bookmakerIds).flat().filter(bookmakerId => bookmakerId.bookmaker === Bookmaker.CIRCUS)[0]
-
-                return await this.connnectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
+                return await this.connectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
+            case Bookmaker.MAGIC_BETTING:
+                return await this.connectToWebSocket(sportId, leagueId, magicBettingConfig, RequestType.EVENT)
+            case Bookmaker.GOLDENVEGAS:
+                return await this.connectToWebSocket(sportId, leagueId, goldenVegasConfig, RequestType.EVENT)
             default:
                 const requests = sports.filter(sport => sport.name === sportName)
                     .map(sport => sport.competitions).flat()
@@ -59,20 +69,21 @@ export class Scraper {
         }
     }
 
-    async connnectToWebSocket(sportId: BookmakerId, leagueId: BookmakerId, config: WebSocketConfig, requestType: RequestType) {
+    async connectToWebSocket(sportId: BookmakerId, leagueId: BookmakerId, config: WebSocketConfig, requestType: RequestType) {
         const apiResponses: ApiResponse[] = []
         const options = {
             unpackMessage: data => {
                 const parsedJson = JSON.parse(data)
-                apiResponses.push(new ApiResponse(Bookmaker.CIRCUS, parsedJson, requestType, IdType.EVENT))
+                console.log(parsedJson)
+                apiResponses.push(new ApiResponse(config.bookmaker, parsedJson, requestType, IdType.EVENT))
             },
-            awaitTimeout: 2000,
+            awaitTimeout: config.timeOut
         }
         const webSocket = new WebSocketAwait(config.url, options)
         try {
             await this.waitForOpenConnection(webSocket)
-            webSocket.sendAwait(circusConfig.connectMessage)
-            await webSocket.sendAwait(circusConfig.getEventRequestMessage(sportId.id, leagueId.id))
+            webSocket.sendAwait(config.getConnectMessage())
+            await webSocket.sendAwait(config.getEventRequestMessage(sportId.id, leagueId.id))
         } catch (err) {
             console.error(err)
             webSocket.close()
