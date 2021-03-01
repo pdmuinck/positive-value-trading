@@ -1,5 +1,4 @@
 import {
-    BookmakerId,
     CompetitionName,
     IdType,
     RequestType,
@@ -9,7 +8,7 @@ import {
 import {ValueBetService} from "../valuebet-service";
 import {ApiResponse, FakeScraper} from "../../client/scraper";
 import {jupilerProLeagueParticipants} from "../../client/config";
-import {Bookmaker} from "../bookmaker";
+import {BookmakerId, Provider} from "../bookmaker";
 
 const expect = require('chai').expect
 
@@ -18,8 +17,8 @@ describe('ValueBetService tests', function() {
         const today = new Date()
 
         const eventBookmakerIds = [
-            new BookmakerId(Bookmaker.UNIBET_BELGIUM, "1006478884", IdType.EVENT),
-            new BookmakerId(Bookmaker.PINNACLE, "1239809328", IdType.EVENT)
+            new BookmakerId(Provider.KAMBI, "1006478884", IdType.EVENT),
+            new BookmakerId(Provider.PINNACLE, "1239809328", IdType.EVENT)
         ]
 
         const sportEvents = [
@@ -29,16 +28,15 @@ describe('ValueBetService tests', function() {
 
         it('should detect value bets ', async function() {
             const apiData = {
-                "UNIBET_BELGIUM": [
-                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_2_fake.json'),
-                        RequestType.BET_OFFER, IdType.BET_OFFER),
-                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, require('../../client/kambi/unibet_betoffer_type_6.json'),
-                        RequestType.BET_OFFER,
-                        IdType.BET_OFFER),
+                "KAMBI": [
+                    new ApiResponse(Provider.KAMBI, require('../../client/kambi/unibet_betoffer_type_2_fake.json'),
+                        RequestType.BET_OFFER),
+                    new ApiResponse(Provider.KAMBI, require('../../client/kambi/unibet_betoffer_type_6.json'),
+                        RequestType.BET_OFFER),
                 ],
                 "PINNACLE": [
-                        new ApiResponse(Bookmaker.PINNACLE, require('../../client/pinnacle/pinnacle_betoffer_fake.json'),
-                            RequestType.BET_OFFER, IdType.BET_OFFER),
+                        new ApiResponse(Provider.PINNACLE, require('../../client/pinnacle/pinnacle_betoffer_fake.json'),
+                            RequestType.BET_OFFER),
                 ]
             }
 
@@ -51,12 +49,12 @@ describe('ValueBetService tests', function() {
         })
         it('should skip bad api responses', async function() {
             const apiData = {
-                "UNIBET_BELGIUM": [
-                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
-                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
+                "KAMBI": [
+                    new ApiResponse(Provider.KAMBI, {"shitty": 123}, RequestType.BET_OFFER),
+                    new ApiResponse(Provider.KAMBI, {"shitty": 123}, RequestType.BET_OFFER),
                 ],
                 "PINNACLE": [
-                    new ApiResponse(Bookmaker.PINNACLE, {"shitty": 123}, RequestType.BET_OFFER, IdType.BET_OFFER),
+                    new ApiResponse(Provider.PINNACLE, {"shitty": 123}, RequestType.BET_OFFER),
                 ]
             }
 
@@ -64,7 +62,7 @@ describe('ValueBetService tests', function() {
             const service = new ValueBetService(fakeScraper, sportEvents)
             service.searchForValueBets()
             const sportEventsInService: SportEvent[] = service.sportEvents
-            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Bookmaker.UNIBET_BELGIUM]).length)
+            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Provider.KAMBI]).length)
                 .is.equal(sportEventsInService.length)
 
         })
@@ -91,8 +89,8 @@ describe('ValueBetService tests', function() {
             }
 
             const apiData = {
-                "UNIBET_BELGIUM": [
-                    new ApiResponse(Bookmaker.UNIBET_BELGIUM, betOffer_unibet, RequestType.BET_OFFER, IdType.BET_OFFER)
+                "KAMBI": [
+                    new ApiResponse(Provider.KAMBI, betOffer_unibet, RequestType.BET_OFFER)
                 ]
             }
 
@@ -100,7 +98,7 @@ describe('ValueBetService tests', function() {
             const service = new ValueBetService(fakeScraper, sportEvents)
             service.searchForValueBets()
             const sportEventsInService: SportEvent[] = service.sportEvents
-            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Bookmaker.UNIBET_BELGIUM]).length)
+            expect(sportEventsInService.filter(sportEvent => !sportEvent.betOffers[Provider.KAMBI]).length)
                 .is.equal(sportEventsInService.length)
 
         })

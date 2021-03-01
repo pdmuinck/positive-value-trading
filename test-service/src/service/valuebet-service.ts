@@ -20,7 +20,7 @@ export class ValueBetService {
                 const eventKey = [sportEvent.startDateTime, sportEvent.participants.map(participant => participant.name).join(';')].join(';')
                 this._sportEventsCache.set(eventKey, sportEvent)
                 sportEvent.bookmakerIds.forEach(bookmakerId => {
-                    this._bookmakerEventIdCache.set([bookmakerId.bookmaker, bookmakerId.id].join(';'), eventKey)
+                    this._bookmakerEventIdCache.set([bookmakerId.provider, bookmakerId.id].join(';'), eventKey)
                 })
             }
         })

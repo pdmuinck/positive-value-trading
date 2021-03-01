@@ -1,35 +1,56 @@
-import {BetType, BookmakerId, CompetitionName, IdType, RequestType, Sport, SportName} from "../domain/betoffer"
+import {BetType, Competition, CompetitionName, IdType, RequestType, Sport, SportName} from "../domain/betoffer"
 import {sports} from "./config"
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
-import {circusConfig, goldenVegasConfig, magicBettingConfig, WebSocketConfig} from "./websocket/config";
-import {Bookmaker, Provider} from "../service/bookmaker";
+import {BookmakerId, Provider, providers} from "../service/bookmaker";
+import {circusConfig, magicBettingConfig, WebSocketConfig} from "./websocket/config";
 
 const WebSocketAwait = require("ws-await")
 
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
+    private _betconstructWS
+    private _magicbettingWS
     constructor(){
         this._sbtechTokenRepository = new SbtechTokenRepository()
     }
 
-    async getEventsForProviderByLeague(leagueId: BookmakerId) {
-        const provider = leagueId.provider
-        switch(provider) {
-            case Provider.KAMBI:
-                return await this.getApiResponses(this.toKambiRequests(leagueId, RequestType.EVENT))
-            case Provider.SBTECH:
-                return await this.getApiResponses(this.toSbtechRequests(leagueId, RequestType.EVENT))
-            case Provider.ALTENAR:
-                return await this.getApiResponses(this.toAltenarRequests(leagueId, RequestType.EVENT))
-            case Provider.PINNACLE:
-                return await this.getApiResponses(this.toPinnacleRequests(leagueId, RequestType.EVENT))
-            case Provider.BINGOAL:
-                return await this.getApiResponses(this.toBingoalRequests(leagueId, RequestType.EVENT))
-            case Provider.BET90:
-                return await this.getApiResponses(this.toBet90Requests(leagueId, RequestType.EVENT))
+    async getEventsForCompetition(competition: Competition) {
+        const betConstructResponses: ApiResponse[] = []
+        const magicBettingResponses: ApiResponse[] = []
+        await this.startBetConstructWS(betConstructResponses)
+        // await this.startMagicBettingWS(magicBettingResponses)
+        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
+        const httpResponses: ApiResponse[] = await this.getApiResponses(requests.flat())
+        return httpResponses.concat(betConstructResponses.filter(response => response.data && response.data.MessageType === 1000)[0])
+            .concat(magicBettingResponses)
+    }
+
+    async startMagicBettingWS(webSocketResponses: ApiResponse[]) {
+        const options = {
+            unpackMessage: data => {
+                const parsedJson = JSON.parse(data)
+                webSocketResponses.push(new ApiResponse(Provider.MAGIC_BETTING, parsedJson, RequestType.EVENT))
+            },
+            awaitTimeout: magicBettingConfig.timeOut
         }
+        this._magicbettingWS = new WebSocketAwait(magicBettingConfig.url, options)
+        await this.waitForOpenConnection(this._magicbettingWS)
+            this._magicbettingWS.sendAwait(magicBettingConfig.getConnectMessage())
+    }
+
+    async startBetConstructWS(webSocketResponses: ApiResponse[]) {
+        const options = {
+            unpackMessage: data => {
+                const parsedJson = JSON.parse(data)
+                webSocketResponses.push(new ApiResponse(Provider.BETCONSTRUCT, parsedJson, RequestType.EVENT))
+            },
+            awaitTimeout: circusConfig.timeOut
+        }
+        this._betconstructWS = new WebSocketAwait(circusConfig.url, options)
+        await this.waitForOpenConnection(this._betconstructWS)
+        this._betconstructWS.sendAwait(circusConfig.getConnectMessage())
     }
 
     async getBetOffers(sportName: SportName, competition?: CompetitionName): Promise<ApiResponse[]> {
@@ -44,62 +65,6 @@ export class Scraper {
             .filter(competition => competition.name === competitionName)
             .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.PARTICIPANT))
         return await this.getApiResponses(requests.flat())
-    }
-
-    getLeagueIdForBook(bookmaker: Bookmaker, sportName: SportName, competitionName: CompetitionName): BookmakerId {
-        return sports.filter(sport => sport.name === sportName)
-            .map(sport => sport.competitions).flat()
-            .filter(competition => competition.name === competitionName)
-            .map(competition => competition.bookmakerIds).flat()
-            .filter(bookmakerId => bookmakerId.bookmaker === bookmaker)[0]
-    }
-
-    getSportIdForBook(bookmaker: Bookmaker, sportName: SportName): BookmakerId {
-        return sports.filter(sport => sport.name === sportName)
-            .map(sport => sport.bookmakerIds).flat().filter(bookmakerId => bookmakerId.bookmaker === bookmaker)[0]
-    }
-
-    async getEvents(sportId: BookmakerId, leagueId: BookmakerId){
-        switch(leagueId.provider){
-            case Provider.BETCONSTRUCT:
-                if(leagueId.bookmaker === Bookmaker.CIRCUS) {
-                    return await this.connectToWebSocket(sportId, leagueId, circusConfig, RequestType.EVENT)
-                } else if(leagueId.bookmaker === Bookmaker.GOLDENVEGAS) {
-                    return await this.connectToWebSocket(sportId, leagueId, goldenVegasConfig, RequestType.EVENT)
-                }
-            case Provider.MAGIC_BETTING:
-                return await this.connectToWebSocket(sportId, leagueId, magicBettingConfig, RequestType.EVENT)
-
-            default:
-                const requests = sports.filter(sport => sport.name === sportName)
-                    .map(sport => sport.competitions).flat()
-                    .filter(competition => competition.name === competitionName)
-                    .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.EVENT))
-                return await this.getApiResponses(requests.flat())
-
-        }
-    }
-
-    async connectToWebSocket(sportId: BookmakerId, leagueId: BookmakerId, config: WebSocketConfig, requestType: RequestType) {
-        const apiResponses: ApiResponse[] = []
-        const options = {
-            unpackMessage: data => {
-                const parsedJson = JSON.parse(data)
-                console.log(parsedJson)
-                apiResponses.push(new ApiResponse(config.bookmaker, parsedJson, requestType, IdType.EVENT))
-            },
-            awaitTimeout: config.timeOut
-        }
-        const webSocket = new WebSocketAwait(config.url, options)
-        try {
-            await this.waitForOpenConnection(webSocket)
-            webSocket.sendAwait(config.getConnectMessage())
-            await webSocket.sendAwait(config.getEventRequestMessage(sportId.id, leagueId.id))
-        } catch (err) {
-            console.error(err)
-            webSocket.close()
-            return apiResponses.filter(response => response.data.MessageType === 1000)[0]
-        }
     }
 
     waitForOpenConnection(socket) {
@@ -124,25 +89,36 @@ export class Scraper {
 
     toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
         return bookmakerIds.map(bookmakerId => {
-            switch (bookmakerId.bookmaker) {
-                case Bookmaker.UNIBET_BELGIUM:
+            switch (bookmakerId.provider) {
+                case Provider.KAMBI:
                     return this.toKambiRequests(bookmakerId, requestType)
-                case Bookmaker.NAPOLEON_GAMES:
-                    return this.toKambiRequests(bookmakerId, requestType)
-                case Bookmaker.PINNACLE:
+                case Provider.PINNACLE:
                     return this.toPinnacleRequests(bookmakerId, requestType)
-                case Bookmaker.BET777:
+                case Provider.SBTECH:
                     return this.toSbtechRequests(bookmakerId, requestType)
-                case Bookmaker.BETFIRST:
-                    return this.toSbtechRequests(bookmakerId, requestType)
-                case Bookmaker.GOLDEN_PALACE:
+                case Provider.ALTENAR:
                     return this.toAltenarRequests(bookmakerId, requestType)
-                case Bookmaker.BET90:
+                case Provider.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
-                case Bookmaker.BINGOAL:
+                case Provider.BINGOAL:
                     return this.toBingoalRequests(bookmakerId, requestType)
+                case Provider.BETCONSTRUCT:
+                    return this.toBetConstructRequests(bookmakerId, requestType)
             }
         })
+    }
+
+    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        return [
+            this._betconstructWS.sendAwait(circusConfig.getEventRequestMessage("844", bookmakerId.id)).then(
+                response => {
+                    return new ApiResponse(bookmakerId.provider, response, requestType)}
+            ).catch(error => console.log(error))
+        ]
+    }
+
+    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+
     }
 
     toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -157,8 +133,8 @@ export class Scraper {
             const k = ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
             return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=" + (RequestType.BET_OFFER ? "detail" : "sport")
                 + "&id=" + bookmakerId.id, headers)
-        }).then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
-            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+        }).then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
+            .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
     }
 
     toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -171,15 +147,14 @@ export class Scraper {
         switch(requestType) {
             case RequestType.BET_OFFER:
                 return [axios.get('https://bet90.be/Bet/SpecialBetsCustomer', headers)
-                    .then(response => {return new ApiResponse(bookmakerId.bookmaker,
-                        {data: response.data, id: bookmakerId.id}, requestType, bookmakerId
-                            .idType)})]
+                    .then(response => {return new ApiResponse(bookmakerId.provider,
+                        {data: response.data, id: bookmakerId.id}, requestType)})]
             default:
                 const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
                 const body = {leagueId: bookmakerId.id, categoryId: map.categoryId, sportId: map.sport}
                 return [axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
-                    .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
-                    .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+                    .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
+                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
         }
 
     }
@@ -190,8 +165,8 @@ export class Scraper {
             '&champids=' + bookmakerId.id  +'&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none' +
             '&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
         return [axios.get(url)
-            .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
-            .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})]
+            .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
+            .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
     }
 
     toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -210,48 +185,46 @@ export class Scraper {
             axios.get(
                 url,
                 requestConfig
-            ).then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
-                .catch(error => {return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})
+            ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
+                .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})
         ]
     }
 
-    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType){
+    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        if(RequestType.EVENT) return this.toKambiEventRequests(bookmakerId)
+        if(RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId)
+    }
+
+    toKambiEventRequests(bookmakerId: BookmakerId) {
+        return [
+            axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
+                + bookmakerId.id + '.json?includeParticipants=true')
+                .then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.EVENT)})
+                .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.EVENT)})
+        ]
+    }
+
+    toKambiBetOfferRequests(bookmakerId: BookmakerId) {
         const kambiBetOfferTypes = {}
         kambiBetOfferTypes[BetType._1X2] = 2
         kambiBetOfferTypes[BetType.OVER_UNDER] = 6
-
-        const kambiBooks = {}
-        kambiBooks[Bookmaker.UNIBET_BELGIUM] = 'ubbe'
-        kambiBooks[Bookmaker.NAPOLEON_GAMES] = 'ngbe'
-
-        const bookmaker = bookmakerId.bookmaker
-        const groupId = bookmakerId.id
-
-        switch(requestType){
-            case RequestType.BET_OFFER:
-                return Object.keys(kambiBetOfferTypes).map(key => {
-                    const betOfferType = kambiBetOfferTypes[key]
-                    return [axios.get(
-                        'https://eu-offering.kambicdn.org/offering/v2018/' +  kambiBooks[bookmaker] + '/betoffer/group/'
-                        + groupId + '.json?type=' + betOfferType
-                    ).then(response => {return new ApiResponse(bookmaker, response.data, requestType, bookmakerId.idType)})
-                        .catch(error => {return new ApiResponse(bookmaker, null, requestType, bookmakerId.idType)})]
-                })
-
-            default:
-                return [
-                    axios('https://eu-offering.kambicdn.org/offering/v2018/' + kambiBooks[bookmaker] + '/event/group/'
-                        + groupId + '.json?includeParticipants=true')
-                        .then(response => {return new ApiResponse(bookmaker, response.data, requestType, bookmakerId.idType)})
-                        .catch(error => {return new ApiResponse(bookmaker, null, requestType, bookmakerId.idType)})
-                ]
-        }
+        const books = providers[Provider.KAMBI]
+        return books.map(book => {
+            return Object.keys(kambiBetOfferTypes).map(key => {
+                const betOfferType = kambiBetOfferTypes[key]
+                return [axios.get(
+                    'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
+                    + bookmakerId.id + '.json?type=' + betOfferType
+                ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER)})
+                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER)})]
+            })
+        })
     }
 
     toSbtechRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         const tokenData = [
-            new SbtechTokenRequest(Bookmaker.BET777, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),
-            new SbtechTokenRequest(Bookmaker.BETFIRST, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/28', SbtechApi.V1),
+            new SbtechTokenRequest(Provider.SBTECH, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),
+            new SbtechTokenRequest(Provider.SBTECH, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/28', SbtechApi.V1),
         ]
 
         const id = bookmakerId.id
@@ -265,7 +238,7 @@ export class Scraper {
             {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":1500}},
         ]
 
-        const tokenRequest = tokenData.filter(data => data.bookmaker === bookmakerId.bookmaker)[0]
+        const tokenRequest = tokenData.filter(data => data.provider === bookmakerId.provider)[0]
 
         return pages.map(page => {
             if(requestType === RequestType.BET_OFFER) {
@@ -289,12 +262,12 @@ export class Scraper {
                 'locale': 'en'
             }
         }
-        return axios.post('https://sbapi.sbtech.com/' + bookmakerId.bookmaker +
+        return axios.post('https://sbapi.sbtech.com/' + bookmakerId.provider +
             '/sportscontent/sportsbook/v1/Events/' + (bookmakerId.idType === IdType.SPORT ? 'GetBySportId' : 'GetByLeagueId')
             , page, headers)
-            .then(response => {return new ApiResponse(bookmakerId.bookmaker, response.data, requestType, bookmakerId.idType)})
+            .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
             .catch(error => {
-                return new ApiResponse(bookmakerId.bookmaker, null, requestType, bookmakerId.idType)})
+                return new ApiResponse(bookmakerId.provider, null, requestType)})
     }
 
 
@@ -320,27 +293,25 @@ export class FakeScraper extends Scraper {
 
     async getBetOffers(sport: SportName, competition?: CompetitionName): Promise<ApiResponse[]> {
         return [
-            this._testData[Bookmaker.UNIBET_BELGIUM],
-            this._testData[Bookmaker.PINNACLE]
+            this._testData[Provider.KAMBI],
+            this._testData[Provider.PINNACLE]
             ].flat()
     }
 }
 
 export class ApiResponse {
-    private readonly _bookmaker: Bookmaker
+    private readonly _provider: Provider
     private readonly _data
     private readonly _requestType: RequestType
-    private readonly _idType: IdType
 
-    constructor(bookmaker: Bookmaker, data, requestType: RequestType, idType: IdType){
-        this._bookmaker = bookmaker
+    constructor(provider: Provider, data, requestType: RequestType){
+        this._provider = provider
         this._data = data
-        this._idType = idType
         this._requestType = requestType
     }
 
-    get bookmaker(){
-        return this._bookmaker
+    get provider(){
+        return this._provider
     }
 
     get data(){
@@ -350,24 +321,20 @@ export class ApiResponse {
     get requestType(){
         return this._requestType
     }
-
-    get idType(){
-        return this._idType
-    }
 }
 
 class SbtechTokenRequest {
-    private readonly _bookmaker: Bookmaker
+    private readonly _bookmaker: Provider
     private readonly _url: string
     private readonly _api: SbtechApi
 
-    constructor(bookmaker: Bookmaker, url: string, api: SbtechApi) {
-        this._bookmaker = bookmaker
+    constructor(provider: Provider, url: string, api: SbtechApi) {
+        this._bookmaker = provider
         this._url = url
         this._api = api
     }
 
-    get bookmaker(){
+    get provider(){
         return this._bookmaker
     }
 

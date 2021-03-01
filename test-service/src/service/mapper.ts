@@ -1,4 +1,5 @@
-import {BookmakerId, Participant, ParticipantName} from "../domain/betoffer"
+import {Participant, ParticipantName} from "../domain/betoffer"
+import {BookmakerId} from "./bookmaker";
 
 export const participantMap = {}
 
@@ -38,8 +39,8 @@ export class ParticipantMapper {
                         bookmakerIds = bookmakerIds.concat(otherParticipant.bookmakerIds)
                     }
                 })
-                const ids: BookmakerId[] = Array.from(new Set(bookmakerIds.map(bookmakerId => bookmakerId.bookmaker))).map(bookmaker => {
-                    return bookmakerIds.find(x => x.bookmaker === bookmaker)
+                const ids: BookmakerId[] = Array.from(new Set(bookmakerIds.map(bookmakerId => bookmakerId.provider))).map(bookmaker => {
+                    return bookmakerIds.find(x => x.provider === bookmaker)
                 })
                 merged.push(new Participant(participant.name, ids))
             }

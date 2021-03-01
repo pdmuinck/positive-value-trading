@@ -1,4 +1,4 @@
-import {Bookmaker, Provider} from "../service/bookmaker";
+import {Bookmaker, BookmakerId, Provider} from "../service/bookmaker";
 
 export class Sport{
     private readonly _name: SportName
@@ -44,7 +44,7 @@ export enum SportName{
     FOOTBALL= 'FOOTBALL'
 }
 
-export class Competition{
+export class Competition {
     private readonly _name: CompetitionName
     private readonly _bookmakerIds: BookmakerId[]
     private readonly _participants: Participant[]
@@ -55,46 +55,16 @@ export class Competition{
         this._participants = participants
     }
 
-    get name(){
+    get name() {
         return this._name
     }
 
-    get bookmakerIds(){
+    get bookmakerIds() {
         return this._bookmakerIds
     }
 
-    get participants(){
+    get participants() {
         return this._participants
-    }
-}
-
-export class BookmakerId {
-    private readonly _bookmaker: Bookmaker
-    private readonly _id: string
-    private readonly _idType: IdType
-    private readonly _provider: Provider
-
-    constructor(provider: Provider, id: string, idType: IdType, bookmaker: Bookmaker = undefined){
-        this._bookmaker = bookmaker
-        this._id = id
-        this._idType = idType
-        this._provider = provider
-    }
-
-    get bookmaker(){
-        return this._bookmaker
-    }
-
-    get id(){
-        return this._id
-    }
-
-    get idType() {
-        return this._idType
-    }
-
-    get provider() {
-        return this._provider
     }
 }
 

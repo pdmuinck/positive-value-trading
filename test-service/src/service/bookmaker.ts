@@ -1,6 +1,8 @@
+import {IdType} from "../domain/betoffer";
+
 export enum Bookmaker {
-    UNIBET_BELGIUM= 'UNIBET_BELGIUM',
-    NAPOLEON_GAMES = 'NAPOLEON_GAMES',
+    UNIBET_BELGIUM= 'ubbe',
+    NAPOLEON_GAMES = 'ngbe',
     PINNACLE= 'PINNACLE',
     BETFIRST= 'betfirst',
     GOLDEN_PALACE = 'goldenpalace',
@@ -34,6 +36,30 @@ export enum Provider {
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN',
     MAGIC_BETTING = 'MAGIC_BETTING'
+}
+
+export class BookmakerId {
+    private readonly _id: string
+    private readonly _idType: IdType
+    private readonly _provider: Provider
+
+    constructor(provider: Provider, id: string, idType: IdType){
+        this._id = id
+        this._idType = idType
+        this._provider = provider
+    }
+
+    get id(){
+        return this._id
+    }
+
+    get idType() {
+        return this._idType
+    }
+
+    get provider() {
+        return this._provider
+    }
 }
 
 export const providers = {}
