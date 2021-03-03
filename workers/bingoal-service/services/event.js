@@ -1,4 +1,6 @@
 const axios = require('axios')
+const WebSocketAwait = require("ws-await")
+const WebSocket = require("ws")
 
 const sports = {
     "FOOTBALL": 1
@@ -27,30 +29,6 @@ event.getEvents = async () => {
     return await axios.post('https://www.bingoal.be/A/sport', 'func=sport&k=3756&id=35', headers).then(response => response.data).catch(error => console.log(error))
 }
 
-let websocketUrl = ""
-
-    const functions = [function(t, e, n) {
-    "use strict";
-
-    const s = "abcdefghijklmnopqrstuvwxyz012345"
-        const i = 43
-    e.exports = {
-        string: function(t) {
-            for (var e = s.length, n = i.randomBytes(t), r = [], o = 0; o < t; o++) r.push(s.substr(n[o] % e, 1));
-            return r.join("")
-        },
-        number: function(t) {
-            return Math.floor(Math.random() * t)
-        },
-        numberString: function(t) {
-            var e = ("" + (t - 1)).length;
-            return (new Array(e + 1).join("0") + this.number(t)).slice(-e)
-        }
-    }
-}, {
-    "crypto": 43
-}]
-
 function string(t) {
     const crypto = require("crypto")
     const s = "abcdefghijklmnopqrstuvwxyz012345"
@@ -69,55 +47,64 @@ function numberString(t) {
 }
 
 
-function bla() {
+function getApiUrl() {
     const generatedId = string(8)
     const server = numberString(1e3)
-    console.log(server + "/" + generatedId)
+    const url = "wss://magicbetting.be/api/" + server + "/" + generatedId + "/websocket"
+    return url
 }
 
+let events
+
+async function test2() {
+    let circusWS = new WebSocket(getApiUrl(), null, {rejectUnauthorized: false})
+
+    circusWS.on('open', function open() {
+        console.log('open')
+        const leagueId = "soccer-be-sb_type_19372"
+
+        // lists the event together with market ids
+
+        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/sports/soccer\ndestination:/api/sports/soccer\nlocale:nl\n\n\u0000"]))
+        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/soccer-live-match-events-grouped-by-type\ndestination:/api/eventgroups/soccer-live-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
+        circusWS.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:100000,100000\n\n\u0000"]))
+        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/user/request-response\ndestination:/user/request-response\n\n\u0000"]))
+        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/all-sports-with-events\ndestination:/api/items/list/all-sports-with-events\n\n\u0000"]))
+        circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\ndestination:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
+        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/events/3243155496\ndestination:/api/events/3243155496\nlocale:nl\n\n\u0000"]))
 
 
-async function test() {
-    const express = require("express")
-    const path = require("path")
-    const app = express()
 
-    const server = app.listen('8080', (error) => {
-        if (error) {
-            console.error('ERROR - Unable to start server.')
-        } else {
-            console.info(`INFO - Server started on`)
-        }
+        // subscribe to markets
+        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/markets/3276302953\ndestination:/api/markets/3276302833\nlocale:nl\n\n\u0000"]))
     })
 
-    app.get("/", (req, resp) => {
-        resp.sendFile(path.join(__dirname+'/index.html'))
-    })
-
-    app.get("/config.json", (req, resp) => {
-        resp.send({"IMSConfig":{"pasUrl":"https://login.magicbetting.be/jswrapper/integration.js.php?casino=magicbetting","serviceType":"GamePlay","systemId":118},"analytics":{"googleAnalytics":{"trackingId":"UA-107696522-2"},"gtm":{"enableGaToGtm":true,"id":"GTM-5RC8FVS"}},"bonuses":{"acca":true,"etb":false,"freebets":true,"prewager":false},"externalLinks":{"urls":{"cookieConsent":{"cookiesPolicy":"auto|{{baseUrl}}/{{lang}}/cookies-policy"},"footer":{"cookiesPolicy":"auto|{{baseUrl}}/{{lang}}/cookies-policy","gambleClinic":"222|http://www.gokkliniek.be","gamingCommission":{"openStrategy":"222","urlTemplate":{"fr":"https://www.gamingcommission.be/opencms/opencms/jhksweb_fr/protection/forbid/free/index.html","nl":"https://www.gamingcommission.be/opencms/opencms/jhksweb_nl/protection/forbid/free/"}},"gokhulp":{"openStrategy":"222","urlTemplate":{"fr":"https://www.gamingcommission.be/opencms/opencms/jhksweb_fr/protection/forbid/free/index.html","nl":"https://www.gamingcommission.be/opencms/opencms/jhksweb_nl/protection/forbid/free/"}},"playtech":"222|https://www.playtech.com","privacyPolicy":"auto|{{baseUrl}}/{{lang}}/privacy-policy","termsAndConditionsOnline":"auto|{{baseUrl}}/{{lang}}/tc-online"},"loginDialog":{"forgotDetails":"auto|{{baseUrl}}/{{lang}}/my-account/forgot_password","register":"auto|{{baseUrl}}/{{lang}}/register"},"mainNavigation":{"promotions":"222|https://promo.magicbetting.be/?utm_source=website\u0026utm_medium=homepage\u0026utm_campaign=link"},"myAccount":{"changePassword":"auto|{{baseUrl}}/{{lang}}/my-account/change_password?{{parameters}}","changePin":"auto|{{baseUrl}}/{{lang}}/my-account/change-pin?{{parameters}}","deposit":"auto|{{baseUrl}}/{{lang}}/my-account/deposit?{{parameters}}","depositLimits":"auto|{{baseUrl}}/{{lang}}/my-account/limits?{{parameters}}","promotions":"auto|{{baseUrl}}/{{lang}}/payment/my-promotions?{{parameters}}","selfExclusion":"auto|{{baseUrl}}/{{lang}}/my-account/self_exclusion?{{parameters}}","transactionHistory":"auto|{{baseUrl}}/{{lang}}/my-account/transaction-history?{{parameters}}","updateMyDetails":"auto|{{baseUrl}}/{{lang}}/my-account/update_details?{{parameters}}","withdraw":"auto|{{baseUrl}}/{{lang}}/my-account/withdraw?{{parameters}}"},"userAuthenticationInfo":{"register":"auto|{{baseUrl}}/{{lang}}/register"}},"values":{"baseUrl":" https://portal.magicbetting.be","parameters":"product=sport"}}})
-    })
-
-    app.get("/api/info", (req, resp) => {
-        resp.send({"entropy":-501477318,"origins":["*:*"],"cookie_needed":true,"websocket":true})
-    })
-
-    app.get("/socket.js", (req, resp) => {
-        resp.sendFile(path.join(__dirname + "/socket.js"))
-    })
-
-    app.get("/api/*", (req, resp) => {
-        const request = req.params["0"]
-        if(request.includes("websocket")) {
-            server.close()
-            console.log(request)
-        } else {
-            resp.status(101).send("hello")
-        }
+    circusWS.on('message', function incoming(data) {
+       if(data.includes('soccer-be-sb_type_19372')) {
+           circusWS.close()
+           events = data
+       }
     })
 }
 
-bla()
+let intervalId
+
+function bla() {
+    test2()
+    let test
+    intervalId = setInterval(() => {
+        if(events)  {
+            test = events
+            clearInterval(intervalId)
+        }
+    }, 2000)
+    console.log('lol')
+    return test
+}
+
+
+const test = bla()
+console.log(test)
 
 /*
 			_licenseRequired = "sport",

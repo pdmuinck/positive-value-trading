@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^3.0.3",
-    "node-inspect": "^2.0.0"
+    "node-inspect": "^2.0.0",
+    "ws-await": "^4.2.1"
   }
 }

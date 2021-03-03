@@ -67,7 +67,7 @@ export class MagicBettingConfig extends WebSocketConfig {
             return (new Array(e + 1).join("0") + number(t)).slice(-e)
         }
 
-        return super.url + numberString(1e3) + string(8)
+        return super.url + numberString(1e3) + "/" + string(8)
     }
 
     getEventRequestMessage(sportId, leagueId) {
@@ -90,7 +90,6 @@ export const goldenVegasConfig: BetConstructWebSocketConfig = new BetConstructWe
     "wss://wss.goldenvegas.be",
     2000
 )
-
 
 
 export const magicBettingConfig: WebSocketConfig = new MagicBettingConfig(

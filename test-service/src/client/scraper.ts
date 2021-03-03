@@ -20,7 +20,7 @@ export class Scraper {
         const betConstructResponses: ApiResponse[] = []
         const magicBettingResponses: ApiResponse[] = []
         await this.startBetConstructWS(betConstructResponses)
-        // await this.startMagicBettingWS(magicBettingResponses)
+        await this.startMagicBettingWS(magicBettingResponses)
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
         const httpResponses: ApiResponse[] = await this.getApiResponses(requests.flat())
         return httpResponses.concat(betConstructResponses.filter(response => response.data && response.data.MessageType === 1000)[0])
@@ -31,6 +31,7 @@ export class Scraper {
         const options = {
             unpackMessage: data => {
                 const parsedJson = JSON.parse(data)
+                console.log(parsedJson)
                 webSocketResponses.push(new ApiResponse(Provider.MAGIC_BETTING, parsedJson, RequestType.EVENT))
             },
             awaitTimeout: magicBettingConfig.timeOut
@@ -104,6 +105,8 @@ export class Scraper {
                     return this.toBingoalRequests(bookmakerId, requestType)
                 case Provider.BETCONSTRUCT:
                     return this.toBetConstructRequests(bookmakerId, requestType)
+                case Provider.MAGIC_BETTING:
+                    return this.toMagicBettingRequests(bookmakerId, requestType)
             }
         })
     }
@@ -118,7 +121,12 @@ export class Scraper {
     }
 
     toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-
+        return [
+            this._magicbettingWS.sendAwait(magicBettingConfig.getEventRequestMessage("844", bookmakerId.id)).then(
+                response => {
+                    return new ApiResponse(bookmakerId.provider, response, requestType)}
+            ).catch(error => console.log(error))
+        ]
     }
 
     toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
