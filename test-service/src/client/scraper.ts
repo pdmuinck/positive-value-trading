@@ -4,9 +4,12 @@ import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {BookmakerId, Provider, providers} from "../service/bookmaker";
-import {circusConfig, magicBettingConfig, WebSocketConfig} from "./websocket/config";
+import {circusConfig} from "./websocket/config";
 
 const WebSocketAwait = require("ws-await")
+const WebSocket = require("ws")
+
+let events
 
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
@@ -16,29 +19,70 @@ export class Scraper {
         this._sbtechTokenRepository = new SbtechTokenRepository()
     }
 
+    string(t) {
+        const crypto = require("crypto")
+        const s = "abcdefghijklmnopqrstuvwxyz012345"
+        const i = 43
+        for (var e = s.length, n = crypto.randomBytes(t), r = [], o = 0; o < t; o++) r.push(s.substr(n[o] % e, 1));
+        return r.join("")
+    }
+
+    number(t) {
+        return Math.floor(Math.random() * t)
+    }
+
+    numberString(t) {
+        var e = ("" + (t - 1)).length;
+        return (new Array(e + 1).join("0") + this.number(t)).slice(-e)
+    }
+
+
+    getMagicBettingApiUrl() {
+        const generatedId = this.string(8)
+        const server = this.numberString(1e3)
+        const url = "wss://magicbetting.be/api/" + server + "/" + generatedId + "/websocket"
+        return url
+    }
+
     async getEventsForCompetition(competition: Competition) {
         const betConstructResponses: ApiResponse[] = []
-        const magicBettingResponses: ApiResponse[] = []
         await this.startBetConstructWS(betConstructResponses)
-        await this.startMagicBettingWS(magicBettingResponses)
+        const magicBetting = await this.waitUntil(competition.bookmakerIds.filter(id => id.provider === Provider.MAGIC_BETTING)[0])
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
         const httpResponses: ApiResponse[] = await this.getApiResponses(requests.flat())
         return httpResponses.concat(betConstructResponses.filter(response => response.data && response.data.MessageType === 1000)[0])
-            .concat(magicBettingResponses)
+            .concat(magicBetting)
     }
 
-    async startMagicBettingWS(webSocketResponses: ApiResponse[]) {
-        const options = {
-            unpackMessage: data => {
-                const parsedJson = JSON.parse(data)
-                console.log(parsedJson)
-                webSocketResponses.push(new ApiResponse(Provider.MAGIC_BETTING, parsedJson, RequestType.EVENT))
-            },
-            awaitTimeout: magicBettingConfig.timeOut
-        }
-        this._magicbettingWS = new WebSocketAwait(magicBettingConfig.url, options)
-        await this.waitForOpenConnection(this._magicbettingWS)
-            this._magicbettingWS.sendAwait(magicBettingConfig.getConnectMessage())
+    waitUntil(bookmakerId: BookmakerId): Promise<ApiResponse> {
+        this.startMagicBettingWS(bookmakerId)
+        return new Promise(resolve => {
+            const interval = setInterval(() => {
+                if (events) {
+                    resolve(new ApiResponse(Provider.MAGIC_BETTING, events, RequestType.EVENT))
+                    clearInterval(interval)
+                }
+            }, 1000)
+        })
+    }
+
+    async startMagicBettingWS(bookmakerId: BookmakerId) {
+        const leagueId = bookmakerId.id
+        let ws = new WebSocket(this.getMagicBettingApiUrl(), null, {rejectUnauthorized: false})
+
+        ws.on('open', function open() {
+            ws.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:100000,100000\n\n\u0000"]))
+            ws.send(JSON.stringify(["SUBSCRIBE\nid:/user/request-response\ndestination:/user/request-response\n\n\u0000"]))
+            ws.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/all-sports-with-events\ndestination:/api/items/list/all-sports-with-events\n\n\u0000"]))
+            ws.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\ndestination:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
+        })
+
+        ws.on('message', function incoming(data) {
+            if(data.includes('soccer-be-sb_type_19372')) {
+                events = data
+                ws.close()
+            }
+        })
     }
 
     async startBetConstructWS(webSocketResponses: ApiResponse[]) {
@@ -105,24 +149,25 @@ export class Scraper {
                     return this.toBingoalRequests(bookmakerId, requestType)
                 case Provider.BETCONSTRUCT:
                     return this.toBetConstructRequests(bookmakerId, requestType)
-                case Provider.MAGIC_BETTING:
-                    return this.toMagicBettingRequests(bookmakerId, requestType)
             }
         })
+    }
+
+    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        //this.startMagicBettingWS(bookmakerId)
+        return [new Promise(resolve => {
+            const interval = setInterval(() => {
+                if (this._magicbettingWS) {
+                    resolve(new ApiResponse(Provider.MAGIC_BETTING, this._magicbettingWS, RequestType.EVENT))
+                    clearInterval(interval)
+                }
+            }, 1000)
+        })]
     }
 
     toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         return [
             this._betconstructWS.sendAwait(circusConfig.getEventRequestMessage("844", bookmakerId.id)).then(
-                response => {
-                    return new ApiResponse(bookmakerId.provider, response, requestType)}
-            ).catch(error => console.log(error))
-        ]
-    }
-
-    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [
-            this._magicbettingWS.sendAwait(magicBettingConfig.getEventRequestMessage("844", bookmakerId.id)).then(
                 response => {
                     return new ApiResponse(bookmakerId.provider, response, requestType)}
             ).catch(error => console.log(error))
