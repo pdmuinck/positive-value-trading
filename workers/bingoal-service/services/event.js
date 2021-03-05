@@ -62,21 +62,10 @@ async function test2() {
     circusWS.on('open', function open() {
         console.log('open')
         const leagueId = "soccer-be-sb_type_19372"
-
-        // lists the event together with market ids
-
-        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/sports/soccer\ndestination:/api/sports/soccer\nlocale:nl\n\n\u0000"]))
-        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/soccer-live-match-events-grouped-by-type\ndestination:/api/eventgroups/soccer-live-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
         circusWS.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:100000,100000\n\n\u0000"]))
         circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/user/request-response\ndestination:/user/request-response\n\n\u0000"]))
         circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/all-sports-with-events\ndestination:/api/items/list/all-sports-with-events\n\n\u0000"]))
         circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\ndestination:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
-        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/events/3243155496\ndestination:/api/events/3243155496\nlocale:nl\n\n\u0000"]))
-
-
-
-        // subscribe to markets
-        //circusWS.send(JSON.stringify(["SUBSCRIBE\nid:/api/markets/3276302953\ndestination:/api/markets/3276302833\nlocale:nl\n\n\u0000"]))
     })
 
     circusWS.on('message', function incoming(data) {
@@ -87,24 +76,26 @@ async function test2() {
     })
 }
 
-let intervalId
-
-function bla() {
+function waitUntil() {
     test2()
-    let test
-    intervalId = setInterval(() => {
-        if(events)  {
-            test = events
-            clearInterval(intervalId)
-        }
-    }, 2000)
-    console.log('lol')
-    return test
+    return new Promise(resolve => {
+        const interval = setInterval(() => {
+            if (events) {
+                resolve(events)
+                clearInterval(interval)
+            }
+        }, 1000)
+    })
 }
 
+async function test() {
+    const bar = await waitUntil()
+    console.log(bar)
+}
 
-const test = bla()
-console.log(test)
+test()
+
+
 
 /*
 			_licenseRequired = "sport",

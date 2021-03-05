@@ -44,7 +44,10 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-be-sb_type_19372", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "be-jupiler-league1", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/26/league/first-division-a",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "18340", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "38", IdType.COMPETITION),
+            new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants
     ),
@@ -61,7 +64,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-nl-sb_type_19358", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "nl-eredivisie1", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/25/league/eredivisie",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "21463", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "39", IdType.COMPETITION)
         ],
         eredivisieParticipants
     ),
@@ -78,7 +83,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-nl-sb_type_19358", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "de-bundesliga", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/2/league/bundesliga",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "23738", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "42", IdType.COMPETITION)
         ],
         bundesligaParticipants
     ),
@@ -95,7 +102,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-es-sb_type_19160", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "es-liga", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/3/league/la-liga",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "23127", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "36", IdType.COMPETITION)
         ],
         laLigaParticipants
     ),
@@ -112,7 +121,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-fr-sb_type_19327", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "fr-ligue-1", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/5/league/ligue-1",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "23651", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "4", IdType.COMPETITION)
         ],
         ligue1Participants
     ),
@@ -129,7 +140,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-uk-sb_type_19157", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "ing-premier-league", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/1/league/premier-league",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "23104", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "1", IdType.COMPETITION)
         ],
         premierLeagueParticipants
     ),
@@ -146,7 +159,9 @@ export const footballCompetitions = [
             new BookmakerId(Provider.MAGIC_BETTING, "soccer-it-sb_type_19159", IdType.COMPETITION),
             new BookmakerId(Provider.LADBROKES, "it-serie-a", IdType.COMPETITION),
             new BookmakerId(Provider.MERIDIAN, "https://meridianbet.be/sails/sport/58/region/4/league/serie-a",
-                IdType.COMPETITION)
+                IdType.COMPETITION),
+            new BookmakerId(Provider.SCOOORE, "5712", IdType.COMPETITION),
+            new BookmakerId(Provider.STANLEYBET, "33", IdType.COMPETITION)
         ],
         serieAParticipants
     )
@@ -165,7 +180,9 @@ export const sports = [
             new BookmakerId(Provider.BINGOAL, "SOCCER", IdType.SPORT),
             new BookmakerId(Provider.MAGIC_BETTING, "", IdType.SPORT),
             new BookmakerId(Provider.LADBROKES, "", IdType.SPORT),
-            new BookmakerId(Provider.MERIDIAN, "58", IdType.SPORT)
+            new BookmakerId(Provider.MERIDIAN, "58", IdType.SPORT),
+            new BookmakerId(Provider.SCOOORE, "", IdType.SPORT),
+            new BookmakerId(Provider.STANLEYBET, "", IdType.SPORT)
         ],
         footballCompetitions
     )
