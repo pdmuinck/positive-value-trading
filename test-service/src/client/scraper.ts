@@ -14,34 +14,8 @@ let events
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
     private _betconstructWS
-    private _magicbettingWS
     constructor(){
         this._sbtechTokenRepository = new SbtechTokenRepository()
-    }
-
-    string(t) {
-        const crypto = require("crypto")
-        const s = "abcdefghijklmnopqrstuvwxyz012345"
-        const i = 43
-        for (var e = s.length, n = crypto.randomBytes(t), r = [], o = 0; o < t; o++) r.push(s.substr(n[o] % e, 1));
-        return r.join("")
-    }
-
-    number(t) {
-        return Math.floor(Math.random() * t)
-    }
-
-    numberString(t) {
-        var e = ("" + (t - 1)).length;
-        return (new Array(e + 1).join("0") + this.number(t)).slice(-e)
-    }
-
-
-    getMagicBettingApiUrl() {
-        const generatedId = this.string(8)
-        const server = this.numberString(1e3)
-        const url = "wss://magicbetting.be/api/" + server + "/" + generatedId + "/websocket"
-        return url
     }
 
     async getEventsForCompetition(competition: Competition) {
@@ -67,8 +41,34 @@ export class Scraper {
     }
 
     async startMagicBettingWS(bookmakerId: BookmakerId) {
+
+        function string(t) {
+            const crypto = require("crypto")
+            const s = "abcdefghijklmnopqrstuvwxyz012345"
+            const i = 43
+            for (var e = s.length, n = crypto.randomBytes(t), r = [], o = 0; o < t; o++) r.push(s.substr(n[o] % e, 1));
+            return r.join("")
+        }
+
+        function number(t) {
+            return Math.floor(Math.random() * t)
+        }
+
+        function numberString(t) {
+            var e = ("" + (t - 1)).length;
+            return (new Array(e + 1).join("0") + number(t)).slice(-e)
+        }
+
+
+        function getMagicBettingApiUrl() {
+            const generatedId = string(8)
+            const server = numberString(1e3)
+            const url = "wss://magicbetting.be/api/" + server + "/" + generatedId + "/websocket"
+            return url
+        }
+
         const leagueId = bookmakerId.id
-        let ws = new WebSocket(this.getMagicBettingApiUrl(), null, {rejectUnauthorized: false})
+        let ws = new WebSocket(getMagicBettingApiUrl(), null, {rejectUnauthorized: false})
 
         ws.on('open', function open() {
             ws.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:100000,100000\n\n\u0000"]))
@@ -149,20 +149,33 @@ export class Scraper {
                     return this.toBingoalRequests(bookmakerId, requestType)
                 case Provider.BETCONSTRUCT:
                     return this.toBetConstructRequests(bookmakerId, requestType)
+                case Provider.LADBROKES:
+                    return this.toLadbrokesRequests(bookmakerId, requestType)
+                case Provider.MERIDIAN:
+                    return this.toMeridianRequests(bookmakerId, requestType)
             }
         })
     }
 
-    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        //this.startMagicBettingWS(bookmakerId)
-        return [new Promise(resolve => {
-            const interval = setInterval(() => {
-                if (this._magicbettingWS) {
-                    resolve(new ApiResponse(Provider.MAGIC_BETTING, this._magicbettingWS, RequestType.EVENT))
-                    clearInterval(interval)
-                }
-            }, 1000)
-        })]
+    toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        return [
+            axios.get(bookmakerId.id).then(response => new ApiResponse(Provider.MERIDIAN, response.data, RequestType.EVENT))
+        ]
+    }
+
+    toLadbrokesRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const headers = {
+            headers: {
+                'x-eb-accept-language': 'en_BE',
+                'x-eb-marketid': 5,
+                'x-eb-platformid': 2
+            }
+        }
+        return [
+            axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
+                + bookmakerId.id + '?prematch=1&live=0', headers).then(response =>
+                new ApiResponse(bookmakerId.provider, response, requestType))
+        ]
     }
 
     toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType) {
