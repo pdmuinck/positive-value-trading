@@ -280,7 +280,7 @@ export class Scraper {
         return [
             axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
                 + bookmakerId.id + '?prematch=1&live=0', headers).then(response =>
-                new ApiResponse(bookmakerId.provider, response, requestType))
+                new ApiResponse(bookmakerId.provider, response.data, requestType))
         ]
     }
 

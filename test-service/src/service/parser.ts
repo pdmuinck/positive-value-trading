@@ -73,6 +73,16 @@ export class Parser {
             return []
         }
     }
+
+    static toDecimalOdds(americanOdds): number {
+
+        if(americanOdds < 0) {
+            return parseFloat(((100 / Math.abs(americanOdds)) + 1).toFixed(2))
+        } else {
+            return parseFloat(((americanOdds / 100) + 1).toFixed(2))
+        }
+
+    }
 }
 
 export class BetradarParser {
@@ -899,4 +909,14 @@ export class PinnacleParser {
         })
         return vigFreePrices
     }
+}
+
+function toDecimalOdds(americanOdds): number {
+
+    if(americanOdds < 0) {
+        return parseFloat(((100 / Math.abs(americanOdds)) + 1).toFixed(2))
+    } else {
+        return parseFloat(((americanOdds / 100) + 1).toFixed(2))
+    }
+
 }

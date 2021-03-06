@@ -1,0 +1,883 @@
+{
+  "events": [
+    {
+      "id": 1007294165,
+      "name": "Royal Antwerp FC - Kortrijk",
+      "nameDelimiter": "-",
+      "englishName": "Royal Antwerp FC - Kortrijk",
+      "homeName": "Royal Antwerp FC",
+      "awayName": "Kortrijk",
+      "start": "2021-03-06T19:45:02Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 32,
+      "liveBoCount": 66,
+      "sport": "FOOTBALL",
+      "tags": [
+        "VISUALIZATION",
+        "OPEN_FOR_LIVE",
+        "PREMATCH_STATS",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "STARTED",
+      "participants": [
+        {
+          "participantId": 1000055718,
+          "name": "Royal Antwerp FC",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000004832,
+          "name": "Kortrijk",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000,
+      "teamColors": {
+        "home": {
+          "shirtColor1": "#ff0000",
+          "shirtColor2": "#ff0000"
+        },
+        "away": {
+          "shirtColor1": "#000000",
+          "shirtColor2": "#000000"
+        }
+      }
+    },
+    {
+      "id": 1007294166,
+      "name": "Royal Excel Mouscron - Standard de Liège",
+      "nameDelimiter": "-",
+      "englishName": "Royal Excel Mouscron - Standard de Liège",
+      "homeName": "Royal Excel Mouscron",
+      "awayName": "Standard de Liège",
+      "start": "2021-03-07T12:30:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 279,
+      "sport": "FOOTBALL",
+      "tags": [
+        "PREMATCH_STATS",
+        "OFFERED_LIVE",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000041283,
+          "name": "Royal Excel Mouscron",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000000235,
+          "name": "Standard de Liège",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294169,
+      "name": "Club Brugge - Zulte Waregem",
+      "nameDelimiter": "-",
+      "englishName": "Club Brugge - Zulte Waregem",
+      "homeName": "Club Brugge",
+      "awayName": "Zulte Waregem",
+      "start": "2021-03-07T15:00:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 289,
+      "sport": "FOOTBALL",
+      "tags": [
+        "PREMATCH_STATS",
+        "OFFERED_LIVE",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000000199,
+          "name": "Club Brugge",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000000546,
+          "name": "Zulte Waregem",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294171,
+      "name": "Anderlecht - KV Mechelen",
+      "nameDelimiter": "-",
+      "englishName": "Anderlecht - KV Mechelen",
+      "homeName": "Anderlecht",
+      "awayName": "KV Mechelen",
+      "start": "2021-03-07T17:15:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 288,
+      "sport": "FOOTBALL",
+      "tags": [
+        "PREMATCH_STATS",
+        "OFFERED_LIVE",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000000200,
+          "name": "Anderlecht",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000015734,
+          "name": "KV Mechelen",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294173,
+      "name": "KRC Genk - Cercle Brugge",
+      "nameDelimiter": "-",
+      "englishName": "KRC Genk - Cercle Brugge",
+      "homeName": "KRC Genk",
+      "awayName": "Cercle Brugge",
+      "start": "2021-03-07T19:45:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 287,
+      "sport": "FOOTBALL",
+      "tags": [
+        "PREMATCH_STATS",
+        "OFFERED_LIVE",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000000234,
+          "name": "KRC Genk",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000042279,
+          "name": "Cercle Brugge",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294172,
+      "name": "AA Gent - KV Oostende",
+      "nameDelimiter": "-",
+      "englishName": "AA Gent - KV Oostende",
+      "homeName": "AA Gent",
+      "awayName": "KV Oostende",
+      "start": "2021-03-08T19:45:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 290,
+      "sport": "FOOTBALL",
+      "tags": [
+        "PREMATCH_STATS",
+        "OFFERED_LIVE",
+        "BET_BUILDER",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000032662,
+          "name": "AA Gent",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000010829,
+          "name": "KV Oostende",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294181,
+      "name": "KRC Genk - Standard de Liège",
+      "nameDelimiter": "-",
+      "englishName": "KRC Genk - Standard de Liège",
+      "homeName": "KRC Genk",
+      "awayName": "Standard de Liège",
+      "start": "2021-03-19T19:45:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000000235,
+          "name": "Standard de Liège",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000000234,
+          "name": "KRC Genk",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294175,
+      "name": "Waasland-Beveren - Sint-Truiden",
+      "nameDelimiter": "-",
+      "englishName": "Waasland-Beveren - Sint-Truiden",
+      "homeName": "Waasland-Beveren",
+      "awayName": "Sint-Truiden",
+      "start": "2021-03-20T15:15:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000011409,
+          "name": "Sint-Truiden",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000818435,
+          "name": "Waasland-Beveren",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294183,
+      "name": "AS Eupen - Kortrijk",
+      "nameDelimiter": "-",
+      "englishName": "AS Eupen - Kortrijk",
+      "homeName": "AS Eupen",
+      "awayName": "Kortrijk",
+      "start": "2021-03-20T17:30:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000004832,
+          "name": "Kortrijk",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000046509,
+          "name": "AS Eupen",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294182,
+      "name": "Royal Excel Mouscron - KV Oostende",
+      "nameDelimiter": "-",
+      "englishName": "Royal Excel Mouscron - KV Oostende",
+      "homeName": "Royal Excel Mouscron",
+      "awayName": "KV Oostende",
+      "start": "2021-03-20T17:30:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000010829,
+          "name": "KV Oostende",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000041283,
+          "name": "Royal Excel Mouscron",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294180,
+      "name": "Beerschot - Sporting de Charleroi",
+      "nameDelimiter": "-",
+      "englishName": "Beerschot - Sporting de Charleroi",
+      "homeName": "Beerschot",
+      "awayName": "Sporting de Charleroi",
+      "start": "2021-03-20T19:45:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1002206222,
+          "name": "Sporting de Charleroi",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1001685650,
+          "name": "Beerschot",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294176,
+      "name": "Club Brugge - Royal Antwerp FC",
+      "nameDelimiter": "-",
+      "englishName": "Club Brugge - Royal Antwerp FC",
+      "homeName": "Club Brugge",
+      "awayName": "Royal Antwerp FC",
+      "start": "2021-03-21T12:30:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000055718,
+          "name": "Royal Antwerp FC",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000000199,
+          "name": "Club Brugge",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294179,
+      "name": "KV Mechelen - OH Leuven",
+      "nameDelimiter": "-",
+      "englishName": "KV Mechelen - OH Leuven",
+      "homeName": "KV Mechelen",
+      "awayName": "OH Leuven",
+      "start": "2021-03-21T15:00:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000194369,
+          "name": "OH Leuven",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000015734,
+          "name": "KV Mechelen",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294177,
+      "name": "Anderlecht - Zulte Waregem",
+      "nameDelimiter": "-",
+      "englishName": "Anderlecht - Zulte Waregem",
+      "homeName": "Anderlecht",
+      "awayName": "Zulte Waregem",
+      "start": "2021-03-21T17:15:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000000546,
+          "name": "Zulte Waregem",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000000200,
+          "name": "Anderlecht",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    },
+    {
+      "id": 1007294178,
+      "name": "AA Gent - Cercle Brugge",
+      "nameDelimiter": "-",
+      "englishName": "AA Gent - Cercle Brugge",
+      "homeName": "AA Gent",
+      "awayName": "Cercle Brugge",
+      "start": "2021-03-21T19:45:00Z",
+      "group": "Jupiler Pro League",
+      "groupId": 1000094965,
+      "path": [
+        {
+          "id": 1000093190,
+          "name": "Football",
+          "englishName": "Football",
+          "termKey": "football"
+        },
+        {
+          "id": 1000461740,
+          "name": "Belgium",
+          "englishName": "Belgium",
+          "termKey": "belgium"
+        },
+        {
+          "id": 1000094965,
+          "name": "Jupiler Pro League",
+          "englishName": "Jupiler Pro League",
+          "termKey": "jupiler_pro_league"
+        }
+      ],
+      "nonLiveBoCount": 1,
+      "sport": "FOOTBALL",
+      "tags": [
+        "OFFERED_LIVE",
+        "MATCH"
+      ],
+      "state": "NOT_STARTED",
+      "participants": [
+        {
+          "participantId": 1000042279,
+          "name": "Cercle Brugge",
+          "scratched": false,
+          "nonRunner": false,
+          "home": false,
+          "participantType": "TEAM"
+        },
+        {
+          "participantId": 1000032662,
+          "name": "AA Gent",
+          "scratched": false,
+          "nonRunner": false,
+          "home": true,
+          "participantType": "TEAM"
+        }
+      ],
+      "groupSortOrder": 3999001000000000000
+    }
+  ]
+}

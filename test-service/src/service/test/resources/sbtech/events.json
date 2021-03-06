@@ -1,0 +1,6601 @@
+{
+  "events": [
+    {
+      "id": "21908611",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Antwerp vs Kortrijk",
+      "betslipLine": "Antwerp vs Kortrijk",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1330",
+          "name": "Antwerp",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1335",
+          "name": "Kortrijk",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "13367",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 12,
+          "linesCount": 23,
+          "isPlayerProps": false
+        },
+        {
+          "id": "13370",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 10,
+          "linesCount": 16,
+          "isPlayerProps": false
+        },
+        {
+          "id": "13371",
+          "name": "Fast Markets",
+          "order": 60,
+          "marketsCount": 12,
+          "linesCount": 12,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 29,
+      "marketLinesCount": 40,
+      "startEventDate": "2021-03-06T19:45:00Z",
+      "status": "InProgress",
+      "score": {
+        "homeScore": "2",
+        "awayScore": "2",
+        "additionalScores": {
+          "cornersTeam1": "4",
+          "cornersTeam2": "4",
+          "firstHalfScore1": "1",
+          "firstHalfScore2": "0",
+          "penaltiesTeam1": "2",
+          "penaltiesTeam2": "0",
+          "redCardsTeam1": "1",
+          "redCardsTeam2": "0",
+          "secondHalfScore1": "1",
+          "secondHalfScore2": "2",
+          "yellowCardsTeam1": "0",
+          "yellowCardsTeam2": "1"
+        },
+        "combinedSecondTierScores": [
+          "1 : 0",
+          "1 : 2"
+        ]
+      },
+      "isLive": true,
+      "isGoingLive": false,
+      "liveGameState": {
+        "clockRunning": true,
+        "clockDirection": "Stopwatch",
+        "gameTime": 3997,
+        "gamePart": "SecondHalf"
+      },
+      "tags": [
+        "FastMarket",
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "Vidiprinter",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": true,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "SBTech",
+          "providerEventId": "21908611",
+          "mediaType": "Vidiprinter"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031513",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031513",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031513",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 0,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "21908613",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Mouscron Peruwelz vs Standard Liege",
+      "betslipLine": "Mouscron Peruwelz vs Standard Liege",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "110209",
+          "name": "Mouscron Peruwelz",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "13635",
+          "name": "Standard Liege",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15892",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 16,
+          "linesCount": 27,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 30,
+          "linesCount": 44,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 15,
+          "linesCount": 35,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15895",
+          "name": "Corners",
+          "order": 40,
+          "marketsCount": 16,
+          "linesCount": 20,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15896",
+          "name": "Period",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 11,
+          "linesCount": 11,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 103,
+      "marketLinesCount": 146,
+      "startEventDate": "2021-03-07T12:30:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": true,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031515",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031515",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031515",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 103,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "21908614",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Anderlecht vs KV Mechelen",
+      "betslipLine": "Anderlecht vs KV Mechelen",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "366",
+          "name": "Anderlecht",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "6246",
+          "name": "KV Mechelen",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15892",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 16,
+          "linesCount": 28,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 30,
+          "linesCount": 45,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 15,
+          "linesCount": 35,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15895",
+          "name": "Corners",
+          "order": 40,
+          "marketsCount": 16,
+          "linesCount": 20,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15896",
+          "name": "Period",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 11,
+          "linesCount": 11,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 103,
+      "marketLinesCount": 148,
+      "startEventDate": "2021-03-07T17:15:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": true,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031507",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031507",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031507",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 103,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "21908615",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Club Brugge vs Zulte Waregem",
+      "betslipLine": "Club Brugge vs Zulte Waregem",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "367",
+          "name": "Club Brugge",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "2623",
+          "name": "Zulte Waregem",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15892",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 16,
+          "linesCount": 29,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 30,
+          "linesCount": 47,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 15,
+          "linesCount": 34,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15895",
+          "name": "Corners",
+          "order": 40,
+          "marketsCount": 16,
+          "linesCount": 20,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15896",
+          "name": "Period",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 11,
+          "linesCount": 11,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 103,
+      "marketLinesCount": 150,
+      "startEventDate": "2021-03-07T15:00:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": true,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031505",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031505",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031505",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 103,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "21908616",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Gent vs Oostende",
+      "betslipLine": "Gent vs Oostende",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1743",
+          "name": "Gent",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1568",
+          "name": "Oostende",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15892",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 16,
+          "linesCount": 28,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 30,
+          "linesCount": 45,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 15,
+          "linesCount": 34,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15896",
+          "name": "Period",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 11,
+          "linesCount": 11,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 85,
+      "marketLinesCount": 125,
+      "startEventDate": "2021-03-08T19:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": true,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031509",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031509",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031509",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 85,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "21908617",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Genk vs Cercle Brugge",
+      "betslipLine": "Genk vs Cercle Brugge",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1740",
+          "name": "Genk",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1562",
+          "name": "Cercle Brugge",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15892",
+          "name": "Goals",
+          "order": 20,
+          "marketsCount": 16,
+          "linesCount": 29,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 30,
+          "linesCount": 45,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 15,
+          "linesCount": 35,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15895",
+          "name": "Corners",
+          "order": 40,
+          "marketsCount": 16,
+          "linesCount": 20,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15896",
+          "name": "Period",
+          "order": 50,
+          "marketsCount": 13,
+          "linesCount": 13,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 11,
+          "linesCount": 11,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 103,
+      "marketLinesCount": 149,
+      "startEventDate": "2021-03-07T19:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": true,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031511",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031511",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031511",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 103,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016399",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Genk vs Standard Liege",
+      "betslipLine": "Genk vs Standard Liege",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1740",
+          "name": "Genk",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "13635",
+          "name": "Standard Liege",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-19T19:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031547",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031547",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031547",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016400",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Waasland-Beveren vs Sint Truiden",
+      "betslipLine": "Waasland-Beveren vs Sint Truiden",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "78925",
+          "name": "Waasland-Beveren",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "13756",
+          "name": "Sint Truiden",
+          "venueRole": "Away",
+          "country": "Belgium",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-20T15:15:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031557",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031557",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031557",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016401",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Eupen vs Kortrijk",
+      "betslipLine": "Eupen vs Kortrijk",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1332",
+          "name": "Eupen",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1335",
+          "name": "Kortrijk",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-20T17:30:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031551",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031551",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031551",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016402",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Mouscron Peruwelz vs Oostende",
+      "betslipLine": "Mouscron Peruwelz vs Oostende",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "110209",
+          "name": "Mouscron Peruwelz",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1568",
+          "name": "Oostende",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-20T17:30:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031549",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031549",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031549",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016403",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "KFCO Beerschot Wilrijk vs Charleroi",
+      "betslipLine": "KFCO Beerschot Wilrijk vs Charleroi",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "268331",
+          "name": "KFCO Beerschot Wilrijk",
+          "venueRole": "Home",
+          "country": "Belgium",
+          "metadata": {}
+        },
+        {
+          "id": "1554",
+          "name": "Charleroi",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-20T19:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031555",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031555",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031555",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016404",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Anderlecht vs Zulte Waregem",
+      "betslipLine": "Anderlecht vs Zulte Waregem",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "366",
+          "name": "Anderlecht",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "2623",
+          "name": "Zulte Waregem",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-21T17:15:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031543",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031543",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031543",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016405",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "KV Mechelen vs Oud Heverlee",
+      "betslipLine": "KV Mechelen vs Oud Heverlee",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "6246",
+          "name": "KV Mechelen",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "6244",
+          "name": "Oud Heverlee",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-21T15:00:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031553",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031553",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031553",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016406",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Club Brugge vs Antwerp",
+      "betslipLine": "Club Brugge vs Antwerp",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "367",
+          "name": "Club Brugge",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1330",
+          "name": "Antwerp",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-21T12:30:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031541",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031541",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031541",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    },
+    {
+      "id": "22016407",
+      "entityType": "Event",
+      "type": "Fixture",
+      "sportId": "1",
+      "sportOrder": 1,
+      "sportName": "Football",
+      "eventName": "Gent vs Cercle Brugge",
+      "betslipLine": "Gent vs Cercle Brugge",
+      "regionId": "20",
+      "regionCode": "BE",
+      "regionName": "Belgium",
+      "leagueId": "40815",
+      "leagueName": "Belgium - Jupiler Pro League",
+      "leagueOrder": 982,
+      "isTopLeague": false,
+      "participants": [
+        {
+          "id": "1743",
+          "name": "Gent",
+          "venueRole": "Home",
+          "country": "International",
+          "metadata": {}
+        },
+        {
+          "id": "1562",
+          "name": "Cercle Brugge",
+          "venueRole": "Away",
+          "country": "International",
+          "metadata": {}
+        }
+      ],
+      "marketGroups": [
+        {
+          "id": "15893",
+          "name": "Halves",
+          "order": 30,
+          "marketsCount": 2,
+          "linesCount": 2,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15894",
+          "name": "Main",
+          "order": 10,
+          "marketsCount": 4,
+          "linesCount": 4,
+          "isPlayerProps": false
+        },
+        {
+          "id": "15897",
+          "name": "Specials",
+          "order": 70,
+          "marketsCount": 1,
+          "linesCount": 1,
+          "isPlayerProps": false
+        }
+      ],
+      "totalMarketsCount": 6,
+      "marketLinesCount": 6,
+      "startEventDate": "2021-03-21T19:45:00Z",
+      "status": "NotStarted",
+      "score": null,
+      "isLive": false,
+      "isGoingLive": false,
+      "liveGameState": null,
+      "tags": [
+        "MatchTracker",
+        "Scoreboard",
+        "Stats",
+        "YourBetEligible"
+      ],
+      "metadata": {
+        "masterLeagueId": "26",
+        "numberOfParts": "2",
+        "secondsInOnePart": "2700"
+      },
+      "isSuspended": false,
+      "isTeamSwap": false,
+      "media": [
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031545",
+          "mediaType": "MatchTracker"
+        },
+        {
+          "providerName": "BetRadarV3",
+          "providerEventId": "23031545",
+          "mediaType": "Scoreboard"
+        },
+        {
+          "providerName": "BetRadarStats",
+          "providerEventId": "23031545",
+          "mediaType": "Stats"
+        }
+      ],
+      "totalActiveMarketsCount": 6,
+      "coupons": [],
+      "players": [],
+      "isYourBetAvailable": true
+    }
+  ],
+  "regions": [
+    {
+      "id": "20",
+      "entityType": "Region",
+      "code": "BE",
+      "name": "Belgium",
+      "activeSports": [],
+      "activeSportsCount": 0,
+      "liveFixturesTotalCount": 0,
+      "fixturesTotalCount": 0,
+      "fixturesCount": 0,
+      "outrightsTotalCount": 0,
+      "liveOutrightsTotalCount": 0
+    }
+  ],
+  "leagues": [
+    {
+      "id": "40815",
+      "entityType": "League",
+      "name": "Belgium - Jupiler Pro League",
+      "sportId": "1",
+      "sportName": "Football",
+      "regionId": "20",
+      "regionCode": "BE",
+      "masterLeagueId": null,
+      "defaultOrder": 982,
+      "isTopLeague": false,
+      "liveFixturesTotalCount": 0,
+      "fixturesTotalCount": 0,
+      "fixturesCount": 0,
+      "outrightsTotalCount": 0,
+      "tags": [],
+      "liveOutrightsTotalCount": 0,
+      "metadata": {}
+    }
+  ],
+  "markets": [
+    {
+      "id": "3_54068788",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "[2 : 2] OU",
+      "marketType": {
+        "id": "3_39",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": true,
+      "startDate": "2021-03-06T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU54068788O475_1",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110621355,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 4.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−116",
+            "decimal": "1.86",
+            "fractional": "25/29",
+            "hk": "0.86",
+            "indo": "-1.16",
+            "malay": "0.86"
+          },
+          "trueOdds": 1.86150142,
+          "points": 4.75,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996863",
+            "replacedSelectionId": "0OU54068788O375_1",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU54068788O500_1",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110621357,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+141",
+            "decimal": "2.40",
+            "fractional": "7/5",
+            "hk": "1.40",
+            "indo": "1.40",
+            "malay": "-0.71"
+          },
+          "trueOdds": 2.40926781,
+          "points": 5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996877",
+            "replacedSelectionId": "0OU54068788O400_1",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU54068788O450_1",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110621356,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 4.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−162",
+            "decimal": "1.61",
+            "fractional": "8/13",
+            "hk": "0.61",
+            "indo": "-1.64",
+            "malay": "0.61"
+          },
+          "trueOdds": 1.61644464,
+          "points": 4.5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996870",
+            "replacedSelectionId": "0OU54068788O350_1",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU54068788U500_3",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110621357,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−168",
+            "decimal": "1.59",
+            "fractional": "10/17",
+            "hk": "0.59",
+            "indo": "-1.69",
+            "malay": "0.59"
+          },
+          "trueOdds": 1.59590732,
+          "points": 5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996881",
+            "replacedSelectionId": "0OU54068788U400_3",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU54068788U475_3",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110621355,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 4.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−102",
+            "decimal": "1.98",
+            "fractional": "50/51",
+            "hk": "0.98",
+            "indo": "-1.02",
+            "malay": "0.98"
+          },
+          "trueOdds": 1.98229458,
+          "points": 4.75,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996867",
+            "replacedSelectionId": "0OU54068788U375_3",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU54068788U450_3",
+          "marketId": "3_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110621356,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 4.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+136",
+            "decimal": "2.36",
+            "fractional": "27/20",
+            "hk": "1.36",
+            "indo": "1.36",
+            "malay": "-0.74"
+          },
+          "trueOdds": 2.36392649,
+          "points": 4.5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996874",
+            "replacedSelectionId": "0OU54068788U350_3",
+            "type": "3"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": true,
+      "eventId": "21908611",
+      "liveData": {
+        "scoreHome": "2",
+        "scoreAway": "2"
+      },
+      "metadata": {
+        "sortingKey": "230"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "13367"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "13367",
+          "sortingKey": 10
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_54068788",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "[2 : 2] Asian Handicap",
+      "marketType": {
+        "id": "2_39",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": true,
+      "startDate": "2021-03-06T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC54068788P25_1",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110621356,
+          "name": "Antwerp",
+          "title": "",
+          "betslipLine": "Antwerp +0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−165",
+            "decimal": "1.60",
+            "fractional": "20/33",
+            "hk": "0.60",
+            "indo": "-1.67",
+            "malay": "0.60"
+          },
+          "trueOdds": 1.60427765,
+          "points": 0.25,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996869",
+            "replacedSelectionId": "0HC54068788P0_1",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC54068788P0_3",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110621355,
+          "name": "Kortrijk",
+          "title": "",
+          "betslipLine": "Kortrijk 0",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−165",
+            "decimal": "1.60",
+            "fractional": "20/33",
+            "hk": "0.60",
+            "indo": "-1.67",
+            "malay": "0.60"
+          },
+          "trueOdds": 1.60614763,
+          "points": 0,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996866",
+            "replacedSelectionId": "0HC54068788N25_3",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC54068788P50_1",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110621357,
+          "name": "Antwerp",
+          "title": "",
+          "betslipLine": "Antwerp +0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−263",
+            "decimal": "1.37",
+            "fractional": "10/27",
+            "hk": "0.37",
+            "indo": "-2.70",
+            "malay": "0.37"
+          },
+          "trueOdds": 1.3798139,
+          "points": 0.5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996876",
+            "replacedSelectionId": "0HC54068788P75_1",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC54068788P0_1",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110621355,
+          "name": "Antwerp",
+          "title": "",
+          "betslipLine": "Antwerp 0",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+139",
+            "decimal": "2.38",
+            "fractional": "11/8",
+            "hk": "1.38",
+            "indo": "1.38",
+            "malay": "-0.72"
+          },
+          "trueOdds": 2.38629945,
+          "points": 0,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996862",
+            "replacedSelectionId": "0HC54068788P25_1",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC54068788N50_3",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110621357,
+          "name": "Kortrijk",
+          "title": "",
+          "betslipLine": "Kortrijk -0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+216",
+            "decimal": "3.15",
+            "fractional": "43/20",
+            "hk": "2.15",
+            "indo": "2.15",
+            "malay": "-0.47"
+          },
+          "trueOdds": 3.15525844,
+          "points": -0.5,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996880",
+            "replacedSelectionId": "0HC54068788N75_3",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC54068788N25_3",
+          "marketId": "2_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110621356,
+          "name": "Kortrijk",
+          "title": "",
+          "betslipLine": "Kortrijk -0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+139",
+            "decimal": "2.39",
+            "fractional": "11/8",
+            "hk": "1.39",
+            "indo": "1.39",
+            "malay": "-0.72"
+          },
+          "trueOdds": 2.39043921,
+          "points": -0.25,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996873",
+            "replacedSelectionId": "0HC54068788P0_3",
+            "type": "2"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": true,
+      "eventId": "21908611",
+      "liveData": {
+        "scoreHome": "2",
+        "scoreAway": "2"
+      },
+      "metadata": {
+        "sortingKey": "220"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "13367",
+        "13370"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "13367",
+          "sortingKey": 60
+        },
+        {
+          "id": "13370",
+          "sortingKey": 290
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54068788",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "[2 : 2] 1X2",
+      "marketType": {
+        "id": "1_39",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": true,
+      "startDate": "2021-03-06T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54068788_1",
+          "marketId": "1_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110621355,
+          "name": "Antwerp",
+          "title": "",
+          "betslipLine": "Antwerp",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+390",
+            "decimal": "4.90",
+            "fractional": "19/5",
+            "hk": "3.90",
+            "indo": "3.90",
+            "malay": "-0.26"
+          },
+          "trueOdds": 4.9,
+          "points": null,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996861",
+            "type": "1"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54068788_3",
+          "marketId": "1_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110621355,
+          "name": "Kortrijk",
+          "title": "",
+          "betslipLine": "Kortrijk",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+195",
+            "decimal": "2.95",
+            "fractional": "39/20",
+            "hk": "1.95",
+            "indo": "1.95",
+            "malay": "-0.51"
+          },
+          "trueOdds": 2.95,
+          "points": null,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996865",
+            "type": "1"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54068788_2",
+          "marketId": "1_54068788",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110621355,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−105",
+            "decimal": "1.95",
+            "fractional": "20/21",
+            "hk": "0.95",
+            "indo": "-1.05",
+            "malay": "0.95"
+          },
+          "trueOdds": 1.95238096,
+          "points": null,
+          "isDisabled": true,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "772996864",
+            "type": "1"
+          },
+          "status": "Disabled",
+          "eventId": "21908611",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": true,
+      "eventId": "21908611",
+      "liveData": {
+        "scoreHome": "2",
+        "scoreAway": "2"
+      },
+      "metadata": {
+        "sortingKey": "210"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "13367"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "13367",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "3_53893514",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "OU",
+      "marketType": {
+        "id": "3_0",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T12:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU53893514U250_3",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331836,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−127",
+            "decimal": "1.78",
+            "fractional": "10/13",
+            "hk": "0.78",
+            "indo": "-1.28",
+            "malay": "0.78"
+          },
+          "trueOdds": 1.78730382,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970283",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893514U275_3",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331838,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−164",
+            "decimal": "1.61",
+            "fractional": "20/33",
+            "hk": "0.61",
+            "indo": "-1.64",
+            "malay": "0.61"
+          },
+          "trueOdds": 1.61066736,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970297",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893514U225_3",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110227705,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+102",
+            "decimal": "2.02",
+            "fractional": "51/50",
+            "hk": "1.02",
+            "indo": "1.02",
+            "malay": "-0.98"
+          },
+          "trueOdds": 2.0246064,
+          "points": 2.25,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241373",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893514O275_1",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331838,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+132",
+            "decimal": "2.31",
+            "fractional": "13/10",
+            "hk": "1.31",
+            "indo": "1.31",
+            "malay": "-0.76"
+          },
+          "trueOdds": 2.31604297,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970293",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893514O225_1",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110227705,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−127",
+            "decimal": "1.78",
+            "fractional": "10/13",
+            "hk": "0.78",
+            "indo": "-1.28",
+            "malay": "0.78"
+          },
+          "trueOdds": 1.78984239,
+          "points": 2.25,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241369",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893514O250_1",
+          "marketId": "3_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331836,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+103",
+            "decimal": "2.02",
+            "fractional": "51/50",
+            "hk": "1.02",
+            "indo": "1.02",
+            "malay": "-0.98"
+          },
+          "trueOdds": 2.02786443,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970279",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908613",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "310"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 170
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_53893514",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T12:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML53893514_1",
+          "marketId": "1_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227705,
+          "name": "Mouscron Peruwelz",
+          "title": "",
+          "betslipLine": "Mouscron Peruwelz",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+270",
+            "decimal": "3.70",
+            "fractional": "27/10",
+            "hk": "2.70",
+            "indo": "2.70",
+            "malay": "-0.37"
+          },
+          "trueOdds": 3.7,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241367",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893514_3",
+          "marketId": "1_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227705,
+          "name": "Standard Liege",
+          "title": "",
+          "betslipLine": "Standard Liege",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+105",
+            "decimal": "2.05",
+            "fractional": "21/20",
+            "hk": "1.05",
+            "indo": "1.05",
+            "malay": "-0.95"
+          },
+          "trueOdds": 2.05,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241371",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893514_2",
+          "marketId": "1_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110227705,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+265",
+            "decimal": "3.65",
+            "fractional": "53/20",
+            "hk": "2.65",
+            "indo": "2.65",
+            "malay": "-0.38"
+          },
+          "trueOdds": 3.65,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241370",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908613",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_53893514",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "Asian Handicap",
+      "marketType": {
+        "id": "2_0",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T12:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC53893514P75_1",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331838,
+          "name": "Mouscron Peruwelz",
+          "title": "",
+          "betslipLine": "Mouscron Peruwelz +0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−159",
+            "decimal": "1.63",
+            "fractional": "5/8",
+            "hk": "0.63",
+            "indo": "-1.59",
+            "malay": "0.63"
+          },
+          "trueOdds": 1.63060076,
+          "points": 0.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970292",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893514P50_1",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227705,
+          "name": "Mouscron Peruwelz",
+          "title": "",
+          "betslipLine": "Mouscron Peruwelz +0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−119",
+            "decimal": "1.84",
+            "fractional": "5/6",
+            "hk": "0.84",
+            "indo": "-1.19",
+            "malay": "0.84"
+          },
+          "trueOdds": 1.84144665,
+          "points": 0.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241368",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893514N25_3",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331836,
+          "name": "Standard Liege",
+          "title": "",
+          "betslipLine": "Standard Liege -0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−133",
+            "decimal": "1.75",
+            "fractional": "20/27",
+            "hk": "0.75",
+            "indo": "-1.33",
+            "malay": "0.75"
+          },
+          "trueOdds": 1.7508178,
+          "points": -0.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970282",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893514P25_1",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331836,
+          "name": "Mouscron Peruwelz",
+          "title": "",
+          "betslipLine": "Mouscron Peruwelz +0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+113",
+            "decimal": "2.12",
+            "fractional": "28/25",
+            "hk": "1.12",
+            "indo": "1.12",
+            "malay": "-0.89"
+          },
+          "trueOdds": 2.12537591,
+          "points": 0.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970278",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893514N75_3",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331838,
+          "name": "Standard Liege",
+          "title": "",
+          "betslipLine": "Standard Liege -0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+133",
+            "decimal": "2.33",
+            "fractional": "13/10",
+            "hk": "1.33",
+            "indo": "1.33",
+            "malay": "-0.75"
+          },
+          "trueOdds": 2.33429013,
+          "points": -0.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970296",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893514N50_3",
+          "marketId": "2_53893514",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227705,
+          "name": "Standard Liege",
+          "title": "",
+          "betslipLine": "Standard Liege -0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+101",
+            "decimal": "2.00",
+            "fractional": "1/1",
+            "hk": "1.00",
+            "indo": "1.00",
+            "malay": "1.00"
+          },
+          "trueOdds": 2.00555393,
+          "points": -0.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241372",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908613",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908613",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "300"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 160
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_53893515",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T17:15:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML53893515_1",
+          "marketId": "1_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227706,
+          "name": "Anderlecht",
+          "title": "",
+          "betslipLine": "Anderlecht",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−110",
+            "decimal": "1.90",
+            "fractional": "10/11",
+            "hk": "0.90",
+            "indo": "-1.11",
+            "malay": "0.90"
+          },
+          "trueOdds": 1.90909091,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241374",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893515_2",
+          "marketId": "1_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110227706,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+275",
+            "decimal": "3.75",
+            "fractional": "11/4",
+            "hk": "2.75",
+            "indo": "2.75",
+            "malay": "-0.36"
+          },
+          "trueOdds": 3.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241377",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893515_3",
+          "marketId": "1_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227706,
+          "name": "KV Mechelen",
+          "title": "",
+          "betslipLine": "KV Mechelen",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+315",
+            "decimal": "4.15",
+            "fractional": "3/1",
+            "hk": "3.15",
+            "indo": "3.15",
+            "malay": "-0.32"
+          },
+          "trueOdds": 4.15,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241378",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908614",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_53893515",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "Asian Handicap",
+      "marketType": {
+        "id": "2_0",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T17:15:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC53893515N25_1",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331842,
+          "name": "Anderlecht",
+          "title": "",
+          "betslipLine": "Anderlecht -0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−157",
+            "decimal": "1.63",
+            "fractional": "5/8",
+            "hk": "0.63",
+            "indo": "-1.59",
+            "malay": "0.63"
+          },
+          "trueOdds": 1.63564043,
+          "points": -0.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970320",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893515P25_3",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331842,
+          "name": "KV Mechelen",
+          "title": "",
+          "betslipLine": "KV Mechelen +0.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+132",
+            "decimal": "2.32",
+            "fractional": "13/10",
+            "hk": "1.32",
+            "indo": "1.32",
+            "malay": "-0.76"
+          },
+          "trueOdds": 2.32403917,
+          "points": 0.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970324",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893515N50_1",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227706,
+          "name": "Anderlecht",
+          "title": "",
+          "betslipLine": "Anderlecht -0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−115",
+            "decimal": "1.86",
+            "fractional": "20/23",
+            "hk": "0.86",
+            "indo": "-1.16",
+            "malay": "0.86"
+          },
+          "trueOdds": 1.86753786,
+          "points": -0.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241375",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893515P75_3",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331840,
+          "name": "KV Mechelen",
+          "title": "",
+          "betslipLine": "KV Mechelen +0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−135",
+            "decimal": "1.74",
+            "fractional": "20/27",
+            "hk": "0.74",
+            "indo": "-1.35",
+            "malay": "0.74"
+          },
+          "trueOdds": 1.74080466,
+          "points": 0.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970317",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893515N75_1",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331840,
+          "name": "Anderlecht",
+          "title": "",
+          "betslipLine": "Anderlecht -0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+114",
+            "decimal": "2.14",
+            "fractional": "57/50",
+            "hk": "1.14",
+            "indo": "1.14",
+            "malay": "-0.88"
+          },
+          "trueOdds": 2.14032084,
+          "points": -0.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970313",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893515P50_3",
+          "marketId": "2_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227706,
+          "name": "KV Mechelen",
+          "title": "",
+          "betslipLine": "KV Mechelen +0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−103",
+            "decimal": "1.97",
+            "fractional": "25/26",
+            "hk": "0.97",
+            "indo": "-1.03",
+            "malay": "0.97"
+          },
+          "trueOdds": 1.97549483,
+          "points": 0.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241379",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908614",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "300"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 160
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "3_53893515",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "OU",
+      "marketType": {
+        "id": "3_0",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T17:15:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU53893515O250_1",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110227706,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−118",
+            "decimal": "1.84",
+            "fractional": "50/59",
+            "hk": "0.84",
+            "indo": "-1.19",
+            "malay": "0.84"
+          },
+          "trueOdds": 1.84633554,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241376",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893515U225_3",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331842,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+127",
+            "decimal": "2.26",
+            "fractional": "5/4",
+            "hk": "1.26",
+            "indo": "1.26",
+            "malay": "-0.79"
+          },
+          "trueOdds": 2.26682145,
+          "points": 2.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970325",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893515O225_1",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331842,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−157",
+            "decimal": "1.63",
+            "fractional": "5/8",
+            "hk": "0.63",
+            "indo": "-1.59",
+            "malay": "0.63"
+          },
+          "trueOdds": 1.63536248,
+          "points": 2.25,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970321",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893515U275_3",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331840,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−132",
+            "decimal": "1.76",
+            "fractional": "20/27",
+            "hk": "0.76",
+            "indo": "-1.32",
+            "malay": "0.76"
+          },
+          "trueOdds": 1.76024398,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970318",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893515U250_3",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110227706,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−105",
+            "decimal": "1.95",
+            "fractional": "20/21",
+            "hk": "0.95",
+            "indo": "-1.05",
+            "malay": "0.95"
+          },
+          "trueOdds": 1.95687742,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241380",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893515O275_1",
+          "marketId": "3_53893515",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331840,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+106",
+            "decimal": "2.06",
+            "fractional": "53/50",
+            "hk": "1.06",
+            "indo": "1.06",
+            "malay": "-0.94"
+          },
+          "trueOdds": 2.06386204,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970314",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908614",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908614",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "310"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 170
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "3_53893516",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "OU",
+      "marketType": {
+        "id": "3_0",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T15:00:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU53893516U325_3",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110227707,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 3.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−105",
+            "decimal": "1.94",
+            "fractional": "20/21",
+            "hk": "0.94",
+            "indo": "-1.06",
+            "malay": "0.94"
+          },
+          "trueOdds": 1.94789662,
+          "points": 3.25,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241387",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893516U300_3",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331837,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+127",
+            "decimal": "2.26",
+            "fractional": "5/4",
+            "hk": "1.26",
+            "indo": "1.26",
+            "malay": "-0.79"
+          },
+          "trueOdds": 2.26856029,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970290",
+            "replacedSelectionId": "0OU53893516U375_3",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893516O350_1",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331835,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 3.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+107",
+            "decimal": "2.07",
+            "fractional": "53/50",
+            "hk": "1.07",
+            "indo": "1.07",
+            "malay": "-0.93"
+          },
+          "trueOdds": 2.07238158,
+          "points": 3.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970272",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893516U350_3",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110331835,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 3.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−133",
+            "decimal": "1.75",
+            "fractional": "20/27",
+            "hk": "0.75",
+            "indo": "-1.33",
+            "malay": "0.75"
+          },
+          "trueOdds": 1.75409375,
+          "points": 3.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970276",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893516O300_1",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110331837,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−158",
+            "decimal": "1.63",
+            "fractional": "5/8",
+            "hk": "0.63",
+            "indo": "-1.59",
+            "malay": "0.63"
+          },
+          "trueOdds": 1.63445866,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970286",
+            "replacedSelectionId": "0OU53893516O375_1",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893516O325_1",
+          "marketId": "3_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110227707,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 3.25",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−117",
+            "decimal": "1.85",
+            "fractional": "50/59",
+            "hk": "0.85",
+            "indo": "-1.18",
+            "malay": "0.85"
+          },
+          "trueOdds": 1.85440231,
+          "points": 3.25,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241383",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908615",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "310"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 170
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_53893516",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "Asian Handicap",
+      "marketType": {
+        "id": "2_0",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T15:00:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC53893516N150_1",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331835,
+          "name": "Club Brugge",
+          "title": "",
+          "betslipLine": "Club Brugge -1.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−126",
+            "decimal": "1.79",
+            "fractional": "10/13",
+            "hk": "0.79",
+            "indo": "-1.27",
+            "malay": "0.79"
+          },
+          "trueOdds": 1.79393473,
+          "points": -1.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970271",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893516P175_3",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227707,
+          "name": "Zulte Waregem",
+          "title": "",
+          "betslipLine": "Zulte Waregem +1.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−117",
+            "decimal": "1.85",
+            "fractional": "50/59",
+            "hk": "0.85",
+            "indo": "-1.18",
+            "malay": "0.85"
+          },
+          "trueOdds": 1.85303791,
+          "points": 1.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241386",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893516N200_1",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110331837,
+          "name": "Club Brugge",
+          "title": "",
+          "betslipLine": "Club Brugge -2",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+132",
+            "decimal": "2.31",
+            "fractional": "13/10",
+            "hk": "1.31",
+            "indo": "1.31",
+            "malay": "-0.76"
+          },
+          "trueOdds": 2.31629965,
+          "points": -2,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970285",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893516P200_3",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331837,
+          "name": "Zulte Waregem",
+          "title": "",
+          "betslipLine": "Zulte Waregem +2",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−156",
+            "decimal": "1.63",
+            "fractional": "5/8",
+            "hk": "0.63",
+            "indo": "-1.59",
+            "malay": "0.63"
+          },
+          "trueOdds": 1.63949587,
+          "points": 2,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970289",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893516P150_3",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110331835,
+          "name": "Zulte Waregem",
+          "title": "",
+          "betslipLine": "Zulte Waregem +1.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+107",
+            "decimal": "2.06",
+            "fractional": "53/50",
+            "hk": "1.06",
+            "indo": "1.06",
+            "malay": "-0.94"
+          },
+          "trueOdds": 2.06512247,
+          "points": 1.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770970275",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893516N175_1",
+          "marketId": "2_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227707,
+          "name": "Club Brugge",
+          "title": "",
+          "betslipLine": "Club Brugge -1.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−101",
+            "decimal": "1.99",
+            "fractional": "50/51",
+            "hk": "0.99",
+            "indo": "-1.01",
+            "malay": "0.99"
+          },
+          "trueOdds": 1.99198308,
+          "points": -1.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241382",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908615",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "300"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 160
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_53893516",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T15:00:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML53893516_2",
+          "marketId": "1_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110227707,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+550",
+            "decimal": "6.50",
+            "fractional": "11/2",
+            "hk": "5.50",
+            "indo": "5.50",
+            "malay": "-0.18"
+          },
+          "trueOdds": 6.5,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241384",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893516_1",
+          "marketId": "1_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227707,
+          "name": "Club Brugge",
+          "title": "",
+          "betslipLine": "Club Brugge",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−355",
+            "decimal": "1.28",
+            "fractional": "5/18",
+            "hk": "0.28",
+            "indo": "-3.57",
+            "malay": "0.28"
+          },
+          "trueOdds": 1.28169015,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241381",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893516_3",
+          "marketId": "1_53893516",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227707,
+          "name": "Zulte Waregem",
+          "title": "",
+          "betslipLine": "Zulte Waregem",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+875",
+            "decimal": "9.75",
+            "fractional": "35/4",
+            "hk": "8.75",
+            "indo": "8.75",
+            "malay": "-0.11"
+          },
+          "trueOdds": 9.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241385",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908615",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908615",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "3_53893517",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "OU",
+      "marketType": {
+        "id": "3_0",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-08T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU53893517O300_1",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110356969,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+123",
+            "decimal": "2.23",
+            "fractional": "6/5",
+            "hk": "1.23",
+            "indo": "1.23",
+            "malay": "-0.81"
+          },
+          "trueOdds": 2.23040159,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146182",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893517O250_1",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110356968,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−134",
+            "decimal": "1.74",
+            "fractional": "20/27",
+            "hk": "0.74",
+            "indo": "-1.35",
+            "malay": "0.74"
+          },
+          "trueOdds": 1.7438429,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146175",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893517U275_3",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110227708,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−115",
+            "decimal": "1.87",
+            "fractional": "20/23",
+            "hk": "0.87",
+            "indo": "-1.15",
+            "malay": "0.87"
+          },
+          "trueOdds": 1.87182213,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241394",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893517U250_3",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110356968,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+109",
+            "decimal": "2.08",
+            "fractional": "27/25",
+            "hk": "1.08",
+            "indo": "1.08",
+            "malay": "-0.93"
+          },
+          "trueOdds": 2.08687483,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146179",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893517U300_3",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110356969,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−153",
+            "decimal": "1.65",
+            "fractional": "20/31",
+            "hk": "0.65",
+            "indo": "-1.54",
+            "malay": "0.65"
+          },
+          "trueOdds": 1.65485699,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146186",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893517O275_1",
+          "marketId": "3_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110227708,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−108",
+            "decimal": "1.92",
+            "fractional": "25/27",
+            "hk": "0.92",
+            "indo": "-1.09",
+            "malay": "0.92"
+          },
+          "trueOdds": 1.9290392,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241390",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908616",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "310"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 170
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_53893517",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-08T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML53893517_3",
+          "marketId": "1_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227708,
+          "name": "Oostende",
+          "title": "",
+          "betslipLine": "Oostende",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+350",
+            "decimal": "4.50",
+            "fractional": "7/2",
+            "hk": "3.50",
+            "indo": "3.50",
+            "malay": "-0.29"
+          },
+          "trueOdds": 4.5,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241392",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893517_1",
+          "marketId": "1_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227708,
+          "name": "Gent",
+          "title": "",
+          "betslipLine": "Gent",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−130",
+            "decimal": "1.76",
+            "fractional": "10/13",
+            "hk": "0.76",
+            "indo": "-1.32",
+            "malay": "0.76"
+          },
+          "trueOdds": 1.76923077,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241388",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893517_2",
+          "marketId": "1_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110227708,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+295",
+            "decimal": "3.95",
+            "fractional": "59/20",
+            "hk": "2.95",
+            "indo": "2.95",
+            "malay": "-0.34"
+          },
+          "trueOdds": 3.95,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241391",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908616",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_53893517",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "Asian Handicap",
+      "marketType": {
+        "id": "2_0",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-08T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC53893517P100_3",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110356969,
+          "name": "Oostende",
+          "title": "",
+          "betslipLine": "Oostende +1",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−164",
+            "decimal": "1.61",
+            "fractional": "20/33",
+            "hk": "0.61",
+            "indo": "-1.64",
+            "malay": "0.61"
+          },
+          "trueOdds": 1.61097655,
+          "points": 1,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146185",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893517P75_3",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227708,
+          "name": "Oostende",
+          "title": "",
+          "betslipLine": "Oostende +0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−116",
+            "decimal": "1.86",
+            "fractional": "25/29",
+            "hk": "0.86",
+            "indo": "-1.16",
+            "malay": "0.86"
+          },
+          "trueOdds": 1.86337763,
+          "points": 0.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241393",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893517N50_1",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110356968,
+          "name": "Gent",
+          "title": "",
+          "betslipLine": "Gent -0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−132",
+            "decimal": "1.75",
+            "fractional": "20/27",
+            "hk": "0.75",
+            "indo": "-1.33",
+            "malay": "0.75"
+          },
+          "trueOdds": 1.75684973,
+          "points": -0.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146174",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893517N100_1",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110356969,
+          "name": "Gent",
+          "title": "",
+          "betslipLine": "Gent -1",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+138",
+            "decimal": "2.37",
+            "fractional": "11/8",
+            "hk": "1.37",
+            "indo": "1.37",
+            "malay": "-0.73"
+          },
+          "trueOdds": 2.37571922,
+          "points": -1,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146181",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893517P50_3",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110356968,
+          "name": "Oostende",
+          "title": "",
+          "betslipLine": "Oostende +0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+112",
+            "decimal": "2.11",
+            "fractional": "28/25",
+            "hk": "1.11",
+            "indo": "1.11",
+            "malay": "-0.90"
+          },
+          "trueOdds": 2.11655433,
+          "points": 0.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "771146178",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893517N75_1",
+          "marketId": "2_53893517",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227708,
+          "name": "Gent",
+          "title": "",
+          "betslipLine": "Gent -0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−102",
+            "decimal": "1.98",
+            "fractional": "50/51",
+            "hk": "0.98",
+            "indo": "-1.02",
+            "malay": "0.98"
+          },
+          "trueOdds": 1.98017138,
+          "points": -0.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241389",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908616",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908616",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "300"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 160
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "3_53893518",
+      "name": "OU",
+      "entityType": "Market",
+      "betslipLine": "OU",
+      "marketType": {
+        "id": "3_0",
+        "name": "OU",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0OU53893518U300_3",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110332436,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−144",
+            "decimal": "1.69",
+            "fractional": "20/29",
+            "hk": "0.69",
+            "indo": "-1.45",
+            "malay": "0.69"
+          },
+          "trueOdds": 1.69493884,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974483",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893518U275_3",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110227709,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−109",
+            "decimal": "1.91",
+            "fractional": "10/11",
+            "hk": "0.91",
+            "indo": "-1.10",
+            "malay": "0.91"
+          },
+          "trueOdds": 1.91348562,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241401",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893518U250_3",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Under",
+          "group": 110332435,
+          "name": "Under",
+          "title": "",
+          "betslipLine": "Under 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+113",
+            "decimal": "2.13",
+            "fractional": "28/25",
+            "hk": "1.13",
+            "indo": "1.13",
+            "malay": "-0.88"
+          },
+          "trueOdds": 2.13009044,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974476",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893518O275_1",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110227709,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−113",
+            "decimal": "1.88",
+            "fractional": "50/57",
+            "hk": "0.88",
+            "indo": "-1.14",
+            "malay": "0.88"
+          },
+          "trueOdds": 1.88670314,
+          "points": 2.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241397",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893518O250_1",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110332435,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 2.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−140",
+            "decimal": "1.71",
+            "fractional": "5/7",
+            "hk": "0.71",
+            "indo": "-1.41",
+            "malay": "0.71"
+          },
+          "trueOdds": 1.7147719,
+          "points": 2.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974472",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0OU53893518O300_1",
+          "marketId": "3_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Over",
+          "group": 110332436,
+          "name": "Over",
+          "title": "",
+          "betslipLine": "Over 3",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+116",
+            "decimal": "2.16",
+            "fractional": "29/25",
+            "hk": "1.16",
+            "indo": "1.16",
+            "malay": "-0.86"
+          },
+          "trueOdds": 2.16150886,
+          "points": 3,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974479",
+            "type": "3"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908617",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "310"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 170
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_53893518",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML53893518_1",
+          "marketId": "1_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227709,
+          "name": "Genk",
+          "title": "",
+          "betslipLine": "Genk",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−125",
+            "decimal": "1.80",
+            "fractional": "4/5",
+            "hk": "0.80",
+            "indo": "-1.25",
+            "malay": "0.80"
+          },
+          "trueOdds": 1.8,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241395",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893518_2",
+          "marketId": "1_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110227709,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+290",
+            "decimal": "3.90",
+            "fractional": "29/10",
+            "hk": "2.90",
+            "indo": "2.90",
+            "malay": "-0.34"
+          },
+          "trueOdds": 3.9,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241398",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML53893518_3",
+          "marketId": "1_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227709,
+          "name": "Cercle Brugge",
+          "title": "",
+          "betslipLine": "Cercle Brugge",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+335",
+            "decimal": "4.35",
+            "fractional": "10/3",
+            "hk": "3.35",
+            "indo": "3.35",
+            "malay": "-0.30"
+          },
+          "trueOdds": 4.35,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770241399",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908617",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "2_53893518",
+      "name": "Asian Handicap",
+      "entityType": "Market",
+      "betslipLine": "Asian Handicap",
+      "marketType": {
+        "id": "2_0",
+        "name": "Asian Handicap",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-07T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0HC53893518P100_3",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110332436,
+          "name": "Cercle Brugge",
+          "title": "",
+          "betslipLine": "Cercle Brugge +1",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−168",
+            "decimal": "1.59",
+            "fractional": "10/17",
+            "hk": "0.59",
+            "indo": "-1.69",
+            "malay": "0.59"
+          },
+          "trueOdds": 1.59533119,
+          "points": 1,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974482",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893518N50_1",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110332435,
+          "name": "Genk",
+          "title": "",
+          "betslipLine": "Genk -0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−127",
+            "decimal": "1.78",
+            "fractional": "10/13",
+            "hk": "0.78",
+            "indo": "-1.28",
+            "malay": "0.78"
+          },
+          "trueOdds": 1.78818999,
+          "points": -0.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974471",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893518P50_3",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110332435,
+          "name": "Cercle Brugge",
+          "title": "",
+          "betslipLine": "Cercle Brugge +0.5",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+107",
+            "decimal": "2.07",
+            "fractional": "53/50",
+            "hk": "1.07",
+            "indo": "1.07",
+            "malay": "-0.93"
+          },
+          "trueOdds": 2.07278815,
+          "points": 0.5,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974475",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893518N75_1",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110227709,
+          "name": "Genk",
+          "title": "",
+          "betslipLine": "Genk -0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+101",
+            "decimal": "2.01",
+            "fractional": "1/1",
+            "hk": "1.01",
+            "indo": "1.01",
+            "malay": "-0.99"
+          },
+          "trueOdds": 2.01328553,
+          "points": -0.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241396",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893518P75_3",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110227709,
+          "name": "Cercle Brugge",
+          "title": "",
+          "betslipLine": "Cercle Brugge +0.75",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−120",
+            "decimal": "1.83",
+            "fractional": "5/6",
+            "hk": "0.83",
+            "indo": "-1.20",
+            "malay": "0.83"
+          },
+          "trueOdds": 1.83497643,
+          "points": 0.75,
+          "isDisabled": false,
+          "tags": [
+            "MainPointLine"
+          ],
+          "metadata": {
+            "idSBTech": "770241400",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0HC53893518N100_1",
+          "marketId": "2_53893518",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110332436,
+          "name": "Genk",
+          "title": "",
+          "betslipLine": "Genk -1",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+141",
+            "decimal": "2.41",
+            "fractional": "7/5",
+            "hk": "1.41",
+            "indo": "1.41",
+            "malay": "-0.71"
+          },
+          "trueOdds": 2.41058204,
+          "points": -1,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "770974478",
+            "type": "2"
+          },
+          "status": "Active",
+          "eventId": "21908617",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "21908617",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "300"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15894",
+          "sortingKey": 160
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121069",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-19T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121069_3",
+          "marketId": "1_54121069",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759227,
+          "name": "Standard Liege",
+          "title": "",
+          "betslipLine": "Standard Liege",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+215",
+            "decimal": "3.15",
+            "fractional": "43/20",
+            "hk": "2.15",
+            "indo": "2.15",
+            "malay": "-0.47"
+          },
+          "trueOdds": 3.15,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961892",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016399",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121069_2",
+          "marketId": "1_54121069",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759227,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+275",
+            "decimal": "3.75",
+            "fractional": "11/4",
+            "hk": "2.75",
+            "indo": "2.75",
+            "malay": "-0.36"
+          },
+          "trueOdds": 3.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961891",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016399",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121069_1",
+          "marketId": "1_54121069",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759227,
+          "name": "Genk",
+          "title": "",
+          "betslipLine": "Genk",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+110",
+            "decimal": "2.10",
+            "fractional": "11/10",
+            "hk": "1.10",
+            "indo": "1.10",
+            "malay": "-0.91"
+          },
+          "trueOdds": 2.1,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961888",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016399",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016399",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121070",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-20T15:15:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121070_2",
+          "marketId": "1_54121070",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759228,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+280",
+            "decimal": "3.80",
+            "fractional": "14/5",
+            "hk": "2.80",
+            "indo": "2.80",
+            "malay": "-0.36"
+          },
+          "trueOdds": 3.8,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961898",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016400",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121070_1",
+          "marketId": "1_54121070",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759228,
+          "name": "Waasland-Beveren",
+          "title": "",
+          "betslipLine": "Waasland-Beveren",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+250",
+            "decimal": "3.50",
+            "fractional": "5/2",
+            "hk": "2.50",
+            "indo": "2.50",
+            "malay": "-0.40"
+          },
+          "trueOdds": 3.5,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961895",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016400",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121070_3",
+          "marketId": "1_54121070",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759228,
+          "name": "Sint Truiden",
+          "title": "",
+          "betslipLine": "Sint Truiden",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−105",
+            "decimal": "1.95",
+            "fractional": "20/21",
+            "hk": "0.95",
+            "indo": "-1.05",
+            "malay": "0.95"
+          },
+          "trueOdds": 1.95238096,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961899",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016400",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016400",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121071",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-20T17:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121071_3",
+          "marketId": "1_54121071",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759229,
+          "name": "Kortrijk",
+          "title": "",
+          "betslipLine": "Kortrijk",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+185",
+            "decimal": "2.85",
+            "fractional": "37/20",
+            "hk": "1.85",
+            "indo": "1.85",
+            "malay": "-0.54"
+          },
+          "trueOdds": 2.85,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961906",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016401",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121071_2",
+          "marketId": "1_54121071",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759229,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+270",
+            "decimal": "3.70",
+            "fractional": "27/10",
+            "hk": "2.70",
+            "indo": "2.70",
+            "malay": "-0.37"
+          },
+          "trueOdds": 3.7,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961905",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016401",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121071_1",
+          "marketId": "1_54121071",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759229,
+          "name": "Eupen",
+          "title": "",
+          "betslipLine": "Eupen",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+130",
+            "decimal": "2.30",
+            "fractional": "13/10",
+            "hk": "1.30",
+            "indo": "1.30",
+            "malay": "-0.77"
+          },
+          "trueOdds": 2.3,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961902",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016401",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016401",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121072",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-20T17:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121072_3",
+          "marketId": "1_54121072",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759230,
+          "name": "Oostende",
+          "title": "",
+          "betslipLine": "Oostende",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−105",
+            "decimal": "1.95",
+            "fractional": "20/21",
+            "hk": "0.95",
+            "indo": "-1.05",
+            "malay": "0.95"
+          },
+          "trueOdds": 1.95238096,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961913",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016402",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121072_2",
+          "marketId": "1_54121072",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759230,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+275",
+            "decimal": "3.75",
+            "fractional": "11/4",
+            "hk": "2.75",
+            "indo": "2.75",
+            "malay": "-0.36"
+          },
+          "trueOdds": 3.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961912",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016402",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121072_1",
+          "marketId": "1_54121072",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759230,
+          "name": "Mouscron Peruwelz",
+          "title": "",
+          "betslipLine": "Mouscron Peruwelz",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+260",
+            "decimal": "3.60",
+            "fractional": "13/5",
+            "hk": "2.60",
+            "indo": "2.60",
+            "malay": "-0.38"
+          },
+          "trueOdds": 3.6,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961909",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016402",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016402",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121073",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-20T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121073_1",
+          "marketId": "1_54121073",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759231,
+          "name": "KFCO Beerschot Wilrijk",
+          "title": "",
+          "betslipLine": "KFCO Beerschot Wilrijk",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+140",
+            "decimal": "2.40",
+            "fractional": "7/5",
+            "hk": "1.40",
+            "indo": "1.40",
+            "malay": "-0.71"
+          },
+          "trueOdds": 2.4,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961916",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016403",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121073_2",
+          "marketId": "1_54121073",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759231,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+270",
+            "decimal": "3.70",
+            "fractional": "27/10",
+            "hk": "2.70",
+            "indo": "2.70",
+            "malay": "-0.37"
+          },
+          "trueOdds": 3.7,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961919",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016403",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121073_3",
+          "marketId": "1_54121073",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759231,
+          "name": "Charleroi",
+          "title": "",
+          "betslipLine": "Charleroi",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+170",
+            "decimal": "2.70",
+            "fractional": "17/10",
+            "hk": "1.70",
+            "indo": "1.70",
+            "malay": "-0.59"
+          },
+          "trueOdds": 2.7,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961920",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016403",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016403",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121074",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-21T17:15:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121074_1",
+          "marketId": "1_54121074",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759232,
+          "name": "Anderlecht",
+          "title": "",
+          "betslipLine": "Anderlecht",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−185",
+            "decimal": "1.54",
+            "fractional": "8/15",
+            "hk": "0.54",
+            "indo": "-1.85",
+            "malay": "0.54"
+          },
+          "trueOdds": 1.54054055,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961923",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016404",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121074_3",
+          "marketId": "1_54121074",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759232,
+          "name": "Zulte Waregem",
+          "title": "",
+          "betslipLine": "Zulte Waregem",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+500",
+            "decimal": "6.00",
+            "fractional": "5/1",
+            "hk": "5.00",
+            "indo": "5.00",
+            "malay": "-0.20"
+          },
+          "trueOdds": 6,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961927",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016404",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121074_2",
+          "marketId": "1_54121074",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759232,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+305",
+            "decimal": "4.05",
+            "fractional": "3/1",
+            "hk": "3.05",
+            "indo": "3.05",
+            "malay": "-0.33"
+          },
+          "trueOdds": 4.05,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961926",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016404",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016404",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121075",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-21T15:00:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121075_3",
+          "marketId": "1_54121075",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759233,
+          "name": "Oud Heverlee",
+          "title": "",
+          "betslipLine": "Oud Heverlee",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+305",
+            "decimal": "4.05",
+            "fractional": "3/1",
+            "hk": "3.05",
+            "indo": "3.05",
+            "malay": "-0.33"
+          },
+          "trueOdds": 4.05,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961934",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016405",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121075_1",
+          "marketId": "1_54121075",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759233,
+          "name": "KV Mechelen",
+          "title": "",
+          "betslipLine": "KV Mechelen",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−120",
+            "decimal": "1.83",
+            "fractional": "5/6",
+            "hk": "0.83",
+            "indo": "-1.20",
+            "malay": "0.83"
+          },
+          "trueOdds": 1.83333334,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961930",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016405",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121075_2",
+          "marketId": "1_54121075",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759233,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+280",
+            "decimal": "3.80",
+            "fractional": "14/5",
+            "hk": "2.80",
+            "indo": "2.80",
+            "malay": "-0.36"
+          },
+          "trueOdds": 3.8,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961933",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016405",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016405",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121076",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-21T12:30:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121076_2",
+          "marketId": "1_54121076",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759234,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+355",
+            "decimal": "4.55",
+            "fractional": "7/2",
+            "hk": "3.55",
+            "indo": "3.55",
+            "malay": "-0.28"
+          },
+          "trueOdds": 4.55,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961940",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016406",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121076_3",
+          "marketId": "1_54121076",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759234,
+          "name": "Antwerp",
+          "title": "",
+          "betslipLine": "Antwerp",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+575",
+            "decimal": "6.75",
+            "fractional": "23/4",
+            "hk": "5.75",
+            "indo": "5.75",
+            "malay": "-0.17"
+          },
+          "trueOdds": 6.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961941",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016406",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121076_1",
+          "marketId": "1_54121076",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759234,
+          "name": "Club Brugge",
+          "title": "",
+          "betslipLine": "Club Brugge",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−230",
+            "decimal": "1.43",
+            "fractional": "10/23",
+            "hk": "0.43",
+            "indo": "-2.33",
+            "malay": "0.43"
+          },
+          "trueOdds": 1.43478261,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961937",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016406",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016406",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    },
+    {
+      "id": "1_54121077",
+      "name": "1X2",
+      "entityType": "Market",
+      "betslipLine": "1X2",
+      "marketType": {
+        "id": "1_0",
+        "name": "1X2",
+        "isCastMarket": false
+      },
+      "leagueId": "40815",
+      "sportId": "1",
+      "isLive": false,
+      "startDate": "2021-03-21T19:45:00Z",
+      "title": null,
+      "participantMapping": null,
+      "selections": [
+        {
+          "id": "0ML54121077_1",
+          "marketId": "1_54121077",
+          "entityType": "Selection",
+          "outcomeType": "Home",
+          "group": 110759235,
+          "name": "Gent",
+          "title": "",
+          "betslipLine": "Gent",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "−175",
+            "decimal": "1.57",
+            "fractional": "4/7",
+            "hk": "0.57",
+            "indo": "-1.75",
+            "malay": "0.57"
+          },
+          "trueOdds": 1.57142858,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961944",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016407",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121077_3",
+          "marketId": "1_54121077",
+          "entityType": "Selection",
+          "outcomeType": "Away",
+          "group": 110759235,
+          "name": "Cercle Brugge",
+          "title": "",
+          "betslipLine": "Cercle Brugge",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+475",
+            "decimal": "5.75",
+            "fractional": "19/4",
+            "hk": "4.75",
+            "indo": "4.75",
+            "malay": "-0.21"
+          },
+          "trueOdds": 5.75,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961948",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016407",
+          "category": "FixedPrice",
+          "playerMapping": null
+        },
+        {
+          "id": "0ML54121077_2",
+          "marketId": "1_54121077",
+          "entityType": "Selection",
+          "outcomeType": "Tie",
+          "group": 110759235,
+          "name": "X",
+          "title": "",
+          "betslipLine": "X",
+          "participantMapping": null,
+          "displayOdds": {
+            "american": "+300",
+            "decimal": "4.00",
+            "fractional": "3/1",
+            "hk": "3.00",
+            "indo": "3.00",
+            "malay": "-0.33"
+          },
+          "trueOdds": 4,
+          "points": null,
+          "isDisabled": false,
+          "tags": [],
+          "metadata": {
+            "idSBTech": "773961947",
+            "type": "1"
+          },
+          "status": "Active",
+          "eventId": "22016407",
+          "category": "FixedPrice",
+          "playerMapping": null
+        }
+      ],
+      "isSuspended": false,
+      "eventId": "22016407",
+      "liveData": null,
+      "metadata": {
+        "sortingKey": "0"
+      },
+      "tags": [
+        "YourBetEligible",
+        "Cashout",
+        "Default"
+      ],
+      "groups": [
+        "15893",
+        "15894"
+      ],
+      "inMarketGroups": [
+        {
+          "id": "15893",
+          "sortingKey": 20
+        },
+        {
+          "id": "15894",
+          "sortingKey": 0
+        }
+      ],
+      "castMarkets": [],
+      "coupons": [],
+      "playerMapping": null
+    }
+  ]
+}
