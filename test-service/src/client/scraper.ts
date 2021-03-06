@@ -197,8 +197,17 @@ export class Scraper {
                     return this.toBwinRequests(bookmakerId, requestType)
                 case Provider.BETWAY:
                     return this.toBetwayRequests(bookmakerId, requestType)
+                case Provider.ZETBET:
+                    return this.toZetbetRequests(bookmakerId, requestType)
             }
         })
+    }
+
+    toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        return [
+            axios.get('https://www.zebet.be/en/competition/' + bookmakerId.id)
+                .then(response => new ApiResponse(Provider.ZETBET, response.data, requestType))
+        ]
     }
 
     toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType) {

@@ -38,7 +38,8 @@ export enum Provider {
     MAGIC_BETTING = 'MAGIC_BETTING',
     SCOOORE = 'SCOOORE',
     BWIN = 'BWIN',
-    BETWAY = 'BETWAY'
+    BETWAY = 'BETWAY',
+    ZETBET = 'ZETBET'
 }
 
 export class BookmakerId {
