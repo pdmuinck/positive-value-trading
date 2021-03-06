@@ -191,9 +191,42 @@ export class Scraper {
                     return this.toScoooreRequests(bookmakerId, requestType)
                 case Provider.STANLEYBET:
                     return this.toStanleyBet(bookmakerId, requestType)
+                case Provider.BETCENTER:
+                    return this.toBetcenterRequests(bookmakerId, requestType)
+                case Provider.BWIN:
+                    return this.toBwinRequests(bookmakerId, requestType)
+                case Provider.BETWAY:
+                    return this.toBetwayRequests(bookmakerId, requestType)
             }
         })
     }
+
+    toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":bookmakerId.id}
+        return [
+            axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
+                .then(response => {
+                    const eventIds = response.data.Categories[0].Events
+                    const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
+                        ,"MarketCName":"win-draw-win","ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
+                        return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', payload).then(response =>
+                            new ApiResponse(Provider.BETWAY, response.data, requestType)).catch(error => console.log(error))
+                }).catch(error => console.log(error))
+        ]
+    }
+
+    toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        return [
+            axios.get('https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
+                'WJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&fixtureTypes=Standard&state=Late' +
+                'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
+                'mpetitionIds=' + bookmakerId.id + '&skip=0&take=50&sortBy=Tags')
+                .then(response => new ApiResponse(Provider.BWIN, response.data, requestType))
+                .catch(error => console.log(error))
+        ]
+    }
+
+
 
     toStanleyBet(bookmakerId: BookmakerId, requestType: RequestType) {
         const headers = {
@@ -416,6 +449,23 @@ export class Scraper {
             })
         }
         return apiResponses
+    }
+
+    private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const betcenterHeaders = {
+            headers: {
+                "x-language": 2,
+                "x-brand": 7,
+                "x-location": 21,
+                "x-client-country": 21,
+                "Content-Type":"application/json"
+            }
+        }
+        const betcenterPayload = {"leagueIds": [parseInt(bookmakerId.id)], "sportId": 1,"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
+        return [
+            axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders)
+                .then(response => new ApiResponse(Provider.BETCENTER, response.data, requestType)).catch(error => console.log(error))
+        ]
     }
 }
 

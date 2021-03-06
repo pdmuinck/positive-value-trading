@@ -47,7 +47,10 @@ export const footballCompetitions = [
                 IdType.COMPETITION),
             new BookmakerId(Provider.SCOOORE, "18340", IdType.COMPETITION),
             new BookmakerId(Provider.STANLEYBET, "38", IdType.COMPETITION),
-            new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION)
+            new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION),
+            new BookmakerId(Provider.BETCENTER, "6898", IdType.COMPETITION),
+            new BookmakerId(Provider.BWIN, "16409", IdType.COMPETITION),
+            new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants
     ),
@@ -182,7 +185,10 @@ export const sports = [
             new BookmakerId(Provider.LADBROKES, "", IdType.SPORT),
             new BookmakerId(Provider.MERIDIAN, "58", IdType.SPORT),
             new BookmakerId(Provider.SCOOORE, "", IdType.SPORT),
-            new BookmakerId(Provider.STANLEYBET, "", IdType.SPORT)
+            new BookmakerId(Provider.STANLEYBET, "", IdType.SPORT),
+            new BookmakerId(Provider.BETCENTER, "1", IdType.SPORT),
+            new BookmakerId(Provider.BWIN, "4", IdType.SPORT),
+            new BookmakerId(Provider.BETWAY, "soccer", IdType.SPORT)
         ],
         footballCompetitions
     )
