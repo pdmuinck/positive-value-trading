@@ -4,34 +4,86 @@ import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
-import {circusConfig} from "./websocket/config";
+import {circusConfig} from "./websocket/config"
 
-const WebSocketAwait = require("ws-await")
 const WebSocket = require("ws")
 
 let events
 let starCasinoEvents
+let betConstructEvents
 
 export class Scraper {
     private readonly _sbtechTokenRepository: SbtechTokenRepository
-    private _betconstructWS
     constructor(){
         this._sbtechTokenRepository = new SbtechTokenRepository()
     }
 
     async getEventsForCompetition(competition: Competition) {
-        const betConstructResponses: ApiResponse[] = []
-        await this.startBetConstructWS(betConstructResponses)
-        const magicBetting = await this.waitUntilMagicBetting(competition.bookmakerIds.filter(id => id.provider === Provider.MAGIC_BETTING)[0])
-        const startCasino = await this.waitUntilStarCasino(competition.bookmakerIds.filter(id => id.provider === Provider.STAR_CASINO)[0])
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
         const httpResponses: ApiResponse[] = await this.getApiResponses(requests.flat())
-        return httpResponses.filter(x => x).concat(betConstructResponses.filter(response => response.data && response.data.MessageType === 1000)[0])
-            .concat(magicBetting).concat(startCasino)
+        return httpResponses.filter(x => x)
     }
 
-    waitUntilMagicBetting(bookmakerId: BookmakerId): Promise<ApiResponse> {
-        this.startMagicBettingWS(bookmakerId)
+    async getBetOffersForCompetition(competition: Competition): Promise<ApiResponse[]> {
+        const requests = this.toApiRequests(competition.bookmakerIds.filter(bookmakerId => bookmakerId.provider === Provider.KAMBI), RequestType.BET_OFFER)
+        return await this.getApiResponses(requests.flat())
+    }
+
+    toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
+        return bookmakerIds.map(bookmakerId => {
+            switch (bookmakerId.provider) {
+                case Provider.BETCONSTRUCT:
+                    return this.toBetConstructRequests(bookmakerId, requestType)
+                case Provider.STAR_CASINO:
+                    return this.toStarCasinoRequests(bookmakerId, requestType)
+                case Provider.MAGIC_BETTING:
+                    return this.toMagicBettingRequests(bookmakerId, requestType)
+                case Provider.KAMBI:
+                    return this.toKambiRequests(bookmakerId, requestType)
+                case Provider.PINNACLE:
+                    return this.toPinnacleRequests(bookmakerId, requestType)
+                case Provider.SBTECH:
+                    return this.toSbtechRequests(bookmakerId, requestType)
+                case Provider.ALTENAR:
+                    return this.toAltenarRequests(bookmakerId, requestType)
+                case Provider.BET90:
+                    return this.toBet90Requests(bookmakerId, requestType)
+                case Provider.BINGOAL:
+                    return this.toBingoalRequests(bookmakerId, requestType)
+                case Provider.LADBROKES:
+                    return this.toLadbrokesRequests(bookmakerId, requestType)
+                case Provider.MERIDIAN:
+                    return this.toMeridianRequests(bookmakerId, requestType)
+                case Provider.SCOOORE:
+                    return this.toScoooreRequests(bookmakerId, requestType)
+                case Provider.STANLEYBET:
+                    return this.toStanleyBet(bookmakerId, requestType)
+                case Provider.BETCENTER:
+                    return this.toBetcenterRequests(bookmakerId, requestType)
+                case Provider.BWIN:
+                    return this.toBwinRequests(bookmakerId, requestType)
+                case Provider.BETWAY:
+                    return this.toBetwayRequests(bookmakerId, requestType)
+                case Provider.ZETBET:
+                    return this.toZetbetRequests(bookmakerId, requestType)
+            }
+        })
+    }
+
+    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+        this.startBetConstructWSV2(bookmakerId, requestType)
+        return new Promise(resolve => {
+            const interval = setInterval(() => {
+                if (betConstructEvents) {
+                    resolve(new ApiResponse(Provider.BETCONSTRUCT, betConstructEvents, RequestType.EVENT))
+                    clearInterval(interval)
+                }
+            }, 100)
+        })
+    }
+
+    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+        this.startMagicBettingWS(bookmakerId, requestType)
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (events) {
@@ -42,8 +94,8 @@ export class Scraper {
         })
     }
 
-    waitUntilStarCasino(bookmakerId: BookmakerId): Promise<ApiResponse> {
-        this.startStarCasino(bookmakerId)
+    toStarCasinoRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+        this.startStarCasino(bookmakerId, requestType)
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (starCasinoEvents) {
@@ -54,11 +106,25 @@ export class Scraper {
         })
     }
 
-    async startStarCasino(bookmakerId: BookmakerId) {
+    private startBetConstructWSV2(bookmakerId: BookmakerId, requestType: RequestType) {
+        const ws = new WebSocket(circusConfig.url)
+        ws.on('open', function open() {
+            ws.send(JSON.stringify(circusConfig.getConnectMessage()))
+            ws.send(JSON.stringify(circusConfig.getEventRequestMessage("844", bookmakerId.id)))
+        })
+
+        ws.on('message', function incoming(data) {
+            const dataParsed = JSON.parse(data)
+            if(dataParsed.MessageType === 1000) {
+                betConstructEvents = JSON.parse(dataParsed.Message)
+            }
+        })
+    }
+
+    async startStarCasino(bookmakerId: BookmakerId, requestType: RequestType) {
         const starWS = new WebSocket("wss://eu-swarm-ws-re.bcapps.net/")
 
         starWS.on('open', function open() {
-            console.log('open')
             starWS.send(JSON.stringify({"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"16062033821871"}))
             starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id"],"market":"@count"},"where":{"competition":{"id":parseInt(bookmakerId.id)}},"subscribe":true},"rid":"161497920766016"}))
             //starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id","team1_id","team2_id","team1_name","team2_name"]},"where":{"game":{},"sport":{"id":1},"region":{},"competition":{"id":bookmakerId.id}},"subscribe":false},"rid": "161497920766016"}))
@@ -74,7 +140,7 @@ export class Scraper {
         })
     }
 
-    async startMagicBettingWS(bookmakerId: BookmakerId) {
+    async startMagicBettingWS(bookmakerId: BookmakerId, requestType: RequestType) {
 
         function string(t) {
             const crypto = require("crypto")
@@ -115,90 +181,6 @@ export class Scraper {
             if(data.includes('soccer-be-sb_type_19372')) {
                 events = data
                 ws.close()
-            }
-        })
-    }
-
-    async startBetConstructWS(webSocketResponses: ApiResponse[]) {
-        const options = {
-            unpackMessage: data => {
-                const parsedJson = JSON.parse(data)
-                webSocketResponses.push(new ApiResponse(Provider.BETCONSTRUCT, parsedJson, RequestType.EVENT))
-            },
-            awaitTimeout: circusConfig.timeOut
-        }
-        this._betconstructWS = new WebSocketAwait(circusConfig.url, options)
-        await this.waitForOpenConnection(this._betconstructWS)
-        this._betconstructWS.sendAwait(circusConfig.getConnectMessage())
-    }
-
-    async getBetOffers(sportName: SportName, competition?: CompetitionName): Promise<ApiResponse[]> {
-        const sport: Sport = sports.filter(sport => sport.name === sportName)[0]
-        const requests = this.toApiRequests(sport.bookmakerIds, RequestType.BET_OFFER)
-        return await this.getApiResponses(requests.flat())
-    }
-
-    async getParticipants(sportName: SportName, competitionName: CompetitionName): Promise<ApiResponse[]>{
-        const requests = sports.filter(sport => sport.name === sportName)
-            .map(sport => sport.competitions).flat()
-            .filter(competition => competition.name === competitionName)
-            .map(competition => this.toApiRequests(competition.bookmakerIds, RequestType.PARTICIPANT))
-        return await this.getApiResponses(requests.flat())
-    }
-
-    waitForOpenConnection(socket) {
-        return new Promise((resolve, reject) => {
-            const maxNumberOfAttempts = 10
-            const intervalTime = 200 //ms
-
-            let currentAttempt = 0
-            const interval = setInterval(() => {
-                if (currentAttempt > maxNumberOfAttempts - 1) {
-                    clearInterval(interval)
-                    reject(new Error('Maximum number of attempts exceeded'))
-                } else if (socket.readyState === socket.OPEN) {
-                    clearInterval(interval)
-                    // @ts-ignore
-                    resolve()
-                }
-                currentAttempt++
-            }, intervalTime)
-        })
-    }
-
-    toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
-        return bookmakerIds.map(bookmakerId => {
-            switch (bookmakerId.provider) {
-                case Provider.KAMBI:
-                    return this.toKambiRequests(bookmakerId, requestType)
-                case Provider.PINNACLE:
-                    return this.toPinnacleRequests(bookmakerId, requestType)
-                case Provider.SBTECH:
-                    return this.toSbtechRequests(bookmakerId, requestType)
-                case Provider.ALTENAR:
-                    return this.toAltenarRequests(bookmakerId, requestType)
-                case Provider.BET90:
-                    return this.toBet90Requests(bookmakerId, requestType)
-                case Provider.BINGOAL:
-                    return this.toBingoalRequests(bookmakerId, requestType)
-                case Provider.BETCONSTRUCT:
-                    return this.toBetConstructRequests(bookmakerId, requestType)
-                case Provider.LADBROKES:
-                    return this.toLadbrokesRequests(bookmakerId, requestType)
-                case Provider.MERIDIAN:
-                    return this.toMeridianRequests(bookmakerId, requestType)
-                case Provider.SCOOORE:
-                    return this.toScoooreRequests(bookmakerId, requestType)
-                case Provider.STANLEYBET:
-                    return this.toStanleyBet(bookmakerId, requestType)
-                case Provider.BETCENTER:
-                    return this.toBetcenterRequests(bookmakerId, requestType)
-                case Provider.BWIN:
-                    return this.toBwinRequests(bookmakerId, requestType)
-                case Provider.BETWAY:
-                    return this.toBetwayRequests(bookmakerId, requestType)
-                case Provider.ZETBET:
-                    return this.toZetbetRequests(bookmakerId, requestType)
             }
         })
     }
@@ -284,15 +266,6 @@ export class Scraper {
         ]
     }
 
-    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [
-            this._betconstructWS.sendAwait(circusConfig.getEventRequestMessage("844", bookmakerId.id)).then(
-                response => {
-                    return new ApiResponse(bookmakerId.provider, response, requestType)}
-            ).catch(error => console.log(error))
-        ]
-    }
-
     toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
             const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
@@ -363,8 +336,8 @@ export class Scraper {
     }
 
     toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        if(RequestType.EVENT) return this.toKambiEventRequests(bookmakerId)
-        if(RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId)
+        if(requestType === RequestType.EVENT) return this.toKambiEventRequests(bookmakerId)
+        if(requestType === RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId)
     }
 
     toKambiEventRequests(bookmakerId: BookmakerId) {
@@ -378,18 +351,15 @@ export class Scraper {
 
     toKambiBetOfferRequests(bookmakerId: BookmakerId) {
         const kambiBetOfferTypes = {}
-        kambiBetOfferTypes[BetType._1X2] = 2
-        kambiBetOfferTypes[BetType.OVER_UNDER] = 6
+        //kambiBetOfferTypes[BetType._1X2] = 2
+            //kambiBetOfferTypes[BetType.OVER_UNDER] = 6
         const books = providers[Provider.KAMBI]
         return books.map(book => {
-            return Object.keys(kambiBetOfferTypes).map(key => {
-                const betOfferType = kambiBetOfferTypes[key]
-                return [axios.get(
-                    'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
-                    + bookmakerId.id + '.json?type=' + betOfferType
-                ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER)})
-                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER)})]
-            })
+            return [axios.get(
+                'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
+                + bookmakerId.id
+            ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER, book)})
+                .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})]
         })
     }
 
@@ -497,11 +467,13 @@ export class ApiResponse {
     private readonly _provider: Provider
     private readonly _data
     private readonly _requestType: RequestType
+    private readonly _bookmaker: Bookmaker
 
-    constructor(provider: Provider, data, requestType: RequestType){
+    constructor(provider: Provider, data, requestType: RequestType, bookmaker?: Bookmaker){
         this._provider = provider
         this._data = data
         this._requestType = requestType
+        this._bookmaker = bookmaker
     }
 
     get provider(){

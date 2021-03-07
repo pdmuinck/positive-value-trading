@@ -11,7 +11,7 @@ import {jupilerProLeagueParticipants} from "../../client/config";
 import {BookmakerId, Provider} from "../bookmaker";
 
 const expect = require('chai').expect
-
+/*
 describe('ValueBetService tests', function() {
     describe('searchForValueBet', function() {
         const today = new Date()
@@ -135,5 +135,7 @@ describe('ValueBetService tests', function() {
         })
     })
 })
+
+ */
 
 

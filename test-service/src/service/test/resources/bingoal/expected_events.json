@@ -2,7 +2,8 @@
   {
     "_id": {
       "_id": "32442",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-27 18:30:00",
     "_participants": [
@@ -11,7 +12,8 @@
         "_bookmakerIds": [
           {
             "_id": 164,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -20,7 +22,8 @@
         "_bookmakerIds": [
           {
             "_id": 136,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -29,7 +32,8 @@
   {
     "_id": {
       "_id": "32443",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-27 16:15:00",
     "_participants": [
@@ -38,7 +42,8 @@
         "_bookmakerIds": [
           {
             "_id": 135,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -47,7 +52,8 @@
         "_bookmakerIds": [
           {
             "_id": 76,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -56,7 +62,8 @@
   {
     "_id": {
       "_id": "32445",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-27 20:45:00",
     "_participants": [
@@ -65,7 +72,8 @@
         "_bookmakerIds": [
           {
             "_id": 144,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -74,7 +82,8 @@
         "_bookmakerIds": [
           {
             "_id": 141,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -83,7 +92,8 @@
   {
     "_id": {
       "_id": "32440",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-28 13:30:00",
     "_participants": [
@@ -92,7 +102,8 @@
         "_bookmakerIds": [
           {
             "_id": 146,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -101,7 +112,8 @@
         "_bookmakerIds": [
           {
             "_id": 1670,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -110,7 +122,8 @@
   {
     "_id": {
       "_id": "32446",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-28 16:00:00",
     "_participants": [
@@ -119,7 +132,8 @@
         "_bookmakerIds": [
           {
             "_id": 17614,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -128,7 +142,8 @@
         "_bookmakerIds": [
           {
             "_id": 161,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -137,7 +152,8 @@
   {
     "_id": {
       "_id": "32447",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-02-28 20:45:00",
     "_participants": [
@@ -146,7 +162,8 @@
         "_bookmakerIds": [
           {
             "_id": 150,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -155,7 +172,8 @@
         "_bookmakerIds": [
           {
             "_id": 155,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -164,7 +182,8 @@
   {
     "_id": {
       "_id": "32448",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-01 20:45:00",
     "_participants": [
@@ -173,7 +192,8 @@
         "_bookmakerIds": [
           {
             "_id": 139,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -182,7 +202,8 @@
         "_bookmakerIds": [
           {
             "_id": 156,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -191,7 +212,8 @@
   {
     "_id": {
       "_id": "51939",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-06 16:15:00",
     "_participants": [
@@ -200,7 +222,8 @@
         "_bookmakerIds": [
           {
             "_id": 155,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -209,7 +232,8 @@
         "_bookmakerIds": [
           {
             "_id": 139,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -218,7 +242,8 @@
   {
     "_id": {
       "_id": "51940",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-06 18:30:00",
     "_participants": [
@@ -227,7 +252,8 @@
         "_bookmakerIds": [
           {
             "_id": 76,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -236,7 +262,8 @@
         "_bookmakerIds": [
           {
             "_id": 17614,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -245,7 +272,8 @@
   {
     "_id": {
       "_id": "51941",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-06 20:45:00",
     "_participants": [
@@ -254,7 +282,8 @@
         "_bookmakerIds": [
           {
             "_id": 156,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -263,7 +292,8 @@
         "_bookmakerIds": [
           {
             "_id": 144,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -272,7 +302,8 @@
   {
     "_id": {
       "_id": "32450",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-07 16:00:00",
     "_participants": [
@@ -281,7 +312,8 @@
         "_bookmakerIds": [
           {
             "_id": 140,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -290,7 +322,8 @@
         "_bookmakerIds": [
           {
             "_id": 141,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -299,7 +332,8 @@
   {
     "_id": {
       "_id": "32451",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-07 18:15:00",
     "_participants": [
@@ -308,7 +342,8 @@
         "_bookmakerIds": [
           {
             "_id": 1670,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -317,7 +352,8 @@
         "_bookmakerIds": [
           {
             "_id": 136,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -326,7 +362,8 @@
   {
     "_id": {
       "_id": "51942",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-07 13:30:00",
     "_participants": [
@@ -335,7 +372,8 @@
         "_bookmakerIds": [
           {
             "_id": 161,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -344,7 +382,8 @@
         "_bookmakerIds": [
           {
             "_id": 146,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -353,7 +392,8 @@
   {
     "_id": {
       "_id": "51943",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-07 20:45:00",
     "_participants": [
@@ -362,7 +402,8 @@
         "_bookmakerIds": [
           {
             "_id": 133,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -371,7 +412,8 @@
         "_bookmakerIds": [
           {
             "_id": 135,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }
@@ -380,7 +422,8 @@
   {
     "_id": {
       "_id": "51389",
-      "_idType": "EVENT"
+      "_idType": "EVENT",
+      "_provider": "BINGOAL"
     },
     "_startTime": "2021-03-08 20:45:00",
     "_participants": [
@@ -389,7 +432,8 @@
         "_bookmakerIds": [
           {
             "_id": 143,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       },
@@ -398,7 +442,8 @@
         "_bookmakerIds": [
           {
             "_id": 164,
-            "_idType": "PARTICIPANT"
+            "_idType": "PARTICIPANT",
+            "_provider": "BINGOAL"
           }
         ]
       }

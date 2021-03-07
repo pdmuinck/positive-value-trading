@@ -26,6 +26,7 @@ export class ValueBetService {
         })
     }
 
+    /*
     async searchForValueBets(): Promise<ValueBetFoundEvent[]>{
         const apiResponses = await this._scraper.getBetOffers(SportName.FOOTBALL)
         const betOffers: BetOffer[] = apiResponses.map(apiResponse => Parser.parse(apiResponse)).flat()
@@ -44,6 +45,8 @@ export class ValueBetService {
         // produce kafka messages
         return valueBets
     }
+    */
+     
 
     get sportEvents(): SportEvent[] {
         return Object.values(this._sportEventsCache.mget(this._sportEventsCache.keys()))
