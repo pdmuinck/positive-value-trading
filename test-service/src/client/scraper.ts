@@ -1,10 +1,10 @@
-import {BetType, Competition, CompetitionName, IdType, RequestType, Sport, SportName} from "../domain/betoffer"
-import {sports} from "./config"
+import {BetType, Competition, CompetitionName, IdType, RequestType, SportName} from "../domain/betoffer"
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig} from "./websocket/config"
+import {Bet90Parser} from "../service/parser";
 
 const WebSocket = require("ws")
 
@@ -25,8 +25,9 @@ export class Scraper {
     }
 
     async getBetOffersForCompetition(competition: Competition): Promise<ApiResponse[]> {
-        const requests = this.toApiRequests(competition.bookmakerIds.filter(bookmakerId => bookmakerId.provider === Provider.KAMBI), RequestType.BET_OFFER)
-        return await this.getApiResponses(requests.flat())
+        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER)
+        const responses =  await this.getApiResponses(requests.flat())
+        return responses.flat()
     }
 
     toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
@@ -75,7 +76,7 @@ export class Scraper {
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (betConstructEvents) {
-                    resolve(new ApiResponse(Provider.BETCONSTRUCT, betConstructEvents, RequestType.EVENT))
+                    resolve(new ApiResponse(Provider.BETCONSTRUCT, betConstructEvents, requestType))
                     clearInterval(interval)
                 }
             }, 100)
@@ -87,7 +88,7 @@ export class Scraper {
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (events) {
-                    resolve(new ApiResponse(Provider.MAGIC_BETTING, events, RequestType.EVENT))
+                    resolve(new ApiResponse(Provider.MAGIC_BETTING, events, requestType))
                     clearInterval(interval)
                 }
             }, 100)
@@ -99,7 +100,7 @@ export class Scraper {
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (starCasinoEvents) {
-                    resolve(new ApiResponse(Provider.STAR_CASINO, starCasinoEvents, RequestType.EVENT))
+                    resolve(new ApiResponse(Provider.STAR_CASINO, starCasinoEvents, requestType))
                     clearInterval(interval)
                 }
             }, 100)
@@ -291,13 +292,27 @@ export class Scraper {
         }
         switch(requestType) {
             case RequestType.BET_OFFER:
-                return [axios.get('https://bet90.be/Bet/SpecialBetsCustomer', headers)
-                    .then(response => {return new ApiResponse(bookmakerId.provider,
-                        {data: response.data, id: bookmakerId.id}, requestType)})]
-            default:
                 const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
                 const body = {leagueId: bookmakerId.id, categoryId: map.categoryId, sportId: map.sport}
-                return [axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
+                return axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
+                    .then(response => {
+                        const events = Bet90Parser.parse(new ApiResponse(bookmakerId.provider, response.data, RequestType.EVENT))
+                        const test =  events.map(event => {
+                            return axios.get('https://bet90.be/Bet/SpecialBetsCustomer?gameid=' + event.id.id + '&bettypeID=10&_=1610123136993&Cookie=culture%3Dnl', headers)
+                                .then(response => {return new ApiResponse(bookmakerId.provider,
+                                    {data: response.data, id: bookmakerId.id}, requestType)})
+                                .catch(error => console.log(error))
+                        })
+                        return Promise.all(test).then(responses => {
+                            return responses.flat()
+                        })
+                    })
+                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})
+
+            default:
+                const bookMap = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
+                const eventBodyRequest = {leagueId: bookmakerId.id, categoryId: bookMap.categoryId, sportId: bookMap.sport}
+                return [axios.post('https://bet90.be/Sports/SportLeagueGames', eventBodyRequest, headers)
                     .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
                     .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
         }
@@ -305,13 +320,16 @@ export class Scraper {
     }
 
     toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        const url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1' +
-            '&skinName=goldenpalace&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0' +
+        return providers[bookmakerId.provider].map(book => {
+            const url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1' +
+            '&skinName=' + book + '&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0' +
             '&champids=' + bookmakerId.id  +'&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none' +
             '&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
-        return [axios.get(url)
-            .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
-            .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
+            return axios.get(url)
+                .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType, book)})
+                .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType, book)})
+        })
+
     }
 
     toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -351,15 +369,18 @@ export class Scraper {
 
     toKambiBetOfferRequests(bookmakerId: BookmakerId) {
         const kambiBetOfferTypes = {}
-        //kambiBetOfferTypes[BetType._1X2] = 2
-            //kambiBetOfferTypes[BetType.OVER_UNDER] = 6
+        kambiBetOfferTypes[BetType._1X2] = 2
+        kambiBetOfferTypes[BetType.OVER_UNDER] = 6
         const books = providers[Provider.KAMBI]
         return books.map(book => {
-            return [axios.get(
-                'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
-                + bookmakerId.id
-            ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER, book)})
-                .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})]
+            return Object.keys(kambiBetOfferTypes).map(key => {
+                return axios.get(
+                    'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
+                    + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
+                ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER, book)})
+                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})
+            })
+
         })
     }
 
