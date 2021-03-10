@@ -4,7 +4,7 @@ import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig} from "./websocket/config"
-import {Bet90Parser} from "../service/parser";
+import {Bet90Parser, BingoalParser} from "../service/parser";
 
 const WebSocket = require("ws")
 
@@ -194,15 +194,22 @@ export class Scraper {
     }
 
     toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
         const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":bookmakerId.id}
         return [
             axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
                 .then(response => {
                     const eventIds = response.data.Categories[0].Events
-                    const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
-                        ,"MarketCName":"win-draw-win","ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
+                    const betOfferRequests = markets.map(market => {
+                        const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
+                            ,"MarketCName":market,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
                         return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', payload).then(response =>
                             new ApiResponse(Provider.BETWAY, response.data, requestType)).catch(error => console.log(error))
+                    })
+                    return Promise.all(betOfferRequests).then(values => {
+                        return values.flat()
+                    })
+
                 }).catch(error => console.log(error))
         ]
     }
@@ -267,20 +274,46 @@ export class Scraper {
         ]
     }
 
-    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
-            const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
-            const headers = {
-                headers : {
-                    "Cookie": cookie
-                }
+    bingoalQueryKParam(response) {
+        const ieVars = response.data.split("var _ie")[1]
+        return ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
+    }
+
+    bingoalHeaders(response) {
+        const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
+        const headers = {
+            headers : {
+                "Cookie": cookie
             }
-            const ieVars = response.data.split("var _ie")[1]
-            const k = ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
-            return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=" + (RequestType.BET_OFFER ? "detail" : "sport")
-                + "&id=" + bookmakerId.id, headers)
-        }).then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
-            .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})]
+        }
+        return headers
+    }
+
+    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        if(requestType === RequestType.EVENT || requestType === RequestType.BET_OFFER) {
+            return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
+                const headers = this.bingoalHeaders(response)
+                const k = this.bingoalQueryKParam(response)
+                return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=" + bookmakerId.id, headers)
+                    .then(response => {return new ApiResponse(Provider.BINGOAL, response.data, RequestType.EVENT)})})]
+        } else {
+            // takes long
+            return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
+                const headers = this.bingoalHeaders(response)
+                const k = this.bingoalQueryKParam(response)
+                return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=" + bookmakerId.id, headers)
+                    .then(response => {
+                        const events = BingoalParser.parseEvents(new ApiResponse(Provider.BINGOAL, response.data, RequestType.EVENT))
+                        const betOfferRequests = events.map(event => {
+                            const url = "https://www.bingoal.be/A/sport?k=" + k + "&func=detail&id=" + event.id.id
+                            return axios.get(url, headers).then(response => new ApiResponse(Provider.BINGOAL, response.data, requestType))
+                        })
+                        return Promise.all(betOfferRequests).then(values => {
+                            return values.flat()
+                        })
+                    })
+            })]
+        }
     }
 
     toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {
