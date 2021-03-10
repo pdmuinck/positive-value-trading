@@ -8,7 +8,7 @@ import {
 } from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
 import {participantMap} from "./mapper";
-import {BookmakerId, Provider} from "./bookmaker";
+import {Bookmaker, BookmakerId, Provider} from "./bookmaker";
 
 const parser = require('node-html-parser')
 
@@ -153,9 +153,25 @@ export class BingoalParser {
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers: BetOffer[] = []
         apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).forEach(match => {
-
+            match.importantSubbets.forEach(subbet => {
+                const betType: BetType = this.determineBetType(subbet)
+                if(betType !== BetType.UNKNOWN) {
+                    subbet.tips.forEach(tip => {
+                        betOffers.push(new BetOffer(betType, match.ID, Bookmaker.BINGOAL, tip.shortName, tip.odd, NaN))
+                    })
+                }
+            })
         })
         return betOffers
+    }
+
+    static determineBetType(subbet) {
+        switch(subbet.name) {
+            case "1X2":
+                return BetType._1X2
+            default:
+                return BetType.UNKNOWN
+        }
     }
 }
 
@@ -404,7 +420,7 @@ export class AltenarParser {
         if(!apiResponse.data.Result) return []
         return apiResponse.data.Result.Items[0].Events.map(event => event.Competitors.map(participant => new Participant(
             getParticipantName(participant.Name), [new BookmakerId(apiResponse.provider, participant.Name.toUpperCase(),
-                IdType.PARTICIPANT)]))).flat()
+                IdType.PARTICIPANT)])).flat())
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {

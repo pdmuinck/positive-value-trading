@@ -13,6 +13,15 @@ import circusEventsExpected from "./resources/circus/expected_events.json"
 import circusBetOffersExpected from "./resources/circus/expected_betoffers.json"
 import bingoal from './resources/bingoal/response.json'
 import bingoalEventsExpected from './resources/bingoal/expected_events.json'
+import bingoalBetOffersExpected from './resources/bingoal/expected_betoffers.json'
+import kambiEventsExpected from './resources/kambi/expected_events.json'
+import kambiBetOffers from './resources/kambi/betoffers.json'
+import kambiExpectedBetOffers from './resources/kambi/expected_betoffers.json'
+import sbtechExpectedEvents from './resources/sbtech/expected_events.json'
+import sbtechBetOffers from './resources/sbtech/betoffers.json'
+import sbtechExpectedBetOffers from './resources/sbtech/expected_betoffers.json'
+import altenarExpectedEvents from './resources/altenar/expected_events.json'
+import altenarExpectedBetOffers from './resources/altenar/expected_betoffers.json'
 
 import {
     Event,
@@ -46,7 +55,7 @@ describe('Parser tests', function() {
 
         it("should parse betoffers", function() {
             const betOffers = Parser.parse(new ApiResponse(Provider.BINGOAL, bingoal, RequestType.BET_OFFER))
-            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(circusBetOffersExpected))
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(bingoalBetOffersExpected))
         })
     })
 
@@ -70,133 +79,57 @@ describe('Parser tests', function() {
 
     describe('Kambi Parser Tests', function() {
         describe('#parse', function() {
-            /*
+
             it('should parse betoffers', function() {
-                const book = Provider.KAMBI
-                const betOffers = Parser.parse(new ApiResponse(book, kambi.betoffers, RequestType.BET_OFFER))
-                const expected = [
-                    new BetOffer(BetType._1X2, 1006478884, book, '1', 8.80, NaN),
-                    new BetOffer(BetType._1X2, 1006478884, book, 'X', 4.0, NaN),
-                    new BetOffer(BetType._1X2, 1006478884, book, '2', 1.47, NaN),
-                    new BetOffer(BetType.OVER_UNDER, 1006478884, book, 'OVER', 2.12, 2.5),
-                    new BetOffer(BetType.OVER_UNDER, 1006478884, book, 'UNDER', 1.72, 2.5),
-                    new BetOffer(BetType.HANDICAP, 1007031368, book, '1', 1.93, 0.5),
-                    new BetOffer(BetType.HANDICAP, 1007031368, book, '2', 1.89, -0.5)
-                ]
-                expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+                const betOffers = Parser.parse(new ApiResponse(Provider.KAMBI, kambiBetOffers, RequestType.BET_OFFER))
+                expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(kambiExpectedBetOffers))
             })
 
-             */
+
 
             it('should parse events', function() {
                 const events = Parser.parse(new ApiResponse(Provider.KAMBI, kambi, RequestType.EVENT))
-                const expected = [
-                    new Event(new BookmakerId(Provider.KAMBI, "1007294061", IdType.EVENT), "2021-02-26T19:45:00Z",
-                        [
-                            new Participant(ParticipantName.CHARLEROI,
-                                [new BookmakerId(Provider.KAMBI, "1002206222", IdType.PARTICIPANT)]),
-                            new Participant(ParticipantName.GENK,
-                                [new BookmakerId(Provider.KAMBI, "1000000234", IdType.PARTICIPANT)])
-                        ])
-                ]
-                expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+                expect(JSON.stringify(events)).to.equal(JSON.stringify(kambiEventsExpected))
             })
 
             it('should parse participants', function() {
                 const participants = Parser.parse(new ApiResponse(Provider.KAMBI, kambi, RequestType.PARTICIPANT))
-                const expected = [
-                    new Participant(ParticipantName.CHARLEROI,
-                        [new BookmakerId(Provider.KAMBI, "1002206222", IdType.PARTICIPANT)]),
-                    new Participant(ParticipantName.GENK,
-                        [new BookmakerId(Provider.KAMBI, "1000000234", IdType.PARTICIPANT)])
-                ]
-                expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+                expect(JSON.stringify(participants)).to.equal(JSON.stringify(kambiEventsExpected.map(event => event._participants).flat()))
             })
         })
     })
 
     describe('SBTECH parser tests', function() {
         it('should parse betoffers', function() {
-            const book = Provider.SBTECH
-            const betOffers = Parser.parse(new ApiResponse(book, sbtech, RequestType.BET_OFFER))
-            const expected = [
-                new BetOffer(BetType._1X2, '19522273', book, 'X', 3.8, NaN),
-                new BetOffer(BetType._1X2, '19522273', book, '2', 4.75, NaN),
-                new BetOffer(BetType._1X2, '19522273', book, '1', 1.86956522, NaN),
-                new BetOffer(BetType.OVER_UNDER, '21112532', book, 'UNDER', 1.70343413, 2.5),
-                new BetOffer(BetType.OVER_UNDER, '21112532', book, 'OVER', 2.17357752, 2.5),
-            ]
-            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+            const betOffers = Parser.parse(new ApiResponse(Provider.SBTECH, sbtechBetOffers, RequestType.BET_OFFER))
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(sbtechExpectedBetOffers))
         })
 
         it('should parse events', function() {
             const events = Parser.parse(new ApiResponse(Provider.SBTECH, sbtech, RequestType.EVENT))
-            const expected = [
-                new Event(new BookmakerId(Provider.SBTECH, "21410549", IdType.EVENT), "2021-01-26T17:45:00Z",
-                    [
-                        new Participant(ParticipantName.WAASLAND_BEVEREN,
-                            [new BookmakerId(Provider.SBTECH, "78925", IdType.PARTICIPANT)]),
-                        new Participant(ParticipantName.MECHELEN,
-                            [new BookmakerId(Provider.SBTECH, "6246", IdType.PARTICIPANT)])
-                    ])
-            ]
-            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(sbtechExpectedEvents))
         })
 
         it('should parse participants', function() {
             const participants = Parser.parse(new ApiResponse(Provider.SBTECH, sbtech, RequestType.PARTICIPANT))
-            const expected = [
-                new Participant(ParticipantName.WAASLAND_BEVEREN,
-                    [new BookmakerId(Provider.SBTECH, "78925", IdType.PARTICIPANT)]),
-                new Participant(ParticipantName.MECHELEN,
-                    [new BookmakerId(Provider.SBTECH, "6246", IdType.PARTICIPANT)])
-            ]
-            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(sbtechExpectedEvents.map(event => event._participants).flat()))
         })
     })
 
     describe('ALTENAR parser tests', function() {
         it('should parse betoffers', function() {
-            const book = Provider.ALTENAR
-            const betOffers = Parser.parse(new ApiResponse(book, altenar, RequestType.BET_OFFER))
-            const expected = [
-                new BetOffer(BetType._1X2, 200001404193, book, '1', 3.1, NaN),
-                new BetOffer(BetType._1X2, 200001404193, book, 'X', 3.65, NaN),
-                new BetOffer(BetType._1X2, 200001404193, book, '2', 2.16, NaN),
-                new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, '1X', 1.64, NaN),
-                new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, '12', 1.28, NaN),
-                new BetOffer(BetType.DOUBLE_CHANCE, 200001404193, book, 'X2', 1.35, NaN),
-                new BetOffer(BetType.HANDICAP, 200001404193, book, '1', 2.7, -0.25),
-                new BetOffer(BetType.HANDICAP, 200001404193, book, '2', 1.45, 0.25),
-                new BetOffer(BetType.OVER_UNDER, 200001404193, book, 'OVER', 1.02, 0.5),
-                new BetOffer(BetType.OVER_UNDER, 200001404193, book, 'UNDER', 10.0, 0.5)
-            ]
-            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expected))
+            const betOffers = Parser.parse(new ApiResponse(Provider.ALTENAR, altenar, RequestType.BET_OFFER))
+            expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(altenarExpectedBetOffers))
         })
 
         it('should parse events', function() {
             const events = Parser.parse(new ApiResponse(Provider.ALTENAR, altenar, RequestType.EVENT))
-            const expected = [
-                new Event(new BookmakerId(Provider.ALTENAR, "200001404193", IdType.EVENT), "2021-02-16T20:00:00Z",
-                    [
-                        new Participant(ParticipantName.CHARLEROI,
-                            [new BookmakerId(Provider.ALTENAR, "CHARLEROI", IdType.PARTICIPANT)]),
-                        new Participant(ParticipantName.ANDERLECHT,
-                            [new BookmakerId(Provider.ALTENAR, "ANDERLECHT", IdType.PARTICIPANT)])
-                    ])
-            ]
-            expect(JSON.stringify(events)).to.equal(JSON.stringify(expected))
+            expect(JSON.stringify(events)).to.equal(JSON.stringify(altenarExpectedEvents))
         })
 
         it('should parse participants', function() {
             const participants = Parser.parse(new ApiResponse(Provider.ALTENAR, altenar, RequestType.PARTICIPANT))
-            const expected = [
-                new Participant(ParticipantName.CHARLEROI,
-                    [new BookmakerId(Provider.ALTENAR, "CHARLEROI", IdType.PARTICIPANT)]),
-                new Participant(ParticipantName.ANDERLECHT,
-                    [new BookmakerId(Provider.ALTENAR, "ANDERLECHT", IdType.PARTICIPANT)])
-            ]
-            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expected))
+            expect(JSON.stringify(participants)).to.equal(JSON.stringify(altenarExpectedEvents.map(event => event._participants.flat())))
         })
     })
 

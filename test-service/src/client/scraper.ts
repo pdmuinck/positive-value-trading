@@ -436,23 +436,27 @@ export class Scraper {
             {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":1500}},
         ]
 
-        const tokenRequest = tokenData[0]
-
-        return pages.map(page => {
-            if(requestType === RequestType.BET_OFFER) {
-                page["marketTypeRequests"] = [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39"]}]
-            }
-            if(tokenRequest.api === SbtechApi.V2) {
-                return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(bookmakerId, res.data.token, page, requestType))
-                    .catch(error => console.log(error))
-            } else {
-               return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(bookmakerId,
-                   res.data.split('ApiAccessToken = \'')[1].replace('\'', ''), page, requestType)).catch(error => console.log(error))
-            }
+        return tokenData.map(tokenRequest => {
+            const requests = pages.map(page => {
+                if(requestType === RequestType.BET_OFFER) {
+                    page["marketTypeRequests"] = [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39"]}]
+                }
+                if(tokenRequest.api === SbtechApi.V2) {
+                    return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(tokenRequest.bookmaker,
+                        bookmakerId, res.data.token, page, requestType))
+                        .catch(error => console.log(error))
+                } else {
+                    return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(tokenRequest.bookmaker, bookmakerId,
+                        res.data.split('ApiAccessToken = \'')[1].replace('\'', ''), page, requestType)).catch(error => console.log(error))
+                }
+            })
+            return Promise.all(requests).then(responses => {return responses.flat()})
         })
+
+
     }
 
-    toSbtechBetOfferRequest(bookmakerId: BookmakerId, token, page, requestType: RequestType) {
+    toSbtechBetOfferRequest(bookmaker: Bookmaker, bookmakerId: BookmakerId, token, page, requestType: RequestType) {
         const headers = {
             headers: {
                 'Content-Type': 'application/json',
@@ -460,15 +464,15 @@ export class Scraper {
                 'locale': 'en'
             }
         }
-        return axios.post('https://sbapi.sbtech.com/' + Bookmaker.BET777 +
+        return axios.post('https://sbapi.sbtech.com/' + bookmaker +
             '/sportscontent/sportsbook/v1/Events/' + (bookmakerId.idType === IdType.SPORT ? 'GetBySportId' : 'GetByLeagueId')
             , page, headers)
             .then(response => {
                 if(response.data.events.length > 0) {
-                    return new ApiResponse(bookmakerId.provider, response.data, requestType)
+                    return new ApiResponse(bookmakerId.provider, response.data, requestType, bookmaker)
                 }})
             .catch(error => {
-                return new ApiResponse(bookmakerId.provider, null, requestType)})
+                return new ApiResponse(bookmakerId.provider, null, requestType, bookmaker)})
     }
 
 

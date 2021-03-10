@@ -1,0 +1,482 @@
+[
+  {
+    "_betOptionName": "1",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294182,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294182,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294182,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294179,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294179,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294179,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294180,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294180,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294180,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294178,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.3,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294178,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294178,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.15,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294181,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294181,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294181,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294175,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294175,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294175,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.35,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294183,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294183,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294183,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294176,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294176,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294176,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294177,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294177,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294177,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 6.75,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007407954,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007407954,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.58,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007407954,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007405275,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007405275,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007405275,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.3,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294185,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294185,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294185,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.44,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294186,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294186,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294186,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294188,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294188,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294188,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 5.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294192,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294192,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294192,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294191,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294191,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294191,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294184,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294184,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294184,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294193,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294193,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294193,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294190,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294190,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294190,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294187,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294187,
+    "_bookMaker": "KAMBI"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.95,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1007294187,
+    "_bookMaker": "KAMBI"
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95013763,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.75682203,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.97605342,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.77782679,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.35,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.15,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016399",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.71593186,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.88908208,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.03047709,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.83179978,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016400",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.83181777,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.88906295,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.04442844,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.70609291,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.45,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016401",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.45,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.81594452,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.02409393,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.72051715,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.90624624,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016402",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.0353505,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.88928119,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.71562458,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.8316126,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016403",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.625,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.05,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.05136525,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.81590841,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.90628604,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.70129196,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016404",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.90909091,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.09170348,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.67451013,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85990002,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.8601,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016405",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.75,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016406",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016406",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.46511628,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016406",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.54054055,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.75,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.82394274,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.89751164,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.667111,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.10336468,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22016407",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.57142858,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.67305664,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.71927635,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.19817332,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.88537682,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.9148518,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.1231805,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22039720",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.81476078,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.99364124,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.78905856,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.02561028,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "22042337",
+    "_bookMaker": "SBTECH"
+  }
+]
