@@ -1,0 +1,191 @@
+[
+  {
+    "_betOptionName": "1",
+    "_price": 6.98,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 6.69
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.59,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.52
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.68,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 3.53
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.89,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.82
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.96,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.89
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 6.36,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 6.1
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.13,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.08
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 3.19,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 3.04
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.36,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.3
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.54,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 2.44
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.54,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.48
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.13,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 2.05
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.75,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.68
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.65,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.58
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.29,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 2.2
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.41,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.35
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.97,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 2.84
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.27,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.22
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 3.88,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182807,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 3.71
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.91,
+    "_line": 9.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182831,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.81
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.88,
+    "_line": 9.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 1279182831,
+    "_bookMaker": "PINNACLE",
+    "_vigFreePrice": 1.78
+  }
+]

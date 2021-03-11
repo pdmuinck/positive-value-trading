@@ -1,0 +1,778 @@
+[
+  {
+    "_betOptionName": "1",
+    "_price": 5.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113930",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.95,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113930",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.57,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113930",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9113930",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.76,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9113930",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.05,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113934",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.3,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113934",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9113934",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.9,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9113934",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.81,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9113934",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.14,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092747",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092747",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092747",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.07,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092747",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.67,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092747",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.45,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092749",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092749",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092749",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.12,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092749",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.63,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092749",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.45,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092746",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.35,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092746",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.08,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092746",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.99,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092746",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.72,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092746",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.41,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092748",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092748",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.85,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092748",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092748",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.75,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092748",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092755",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.35,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092755",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092755",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.13,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092755",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.63,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092755",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.51,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092750",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.3,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092750",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092750",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.2,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092750",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.59,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092750",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.93,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092760",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092760",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092760",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.62,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092760",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.14,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092760",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.61,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092762",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092762",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 4.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092762",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.58,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092762",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.22,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092762",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.56,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092759",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092759",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9092759",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.24,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092759",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.57,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": "9092759",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.43,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.13,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.16,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 2.48,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126093",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.19,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.95,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.37,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.26,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.6,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126097",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 5.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.54,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 2.22,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.21,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.15,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126098",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.08,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.32,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.27,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.65,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126107",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.38,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.42,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.27,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.51,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126109",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.75,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.19,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.59,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.26,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.38,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126116",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.46,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.28,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.46,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "9126117",
+    "_bookMaker": "MERIDIAN"
+  }
+]

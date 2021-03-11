@@ -1,0 +1,202 @@
+[
+  {
+    "_id": {
+      "_id": "1279182807",
+      "_idType": "EVENT",
+      "_provider": "PINNACLE"
+    },
+    "_startTime": "2021-03-12T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "CHARLEROI",
+            "_idType": "PARTICIPANT",
+            "_provider": "PINNACLE"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "PINNACLE"
+          }
+        ]
+      }
+    ],
+    "_marketIds": [
+      {
+        "_id": "1279182849",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183083",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183184",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183493",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183510",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183467",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182842",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182952",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183249",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183560",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183448",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183234",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183529",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182831",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183338",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183525",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182867",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183564",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183312",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182979",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183353",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183282",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183547",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183329",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183221",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183569",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183503",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183555",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183345",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183421",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182835",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279182915",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183517",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183257",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183289",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183301",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183117",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183318",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183324",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183536",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183377",
+        "_provider": "PINNACLE"
+      },
+      {
+        "_id": "1279183134",
+        "_provider": "PINNACLE"
+      }
+    ]
+  }
+]

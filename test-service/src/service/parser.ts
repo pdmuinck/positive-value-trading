@@ -420,7 +420,7 @@ export class AltenarParser {
         if(!apiResponse.data.Result) return []
         return apiResponse.data.Result.Items[0].Events.map(event => event.Competitors.map(participant => new Participant(
             getParticipantName(participant.Name), [new BookmakerId(apiResponse.provider, participant.Name.toUpperCase(),
-                IdType.PARTICIPANT)])).flat())
+                IdType.PARTICIPANT)])).flat()).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -639,9 +639,9 @@ export class MeridianParser {
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data.events) return []
+        if(!apiResponse.data[0].events) return []
         const betOffers = []
-        apiResponse.data.events.map(date => date.events).flat().forEach(event => {
+        apiResponse.data[0].events.forEach(event => {
             const eventId = event.id
             event.market.forEach(betOffer => {
                 const betType = MeridianParser.determineBetType(betOffer.templateId)
@@ -649,7 +649,9 @@ export class MeridianParser {
                     const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : NaN
                     betOffer.selection.forEach(option => {
                         const price = parseFloat(option.price)
-                        const outcome = option.nameTranslations.filter(trans => trans.locale === 'en')[0].translation.toUpperCase()
+                        const outcome = option.nameTranslations.filter(trans => trans.locale === 'en')[0] ?
+                            option.nameTranslations.filter(trans => trans.locale === 'en')[0].translation.toUpperCase()
+                            : option.nameTranslations.filter(trans => trans.locale === 'fr')[0].translation.toUpperCase()
                         betOffers.push(new BetOffer(betType, eventId, Provider.MERIDIAN, outcome, price, line))
                     })
                 }
@@ -722,7 +724,7 @@ export class Bet90Parser {
     }
 
     private static parseSpecialBetOffers(apiResponse: ApiResponse): BetOffer[]{
-        const betOffers = apiResponse.data.data
+        const betOffers = apiResponse.data.specialBetOffers
         const betOffersParsed = parser.parse(betOffers)
         const betOffersFound: BetOffer[] = []
         betOffersParsed.querySelectorAll('.betTitle').forEach(bet => {
@@ -733,13 +735,13 @@ export class Bet90Parser {
                 prices.forEach(price => {
                     const priceValue = price.childNodes[0].rawText.trim()
                     const betOption = price.parentNode.querySelectorAll('span.text')[0].childNodes[0].rawText.trim()
-                    betOffersFound.push(new BetOffer(betType, apiResponse.data.id, apiResponse.provider,
+                    betOffersFound.push(new BetOffer(betType, apiResponse.data.eventId, apiResponse.provider,
                         betOption === '+' ? "OVER" : betOption === "-" ? "UNDER": betOption,
                         priceValue.replace(",", "."), line))
                 })
             }
         })
-        return betOffersFound
+        return betOffersFound.concat(apiResponse.data._1X2)
     }
 
     private static determineBetType(betTypeString: string): BetType {

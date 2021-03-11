@@ -254,8 +254,8 @@ export class Scraper {
 
     toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         return [
-            axios.get(bookmakerId.id).then(response => new ApiResponse(Provider.MERIDIAN, response.data, RequestType.EVENT))
-                .catch(error => new ApiResponse(Provider.SCOOORE, null, requestType))
+            axios.get(bookmakerId.id).then(response => new ApiResponse(Provider.MERIDIAN, response.data, requestType))
+                .catch(error => new ApiResponse(Provider.MERIDIAN, null, requestType))
         ]
     }
 
@@ -330,10 +330,12 @@ export class Scraper {
                 return axios.post('https://bet90.be/Sports/SportLeagueGames', body, headers)
                     .then(response => {
                         const events = Bet90Parser.parse(new ApiResponse(bookmakerId.provider, response.data, RequestType.EVENT))
+                        const _1X2 = Bet90Parser.parse(new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER))
                         const test =  events.map(event => {
                             return axios.get('https://bet90.be/Bet/SpecialBetsCustomer?gameid=' + event.id.id + '&bettypeID=10&_=1610123136993&Cookie=culture%3Dnl', headers)
-                                .then(response => {return new ApiResponse(bookmakerId.provider,
-                                    {data: response.data, id: bookmakerId.id}, requestType)})
+                                .then(response => {
+                                    const data = {eventId: event.id.id, specialBetOffers: response.data, _1X2: _1X2.filter(betOffer => betOffer.eventId === event.id.id)}
+                                    return new ApiResponse(bookmakerId.provider, data, requestType)})
                                 .catch(error => console.log(error))
                         })
                         return Promise.all(test).then(responses => {
