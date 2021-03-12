@@ -1,12 +1,12 @@
 import {
     BetOffer, BetOfferRegistered,
-    BetType, CompetitionName, IdType,
+    CompetitionName, IdType,
     Participant,
     Sport,
     SportEvent, SportName, ValueBetFoundEvent
 } from "../../domain/betoffer";
 import {jupilerProLeagueParticipants} from "../../client/config";
-import {BookmakerId, Provider} from "../bookmaker";
+import {BetType, BookmakerId, Provider} from "../bookmaker";
 
 const expect = require('chai').expect
 

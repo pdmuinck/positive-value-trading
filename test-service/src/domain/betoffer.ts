@@ -1,4 +1,4 @@
-import {Bookmaker, BookmakerId, Provider} from "../service/bookmaker";
+import {BetType, Bookmaker, BookmakerId, Provider} from "../service/bookmaker";
 
 export class Sport{
     private readonly _name: SportName
@@ -351,14 +351,6 @@ export class BetOffer {
     get key(){
         return [this._betType, this._betOptionName, this._line].join(';')
     }
-}
-
-export enum BetType {
-    _1X2 = '1X2',
-    DOUBLE_CHANCE = 'DOUBLE_CHANCE',
-    OVER_UNDER = 'OVER_UNDER',
-    HANDICAP = 'HANDICAP',
-    UNKNOWN = 'UNKNOWN'
 }
 
 export class ValueBetFoundEvent {

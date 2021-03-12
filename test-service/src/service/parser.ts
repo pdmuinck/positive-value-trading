@@ -1,6 +1,5 @@
 import {
     BetOffer,
-    BetType,
     IdType,
     Participant,
     ParticipantName,
@@ -8,7 +7,7 @@ import {
 } from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
 import {participantMap} from "./mapper";
-import {Bookmaker, BookmakerId, Provider} from "./bookmaker";
+import {BetType, Bookmaker, BookmakerId, Provider} from "./bookmaker";
 
 const parser = require('node-html-parser')
 
@@ -152,7 +151,7 @@ export class BingoalParser {
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers: BetOffer[] = []
-        apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).forEach(match => {
+        apiResponse.data.map(event => event.box[0].match).flat().filter(match => !match.outright).forEach(match => {
             match.importantSubbets.forEach(subbet => {
                 const betType: BetType = this.determineBetType(subbet)
                 if(betType !== BetType.UNKNOWN) {
@@ -166,9 +165,21 @@ export class BingoalParser {
     }
 
     static determineBetType(subbet) {
-        switch(subbet.name) {
-            case "1X2":
+        switch(subbet.marketID) {
+            case "1":
                 return BetType._1X2
+            case "10":
+                return BetType.DOUBLE_CHANCE
+            case "11":
+                return BetType.DRAW_NO_BET
+            case "14":
+                return BetType.HANDICAP
+            case "17":
+                return BetType.OVER_UNDER
+            case "27":
+                return BetType.BOTH_TEAMS_SCORE
+            case "55":
+                return BetType._1X2_FIRST_HALF
             default:
                 return BetType.UNKNOWN
         }
@@ -266,8 +277,8 @@ export class KambiParser {
     }
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data.betOffers) return []
-        return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.provider, betOffer)).flat()
+        if(!apiResponse.data) return []
+        return apiResponse.data.map(entry => entry.betOffers).flat().map(betOffer => this.transformToBetOffers(apiResponse.provider, betOffer)).flat()
     }
 
     static transformToBetOffers(bookMaker: Provider, betOfferContent): BetOffer[] {
@@ -295,6 +306,25 @@ export class KambiParser {
                 return BetType.OVER_UNDER
             case 1001159711:
                 return BetType.HANDICAP
+            case 1001642858:
+                return BetType.BOTH_TEAMS_SCORE
+            case 1001159897:
+                return BetType.OVER_UNDER_CORNERS
+            case 1001239606:
+                return BetType.ODD_EVEN_CORNERS
+            case 1000316018:
+                return BetType._1X2_FIRST_HALF
+            case 1002244276:
+                return BetType.ASIAN_OVER_UNDER
+            case 1001642858:
+                return BetType.BOTH_TEAMS_SCORE
+            case 1001159922:
+                return BetType.DOUBLE_CHANCE
+            case 1001159967:
+                return BetType.OVER_UNDER_TEAM1
+            case 1001159633:
+                return BetType.OVER_UNDER_TEAM2
+
         }
     }
 

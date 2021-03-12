@@ -24,27 +24,28 @@ describe('Parser tests', function() {
     Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]
 
     providers.forEach(provider => {
-        const eventsToParse = require("./resources/" + provider + "/events.json")
-        const betOffersToParse = require("./resources/" + provider + "/betoffers.json")
+        const eventsToParse: ApiResponse = require("./resources/" + provider + "/events.json")
+        const betOffersToParse: ApiResponse = require("./resources/" + provider + "/betoffers.json")
         const expectedEvents = require("./resources/" + provider + "/expected_events.json")
         const expectedBetOffers = require("./resources/" + provider + "/expected_betoffers.json")
 
         it("should parse events for: " + provider, function() {
-            const events = Parser.parse(new ApiResponse(provider, eventsToParse, RequestType.EVENT))
+            const events = Parser.parse(eventsToParse)
             expect(JSON.stringify(events)).to.equal(JSON.stringify(expectedEvents))
         })
 
         it("should parse participants for: " + provider, function() {
-            const participants = Parser.parse(new ApiResponse(provider, eventsToParse, RequestType.PARTICIPANT))
+            const participants = Parser.parse(eventsToParse)
             expect(JSON.stringify(participants)).to.equal(JSON.stringify(expectedEvents.map(event => event._participants).flat()))
         })
 
         it("should parse betoffers for: " + provider, function() {
-            const betOffers = Parser.parse(new ApiResponse(provider, betOffersToParse, RequestType.BET_OFFER))
+            const betOffers = Parser.parse(betOffersToParse)
             expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(expectedBetOffers))
         })
     })
 
+    /*
     it("should parse events for: BET90", function() {
         const events: Event[] = Parser.parse(new ApiResponse(Provider.BET90, bet90.events, RequestType.EVENT))
         expect(JSON.stringify(events)).to.equal(JSON.stringify(bet90ExpectedEvents))
@@ -64,6 +65,8 @@ describe('Parser tests', function() {
         expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(bet90ExpectedBetOffers))
         expect(JSON.stringify(specialBetOffers)).to.equal(JSON.stringify(bet90ExpectedSpecialBetOffers))
     })
+    */
+
 })
 
 
