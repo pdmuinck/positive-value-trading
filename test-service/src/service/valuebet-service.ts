@@ -1,6 +1,5 @@
 import {Scraper} from "../client/scraper";
-import {BetOffer, SportEvent, SportName, ValueBetFoundEvent} from "../domain/betoffer";
-import { Parser } from "./parser";
+import {SportEvent, SportName, ValueBetFoundEvent} from "../domain/betoffer";
 
 const NodeCache = require('node-cache')
 const ttlSeconds = 60 * 1 * 1

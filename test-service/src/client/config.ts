@@ -50,7 +50,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION),
             new BookmakerId(Provider.BETCENTER, "6898", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "16409", IdType.COMPETITION),
-            new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
+            //new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "101-pro_league_1a", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants

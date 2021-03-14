@@ -20,8 +20,11 @@ const expect = require('chai').expect
 
 describe('Parser tests', function() {
 
+    /*
     const providers = [Provider.BINGOAL, Provider.KAMBI, Provider.BETCONSTRUCT, Provider.SBTECH, Provider.ALTENAR,
-    Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]
+    Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]*/
+
+    const providers = [Provider.PINNACLE]
 
     providers.forEach(provider => {
         const eventsToParse: ApiResponse = require("./resources/" + provider + "/events.json")

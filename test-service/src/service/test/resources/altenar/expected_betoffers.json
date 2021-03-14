@@ -1,1282 +1,802 @@
 [
   {
     "_betOptionName": "1",
-    "_price": 3.55,
+    "_price": 5.8,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640925,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X",
-    "_price": 3.55,
+    "_price": 4,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640925,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 2.02,
+    "_price": 1.56,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640925,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1X",
-    "_price": 1.71,
+    "_price": 2.22,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640925,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "12",
-    "_price": 1.29,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.28,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.55,
-    "_line": 0,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.45,
-    "_line": 0,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.05,
-    "_line": 0.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.7,
-    "_line": -0.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.75,
-    "_line": 0.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.95,
-    "_line": -0.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.06,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 7.5,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.55,
-    "_line": 0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.3,
-    "_line": -0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.35,
-    "_line": 1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.95,
-    "_line": -1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.35,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.15,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.4,
-    "_line": 1.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.9,
-    "_line": 1.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.55,
-    "_line": 2,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.4,
-    "_line": 2,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.8,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.05,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.75,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.3,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.6,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 3.6,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.28,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 6.5,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.08,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 10,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.02,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640925,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.29,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 6,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 8.8,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.08,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.12,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 3.1,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.4,
-    "_line": -2.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.5,
-    "_line": 2.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.2,
-    "_line": -2,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.6,
-    "_line": 2,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.9,
-    "_line": -1.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.8,
-    "_line": 1.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.7,
-    "_line": -1.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.05,
-    "_line": 1.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.55,
-    "_line": -1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.3,
-    "_line": 1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.01,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 11,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.1,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 6.2,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.4,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.9,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.55,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.4,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.75,
-    "_line": 3.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.05,
-    "_line": 3.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.8,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.2,
-    "_line": 3.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.65,
-    "_line": 3.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.55,
-    "_line": 4,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.5,
-    "_line": 4,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 3.15,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.35,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 5.2,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.14,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640901,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.87,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.7,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 3.9,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.25,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.27,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.82,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.4,
-    "_line": -1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.5,
-    "_line": 1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.05,
-    "_line": -0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.7,
-    "_line": 0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.8,
-    "_line": -0.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.9,
-    "_line": 0.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.6,
-    "_line": -0.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.2,
-    "_line": 0.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.4,
-    "_line": 0,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.7,
-    "_line": 0,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.04,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 8.5,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.25,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.8,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.4,
-    "_line": 2,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.9,
-    "_line": 2,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.6,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.3,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.8,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.8,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.3,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.6,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.9,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.4,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 5.2,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.14,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 8.5,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.04,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640927,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.8,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.8,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 4.1,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
     "_price": 1.23,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.25,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X2",
-    "_price": 1.89,
+    "_price": 1.14,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 2.55,
-    "_line": -1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_price": 4,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 1.45,
-    "_line": 1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_price": 1.2,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.85,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
     "_price": 2.3,
-    "_line": -1,
+    "_line": 0.5,
     "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
     "_price": 1.55,
-    "_line": 1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.95,
-    "_line": -0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.75,
-    "_line": 0.75,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.75,
     "_line": -0.5,
     "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "2",
-    "_price": 1.95,
+    "_betOptionName": "OVER",
+    "_price": 1.04,
     "_line": 0.5,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 8.5,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.55,
-    "_line": -0.25,
+    "_price": 2.1,
+    "_line": 0.75,
     "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 2.3,
-    "_line": 0.25,
+    "_price": 1.65,
+    "_line": -0.75,
     "_betType": "HANDICAP",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "OVER",
-    "_price": 1.03,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_betOptionName": "1",
+    "_price": 1.8,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "UNDER",
-    "_price": 9,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_betOptionName": "2",
+    "_price": 1.9,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "OVER",
-    "_price": 1.2,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": 1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "UNDER",
-    "_price": 4.2,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": -1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "OVER",
+    "_betOptionName": "1",
     "_price": 1.5,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_line": 1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "UNDER",
-    "_price": 2.55,
-    "_line": 2.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.7,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.1,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.85,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.95,
-    "_line": 2.75,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.1,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.7,
-    "_line": 3,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
+    "_betOptionName": "2",
     "_price": 2.4,
-    "_line": 3.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.55,
-    "_line": 3.25,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_line": -1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 2.7,
-    "_line": 3.5,
+    "_price": 1.28,
+    "_line": 1.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
+    "_price": 3.6,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
     "_price": 1.45,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.7,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.65,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.2,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.9,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.9,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.1,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.7,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.55,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.5,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 3.15,
     "_line": 3.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 4.8,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 1.16,
-    "_line": 4.5,
+    "_price": 1.35,
+    "_line": 3.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 7.5,
-    "_line": 5.5,
+    "_price": 5.5,
+    "_line": 4.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 1.06,
+    "_price": 1.12,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 9,
     "_line": 5.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640904,
+    "_eventId": 200001715940,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.03,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001715940,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.73,
+    "_price": 3.15,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X",
-    "_price": 3.85,
+    "_price": 3.4,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 4.3,
+    "_price": 2.19,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1X",
-    "_price": 1.21,
+    "_price": 1.61,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "12",
-    "_price": 1.25,
+    "_price": 1.3,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X2",
-    "_price": 1.95,
+    "_price": 1.34,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001640902,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.55,
-    "_line": -1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640902,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.45,
-    "_line": 1.25,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
     "_price": 2.2,
-    "_line": -1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
     "_price": 1.6,
-    "_line": 1,
-    "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.85,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.9,
-    "_line": -0.75,
+    "_price": 2.55,
+    "_line": -0.25,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 1.8,
-    "_line": 0.75,
+    "_price": 1.45,
+    "_line": 0.25,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.7,
-    "_line": -0.5,
+    "_price": 2.2,
+    "_line": 0,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 2.05,
+    "_price": 1.6,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.83,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.83,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.65,
     "_line": 0.5,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.1,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.04,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 8.5,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
     "_price": 1.5,
-    "_line": -0.25,
+    "_line": 0.75,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001712083,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
     "_price": 2.4,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.25,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 3.8,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.4,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.9,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.6,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.3,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.8,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.8,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.9,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.4,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 5.2,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.14,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 8.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.04,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001712083,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.07,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.45,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.25,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.32,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.29,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.66,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.85,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.3,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.55,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.05,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.7,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.8,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.9,
     "_line": 0.25,
     "_betType": "HANDICAP",
-    "_eventId": 200001640902,
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.4,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684378,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1284,7 +804,7 @@
     "_price": 1.03,
     "_line": 0.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684378,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1292,7 +812,327 @@
     "_price": 9,
     "_line": 0.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.25,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 3.8,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.55,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.4,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.75,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.05,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.95,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.85,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.3,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.6,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.55,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.5,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.9,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.4,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 5,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.15,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 8.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.04,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684378,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 3.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.04,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.68,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.3,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.29,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 2,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.8,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.95,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.75,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.75,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.95,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.03,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 9,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.4,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1300,7 +1140,7 @@
     "_price": 1.22,
     "_line": 1.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1308,23 +1148,23 @@
     "_price": 4,
     "_line": 1.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 1.5,
+    "_price": 1.55,
     "_line": 2.25,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 2.55,
+    "_price": 2.4,
     "_line": 2.25,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1332,7 +1172,7 @@
     "_price": 1.7,
     "_line": 2.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1340,39 +1180,39 @@
     "_price": 2.1,
     "_line": 2.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 1.85,
+    "_price": 1.9,
     "_line": 2.75,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 1.95,
+    "_price": 1.9,
     "_line": 2.75,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 2.1,
+    "_price": 2.2,
     "_line": 3,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 1.7,
+    "_price": 1.65,
     "_line": 3,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1380,7 +1220,7 @@
     "_price": 2.4,
     "_line": 3.25,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1388,7 +1228,7 @@
     "_price": 1.55,
     "_line": 3.25,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1396,7 +1236,7 @@
     "_price": 2.7,
     "_line": 3.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1404,7 +1244,7 @@
     "_price": 1.45,
     "_line": 3.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1412,7 +1252,7 @@
     "_price": 4.8,
     "_line": 4.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1420,172 +1260,348 @@
     "_price": 1.16,
     "_line": 4.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "OVER",
-    "_price": 7.5,
+    "_price": 8.5,
     "_line": 5.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "UNDER",
-    "_price": 1.06,
+    "_price": 1.04,
     "_line": 5.5,
     "_betType": "OVER_UNDER",
-    "_eventId": 200001640902,
+    "_eventId": 200001684381,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 2,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.8,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 2.12,
+    "_price": 2.39,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001684378,
+    "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X",
-    "_price": 3.6,
+    "_price": 3.25,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001684378,
+    "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 3.05,
+    "_price": 2.85,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001684378,
+    "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1X",
-    "_price": 1.35,
+    "_price": 1.39,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684378,
+    "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "12",
-    "_price": 1.27,
+    "_price": 1.32,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684378,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.63,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684378,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 3.45,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.75,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.92,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.76,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.26,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.29,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684381,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.27,
-    "_line": null,
-    "_betType": "1X2",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "X",
-    "_price": 3.65,
+    "_betOptionName": "X2",
+    "_price": 1.51,
     "_line": null,
-    "_betType": "1X2",
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.7,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 2.75,
+    "_price": 2.05,
     "_line": null,
-    "_betType": "1X2",
+    "_betType": "DRAW_NO_BET",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "1X",
+    "_betOptionName": "1",
+    "_price": 2.3,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.55,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.05,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.7,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.7,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.5,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.4,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
     "_price": 1.4,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
+    "_line": 0.5,
+    "_betType": "HANDICAP",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "12",
-    "_price": 1.27,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
+    "_betOptionName": "2",
+    "_price": 2.7,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "X2",
-    "_price": 1.56,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
+    "_betOptionName": "OVER",
+    "_price": 1.04,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 8.5,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.28,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 3.6,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.4,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.9,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.65,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.2,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.1,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.7,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 3.15,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.35,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 5.5,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.12,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 9,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684379,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.03,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
     "_eventId": 200001684379,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 3.55,
+    "_price": 3.4,
     "_line": null,
     "_betType": "1X2",
     "_eventId": 200001697234,
@@ -1593,7 +1609,7 @@
   },
   {
     "_betOptionName": "X",
-    "_price": 3.65,
+    "_price": 3.35,
     "_line": null,
     "_betType": "1X2",
     "_eventId": 200001697234,
@@ -1601,7 +1617,7 @@
   },
   {
     "_betOptionName": "2",
-    "_price": 1.92,
+    "_price": 2.06,
     "_line": null,
     "_betType": "1X2",
     "_eventId": 200001697234,
@@ -1609,7 +1625,7 @@
   },
   {
     "_betOptionName": "1X",
-    "_price": 1.76,
+    "_price": 1.67,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697234,
@@ -1617,7 +1633,7 @@
   },
   {
     "_betOptionName": "12",
-    "_price": 1.27,
+    "_price": 1.3,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697234,
@@ -1625,7 +1641,7 @@
   },
   {
     "_betOptionName": "X2",
-    "_price": 1.28,
+    "_price": 1.3,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697234,
@@ -1633,7 +1649,279 @@
   },
   {
     "_betOptionName": "1",
-    "_price": 2.37,
+    "_price": 2.4,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.85,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.7,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.4,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.95,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.75,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.7,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.04,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 8.5,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.25,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 3.8,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.4,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.9,
+    "_line": 2,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.6,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.3,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.05,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.75,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.9,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.4,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 5.5,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.12,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 8.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.04,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697234,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.5,
     "_line": null,
     "_betType": "1X2",
     "_eventId": 200001684386,
@@ -1641,7 +1929,7 @@
   },
   {
     "_betOptionName": "X",
-    "_price": 3.65,
+    "_price": 3.3,
     "_line": null,
     "_betType": "1X2",
     "_eventId": 200001684386,
@@ -1665,7 +1953,7 @@
   },
   {
     "_betOptionName": "12",
-    "_price": 1.27,
+    "_price": 1.31,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001684386,
@@ -1673,7 +1961,7 @@
   },
   {
     "_betOptionName": "X2",
-    "_price": 1.52,
+    "_price": 1.47,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001684386,
@@ -1681,162 +1969,290 @@
   },
   {
     "_betOptionName": "1",
-    "_price": 1.44,
+    "_price": 1.8,
     "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684377,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 4.4,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684377,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 6.4,
+    "_price": 1.9,
     "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684377,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "1X",
-    "_price": 1.12,
+    "_betOptionName": "ODD",
+    "_price": 2,
     "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684377,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
-    "_betOptionName": "12",
-    "_price": 1.19,
+    "_betOptionName": "EVEN",
+    "_price": 1.8,
     "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684377,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 2.46,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684377,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.81,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684389,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.7,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684389,
+    "_price": 2.4,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 3.95,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001684389,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.24,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684389,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.26,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684389,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.86,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001684389,
+    "_price": 1.5,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.53,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001697233,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.9,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001697233,
+    "_price": 2.1,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "2",
-    "_price": 5.8,
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": 200001697233,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.14,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001697233,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.23,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001697233,
-    "_bookMaker": "ALTENAR"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 2.24,
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 200001697233,
+    "_price": 1.65,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "1",
-    "_price": 1.56,
+    "_price": 1.8,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.9,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.03,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 9,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.45,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.55,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.22,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 4,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.5,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.55,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.7,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.1,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.9,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.9,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.2,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.65,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.7,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.45,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 4.8,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.16,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 8.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.04,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684386,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.5,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001697236,
+    "_eventId": 200001684377,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "X",
-    "_price": 3.85,
+    "_price": 4.2,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001697236,
+    "_eventId": 200001684377,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1844,7 +2260,7 @@
     "_price": 5.6,
     "_line": null,
     "_betType": "1X2",
-    "_eventId": 200001697236,
+    "_eventId": 200001684377,
     "_bookMaker": "ALTENAR"
   },
   {
@@ -1852,12 +2268,940 @@
     "_price": 1.14,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.2,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 2.31,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.2,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 4,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.9,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.9,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.3,
+    "_line": -1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.55,
+    "_line": 1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.05,
+    "_line": -1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.7,
+    "_line": 1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.8,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.9,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.5,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.4,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.03,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 9,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.2,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 4.2,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.5,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.55,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.7,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.1,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.1,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.7,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.7,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.45,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 4.8,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.16,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 7.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.06,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684377,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.92,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.27,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.28,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.76,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.45,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.55,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 2,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.8,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.55,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.45,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.1,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.65,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.9,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.8,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.65,
+    "_line": -0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.1,
+    "_line": 0.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.45,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.55,
+    "_line": 0,
+    "_betType": "HANDICAP",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.02,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 10,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.16,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 4.8,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.55,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.4,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.65,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.2,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.05,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.75,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.3,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.6,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 4,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.22,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 6.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.08,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001684389,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 4.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.17,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.22,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 2.12,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.25,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.85,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": -1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": 1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.2,
+    "_line": -1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.6,
+    "_line": 1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.95,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.75,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.7,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.05,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.02,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 10,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.16,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 4.8,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.55,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.4,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.7,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.1,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.9,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.9,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.1,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.7,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.4,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.55,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 4,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.22,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 6.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.08,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697233,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.16,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697236,
     "_bookMaker": "ALTENAR"
   },
   {
     "_betOptionName": "12",
-    "_price": 1.23,
+    "_price": 1.21,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697236,
@@ -1865,10 +3209,730 @@
   },
   {
     "_betOptionName": "X2",
-    "_price": 2.19,
+    "_price": 2.22,
     "_line": null,
     "_betType": "DOUBLE_CHANCE",
     "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.22,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.8,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "ODD",
+    "_price": 1.9,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "EVEN",
+    "_price": 1.9,
+    "_line": null,
+    "_betType": "ODD_EVEN",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.4,
+    "_line": -1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.5,
+    "_line": 1.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.1,
+    "_line": -1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.65,
+    "_line": 1.25,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.83,
+    "_line": -1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.83,
+    "_line": 1,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.65,
+    "_line": -0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.1,
+    "_line": 0.75,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": -0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": 0.5,
+    "_betType": "HANDICAP",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.03,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 9,
+    "_line": 0.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.2,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 4.2,
+    "_line": 1.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.5,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.55,
+    "_line": 2.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.65,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 2.2,
+    "_line": 2.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 1.85,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.95,
+    "_line": 2.75,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.05,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.75,
+    "_line": 3,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.3,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.6,
+    "_line": 3.25,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 2.55,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.5,
+    "_line": 3.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 4.5,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.18,
+    "_line": 4.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": 7.5,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": 1.06,
+    "_line": 5.5,
+    "_betType": "OVER_UNDER",
+    "_eventId": 200001697236,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.42,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 5.8,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.13,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.16,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 2.5,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.16,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 4.5,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731247,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.17,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.9,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.37,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.27,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.61,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.6,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.2,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731250,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 5.4,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 4.1,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.53,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 2.24,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.21,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.15,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 4,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.2,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731251,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.07,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 3.2,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.32,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.28,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.66,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.55,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.3,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731252,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.36,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.6,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.65,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.43,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.28,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.52,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.75,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.95,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731253,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.85,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.75,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.17,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.6,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.26,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.38,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.1,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.65,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731255,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 2.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": 3.55,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 2.5,
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": 1.47,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": 1.28,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": 1.47,
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": 1.83,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731256,
+    "_bookMaker": "ALTENAR"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": 1.83,
+    "_line": null,
+    "_betType": "DRAW_NO_BET",
+    "_eventId": 200001731256,
     "_bookMaker": "ALTENAR"
   }
 ]

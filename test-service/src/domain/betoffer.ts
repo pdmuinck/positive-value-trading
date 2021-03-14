@@ -1,4 +1,5 @@
 import {BetType, Bookmaker, BookmakerId, Provider} from "../service/bookmaker";
+import {BetOffer} from "../service/betoffers";
 
 export class Sport{
     private readonly _name: SportName
@@ -299,58 +300,6 @@ export enum CompetitionName {
     PREMIER_LEAGUE = 'PREMIER_LEAGUE',
     EREDIVISIE = 'EREDIVISIE',
     LIGUE_1 = 'LIGUE_1'
-}
-
-export class BetOffer {
-    private readonly _betType: BetType
-    private readonly _eventId: number
-    private readonly _bookMaker: Bookmaker
-    private readonly _betOptionName: string
-    private readonly _price: number
-    private readonly _vigFreePrice: number
-    private readonly _line: number
-
-    constructor(betType: BetType, eventId, bookMaker, betOptionName, price, line, vigFreePrice?: number) {
-        this._betOptionName = betOptionName
-        this._price = price
-        this._line = line
-        this._betType = betType
-        this._eventId = eventId
-        this._bookMaker = bookMaker
-        this._vigFreePrice = vigFreePrice
-    }
-
-    get betOptionName(){
-        return this._betOptionName
-    }
-
-    get price(){
-        return this._price
-    }
-
-    get line(){
-        return this._line
-    }
-
-    get betType(){
-        return this._betType
-    }
-
-    get eventId() {
-        return this._eventId
-    }
-
-    get bookMaker(){
-        return this._bookMaker
-    }
-
-    get vigFreePrice(){
-        return this._vigFreePrice
-    }
-
-    get key(){
-        return [this._betType, this._betOptionName, this._line].join(';')
-    }
 }
 
 export class ValueBetFoundEvent {
