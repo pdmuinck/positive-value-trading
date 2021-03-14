@@ -428,6 +428,7 @@ export class Scraper {
 
     toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {
 
+        // https://guest.api.arcadia.pinnacle.com/0.1/leagues/1980/matchups
         //https://guest.api.arcadia.pinnacle.com/0.1/matchups/1273665536/related
         // https://guest.api.arcadia.pinnacle.com/0.1/matchups/1273665536/markets/related/straight
 
@@ -441,6 +442,19 @@ export class Scraper {
                 "Content-Type": "application/json"
             }
         }
+
+        return axios.get("https://guest.api.arcadia.pinnacle.com/0.1/leagues/" + bookmakerId.id + "/matchups", requestConfig).then(response => {
+            const events = Parser.parse(new ApiResponse(Provider.PINNACLE, response.data, RequestType.EVENT))
+            const betOfferRequests = []
+            events.forEach(event => {
+                betOfferRequests.push(axios.get("https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id.id + "/related", requestConfig).then(response => response.data))
+                betOfferRequests.push(axios.get("https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id.id + "/markets/related/straight", requestConfig).then(response => response.data))
+            })
+            return Promise.all(betOfferRequests).then(responses => {
+                return new ApiResponse(Provider.PINNACLE, responses, RequestType.BET_OFFER)
+            })
+        })
+        /*
         let url = 'https://guest.api.arcadia.pinnacle.com/0.1/' + (bookmakerId.idType === IdType.SPORT ?
             'sports/' : 'leagues/') + bookmakerId.id + (requestType === RequestType.EVENT || requestType === RequestType.PARTICIPANT
         ? '/matchups' : '/markets/straight?primaryOnly=true')
@@ -450,7 +464,7 @@ export class Scraper {
                 requestConfig
             ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
                 .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})
-        ]
+        ]*/
     }
 
     toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType) {
