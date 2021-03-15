@@ -1,5 +1,11 @@
 import {IdType} from "../domain/betoffer";
 
+export enum Period {
+    _O= "FULL_GAME",
+    _1="FIRST_PERIOD",
+    _2 = "SECOND_PERIOD"
+}
+
 export enum BetType {
     _1X2 = '1X2',
     DOUBLE_CHANCE = 'DOUBLE_CHANCE',
@@ -15,7 +21,9 @@ export enum BetType {
     _3_WAY_HANDICAP = "3_WAY_HANDICAP",
     CORRECT_SCORE = "CORRECT_SCORE",
     ASIAN_HANDICAP = "ASIAN_HANDICAP",
+    ASIAN_HANDICAP_H1 = "ASIAN_HANDICAP_H1",
     ASIAN_OVER_UNDER = "ASIAN_OVER_UNDER",
+    ASIAN_OVER_UNDER_H1 = "ASIAN_OVER_UNDER_h1",
     ODD_EVEN = "ODD_EVEN",
     ODD_EVEN_CORNERS = "ODD_EVEN_CORNERS",
     YES_NO = "YES_NO",

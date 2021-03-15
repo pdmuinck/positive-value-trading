@@ -991,30 +991,84 @@ export class PinnacleParser {
     }
 
     private static parseOffers(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        return apiResponse.data.filter(offer => offer.prices.filter(price => price.designation).length > 0)
-            .map(offer => PinnacleParser.parseBetOffers(apiResponse.provider, offer)).flat()
+        const betOffers = []
+        for(let i = 0; i < apiResponse.data.length; i +=2) {
+            const marketIds = apiResponse.data[i].map(market => {
+                return {id: market.id, outcomeIds: market.participants.map(participant => participant.id).flat()}
+            })
+            betOffers.concat(PinnacleParser.parseBetOffers(marketIds, apiResponse.data[i+1]))
+        }
+        return betOffers
     }
 
-    private static parseBetOffers(bookMaker: Provider, offer): BetOffer[] {
+    private static parseBetOffers(marketIds, offers): BetOffer[] {
         const betOffers = []
-        const eventId = offer.matchupId
-        const betType = PinnacleParser.determineBetType(offer.key)
-        if(betType === BetType.UNKNOWN) return []
-        const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices)
-        offer.prices.forEach(price => {
-            const outcome = PinnacleParser.determineOutcome(price.designation.toUpperCase())
-            const line = price.points ? price.points : NaN
-            const odds = this.toDecimalOdds(price.price)
-            betOffers.push(new BetOffer(betType, eventId, bookMaker, outcome, odds, line,
-                parseFloat(vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice)))
+        marketIds.forEach(marketId => {
+            const marketOffers = offers.filter(offer => offer.matchupId === marketId).flat()
+            marketOffers.forEach(offer => {
+                const betType = PinnacleParser.determineBetType(offer.key, marketId)
+                if(betType !== BetType.UNKNOWN) {
+                    const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices)
+                    offer.prices.forEach(price => {
+                        const outcome = PinnacleParser.determineOutcome(price.designation.toUpperCase())
+                        const line = price.points ? price.points : NaN
+                        const odds = this.toDecimalOdds(price.price)
+                        betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId, Bookmaker.PINNACLE, outcome, odds, line,
+                            parseFloat(vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice)))
+                    })
+                }
+            })
         })
         return betOffers
     }
 
-    private static determineBetType(key): BetType {
+    private static determineBetType(key, marketId): BetType {
+        const splitted = key.split(";")
+        const period = splitted[1]
+        const type = splitted[2]
+        if(!marketId.parent) {
+            // primary markets
+            if(type === "m") {
+                if(period === "0") return BetType._1X2
+                if(period === "1") return BetType._1X2_FIRST_HALF
+            }
+            if(type === "tt"){
+                if(splitted[4] === "home") {
+                    if(period === "0") return BetType.OVER_UNDER_TEAM1
+                    if(period === "1") return BetType.OVER_UNDER_TEAM1_H1
+                }
+                if(splitted[4] === "away") {
+                    if(period === "0") return BetType.OVER_UNDER_TEAM2
+                    if(period === "1") return BetType.OVER_UNDER_TEAM2_H1
+                }
+            }
+            if(type === "s") {
+                if(period === "0") return BetType.ASIAN_HANDICAP
+                if(period === "1") return BetType.ASIAN_HANDICAP_H1
+            }
+
+            if(type === "ou") {
+                if(period === "0") return BetType.ASIAN_OVER_UNDER
+                if(period === "1") return BetType.ASIAN_OVER_UNDER_H1
+            }
+        } else if(marketId.type === "special") {
+            // specials
+            switch(marketId.special.description) {
+                case "Double Chance 1st Half":
+                    return BetType.DOUBLE_CHANCE_1H
+                case "Double Chance":
+                    return BetType.DOUBLE_CHANCE
+                case "Total Goals Odd/Even 1st Half":
+                    return BetType.ODD_EVEN_H1
+
+            }
+        }
+
+        if(splitted)
         if(key === 's;0;m') return BetType._1X2
-        if(key.includes('s;0;ou')) return BetType.OVER_UNDER
+        if(key.includes('s;0;ou')) return BetType.ASIAN_OVER_UNDER
+        if(key.includes("s;0;s")) return BetType.ASIAN_HANDICAP
+        if(key.includes(""))
         return BetType.UNKNOWN
     }
 
