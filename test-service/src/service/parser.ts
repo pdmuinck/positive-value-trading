@@ -1052,6 +1052,7 @@ export class PinnacleParser {
                 if(period === "1") return BetType.ASIAN_OVER_UNDER_H1
             }
         } else if(marketId.type === "special") {
+            if(marketId.special.description.includes("3-way Handicap")) return BetType.HANDICAP
             // specials
             switch(marketId.special.description) {
                 case "Double Chance 1st Half":
@@ -1060,6 +1061,16 @@ export class PinnacleParser {
                     return BetType.DOUBLE_CHANCE
                 case "Total Goals Odd/Even 1st Half":
                     return BetType.ODD_EVEN_H1
+                case "Both Teams To Score":
+                    return BetType.BOTH_TEAMS_SCORE
+                case "Draw No Bet 1st Half":
+                    return BetType.DRAW_NO_BET_1H
+                case "Exact Total Goals":
+                    return BetType.EXACT_GOALS
+                case "Draw No Bet":
+                    return BetType.DRAW_NO_BET
+                case "Total Goals Odd/Even":
+                    return BetType.ODD_EVEN
 
             }
         }
