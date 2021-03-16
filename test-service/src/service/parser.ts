@@ -10,13 +10,11 @@ export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
     private readonly _id: BookmakerId
-    private readonly _marketIds: BookmakerId[]
 
-    constructor(id: BookmakerId, startTime, participants: Participant[], marketIds?: BookmakerId[]){
+    constructor(id: BookmakerId, startTime, participants: Participant[]){
         this._id = id
         this._startTime = startTime
         this._participants = participants
-        this._marketIds = marketIds
     }
 
     get id(){
@@ -29,10 +27,6 @@ export class Event {
 
     get participants(){
         return this._participants
-    }
-
-    get marketIds(){
-        return this._marketIds
     }
 }
 
@@ -122,15 +116,9 @@ export class BingoalParser {
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
         }
     }
 
-    static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
-    }
 
     static parseEvents(apiResponse: ApiResponse): Event[] {
         return apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).map(match => {
@@ -199,7 +187,7 @@ export class CircusParser {
     }
 
     static parseEvents(apiResponse: ApiResponse): Event[] {
-        const response =  JSON.parse(JSON.parse(apiResponse.data.Message).Requests[0].Content)
+        const response =  JSON.parse(apiResponse.data.Requests[0].Content)
         return response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
             .filter(event => event.DefaultMarketType === "P1XP2").map(event => {
             const participants = [new Participant(getParticipantName(event.Team1Name),
@@ -354,17 +342,9 @@ export class SbtechParser {
         switch(apiResponse.requestType){
             case RequestType.BET_OFFER:
                 return this.parseBetOffers(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
         }
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        if(!apiResponse.data.events) return []
-        return apiResponse.data.events.map(event => event.participants.map(participant => new Participant(getParticipantName(participant.name),
-            [new BookmakerId(apiResponse.provider, participant.id, IdType.PARTICIPANT)]))).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -373,8 +353,7 @@ export class SbtechParser {
     }
 
     private static parseEvents(apiResponse: ApiResponse): Event[] {
-        if(!apiResponse.data.events) return []
-        return apiResponse.data.events.map(event => {
+        return apiResponse.data.map(page => page.events).flat().map(event => {
             const participants = event.participants.map(participant => {
                 return new Participant(getParticipantName(participant.name),
                     [new BookmakerId(apiResponse.provider, participant.id, IdType.PARTICIPANT)])
@@ -514,8 +493,6 @@ export class BetcenterParser {
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
         }
     }
 
@@ -528,11 +505,6 @@ export class BetcenterParser {
             })
             return new Event(new BookmakerId(Provider.BETCENTER, event.id.toString(), IdType.EVENT), event.startTime, participants)
         })
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -588,8 +560,6 @@ export class LadbrokesParser {
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
         }
 
         return
@@ -608,11 +578,6 @@ export class LadbrokesParser {
                 ]
                 return new Event(new BookmakerId(Provider.LADBROKES, eventId, IdType.EVENT), event.eventInfo.eventData.toString(), participants)
             }).flat()
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -668,8 +633,6 @@ export class MeridianParser {
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
         }
     }
 
@@ -681,11 +644,6 @@ export class MeridianParser {
             })
             return new Event(new BookmakerId(Provider.MERIDIAN, event.id, IdType.EVENT), event.startTime, participants)
         })
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events: Event[] = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -806,7 +764,6 @@ export class MeridianParser {
 
 function getParticipantName(name: string): ParticipantName{
     let found
-    const test = Object.keys(participantMap)
     Object.keys(participantMap).forEach(key => {
         if(participantMap[key].includes(name.toUpperCase())) {
             found = key
@@ -825,15 +782,7 @@ export class Bet90Parser {
                 return this.parseBetOffers(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
         }
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[]{
-        if(!apiResponse.data) return []
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
@@ -950,53 +899,34 @@ export class PinnacleParser {
         switch(apiResponse.requestType){
             case RequestType.BET_OFFER:
                 return this.parseOffers(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
             case RequestType.EVENT:
                 return this.parseEvents(apiResponse)
         }
     }
 
     private static parseEvents(apiResponse: ApiResponse): Event[]{
-        if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        const parsedEvents = {}
-        apiResponse.data.filter(event => !event.parentId).forEach(event => {
-            parsedEvents[event.id] = this.parseEvent(event, undefined)
-        })
-        apiResponse.data.filter(event => event.parentId).forEach(event => {
-            const parsedEvent = parsedEvents[event.parentId]
-            if(parsedEvent) {
-                parsedEvent.marketIds.push(new BookmakerId(Provider.PINNACLE, event.id.toString(), IdType.MARKET))
-            } else {
-                const parent = event.parent
-                parsedEvents[parent.id] = this.parseEvent(parent, event.id.toString())
-            }
-        })
-        return Object.values(parsedEvents)
+        let events = []
+        for(let i = 0; i < apiResponse.data.length; i +=2) {
+            events = events.concat(apiResponse.data[i].filter(event => !event.parent).map(event => {
+                return this.parseEvent(event)
+            }))
+        }
+        return events
     }
 
-    private static parseEvent(event, marketId): Event {
+    private static parseEvent(event): Event {
         const participants: Participant[] = event.participants.map(participant => {
             return new Participant(getParticipantName(participant.name),
                 [new BookmakerId(Provider.PINNACLE, participant.name.toUpperCase(), IdType.PARTICIPANT)])
         })
-        return new Event(new BookmakerId(Provider.PINNACLE, event.id.toString(), IdType.EVENT), event.startTime, participants,
-            marketId ? [new BookmakerId(Provider.PINNACLE, marketId, IdType.MARKET)] : [])
-    }
-
-    private static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        if(!apiResponse.data || apiResponse.data.constructor !== Array) return []
-        const events: Event[] = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
+        return new Event(new BookmakerId(Provider.PINNACLE, event.id.toString(), IdType.EVENT), event.startTime, participants)
     }
 
     private static parseOffers(apiResponse: ApiResponse): BetOffer[] {
-        const betOffers = []
+        let betOffers = []
         for(let i = 0; i < apiResponse.data.length; i +=2) {
-            const marketIds = apiResponse.data[i].map(market => {
-                return {id: market.id, outcomeIds: market.participants.map(participant => participant.id).flat()}
-            })
-            betOffers.concat(PinnacleParser.parseBetOffers(marketIds, apiResponse.data[i+1]))
+            const test = PinnacleParser.parseBetOffers(apiResponse.data[i], apiResponse.data[i+1])
+            betOffers = betOffers.concat(test)
         }
         return betOffers
     }
@@ -1004,16 +934,16 @@ export class PinnacleParser {
     private static parseBetOffers(marketIds, offers): BetOffer[] {
         const betOffers = []
         marketIds.forEach(marketId => {
-            const marketOffers = offers.filter(offer => offer.matchupId === marketId).flat()
+            const marketOffers = offers.filter(offer => offer.matchupId === marketId.id).flat()
             marketOffers.forEach(offer => {
                 const betType = PinnacleParser.determineBetType(offer.key, marketId)
                 if(betType !== BetType.UNKNOWN) {
-                    const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices)
+                    const vigFreePrices = PinnacleParser.calculateVigFreePrices(offer.prices, marketId)
                     offer.prices.forEach(price => {
-                        const outcome = PinnacleParser.determineOutcome(price.designation.toUpperCase())
+                        const outcome = PinnacleParser.determineOutcome(price.designation, marketId, price.participantId)
                         const line = price.points ? price.points : NaN
                         const odds = this.toDecimalOdds(price.price)
-                        betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId, Bookmaker.PINNACLE, outcome, odds, line,
+                        betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId.id, Bookmaker.PINNACLE, outcome, odds, line,
                             parseFloat(vigFreePrices.filter(vigFreePrice => vigFreePrice.outcomeType === outcome)[0].vigFreePrice)))
                     })
                 }
@@ -1093,20 +1023,25 @@ export class PinnacleParser {
 
     }
 
-    private static determineOutcome(outcome: string) {
-        switch(outcome) {
-            case 'HOME':
-                return '1'
-            case 'AWAY':
-                return '2'
-            case 'DRAW':
-                return 'X'
-            default:
-                return outcome
+    private static determineOutcome(outcome: string, marketId, participantId) {
+        if(!marketId.parent) {
+            switch(outcome.toUpperCase()) {
+                case 'HOME':
+                    return '1'
+                case 'AWAY':
+                    return '2'
+                case 'DRAW':
+                    return 'X'
+                default:
+                    return outcome
+            }
+        } else {
+            return marketId.participants.filter(participant => participant.id === participantId)[0].name.toUpperCase()
         }
+
     }
 
-    private static calculateVigFreePrices(prices) {
+    private static calculateVigFreePrices(prices, marketId) {
         const decimalOdds = prices.map(price => this.toDecimalOdds(price.price))
         let vig = 0
 
@@ -1116,20 +1051,10 @@ export class PinnacleParser {
 
         const vigFreePrices = []
         prices.forEach(price => {
-            const outcomeType = this.determineOutcome(price.designation.toUpperCase())
+            const outcomeType = this.determineOutcome(price.designation, marketId, price.participantId)
             const vigFreePrice = this.toDecimalOdds(price.price) / vig
             vigFreePrices.push({outcomeType: outcomeType, vigFreePrice: vigFreePrice.toFixed(2)})
         })
         return vigFreePrices
     }
-}
-
-function toDecimalOdds(americanOdds): number {
-
-    if(americanOdds < 0) {
-        return parseFloat(((100 / Math.abs(americanOdds)) + 1).toFixed(2))
-    } else {
-        return parseFloat(((americanOdds / 100) + 1).toFixed(2))
-    }
-
 }

@@ -1,132 +1,22 @@
 [
   {
     "_id": {
-      "_id": "2303151701",
+      "_id": "2627904601",
       "_idType": "EVENT",
       "_provider": "BETCONSTRUCT"
     },
-    "_startTime": "2021-03-06T15:15:00Z",
+    "_startTime": "2021-03-12T19:45:00Z",
     "_participants": [
       {
-        "_name": "K.A.S. Eupen",
+        "_name": "R. Charleroi S.C.",
         "_bookmakerIds": [
           {
-            "_id": "KAS EUPEN",
+            "_id": "R CHARLEROI SC",
             "_idType": "PARTICIPANT",
             "_provider": "BETCONSTRUCT"
           }
         ]
       },
-      {
-        "_name": "Oud-Heverlee Leuven",
-        "_bookmakerIds": [
-          {
-            "_id": "OUD-HEVERLEE LEUVEN",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303152101",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-06T17:30:00Z",
-    "_participants": [
-      {
-        "_name": "Waasland-Beveren",
-        "_bookmakerIds": [
-          {
-            "_id": "WAASLAND-BEVEREN",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      },
-      {
-        "_name": "Not Found",
-        "_bookmakerIds": [
-          {
-            "_id": "KFCO BEERSCHOT",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303151301",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-06T19:45:00Z",
-    "_participants": [
-      {
-        "_name": "Royal Antwerp F.C.",
-        "_bookmakerIds": [
-          {
-            "_id": "R ANTWERP FC",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      },
-      {
-        "_name": "K.V. Kortrijk",
-        "_bookmakerIds": [
-          {
-            "_id": "KV KORTRIJK",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303151501",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-07T12:30:00Z",
-    "_participants": [
-      {
-        "_name": "Royal Excel Mouscron",
-        "_bookmakerIds": [
-          {
-            "_id": "ROYAL MOUSCRON",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      },
-      {
-        "_name": "Standard Liège",
-        "_bookmakerIds": [
-          {
-            "_id": "STANDARD LIÈGE",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303150501",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-07T15:00:00Z",
-    "_participants": [
       {
         "_name": "Club Brugge KV",
         "_bookmakerIds": [
@@ -136,86 +26,16 @@
             "_provider": "BETCONSTRUCT"
           }
         ]
-      },
-      {
-        "_name": "S.V. Zulte Waregem",
-        "_bookmakerIds": [
-          {
-            "_id": "SV ZULTE WAREGEM",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
       }
     ]
   },
   {
     "_id": {
-      "_id": "2303150701",
+      "_id": "2626930001",
       "_idType": "EVENT",
       "_provider": "BETCONSTRUCT"
     },
-    "_startTime": "2021-03-07T17:15:00Z",
-    "_participants": [
-      {
-        "_name": "R.S.C Anderlecht",
-        "_bookmakerIds": [
-          {
-            "_id": "RSC ANDERLECHT",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      },
-      {
-        "_name": "K.V. Mechelen",
-        "_bookmakerIds": [
-          {
-            "_id": "KV MECHELEN",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303151101",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-07T19:45:00Z",
-    "_participants": [
-      {
-        "_name": "K.R.C. Genk",
-        "_bookmakerIds": [
-          {
-            "_id": "KRC GENK",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      },
-      {
-        "_name": "Cercle Brugge K.S.V.",
-        "_bookmakerIds": [
-          {
-            "_id": "CERCLE BRUGGE",
-            "_idType": "PARTICIPANT",
-            "_provider": "BETCONSTRUCT"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "2303150901",
-      "_idType": "EVENT",
-      "_provider": "BETCONSTRUCT"
-    },
-    "_startTime": "2021-03-08T19:45:00Z",
+    "_startTime": "2021-03-15T19:45:00Z",
     "_participants": [
       {
         "_name": "K.A.A. Gent",
@@ -228,10 +48,10 @@
         ]
       },
       {
-        "_name": "K.V. Oostende",
+        "_name": "Club Brugge KV",
         "_bookmakerIds": [
           {
-            "_id": "KV OSTEND",
+            "_id": "CLUB BRUGES",
             "_idType": "PARTICIPANT",
             "_provider": "BETCONSTRUCT"
           }
@@ -368,7 +188,7 @@
     "_startTime": "2021-03-20T19:45:00Z",
     "_participants": [
       {
-        "_name": "Not Found",
+        "_name": "K Beerschot VA",
         "_bookmakerIds": [
           {
             "_id": "KFCO BEERSCHOT",
@@ -502,6 +322,216 @@
         "_bookmakerIds": [
           {
             "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303156301",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-03T14:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "KV OSTEND",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "WAASLAND-BEVEREN",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303156501",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-03T16:30:00Z",
+    "_participants": [
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "SV ZULTE WAREGEM",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "KAS EUPEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303157101",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-03T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "KV KORTRIJK",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGES",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303156701",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-04T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "KFCO BEERSCHOT",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303155901",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-04T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "STANDARD LIÈGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "GHENT",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303157501",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-05T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "OUD-HEVERLEE LEUVEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "KRC GENK",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "2303157301",
+      "_idType": "EVENT",
+      "_provider": "BETCONSTRUCT"
+    },
+    "_startTime": "2021-04-05T14:00:00Z",
+    "_participants": [
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "SINT-TRUIDEN VV",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCONSTRUCT"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "KV MECHELEN",
             "_idType": "PARTICIPANT",
             "_provider": "BETCONSTRUCT"
           }

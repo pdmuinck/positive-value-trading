@@ -20,11 +20,9 @@ const expect = require('chai').expect
 
 describe('Parser tests', function() {
 
-    /*
-    const providers = [Provider.BINGOAL, Provider.KAMBI, Provider.BETCONSTRUCT, Provider.SBTECH, Provider.ALTENAR,
-    Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]*/
 
-    const providers = [Provider.PINNACLE]
+    const providers = [Provider.BINGOAL, Provider.KAMBI, Provider.BETCONSTRUCT, Provider.SBTECH, Provider.ALTENAR,
+    Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]
 
     providers.forEach(provider => {
         const eventsToParse: ApiResponse = require("./resources/" + provider + "/events.json")
@@ -35,11 +33,6 @@ describe('Parser tests', function() {
         it("should parse events for: " + provider, function() {
             const events = Parser.parse(eventsToParse)
             expect(JSON.stringify(events)).to.equal(JSON.stringify(expectedEvents))
-        })
-
-        it("should parse participants for: " + provider, function() {
-            const participants = Parser.parse(eventsToParse)
-            expect(JSON.stringify(participants)).to.equal(JSON.stringify(expectedEvents.map(event => event._participants).flat()))
         })
 
         it("should parse betoffers for: " + provider, function() {

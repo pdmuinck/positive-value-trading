@@ -1,42 +1,22 @@
 [
   {
     "_id": {
-      "_id": "royal-mouscron-standard-liegi-202103071330",
+      "_id": "royal-charleroi-club-brugge-202103122045",
       "_idType": "EVENT",
       "_provider": "LADBROKES"
     },
-    "_startTime": "1615120200000",
+    "_startTime": "1615578300000",
     "_participants": [
       {
-        "_name": "Royal Excel Mouscron",
+        "_name": "R. Charleroi S.C.",
         "_bookmakerIds": [
           {
-            "_id": "ROYAL EXCEL MOUSCRON",
+            "_id": "SPORTING CHARLEROI",
             "_idType": "PARTICIPANT",
             "_provider": "LADBROKES"
           }
         ]
       },
-      {
-        "_name": "Standard Liège",
-        "_bookmakerIds": [
-          {
-            "_id": "STANDARD LIEGE",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "club-brugge-zulte-waregem-202103071600",
-      "_idType": "EVENT",
-      "_provider": "LADBROKES"
-    },
-    "_startTime": "1615129200000",
-    "_participants": [
       {
         "_name": "Club Brugge KV",
         "_bookmakerIds": [
@@ -46,86 +26,16 @@
             "_provider": "LADBROKES"
           }
         ]
-      },
-      {
-        "_name": "S.V. Zulte Waregem",
-        "_bookmakerIds": [
-          {
-            "_id": "SV ZULTE WAREGEM",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
       }
     ]
   },
   {
     "_id": {
-      "_id": "anderlecht-mechelen-202103071815",
+      "_id": "gent-club-brugge-202103152045",
       "_idType": "EVENT",
       "_provider": "LADBROKES"
     },
-    "_startTime": "1615137300000",
-    "_participants": [
-      {
-        "_name": "R.S.C Anderlecht",
-        "_bookmakerIds": [
-          {
-            "_id": "RSC ANDERLECHT",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
-      },
-      {
-        "_name": "K.V. Mechelen",
-        "_bookmakerIds": [
-          {
-            "_id": "YELLOW-RED KV MECHELEN",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "genk-cercle-brugge-202103072045",
-      "_idType": "EVENT",
-      "_provider": "LADBROKES"
-    },
-    "_startTime": "1615146300000",
-    "_participants": [
-      {
-        "_name": "K.R.C. Genk",
-        "_bookmakerIds": [
-          {
-            "_id": "KRC GENK",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
-      },
-      {
-        "_name": "Cercle Brugge K.S.V.",
-        "_bookmakerIds": [
-          {
-            "_id": "CERCLE BRUGGE",
-            "_idType": "PARTICIPANT",
-            "_provider": "LADBROKES"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "_id": {
-      "_id": "gent-oostende-202103082045",
-      "_idType": "EVENT",
-      "_provider": "LADBROKES"
-    },
-    "_startTime": "1615232700000",
+    "_startTime": "1615837500000",
     "_participants": [
       {
         "_name": "K.A.A. Gent",
@@ -138,10 +48,10 @@
         ]
       },
       {
-        "_name": "K.V. Oostende",
+        "_name": "Club Brugge KV",
         "_bookmakerIds": [
           {
-            "_id": "KV OOSTENDE",
+            "_id": "CLUB BRUGGE",
             "_idType": "PARTICIPANT",
             "_provider": "LADBROKES"
           }
@@ -281,7 +191,7 @@
         "_name": "K Beerschot VA",
         "_bookmakerIds": [
           {
-            "_id": "K BEERSCHOT VA",
+            "_id": "BEERSCHOT",
             "_idType": "PARTICIPANT",
             "_provider": "LADBROKES"
           }
@@ -291,7 +201,7 @@
         "_name": "R. Charleroi S.C.",
         "_bookmakerIds": [
           {
-            "_id": "ROYAL CHARLEROI SC",
+            "_id": "SPORTING CHARLEROI",
             "_idType": "PARTICIPANT",
             "_provider": "LADBROKES"
           }

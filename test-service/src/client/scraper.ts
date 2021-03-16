@@ -451,7 +451,7 @@ export class Scraper {
                 betOfferRequests.push(axios.get("https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id.id + "/markets/related/straight", requestConfig).then(response => response.data))
             })
             return Promise.all(betOfferRequests).then(responses => {
-                return new ApiResponse(Provider.PINNACLE, responses, RequestType.BET_OFFER)
+                return new ApiResponse(Provider.PINNACLE, responses, requestType)
             })
         })
         /*
