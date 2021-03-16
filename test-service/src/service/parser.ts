@@ -10,11 +10,17 @@ export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
     private readonly _id: BookmakerId
+    private readonly _sportsRadarId: string
 
-    constructor(id: BookmakerId, startTime, participants: Participant[]){
+    constructor(id: BookmakerId, startTime, participants: Participant[], sportsRadarId?:string){
         this._id = id
         this._startTime = startTime
         this._participants = participants
+        this._sportsRadarId = sportsRadarId
+    }
+
+    get sportsRadarId() {
+        return this._sportsRadarId
     }
 
     get id(){
@@ -54,6 +60,8 @@ export class Parser {
                     return CircusParser.parse(apiResponse)
                 case Provider.BINGOAL:
                     return BingoalParser.parse(apiResponse)
+                case Provider.BETWAY:
+                    return BetwayParser.parse(apiResponse)
                 default:
                     return []
             }
@@ -70,6 +78,55 @@ export class Parser {
             return parseFloat(((americanOdds / 100) + 1).toFixed(2))
         }
 
+    }
+}
+
+export class BetwayParser {
+    static parse(apiResponse: ApiResponse): any[] {
+        switch(apiResponse.requestType) {
+            case RequestType.BET_OFFER:
+                return this.parseBetOffers(apiResponse)
+            case RequestType.EVENT:
+                return this.parseEvents(apiResponse)
+        }
+    }
+
+    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const betOffers = []
+        apiResponse.data.forEach(data => {
+            const events = data.Events
+            const markets = data.Markets
+            const outcomes = data.Outcomes
+            markets.forEach(market => {
+                const sportsRadarId = events.filter(event => event.Id === market.EventId)[0].SportsRadarId
+                const betType = BetwayParser.determineBetType(market.TypeCName)
+                market.Outcomes[0].forEach(outcomeToSearch => {
+                    const outcome = outcomes.fiter(outcome => outcome.Id === outcomeToSearch)[0]
+                    betOffers.push(new BetOffer(betType, sportsRadarId, Bookmaker.BETWAY, outcome.CouponName, outcome.OddsDecimalDisplay, NaN))
+                })
+
+            })
+        })
+        return betOffers
+    }
+    private static determineBetType(typeName) {
+        switch(typeName) {
+            case "win-draw-win":
+                return BetType._1X2
+            case "double-chance":
+                return BetType.DOUBLE_CHANCE
+            case "goals-over":
+                return BetType.OVER_UNDER
+            case "handicap-goals-over":
+                return BetType.HANDICAP
+        }
+    }
+
+    private static parseEvents(apiResponse: ApiResponse): Event[] {
+        return apiResponse.data[0].Events.map(event => {
+            const sportsRadarId = event.SportsRadarId
+            return new Event(new BookmakerId(Provider.BETWAY, event.Id, IdType.EVENT), undefined, undefined, sportsRadarId)
+        })
     }
 }
 
@@ -786,7 +843,7 @@ export class Bet90Parser {
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const eventsParsed = parser.parse(apiResponse.data)
+        const eventsParsed = parser.parse(apiResponse.data.data)
         const foundBetOffers = []
 
         eventsParsed.querySelectorAll('.dropd').forEach(event => {
@@ -847,7 +904,7 @@ export class Bet90Parser {
 
     private static parseEvents(apiResponse: ApiResponse): Event[] {
         if(!apiResponse.data) return []
-        const events = apiResponse.data
+        const events = apiResponse.data.data
         const parsedEvents: Event[] = []
 
         const eventsParsed = parser.parse(events)

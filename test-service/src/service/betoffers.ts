@@ -2,7 +2,7 @@ import {BetType, Bookmaker, Period} from "./bookmaker";
 
 export class BetOffer {
     private readonly _betType: BetType
-    private readonly _eventId: number
+    private readonly _eventId: string
     private readonly _bookMaker: Bookmaker
     private readonly _betOptionName: string
     private readonly _price: number

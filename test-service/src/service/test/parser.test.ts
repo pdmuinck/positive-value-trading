@@ -21,8 +21,7 @@ const expect = require('chai').expect
 describe('Parser tests', function() {
 
 
-    const providers = [Provider.BINGOAL, Provider.KAMBI, Provider.BETCONSTRUCT, Provider.SBTECH, Provider.ALTENAR,
-    Provider.BETCENTER, Provider.LADBROKES, Provider.MERIDIAN, Provider.PINNACLE]
+    const providers = [Provider.BETWAY]
 
     providers.forEach(provider => {
         const eventsToParse: ApiResponse = require("./resources/" + provider + "/events.json")
@@ -41,27 +40,21 @@ describe('Parser tests', function() {
         })
     })
 
-    /*
+
     it("should parse events for: BET90", function() {
-        const events: Event[] = Parser.parse(new ApiResponse(Provider.BET90, bet90.events, RequestType.EVENT))
+        const events: Event[] = Parser.parse(new ApiResponse(Provider.BET90, bet90, RequestType.EVENT))
         expect(JSON.stringify(events)).to.equal(JSON.stringify(bet90ExpectedEvents))
     })
 
-    it("should parse participants for: BET90", function() {
-        const participants = Parser.parse(new ApiResponse(Provider.BET90, bet90.events, RequestType.PARTICIPANT))
-        expect(JSON.stringify(participants)).to.equal(JSON.stringify(bet90ExpectedEvents.map(event => event._participants).flat()))
-
-    })
 
     it("should parse betoffers for: BET90", function (){
-        const betOffers = Parser.parse(new ApiResponse(Provider.BET90, bet90.events, RequestType.BET_OFFER))
+        const betOffers = Parser.parse(new ApiResponse(Provider.BET90, bet90, RequestType.BET_OFFER))
         const specialBetOffers = Parser.parse(new ApiResponse(Provider.BET90, {
             specialBetOffers: bet90SpecialBetOffers["betoffers"], eventId: "1121449", _1X2: betOffers.filter(betOffer => betOffer.eventId === "1121449" )}, RequestType.SPECIAL_BET_OFFER))
 
         expect(JSON.stringify(betOffers)).to.equal(JSON.stringify(bet90ExpectedBetOffers))
         expect(JSON.stringify(specialBetOffers)).to.equal(JSON.stringify(bet90ExpectedSpecialBetOffers))
     })
-    */
 
 })
 

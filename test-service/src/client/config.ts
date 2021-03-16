@@ -36,7 +36,7 @@ export const footballCompetitions = [
         [
             //new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
             //new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
-            new BookmakerId(Provider.PINNACLE, "1817", IdType.COMPETITION),
+            //new BookmakerId(Provider.PINNACLE, "1817", IdType.COMPETITION),
             //new BookmakerId(Provider.ALTENAR, "1000000490", IdType.COMPETITION),
             //new BookmakerId(Provider.BET90, "457", IdType.COMPETITION),
             //new BookmakerId(Provider.BETCONSTRUCT, "227875758", IdType.COMPETITION),
@@ -50,7 +50,7 @@ export const footballCompetitions = [
             //new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION),
             //new BookmakerId(Provider.BETCENTER, "6898", IdType.COMPETITION),
             //new BookmakerId(Provider.BWIN, "16409", IdType.COMPETITION),
-            //new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
+            new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
             //new BookmakerId(Provider.ZETBET, "101-pro_league_1a", IdType.COMPETITION)
         ],
         jupilerProLeagueParticipants

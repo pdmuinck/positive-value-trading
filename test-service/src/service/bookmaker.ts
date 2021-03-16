@@ -73,6 +73,7 @@ export enum Bookmaker {
     BINGOAL = 'BINGOAL',
     BETRADAR = 'BETRADAR',
     GOLDENVEGAS = 'GOLDENVEGAS',
+    BETWAY = 'BETWAY'
 }
 
 export enum Provider {
