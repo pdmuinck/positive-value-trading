@@ -126,15 +126,16 @@ export class Scraper {
         const starWS = new WebSocket("wss://eu-swarm-ws-re.bcapps.net/")
 
         starWS.on('open', function open() {
+
             starWS.send(JSON.stringify({"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"16062033821871"}))
-            starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id"],"market":"@count"},"where":{"competition":{"id":parseInt(bookmakerId.id)}},"subscribe":true},"rid":"161497920766016"}))
+            starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"sport":["id","name","alias"],"competition":["id","name"],"region":["id","name","alias"],"game":[["id","start_ts","team1_name","team2_name","team1_external_id","team2_external_id","team1_id","team2_id","type","show_type","markets_count","is_blocked","exclude_ids","is_stat_available","game_number","game_external_id","is_live","is_neutral_venue","game_info"]],"event":["id","price","type","name","order","base","price_change"],"market":["type","express_id","name","base","display_key","display_sub_key","main_order","col_count","id"]},"where":{"competition":{"id":parseInt(bookmakerId.id)},"game":{"type":{"@in":[0,2]}},"market":{"@or":[{"type":{"@in":["P1P2","P1XP2","1X12X2","OverUnder","Handicap","AsianHandicap","BothTeamsToScore","HalfTimeResult","HalfTimeDoubleChance","HalfTimeOverUnder","HalfTimeAsianHandicap","2ndHalfTotalOver/Under"]}},{"display_key":{"@in":["WINNER","HANDICAP","TOTALS"]}}]}},"subscribe":true},"rid":"161598169637418"}))
             //starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id","team1_id","team2_id","team1_name","team2_name"]},"where":{"game":{},"sport":{"id":1},"region":{},"competition":{"id":bookmakerId.id}},"subscribe":false},"rid": "161497920766016"}))
         })
 
         starWS.on('message', function incoming(data) {
             const bla = JSON.parse(data)
             if(bla.data.data) {
-                const events = bla.data.data.game
+                const events = Object.values(bla.data.data.sport["1"].region["290001"].competition["557"].game)
                 starCasinoEvents = events
             }
 
