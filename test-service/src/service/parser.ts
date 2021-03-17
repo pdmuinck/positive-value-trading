@@ -6,6 +6,23 @@ import {BetOffer} from "./betoffers";
 
 const parser = require('node-html-parser')
 
+/*
+betcenter => statisticsId
+bingoal => betradarID
+bwin => addons.betRadar
+betconstruct => "StreamingDescriptorItems":[{"StreamId":"26279046","StreamingState":2,"Type":1,"ProviderName":"BetRadar"}],"UrlBetStats":"https://s5.sir.sportradar.com/circusbelgium/en/match/26279046"
+altenar => ExtId
+ladbrokes => programBetradarInfo.matchId
+meridian => betradarUnified.id
+sbtech => media[0].providerEventId
+scooore => extevents.idefevent.split on pipe and _
+stanleybet => bet_radar_it
+kambi => separate api call
+
+
+
+ */
+
 export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
@@ -90,6 +107,8 @@ export class BetwayParser {
                 return this.parseEvents(apiResponse)
         }
     }
+
+
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers = []
