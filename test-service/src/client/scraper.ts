@@ -21,7 +21,21 @@ export class Scraper {
     async getEventsForCompetition(competition: Competition) {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
         const httpResponses: ApiResponse[] = await this.getApiResponses(requests.flat())
-        return httpResponses.filter(x => x)
+        const events = {}
+        httpResponses.forEach(httpResponse => {
+            httpResponse.data.forEach(eventMap => {
+                const event = events[eventMap.sportRadarId]
+                if(event) {
+                    event[httpResponse.provider] = eventMap.eventId
+                    events[eventMap.sportRadarId] = event
+                } else {
+                    const newEvent = {}
+                    newEvent[httpResponse.provider] = eventMap.eventId
+                    events[eventMap.sportRadarId] = newEvent
+                }
+            })
+        })
+        return events
     }
 
     async getBetOffersForCompetition(competition: Competition): Promise<ApiResponse[]> {
@@ -476,8 +490,21 @@ export class Scraper {
     toKambiEventRequests(bookmakerId: BookmakerId) {
         return [
             axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
-                + bookmakerId.id + '.json?includeParticipants=true')
-                .then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.EVENT)})
+                + bookmakerId.id + '.json?includeParticipants=false')
+                .then(response => {
+                    const requests = response.data.events.map(event => {
+                        return axios.get("https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/" + event.id)
+                            .then(sportRadarResponse => {
+                                return {eventId: event.id, sportRadarId: sportRadarResponse.data.content[0].Resource.split("matchId=")[1]}
+                            }).catch(error =>  {
+                                return {eventId: event.id, sportRadarId: undefined}
+                            })
+                    })
+                    return Promise.all(requests).then(sportRadarResponses => {
+                        // @ts-ignore
+                        return new ApiResponse(Provider.KAMBI, sportRadarResponses.filter(response => response.sportRadarId), RequestType.EVENT)
+                    })
+                })
                 .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.EVENT)})
         ]
     }
@@ -501,7 +528,24 @@ export class Scraper {
                 return axios.get(
                     'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
                     + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
-                ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER, book)})
+                ).then(response => {
+                    if(key === BetType._1X2) {
+                        const sportRadarRequests =  response.data.events.map(event => {
+                            return axios.get("https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/" + event.id)
+                                .then(sportRadarResponse => {
+                                    const test = sportRadarResponse.data.content[0].Resource.split("matchId=")[1]
+                                    return test
+                                }).catch(error => console.log(error))
+                        })
+                        return Promise.all(sportRadarRequests).then(sportRadarResponses => {
+                            response.data["sportRadar"] = sportRadarResponses
+                            return new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER)
+                        })
+                    } else {
+                        return new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER)
+                    }
+
+                })
                     .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})
             })
 
@@ -616,7 +660,10 @@ export class Scraper {
         const betcenterPayload = {"leagueIds": [parseInt(bookmakerId.id)], "sportId": 1,"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
         return [
             axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders)
-                .then(response => new ApiResponse(Provider.BETCENTER, response.data, requestType)).catch(error => console.log(error))
+                .then(response => {
+                    const events = response.data.games.map(event => {return {eventId: event.id, sportRadarId: event.statisticsId}})
+                    return new ApiResponse(Provider.BETCENTER, events, requestType)
+                }).catch(error => console.log(error))
         ]
     }
 }

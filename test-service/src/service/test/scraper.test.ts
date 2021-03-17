@@ -10,7 +10,7 @@ describe("scraper should call third party api", function(){
         it("should return events with bookmaker ids",  async function() {
             const scraper = new Scraper()
             const results = await scraper.getEventsForCompetition(footballCompetitions[0])
-            expect(results.length).to.equal(footballCompetitions[0].bookmakerIds.length)
+            expect(results).to.equal(footballCompetitions[0].bookmakerIds.length)
         })
     })
 
