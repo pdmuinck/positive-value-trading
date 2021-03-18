@@ -7,11 +7,7 @@ import {BetOffer} from "./betoffers";
 const parser = require('node-html-parser')
 
 /*
-betcenter => statisticsId
-bingoal => betradarID
-bwin => addons.betRadar
 betconstruct => "StreamingDescriptorItems":[{"StreamId":"26279046","StreamingState":2,"Type":1,"ProviderName":"BetRadar"}],"UrlBetStats":"https://s5.sir.sportradar.com/circusbelgium/en/match/26279046"
-altenar => ExtId
 ladbrokes => programBetradarInfo.matchId
 meridian => betradarUnified.id
 sbtech => media[0].providerEventId
@@ -506,14 +502,17 @@ export class AltenarParser {
 
     private static parseEvents(apiResponse: ApiResponse): Event[] {
         if(!apiResponse.data.Result) return []
-        return apiResponse.data.Result.Items[0].Events.map(event => new Event(
-            new BookmakerId(apiResponse.provider, event.Id.toString(), IdType.EVENT),
-            event.EventDate,
-            event.Competitors.map(competitor => new Participant(
-                getParticipantName(competitor.Name.toUpperCase()),
-                [new BookmakerId(apiResponse.provider, competitor.Name.toUpperCase(), IdType.PARTICIPANT)]
-            ))
-        )).flat()
+        return apiResponse.data.Result.Items[0].Events.map(event => {
+            return {eventId: event.Id, sportRadarId: event.ExtId}
+            new Event(
+                new BookmakerId(apiResponse.provider, event.Id.toString(), IdType.EVENT),
+                event.EventDate,
+                event.Competitors.map(competitor => new Participant(
+                    getParticipantName(competitor.Name.toUpperCase()),
+                    [new BookmakerId(apiResponse.provider, competitor.Name.toUpperCase(), IdType.PARTICIPANT)]
+                ))
+            )
+        }).flat()
     }
 
     private static parseParticipants(apiResponse: ApiResponse): Participant[] {

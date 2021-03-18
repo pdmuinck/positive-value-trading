@@ -236,12 +236,18 @@ export class Scraper {
     }
 
     toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+        // addons.betRadar
         return [
             axios.get('https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
                 'WJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&fixtureTypes=Standard&state=Late' +
                 'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
                 'mpetitionIds=' + bookmakerId.id + '&skip=0&take=50&sortBy=Tags')
-                .then(response => new ApiResponse(Provider.BWIN, response.data, requestType))
+                .then(response => {
+                    const data = response.data.fixtures.map(event => {
+                        return {eventId: event.id, sportRadarId: event.addons.betRadar}
+                    })
+                    return new ApiResponse(Provider.BWIN, data, requestType)
+                })
                 .catch(error => console.log(error))
         ]
     }
@@ -359,7 +365,11 @@ export class Scraper {
                 const headers = this.bingoalHeaders(response)
                 const k = this.bingoalQueryKParam(response)
                 return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=" + bookmakerId.id, headers)
-                    .then(response => {return new ApiResponse(Provider.BINGOAL, response.data, requestType)})})]
+                    .then(response => {
+                        const data = response.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).map(match => {
+                            return {eventId: match.ID, sportRadarId: match.betradarID}
+                        })
+                        return new ApiResponse(Provider.BINGOAL, data, requestType)})})]
         } else {
             // takes long
             return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
@@ -435,7 +445,11 @@ export class Scraper {
             '&champids=' + bookmakerId.id  +'&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none' +
             '&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
             return axios.get(url)
-                .then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType, book)})
+                .then(response => {
+                    const data = response.data.Result.Items[0].Events.map(event => {
+                        return {eventId: event.Id, sportRadarId: event.ExtId}
+                    })
+                    return new ApiResponse(bookmakerId.provider, data, requestType)})
                 .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType, book)})
         })
 
