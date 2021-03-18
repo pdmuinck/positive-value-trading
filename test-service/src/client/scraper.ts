@@ -4,7 +4,7 @@ import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig} from "./websocket/config"
-import {Bet90Parser, BingoalParser, Parser} from "../service/parser";
+import {Bet90Parser, BingoalParser, LadbrokesParser, Parser} from "../service/parser";
 
 const WebSocket = require("ws")
 
@@ -86,11 +86,17 @@ export class Scraper {
     }
 
     toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+        // "StreamingDescriptorItems":[{"StreamId":"26279046","StreamingState":2,"Type":1,"ProviderName":"BetRadar"}],"UrlBetStats":"https://s5.sir.sportradar.com/circusbelgium/en/match/26279046"
         this.startBetConstructWSV2(bookmakerId, requestType)
         return new Promise(resolve => {
             const interval = setInterval(() => {
                 if (betConstructEvents) {
-                    resolve(new ApiResponse(Provider.BETCONSTRUCT, betConstructEvents, requestType))
+                    const data = JSON.parse(betConstructEvents.Requests[0].Content).LeagueDataSource.LeagueItems[0].EventItems.map(event => {
+                        const splitted = event.UrlBetStats.split("/")
+                        const sportRadarId = splitted[splitted.length - 1]
+                        return {eventId: event.EventId, sportRadarId: sportRadarId}
+                    })
+                    resolve(new ApiResponse(Provider.BETCONSTRUCT, data, requestType))
                     clearInterval(interval)
                 }
             }, 100)
@@ -280,36 +286,46 @@ export class Scraper {
     }
 
     toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [
-            axios.get(bookmakerId.id).then(response => {
-                const events = Parser.parse(new ApiResponse(Provider.MERIDIAN, response.data, RequestType.EVENT))
-                const betOfferRequests = events.map(event => {
-                    return axios.get("https://meridianbet.be/sails/events/" + event.id.id).then(response => {
-                        const data = {}
-                        data["eventId"] = event.id.id
-                        const betOffers = []
-                        response.data.market.forEach(betOffer => {
-                            const selections = []
-                            betOffer.selection.forEach(selection => {
-                                delete selection.nameTranslations
-                                selections.push(selection)
+        if(requestType === RequestType.EVENT) {
+            return [axios.get(bookmakerId.id).then(response => {
+                const data = response.data[0].events.map(event => {
+                    return {eventId: event.id, sportRadarId: event.betradarUnified.id}
+                })
+                return new ApiResponse(Provider.MERIDIAN, data, requestType)
+            })]
+        } else {
+            return [
+                axios.get(bookmakerId.id).then(response => {
+                    const events = Parser.parse(new ApiResponse(Provider.MERIDIAN, response.data, RequestType.EVENT))
+                    const betOfferRequests = events.map(event => {
+                        return axios.get("https://meridianbet.be/sails/events/" + event.id.id).then(response => {
+                            const data = {}
+                            data["eventId"] = event.id.id
+                            const betOffers = []
+                            response.data.market.forEach(betOffer => {
+                                const selections = []
+                                betOffer.selection.forEach(selection => {
+                                    delete selection.nameTranslations
+                                    selections.push(selection)
+                                })
+                                betOffers.push({selection: selections, templateId: betOffer.templateId,
+                                    name: betOffer.name, overUnder: betOffer.overUnder, handicap: betOffer.handicap})
                             })
-                            betOffers.push({selection: selections, templateId: betOffer.templateId,
-                                name: betOffer.name, overUnder: betOffer.overUnder, handicap: betOffer.handicap})
+                            data["betOffers"] = betOffers
+                            return data
                         })
-                        data["betOffers"] = betOffers
-                        return data
                     })
-                })
-                return Promise.all(betOfferRequests).then(values => {
-                    const data =[]
-                    values.flat().forEach(response => {
-                        data.push(response)
+                    return Promise.all(betOfferRequests).then(values => {
+                        const data =[]
+                        values.flat().forEach(response => {
+                            data.push(response)
+                        })
+                        return new ApiResponse(Provider.MERIDIAN, data, requestType)
                     })
-                    return new ApiResponse(Provider.MERIDIAN, data, requestType)
-                })
-            }).catch(error => new ApiResponse(Provider.MERIDIAN, null, requestType))
-        ]
+                }).catch(error => new ApiResponse(Provider.MERIDIAN, null, requestType))
+            ]
+        }
+
     }
 
     toLadbrokesRequests(bookmakerId: BookmakerId, requestType: RequestType) {
@@ -320,28 +336,42 @@ export class Scraper {
                 'x-eb-platformid': 2
             }
         }
-        return [
-            axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
+        if(requestType == RequestType.EVENT) {
+            return [axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
                 + bookmakerId.id + '?prematch=1&live=0', headers).then(response => {
-                events = Parser.parse(new ApiResponse(Provider.LADBROKES, response.data, RequestType.EVENT))
-                const betOfferRequests = events.map(event => {
-                    return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
-                        + bookmakerId.id + '/' + event.id.id + '?prematch=1&live=0', headers).then(
-                        response => {
-                            const data = response.data
-                            data["eventId"] = event.id.id
-                            return data
+                const events = response.data.result.dataGroupList.map(group => group.itemList).flat()
+                    .map(event => {
+                        return {
+                            eventId: event.eventInfo.aliasUrl,
+                            sportRadarId: event.eventInfo.programBetradarInfo.matchId
                         }
-                )})
-                return Promise.all(betOfferRequests).then(values => {
-                    const data =[]
-                    values.flat().forEach(response => {
-                        data.push(response)
                     })
-                    return new ApiResponse(Provider.LADBROKES, data, requestType)
-                })
-            })
-        ]
+                return new ApiResponse(Provider.LADBROKES, events, requestType)})]
+        } else {
+                return [
+                    axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
+                        + bookmakerId.id + '?prematch=1&live=0', headers).then(response => {
+                        const events = LadbrokesParser.parse(new ApiResponse(Provider.LADBROKES, response, requestType))
+                        const betOfferRequests = events.map(event => {
+                            return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
+                                + bookmakerId.id + '/' + event.eventId + '?prematch=1&live=0', headers).then(
+                                response => {
+                                    const data = response.data
+                                    data["eventId"] = event
+                                    return data
+                                }
+                            )})
+                        return Promise.all(betOfferRequests).then(values => {
+                            const data =[]
+                            values.flat().forEach(response => {
+                                data.push(response)
+                            })
+                            return new ApiResponse(Provider.LADBROKES, data, requestType)
+                        })
+                    })
+                ]
+            }
+
     }
 
     bingoalQueryKParam(response) {

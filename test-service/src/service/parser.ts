@@ -7,14 +7,9 @@ import {BetOffer} from "./betoffers";
 const parser = require('node-html-parser')
 
 /*
-betconstruct => "StreamingDescriptorItems":[{"StreamId":"26279046","StreamingState":2,"Type":1,"ProviderName":"BetRadar"}],"UrlBetStats":"https://s5.sir.sportradar.com/circusbelgium/en/match/26279046"
-ladbrokes => programBetradarInfo.matchId
 meridian => betradarUnified.id
-sbtech => media[0].providerEventId
 scooore => extevents.idefevent.split on pipe and _
 stanleybet => bet_radar_it
-kambi => separate api call
-
 zetbet => get single events (<a href="/en/event/fi232-krc_genk_standard_de_liege" title="All bets on&nbsp;&nbsp;KRC Genk / Standard de Liège">+100</a>) and there you can parse sportradar url
  */
 
