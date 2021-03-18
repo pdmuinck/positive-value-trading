@@ -611,7 +611,7 @@ export class Scraper {
                     data.push(response.data)
                 }
             })
-            return new ApiResponse(Provider.SBTECH, data, requestType, tokenRequest.bookmaker)
+            return new ApiResponse(Provider.SBTECH, data.flat(), requestType, tokenRequest.bookmaker)
         })
     }
 
@@ -628,7 +628,10 @@ export class Scraper {
             , page, headers)
             .then(response => {
                 if(response.data.events.length > 0) {
-                    return new ApiResponse(bookmakerId.provider, response.data, requestType, bookmaker)
+                    events = response.data.events.map(event => {
+                        return {eventId: event.id, sportRadarId: parseInt(event.media[0].providerEventId)}
+                    })
+                    return new ApiResponse(bookmakerId.provider, events, requestType, bookmaker)
                 }})
             .catch(error => {
                 return new ApiResponse(bookmakerId.provider, null, requestType, bookmaker)})
