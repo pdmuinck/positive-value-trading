@@ -233,28 +233,45 @@ export class Scraper {
     toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
         const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":bookmakerId.id}
-        return [
-            axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
-                .then(response => {
-                    const eventIds = response.data.Categories[0].Events
-                    const betOfferRequests = markets.map(market => {
-                        const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
-                            ,"MarketCName":market,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
-                        return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', payload).then(response =>
-                            new ApiResponse(Provider.BETWAY, response.data, requestType)).catch(error => console.log(error))
-                    })
-                    return Promise.all(betOfferRequests).then(values => {
-                        const data = []
-                        values.flat().forEach(value => {
-                            if (value instanceof ApiResponse) {
-                                data.push(value.data)
-                            }
+        if(requestType === RequestType.EVENT) {
+            return [
+                axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
+                    .then(response => {
+                        const eventIds = response.data.Categories[0].Events
+                            return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
+                            ,"MarketCName":markets[0],"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}).then(response => {
+                                const data = response.data.Events.map(event => {
+                                    return {eventId: event.Id, sportRadarId: event.SportsRadarId}
+                                })
+                                return new ApiResponse(Provider.BETWAY, data, requestType)
+                            }).catch(error => console.log(error))
+                    }).catch(error => console.log(error))
+            ]
+        } else {
+            return [
+                axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
+                    .then(response => {
+                        const eventIds = response.data.Categories[0].Events
+                        const betOfferRequests = markets.map(market => {
+                            const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
+                                ,"MarketCName":market,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
+                            return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', payload).then(response =>
+                                new ApiResponse(Provider.BETWAY, response.data, requestType)).catch(error => console.log(error))
                         })
-                        return new ApiResponse(Provider.BETWAY, data, requestType)
-                    })
+                        return Promise.all(betOfferRequests).then(values => {
+                            const data = []
+                            values.flat().forEach(value => {
+                                if (value instanceof ApiResponse) {
+                                    data.push(value.data)
+                                }
+                            })
+                            return new ApiResponse(Provider.BETWAY, data, requestType)
+                        })
 
-                }).catch(error => console.log(error))
-        ]
+                    }).catch(error => console.log(error))
+            ]
+        }
+
     }
 
     toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType) {
