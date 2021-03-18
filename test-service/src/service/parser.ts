@@ -6,13 +6,6 @@ import {BetOffer} from "./betoffers";
 
 const parser = require('node-html-parser')
 
-/*
-meridian => betradarUnified.id
-scooore => extevents.idefevent.split on pipe and _
-stanleybet => bet_radar_it
-zetbet => get single events (<a href="/en/event/fi232-krc_genk_standard_de_liege" title="All bets on&nbsp;&nbsp;KRC Genk / Standard de Liège">+100</a>) and there you can parse sportradar url
- */
-
 export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]

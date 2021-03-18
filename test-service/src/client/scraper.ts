@@ -7,6 +7,7 @@ import {circusConfig} from "./websocket/config"
 import {Bet90Parser, BingoalParser, LadbrokesParser, Parser} from "../service/parser";
 
 const WebSocket = require("ws")
+const parser = require('node-html-parser')
 
 let events
 let starCasinoEvents
@@ -210,7 +211,22 @@ export class Scraper {
     toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         return [
             axios.get('https://www.zebet.be/en/competition/' + bookmakerId.id)
-                .then(response => new ApiResponse(Provider.ZETBET, response.data, requestType))
+                .then(response => {
+                    const parent = parser.parse(response.data)
+                    const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
+                    const requests = events.map(event => {
+                        return axios.get("https://www.zebet.be" + event).then(response => {
+                            const parent = parser.parse(response.data)
+                            const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
+                            const sportRadarId = splitted[splitted.length - 1]
+                            return {eventId: event, sportRadarId: sportRadarId}
+                        })
+                    })
+                    return Promise.all(requests).then(responses => {
+                        return new ApiResponse(Provider.ZETBET, responses, requestType)
+                    })
+
+                })
         ]
     }
 
@@ -272,15 +288,29 @@ export class Scraper {
             + bookmakerId.id + '\nc0-param5=boolean:false\nc0-param6=string:STANLEYBET\nc0-param7=number:0\nc0-param8=' +
             'number:0\nc0-param9=string:nl\nbatchId=8\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code' +
             '%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=jUP0TgbNU12ga86ZyrjLTrS8NRSwl721Uon/AVY2Uon-upTglJydk\n'
-        return [axios.post(getEventsUrl, body, headers).then(response =>
-            new ApiResponse(Provider.STANLEYBET, response.data, requestType))
+        return [axios.post(getEventsUrl, body, headers).then(response => {
+            const data = response.data.split("{alias:").slice(1).map(event => {
+                const eventId = event.split('"')[1]
+                const sportRadarId = event.split('"bet_radar_it":')[1].split(",")[0]
+                return {eventId: eventId, sportRadarId: sportRadarId}
+            })
+            return new ApiResponse(Provider.STANLEYBET, data, requestType)
+
+        })
             .catch(error => console.log(error))]
     }
 
     toScoooreRequests(bookmakerId: BookmakerId, requestType: RequestType) {
         return [
             axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + bookmakerId.id + '.1-0.json')
-                .then(response => new ApiResponse(Provider.SCOOORE, response.data, requestType))
+                .then(response => {
+                    // extevents.idefevent.split on pipe and _
+                    const data = response.data.markets.map(event => {
+                        const sportRadarId = event.extevents[0].idefevent.split('_')[1]
+                        return {eventId: event.idfoevent.toString(), sportRadarId: sportRadarId}
+                    })
+                    return new ApiResponse(Provider.SCOOORE, data, requestType)
+                })
                 .catch(error => new ApiResponse(Provider.SCOOORE, null, requestType))
         ]
     }
