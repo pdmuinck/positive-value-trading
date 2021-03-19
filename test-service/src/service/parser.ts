@@ -328,7 +328,7 @@ export class KambiParser {
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data) return []
-        return apiResponse.data.map(entry => entry.betOffers).flat().map(betOffer => this.transformToBetOffers(apiResponse.provider, betOffer)).flat()
+        return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.provider, betOffer)).flat()
     }
 
     static transformToBetOffers(bookMaker: Provider, betOfferContent): BetOffer[] {
@@ -341,7 +341,7 @@ export class KambiParser {
             betOfferContent.outcomes.forEach(outcome => {
                 const outcomeType = this.determineOutcomeType(outcome.type)
                 const price = Math.round(outcome.odds + Number.EPSILON) / 1000
-                const line = outcome.line / 1000
+                const line = outcome.line ? outcome.line/ 1000 : outcome.label
                 betOffers.push(new BetOffer(betOfferType, eventId, bookMaker, outcomeType, price, line))
             })
         }
@@ -374,6 +374,29 @@ export class KambiParser {
                 return BetType.OVER_UNDER_TEAM1
             case 1001159633:
                 return BetType.OVER_UNDER_TEAM2
+            case 1001159780:
+                return BetType.CORRECT_SCORE
+            case 1001568619:
+                return BetType.CORRECT_SCORE_H2
+            case 1000505272:
+                return BetType.CORRECT_SCORE_H1
+            case 1001568621:
+                return BetType._3_WAY_HANDICAP_H2
+            case 1001224081:
+                return BetType._3_WAY_HANDICAP
+            case 1001568620:
+                return BetType._3_WAY_HANDICAP_H1
+            case 1002275572:
+                return BetType.ASIAN_HANDICAP
+            case 1002275573:
+                return BetType.ASIAN_HANDICAP_H1
+            case 1001160024:
+                return BetType.ODD_EVEN_TEAM2
+            case 1001160038:
+                return BetType.ODD_EVEN
+            case 1001159808:
+                return BetType.ODD_EVEN_TEAM2
+
 
         }
     }
@@ -390,6 +413,22 @@ export class KambiParser {
                 return 'OVER'
             case 'OT_UNDER':
                 return 'UNDER'
+            case "OT_ONE_OR_CROSS":
+                return "1X"
+            case "OT_ONE_OR_TWO":
+                return "12"
+            case "OT_CROSS_OR_TWO":
+                return "X2"
+            case "OT_YES":
+                return "YES"
+            case "OT_NO":
+                return "NO"
+            case "OT_ODD":
+                return "ODD"
+            case "OT_EVEN":
+                return "EVEN"
+            default:
+                return betOptionName.toUpperCase()
         }
     }
 

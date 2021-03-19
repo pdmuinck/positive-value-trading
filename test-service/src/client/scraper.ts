@@ -4,7 +4,7 @@ import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig} from "./websocket/config"
-import {Bet90Parser, BingoalParser, LadbrokesParser, Parser} from "../service/parser";
+import {Bet90Parser, BingoalParser, KambiParser, LadbrokesParser, Parser} from "../service/parser";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -82,7 +82,8 @@ export class Scraper {
                     + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
                 ).then(response => {
                     const buildEvents = {}
-                    response.data.betOffers.forEach(betOffer => {
+                    const betOffers = KambiParser.parse(new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER))
+                    betOffers.forEach(betOffer => {
                         const event = events.filter(event => event.eventId === betOffer.eventId)[0]
                         const storedBetOffers = buildEvents[event.sportRadarId]
                         if(storedBetOffers) {

@@ -51,7 +51,9 @@ export enum BetType {
     DOUBLE_CHANCE_H2 = "DOUBLE_CHANCE_H2",
     _1X2_H2 = "1X2_H2",
     CORRECT_SCORE_H1 = "CORRECT_SCORE_H1",
-    ODD_EVEN_H1 = "ODD_EVEN_H1"
+    ODD_EVEN_H1 = "ODD_EVEN_H1",
+    _3_WAY_HANDICAP_H2 = "3_WAY_HANDICAP_H2",
+    _3_WAY_HANDICAP_H1 = "3_WAY_HANDICAP_H1"
 }
 
 export enum Bookmaker {
