@@ -35,9 +35,9 @@ export const footballCompetitions = [
         CompetitionName.JUPILER_PRO_LEAGUE,
         [
             new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
-            //new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
+            new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
             //new BookmakerId(Provider.PINNACLE, "1817", IdType.COMPETITION),
-            //new BookmakerId(Provider.ALTENAR, "1000000490", IdType.COMPETITION),
+            new BookmakerId(Provider.ALTENAR, "1000000490", IdType.COMPETITION),
             //new BookmakerId(Provider.BET90, "457", IdType.COMPETITION),
             //new BookmakerId(Provider.BETCONSTRUCT, "227875758", IdType.COMPETITION),
             //new BookmakerId(Provider.BINGOAL, "25", IdType.COMPETITION),

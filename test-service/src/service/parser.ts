@@ -446,7 +446,7 @@ export class SbtechParser {
     }
 
     private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        return apiResponse.data.map(page => page.markets).flat()
+        return apiResponse.data.markets
             .map(market => SbtechParser.transformToBetOffer(apiResponse.provider, market)).flat()
     }
 
