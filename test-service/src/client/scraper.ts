@@ -54,81 +54,9 @@ export class Scraper {
     }
 
     async getBetOffersForCompetition(competition: Competition, events): Promise<ApiResponse[]> {
-        const requests = this.toApiBetOfferRequests(competition.bookmakerIds, RequestType.BET_OFFER, events)
-        const responses =  await this.getApiResponses(requests.flat())
+        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events[0].data)
+        const responses = await this.getApiResponses(requests.flat())
         return responses.flat()
-    }
-
-    toApiBetOfferRequests(bookmakerIds: BookmakerId[], requestType, events) {
-        return bookmakerIds.map(bookmakerId => {
-            const mappedEvents = events.filter(event => event.provider === bookmakerId.provider)[0].data
-            switch(bookmakerId.provider) {
-                case Provider.KAMBI:
-                    return this.toKambiBetOfferRequestsV2(bookmakerId, mappedEvents)
-                case Provider.SBTECH:
-                    return this.toSbtechBetOfferRequests(bookmakerId, mappedEvents)
-                case Provider.ALTENAR:
-                    return this.toAltenarRequests(bookmakerId, requestType, mappedEvents)
-            }
-        })
-    }
-
-
-
-    toSbtechBetOfferRequests(bookmakerId: BookmakerId, events) {
-
-        const tokenData = [
-            new SbtechTokenRequest(Bookmaker.BET777, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),
-            new SbtechTokenRequest(Bookmaker.BETFIRST, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/28', SbtechApi.V1),
-        ]
-
-
-        const id = bookmakerId.id
-        const pages = [
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":300}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":600}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":900}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":1200}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-            {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":1500}, "marketTypeRequests": [{"marketTypeIds":["1_0", "1_39", "2_0", "2_39", "3_0", "3_39",
-                        "158", "61", "60", "2_157", "3_7"]}]},
-        ]
-
-        return tokenData.map(tokenRequest => {
-            const requests = pages.map(page => {
-                return axios.get(tokenRequest.url).then(tokenResponse => {
-                    const token = tokenResponse.data.split('ApiAccessToken = \'')[1].replace('\'', '')
-                    const bookmaker = tokenRequest.bookmaker
-                    const headers = {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + token,
-                            'locale': 'en'
-                        }
-                    }
-                    return axios.post('https://sbapi.sbtech.com/' + bookmaker +
-                        '/sportscontent/sportsbook/v1/Events/' + (bookmakerId.idType === IdType.SPORT ? 'GetBySportId' : 'GetByLeagueId')
-                        , page, headers)
-                        .then(response => {
-                            const betOffers = SbtechParser.parse(new ApiResponse(Provider.SBTECH, response.data, RequestType.BET_OFFER, bookmaker))
-                            return this.assignBetOffersToSportRadarEvent(betOffers, events, bookmaker)
-                        })
-                        .catch(() => {
-                            return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER, bookmaker)})
-                }).catch(error => console.log(error))
-            })
-
-            return Promise.all(requests).then(responses => {
-                const data = this.mergeBetOffers(responses)
-                return new ApiResponse(Provider.SBTECH, data, RequestType.BET_OFFER, tokenRequest.bookmaker)
-            })
-        })
-
     }
 
     assignBetOffersToSportRadarEvent(betOffers, events, bookmaker) {
@@ -162,63 +90,7 @@ export class Scraper {
         return merged
     }
 
-    toKambiBetOfferRequestsV2(bookmakerId: BookmakerId, events) {
-        const kambiBetOfferTypes = {}
-        kambiBetOfferTypes[BetType._1X2] = 2
-        kambiBetOfferTypes[BetType.OVER_UNDER] = 6
-        kambiBetOfferTypes[BetType.DOUBLE_CHANCE] = 2
-        kambiBetOfferTypes[BetType.CORRECT_SCORE] = 3
-        kambiBetOfferTypes[BetType.ASIAN_HANDICAP] = 7
-        kambiBetOfferTypes[BetType.ASIAN_OVER_UNDER] = 21
-        kambiBetOfferTypes[BetType._3_WAY_HANDICAP] = 11
-        kambiBetOfferTypes[BetType.DOUBLE_CHANCE] = 12
-        kambiBetOfferTypes[BetType.ODD_EVEN] = 10
-        kambiBetOfferTypes[BetType.YES_NO] = 18
-
-        const books = providers[Provider.KAMBI]
-        return books.map(book => {
-            const requests = Object.keys(kambiBetOfferTypes).map(key => {
-                return axios.get(
-                    'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
-                    + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
-                ).then(response => {
-                    const buildEvents = {}
-                    const betOffers = KambiParser.parse(new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER))
-                    betOffers.forEach(betOffer => {
-                        const event = events.filter(event => event.eventId === betOffer.eventId)[0]
-                        const storedBetOffers = buildEvents[event.sportRadarId]
-                        if(storedBetOffers) {
-                            storedBetOffers.push(betOffer)
-                            buildEvents[event.sportRadarId] = storedBetOffers
-                        } else {
-                            buildEvents[event.sportRadarId] = [betOffer]
-                        }
-                    })
-                    return buildEvents
-                })
-                    .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})
-            })
-
-            return Promise.all(requests).then(responses => {
-                const merged = {}
-                responses.forEach(response => {
-                    Object.keys(response).forEach(key => {
-                        const mergedBetOffers = merged[key]
-                        if(mergedBetOffers) {
-                            const newBetOffers = mergedBetOffers.concat(response[key])
-                            merged[key] = newBetOffers
-                        } else {
-                            merged[key] = response[key]
-                        }
-                    })
-                })
-                return new ApiResponse(Provider.KAMBI, merged, RequestType.BET_OFFER, book)
-            })
-
-        })
-    }
-
-    toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType) {
+    toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType, mappedEvents?) {
         return bookmakerIds.map(bookmakerId => {
             switch (bookmakerId.provider) {
                 case Provider.BETCONSTRUCT:
@@ -228,17 +100,17 @@ export class Scraper {
                 case Provider.MAGIC_BETTING:
                     return this.toMagicBettingRequests(bookmakerId, requestType)
                 case Provider.KAMBI:
-                    return this.toKambiRequests(bookmakerId, requestType)
+                    return this.toKambiRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.PINNACLE:
                     return this.toPinnacleRequests(bookmakerId, requestType)
                 case Provider.SBTECH:
-                    return this.toSbtechRequests(bookmakerId, requestType)
+                    return this.toSbtechRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.ALTENAR:
-                    return this.toAltenarRequests(bookmakerId, requestType, undefined)
+                    return this.toAltenarRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
                 case Provider.BINGOAL:
-                    return this.toBingoalRequests(bookmakerId, requestType)
+                    return this.toBingoalRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.LADBROKES:
                     return this.toLadbrokesRequests(bookmakerId, requestType)
                 case Provider.MERIDIAN:
@@ -259,7 +131,7 @@ export class Scraper {
         })
     }
 
-    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?): Promise<ApiResponse> {
         this.startBetConstructWSV2(bookmakerId, requestType)
         return new Promise(resolve => {
             const interval = setInterval(() => {
@@ -608,7 +480,7 @@ export class Scraper {
         return headers
     }
 
-    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType, eventsMap?) {
         if(requestType === RequestType.EVENT ) {
             return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
                 const headers = this.bingoalHeaders(response)
@@ -624,21 +496,17 @@ export class Scraper {
             return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
                 const headers = this.bingoalHeaders(response)
                 const k = this.bingoalQueryKParam(response)
-                return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=" + bookmakerId.id, headers)
-                    .then(response => {
-                        const events = BingoalParser.parseEvents(new ApiResponse(Provider.BINGOAL, response.data, RequestType.EVENT))
-                        const betOfferRequests = events.map(event => {
-                            const url = "https://www.bingoal.be/A/sport?k=" + k + "&func=detail&id=" + event.id.id
-                            return axios.get(url, headers).then(response => new ApiResponse(Provider.BINGOAL, response.data, requestType))
-                        })
-                        return Promise.all(betOfferRequests).then(values => {
-                            const data =[]
-                            values.flat().forEach(response => {
-                                data.push(response.data)
-                            })
-                            return new ApiResponse(Provider.BINGOAL, data, requestType)
-                        })
+                const betOfferRequests = eventsMap.map(event => {
+                    const url = "https://www.bingoal.be/A/sport?k=" + k + "&func=detail&id=" + event.eventId
+                    return axios.get(url, headers).then(response => {
+                        const betOffers = BingoalParser.parseBetOffers(new ApiResponse(Provider.BINGOAL, response.data, requestType))
+                        return this.assignBetOffersToSportRadarEvent(betOffers, eventsMap, Bookmaker.BINGOAL)
                     })
+                })
+                return Promise.all(betOfferRequests).then(values => {
+                    // @ts-ignore
+                    return new ApiResponse(Provider.BINGOAL, {bookmaker: Bookmaker.BINGOAL, events: values.map(value => value.events).flat()}, requestType)
+                })
             })]
         }
     }
@@ -751,9 +619,9 @@ export class Scraper {
         ]*/
     }
 
-    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         if(requestType === RequestType.EVENT) return this.toKambiEventRequests(bookmakerId)
-        if(requestType === RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId)
+        if(requestType === RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId, mappedEvents)
     }
 
     toKambiEventRequests(bookmakerId: BookmakerId) {
@@ -778,7 +646,7 @@ export class Scraper {
         ]
     }
 
-    toKambiBetOfferRequests(bookmakerId: BookmakerId) {
+    toKambiBetOfferRequests(bookmakerId: BookmakerId, mappedEvents?) {
         const kambiBetOfferTypes = {}
         kambiBetOfferTypes[BetType._1X2] = 2
         kambiBetOfferTypes[BetType.OVER_UNDER] = 6
@@ -798,40 +666,22 @@ export class Scraper {
                     'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
                     + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
                 ).then(response => {
-                    if(key === BetType._1X2) {
-                        const sportRadarRequests =  response.data.events.map(event => {
-                            return axios.get("https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/" + event.id)
-                                .then(sportRadarResponse => {
-                                    const betOffersEvent = response.data.betOffers.filter(betOffer => betOffer.eventId === event.id).map(betOffer => {
-                                        return betOffer["sportRadarId"] = sportRadarResponse.data.content[0].Resource.split("matchId=")[1]
-                                    })
-                                    return betOffersEvent
-                                }).catch(error => console.log(error))
-                        })
-                        return Promise.all(sportRadarRequests).then(sportRadarResponses => {
-                            response.data["sportRadar"] = sportRadarResponses
-                            return new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER)
-                        })
-                    } else {
-                        return new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER)
-                    }
+                    const betOffers = KambiParser.parse(new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER))
+                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, book)
 
                 })
                     .catch(error => {return new ApiResponse(bookmakerId.provider, null, RequestType.BET_OFFER), book})
             })
 
             return Promise.all(requests).then(responses => {
-                const data = responses.map(response => {
-                    return response._data
-                })
+                const data = this.mergeBetOffers(responses)
                 return new ApiResponse(Provider.KAMBI, data, RequestType.BET_OFFER, book)
             })
-
         })
     }
 
 
-    toSbtechRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toSbtechRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
 
         const tokenData = [
             new SbtechTokenRequest(Bookmaker.BET777, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),
@@ -842,15 +692,15 @@ export class Scraper {
             return this.toSbtechRequestForBook(requestType, bookmakerId, tokenData[0])
         }
 
-        if(requestType === RequestType.BET_OFFER) {
+        if(requestType === RequestType.BET_OFFER && mappedEvents) {
             return tokenData.map(tokenRequest => {
-                return this.toSbtechRequestForBook(requestType, bookmakerId, tokenRequest)
+                return this.toSbtechRequestForBook(requestType, bookmakerId, tokenRequest, mappedEvents)
             })
         }
 
     }
 
-    toSbtechRequestForBook(requestType: RequestType, bookmakerId: BookmakerId, tokenRequest: SbtechTokenRequest) {
+    toSbtechRequestForBook(requestType: RequestType, bookmakerId: BookmakerId, tokenRequest: SbtechTokenRequest, mappedEvents?) {
         const id = bookmakerId.id
         const pages = [
             {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}},
@@ -868,11 +718,11 @@ export class Scraper {
             }
             if(tokenRequest.api === SbtechApi.V2) {
                 return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(tokenRequest.bookmaker,
-                    bookmakerId, res.data.token, page, requestType))
+                    bookmakerId, res.data.token, page, requestType, mappedEvents))
                     .catch(error => console.log(error))
             } else {
                 return axios.get(tokenRequest.url).then(res => this.toSbtechBetOfferRequest(tokenRequest.bookmaker, bookmakerId,
-                    res.data.split('ApiAccessToken = \'')[1].replace('\'', ''), page, requestType)).catch(error => console.log(error))
+                    res.data.split('ApiAccessToken = \'')[1].replace('\'', ''), page, requestType, mappedEvents)).catch(error => console.log(error))
             }
         })
         return Promise.all(requests).then(responses => {
@@ -886,7 +736,7 @@ export class Scraper {
         })
     }
 
-    toSbtechBetOfferRequest(bookmaker: Bookmaker, bookmakerId: BookmakerId, token, page, requestType: RequestType) {
+    toSbtechBetOfferRequest(bookmaker: Bookmaker, bookmakerId: BookmakerId, token, page, requestType: RequestType, mappedEvents?) {
         const headers = {
             headers: {
                 'Content-Type': 'application/json',
@@ -899,10 +749,16 @@ export class Scraper {
             , page, headers)
             .then(response => {
                 if(response.data.events.length > 0) {
-                    events = response.data.events.map(event => {
-                        return {eventId: event.id, sportRadarId: parseInt(event.media[0].providerEventId)}
-                    })
-                    return new ApiResponse(bookmakerId.provider, events, requestType, bookmaker)
+                    if(requestType === RequestType.EVENT) {
+                        events = response.data.events.map(event => {
+                            return {eventId: event.id, sportRadarId: parseInt(event.media[0].providerEventId)}
+                        })
+                        return new ApiResponse(bookmakerId.provider, events, requestType, bookmaker)
+                    } else {
+                        const betOffers = SbtechParser.parse(new ApiResponse(Provider.SBTECH, response.data, RequestType.BET_OFFER, bookmaker))
+                        const data = this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, bookmaker)
+                        return new ApiResponse(bookmakerId.provider, data, requestType, bookmaker)
+                    }
                 }})
             .catch(error => {
                 return new ApiResponse(bookmakerId.provider, null, requestType, bookmaker)})

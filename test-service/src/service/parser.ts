@@ -193,15 +193,14 @@ export class BingoalParser {
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers: BetOffer[] = []
-        apiResponse.data.map(event => event.box[0].match).flat().filter(match => !match.outright).forEach(match => {
-            match.importantSubbets.forEach(subbet => {
-                const betType: BetType = this.determineBetType(subbet)
-                if(betType !== BetType.UNKNOWN) {
-                    subbet.tips.forEach(tip => {
-                        betOffers.push(new BetOffer(betType, match.ID, Bookmaker.BINGOAL, tip.shortName, tip.odd, NaN))
-                    })
-                }
-            })
+        const event = apiResponse.data.box[0].match
+        event.importantSubbets.forEach(subbet => {
+            const betType: BetType = this.determineBetType(subbet)
+            if(betType !== BetType.UNKNOWN) {
+                subbet.tips.forEach(tip => {
+                    betOffers.push(new BetOffer(betType, event.ID, Bookmaker.BINGOAL, tip.shortName, tip.odd, NaN))
+                })
+            }
         })
         return betOffers
     }
