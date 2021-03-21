@@ -680,18 +680,15 @@ export class LadbrokesParser {
             }).flat()
     }
 
-    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers = []
-        apiResponse.data.forEach(event => {
-            event.result.betGroupList.map(betGroup => betGroup.oddGroupList).flat().forEach(oddGroup => {
-                const betType = LadbrokesParser.determineBetOfferType(oddGroup.betId)
-                const line = oddGroup.additionalDescription ? parseFloat(oddGroup.additionalDescription.toUpperCase().trim()): NaN
-                oddGroup.oddList.forEach(option => {
-                    const outcome = option.oddDescription.toUpperCase()
-                    const price = option.oddValue / 100
-                    betOffers.push(new BetOffer(betType, event.eventId, Provider.LADBROKES, outcome, price, line))
-                })
-
+        apiResponse.data.result.betGroupList.map(betGroup => betGroup.oddGroupList).flat().forEach(oddGroup => {
+            const betType = LadbrokesParser.determineBetOfferType(oddGroup.betId)
+            const line = oddGroup.additionalDescription ? parseFloat(oddGroup.additionalDescription.toUpperCase().trim()): NaN
+            oddGroup.oddList.forEach(option => {
+                const outcome = option.oddDescription.toUpperCase()
+                const price = option.oddValue / 100
+                betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line))
             })
         })
         return betOffers

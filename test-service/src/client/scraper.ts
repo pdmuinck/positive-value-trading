@@ -115,7 +115,7 @@ export class Scraper {
                 case Provider.BINGOAL:
                     return this.toBingoalRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.LADBROKES:
-                    return this.toLadbrokesRequests(bookmakerId, requestType)
+                    return this.toLadbrokesRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.MERIDIAN:
                     return this.toMeridianRequests(bookmakerId, requestType)
                 case Provider.SCOOORE:
@@ -451,7 +451,7 @@ export class Scraper {
 
     }
 
-    toLadbrokesRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toLadbrokesRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const headers = {
             headers: {
                 'x-eb-accept-language': 'en_BE',
@@ -471,28 +471,18 @@ export class Scraper {
                     })
                 return new ApiResponse(Provider.LADBROKES, events, requestType)})]
         } else {
-                return [
-                    axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
-                        + bookmakerId.id + '?prematch=1&live=0', headers).then(response => {
-                        const events = LadbrokesParser.parse(new ApiResponse(Provider.LADBROKES, response, requestType))
-                        const betOfferRequests = events.map(event => {
-                            return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
-                                + bookmakerId.id + '/' + event.eventId + '?prematch=1&live=0', headers).then(
-                                response => {
-                                    const data = response.data
-                                    data["eventId"] = event
-                                    return data
-                                }
-                            )})
-                        return Promise.all(betOfferRequests).then(values => {
-                            const data =[]
-                            values.flat().forEach(response => {
-                                data.push(response)
-                            })
-                            return new ApiResponse(Provider.LADBROKES, data, requestType)
-                        })
-                    })
-                ]
+            const betOfferRequests = mappedEvents.map(event => {
+                return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
+                    + bookmakerId.id + '/' + event.eventId + '?prematch=1&live=0', headers).then(
+                    response => {
+                        const betOffers = LadbrokesParser.parseBetOffers(new ApiResponse(Provider.LADBROKES, response.data, requestType))
+                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.LADBROKES)
+                    }
+                )})
+            return Promise.all(betOfferRequests).then(values => {
+                // @ts-ignore
+                return new ApiResponse(Provider.LADBROKES, {bookmaker: Bookmaker.LADBROKES, events: values.map(value => value.events).flat()}, requestType)
+            })
             }
 
     }
