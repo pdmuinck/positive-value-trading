@@ -81,6 +81,57 @@ export class Parser {
     }
 }
 
+export class ScoooreParser {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        return apiResponse.data.eventmarketgroups.map(marketGroup => marketGroup.fullmarkets).flat().map(betOffer => {
+            const betType = this.determineBetType(betOffer.idfomarket)
+
+        })
+    }$
+
+    static determineBetType(betType): BetType {
+        switch(betType){
+            case "28315031.1":
+                return BetType._1X2
+            case "28315030.1":
+                return BetType.DOUBLE_CHANCE
+            case "28447076.1":
+                return BetType._1X2_FIRST_HALF
+            case "28447079.1":
+                return BetType.BOTH_TEAMS_SCORE
+            case "28447101.1":
+                return BetType.OVER_UNDER
+            case "28447098.1":
+                return BetType.OVER_UNDER
+            case "28447110.1":
+                return BetType.OVER_UNDER
+            case "28447081.1":
+                return BetType.OVER_UNDER
+            case "28447094.1":
+                return BetType.OVER_UNDER
+            case "28315032.1":
+                return BetType.DRAW_NO_BET
+            case "28447090.1":
+                return BetType.HANDICAP
+            case "28447112.1":
+                return BetType.HANDICAP
+            case "28447113.1":
+                return BetType.HANDICAP
+            case "28447113.1":
+                return BetType.HANDICAP
+            case "28447100.1":
+                return BetType.HANDICAP
+            case "28447103.1":
+                return BetType._1X2_H2
+            case "28447089.1":
+                return BetType.DOUBLE_CHANCE_1H
+            case "28447061.1":
+                return BetType.HANDICAP_H1
+
+        }
+    }
+}
+
 export class BetwayParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {

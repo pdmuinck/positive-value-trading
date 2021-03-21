@@ -10,9 +10,11 @@ import {
     BetConstructParser,
     BingoalParser,
     KambiParser,
-    LadbrokesParser, MeridianParser,
+    LadbrokesParser,
+    MeridianParser,
     Parser,
-    SbtechParser
+    SbtechParser,
+    ScoooreParser
 } from "../service/parser";
 
 const WebSocket = require("ws")
@@ -119,7 +121,7 @@ export class Scraper {
                 case Provider.MERIDIAN:
                     return this.toMeridianRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.SCOOORE:
-                    return this.toScoooreRequests(bookmakerId, requestType)
+                    return this.toScoooreRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.STANLEYBET:
                     return this.toStanleyBet(bookmakerId, requestType)
                 case Provider.BETCENTER:
@@ -393,19 +395,33 @@ export class Scraper {
             .catch(error => console.log(error))]
     }
 
-    toScoooreRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [
-            axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + bookmakerId.id + '.1-0.json')
-                .then(response => {
-                    // extevents.idefevent.split on pipe and _
-                    const data = response.data.markets.map(event => {
-                        const sportRadarId = event.extevents[0].idefevent.split('_')[1]
-                        return {eventId: event.idfoevent.toString(), sportRadarId: sportRadarId}
+    toScoooreRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
+        if(requestType === RequestType.EVENT) {
+            return [
+                axios.get('https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/' + bookmakerId.id + '.1-0.json')
+                    .then(response => {
+                        const data = response.data.markets.map(event => {
+                            const sportRadarId = event.extevents[0].idefevent.split('_')[1]
+                            return {eventId: event.idfoevent.toString(), sportRadarId: sportRadarId}
+                        })
+                        return new ApiResponse(Provider.SCOOORE, data, requestType)
                     })
-                    return new ApiResponse(Provider.SCOOORE, data, requestType)
-                })
-                .catch(error => new ApiResponse(Provider.SCOOORE, null, requestType))
-        ]
+                    .catch(error => new ApiResponse(Provider.SCOOORE, null, requestType))
+            ]
+        } else {
+            const requests = mappedEvents.map(event => {
+                return axios.get('https://www.e-lotto.be/cache/evenueEventMarketGroupWithMarketsSB/NL/420/' + event.eventId + ".json").then(response => {
+                    const betOffers = ScoooreParser.parseBetOffers(new ApiResponse(Provider.SCOOORE, response.data, RequestType.BET_OFFER))
+                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.SCOOORE)
+                }).catch(error => console.log(error))
+            })
+
+            return Promise.all(requests).then(values => {
+                // @ts-ignore
+                return new ApiResponse(Provider.SCOOORE, {bookmaker: Bookmaker.SCOOORE, events: values.map(value => value.events).flat()}, requestType)
+            })
+        }
+
     }
 
     toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
