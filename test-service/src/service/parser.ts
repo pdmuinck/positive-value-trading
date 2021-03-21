@@ -57,7 +57,7 @@ export class Parser {
                 case Provider.BET90:
                     return Bet90Parser.parse(apiResponse)
                 case Provider.BETCONSTRUCT:
-                    return CircusParser.parse(apiResponse)
+                    return BetConstructParser.parse(apiResponse)
                 case Provider.BINGOAL:
                     return BingoalParser.parse(apiResponse)
                 case Provider.BETWAY:
@@ -227,7 +227,7 @@ export class BingoalParser {
     }
 }
 
-export class CircusParser {
+export class BetConstructParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
             case RequestType.BET_OFFER:
@@ -270,7 +270,7 @@ export class CircusParser {
                         if(outcomeItem.OrderPosition === 3) betOption = "2"
                     }
                     const line = outcomeItem.Base ? outcomeItem.Base : NaN
-                    betOffers.push(new BetOffer(betType, marketItem.EventId, Provider.BETCONSTRUCT, betOption, outcomeItem.Odd, line))
+                    betOffers.push(new BetOffer(betType, marketItem.EventId, apiResponse.bookmaker, betOption, outcomeItem.Odd, line))
                 })
         })
         return betOffers
