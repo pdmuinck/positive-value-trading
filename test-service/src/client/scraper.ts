@@ -10,7 +10,7 @@ import {
     BetConstructParser,
     BingoalParser,
     KambiParser,
-    LadbrokesParser,
+    LadbrokesParser, MeridianParser,
     Parser,
     SbtechParser
 } from "../service/parser";
@@ -117,7 +117,7 @@ export class Scraper {
                 case Provider.LADBROKES:
                     return this.toLadbrokesRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.MERIDIAN:
-                    return this.toMeridianRequests(bookmakerId, requestType)
+                    return this.toMeridianRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.SCOOORE:
                     return this.toScoooreRequests(bookmakerId, requestType)
                 case Provider.STANLEYBET:
@@ -408,7 +408,7 @@ export class Scraper {
         ]
     }
 
-    toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         if(requestType === RequestType.EVENT) {
             return [axios.get(bookmakerId.id).then(response => {
                 const data = response.data[0].events.map(event => {
@@ -417,36 +417,16 @@ export class Scraper {
                 return new ApiResponse(Provider.MERIDIAN, data, requestType)
             })]
         } else {
-            return [
-                axios.get(bookmakerId.id).then(response => {
-                    const events = Parser.parse(new ApiResponse(Provider.MERIDIAN, response.data, RequestType.EVENT))
-                    const betOfferRequests = events.map(event => {
-                        return axios.get("https://meridianbet.be/sails/events/" + event.id.id).then(response => {
-                            const data = {}
-                            data["eventId"] = event.id.id
-                            const betOffers = []
-                            response.data.market.forEach(betOffer => {
-                                const selections = []
-                                betOffer.selection.forEach(selection => {
-                                    delete selection.nameTranslations
-                                    selections.push(selection)
-                                })
-                                betOffers.push({selection: selections, templateId: betOffer.templateId,
-                                    name: betOffer.name, overUnder: betOffer.overUnder, handicap: betOffer.handicap})
-                            })
-                            data["betOffers"] = betOffers
-                            return data
-                        })
-                    })
-                    return Promise.all(betOfferRequests).then(values => {
-                        const data =[]
-                        values.flat().forEach(response => {
-                            data.push(response)
-                        })
-                        return new ApiResponse(Provider.MERIDIAN, data, requestType)
-                    })
-                }).catch(error => new ApiResponse(Provider.MERIDIAN, null, requestType))
-            ]
+            const betOfferRequests = mappedEvents.map(event => {
+                return axios.get("https://meridianbet.be/sails/events/" + event.eventId).then(response => {
+                    const betOffers = MeridianParser.parseBetOffers(new ApiResponse(Provider.MERIDIAN, response.data, requestType))
+                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.MERIDIAN)
+                })
+            })
+            return Promise.all(betOfferRequests).then(values => {
+                // @ts-ignore
+                return new ApiResponse(Provider.MERIDIAN, {bookmaker: Bookmaker.MERIDIAN, events: values.map(value => value.events).flat()}, requestType)
+            })
         }
 
     }

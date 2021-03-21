@@ -743,20 +743,18 @@ export class MeridianParser {
         })
     }
 
-    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers = []
-        apiResponse.data.forEach(event => {
-            event.betOffers.forEach(betOffer => {
-                const betType = MeridianParser.determineBetType(betOffer.templateId)
-                if(betType !== BetType.UNKNOWN) {
-                    const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : NaN
-                    betOffer.selection.forEach(option => {
-                        const price = parseFloat(option.price)
-                        const outcome = MeridianParser.determineOutcome(option)
-                        betOffers.push(new BetOffer(betType, event.eventId, Provider.MERIDIAN, outcome, price, line))
-                    })
-                }
-            })
+        apiResponse.data.market.forEach(betOffer => {
+            const betType = MeridianParser.determineBetType(betOffer.templateId)
+            if(betType !== BetType.UNKNOWN) {
+                const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : NaN
+                betOffer.selection.forEach(option => {
+                    const price = parseFloat(option.price)
+                    const outcome = MeridianParser.determineOutcome(option)
+                    betOffers.push(new BetOffer(betType, apiResponse.data.id, Provider.MERIDIAN, outcome, price, line))
+                })
+            }
         })
         return betOffers
     }
