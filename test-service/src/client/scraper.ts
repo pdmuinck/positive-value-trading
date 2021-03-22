@@ -6,16 +6,20 @@ import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../service/b
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     AltenarParser,
-    Bet90Parser, BetcenterParser,
-    BetConstructParser, BetwayParser,
-    BingoalParser, BwinParser,
+    Bet90Parser,
+    BetcenterParser,
+    BetConstructParser,
+    BetwayParser,
+    BingoalParser,
+    BwinParser,
     KambiParser,
     LadbrokesParser,
     MeridianParser,
     Parser,
     SbtechParser,
     ScoooreParser,
-    StanleyBetParser
+    StanleyBetParser,
+    ZetBetParser
 } from "../service/parser";
 
 const WebSocket = require("ws")
@@ -132,7 +136,7 @@ export class Scraper {
                 case Provider.BETWAY:
                     return this.toBetwayRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.ZETBET:
-                    return this.toZetbetRequests(bookmakerId, requestType)
+                    return this.toZetbetRequests(bookmakerId, requestType, mappedEvents)
             }
         })
     }
@@ -287,26 +291,42 @@ export class Scraper {
         })
     }
 
-    toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-        return [
-            axios.get('https://www.zebet.be/en/competition/' + bookmakerId.id)
-                .then(response => {
-                    const parent = parser.parse(response.data)
-                    const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
-                    const requests = events.map(event => {
-                        return axios.get("https://www.zebet.be" + event).then(response => {
-                            const parent = parser.parse(response.data)
-                            const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
-                            const sportRadarId = splitted[splitted.length - 1]
-                            return {eventId: event, sportRadarId: sportRadarId}
+    toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
+        if(requestType === RequestType.EVENT) {
+            return [
+                axios.get('https://www.zebet.be/en/competition/' + bookmakerId.id)
+                    .then(response => {
+                        const parent = parser.parse(response.data)
+                        const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
+                        const requests = events.map(event => {
+                            return axios.get("https://www.zebet.be" + event).then(response => {
+                                const parent = parser.parse(response.data)
+                                const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
+                                const sportRadarId = splitted[splitted.length - 1]
+                                return {eventId: event, sportRadarId: sportRadarId}
+                            })
                         })
-                    })
-                    return Promise.all(requests).then(responses => {
-                        return new ApiResponse(Provider.ZETBET, responses, requestType)
-                    })
+                        return Promise.all(requests).then(responses => {
+                            return new ApiResponse(Provider.ZETBET, responses, requestType)
+                        })
 
-                })
-        ]
+                    })
+            ]
+        } else {
+            const requests = mappedEvents.map(event => {
+                return axios.get('https://www.zebet.be' + event.eventId)
+                    .then(response => {
+                        const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, response.data, requestType))
+                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
+                    })
+            })
+            return Promise.all(requests).then(values => {
+                return new ApiResponse(Provider.ZETBET, values, requestType)
+            })
+        }
+
+
+
     }
 
     toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {

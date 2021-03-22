@@ -286,6 +286,29 @@ export class ScoooreParser {
     }
 }
 
+export class ZetBetParser {
+    static parseBetOffers(apiResponse: ApiResponse) {
+        const root = parser.parse(apiResponse.data)
+        const marketNodes = root.querySelectorAll(".item-content  ")
+        const betOffers = {}
+        let currentMarket
+        for (let i = 0; i < marketNodes.length; i++) {
+            const element = marketNodes[i]
+            if (element.rawAttrs === 'class="uk-icon-bullseye"') {
+                currentMarket = element.parentNode.childNodes[1].rawText
+            } else {
+                if (!betOffers[currentMarket]) {
+                    betOffers[currentMarket] = [element]
+                } else {
+                    betOffers[currentMarket] = betOffers[currentMarket].push(element)
+                }
+
+            }
+        }
+        return betOffers
+    }
+}
+
 export class BetwayParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
