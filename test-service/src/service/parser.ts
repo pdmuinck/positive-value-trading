@@ -83,26 +83,49 @@ export class Parser {
 
 export class StanleyBetParser {
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const events = apiResponse.data.split('),dwr.engine.remote.newObject("AvvenimentoDTO",').slice(1)
-        return events.map(event => {
-            const betOffers = event.split("ScommessaDTO").slice(1)
-            return betOffers.map(betOffer => {
-                const betType = this.determineBetType(betOffer.split('"desc_scom":"')[1].split('","')[0])
-                if(betType !== BetType.UNKNOWN) {
-                    const selections = betOffer.split("EsitoDTO").slice(1)
-                    return selections.map(selection => {
-                        const outcome = selection.split('"desc_esito":"')[1].split('","')[0]
-                        const price = parseInt(selection.split("quota:")[1])/100
-                        const line = parseInt(selection.split("handicap:")[1])/100
-                        return new BetOffer(betType, "", Bookmaker.STANLEYBET, outcome, price, line)
-                    })
-                }
+        const eventId = apiResponse.data.split("avv:")[1].split(',')[0].toString()
+        const betOffers = apiResponse.data.split("ScommessaDTO").slice(1)
+        return betOffers.map(betOffer => {
+            const betType = this.determineBetType(betOffer.split('"desc_scom":"')[1].split('","')[0])
+            if(betType !== BetType.UNKNOWN) {
+                const selections = betOffer.split("EsitoDTO").slice(1)
+                return selections.map(selection => {
+                    const outcome = this.determineOutcome(selection.split('"desc_esito":"')[1].split('","')[0])
+                    const price = parseInt(selection.split("quota:")[1])/100
+                    const line = parseInt(selection.split("handicap:")[1])/100
+                    return new BetOffer(betType, eventId, Bookmaker.STANLEYBET, outcome, price, line)
+                })
+            }
 
-            })
-        })
+        }).flat().filter(x => x)
+    }
+
+    static determineOutcome(outcome) {
+        switch(outcome) {
+            case "GOAL":
+                return "YES"
+            case "NO GOAL":
+                return "NO"
+            case "ONEVEN":
+                return "ODD"
+            case "JA":
+                return "YES"
+            case "NEE":
+                return "NO"
+            default:
+                return outcome.toUpperCase()
+        }
     }
 
     static determineBetType(betType) {
+        if(betType.includes("HANDICAP")) {
+            return BetType.HANDICAP
+        }
+        if(betType.includes("EVEN") && betType.includes("ONEVEN")) {
+            if(betType.includes("THUISPLOEG") )  return BetType.ODD_EVEN_TEAM1
+            if(betType.includes("BEZOEKERS")) return BetType.ODD_EVEN_TEAM2
+            return BetType.ODD_EVEN
+        }
         switch(betType) {
             case "1X2":
                 return BetType._1X2
@@ -110,14 +133,20 @@ export class StanleyBetParser {
                 return BetType.DOUBLE_CHANCE
             case "Beide Teams Scoren":
                 return BetType.BOTH_TEAMS_SCORE
-            case "U\/O 1.5":
-                return BetType.OVER_UNDER
-            case "U\/O 2.5":
-                return BetType.OVER_UNDER
-            case "U\/O 3.5":
-                return BetType.OVER_UNDER
-            case "U\/O 4.5":
-                return BetType.OVER_UNDER
+            case "cor. score":
+                return BetType.CORRECT_SCORE
+            case "res. 1X2 1ste Periode":
+                return BetType._1X2_FIRST_HALF
+            case "res. 1X2 2de Helft":
+                return BetType._1X2_H2
+            case "cor. score 1E HELFT":
+                return BetType.CORRECT_SCORE_H1
+            case "cor. score 2E HELFT":
+                return BetType.CORRECT_SCORE_H2
+            case "tot. GOALS THUISPLOEG":
+                return BetType.OVER_UNDER_TEAM1
+            case "tot. GOALS BEZOEKERS":
+                return BetType.OVER_UNDER_TEAM2
             default:
                 return BetType.UNKNOWN
         }
