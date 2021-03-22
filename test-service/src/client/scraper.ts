@@ -14,7 +14,7 @@ import {
     MeridianParser,
     Parser,
     SbtechParser,
-    ScoooreParser
+    ScoooreParser, StanleyBetParser
 } from "../service/parser";
 
 const WebSocket = require("ws")
@@ -371,7 +371,7 @@ export class Scraper {
 
 
 
-    toStanleyBet(bookmakerId: BookmakerId, requestType: RequestType) {
+    toStanleyBet(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const headers = {
             headers: {
                 'Content-Type': 'text/plain'
@@ -384,13 +384,17 @@ export class Scraper {
             'number:0\nc0-param9=string:nl\nbatchId=8\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code' +
             '%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=jUP0TgbNU12ga86ZyrjLTrS8NRSwl721Uon/AVY2Uon-upTglJydk\n'
         return [axios.post(getEventsUrl, body, headers).then(response => {
-            const data = response.data.split("{alias:").slice(1).map(event => {
-                const eventId = event.split('"')[1]
-                const sportRadarId = event.split('"bet_radar_it":')[1].split(",")[0]
-                return {eventId: eventId, sportRadarId: sportRadarId}
-            })
-            return new ApiResponse(Provider.STANLEYBET, data, requestType)
-
+            if(requestType === RequestType.EVENT) {
+                const data = response.data.split("{alias:").slice(1).map(event => {
+                    const eventId = event.split('"')[1]
+                    const sportRadarId = event.split('"bet_radar_it":')[1].split(",")[0]
+                    return {eventId: eventId, sportRadarId: sportRadarId}
+                })
+                return new ApiResponse(Provider.STANLEYBET, data, requestType)
+            } else {
+                const betOffers = StanleyBetParser.parseBetOffers(new ApiResponse(Provider.STANLEYBET, response.data, requestType))
+                return this.mergeBetOffers(this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.STANLEYBET))
+            }
         })
             .catch(error => console.log(error))]
     }

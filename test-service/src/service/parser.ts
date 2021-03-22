@@ -81,6 +81,49 @@ export class Parser {
     }
 }
 
+export class StanleyBetParser {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const events = apiResponse.data.split('),dwr.engine.remote.newObject("AvvenimentoDTO",').slice(1)
+        return events.map(event => {
+            const betOffers = event.split("ScommessaDTO").slice(1)
+            return betOffers.map(betOffer => {
+                const betType = this.determineBetType(betOffer.split('"desc_scom":"')[1].split('","')[0])
+                if(betType !== BetType.UNKNOWN) {
+                    const selections = betOffer.split("EsitoDTO").slice(1)
+                    return selections.map(selection => {
+                        const outcome = selection.split('"desc_esito":"')[1].split('","')[0]
+                        const price = parseInt(selection.split("quota:")[1])/100
+                        const line = parseInt(selection.split("handicap:")[1])/100
+                        return new BetOffer(betType, "", Bookmaker.STANLEYBET, outcome, price, line)
+                    })
+                }
+
+            })
+        })
+    }
+
+    static determineBetType(betType) {
+        switch(betType) {
+            case "1X2":
+                return BetType._1X2
+            case "DK":
+                return BetType.DOUBLE_CHANCE
+            case "Beide Teams Scoren":
+                return BetType.BOTH_TEAMS_SCORE
+            case "U\/O 1.5":
+                return BetType.OVER_UNDER
+            case "U\/O 2.5":
+                return BetType.OVER_UNDER
+            case "U\/O 3.5":
+                return BetType.OVER_UNDER
+            case "U\/O 4.5":
+                return BetType.OVER_UNDER
+            default:
+                return BetType.UNKNOWN
+        }
+    }
+}
+
 export class ScoooreParser {
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         return apiResponse.data.eventmarketgroups.map(marketGroup => marketGroup.fullmarkets).flat().map(betOffer => {
