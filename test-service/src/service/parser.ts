@@ -86,13 +86,13 @@ export class StanleyBetParser {
         const eventId = apiResponse.data.split("avv:")[1].split(',')[0].toString()
         const betOffers = apiResponse.data.split("ScommessaDTO").slice(1)
         return betOffers.map(betOffer => {
-            const betType = this.determineBetType(betOffer.split('"desc_scom":"')[1].split('","')[0])
+            const betType = this.determineBetType(betOffer.split('"id_scom":')[1].split(",")[0])
+            const line = parseInt(betOffer.split("handicap:")[1].split(",")[0])/100
             if(betType !== BetType.UNKNOWN) {
                 const selections = betOffer.split("EsitoDTO").slice(1)
                 return selections.map(selection => {
                     const outcome = this.determineOutcome(selection.split('"desc_esito":"')[1].split('","')[0])
                     const price = parseInt(selection.split("quota:")[1])/100
-                    const line = parseInt(selection.split("handicap:")[1])/100
                     return new BetOffer(betType, eventId, Bookmaker.STANLEYBET, outcome, price, line)
                 })
             }
@@ -117,36 +117,70 @@ export class StanleyBetParser {
         }
     }
 
-    static determineBetType(betType) {
-        if(betType.includes("HANDICAP")) {
-            return BetType.HANDICAP
-        }
-        if(betType.includes("EVEN") && betType.includes("ONEVEN")) {
-            if(betType.includes("THUISPLOEG") )  return BetType.ODD_EVEN_TEAM1
-            if(betType.includes("BEZOEKERS")) return BetType.ODD_EVEN_TEAM2
-            return BetType.ODD_EVEN
-        }
-        switch(betType) {
-            case "1X2":
+    static determineBetType(id) {
+        switch(id) {
+            case "5":
                 return BetType._1X2
-            case "DK":
+            case "-8000":
                 return BetType.DOUBLE_CHANCE
-            case "Beide Teams Scoren":
+            case "7554":
+                return BetType.DOUBLE_CHANCE_H2
+            case "7557":
+                return BetType.DOUBLE_CHANCE_1H
+            case "20":
                 return BetType.BOTH_TEAMS_SCORE
-            case "cor. score":
+            case "9":
                 return BetType.CORRECT_SCORE
-            case "res. 1X2 1ste Periode":
+            case "16":
                 return BetType._1X2_FIRST_HALF
-            case "res. 1X2 2de Helft":
+            case "21":
+                return BetType.ODD_EVEN
+            case "122":
                 return BetType._1X2_H2
-            case "cor. score 1E HELFT":
+            case "409":
                 return BetType.CORRECT_SCORE_H1
-            case "cor. score 2E HELFT":
+            case "548":
                 return BetType.CORRECT_SCORE_H2
-            case "tot. GOALS THUISPLOEG":
+            case "549":
+                return BetType.ODD_EVEN_TEAM1
+            case "550":
+                return BetType.ODD_EVEN_TEAM2
+            case "556":
                 return BetType.OVER_UNDER_TEAM1
-            case "tot. GOALS BEZOEKERS":
+            case "557":
                 return BetType.OVER_UNDER_TEAM2
+            case "1843":
+                return BetType.HANDICAP
+            case "1844":
+                return BetType.HANDICAP
+            case "1845":
+                return BetType.HANDICAP
+            case "1846":
+                return BetType.HANDICAP
+            case "4168":
+                return BetType.HANDICAP_H2
+            case "5193":
+                return BetType.OVER_UNDER_TEAM1
+            case "5196":
+                return BetType.OVER_UNDER_TEAM1
+            case "5274":
+                return BetType.OVER_UNDER_TEAM1
+            case "5305":
+                return BetType.OVER_UNDER_TEAM2
+            case "5876":
+                return BetType.OVER_UNDER_TEAM2
+            case "6218":
+                return BetType.OVER_UNDER_TEAM2
+            case "12640":
+                return BetType.OVER_UNDER
+            case "12636":
+                return BetType.OVER_UNDER
+            case "12626":
+                return BetType.OVER_UNDER
+            case "12193":
+                return BetType.OVER_UNDER
+            case "12207":
+                return BetType.OVER_UNDER
             default:
                 return BetType.UNKNOWN
         }
