@@ -84,75 +84,98 @@ export class Parser {
 export class ScoooreParser {
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         return apiResponse.data.eventmarketgroups.map(marketGroup => marketGroup.fullmarkets).flat().map(betOffer => {
-            const betType = this.determineBetType(betOffer.idfomarket)
-
+            const betType = this.determineBetType(betOffer.idfomarkettype.toString())
+            if(betType !== BetType.UNKNOWN) {
+                const line = betOffer.currentmatchhandicap
+                return betOffer.selections.map(selection => {
+                    const outcome = this.determineOutcome(betType, selection)
+                    return new BetOffer(betType, betOffer.idfoevent.toString(), Bookmaker.SCOOORE, outcome, selection.price, line)
+                }).flat()
+            }
         })
-    }$
+    }
+
+    static determineOutcome(betType: BetType, selection) {
+        if(betType === BetType.CORRECT_SCORE || betType === BetType.CORRECT_SCORE_H1 || betType === BetType.CORRECT_SCORE_H2
+            ) {
+            return selection.name
+        } else if(betType === BetType.DOUBLE_CHANCE || betType === BetType.DOUBLE_CHANCE_1H || betType === BetType.DOUBLE_CHANCE_H2) {
+            switch (selection.internalorder) {
+                case 1:
+                    return "1X"
+                case 2:
+                    return "12"
+                case 3:
+                    return "X2"
+            }
+        } else {
+            switch(selection.hadvalue ? selection.hadvalue : selection.name) {
+                case "O":
+                    return "OVER"
+                case "U":
+                    return "UNDER"
+                case "D":
+                    return "X"
+                case "H":
+                    return "1"
+                case "A":
+                    return "2"
+                case "Ja":
+                    return "YES"
+                case "Nee":
+                    return "NO"
+                case "Oneven":
+                    return "ODD"
+                case "Even":
+                    return "EVEN"
+            }
+        }
+    }
 
     static determineBetType(betType): BetType {
         switch(betType){
-            case "28315031.1":
+            case "70143.1":
                 return BetType._1X2
-            case "28315030.1":
+            case "70129.1":
                 return BetType.DOUBLE_CHANCE
-            case "28447076.1":
+            case "70144.1":
                 return BetType._1X2_FIRST_HALF
-            case "28447079.1":
+            case "70092.1":
                 return BetType.BOTH_TEAMS_SCORE
-            case "28447101.1":
+            case "86949.1":
                 return BetType.OVER_UNDER
-            case "28447098.1":
-                return BetType.OVER_UNDER
-            case "28447110.1":
-                return BetType.OVER_UNDER
-            case "28447081.1":
-                return BetType.OVER_UNDER
-            case "28447094.1":
-                return BetType.OVER_UNDER
-            case "28315032.1":
+            case "70116.1":
                 return BetType.DRAW_NO_BET
-            case "28447090.1":
+            case "70132.1":
                 return BetType.HANDICAP
-            case "28447112.1":
-                return BetType.HANDICAP
-            case "28447113.1":
-                return BetType.HANDICAP
-            case "28447113.1":
-                return BetType.HANDICAP
-            case "28447100.1":
-                return BetType.HANDICAP
-            case "28447103.1":
+            case "70145.1":
                 return BetType._1X2_H2
-            case "28447089.1":
+            case "70130.1":
                 return BetType.DOUBLE_CHANCE_1H
-            case "28447061.1":
+            case "70133.1":
                 return BetType.HANDICAP_H1
-            case "28590916.1":
+            case "70104.1":
                 return BetType.ODD_EVEN_H1
-            case "28590878.1":
+            case "86943.1":
                 return BetType.OVER_UNDER_TEAM1
-            case "28590877.1":
+            case "86940.1":
                 return BetType.OVER_UNDER_TEAM2
-            case "28590921.1":
+            case "86944.1":
                 return BetType.OVER_UNDER_TEAM1_H1
-            case "28590910.1":
+            case "86941.1":
                 return BetType.OVER_UNDER_TEAM2_H1
-            case "28590876.1":
+            case "70071.1":
                 return BetType.ODD_EVEN_TEAM1
-            case "28590875.1":
+            case "70054.1":
                 return BetType.ODD_EVEN_TEAM2
-            case "28590903.1":
+            case "70169.1":
                 return BetType.CORRECT_SCORE
-            case "28590880.1":
+            case "70164.1":
                 return BetType.CORRECT_SCORE_H1
-            case "28590908.1":
+            case "70103.1":
                 return BetType.ODD_EVEN
-
-
-
-
-
-
+            default:
+                return BetType.UNKNOWN
         }
     }
 }

@@ -412,7 +412,7 @@ export class Scraper {
             const requests = mappedEvents.map(event => {
                 return axios.get('https://www.e-lotto.be/cache/evenueEventMarketGroupWithMarketsSB/NL/420/' + event.eventId + ".json").then(response => {
                     const betOffers = ScoooreParser.parseBetOffers(new ApiResponse(Provider.SCOOORE, response.data, RequestType.BET_OFFER))
-                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.SCOOORE)
+                    return this.assignBetOffersToSportRadarEvent(betOffers.flat().filter(x => x), mappedEvents, Bookmaker.SCOOORE)
                 }).catch(error => console.log(error))
             })
 
