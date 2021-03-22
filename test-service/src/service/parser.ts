@@ -127,6 +127,31 @@ export class ScoooreParser {
                 return BetType.DOUBLE_CHANCE_1H
             case "28447061.1":
                 return BetType.HANDICAP_H1
+            case "28590916.1":
+                return BetType.ODD_EVEN_H1
+            case "28590878.1":
+                return BetType.OVER_UNDER_TEAM1
+            case "28590877.1":
+                return BetType.OVER_UNDER_TEAM2
+            case "28590921.1":
+                return BetType.OVER_UNDER_TEAM1_H1
+            case "28590910.1":
+                return BetType.OVER_UNDER_TEAM2_H1
+            case "28590876.1":
+                return BetType.ODD_EVEN_TEAM1
+            case "28590875.1":
+                return BetType.ODD_EVEN_TEAM2
+            case "28590903.1":
+                return BetType.CORRECT_SCORE
+            case "28590880.1":
+                return BetType.CORRECT_SCORE_H1
+            case "28590908.1":
+                return BetType.ODD_EVEN
+
+
+
+
+
 
         }
     }

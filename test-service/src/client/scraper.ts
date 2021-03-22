@@ -406,7 +406,7 @@ export class Scraper {
                         })
                         return new ApiResponse(Provider.SCOOORE, data, requestType)
                     })
-                    .catch(error => new ApiResponse(Provider.SCOOORE, null, requestType))
+                    .catch(error => console.log(error))
             ]
         } else {
             const requests = mappedEvents.map(event => {
