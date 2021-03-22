@@ -295,12 +295,15 @@ export class ZetBetParser {
         for (let i = 0; i < marketNodes.length; i++) {
             const element = marketNodes[i]
             if (element.rawAttrs === 'class="uk-icon-bullseye"') {
-                currentMarket = element.parentNode.childNodes[1].rawText
+                currentMarket = element.parentNode.childNodes[1].rawText.split("\n")[1].trim()
             } else {
                 if (!betOffers[currentMarket]) {
-                    betOffers[currentMarket] = [element]
-                } else {
-                    betOffers[currentMarket] = betOffers[currentMarket].push(element)
+                    betOffers[currentMarket] = {elements: [element]}
+                }
+                 else {
+                    const elements = betOffers[currentMarket].elements
+                    elements.push(element)
+                    betOffers[currentMarket] = {elements: elements}
                 }
 
             }
