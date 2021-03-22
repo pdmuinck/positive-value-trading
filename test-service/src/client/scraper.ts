@@ -7,7 +7,7 @@ import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     AltenarParser,
     Bet90Parser, BetcenterParser,
-    BetConstructParser,
+    BetConstructParser, BetwayParser,
     BingoalParser, BwinParser,
     KambiParser,
     LadbrokesParser,
@@ -130,7 +130,7 @@ export class Scraper {
                 case Provider.BWIN:
                     return this.toBwinRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.BETWAY:
-                    return this.toBetwayRequests(bookmakerId, requestType)
+                    return this.toBetwayRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.ZETBET:
                     return this.toZetbetRequests(bookmakerId, requestType)
             }
@@ -309,7 +309,7 @@ export class Scraper {
         ]
     }
 
-    toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
         const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":bookmakerId.id}
         if(requestType === RequestType.EVENT) {
@@ -327,28 +327,19 @@ export class Scraper {
                     }).catch(error => console.log(error))
             ]
         } else {
-            return [
-                axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
-                    .then(response => {
-                        const eventIds = response.data.Categories[0].Events
-                        const betOfferRequests = markets.map(market => {
-                            const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
-                                ,"MarketCName":market,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
-                            return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', payload).then(response =>
-                                new ApiResponse(Provider.BETWAY, response.data, requestType)).catch(error => console.log(error))
-                        })
-                        return Promise.all(betOfferRequests).then(values => {
-                            const data = []
-                            values.flat().forEach(value => {
-                                if (value instanceof ApiResponse) {
-                                    data.push(value.data)
-                                }
-                            })
-                            return new ApiResponse(Provider.BETWAY, data, requestType)
-                        })
 
-                    }).catch(error => console.log(error))
-            ]
+            const betOfferRequests = mappedEvents.map(event => {
+                const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.eventId
+                    ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
+                return axios.post('https://sports.betway.be/api/Events/V2/GetEventDetails', payload).then(response => {
+                    const betOffers = BetwayParser.parseBetOffers(new ApiResponse(Provider.BETWAY, response.data, requestType))
+                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETWAY)
+                }).catch(error => console.log(error))
+            })
+            return Promise.all(betOfferRequests).then(values => {
+                // @ts-ignore
+                return new ApiResponse(Provider.BETWAY, {bookmaker: Bookmaker.BETWAY, events: values.map(value => value.events).flat()}, requestType)
+            })
         }
 
     }

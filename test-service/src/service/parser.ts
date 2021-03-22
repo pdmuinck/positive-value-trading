@@ -298,25 +298,69 @@ export class BetwayParser {
 
 
 
-    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const betOffers = []
-        apiResponse.data.forEach(data => {
-            const events = data.Events
-            const markets = data.Markets
-            const outcomes = data.Outcomes
-            markets.forEach(market => {
-                const sportsRadarId = events.filter(event => event.Id === market.EventId)[0].SportsRadarId
-                const betType = BetwayParser.determineBetType(market.TypeCName)
-                market.Outcomes[0].forEach(outcomeToSearch => {
-                    const outcome = outcomes.fiter(outcome => outcome.Id === outcomeToSearch)[0]
-                    betOffers.push(new BetOffer(betType, sportsRadarId, Bookmaker.BETWAY, outcome.CouponName, outcome.OddsDecimalDisplay, NaN))
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        const eventId = apiResponse.data.Event.Id
+        const markets = apiResponse.data.Markets
+        const outcomes = apiResponse.data.Outcomes
+        return markets.map(market => {
+            const betType = BetwayParser.determineBetType(market.TypeCName, market.MarketGroupCName)
+            if(betType !== BetType.UNKNOWN) {
+                let line = market.Handicap ? market.Handicap : NaN
+                if(betType === BetType.OVER_UNDER || betType === BetType.OVER_UNDER_H1) {
+                    const titleSplitted = market.Title.split(" ")
+                    line = parseFloat(titleSplitted[titleSplitted.length - 1])
+                }
+                return market.Outcomes[0].map(outcomeToSearch => {
+                    const outcome = outcomes.filter(outcomeElement => outcomeElement.Id === outcomeToSearch)[0]
+                    const option = this.determineOption(betType, outcome.CouponName.toUpperCase(), outcome.SortIndex)
+                    return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, outcome.OddsDecimalDisplay, line)
                 })
-
-            })
-        })
-        return betOffers
+            }
+        }).flat().filter(x => x)
     }
-    private static determineBetType(typeName) {
+
+    static determineOption(betType, couponName, sortIndex) {
+        if(betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType  === BetType.ASIAN_OVER_UNDER
+            || betType === BetType.ASIAN_OVER_UNDER_H1) {
+            if(sortIndex === 1) return "1"
+            return "2"
+        }
+        switch(couponName) {
+            case "HOME":
+                return "1"
+            case "DRAW":
+                return "X"
+            case "AWAY":
+                return "2"
+            case "HOME & DRAW":
+                return "1X"
+            case "HOME & AWAY":
+                return "12"
+            case "AWAY & DRAW":
+                return "X2"
+
+            default:
+                return couponName
+
+        }
+    }
+    private static determineBetType(typeName, marketGroup) {
+        if(marketGroup.toUpperCase() === "HALF") {
+            switch(typeName){
+                case "correct-score":
+                    return BetType.CORRECT_SCORE_H1
+                case "goals-over":
+                    return BetType.OVER_UNDER_H1
+                case "handicap-asian":
+                    return BetType.ASIAN_HANDICAP_H1
+                case "handicap-asian-goals-over":
+                    return BetType.ASIAN_OVER_UNDER_H1
+                case "win-draw-win":
+                    return BetType._1X2_FIRST_HALF
+                default:
+                    return BetType.UNKNOWN
+            }
+        }
         switch(typeName) {
             case "win-draw-win":
                 return BetType._1X2
@@ -326,6 +370,18 @@ export class BetwayParser {
                 return BetType.OVER_UNDER
             case "handicap-goals-over":
                 return BetType.HANDICAP
+            case "handicap-asian":
+                return BetType.ASIAN_HANDICAP
+            case "handicap-asian-goals-over":
+                return BetType.ASIAN_OVER_UNDER
+            case "correct-score":
+                return BetType.CORRECT_SCORE
+            case "draw-no-bet":
+                return BetType.DRAW_NO_BET
+            case "handicap-wdw":
+                return BetType.HANDICAP
+            default:
+                return BetType.UNKNOWN
         }
     }
 
