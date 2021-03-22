@@ -6,9 +6,9 @@ import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../service/b
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     AltenarParser,
-    Bet90Parser,
+    Bet90Parser, BetcenterParser,
     BetConstructParser,
-    BingoalParser,
+    BingoalParser, BwinParser,
     KambiParser,
     LadbrokesParser,
     MeridianParser,
@@ -126,9 +126,9 @@ export class Scraper {
                 case Provider.STANLEYBET:
                     return this.toStanleyBet(bookmakerId, requestType, mappedEvents)
                 case Provider.BETCENTER:
-                    return this.toBetcenterRequests(bookmakerId, requestType)
+                    return this.toBetcenterRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.BWIN:
-                    return this.toBwinRequests(bookmakerId, requestType)
+                    return this.toBwinRequests(bookmakerId, requestType, mappedEvents)
                 case Provider.BETWAY:
                     return this.toBetwayRequests(bookmakerId, requestType)
                 case Provider.ZETBET:
@@ -185,7 +185,7 @@ export class Scraper {
         })
     }
 
-    toStarCasinoRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
+    toStarCasinoRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?): Promise<ApiResponse> {
         this.startStarCasino(bookmakerId, requestType)
         return new Promise(resolve => {
             const interval = setInterval(() => {
@@ -353,7 +353,7 @@ export class Scraper {
 
     }
 
-    toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         // addons.betRadar
         return [
             axios.get('https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
@@ -361,10 +361,16 @@ export class Scraper {
                 'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
                 'mpetitionIds=' + bookmakerId.id + '&skip=0&take=50&sortBy=Tags')
                 .then(response => {
-                    const data = response.data.fixtures.map(event => {
-                        return {eventId: event.id, sportRadarId: event.addons.betRadar}
-                    })
-                    return new ApiResponse(Provider.BWIN, data, requestType)
+                    if(requestType === RequestType.EVENT) {
+                        const data = response.data.fixtures.map(event => {
+                            return {eventId: event.id, sportRadarId: event.addons.betRadar}
+                        })
+                        return new ApiResponse(Provider.BWIN, data, requestType)
+                    } else {
+                        const betOffers = BwinParser.parseBetOffers(new ApiResponse(Provider.BWIN, response.data, requestType))
+                        return this.assignBetOffersToSportRadarEvent(betOffers.flat(), mappedEvents, Bookmaker.BWIN)
+                    }
+
                 })
                 .catch(error => console.log(error))
         ]
@@ -831,7 +837,7 @@ export class Scraper {
         return apiResponses
     }
 
-    private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType) {
+    private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const betcenterHeaders = {
             headers: {
                 "x-language": 2,
@@ -841,12 +847,18 @@ export class Scraper {
                 "Content-Type":"application/json"
             }
         }
-        const betcenterPayload = {"leagueIds": [parseInt(bookmakerId.id)], "sportId": 1,"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}
+        const betcenterPayload = {"leagueIds": [parseInt(bookmakerId.id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
         return [
             axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders)
                 .then(response => {
-                    const events = response.data.games.map(event => {return {eventId: event.id, sportRadarId: event.statisticsId}})
-                    return new ApiResponse(Provider.BETCENTER, events, requestType)
+                    if(requestType === RequestType.EVENT) {
+                        const events = response.data.games.map(event => {return {eventId: event.id, sportRadarId: event.statisticsId}})
+                        return new ApiResponse(Provider.BETCENTER, events, requestType)
+                    } else {
+                        const betOffers = BetcenterParser.parseBetOffers(new ApiResponse(Provider.BETCENTER, response.data, requestType))
+                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETCENTER)
+                    }
+
                 }).catch(error => console.log(error))
         ]
     }

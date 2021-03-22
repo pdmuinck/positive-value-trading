@@ -57,6 +57,8 @@ export enum BetType {
 }
 
 export enum Bookmaker {
+
+    BWIN = "BWIN",
     UNIBET_BELGIUM= 'ubbe',
     NAPOLEON_GAMES = 'ngbe',
     PINNACLE= 'PINNACLE',

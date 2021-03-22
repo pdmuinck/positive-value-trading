@@ -791,6 +791,99 @@ export class AltenarParser {
     }
 }
 
+export class BwinParser {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+        return apiResponse.data.fixtures.map(event => {
+            const eventId = event.id
+            return event.games.map(game => {
+                const betType = this.determineBetType(game.templateId)
+                if(betType !== BetType.UNKNOWN) {
+                    const line = game.attr
+                    return game.results.map((result, index) => {
+                        const price = result.odds
+                        const outcome = this.determineOutcome(betType, result, index)
+                        return new BetOffer(betType, eventId, Bookmaker.BWIN, outcome, price, line)
+                    })
+                }
+            })
+        }).flat().filter(x => x)
+    }
+
+    static determineOutcome(betType, result, index) {
+        if(betType === BetType.DOUBLE_CHANCE) {
+            if(result.name.value.includes("X or")) return "X2"
+            if(result.name.value.includes("or X")) return "1X"
+            return "12"
+        }
+        if(betType === BetType.OVER_UNDER || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_H2) {
+            return result.totalsPrefix.toUpperCase()
+        }
+        if(betType === BetType._1X2) {
+            return result.sourceName.value.toUpperCase()
+        }
+        if(betType === BetType.DRAW_NO_BET) {
+            if(index === 0) return "1"
+            return "2"
+        }
+        if(betType === BetType.HANDICAP || betType === BetType._1X2_FIRST_HALF) {
+            if(index === 0) return "1"
+            if(index === 1) return "X"
+            return "2"
+        }
+        return result.name.value.toUpperCase()
+
+    }
+
+    static determineBetType(templateId) {
+        switch(templateId) {
+            case 17:
+                return BetType._1X2
+            case 173:
+                return BetType.OVER_UNDER
+            case 859:
+                return BetType.OVER_UNDER
+            case 7233:
+                return BetType.OVER_UNDER
+            case 1772:
+                return BetType.OVER_UNDER
+            case 1791:
+                return BetType.OVER_UNDER
+            case 8933:
+                return BetType.OVER_UNDER
+            case 3187:
+                return BetType.DOUBLE_CHANCE
+            case 7824:
+                return BetType.BOTH_TEAMS_SCORE
+            case 12119:
+                return BetType.DRAW_NO_BET
+            case 52:
+                return BetType.HANDICAP
+            case 54:
+                return BetType.HANDICAP
+            case 2488:
+                return BetType._1X2_FIRST_HALF
+            case 7688:
+                return BetType.OVER_UNDER_H1
+            case 7689:
+                return BetType.OVER_UNDER_H1
+            case 7890:
+                return BetType.OVER_UNDER_H1
+            case 7891:
+                return BetType.OVER_UNDER_H1
+            case 19595:
+                return BetType.OVER_UNDER_H2
+            case 19596:
+                return BetType.OVER_UNDER_H2
+            case 19597:
+                return BetType.OVER_UNDER_H2
+            case 20506:
+                return BetType.OVER_UNDER_H2
+            default:
+                return BetType.UNKNOWN
+        }
+    }
+}
+
 export class BetcenterParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
@@ -812,13 +905,13 @@ export class BetcenterParser {
         })
     }
 
-    private static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
+    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data.games) return []
         const betOffers = []
         apiResponse.data.games.forEach(event => {
             event.markets.forEach(market => {
                 const betType = BetcenterParser.determineBetType(market.id)
-                const line = market.anchor
+                const line = market.anchor ? market.anchor : market.hc
                 const handicap = market.hc
                 if(betType) {
                     market.tips.forEach(tip => {
