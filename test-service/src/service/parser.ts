@@ -1,7 +1,7 @@
 import {IdType, Participant, ParticipantName, RequestType} from '../domain/betoffer'
 import {ApiResponse} from "../client/scraper";
 import {participantMap} from "./mapper";
-import {BetType, Bookmaker, BookmakerId, Provider} from "./bookmaker";
+import {BetLine, BetType, Bookmaker, BookmakerId, Provider} from "./bookmaker";
 import {BetOffer} from "./betoffers";
 
 const parser = require('node-html-parser')
@@ -288,7 +288,8 @@ export class ScoooreParser {
 
 export class ZetBetParser {
     static parseBetOffers(apiResponse: ApiResponse) {
-        const root = parser.parse(apiResponse.data)
+        const root = parser.parse(apiResponse.data.data)
+        const eventId = apiResponse.data.eventId
         const marketNodes = root.querySelectorAll(".item-content  ")
         const betOffers = {}
         let currentMarket
@@ -308,7 +309,96 @@ export class ZetBetParser {
 
             }
         }
-        return betOffers
+        return Object.keys(betOffers).map(key => {
+            const prices = betOffers[key].elements
+            const betLine = this.determineLine(key)
+            return prices.map(price => {
+                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, "", NaN, betLine.line)
+            })
+        })
+    }
+
+    static determineLine(betType): BetLine {
+        if(betType.includes("Over / Under") && betType.includes("goals")) {
+            const line = parseInt(betType.split("Over / Under ")[1].split("goals")[0].trim())
+            if(betType.includes("1st half")) return new BetLine(BetType.OVER_UNDER_H1, line)
+            if(betType.includes("2nd half")) return new BetLine(BetType.OVER_UNDER_H2, line)
+            return new BetLine(BetType.OVER_UNDER, line)
+        }
+        if(betType.toUpperCase().includes("TOTAL GOALS")) {
+            const upper = betType.toUpperCase()
+            const splitted = upper.split("TOTAL GOALS")
+            if(splitted.length > 1) {
+                return new BetLine(BetType.TOTAL_GOALS_TEAM1)
+            } else {
+                return new BetLine(BetType.TOTAL_GOALS)
+            }
+        }
+
+        if(betType.includes("odd or even")) {
+            if(betType.includes("total goals")) {
+                return new BetLine(BetType.ODD_EVEN_TEAM1)
+            }
+        }
+
+        switch(betType.trim()) {
+            case "Who will win the match?":
+                return new BetLine(BetType._1X2)
+            case "Double Chance":
+                return new BetLine(BetType.DOUBLE_CHANCE)
+            case "Correct Score":
+                return new BetLine(BetType.CORRECT_SCORE)
+            case "Total goals":
+                return new BetLine(BetType.TOTAL_GOALS)
+            case "Half-Time Correct score":
+                return new BetLine(BetType.CORRECT_SCORE_H1)
+            case "Both teams to score in 2nd half?":
+                return new BetLine(BetType.BOTH_TEAMS_SCORE_H2)
+            case "Who will win the 1st half?":
+                return new BetLine(BetType._1X2_FIRST_HALF)
+            case "Who will win the 2nd half ?":
+                return new BetLine(BetType._1X2_H2)
+            case "Double Chance - 1st half":
+                return new BetLine(BetType.DOUBLE_CHANCE_1H)
+            case "Double Chance - 2nd Half":
+                return new BetLine(BetType.DOUBLE_CHANCE_H2)
+            case "Draw no bet":
+                return new BetLine(BetType.DRAW_NO_BET)
+            case "Handicap (-0.5) - To win the match":
+                return new BetLine(BetType.HANDICAP, -0.5)
+            case "Handicap (-1.5) - To win the match":
+                return new BetLine(BetType.HANDICAP, -1.5)
+            case "2nd Half correct score":
+                return new BetLine(BetType.CORRECT_SCORE_H2)
+            case "Number of goals, odd or even?":
+                return new BetLine(BetType.ODD_EVEN)
+            case "Number of goals in first half odd or even ?":
+                return new BetLine(BetType.ODD_EVEN_H1)
+            case "Number of goals in 2nd half, odd or even ?":
+                return new BetLine(BetType.ODD_EVEN_H2)
+            case "Handicap (0:1) - To win the 1st half":
+                return new BetLine(BetType.HANDICAP_H1, -1)
+            case "Handicap (-0.5) - To win the 1st half":
+                return new BetLine(BetType.HANDICAP_H1, -0.5)
+            case "Handicap (0:1) - To win the match":
+                return new BetLine(BetType.HANDICAP, -1)
+            case "Handicap (0:2) - To win the match":
+                return new BetLine(BetType.HANDICAP, -2)
+            case "Handicap (1:0) - To win the match":
+                return new BetLine(BetType.HANDICAP, 1)
+            case "Handicap (2:0) - To win the match":
+                return new BetLine(BetType.HANDICAP, 2)
+            case "Draw no bet - 1st half":
+                return new BetLine(BetType.DRAW_NO_BET_1H)
+            case "Draw no bet - 2nd Half":
+                return new BetLine(BetType.DRAW_NO_BET_H2)
+            case "Handicap (0:1) - To win the 2nd half":
+                return new BetLine(BetType.HANDICAP_H2, -1)
+            case "Handicap (-0.5)  - To win the 2nd half":
+                return new BetLine(BetType.HANDICAP_H2, -0.5)
+            default:
+                return new BetLine(BetType.UNKNOWN)
+        }
     }
 }
 

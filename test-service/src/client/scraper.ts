@@ -316,7 +316,7 @@ export class Scraper {
             const requests = mappedEvents.map(event => {
                 return axios.get('https://www.zebet.be' + event.eventId)
                     .then(response => {
-                        const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, response.data, requestType))
+                        const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, {data: response.data, eventId: event.eventId}, requestType))
                         return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
                     })
             })
@@ -347,7 +347,6 @@ export class Scraper {
                     }).catch(error => console.log(error))
             ]
         } else {
-
             const betOfferRequests = mappedEvents.map(event => {
                 const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.eventId
                     ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
@@ -360,6 +359,8 @@ export class Scraper {
                 // @ts-ignore
                 return new ApiResponse(Provider.BETWAY, {bookmaker: Bookmaker.BETWAY, events: values.map(value => value.events).flat()}, requestType)
             })
+
+
         }
 
     }

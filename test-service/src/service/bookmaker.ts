@@ -6,6 +6,24 @@ export enum Period {
     _2 = "SECOND_PERIOD"
 }
 
+export class BetLine {
+    private readonly _betType: BetType
+    private readonly _line: number
+
+    constructor(betType: BetType, line?: number) {
+        this._betType = betType
+        this._line = line
+    }
+
+    get betType() {
+        return this._betType
+    }
+
+    get line() {
+        return this._line
+    }
+}
+
 export enum BetType {
     _1X2 = '1X2',
     DOUBLE_CHANCE = 'DOUBLE_CHANCE',
@@ -53,7 +71,10 @@ export enum BetType {
     CORRECT_SCORE_H1 = "CORRECT_SCORE_H1",
     ODD_EVEN_H1 = "ODD_EVEN_H1",
     _3_WAY_HANDICAP_H2 = "3_WAY_HANDICAP_H2",
-    _3_WAY_HANDICAP_H1 = "3_WAY_HANDICAP_H1"
+    _3_WAY_HANDICAP_H1 = "3_WAY_HANDICAP_H1",
+    TOTAL_GOALS = "TOTAL_GOALS",
+    TOTAL_GOALS_TEAM1 = "TOTAL_GOALS_TEAM1",
+    TOTAL_GOALS_TEAM2 = "TOTAL_GOALS_TEAM2"
 }
 
 export enum Bookmaker {
