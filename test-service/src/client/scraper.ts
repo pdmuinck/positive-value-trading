@@ -63,7 +63,7 @@ export class Scraper {
     }
 
     async getBetOffersForCompetition(competition: Competition, events): Promise<ApiResponse[]> {
-        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events[0].data)
+        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events)
         const responses = await this.getApiResponses(requests.flat())
         return responses.flat()
     }
@@ -72,13 +72,16 @@ export class Scraper {
         const buildEvents = {}
         betOffers.forEach(betOffer => {
             const event = events.filter(event => event.eventId === betOffer.eventId)[0]
-            const storedBetOffers = buildEvents[event.sportRadarId]
-            if(storedBetOffers) {
-                storedBetOffers.push(betOffer)
-                buildEvents[event.sportRadarId] = storedBetOffers
-            } else {
-                buildEvents[event.sportRadarId] = [betOffer]
+            if(event){
+                const storedBetOffers = buildEvents[event.sportRadarId]
+                if(storedBetOffers) {
+                    storedBetOffers.push(betOffer)
+                    buildEvents[event.sportRadarId] = storedBetOffers
+                } else {
+                    buildEvents[event.sportRadarId] = [betOffer]
+                }
             }
+
         })
         return {bookmaker: bookmaker, events: buildEvents}
     }
@@ -101,42 +104,43 @@ export class Scraper {
 
     toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType, mappedEvents?) {
         return bookmakerIds.map(bookmakerId => {
+            const events = mappedEvents ? mappedEvents.filter(event => event.provider === bookmakerId.provider)[0]?.data : undefined
             switch (bookmakerId.provider) {
                 case Provider.BETCONSTRUCT:
-                    return [this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.CIRCUS, mappedEvents),
-                        this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.GOLDENVEGAS, mappedEvents)]
+                    return [this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.CIRCUS, events),
+                        this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.GOLDENVEGAS, events)]
                 case Provider.STAR_CASINO:
                     return this.toStarCasinoRequests(bookmakerId, requestType)
                 case Provider.MAGIC_BETTING:
                     return this.toMagicBettingRequests(bookmakerId, requestType)
                 case Provider.KAMBI:
-                    return this.toKambiRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toKambiRequests(bookmakerId, requestType, events)
                 case Provider.PINNACLE:
                     return this.toPinnacleRequests(bookmakerId, requestType)
                 case Provider.SBTECH:
-                    return this.toSbtechRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toSbtechRequests(bookmakerId, requestType, events)
                 case Provider.ALTENAR:
-                    return this.toAltenarRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toAltenarRequests(bookmakerId, requestType, events)
                 case Provider.BET90:
                     return this.toBet90Requests(bookmakerId, requestType)
                 case Provider.BINGOAL:
-                    return this.toBingoalRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toBingoalRequests(bookmakerId, requestType, events)
                 case Provider.LADBROKES:
-                    return this.toLadbrokesRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toLadbrokesRequests(bookmakerId, requestType, events)
                 case Provider.MERIDIAN:
-                    return this.toMeridianRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toMeridianRequests(bookmakerId, requestType, events)
                 case Provider.SCOOORE:
-                    return this.toScoooreRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toScoooreRequests(bookmakerId, requestType, events)
                 case Provider.STANLEYBET:
-                    return this.toStanleyBet(bookmakerId, requestType, mappedEvents)
+                    return this.toStanleyBet(bookmakerId, requestType, events)
                 case Provider.BETCENTER:
-                    return this.toBetcenterRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toBetcenterRequests(bookmakerId, requestType, events)
                 case Provider.BWIN:
-                    return this.toBwinRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toBwinRequests(bookmakerId, requestType, events)
                 case Provider.BETWAY:
-                    return this.toBetwayRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toBetwayRequests(bookmakerId, requestType, events)
                 case Provider.ZETBET:
-                    return this.toZetbetRequests(bookmakerId, requestType, mappedEvents)
+                    return this.toZetbetRequests(bookmakerId, requestType, events)
             }
         })
     }
@@ -299,7 +303,7 @@ export class Scraper {
                         const parent = parser.parse(response.data)
                         const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
                         const requests = events.map(event => {
-                            return axios.get("https://www.zebet.be" + event).then(response => {
+                            return axios.get("https://www.zebet.be/" + event).then(response => {
                                 const parent = parser.parse(response.data)
                                 const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
                                 const sportRadarId = splitted[splitted.length - 1]
@@ -314,14 +318,15 @@ export class Scraper {
             ]
         } else {
             const requests = mappedEvents.map(event => {
-                return axios.get('https://www.zebet.be' + event.eventId)
+                return axios.get('https://www.zebet.be/' + event.eventId)
                     .then(response => {
                         const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, {data: response.data, eventId: event.eventId}, requestType))
                         return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
                     })
             })
             return Promise.all(requests).then(values => {
-                return new ApiResponse(Provider.ZETBET, values, requestType)
+                // @ts-ignore
+                return new ApiResponse(Provider.ZETBET, {bookmaker: Bookmaker.ZETBET, events: values.map(value => value.events).flat()}, requestType)
             })
         }
 
@@ -767,7 +772,7 @@ export class Scraper {
         if(requestType === RequestType.BET_OFFER && mappedEvents) {
             return tokenData.map(tokenRequest => {
                 return this.toSbtechRequestForBook(requestType, bookmakerId, tokenRequest, mappedEvents)
-            })
+            }).flat()
         }
 
     }
@@ -805,7 +810,7 @@ export class Scraper {
                 }
             })
             return new ApiResponse(Provider.SBTECH, data.flat(), requestType, tokenRequest.bookmaker)
-        })
+        }).catch(error => console.log(error))
     }
 
     toSbtechBetOfferRequest(bookmaker: Bookmaker, bookmakerId: BookmakerId, token, page, requestType: RequestType, mappedEvents?) {
@@ -833,7 +838,7 @@ export class Scraper {
                     }
                 }})
             .catch(error => {
-                return new ApiResponse(bookmakerId.provider, null, requestType, bookmaker)})
+                console.log(error)})
     }
 
 
@@ -844,7 +849,7 @@ export class Scraper {
                 responses.forEach((response: ApiResponse) => {
                     apiResponses.push(response)
                 })
-            })
+            }).catch(error => console.log(error))
         }
         return apiResponses
     }
