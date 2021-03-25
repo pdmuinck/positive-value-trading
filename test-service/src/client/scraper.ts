@@ -2,7 +2,7 @@ import {Competition, CompetitionName, IdType, RequestType, SportName} from "../d
 import axios from "axios"
 import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
-import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
+import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     AltenarParser,
@@ -21,6 +21,7 @@ import {
     StanleyBetParser,
     ZetBetParser
 } from "../service/parser";
+import {BookMakerInfo, EventInfo} from "../service/events";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -62,10 +63,27 @@ export class Scraper {
 
     }
 
-    async getBetOffersForCompetition(competition: Competition, events): Promise<ApiResponse[]> {
+    async getBetOffers(events) {
+        const requests = Object.keys(events).map(sportRadarId => {
+            const eventInfo: EventInfo = events[sportRadarId]
+            const requests = eventInfo.bookmakers.map(bookmaker => {
+                if(bookmaker.httpMethod === "GET") {
+                    return axios.get(bookmaker.eventUrl).then(response => {
+                        return new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker)
+                    }).catch(error => {})
+                }
+            })
+            return Promise.all(requests).then(values => {
+                const eventInfoWithBetOffers = new EventInfo(eventInfo.sportRadarId, eventInfo.sportRadarEventUrl, eventInfo.bookmakers, values)
+                return {sportRadarId: sportRadarId, eventInfo: eventInfoWithBetOffers}
+            })
+        })
+        return await this.getApiResponses(requests)
+    }
+
+    async getBetOffersForCompetition(competition: Competition, events): Promise<object> {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events)
-        const responses = await this.getApiResponses(requests.flat())
-        return responses.flat()
+        return await this.getApiResponses(requests.flat(), RequestType.BET_OFFER)
     }
 
     assignBetOffersToSportRadarEvent(betOffers, events, bookmaker) {
@@ -696,12 +714,13 @@ export class Scraper {
         ]*/
     }
 
-    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
+    toKambiRequests(bookmakerId: BookmakerId, requestType: RequestType, events?) {
         if(requestType === RequestType.EVENT) return this.toKambiEventRequests(bookmakerId)
-        if(requestType === RequestType.BET_OFFER) return this.toKambiBetOfferRequests(bookmakerId, mappedEvents)
+        if(requestType === RequestType.BET_OFFER) return this.toKambiBetOfferRequests(events)
     }
 
     toKambiEventRequests(bookmakerId: BookmakerId) {
+        const books = providers[Provider.KAMBI]
         return [
             axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
                 + bookmakerId.id + '.json?includeParticipants=false')
@@ -709,9 +728,16 @@ export class Scraper {
                     const requests = response.data.events.map(event => {
                         return axios.get("https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/" + event.id)
                             .then(sportRadarResponse => {
-                                return {eventId: event.id, sportRadarId: sportRadarResponse.data.content[0].Resource.split("matchId=")[1]}
+                                const sportRadarId = sportRadarResponse.data.content[0].Resource.split("matchId=")[1]
+                                const bookMakerInfo = books.map(book => {
+                                    return new BookMakerInfo(Provider.KAMBI, book, bookmakerId.id, event.id,
+                                        'https://eu-offering.kambicdn.org/offering/v2018/' + book + '/event/group/' + bookmakerId.id + '.json?includeParticipants=false',
+                                        'https://eu-offering.kambicdn.org/offering/v2018/' + book + '/betoffer/event/'  + event.id + '.json?includeParticipants=false',
+                                        undefined, undefined, "GET")
+                                }).flat()
+                                return {sportRadarId: sportRadarId, bookmakerInfo: bookMakerInfo}
                             }).catch(error =>  {
-                                return {eventId: event.id, sportRadarId: undefined}
+                                return {eventId: event.id}
                             })
                     })
                     return Promise.all(requests).then(sportRadarResponses => {
@@ -723,25 +749,21 @@ export class Scraper {
         ]
     }
 
-    toKambiBetOfferRequests(bookmakerId: BookmakerId, mappedEvents?) {
-        const kambiBetOfferTypes = {}
-        kambiBetOfferTypes[BetType._1X2] = 2
-        kambiBetOfferTypes[BetType.OVER_UNDER] = 6
-        kambiBetOfferTypes[BetType.DOUBLE_CHANCE] = 2
-        kambiBetOfferTypes[BetType.CORRECT_SCORE] = 3
-        kambiBetOfferTypes[BetType.ASIAN_HANDICAP] = 7
-        kambiBetOfferTypes[BetType.ASIAN_OVER_UNDER] = 21
-        kambiBetOfferTypes[BetType._3_WAY_HANDICAP] = 11
-        kambiBetOfferTypes[BetType.DOUBLE_CHANCE] = 12
-        kambiBetOfferTypes[BetType.ODD_EVEN] = 10
-        kambiBetOfferTypes[BetType.YES_NO] = 18
+    toKambiBetOfferRequests(events) {
+        Object.keys(events).map(sportRadarId => {
+            const eventInfo = events[sportRadarId]
+        })
+        /*
+        events.map(event => {
+            eve
+        })
 
         const books = providers[Provider.KAMBI]
         return books.map(book => {
             const requests = Object.keys(kambiBetOfferTypes).map(key => {
                 return axios.get(
                     'https://eu-offering.kambicdn.org/offering/v2018/' +  book + '/betoffer/group/'
-                    + bookmakerId.id + '.json?includeParticipants=true&type=' + kambiBetOfferTypes[key]
+                    + bookmakerId.id + '.json?includeParticipants=false&type=' + kambiBetOfferTypes[key]
                 ).then(response => {
                     const betOffers = KambiParser.parse(new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER))
                     return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, book)
@@ -755,6 +777,8 @@ export class Scraper {
                 return new ApiResponse(Provider.KAMBI, data, RequestType.BET_OFFER, book)
             })
         })
+
+         */
     }
 
 
@@ -842,16 +866,60 @@ export class Scraper {
     }
 
 
-    async getApiResponses(requests): Promise<ApiResponse[]> {
-        const apiResponses: ApiResponse[] = []
-        if(requests){
+
+    async getApiResponses(requests, requestType?: RequestType): Promise<object> {
+        if(requestType === RequestType.BET_OFFER) {
             await Promise.all(requests.flat().filter(x => x)).then(responses => {
-                responses.forEach((response: ApiResponse) => {
-                    apiResponses.push(response)
+                responses.map(response => {
+                    // @ts-ignore
+                    response.eventInfo.betOffers.map(betOffer => {
+                        if(betOffer.provider === Provider.KAMBI) {
+                            return KambiParser.parseBetOffers(new ApiResponse(Provider.KAMBI, betOffer.betOffers, betOffer.bookmaker))
+                        }
+                    })
+
+                    if(response.provider === Provider.KAMBI) {
+                        // @ts-ignore
+                        const betOffers = response.eventInfo.betOffers.map(betOffer => {
+
+                        })
+                        return {}
+                    }
                 })
             }).catch(error => console.log(error))
+        } else {
+            const eventInfos = {}
+            if(requests){
+                await Promise.all(requests.flat().filter(x => x)).then(responses => {
+                    responses.forEach(response => {
+                        // @ts-ignore
+                        response.data.forEach(event => {
+                            // @ts-ignore
+                            const eventInfo = eventInfos[event.sportRadarId]
+                            if(eventInfo) {
+                                const bookMakerInfos = eventInfo.bookmakers
+                                // @ts-ignore
+                                bookMakerInfos.concat(event.bookMakerInfo)
+                                eventInfo.bookmakers = bookMakerInfos
+                                // @ts-ignore
+                                eventInfos[event.sportRadarId] = eventInfo
+                            } else {
+                                // @ts-ignore
+                                const eventInfo = new EventInfo(event.sportRadarId,
+                                    // @ts-ignore
+                                    "https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/" + event.sportRadarId,
+                                    // @ts-ignore
+                                    event.bookmakerInfo
+                                )
+                                // @ts-ignore
+                                eventInfos[event.sportRadarId] = eventInfo
+                            }
+                        })
+                    })
+                }).catch(error => console.log(error))
+            }
+            return eventInfos
         }
-        return apiResponses
     }
 
     private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {

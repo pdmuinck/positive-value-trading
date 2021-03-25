@@ -1,0 +1,31 @@
+{
+  "123445":  {
+    "sportRadarId": 123445,
+    "eventDate": "2021-03-15T19:45:00Z",
+    "sportRadarEventUrl": "https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/123445",
+    "participants": [
+      {
+        "name": "WAASLAND-BEVEREN",
+        "id": 5583071
+      },
+      {
+        "name": "ST. TRUIDENSE",
+        "id": 4958
+      }
+    ],
+    "bookmakers": [
+      {
+        "provider": "KAMBI",
+        "bookmaker": "UNIBET_BE",
+        "leagueId": "1000094965",
+        "eventId": 12334,
+        "leagueUrl": "https://eu-offering.kambicdn.org/offering/v2018/ubbe/betoffer/group/1000094965.json?includeParticipants=false",
+        "eventUrl": "https://eu-offering.kambicdn.org/offering/v2018/ubbe/betoffer/group/12334.json?includeParticipants=false",
+        "headers": {},
+        "httpMethod": "GET",
+        "requestBody": {}
+      }
+    ]
+
+  }
+}

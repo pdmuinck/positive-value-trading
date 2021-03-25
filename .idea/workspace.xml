@@ -2,27 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1c779c3-30f1-4114-b20f-f020ab780724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test-service/src/client/bet90/leagues.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/service/events.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-service/src/service/test/resources/sample.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-service/src/client/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-service/src/client/scraper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/scraper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/mapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/mapper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/parser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/parser.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/altenar/dist/altenar.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/altenar/dist/altenar.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/bet90/dist/bet90.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/bet90/dist/bet90.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/dist/betconstruct.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/betconstruct/dist/betconstruct.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/kambi/dist/kambi.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/kambi/dist/kambi.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/ladbrokes/dist/ladbrokes.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/ladbrokes/dist/ladbrokes.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/meridian/dist/meridian.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/meridian/dist/meridian.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/pinnacle/dist/pinnacle.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/pinnacle/dist/pinnacle.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/sbtech/dist/sbtech.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/sbtech/dist/sbtech.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/scooore/dist/scooore.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/scooore/dist/scooore.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/stanleybet/dist/stanleybet.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/stanleybet/dist/stanleybet.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/starcasino/dist/starcasino.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/starcasino/dist/starcasino.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/providers/zetbet/dist/zetbet.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service/providers/zetbet/dist/zetbet.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/betradar-service/services/betoffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/workers/betradar-service/services/betoffer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +42,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Scala" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-service/src/client/bet90" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-service/src/service/test/resources/betway" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,25 +60,54 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="scala_project_settings_configurable.last_selected_tab_index" value="0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/test-service/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/betway" />
+      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/meridian" />
+      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/ladbrokes" />
+      <recent name="$PROJECT_DIR$/test-service/src/client/circus" />
       <recent name="$PROJECT_DIR$/test-service/src/client/bet90" />
-      <recent name="$PROJECT_DIR$/test-service/src/client/resources" />
-      <recent name="$PROJECT_DIR$/test-service/src/client/sbtech" />
-      <recent name="$PROJECT_DIR$/test-service" />
-      <recent name="$PROJECT_DIR$/node-typescript-starter/src/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/betconstruct" />
+      <recent name="$PROJECT_DIR$/test-service/src/client/websocket" />
+      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources" />
       <recent name="$PROJECT_DIR$/node-typescript-starter/src/service/test" />
       <recent name="$PROJECT_DIR$/valuebet-service/client" />
-      <recent name="$PROJECT_DIR$/valuebet-service/client/kambi" />
-      <recent name="$PROJECT_DIR$/valuebet-finder-system/domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.scraper should call third party api.getParticipants.should return participants with bookmaker ids">
+  <component name="RunManager" selected="Mocha.scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="NodeJSConfigurationType" nameIsGenerated="true" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
+      </method>
+    </configuration>
+    <configuration name="event.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="$USER_HOME$/Documents/projects/personal/positive-value-trading/workers/bingoal-service/services/event.js" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$USER_HOME$/Documents/projects/personal/positive-value-trading/workers/bingoal-service/package.json" />
+          <command value="install" />
+          <node-interpreter value="project" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
     <configuration name="Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" type="mocha-javascript-test-runner" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options>tsc</node-options>
@@ -126,7 +142,7 @@
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
-    <configuration name="Parser tests.PINNACLE parser tests.should parse betoffers" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Parser tests.should parse betoffers for: BET90" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
@@ -138,14 +154,13 @@
       <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
       <test-names>
         <name value="Parser tests" />
-        <name value="PINNACLE parser tests" />
-        <name value="should parse betoffers" />
+        <name value="should parse betoffers for: BET90" />
       </test-names>
       <method v="2">
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
-    <configuration name="ValueBetService tests.searchForValueBet.should detect value bets " type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Parser tests.should parse events for: BET90" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
@@ -154,11 +169,10 @@
       <ui>exports</ui>
       <extra-mocha-options>--require ts-node/register</extra-mocha-options>
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts</test-file>
+      <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
       <test-names>
-        <name value="ValueBetService tests" />
-        <name value="searchForValueBet" />
-        <name value="should detect value bets " />
+        <name value="Parser tests" />
+        <name value="should parse events for: BET90" />
       </test-names>
       <method v="2">
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
@@ -178,7 +192,7 @@
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
-    <configuration name="scraper should call third party api.getBetOffers.should return results for all bookies" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
@@ -191,13 +205,13 @@
       <test-names>
         <name value="scraper should call third party api" />
         <name value="getBetOffers" />
-        <name value="should return results for all bookies" />
+        <name value="should return betoffers with bookmaker ids" />
       </test-names>
       <method v="2">
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
-    <configuration name="scraper should call third party api.getParticipants.should return participants with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="scraper should call third party api.getEvents.should return events with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
@@ -209,8 +223,8 @@
       <test-file>$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</test-file>
       <test-names>
         <name value="scraper should call third party api" />
-        <name value="getParticipants" />
-        <name value="should return participants with bookmaker ids" />
+        <name value="getEvents" />
+        <name value="should return events with bookmaker ids" />
       </test-names>
       <method v="2">
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
@@ -218,19 +232,21 @@
     </configuration>
     <list>
       <item itemvalue="Mocha.Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" />
+      <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" />
+      <item itemvalue="Mocha.scraper should call third party api.getEvents.should return events with bookmaker ids" />
       <item itemvalue="Mocha.Parser tests" />
-      <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return results for all bookies" />
-      <item itemvalue="Mocha.Parser tests.PINNACLE parser tests.should parse betoffers" />
-      <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should detect value bets " />
-      <item itemvalue="Mocha.scraper should call third party api.getParticipants.should return participants with bookmaker ids" />
+      <item itemvalue="Mocha.Parser tests.should parse events for: BET90" />
+      <item itemvalue="Mocha.Parser tests.should parse betoffers for: BET90" />
+      <item itemvalue="Node.js.event.js" />
+      <item itemvalue="Node.js.Unnamed" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Mocha.scraper should call third party api.getParticipants.should return participants with bookmaker ids" />
-        <item itemvalue="Mocha.ValueBetService tests.searchForValueBet.should detect value bets " />
-        <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return results for all bookies" />
-        <item itemvalue="Mocha.Parser tests.PINNACLE parser tests.should parse betoffers" />
+        <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" />
+        <item itemvalue="Mocha.scraper should call third party api.getEvents.should return events with bookmaker ids" />
         <item itemvalue="Mocha.Parser tests" />
+        <item itemvalue="Mocha.Parser tests.should parse betoffers for: BET90" />
+        <item itemvalue="Mocha.Parser tests.should parse events for: BET90" />
       </list>
     </recent_temporary>
   </component>
@@ -279,103 +295,418 @@
       <workItem from="1612768925289" duration="13000" />
       <workItem from="1612897795907" duration="3723000" />
       <workItem from="1612985038854" duration="2806000" />
+      <workItem from="1613158906189" duration="6283000" />
+      <workItem from="1613381138323" duration="326000" />
+      <workItem from="1613381480689" duration="77000" />
+      <workItem from="1613415937704" duration="6234000" />
+      <workItem from="1613463327470" duration="93000" />
+      <workItem from="1613505777164" duration="4413000" />
+      <workItem from="1613763198177" duration="5912000" />
+      <workItem from="1613926816017" duration="2908000" />
+      <workItem from="1614020683337" duration="7418000" />
+      <workItem from="1614107916126" duration="42000" />
+      <workItem from="1614107970643" duration="65000" />
+      <workItem from="1614108063305" duration="11555000" />
+      <workItem from="1614185560083" duration="6198000" />
+      <workItem from="1614280738169" duration="8843000" />
+      <workItem from="1614358899980" duration="1131000" />
+      <workItem from="1614368974499" duration="24000" />
+      <workItem from="1614369016385" duration="22000" />
+      <workItem from="1614369147438" duration="2525000" />
+      <workItem from="1614397992709" duration="35480000" />
+      <workItem from="1614624160200" duration="6437000" />
+      <workItem from="1614797901789" duration="8038000" />
+      <workItem from="1614865412536" duration="65000" />
+      <workItem from="1614886656751" duration="3845000" />
+      <workItem from="1614930792643" duration="1871000" />
+      <workItem from="1614975646311" duration="14452000" />
+      <workItem from="1615233674090" duration="2951000" />
+      <workItem from="1615318979318" duration="4304000" />
+      <workItem from="1615406633856" duration="7563000" />
+      <workItem from="1615472270479" duration="8794000" />
+      <workItem from="1615521948504" duration="7479000" />
+      <workItem from="1615634057692" duration="15772000" />
+      <workItem from="1615833971681" duration="1586000" />
+      <workItem from="1615835847317" duration="17000" />
+      <workItem from="1615836126417" duration="6642000" />
+      <workItem from="1615884139700" duration="29000" />
+      <workItem from="1615921342318" duration="10632000" />
+      <workItem from="1615978604326" duration="3241000" />
+      <workItem from="1616009422947" duration="6475000" />
+      <workItem from="1616047871623" duration="1991000" />
+      <workItem from="1616069545283" duration="1731000" />
+      <workItem from="1616096800253" duration="108000" />
+      <workItem from="1616096921945" duration="9101000" />
+      <workItem from="1616164897322" duration="4132000" />
+      <workItem from="1616239517984" duration="4457000" />
+      <workItem from="1616271744265" duration="3470000" />
+      <workItem from="1616326222133" duration="4004000" />
+      <workItem from="1616338403898" duration="2051000" />
+      <workItem from="1616392490745" duration="786000" />
+      <workItem from="1616393966497" duration="23398000" />
+      <workItem from="1616482154641" duration="3130000" />
+      <workItem from="1616571229288" duration="1946000" />
+      <workItem from="1616615241021" duration="5398000" />
+      <workItem from="1616700913752" duration="6525000" />
     </task>
-    <task id="LOCAL-00001" summary="Parse betcenter, ladbrokes and meridian">
-      <created>1610203701314</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00034" summary="make websocket config generic">
+      <created>1614503949879</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1610203701314</updated>
+      <updated>1614503949879</updated>
     </task>
-    <task id="LOCAL-00002" summary="vig free prices on pinnacle">
-      <created>1610228775047</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00035" summary="make websocket config generic">
+      <created>1614546907779</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1610228775047</updated>
+      <updated>1614546907779</updated>
     </task>
-    <task id="LOCAL-00003" summary="add vig free prices on pinnacle">
-      <created>1610313974597</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00036" summary="make generic scraper for events competition">
+      <created>1614632940791</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1610313974597</updated>
+      <updated>1614632940791</updated>
     </task>
-    <task id="LOCAL-00004" summary="move logic to betoffer domain and add tests for it">
-      <created>1610405693820</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00037" summary="test magicbetting">
+      <created>1614808589741</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1610405693820</updated>
+      <updated>1614808589742</updated>
     </task>
-    <task id="LOCAL-00005" summary="create the scrapers, value bet service and modify the parsers">
-      <created>1610487434226</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00038" summary="add magic betting in scraper.ts">
+      <created>1614890499842</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1610487434226</updated>
+      <updated>1614890499842</updated>
     </task>
-    <task id="LOCAL-00006" summary="finalize value bet service, just started creating tests">
-      <created>1610573596762</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00039" summary="add ladbrokes and meridian">
+      <created>1614933110424</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1610573596762</updated>
+      <updated>1614933110424</updated>
     </task>
-    <task id="LOCAL-00007" summary="make sure code is covered by tests in value bet service">
-      <created>1610659213575</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+    <task id="LOCAL-00040" summary="add starcasino, scooore and stanleybet">
+      <created>1614980007179</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1610659213575</updated>
+      <updated>1614980007179</updated>
     </task>
-    <task id="LOCAL-00008" summary="create decent client for scraping">
-      <created>1610701124293</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+    <task id="LOCAL-00041" summary="add betcenter, bwin and betway">
+      <created>1615036782631</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1610701124293</updated>
+      <updated>1615036782631</updated>
     </task>
-    <task id="LOCAL-00009" summary="create bookmaker config mappings">
-      <created>1610716890536</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00042" summary="add zetbet">
+      <created>1615064065969</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1610716890536</updated>
+      <updated>1615064065969</updated>
     </task>
-    <task id="LOCAL-00010" summary="fix the scrapers: kambi, sbtech and pinnacle">
-      <created>1611090872151</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00043" summary="start to scrape betoffers">
+      <created>1615065892243</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1611090872151</updated>
+      <updated>1615065892243</updated>
     </task>
-    <task id="LOCAL-00011" summary="ljksdfmkj">
-      <created>1611261879437</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00044" summary="move websocket calls to toApiRequests method and start on betoffer scraping for all providers">
+      <created>1615102335028</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1611261879437</updated>
+      <updated>1615102335028</updated>
     </task>
-    <task id="LOCAL-00012" summary="improve parser for participants">
-      <created>1611607229735</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+    <task id="LOCAL-00045" summary="check betoffers scrapers">
+      <created>1615323171216</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1611607229735</updated>
+      <updated>1615323171216</updated>
     </task>
-    <task id="LOCAL-00013" summary="add altenar">
-      <created>1612301662754</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+    <task id="LOCAL-00046" summary="fix betoffer parsers">
+      <created>1615412463456</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
-      <updated>1612301662754</updated>
+      <updated>1615412463456</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00047" summary="fix parser tests">
+      <created>1615414861147</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1615414861147</updated>
+    </task>
+    <task id="LOCAL-00048" summary="cleanup parser tests">
+      <created>1615495475100</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1615495475100</updated>
+    </task>
+    <task id="LOCAL-00049" summary="improve scraper and parser">
+      <created>1615529654547</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1615529654547</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fix the parsers">
+      <created>1615731999653</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1615731999653</updated>
+    </task>
+    <task id="LOCAL-00051" summary="get all pinnacle">
+      <created>1615734231903</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1615734231903</updated>
+    </task>
+    <task id="LOCAL-00052" summary="continue with pinnacle">
+      <created>1615843945781</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1615843945781</updated>
+    </task>
+    <task id="LOCAL-00053" summary="continue with pinnacle">
+      <created>1615882186339</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1615882186339</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fix all parser tests">
+      <created>1615925812841</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1615925812841</updated>
+    </task>
+    <task id="LOCAL-00055" summary="start to parse betway">
+      <created>1615928582626</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1615928582627</updated>
+    </task>
+    <task id="LOCAL-00056" summary="identify sportradar ids for each provider">
+      <created>1615972676224</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1615972676225</updated>
+    </task>
+    <task id="LOCAL-00057" summary="fix starcasino scraper">
+      <created>1615983585382</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1615983585382</updated>
+    </task>
+    <task id="LOCAL-00058" summary="first setup on mapping events by using the sportradar id">
+      <created>1616015990824</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1616015990825</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add sbtech mapping with sportradar id">
+      <created>1616048483315</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1616048483315</updated>
+    </task>
+    <task id="LOCAL-00060" summary="map bwin, altenar, ...">
+      <created>1616055128439</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1616055128439</updated>
+    </task>
+    <task id="LOCAL-00061" summary="add more books to matcher">
+      <created>1616070874945</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1616070874945</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add scoore, zetbet and stanleybet to mapper">
+      <created>1616099739437</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1616099739437</updated>
+    </task>
+    <task id="LOCAL-00063" summary="add betway to mapper">
+      <created>1616101702567</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1616101702567</updated>
+    </task>
+    <task id="LOCAL-00064" summary="create new kambi scraper for mapper">
+      <created>1616106173321</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1616106173321</updated>
+    </task>
+    <task id="LOCAL-00065" summary="improve parser and scraper">
+      <created>1616168358452</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1616168358453</updated>
+    </task>
+    <task id="LOCAL-00066" summary="match sbtech and altenar betoffers">
+      <created>1616245296549</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1616245296549</updated>
+    </task>
+    <task id="LOCAL-00067" summary="bingoal scraper">
+      <created>1616274733199</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1616274733201</updated>
+    </task>
+    <task id="LOCAL-00068" summary="get circus and goldenvegas">
+      <created>1616328932626</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1616328932627</updated>
+    </task>
+    <task id="LOCAL-00069" summary="ladbrokes betoffers">
+      <created>1616329680010</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1616329680010</updated>
+    </task>
+    <task id="LOCAL-00070" summary="meridian betoffers">
+      <created>1616330216151</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1616330216151</updated>
+    </task>
+    <task id="LOCAL-00071" summary="start parse scooore">
+      <created>1616340486608</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1616340486609</updated>
+    </task>
+    <task id="LOCAL-00072" summary="identify bet types for scooore">
+      <created>1616393210376</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1616393210376</updated>
+    </task>
+    <task id="LOCAL-00073" summary="create scooore parser">
+      <created>1616416106721</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1616416106722</updated>
+    </task>
+    <task id="LOCAL-00074" summary="create stanleybet parser">
+      <created>1616419553844</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1616419553844</updated>
+    </task>
+    <task id="LOCAL-00075" summary="create stanleybet parser">
+      <created>1616434303946</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1616434303946</updated>
+    </task>
+    <task id="LOCAL-00076" summary="create stanleybet parser">
+      <created>1616441899253</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1616441899253</updated>
+    </task>
+    <task id="LOCAL-00077" summary="bwin parser">
+      <created>1616445455954</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1616445455954</updated>
+    </task>
+    <task id="LOCAL-00078" summary="betway parser">
+      <created>1616449105724</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1616449105724</updated>
+    </task>
+    <task id="LOCAL-00079" summary="zebet parser">
+      <created>1616451304771</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1616451304771</updated>
+    </task>
+    <task id="LOCAL-00080" summary="zebet parser">
+      <created>1616451742583</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1616451742583</updated>
+    </task>
+    <task id="LOCAL-00081" summary="zetbet parser">
+      <created>1616485270824</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1616485270824</updated>
+    </task>
+    <task id="LOCAL-00082" summary="finish zetbet parser">
+      <created>1616620800397</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1616620800397</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -390,53 +721,196 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Parse betcenter, ladbrokes and meridian" />
-    <MESSAGE value="vig free prices on pinnacle" />
-    <MESSAGE value="add vig free prices on pinnacle" />
-    <MESSAGE value="move logic to betoffer domain and add tests for it" />
-    <MESSAGE value="create the scrapers, value bet service and modify the parsers" />
-    <MESSAGE value="finalize value bet service, just started creating tests" />
-    <MESSAGE value="make sure code is covered by tests in value bet service" />
-    <MESSAGE value="create decent client for scraping" />
-    <MESSAGE value="create bookmaker config mappings" />
-    <MESSAGE value="fix the scrapers: kambi, sbtech and pinnacle" />
-    <MESSAGE value="ljksdfmkj" />
-    <MESSAGE value="improve parser for participants" />
-    <MESSAGE value="add altenar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add altenar" />
+    <MESSAGE value="start to parse betway" />
+    <MESSAGE value="identify sportradar ids for each provider" />
+    <MESSAGE value="fix starcasino scraper" />
+    <MESSAGE value="first setup on mapping events by using the sportradar id" />
+    <MESSAGE value="add sbtech mapping with sportradar id" />
+    <MESSAGE value="map bwin, altenar, ..." />
+    <MESSAGE value="add more books to matcher" />
+    <MESSAGE value="add scoore, zetbet and stanleybet to mapper" />
+    <MESSAGE value="add betway to mapper" />
+    <MESSAGE value="create new kambi scraper for mapper" />
+    <MESSAGE value="improve parser and scraper" />
+    <MESSAGE value="match sbtech and altenar betoffers" />
+    <MESSAGE value="bingoal scraper" />
+    <MESSAGE value="get circus and goldenvegas" />
+    <MESSAGE value="ladbrokes betoffers" />
+    <MESSAGE value="meridian betoffers" />
+    <MESSAGE value="start parse scooore" />
+    <MESSAGE value="identify bet types for scooore" />
+    <MESSAGE value="create scooore parser" />
+    <MESSAGE value="create stanleybet parser" />
+    <MESSAGE value="bwin parser" />
+    <MESSAGE value="betway parser" />
+    <MESSAGE value="zebet parser" />
+    <MESSAGE value="zetbet parser" />
+    <MESSAGE value="finish zetbet parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish zetbet parser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/node-typescript-starter/src/service/parser.ts</url>
-          <line>4</line>
-          <option name="timeStamp" value="1" />
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/socket.js</url>
+          <line>410</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/socket.js</url>
+          <line>409</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/socket.js</url>
+          <line>408</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/socket.js</url>
+          <line>406</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/socket.js</url>
+          <line>413</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/node_modules/ws-await/lib/websocket.js</url>
+          <line>283</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/node_modules/ws-await/lib/websocket.js</url>
+          <line>279</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/node_modules/ws-await/lib/websocket.js</url>
+          <line>277</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/workers/bingoal-service/services/event.js</url>
+          <line>67</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/node_modules/ws/lib/websocket.js</url>
+          <line>603</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>129</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>127</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>124</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>135</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>137</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>139</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>141</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>143</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>145</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>147</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>149</line>
+          <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/node-typescript-starter/src/service/parser.ts</url>
-          <line>5</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <line>33</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <line>45</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <line>54</line>
+          <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</url>
-          <line>30</line>
-          <option name="timeStamp" value="37" />
+          <line>12</line>
+          <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/parser.ts</url>
-          <line>465</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="39" />
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>259</line>
+          <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/parser.ts</url>
-          <line>430</line>
+          <url>file://$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</url>
+          <line>22</line>
+          <option name="timeStamp" value="270" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <condition expression="event == &quot;1007294186&quot;" language="TypeScript" />
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>320</line>
+          <option name="timeStamp" value="371" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</url>
+          <line>21</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="40" />
+          <option name="timeStamp" value="374" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test-service/src/client/scraper.ts</url>
+          <line>77</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="382" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="mocha-javascript-test-runner">
+        <watch expression="response.data.betOffers[&quot;0&quot;]" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
