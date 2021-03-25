@@ -731,10 +731,10 @@ export class KambiParser {
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         if(!apiResponse.data) return []
-        return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.provider, betOffer)).flat()
+        return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.bookmaker, betOffer)).flat()
     }
 
-    static transformToBetOffers(bookMaker: Provider, betOfferContent): BetOffer[] {
+    static transformToBetOffers(bookMaker: Bookmaker, betOfferContent): BetOffer[] {
         const typeId = betOfferContent.criterion.id
         const betOfferType = this.determineBetOfferType(typeId)
         if(!betOfferType) return []

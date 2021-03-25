@@ -11,8 +11,7 @@ import {
     BetConstructParser,
     BetwayParser,
     BingoalParser,
-    BwinParser,
-    KambiParser,
+    BwinParser, KambiParser,
     LadbrokesParser,
     MeridianParser,
     Parser,
@@ -78,12 +77,12 @@ export class Scraper {
                 return {sportRadarId: sportRadarId, eventInfo: eventInfoWithBetOffers}
             })
         })
-        return await this.getApiResponses(requests)
+        return await this.getApiResponses(requests, RequestType.BET_OFFER)
     }
 
     async getBetOffersForCompetition(competition: Competition, events): Promise<object> {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events)
-        return await this.getApiResponses(requests.flat(), RequestType.BET_OFFER)
+        return await this.getApiResponses(requests.flat())
     }
 
     assignBetOffersToSportRadarEvent(betOffers, events, bookmaker) {
@@ -869,24 +868,23 @@ export class Scraper {
 
     async getApiResponses(requests, requestType?: RequestType): Promise<object> {
         if(requestType === RequestType.BET_OFFER) {
+            const results = []
             await Promise.all(requests.flat().filter(x => x)).then(responses => {
-                responses.map(response => {
+                return responses.forEach((response) => {
                     // @ts-ignore
-                    response.eventInfo.betOffers.map(betOffer => {
-                        if(betOffer.provider === Provider.KAMBI) {
-                            return KambiParser.parseBetOffers(new ApiResponse(Provider.KAMBI, betOffer.betOffers, betOffer.bookmaker))
+                    const parsedBetOffers = response.eventInfo.betOffers.map((betOffer: ApiResponse) => {
+                        if(betOffer.provider === Provider.KAMBI){
+                            return KambiParser.parse(betOffer)
                         }
                     })
-
-                    if(response.provider === Provider.KAMBI) {
-                        // @ts-ignore
-                        const betOffers = response.eventInfo.betOffers.map(betOffer => {
-
-                        })
-                        return {}
-                    }
+                    // @ts-ignore
+                    const oldEventInfo: EventInfo =  response.eventInfo
+                    const eventInfo = new EventInfo(oldEventInfo.sportRadarId, oldEventInfo.sportRadarEventUrl, oldEventInfo.bookmakers, parsedBetOffers)
+                    // @ts-ignore
+                    results.push({sportRadarId: response.sportRadarId, eventInfo: eventInfo})
                 })
             }).catch(error => console.log(error))
+            return results
         } else {
             const eventInfos = {}
             if(requests){

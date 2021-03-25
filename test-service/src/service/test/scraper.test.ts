@@ -20,7 +20,7 @@ describe("scraper should call third party api", function(){
             const scraper = new Scraper()
             const events = await scraper.getEventsForCompetition(footballCompetitions[0])
             const results = await scraper.getBetOffers(events)
-            //expect(results.length).to.equal(footballCompetitions[0].bookmakerIds.length)
+            expect(results).to.equal(footballCompetitions[0].bookmakerIds.length)
         })
     })
 
