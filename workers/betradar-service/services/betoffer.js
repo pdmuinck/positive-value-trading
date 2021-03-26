@@ -4,7 +4,7 @@ const betoffer = {}
 
 betoffer.getByEventId = async (eventId) => {
 
-    // https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/odds_match/33210764
+    // https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/odds_match/23031563
 
 	/*replayServer     = "replaymq.betradar.com:5671"
 	stagingServer    = "stgmq.betradar.com:5671"

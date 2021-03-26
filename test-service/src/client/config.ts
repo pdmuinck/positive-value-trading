@@ -34,8 +34,8 @@ export const footballCompetitions = [
     new Competition(
         CompetitionName.JUPILER_PRO_LEAGUE,
         [
-            new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
-            //new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
+            //new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
+            new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
             //new BookmakerId(Provider.ALTENAR, "1000000490", IdType.COMPETITION),
             /*
             new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),

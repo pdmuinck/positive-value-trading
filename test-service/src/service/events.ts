@@ -37,7 +37,7 @@ export class EventInfo {
 
 export class BookMakerInfo {
     private readonly _provider: Provider
-    private readonly _bookmaker: Bookmaker
+    private readonly _bookmaker: string
     private readonly _leagueId: string
     private readonly _eventId: string
     private readonly _leagueUrl: string
@@ -46,7 +46,7 @@ export class BookMakerInfo {
     private readonly _requestBody: object
     private readonly _httpMethod: string
 
-    constructor(provider: Provider, bookmaker: Bookmaker, leagueId: string, eventId: string, leagueUrl: string,
+    constructor(provider: Provider, bookmaker: string, leagueId: string, eventId: string, leagueUrl: string,
                 eventUrl: string, headers: object, requestBody: object, httpMethod: string) {
         this._provider = provider
         this._bookmaker = bookmaker
@@ -67,7 +67,7 @@ export class BookMakerInfo {
         return this._provider
     }
 
-    get bookmaker(): Bookmaker {
+    get bookmaker(): string {
         return this._bookmaker
     }
 
