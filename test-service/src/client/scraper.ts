@@ -69,7 +69,7 @@ export class Scraper {
             const eventInfo: EventInfo = events[sportRadarId]
             const requests = eventInfo.bookmakers.map(bookmaker => {
                 if(bookmaker.httpMethod === "GET") {
-                    return axios.get(bookmaker.eventUrl).then(response => {
+                    return axios.get(bookmaker.eventUrl, bookmaker.headers).then(response => {
                         return new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, Bookmaker[bookmaker.bookmaker])
                     }).catch(error => {})
                 }
@@ -923,6 +923,9 @@ export class Scraper {
                     const parsedBetOffers = response.eventInfo.betOffers.map((betOffer: ApiResponse) => {
                         if(betOffer.provider === Provider.KAMBI){
                             return KambiParser.parse(betOffer)
+                        }
+                        if(betOffer.provider === Provider.SBTECH) {
+                            return SbtechParser.parseBetOffers(betOffer)
                         }
                     })
                     // @ts-ignore
