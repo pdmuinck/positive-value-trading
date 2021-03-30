@@ -1,101 +1,127 @@
-import {Bookmaker} from "../../service/bookmaker";
-
-const axios = require('axios')
-const NodeCache = require('node-cache')
-
-const ttlSeconds = 60 * 60 * 30
-
-export class SbtechTokenRepository {
-    private readonly _tokenCache
-    private readonly _tokenUrls: SbtechTokenRequest[]
-
-    constructor() {
-        this._tokenUrls = [
-            new SbtechTokenRequest(Bookmaker.BET777, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),
-            new SbtechTokenRequest(Bookmaker.BETFIRST, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/28', SbtechApi.V1),
-        ]
-        this._tokenCache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false })
-    }
-
-    async getToken(bookmaker: Bookmaker): Promise<SbtechToken> {
-        const token = this._tokenCache.get(bookmaker)
-        console.log(token)
-        if(!token) {
-            const requests = []
-
-            const sbtechTokenRequest = this._tokenUrls.filter(request => request.bookmaker === bookmaker)[0]
-
-            if(sbtechTokenRequest.api === SbtechApi.V2) {
-                requests.push(axios.get(sbtechTokenRequest.url).then(res => res.data.token).catch(error => null))
-            } else {
-                requests.push(axios.get(sbtechTokenRequest.url).then(res => res.data.split('ApiAccessToken = \'')[1].replace('\'', '')).catch(error => null))
-            }
-
-            let token
-
-            await Promise.all(requests).then((values) => {
-                token = values[0]
-            })
-
-            if(token) {
-                this._tokenCache.set(bookmaker, token)
-                return token
-            }
-        } else {
-            return token
-        }
-    }
-
-}
-
-export class SbtechToken {
-    private readonly _bookmaker: Bookmaker
-    private readonly _token: string
-
-    constructor(bookmaker: Bookmaker, token: string){
-        this._bookmaker = bookmaker
-        this._token = token
-    }
-
-    get bookmaker(){
-        return this._bookmaker
-    }
-
-    get token(){
-        return this._token
-    }
-}
+import {BookMakerInfo, EventInfo} from "../../service/events"
+import {Bookmaker, Provider} from "../../service/bookmaker"
+import axios from "axios"
+import {SportRadarScraper} from "../sportradar/sportradar"
+import {SbtechParser} from "../../service/parser";
+import {ApiResponse} from "../scraper";
+import {RequestType} from "../../domain/betoffer";
 
 class SbtechTokenRequest {
     private readonly _bookmaker: Bookmaker
     private readonly _url: string
-    private readonly _api: SbtechApi
+    private readonly _api: string
 
-    constructor(bookmaker: Bookmaker, url: string, api: SbtechApi) {
+    constructor(bookmaker: Bookmaker, url: string, api: string) {
         this._bookmaker = bookmaker
         this._url = url
         this._api = api
     }
 
-    get bookmaker(){
+    get bookmaker(): Bookmaker {
         return this._bookmaker
     }
 
-    get url(){
+    get url(): string {
         return this._url
     }
 
-    get api(){
+    get api(): string {
         return this._api
     }
 }
 
-enum SbtechApi {
-    V1= "V1",
-    V2 = "V2"
+export class TokenResponse {
+    private readonly _token: string
+    private readonly _bookmaker: Bookmaker
+
+    constructor(token: string, bookmaker: Bookmaker) {
+        this._token = token;
+        this._bookmaker = bookmaker;
+    }
+
+    get token(): string {
+        return this._token;
+    }
+
+    get bookmaker(): Bookmaker {
+        return this._bookmaker;
+    }
 }
 
-/*
+export class SbtechScraper {
+
+    static async getBetOffersForEvent(event: EventInfo) {
+        const requests = event.bookmakers.map(bookmaker => {
+            return axios.get(bookmaker.eventUrl, bookmaker.headers)
+                .then(response => {return {book: bookmaker.bookmaker, betoffers: SbtechParser.parseBetOffers(new ApiResponse(Provider.SBTECH, response.data, RequestType.BET_OFFER))}})
+                .catch(error => console.log(error))
+        })
+        return Promise.all(requests).then(values => {
+            return values
+        })
+    }
+
+    static async getEventsForCompetition(id: string): Promise<EventInfo[]> {
+        const books = [
+            new SbtechTokenRequest(Bookmaker.BET777, "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", "V1"),
+            new SbtechTokenRequest(Bookmaker.BETFIRST, "https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28", "V1"),
+        ]
+
+        const tokenRequests = books.map(book => {
+            const tokenUrl = book.url
+            return axios.get(tokenUrl).then(tokenResponse => {
+                return new TokenResponse(this.getToken(tokenResponse.data, book.api), book.bookmaker)
+            })
+        })
+
+        return Promise.all(tokenRequests).then(tokens => {
+            const token = tokens[0].token
+            const bookmaker = tokens[0].bookmaker
+            const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
+
+            const headers = {
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'locale': 'en',
+                    'accept-encoding': 'gzip, enflate, br'
+                }
+            }
+            const leagueUrl = 'https://sbapi.sbtech.com/' + bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
+            return axios.post(leagueUrl, page, headers)
+                .then(response => {
+                    return response.data.events.map(event => {
+                        const bookmakerInfos = books.map(book => {
+                            const token = tokens.filter(token => token.bookmaker === book.bookmaker)[0].token
+                            const headers = {
+                                headers: {
+                                    'Authorization': 'Bearer ' + token,
+                                    'locale': 'en',
+                                    'accept-encoding': 'gzip, enflate, br'
+                                }
+                            }
+                            const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
+                            const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
+                            return new BookMakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
+                                leagueUrl, eventUrl, headers, undefined, "GET")
+                        })
+                        const sportRadarId = parseInt(event.media[0].providerEventId)
+                        return new EventInfo(sportRadarId, SportRadarScraper.getEventUrl(sportRadarId), bookmakerInfos)
+                    })
+                })
+        })
+    }
+
+    static getToken(response: string, api: string) {
+        if(api.toUpperCase() === "V1") {
+            return response.split('ApiAccessToken = \'')[1].replace('\'', '')
+        } else {
+            //@ts-ignore
+            return response.token
+        }
+    }
+
+
+    /*
     "YOUBET": {name: 'youbet', tokenUrl: 'https://api.play-gaming.com/authentication/v1/api/GetTokenBySiteId/161', dataUrl: 'https://sbapi.sbtech.com/youbet/sportscontent/sportsbook/v1/Events/getBySportId'},
     "BETFIRST": {oddsUrl: 'https://sbapi.sbtech.com/betfirst/sportscontent/sportsbook/v1/Events/getByEventId', name: 'betfirst', licenses: ['BE'], tokenUrl: 'https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28', dataUrl: 'https://sbapi.sbtech.com/betfirst/sportscontent/sportsbook/v1/Events/getBySportId'},
     "BET777": {oddsUrl: 'https://sbapi.sbtech.com/bet777/sportscontent/sportsbook/v1/Events/getByEventId', name: 'bet777', licenses: ['BE'], tokenUrl: 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', dataUrl: 'https://sbapi.sbtech.com/bet777/sportscontent/sportsbook/v1/Events/getBySportId'},
@@ -117,3 +143,4 @@ enum SbtechApi {
     "OREGON_LOTTERY": {api: 'V2', name: 'oregonlottery', licenses: ['US'], tokenUrl: 'https://api-orp.sbtech.com/auth/v2/getTokenBySiteId/15002', dataUrl: 'https://api-orp.sbtech.com/oregonlottery/sportscontent/sportsbook/v1/Events/GetBySportId'},
     "BETPT": {api: 'V2', name: 'betpt', licenses: ['PT'], tokenUrl: 'https://api.play-gaming.com/auth/v2/getTokenBySiteId/85', dataUrl: 'https://sbapi.sbtech.com/betpt/sportscontent/sportsbook/v1/Events/getBySportId'}
 */
+}

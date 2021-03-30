@@ -1,6 +1,5 @@
 import {Competition, CompetitionName, IdType, RequestType, SportName} from "../domain/betoffer"
 import axios from "axios"
-import {SbtechTokenRepository} from "./sbtech/token"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
@@ -22,7 +21,7 @@ import {
     ZetBetParser
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
-import {register} from "ts-node";
+import {SbtechScraper} from "./sbtech/sbtech";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -33,10 +32,6 @@ let circusEvents
 let goldenVegasEvents
 
 export class Scraper {
-    private readonly _sbtechTokenRepository: SbtechTokenRepository
-    constructor(){
-        this._sbtechTokenRepository = new SbtechTokenRepository()
-    }
 
     async getEventsForCompetition(competition: Competition) {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
@@ -784,7 +779,7 @@ export class Scraper {
 
 
     toSbtechRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        if(requestType === RequestType.EVENT) return this.toSbtechEventRequest(bookmakerId)
+        if(requestType === RequestType.EVENT) return SbtechScraper.getEventsForCompetition(bookmakerId.id)
 
         const tokenData = [
             new SbtechTokenRequest(Bookmaker.BET777, 'https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72', SbtechApi.V1),

@@ -849,7 +849,7 @@ export class SbtechParser {
     }
 
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        return apiResponse.data.markets
+        return apiResponse.data.data.markets
             .map(market => SbtechParser.transformToBetOffer(apiResponse.provider, market)).flat()
     }
 
@@ -894,16 +894,40 @@ export class SbtechParser {
 
     private static determineBetOfferType(typeId: string): BetType {
         switch(typeId){
+            case "154":
+                return BetType.TOTAL_GOALS
+            case "696":
+                return BetType.WIN_TO_NIL
+            case "701":
+                return BetType.TO_WIN_FROM_BEHIND
+            case "38":
+                return BetType.ODD_EVEN
             case '1_0':
                 return BetType._1X2
+            case "1_1":
+                return BetType._1X2_FIRST_HALF
+            case "1_2":
+                return BetType._1X2_H2
+            case "278":
+                return BetType.ODD_EVEN_TEAMS_H2
+            case "276":
+                return BetType.ODD_EVEN_TEAMS_H1
             case "2_0":
                 return BetType.ASIAN_HANDICAP
+            case "2_1":
+                return BetType.ASIAN_HANDICAP_H1
+            case "2_2":
+                return BetType.ASIAN_HANDICAP_H2
             case '3_0':
                 return BetType.OVER_UNDER
+            case "3_1":
+                return BetType.OVER_UNDER_H1
             case "158":
                 return BetType.BOTH_TEAMS_SCORE
             case "61":
                 return BetType.DOUBLE_CHANCE
+            case "145":
+                return BetType.DOUBLE_CHANCE_1H
             case "60":
                 return BetType.CORRECT_SCORE
             case "2_157":

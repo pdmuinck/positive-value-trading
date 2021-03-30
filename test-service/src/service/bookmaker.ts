@@ -25,6 +25,8 @@ export class BetLine {
 }
 
 export enum BetType {
+    WIN_TO_NIL = "WIN_TO_NIL",
+    TO_WIN_FROM_BEHIND = "TO_WIN_FROM_BEHIND",
     _1X2 = '1X2',
     DOUBLE_CHANCE = 'DOUBLE_CHANCE',
     OVER_UNDER = 'OVER_UNDER',
@@ -57,6 +59,8 @@ export enum BetType {
     EXACT_GOALS = "EXACT_GOALS",
     ODD_EVEN_TEAM1 = "ODD_EVEN_TEAM1",
     ODD_EVEN_TEAM2 = "ODD_EVEN_TEAM2",
+    ODD_EVEN_TEAMS_H1 = "ODD_EVEN_TEAMS_H1",
+    ODD_EVEN_TEAMS_H2 = "ODD_EVEN_TEAMS_H2",
     DRAW_NO_BET_1H = "DRAW_NO_BET_1H",
     HANDICAP_H2 = "HANDICAP_H2",
     UNKNOWN = 'UNKNOWN',
