@@ -924,6 +924,10 @@ export class SbtechParser {
                 return BetType.OVER_UNDER_H1
             case "158":
                 return BetType.BOTH_TEAMS_SCORE
+            case "2936":
+                return BetType.BOTH_TEAMS_SCORE_H2
+            case "2935":
+                return BetType.BOTH_TEAMS_SCORE_H1
             case "61":
                 return BetType.DOUBLE_CHANCE
             case "145":

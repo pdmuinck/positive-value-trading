@@ -10,7 +10,7 @@ import {
     BetConstructParser,
     BetwayParser,
     BingoalParser,
-    BwinParser,
+    BwinParser, Event,
     KambiParser,
     LadbrokesParser,
     MeridianParser,
@@ -22,6 +22,7 @@ import {
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {SbtechScraper} from "./sbtech/sbtech";
+import {KambiScraper} from "./kambi/kambi";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -31,7 +32,37 @@ let starCasinoEvents
 let circusEvents
 let goldenVegasEvents
 
+
+
 export class Scraper {
+
+    static async getEventsForLeague(leagueName: string): Promise<EventInfo[]> {
+        const requests = {
+            "JUPILER_PRO_LEAGUE": [
+                SbtechScraper.getEventsForCompetition("40815"),
+                KambiScraper.getEventsForCompetition("1000094965")
+            ]
+        }
+        const leagueRequests = requests[leagueName.toUpperCase()]
+        // @ts-ignore
+        return Promise.all(leagueRequests).then(values => this.mergeEvents(values))
+    }
+
+    static mergeEvents(events: EventInfo[]): EventInfo[] {
+        const result: Map<number, EventInfo> = new Map()
+        events.flat().forEach(event => {
+            const storedEvent: EventInfo = result[event.sportRadarId]
+            if(storedEvent) {
+                if(storedEvent.bookmakers) {
+                    const bookMakerInfos: BookMakerInfo[] = storedEvent.bookmakers.concat(event.bookmakers)
+                    result[event.sportRadarId] = new EventInfo(event.sportRadarId, event.sportRadarEventUrl, bookMakerInfos)
+                }
+            } else {
+                result[event.sportRadarId] = event
+            }
+        })
+        return Object.values(result)
+    }
 
     async getEventsForCompetition(competition: Competition) {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
