@@ -27,7 +27,6 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                     betOffers[key] = prices
                 }
             })
-            // TODO merge betOffers
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }
