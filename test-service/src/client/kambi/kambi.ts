@@ -2,20 +2,11 @@ import {BookMakerInfo, EventInfo} from "../../service/events";
 import {Bookmaker, Provider} from "../../service/bookmaker";
 import axios from "axios";
 import {SportRadarScraper} from "../sportradar/sportradar";
-import {KambiParser, SbtechParser} from "../../service/parser";
-import {ApiResponse} from "../scraper";
-import {RequestType} from "../../domain/betoffer";
+import {getBetOffers} from "../utils";
 
 export class KambiScraper {
     static async getBetOffersForEvent(event: EventInfo) {
-        const requests = event.bookmakers.map(bookmaker => {
-            return axios.get(bookmaker.eventUrl, bookmaker.headers)
-                .then(response => {return {book: bookmaker.bookmaker, betoffers: KambiParser.parseBetOffers(new ApiResponse(Provider.KAMBI, response.data, RequestType.BET_OFFER, Bookmaker[bookmaker.bookmaker]))}})
-                .catch(error => console.log(error))
-        })
-        return Promise.all(requests).then(values => {
-            return values
-        })
+        return getBetOffers(event)
     }
     static async getEventsForCompetition(id: string): Promise<EventInfo[]> {
         const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES]

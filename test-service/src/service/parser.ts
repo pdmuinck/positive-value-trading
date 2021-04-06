@@ -6,6 +6,65 @@ import {BetOffer} from "./betoffers";
 
 const parser = require('node-html-parser')
 
+export function parseBwinBetOffers(apiResponse: ApiResponse) {
+    if(!apiResponse.data.fixtures) return []
+    return apiResponse.data.fixtures.map(event => {
+        const eventId = event.id
+        return event.games.map(game => {
+            const betType = BwinParser.determineBetType(game.templateId)
+            if(betType !== BetType.UNKNOWN) {
+                const line = game.attr
+                return game.results.map((result, index) => {
+                    const price = result.odds
+                    const outcome = BwinParser.determineOutcome(betType, result, index)
+                    return new BetOffer(betType, eventId, Bookmaker.BWIN, outcome, price, line)
+                })
+            }
+        })
+    }).flat().filter(x => x)
+}
+
+export function parseKambiBetOffers(apiResponse: ApiResponse) {
+    if(!apiResponse.data) return []
+    return apiResponse.data.betOffers.map(betOffer => {
+        const typeId = betOffer.criterion.id
+        const betOfferType = KambiParser.determineBetOfferType(typeId)
+        if(!betOfferType) return []
+        const eventId = betOffer.eventId
+        const betOffers = []
+        if(betOffer.outcomes) {
+            betOffer.outcomes.forEach(outcome => {
+                const outcomeType = KambiParser.determineOutcomeType(outcome.type)
+                const price = Math.round(outcome.odds + Number.EPSILON) / 1000
+                const line = outcome.line ? outcome.line/ 1000 : outcome.label
+                betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
+            })
+        }
+        return betOffers
+    }).flat().filter(x => x)
+}
+
+export function parseSbtechBetOffers(apiResponse: ApiResponse) {
+    return apiResponse.data.data.markets
+        .map(market => {
+            const typeId = market.marketType.id
+            const betOfferType = SbtechParser.determineBetOfferType(typeId)
+            const betOffers = []
+            if(betOfferType !== BetType.UNKNOWN) {
+                const eventId = market.eventId
+                market.selections.forEach(selection => {
+                    const outcomeType = SbtechParser.determineOutcomeType(selection.outcomeType)
+                    const price = selection.trueOdds
+                    const line = selection.points ? selection.points : NaN
+                    betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
+                })
+            }
+            return betOffers
+        }).flat().filter(x => x)
+}
+
+
+
 export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
@@ -44,12 +103,8 @@ export class Parser {
                     return BetcenterParser.parse(apiResponse)
                 case Provider.PINNACLE:
                     return PinnacleParser.parse(apiResponse)
-                case Provider.KAMBI:
-                    return KambiParser.parse(apiResponse)
                 case Provider.ALTENAR:
                     return AltenarParser.parse(apiResponse)
-                case Provider.SBTECH:
-                    return SbtechParser.parse(apiResponse)
                 case Provider.LADBROKES:
                     return LadbrokesParser.parse(apiResponse)
                 case Provider.MERIDIAN:
@@ -734,7 +789,7 @@ export class KambiParser {
         return apiResponse.data.betOffers.map(betOffer => this.transformToBetOffers(apiResponse.bookmaker, betOffer)).flat()
     }
 
-    static transformToBetOffers(bookMaker: Bookmaker, betOfferContent): BetOffer[] {
+    static transformToBetOffers(bookMaker: string, betOfferContent): BetOffer[] {
         const typeId = betOfferContent.criterion.id
         const betOfferType = this.determineBetOfferType(typeId)
         if(!betOfferType) return []
@@ -751,7 +806,7 @@ export class KambiParser {
         return betOffers
     }
 
-    private static determineBetOfferType(typeId): BetType  {
+    static determineBetOfferType(typeId): BetType  {
         switch(typeId){
             case 1001159858:
                 return BetType._1X2
@@ -804,7 +859,7 @@ export class KambiParser {
         }
     }
 
-    private static determineOutcomeType(betOptionName) {
+    static determineOutcomeType(betOptionName) {
         switch(betOptionName){
             case 'OT_ONE':
                 return '1'
@@ -879,7 +934,7 @@ export class SbtechParser {
         return betOffers
     }
 
-    private static determineOutcomeType(outcomeType): string {
+    static determineOutcomeType(outcomeType): string {
         switch(outcomeType){
             case 'Home':
                 return '1'
@@ -888,11 +943,11 @@ export class SbtechParser {
             case 'Tie':
                 return 'X'
             default:
-                return outcomeType.toUpperCase()
+                return outcomeType ? outcomeType.toUpperCase() : outcomeType
         }
     }
 
-    private static determineBetOfferType(typeId: string): BetType {
+    static determineBetOfferType(typeId: string): BetType {
         switch(typeId){
             case "154":
                 return BetType.TOTAL_GOALS

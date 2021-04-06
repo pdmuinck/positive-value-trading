@@ -2,9 +2,8 @@ import {BookMakerInfo, EventInfo} from "../../service/events"
 import {Bookmaker, Provider} from "../../service/bookmaker"
 import axios from "axios"
 import {SportRadarScraper} from "../sportradar/sportradar"
-import {SbtechParser} from "../../service/parser";
-import {ApiResponse} from "../scraper";
-import {RequestType} from "../../domain/betoffer";
+import {parseSbtechBetOffers} from "../../service/parser";
+import {getBetOffers} from "../utils";
 
 class SbtechTokenRequest {
     private readonly _bookmaker: Bookmaker
@@ -51,14 +50,7 @@ export class TokenResponse {
 export class SbtechScraper {
 
     static async getBetOffersForEvent(event: EventInfo) {
-        const requests = event.bookmakers.map(bookmaker => {
-            return axios.get(bookmaker.eventUrl, bookmaker.headers)
-                .then(response => {return {book: bookmaker.bookmaker, betoffers: SbtechParser.parseBetOffers(new ApiResponse(Provider.SBTECH, response.data, RequestType.BET_OFFER))}})
-                .catch(error => console.log(error))
-        })
-        return Promise.all(requests).then(values => {
-            return values
-        })
+        return getBetOffers(event)
     }
 
     static async getEventsForCompetition(id: string): Promise<EventInfo[]> {

@@ -34,7 +34,6 @@ let circusEvents
 let goldenVegasEvents
 
 
-
 export class Scraper {
 
     static async getEventsForLeague(leagueName: string): Promise<EventInfo[]> {
@@ -69,45 +68,6 @@ export class Scraper {
     async getEventsForCompetition(competition: Competition) {
         const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
         return await this.getApiResponses(requests.flat())
-        /*
-        const events = {}
-
-        httpResponses.forEach(httpResponse => {
-            httpResponse.data.forEach(eventMap => {
-                const event = events[eventMap.sportRadarId]
-                if(event) {
-                    event[httpResponse.provider] = eventMap.eventId
-                    events[eventMap.sportRadarId] = event
-                } else {
-                    const newEvent = {}
-                    newEvent[httpResponse.provider] = eventMap.eventId
-                    events[eventMap.sportRadarId] = newEvent
-                }
-            })
-        })
-        delete events["77227"]
-        delete events[""]
-        return events
-        */
-
-    }
-
-    async getBetOffers(events) {
-        const requests = Object.keys(events).map(sportRadarId => {
-            const eventInfo: EventInfo = events[sportRadarId]
-            const requests = eventInfo.bookmakers.map(bookmaker => {
-                if(bookmaker.httpMethod === "GET") {
-                    return axios.get(bookmaker.eventUrl, bookmaker.headers).then(response => {
-                        return new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, Bookmaker[bookmaker.bookmaker])
-                    }).catch(error => {})
-                }
-            })
-            return Promise.all(requests).then(values => {
-                const eventInfoWithBetOffers = new EventInfo(eventInfo.sportRadarId, eventInfo.sportRadarEventUrl, eventInfo.bookmakers, values)
-                return {sportRadarId: sportRadarId, eventInfo: eventInfoWithBetOffers}
-            })
-        })
-        return await this.getApiResponses(requests, RequestType.BET_OFFER)
     }
 
     async getBetOffersForCompetition(competition: Competition, events): Promise<object> {
@@ -825,28 +785,13 @@ export class Scraper {
     }
 }
 
-export class FakeScraper extends Scraper {
-    private readonly _testData
-    constructor(testData){
-        super()
-        this._testData = testData
-    }
-
-    async getBetOffers(sport: SportName, competition?: CompetitionName): Promise<ApiResponse[]> {
-        return [
-            this._testData[Provider.KAMBI],
-            this._testData[Provider.PINNACLE]
-            ].flat()
-    }
-}
-
 export class ApiResponse {
     private readonly _provider: Provider
     private readonly _data
     private readonly _requestType: RequestType
-    private readonly _bookmaker: Bookmaker
+    private readonly _bookmaker: string
 
-    constructor(provider: Provider, data, requestType: RequestType, bookmaker?: Bookmaker){
+    constructor(provider: Provider, data, requestType: RequestType, bookmaker?: string){
         this._provider = provider
         this._data = data
         this._requestType = requestType

@@ -6,7 +6,6 @@ import {
     SportName
 } from "../../domain/betoffer";
 import {ValueBetService} from "../valuebet-service";
-import {ApiResponse, FakeScraper} from "../../client/scraper";
 import {jupilerProLeagueParticipants} from "../../client/config";
 import {BookmakerId, Provider} from "../bookmaker";
 
