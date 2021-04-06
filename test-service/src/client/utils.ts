@@ -4,6 +4,7 @@ import {ApiResponse} from "./scraper";
 import {RequestType} from "../domain/betoffer";
 import {Provider} from "../service/bookmaker";
 import {parseBwinBetOffers, parseKambiBetOffers, parseSbtechBetOffers} from "../service/parser";
+import {BetOffer} from "../service/betoffers";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -15,21 +16,26 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                 .catch(error => console.log(error))
         })
         return Promise.all(requests).then(values => {
-            const betOffers = {}
-            values.flat().forEach(betOffer => {
-                const key = betOffer.betType + ";" + betOffer.betOptionName
-                const existing = betOffers[key]
-                if(existing) {
-                    existing[betOffer.bookMaker] = betOffer.price
-                } else {
-                    const prices = {}
-                    prices[betOffer.bookMaker] = betOffer.price
-                    betOffers[key] = prices
-                }
-            })
+            const betOffers = mergeBetOffers(values)
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }
+}
+
+function mergeBetOffers(betOffers: BetOffer[]) {
+    const merged = {}
+    betOffers.flat().forEach(betOffer => {
+        const key = betOffer.betType + ";" + betOffer.betOptionName
+        const existing = merged[key]
+        if(existing) {
+            existing[betOffer.bookMaker] = betOffer.price
+        } else {
+            const prices = {}
+            prices[betOffer.bookMaker] = betOffer.price
+            merged[key] = prices
+        }
+    })
+    return merged
 }
 
 export async function getBetOffersForEvents(events: EventInfo[]) {
