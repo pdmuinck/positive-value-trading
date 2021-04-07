@@ -13,7 +13,7 @@ export class BwinScraper {
             return response.data.fixtures.map(event => {
                 const sportRadarId = event.addons.betRadar
                 const bookmakerInfo = new BookMakerInfo(Provider.BWIN, Bookmaker.BWIN, id, event.id, "",
-                    "https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + 11341106 + "&state=Latest",
+                    "https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + event.id + "&state=Latest",
                     undefined, undefined, "GET")
                 return new EventInfo(parseInt(sportRadarId), SportRadarScraper.getEventUrl(sportRadarId), [bookmakerInfo])
             })

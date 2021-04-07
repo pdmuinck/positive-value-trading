@@ -141,30 +141,6 @@ export class SportEvent {
         return this._participants
     }
 
-    registerBetOffer(betOffer: BetOffer): BetOfferRegistered {
-        return this.registerBetOfferInCollection(betOffer, this._betOffers)
-    }
-
-    registerClosingLine(betOffer: BetOffer): ClosingLineRegistered {
-        return this.registerBetOfferInCollection(betOffer, this._closingLines)
-    }
-
-    private registerBetOfferInCollection(betOffer: BetOffer, betOfferCollection) {
-        if(this._bookmakerIds.map(bookmakerId => bookmakerId.id).flat().includes(betOffer.eventId.toString())) {
-            const key = betOffer.key
-            const betOffers = betOfferCollection[key]
-            if(betOffers) {
-                betOffers[betOffer.bookMaker] = betOffer
-                betOfferCollection[key] = betOffers
-            } else {
-                const toRegister = {}
-                toRegister[betOffer.bookMaker] = betOffer
-                betOfferCollection[key] = toRegister
-            }
-            return new BetOfferRegistered(betOffer)
-        }
-    }
-
     detectValueBets(betOfferKey?: string): ValueBetFoundEvent[] {
         if(betOfferKey) {
             return this.findValue(betOfferKey)

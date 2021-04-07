@@ -1,4 +1,4 @@
-import {BetType, Bookmaker, Period} from "./bookmaker";
+import {BetType} from "./bookmaker";
 
 export class BetOffer {
     private readonly _betType: BetType

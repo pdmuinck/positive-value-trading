@@ -65,16 +65,6 @@ export class Scraper {
         return Object.values(result)
     }
 
-    async getEventsForCompetition(competition: Competition) {
-        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.EVENT)
-        return await this.getApiResponses(requests.flat())
-    }
-
-    async getBetOffersForCompetition(competition: Competition, events): Promise<object> {
-        const requests = this.toApiRequests(competition.bookmakerIds, RequestType.BET_OFFER, events)
-        return await this.getApiResponses(requests.flat())
-    }
-
     assignBetOffersToSportRadarEvent(betOffers, events, bookmaker) {
         const buildEvents = {}
         betOffers.forEach(betOffer => {
@@ -91,22 +81,6 @@ export class Scraper {
 
         })
         return {bookmaker: bookmaker, events: buildEvents}
-    }
-
-    mergeBetOffers(responses) {
-        const merged = {}
-        responses.forEach(response => {
-            Object.keys(response.events).forEach(key => {
-                const mergedBetOffers = merged[key]
-                if(mergedBetOffers) {
-                    const newBetOffers = mergedBetOffers.concat(response.events[key])
-                    merged[key] = newBetOffers
-                } else {
-                    merged[key] = response.events[key]
-                }
-            })
-        })
-        return merged
     }
 
     toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType, mappedEvents?) {

@@ -25,7 +25,7 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
 function mergeBetOffers(betOffers: BetOffer[]) {
     const merged = {}
     betOffers.flat().forEach(betOffer => {
-        const key = betOffer.betType + ";" + betOffer.betOptionName
+        const key = betOffer.key
         const existing = merged[key]
         if(existing) {
             existing[betOffer.bookMaker] = betOffer.price

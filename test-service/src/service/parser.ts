@@ -7,20 +7,18 @@ import {BetOffer} from "./betoffers";
 const parser = require('node-html-parser')
 
 export function parseBwinBetOffers(apiResponse: ApiResponse) {
-    if(!apiResponse.data.fixtures) return []
-    return apiResponse.data.fixtures.map(event => {
-        const eventId = event.id
-        return event.games.map(game => {
-            const betType = BwinParser.determineBetType(game.templateId)
-            if(betType !== BetType.UNKNOWN) {
-                const line = game.attr
-                return game.results.map((result, index) => {
-                    const price = result.odds
-                    const outcome = BwinParser.determineOutcome(betType, result, index)
-                    return new BetOffer(betType, eventId, Bookmaker.BWIN, outcome, price, line)
-                })
-            }
-        })
+    if(!apiResponse.data.fixture) return []
+    const event = apiResponse.data.fixture
+    return event.games.map(game => {
+        const betType = BwinParser.determineBetType(game.templateId)
+        if(betType !== BetType.UNKNOWN) {
+            const line = game.attr ? game.attr : NaN
+            return game.results.map((result, index) => {
+                const price = result.odds
+                const outcome = BwinParser.determineOutcome(betType, result, index)
+                return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line)
+            })
+        }
     }).flat().filter(x => x)
 }
 
@@ -36,7 +34,7 @@ export function parseKambiBetOffers(apiResponse: ApiResponse) {
             betOffer.outcomes.forEach(outcome => {
                 const outcomeType = KambiParser.determineOutcomeType(outcome.type)
                 const price = Math.round(outcome.odds + Number.EPSILON) / 1000
-                const line = outcome.line ? outcome.line/ 1000 : outcome.label
+                const line = outcome.line ? outcome.line/ 1000 : NaN
                 betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
             })
         }
@@ -1118,6 +1116,52 @@ export class BwinParser {
 
     static determineBetType(templateId) {
         switch(templateId) {
+            case 15085:
+                return BetType.BOTH_TEAMS_SCORE_H1
+            case 11748:
+                return BetType.DOUBLE_CHANCE_1H
+            case 4665:
+                return BetType.ODD_EVEN
+            case 16449:
+                return BetType.ODD_EVEN_H1
+            case 19193:
+                return BetType.CORRECT_SCORE
+            case 26644:
+                return BetType.CORRECT_SCORE_H1
+            case 16454:
+                return BetType.OVER_UNDER_TEAM1
+            case 16455:
+                return BetType.OVER_UNDER_TEAM2
+            case 20085:
+                return BetType.OVER_UNDER_TEAM2
+            case 24138:
+                return BetType.OVER_UNDER_TEAM1
+            case 31317:
+                return BetType.OVER_UNDER_TEAM1_H1
+            case 31316:
+                return BetType.OVER_UNDER_TEAM1_H1
+            case 31319:
+                return BetType.OVER_UNDER_TEAM2_H1
+            case 31320:
+                return BetType.OVER_UNDER_TEAM2_H1
+            case 4727:
+                return BetType.TOTAL_GOALS_TEAM2
+            case 2196:
+                return BetType.TOTAL_GOALS
+            case 20095:
+                return BetType.TOTAL_GOALS
+            case 4718:
+                return BetType.TOTAL_GOALS_H1
+            case 4732:
+                return BetType.TOTAL_GOALS_H2
+            case 4721:
+                return BetType.TOTAL_GOALS_TEAM2_H1
+            case 4733:
+                return BetType.TOTAL_GOALS_TEAM1_H2
+            case 4720:
+                return BetType.TOTAL_GOALS_TEAM1_H1
+            case 4734:
+                return BetType.TOTAL_GOALS_TEAM2_H2
             case 17:
                 return BetType._1X2
             case 173:
