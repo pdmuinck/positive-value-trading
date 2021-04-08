@@ -3,8 +3,9 @@ import axios from "axios";
 import {ApiResponse} from "./scraper";
 import {RequestType} from "../domain/betoffer";
 import {Provider} from "../service/bookmaker";
-import {parseBwinBetOffers, parseKambiBetOffers, parseSbtechBetOffers} from "../service/parser";
+import {parseBwinBetOffers, parseSbtechBetOffers} from "../service/parser";
 import {BetOffer} from "../service/betoffers";
+import {parseKambiBetOffers} from "./kambi/kambi";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
