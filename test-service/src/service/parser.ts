@@ -42,8 +42,6 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
         }).flat().filter(x => x)
 }
 
-
-
 export class Event {
     private readonly _startTime
     private readonly _participants: Participant[]
@@ -732,123 +730,6 @@ export class BetConstructParser {
                 return BetType._1X2_FIRST_HALF
         }
     }
-}
-
-export class KambiParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType) {
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
-        }
-    }
-
-    static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        if(!apiResponse.data.events) return []
-        return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => event.participants)
-            .flat().map(participant => new Participant(
-                getParticipantName(participant.name.toUpperCase()), [
-                    new BookmakerId(apiResponse.provider, participant.participantId.toString(), IdType.PARTICIPANT)]))
-    }
-
-    static parseEvents(apiResponse: ApiResponse): Event[] {
-        if(!apiResponse.data.events) return []
-        return apiResponse.data.events.filter(event => event.participants.length === 2).map(event => {
-            const participants = event.participants.map(participant => new Participant(getParticipantName(participant.name),
-                [new BookmakerId(apiResponse.provider, participant.participantId.toString(), IdType.PARTICIPANT)]))
-            return new Event(new BookmakerId(apiResponse.provider, event.id.toString(), IdType.EVENT), event.start, participants)
-        })
-    }
-
-    static determineBetOfferType(typeId): BetType  {
-        switch(typeId){
-            case 1001159858:
-                return BetType._1X2
-            case 1001159926:
-                return BetType.OVER_UNDER
-            case 1001159711:
-                return BetType.HANDICAP
-            case 1001642858:
-                return BetType.BOTH_TEAMS_SCORE
-            case 1001159897:
-                return BetType.OVER_UNDER_CORNERS
-            case 1001239606:
-                return BetType.ODD_EVEN_CORNERS
-            case 1000316018:
-                return BetType._1X2_FIRST_HALF
-            case 1002244276:
-                return BetType.ASIAN_OVER_UNDER
-            case 1001642858:
-                return BetType.BOTH_TEAMS_SCORE
-            case 1001159922:
-                return BetType.DOUBLE_CHANCE
-            case 1001159967:
-                return BetType.OVER_UNDER_TEAM1
-            case 1001159633:
-                return BetType.OVER_UNDER_TEAM2
-            case 1001159780:
-                return BetType.CORRECT_SCORE
-            case 1001568619:
-                return BetType.CORRECT_SCORE_H2
-            case 1000505272:
-                return BetType.CORRECT_SCORE_H1
-            case 1001568621:
-                return BetType._3_WAY_HANDICAP_H2
-            case 1001224081:
-                return BetType._3_WAY_HANDICAP
-            case 1001568620:
-                return BetType._3_WAY_HANDICAP_H1
-            case 1002275572:
-                return BetType.ASIAN_HANDICAP
-            case 1002275573:
-                return BetType.ASIAN_HANDICAP_H1
-            case 1001160024:
-                return BetType.ODD_EVEN_TEAM2
-            case 1001160038:
-                return BetType.ODD_EVEN
-            case 1001159808:
-                return BetType.ODD_EVEN_TEAM2
-
-
-        }
-    }
-
-    static determineOutcomeType(betOfferType: BetType, outcome) {
-        if(betOfferType === BetType.CORRECT_SCORE || betOfferType === BetType.CORRECT_SCORE_H1 || betOfferType === BetType.CORRECT_SCORE_H2) {
-            return outcome.label.toUpperCase()
-        }
-        switch(outcome.type){
-            case 'OT_ONE':
-                return '1'
-            case 'OT_TWO':
-                return '2'
-            case 'OT_CROSS':
-                return 'X'
-            case 'OT_OVER':
-                return 'OVER'
-            case 'OT_UNDER':
-                return 'UNDER'
-            case "OT_ONE_OR_CROSS":
-                return "1X"
-            case "OT_ONE_OR_TWO":
-                return "12"
-            case "OT_CROSS_OR_TWO":
-                return "X2"
-            case "OT_YES":
-                return "YES"
-            case "OT_NO":
-                return "NO"
-            case "OT_ODD":
-                return "ODD"
-            case "OT_EVEN":
-                return "EVEN"
-            default:
-                return outcome.type.toUpperCase()
-        }
-    }
-
-
 }
 
 export class SbtechParser {
