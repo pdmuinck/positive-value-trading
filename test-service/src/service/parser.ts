@@ -22,50 +22,6 @@ export function parseBwinBetOffers(apiResponse: ApiResponse) {
     }).flat().filter(x => x)
 }
 
-export function kambiBetOfferPeriod(betOffer) {
-    const betOfferLabel = betOffer.criterion.label
-    if(betOfferLabel.includes("2ND HALF")) return "H2"
-    if(betOfferLabel.includes("1ST HALF") || betOfferLabel.includes("HALF TIME")) return "H1"
-    if(betOffer.criterion.lifetime && betOffer.criterion.lifetime === "FULL_TIME") return "FT"
-}
-
-export function kambiBetOfferTypes(betOffer) {
-    switch(betOffer.betOfferType) {
-        case 7:
-            return BetType.ASIAN_HANDICAP
-        case 2:
-            if(betOffer.criterion === 1001159858 || betOffer.criterion === 1000316018 || betOffer.criterion === 1001159826) return BetType._1X2
-            if(betOffer.criterion === 1001159666 || betOffer.criterion === 1001159884 || betOffer.criterion === 1001421321) return BetType.DRAW_NO_BET
-        case 11:
-            return BetType.HANDICAP
-        case 6:
-            if(betOffer.criterion === 1001159967) return BetType.OVER_UNDER_TEAM1
-            if(betOffer.criterion === 1001159633) return BetType.OVER_UNDER_TEAM2
-            return BetType.OVER_UNDER
-        case 21:
-            // asian total
-    }
-}
-
-export function parseKambiBetOffers(apiResponse: ApiResponse) {
-    if(!apiResponse.data) return []
-    return apiResponse.data.betOffers.map(betOffer => {
-        const typeId = betOffer.criterion.id
-        const betOfferType = KambiParser.determineBetOfferType(typeId)
-        if(!betOfferType) return []
-        const eventId = betOffer.eventId
-        const betOffers = []
-        if(betOffer.outcomes) {
-            betOffer.outcomes.forEach(outcome => {
-                const outcomeType = KambiParser.determineOutcomeType(betOfferType, outcome)
-                const price = Math.round(outcome.odds + Number.EPSILON) / 1000
-                const line = outcome.line ? outcome.line/ 1000 : NaN
-                betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
-            })
-        }
-        return betOffers
-    }).flat().filter(x => x)
-}
 
 export function parseSbtechBetOffers(apiResponse: ApiResponse) {
     return apiResponse.data.data.markets
