@@ -1,4 +1,4 @@
-import {Competition, CompetitionName, IdType, RequestType, SportName} from "../domain/betoffer"
+import {RequestType} from "../domain/betoffer"
 import axios from "axios"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
@@ -10,20 +10,17 @@ import {
     BetConstructParser,
     BetwayParser,
     BingoalParser,
-    BwinParser, Event,
-    KambiParser,
     LadbrokesParser,
     MeridianParser,
     Parser,
-    SbtechParser,
     ScoooreParser,
     StanleyBetParser,
     ZetBetParser
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
-import {SbtechScraper} from "./sbtech/sbtech";
-import {KambiScraper} from "./kambi/kambi";
-import {BwinScraper} from "./bwin";
+import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
+import {getKambiEventsForCompetition} from "./kambi/kambi";
+import {getBwinEventsForCompetition} from "./bwin";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -39,9 +36,9 @@ export class Scraper {
     static async getEventsForLeague(leagueName: string): Promise<EventInfo[]> {
         const requests = {
             "JUPILER_PRO_LEAGUE": [
-                SbtechScraper.getEventsForCompetition("40815"),
-                KambiScraper.getEventsForCompetition("1000094965"),
-                BwinScraper.getEventsForCompetition("16409")
+                getSbtechEventsForCompetition("40815"),
+                getKambiEventsForCompetition("1000094965"),
+                getBwinEventsForCompetition("16409")
             ]
         }
         const leagueRequests = requests[leagueName.toUpperCase()]
@@ -53,8 +50,8 @@ export class Scraper {
         const result: Map<number, EventInfo> = new Map()
         events.flat().forEach(event => {
             const storedEvent: EventInfo = result[event.sportRadarId]
-            if(storedEvent) {
-                if(storedEvent.bookmakers) {
+            if (storedEvent) {
+                if (storedEvent.bookmakers) {
                     const bookMakerInfos: BookMakerInfo[] = storedEvent.bookmakers.concat(event.bookmakers)
                     result[event.sportRadarId] = new EventInfo(event.sportRadarId, event.sportRadarEventUrl, bookMakerInfos)
                 }
@@ -63,63 +60,6 @@ export class Scraper {
             }
         })
         return Object.values(result)
-    }
-
-    assignBetOffersToSportRadarEvent(betOffers, events, bookmaker) {
-        const buildEvents = {}
-        betOffers.forEach(betOffer => {
-            const event = events.filter(event => event.eventId === betOffer.eventId)[0]
-            if(event){
-                const storedBetOffers = buildEvents[event.sportRadarId]
-                if(storedBetOffers) {
-                    storedBetOffers.push(betOffer)
-                    buildEvents[event.sportRadarId] = storedBetOffers
-                } else {
-                    buildEvents[event.sportRadarId] = [betOffer]
-                }
-            }
-
-        })
-        return {bookmaker: bookmaker, events: buildEvents}
-    }
-
-    toApiRequests(bookmakerIds: BookmakerId[], requestType: RequestType, mappedEvents?) {
-        return bookmakerIds.map(bookmakerId => {
-            const events = mappedEvents ? mappedEvents.filter(event => event.provider === bookmakerId.provider)[0]?.data : undefined
-            switch (bookmakerId.provider) {
-                case Provider.BETCONSTRUCT:
-                    return [this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.CIRCUS, events),
-                        this.toBetConstructRequests(bookmakerId, requestType, Bookmaker.GOLDENVEGAS, events)]
-                case Provider.STAR_CASINO:
-                    return this.toStarCasinoRequests(bookmakerId, requestType)
-                case Provider.MAGIC_BETTING:
-                    return this.toMagicBettingRequests(bookmakerId, requestType)
-                case Provider.PINNACLE:
-                    return this.toPinnacleRequests(bookmakerId, requestType)
-                case Provider.ALTENAR:
-                    return this.toAltenarRequests(bookmakerId, requestType, events)
-                case Provider.BET90:
-                    return this.toBet90Requests(bookmakerId, requestType)
-                case Provider.BINGOAL:
-                    return this.toBingoalRequests(bookmakerId, requestType, events)
-                case Provider.LADBROKES:
-                    return this.toLadbrokesRequests(bookmakerId, requestType, events)
-                case Provider.MERIDIAN:
-                    return this.toMeridianRequests(bookmakerId, requestType, events)
-                case Provider.SCOOORE:
-                    return this.toScoooreRequests(bookmakerId, requestType, events)
-                case Provider.STANLEYBET:
-                    return this.toStanleyBet(bookmakerId, requestType, events)
-                case Provider.BETCENTER:
-                    return this.toBetcenterRequests(bookmakerId, requestType, events)
-                case Provider.BWIN:
-                    return this.toBwinRequests(bookmakerId, requestType, events)
-                case Provider.BETWAY:
-                    return this.toBetwayRequests(bookmakerId, requestType, events)
-                case Provider.ZETBET:
-                    return this.toZetbetRequests(bookmakerId, requestType, events)
-            }
-        })
     }
 
     toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType, bookmaker: Bookmaker, mappedEvents?): Promise<ApiResponse> {
@@ -152,7 +92,7 @@ export class Scraper {
                 return {eventId: event.EventId, sportRadarId: sportRadarId}
             } else {
                 const betOffers = BetConstructParser.parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, events, requestType, bookmaker))
-                return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, bookmaker)
+                //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, bookmaker)
             }
         })
         return data
@@ -298,7 +238,7 @@ export class Scraper {
                 return axios.get('https://www.zebet.be/' + event.eventId)
                     .then(response => {
                         const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, {data: response.data, eventId: event.eventId}, requestType))
-                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
+                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
                     })
             })
             return Promise.all(requests).then(values => {
@@ -334,7 +274,7 @@ export class Scraper {
                     ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
                 return axios.post('https://sports.betway.be/api/Events/V2/GetEventDetails', payload).then(response => {
                     const betOffers = BetwayParser.parseBetOffers(new ApiResponse(Provider.BETWAY, response.data, requestType))
-                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETWAY)
+                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETWAY)
                 }).catch(error => console.log(error))
             })
             return Promise.all(betOfferRequests).then(values => {
@@ -345,29 +285,6 @@ export class Scraper {
 
         }
 
-    }
-
-    toBwinRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        // addons.betRadar
-        return [
-            axios.get('https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
-                'WJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&fixtureTypes=Standard&state=Late' +
-                'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
-                'mpetitionIds=' + bookmakerId.id + '&skip=0&take=50&sortBy=Tags')
-                .then(response => {
-                    if(requestType === RequestType.EVENT) {
-                        const data = response.data.fixtures.map(event => {
-                            return {eventId: event.id, sportRadarId: event.addons.betRadar}
-                        })
-                        return new ApiResponse(Provider.BWIN, data, requestType)
-                    } else {
-                        const betOffers = BwinParser.parseBetOffers(new ApiResponse(Provider.BWIN, response.data, requestType))
-                        return this.assignBetOffersToSportRadarEvent(betOffers.flat(), mappedEvents, Bookmaker.BWIN)
-                    }
-
-                })
-                .catch(error => console.log(error))
-        ]
     }
 
 
@@ -418,7 +335,7 @@ export class Scraper {
                     "scriptSessionId=brsZLHHlZCZLuWNodA~xgit5tl4fa5OPqxn/BRNPqxn-QDQkzKIEx"
                 return axios.post(eventDetailUrl, body, headers).then(response => {
                     const betOffers = StanleyBetParser.parseBetOffers(new ApiResponse(Provider.STANLEYBET, response.data, RequestType.BET_OFFER))
-                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.STANLEYBET)
+                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.STANLEYBET)
                 })
             })
 
@@ -448,7 +365,7 @@ export class Scraper {
             const requests = mappedEvents.map(event => {
                 return axios.get('https://www.e-lotto.be/cache/evenueEventMarketGroupWithMarketsSB/NL/420/' + event.eventId + ".json").then(response => {
                     const betOffers = ScoooreParser.parseBetOffers(new ApiResponse(Provider.SCOOORE, response.data, RequestType.BET_OFFER))
-                    return this.assignBetOffersToSportRadarEvent(betOffers.flat().filter(x => x), mappedEvents, Bookmaker.SCOOORE)
+                    //return this.assignBetOffersToSportRadarEvent(betOffers.flat().filter(x => x), mappedEvents, Bookmaker.SCOOORE)
                 }).catch(error => console.log(error))
             })
 
@@ -472,7 +389,7 @@ export class Scraper {
             const betOfferRequests = mappedEvents.map(event => {
                 return axios.get("https://meridianbet.be/sails/events/" + event.eventId).then(response => {
                     const betOffers = MeridianParser.parseBetOffers(new ApiResponse(Provider.MERIDIAN, response.data, requestType))
-                    return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.MERIDIAN)
+                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.MERIDIAN)
                 })
             })
             return Promise.all(betOfferRequests).then(values => {
@@ -508,7 +425,7 @@ export class Scraper {
                     + bookmakerId.id + '/' + event.eventId + '?prematch=1&live=0', headers).then(
                     response => {
                         const betOffers = LadbrokesParser.parseBetOffers(new ApiResponse(Provider.LADBROKES, response.data, requestType))
-                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.LADBROKES)
+                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.LADBROKES)
                     }
                 )})
             return Promise.all(betOfferRequests).then(values => {
@@ -554,7 +471,7 @@ export class Scraper {
                     const url = "https://www.bingoal.be/A/sport?k=" + k + "&func=detail&id=" + event.eventId
                     return axios.get(url, headers).then(response => {
                         const betOffers = BingoalParser.parseBetOffers(new ApiResponse(Provider.BINGOAL, response.data, requestType))
-                        return this.assignBetOffersToSportRadarEvent(betOffers, eventsMap, Bookmaker.BINGOAL)
+                        //return this.assignBetOffersToSportRadarEvent(betOffers, eventsMap, Bookmaker.BINGOAL)
                     })
                 })
                 return Promise.all(betOfferRequests).then(values => {
@@ -624,8 +541,8 @@ export class Scraper {
                         return new ApiResponse(bookmakerId.provider, data, requestType)
                     } else {
                         const betOffers = AltenarParser.parse(new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER))
-                        const assignedBetOffers = this.assignBetOffersToSportRadarEvent(betOffers, events, Bookmaker.GOLDEN_PALACE)
-                        return new ApiResponse(bookmakerId.provider, assignedBetOffers, requestType, Bookmaker.GOLDEN_PALACE)
+                        //const assignedBetOffers = this.assignBetOffersToSportRadarEvent(betOffers, events, Bookmaker.GOLDEN_PALACE)
+                        //return new ApiResponse(bookmakerId.provider, assignedBetOffers, requestType, Bookmaker.GOLDEN_PALACE)
                     }
                 }).catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType, book)})
         })
@@ -673,65 +590,6 @@ export class Scraper {
         ]*/
     }
 
-
-
-    async getApiResponses(requests, requestType?: RequestType): Promise<object> {
-        if(requestType === RequestType.BET_OFFER) {
-            const results = []
-            await Promise.all(requests.flat().filter(x => x)).then(responses => {
-                return responses.forEach((response) => {
-                    // @ts-ignore
-                    const parsedBetOffers = response.eventInfo.betOffers.map((betOffer: ApiResponse) => {
-                        if(betOffer.provider === Provider.KAMBI){
-                            return KambiParser.parse(betOffer)
-                        }
-                        if(betOffer.provider === Provider.SBTECH) {
-                            return SbtechParser.parseBetOffers(betOffer)
-                        }
-                    })
-                    // @ts-ignore
-                    const oldEventInfo: EventInfo =  response.eventInfo
-                    const eventInfo = new EventInfo(oldEventInfo.sportRadarId, oldEventInfo.sportRadarEventUrl, oldEventInfo.bookmakers, parsedBetOffers)
-                    // @ts-ignore
-                    results.push({sportRadarId: response.sportRadarId, eventInfo: eventInfo})
-                })
-            }).catch(error => console.log(error))
-            return results
-        } else {
-            const eventInfos = {}
-            if(requests){
-                await Promise.all(requests.flat().filter(x => x)).then(responses => {
-                    responses.forEach(response => {
-                        // @ts-ignore
-                        response.data.forEach(event => {
-                            // @ts-ignore
-                            const eventInfo = eventInfos[event.sportRadarId]
-                            if(eventInfo) {
-                                const bookMakerInfos = eventInfo.bookmakers
-                                // @ts-ignore
-                                bookMakerInfos.concat(event.bookMakerInfo)
-                                eventInfo.bookmakers = bookMakerInfos
-                                // @ts-ignore
-                                eventInfos[event.sportRadarId] = eventInfo
-                            } else {
-                                // @ts-ignore
-                                const eventInfo = new EventInfo(event.sportRadarId,
-                                    // @ts-ignore
-                                    "https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/" + event.sportRadarId,
-                                    // @ts-ignore
-                                    event.bookmakerInfo
-                                )
-                                // @ts-ignore
-                                eventInfos[event.sportRadarId] = eventInfo
-                            }
-                        })
-                    })
-                }).catch(error => console.log(error))
-            }
-            return eventInfos
-        }
-    }
-
     private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const betcenterHeaders = {
             headers: {
@@ -751,7 +609,7 @@ export class Scraper {
                         return new ApiResponse(Provider.BETCENTER, events, requestType)
                     } else {
                         const betOffers = BetcenterParser.parseBetOffers(new ApiResponse(Provider.BETCENTER, response.data, requestType))
-                        return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETCENTER)
+                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETCENTER)
                     }
 
                 }).catch(error => console.log(error))

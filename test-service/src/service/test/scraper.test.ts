@@ -1,8 +1,5 @@
 import {Scraper} from "../../client/scraper";
-import {footballCompetitions} from "../../client/config";
-import {SbtechScraper} from "../../client/sbtech/sbtech";
-import {KambiScraper} from "../../client/kambi/kambi";
-import {getBetOffers, getBetOffersForEvents} from "../../client/utils";
+import {getBetOffersForEvents} from "../../client/utils";
 
 const expect = require('chai').expect
 

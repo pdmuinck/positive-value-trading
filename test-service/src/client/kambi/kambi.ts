@@ -5,13 +5,6 @@ import {SportRadarScraper} from "../sportradar/sportradar";
 import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 
-export function kambiBetOfferPeriod(betOffer) {
-    const betOfferLabel = betOffer.criterion.label
-    if(betOfferLabel.includes("2ND HALF")) return "H2"
-    if(betOfferLabel.includes("1ST HALF") || betOfferLabel.includes("HALF TIME")) return "H1"
-    if(betOffer.criterion.lifetime && betOffer.criterion.lifetime === "FULL_TIME") return "FT"
-}
-
 function kambiBetOption(outcome) {
     return outcome.type.toUpperCase()
         .replace("OT_", "")
@@ -54,6 +47,90 @@ export function kambiPrices(betOffer, betType: BetType) {
 }
 
 export function kambiBetOfferTypes(betOffer) {
+    switch(betOffer.criterion.id){
+        // MATCH
+        case 1001159858:
+            return BetType._1X2
+        case 1000316018:
+            return BetType._1X2_H1
+        case 1001159826:
+            return BetType._1X2_H2
+
+        // DRAW NO BET
+        case 1001159666:
+            return BetType.DRAW_NO_BET
+        case 1001159884:
+            return BetType.DRAW_NO_BET_H1
+        case 1001421321:
+            return BetType.DRAW_NO_BET_H2
+
+        // DOUBLE CHANCE
+        case 1001159922:
+            return BetType.DOUBLE_CHANCE
+        case 1001159668:
+            return BetType.DOUBLE_CHANCE_H1
+        case 1001421320:
+            return BetType.DOUBLE_CHANCE_H2
+
+        // OVER UNDER
+        case 1001159926:
+            return BetType.OVER_UNDER
+        case 1001159532:
+            return BetType.OVER_UNDER_H1
+        case 1001243173:
+            return BetType.OVER_UNDER_H2
+        case 1001159967:
+            return BetType.OVER_UNDER_TEAM1
+        case 1001159633:
+            return BetType.OVER_UNDER_TEAM2
+
+        // CORRECT SCORE
+        case 1001159780:
+            return BetType.CORRECT_SCORE
+        case 1001568619:
+            return BetType.CORRECT_SCORE_H2
+        case 1000505272:
+            return BetType.CORRECT_SCORE_H1
+
+
+        case 1001159711:
+            return BetType.HANDICAP
+        case 1001642858:
+            return BetType.BOTH_TEAMS_SCORE
+        case 1001159897:
+            return BetType.OVER_UNDER_CORNERS
+        case 1001239606:
+            return BetType.ODD_EVEN_CORNERS
+        case 1002244276:
+            return BetType.ASIAN_OVER_UNDER
+        case 1001642858:
+            return BetType.BOTH_TEAMS_SCORE
+
+        // HANDICAP
+        case 1001224081:
+            return BetType._3_WAY_HANDICAP
+        case 1001568620:
+            return BetType._3_WAY_HANDICAP_H1
+        case 1001568621:
+            return BetType._3_WAY_HANDICAP_H2
+
+        // ASIAN HANDICAP
+        case 1002275572:
+            return BetType.ASIAN_HANDICAP
+        case 1002275573:
+            return BetType.ASIAN_HANDICAP_H1
+
+
+
+        case 1001160024:
+            return BetType.ODD_EVEN_TEAM2
+        case 1001160038:
+            return BetType.ODD_EVEN
+        case 1001159808:
+            return BetType.ODD_EVEN_TEAM2
+        default:
+            return BetType.UNKNOWN
+    /*
     switch(betOffer.betOfferType.id) {
         case 2:
             if(betOffer.criterion.id === 1001159858 || betOffer.criterion.id === 1000316018 || betOffer.criterion.id === 1001159826) return BetType._1X2
@@ -80,6 +157,7 @@ export function kambiBetOfferTypes(betOffer) {
         case 21:// asian total
             return BetType.OVER_UNDER
         default: return BetType.UNKNOWN
+        */
 
     }
 }
@@ -98,7 +176,7 @@ export function parseKambiBetOffers(apiResponse: ApiResponse) {
     }).flat().filter(x => x)
 }
 
-export async function getEventsForCompetition(id: string): Promise<EventInfo[]> {
+export async function getKambiEventsForCompetition(id: string): Promise<EventInfo[]> {
     const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES]
     // @ts-ignore
     return axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'

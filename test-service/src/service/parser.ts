@@ -6,41 +6,7 @@ import {BetOffer} from "./betoffers";
 
 const parser = require('node-html-parser')
 
-export function parseBwinBetOffers(apiResponse: ApiResponse) {
-    if(!apiResponse.data.fixture) return []
-    const event = apiResponse.data.fixture
-    return event.games.map(game => {
-        const betType = BwinParser.determineBetType(game.templateId)
-        if(betType !== BetType.UNKNOWN) {
-            const line = game.attr ? game.attr : NaN
-            return game.results.map((result, index) => {
-                const price = result.odds
-                const outcome = BwinParser.determineOutcome(betType, result, index)
-                return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line)
-            })
-        }
-    }).flat().filter(x => x)
-}
 
-
-export function parseSbtechBetOffers(apiResponse: ApiResponse) {
-    return apiResponse.data.data.markets
-        .map(market => {
-            const typeId = market.marketType.id
-            const betOfferType = SbtechParser.determineBetOfferType(typeId)
-            const betOffers = []
-            if(betOfferType !== BetType.UNKNOWN) {
-                const eventId = market.eventId
-                market.selections.forEach(selection => {
-                    const outcomeType = SbtechParser.determineOutcomeType(selection.outcomeType)
-                    const price = selection.trueOdds
-                    const line = selection.points ? selection.points : NaN
-                    betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
-                })
-            }
-            return betOffers
-        }).flat().filter(x => x)
-}
 
 export class Event {
     private readonly _startTime
@@ -158,13 +124,13 @@ export class StanleyBetParser {
             case "7554":
                 return BetType.DOUBLE_CHANCE_H2
             case "7557":
-                return BetType.DOUBLE_CHANCE_1H
+                return BetType.DOUBLE_CHANCE_H1
             case "20":
                 return BetType.BOTH_TEAMS_SCORE
             case "9":
                 return BetType.CORRECT_SCORE
             case "16":
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
             case "21":
                 return BetType.ODD_EVEN
             case "122":
@@ -238,7 +204,7 @@ export class ScoooreParser {
         if(betType === BetType.CORRECT_SCORE || betType === BetType.CORRECT_SCORE_H1 || betType === BetType.CORRECT_SCORE_H2
             ) {
             return selection.name
-        } else if(betType === BetType.DOUBLE_CHANCE || betType === BetType.DOUBLE_CHANCE_1H || betType === BetType.DOUBLE_CHANCE_H2) {
+        } else if(betType === BetType.DOUBLE_CHANCE || betType === BetType.DOUBLE_CHANCE_H1 || betType === BetType.DOUBLE_CHANCE_H2) {
             switch (selection.internalorder) {
                 case 1:
                     return "1X"
@@ -278,7 +244,7 @@ export class ScoooreParser {
             case "70129.1":
                 return BetType.DOUBLE_CHANCE
             case "70144.1":
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
             case "70092.1":
                 return BetType.BOTH_TEAMS_SCORE
             case "86949.1":
@@ -290,7 +256,7 @@ export class ScoooreParser {
             case "70145.1":
                 return BetType._1X2_H2
             case "70130.1":
-                return BetType.DOUBLE_CHANCE_1H
+                return BetType.DOUBLE_CHANCE_H1
             case "70133.1":
                 return BetType.HANDICAP_H1
             case "70104.1":
@@ -356,13 +322,13 @@ export class ZetBetParser {
     }
 
     static determineOutcome(outcome, betType, index) {
-        if(betType === BetType._1X2_H2 || betType === BetType._1X2_FIRST_HALF || betType === BetType._1X2 || betType === BetType.HANDICAP
+        if(betType === BetType._1X2_H2 || betType === BetType._1X2_H1 || betType === BetType._1X2 || betType === BetType.HANDICAP
         || betType === BetType.HANDICAP_H1 || betType === BetType.HANDICAP_H2) {
             if(index === 0) return "1"
             if(index === 1) return "X"
             if(index === 2) return "2"
         }
-        if(betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_1H || betType === BetType.DRAW_NO_BET_H2
+        if(betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2
         || betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.ASIAN_HANDICAP_H2) {
             if(index === 0) return "1"
             if(index === 1) return "2"
@@ -414,11 +380,11 @@ export class ZetBetParser {
             case "Both teams to score in 2nd half?":
                 return new BetLine(BetType.BOTH_TEAMS_SCORE_H2)
             case "Who will win the 1st half?":
-                return new BetLine(BetType._1X2_FIRST_HALF)
+                return new BetLine(BetType._1X2_H1)
             case "Who will win the 2nd half ?":
                 return new BetLine(BetType._1X2_H2)
             case "Double Chance - 1st half":
-                return new BetLine(BetType.DOUBLE_CHANCE_1H)
+                return new BetLine(BetType.DOUBLE_CHANCE_H1)
             case "Double Chance - 2nd Half":
                 return new BetLine(BetType.DOUBLE_CHANCE_H2)
             case "Draw no bet":
@@ -448,7 +414,7 @@ export class ZetBetParser {
             case "Handicap (2:0) - To win the match":
                 return new BetLine(BetType.HANDICAP, 2)
             case "Draw no bet - 1st half":
-                return new BetLine(BetType.DRAW_NO_BET_1H)
+                return new BetLine(BetType.DRAW_NO_BET_H1)
             case "Draw no bet - 2nd Half":
                 return new BetLine(BetType.DRAW_NO_BET_H2)
             case "Handicap (0:1) - To win the 2nd half":
@@ -531,7 +497,7 @@ export class BetwayParser {
                 case "handicap-asian-goals-over":
                     return BetType.ASIAN_OVER_UNDER_H1
                 case "win-draw-win":
-                    return BetType._1X2_FIRST_HALF
+                    return BetType._1X2_H1
                 default:
                     return BetType.UNKNOWN
             }
@@ -656,7 +622,7 @@ export class BingoalParser {
             case "27":
                 return BetType.BOTH_TEAMS_SCORE
             case "55":
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
             default:
                 return BetType.UNKNOWN
         }
@@ -727,117 +693,11 @@ export class BetConstructParser {
             case "draw-no-bet":
                 return BetType.DRAW_NO_BET
             case "1st-half-1x2":
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
         }
     }
 }
 
-export class SbtechParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType){
-            case RequestType.BET_OFFER:
-                return this.parseBetOffers(apiResponse)
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-        }
-    }
-
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        return apiResponse.data.data.markets
-            .map(market => SbtechParser.transformToBetOffer(apiResponse.provider, market)).flat()
-    }
-
-    private static parseEvents(apiResponse: ApiResponse): Event[] {
-        return apiResponse.data.map(page => page.events).flat().map(event => {
-            const participants = event.participants.map(participant => {
-                return new Participant(getParticipantName(participant.name),
-                    [new BookmakerId(apiResponse.provider, participant.id, IdType.PARTICIPANT)])
-            })
-            return new Event(new BookmakerId(apiResponse.provider, event.id, IdType.EVENT), event.startEventDate, participants)
-        })
-    }
-
-    private static transformToBetOffer(provider: Provider, market: any): BetOffer[] {
-        const typeId = market.marketType.id
-        const betOfferType = SbtechParser.determineBetOfferType(typeId)
-        const betOffers = []
-        if(betOfferType !== BetType.UNKNOWN) {
-            const eventId = market.eventId
-            market.selections.forEach(selection => {
-                const outcomeType = SbtechParser.determineOutcomeType(selection.outcomeType)
-                const price = selection.trueOdds
-                const line = selection.points ? selection.points : NaN
-                betOffers.push(new BetOffer(betOfferType, eventId, provider, outcomeType, price, line))
-            })
-        }
-        return betOffers
-    }
-
-    static determineOutcomeType(outcomeType): string {
-        switch(outcomeType){
-            case 'Home':
-                return '1'
-            case 'Away':
-                return '2'
-            case 'Tie':
-                return 'X'
-            default:
-                return outcomeType ? outcomeType.toUpperCase() : outcomeType
-        }
-    }
-
-    static determineBetOfferType(typeId: string): BetType {
-        switch(typeId){
-            case "154":
-                return BetType.TOTAL_GOALS
-            case "696":
-                return BetType.WIN_TO_NIL
-            case "701":
-                return BetType.TO_WIN_FROM_BEHIND
-            case "38":
-                return BetType.ODD_EVEN
-            case '1_0':
-                return BetType._1X2
-            case "1_1":
-                return BetType._1X2_FIRST_HALF
-            case "1_2":
-                return BetType._1X2_H2
-            case "278":
-                return BetType.ODD_EVEN_TEAMS_H2
-            case "276":
-                return BetType.ODD_EVEN_TEAMS_H1
-            case "2_0":
-                return BetType.ASIAN_HANDICAP
-            case "2_1":
-                return BetType.ASIAN_HANDICAP_H1
-            case "2_2":
-                return BetType.ASIAN_HANDICAP_H2
-            case '3_0':
-                return BetType.OVER_UNDER
-            case "3_1":
-                return BetType.OVER_UNDER_H1
-            case "158":
-                return BetType.BOTH_TEAMS_SCORE
-            case "2936":
-                return BetType.BOTH_TEAMS_SCORE_H2
-            case "2935":
-                return BetType.BOTH_TEAMS_SCORE_H1
-            case "61":
-                return BetType.DOUBLE_CHANCE
-            case "145":
-                return BetType.DOUBLE_CHANCE_1H
-            case "60":
-                return BetType.CORRECT_SCORE
-            case "2_157":
-                return BetType.DRAW_NO_BET
-            case "3_7":
-                return BetType.OVER_UNDER_TEAM
-            default:
-                return BetType.UNKNOWN
-
-        }
-    }
-}
 
 export class AltenarParser {
     static parse(apiResponse: ApiResponse): any[] {
@@ -912,145 +772,6 @@ export class AltenarParser {
     }
 }
 
-export class BwinParser {
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        return apiResponse.data.fixtures.map(event => {
-            const eventId = event.id
-            return event.games.map(game => {
-                const betType = this.determineBetType(game.templateId)
-                if(betType !== BetType.UNKNOWN) {
-                    const line = game.attr
-                    return game.results.map((result, index) => {
-                        const price = result.odds
-                        const outcome = this.determineOutcome(betType, result, index)
-                        return new BetOffer(betType, eventId, Bookmaker.BWIN, outcome, price, line)
-                    })
-                }
-            })
-        }).flat().filter(x => x)
-    }
-
-    static determineOutcome(betType, result, index) {
-        if(betType === BetType.DOUBLE_CHANCE) {
-            if(result.name.value.includes("X or")) return "X2"
-            if(result.name.value.includes("or X")) return "1X"
-            return "12"
-        }
-        if(betType === BetType.OVER_UNDER || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_H2) {
-            return result.totalsPrefix.toUpperCase()
-        }
-        if(betType === BetType._1X2) {
-            return result.sourceName.value.toUpperCase()
-        }
-        if(betType === BetType.DRAW_NO_BET) {
-            if(index === 0) return "1"
-            return "2"
-        }
-        if(betType === BetType.HANDICAP || betType === BetType._1X2_FIRST_HALF) {
-            if(index === 0) return "1"
-            if(index === 1) return "X"
-            return "2"
-        }
-        return result.name.value.toUpperCase()
-
-    }
-
-    static determineBetType(templateId) {
-        switch(templateId) {
-            case 15085:
-                return BetType.BOTH_TEAMS_SCORE_H1
-            case 11748:
-                return BetType.DOUBLE_CHANCE_1H
-            case 4665:
-                return BetType.ODD_EVEN
-            case 16449:
-                return BetType.ODD_EVEN_H1
-            case 19193:
-                return BetType.CORRECT_SCORE
-            case 26644:
-                return BetType.CORRECT_SCORE_H1
-            case 16454:
-                return BetType.OVER_UNDER_TEAM1
-            case 16455:
-                return BetType.OVER_UNDER_TEAM2
-            case 20085:
-                return BetType.OVER_UNDER_TEAM2
-            case 24138:
-                return BetType.OVER_UNDER_TEAM1
-            case 31317:
-                return BetType.OVER_UNDER_TEAM1_H1
-            case 31316:
-                return BetType.OVER_UNDER_TEAM1_H1
-            case 31319:
-                return BetType.OVER_UNDER_TEAM2_H1
-            case 31320:
-                return BetType.OVER_UNDER_TEAM2_H1
-            case 4727:
-                return BetType.TOTAL_GOALS_TEAM2
-            case 2196:
-                return BetType.TOTAL_GOALS
-            case 20095:
-                return BetType.TOTAL_GOALS
-            case 4718:
-                return BetType.TOTAL_GOALS_H1
-            case 4732:
-                return BetType.TOTAL_GOALS_H2
-            case 4721:
-                return BetType.TOTAL_GOALS_TEAM2_H1
-            case 4733:
-                return BetType.TOTAL_GOALS_TEAM1_H2
-            case 4720:
-                return BetType.TOTAL_GOALS_TEAM1_H1
-            case 4734:
-                return BetType.TOTAL_GOALS_TEAM2_H2
-            case 17:
-                return BetType._1X2
-            case 173:
-                return BetType.OVER_UNDER
-            case 859:
-                return BetType.OVER_UNDER
-            case 7233:
-                return BetType.OVER_UNDER
-            case 1772:
-                return BetType.OVER_UNDER
-            case 1791:
-                return BetType.OVER_UNDER
-            case 8933:
-                return BetType.OVER_UNDER
-            case 3187:
-                return BetType.DOUBLE_CHANCE
-            case 7824:
-                return BetType.BOTH_TEAMS_SCORE
-            case 12119:
-                return BetType.DRAW_NO_BET
-            case 52:
-                return BetType.HANDICAP
-            case 54:
-                return BetType.HANDICAP
-            case 2488:
-                return BetType._1X2_FIRST_HALF
-            case 7688:
-                return BetType.OVER_UNDER_H1
-            case 7689:
-                return BetType.OVER_UNDER_H1
-            case 7890:
-                return BetType.OVER_UNDER_H1
-            case 7891:
-                return BetType.OVER_UNDER_H1
-            case 19595:
-                return BetType.OVER_UNDER_H2
-            case 19596:
-                return BetType.OVER_UNDER_H2
-            case 19597:
-                return BetType.OVER_UNDER_H2
-            case 20506:
-                return BetType.OVER_UNDER_H2
-            default:
-                return BetType.UNKNOWN
-        }
-    }
-}
-
 export class BetcenterParser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
@@ -1104,13 +825,13 @@ export class BetcenterParser {
         const handicaps_1H = [23482, 23462]
         const handicaps = [22272, 22282, 22292, 22302, 22312, 22322]
         if(id === 22242) return BetType._1X2
-        if(id === 22332) return BetType._1X2_FIRST_HALF
+        if(id === 22332) return BetType._1X2_H1
         if(id === 22522) return BetType.DOUBLE_CHANCE
         if(id === 22262) return BetType.BOTH_TEAMS_SCORE
         if(id === 23662) return BetType.OVER_UNDER_TEAM1
         if(id === 23672) return BetType.OVER_UNDER_TEAM2
         if(id === 22532) return BetType.ODD_EVEN
-        if(id === 23432) return BetType.DOUBLE_CHANCE_1H
+        if(id === 23432) return BetType.DOUBLE_CHANCE_H1
         if(overUnders.includes(id)) return BetType.OVER_UNDER
         if(handicaps.includes(id)) return BetType.HANDICAP
         if(overUnders_1H.includes(id)) return BetType.OVER_UNDER_H1
@@ -1180,7 +901,7 @@ export class LadbrokesParser {
             case 79:
                 return BetType.ODD_EVEN
             case 363:
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
             case 372:
                 return BetType.BOTH_TEAMS_SCORE_H1
             default:
@@ -1285,11 +1006,11 @@ export class MeridianParser {
             case "4072":
                 return BetType.HALF_TIME_FULL_TIME
             case "4017":
-                return BetType._1X2_FIRST_HALF
+                return BetType._1X2_H1
             case "4022":
-                return BetType.DOUBLE_CHANCE_1H
+                return BetType.DOUBLE_CHANCE_H1
             case "4040":
-                return BetType.DRAW_NO_BET_1H
+                return BetType.DRAW_NO_BET_H1
             case "4018":
                 return BetType.OVER_UNDER_H1
             case "4041":
@@ -1522,7 +1243,7 @@ export class PinnacleParser {
             // primary markets
             if(type === "m") {
                 if(period === "0") return BetType._1X2
-                if(period === "1") return BetType._1X2_FIRST_HALF
+                if(period === "1") return BetType._1X2_H1
             }
             if(type === "tt"){
                 if(splitted[4] === "home") {
@@ -1548,7 +1269,7 @@ export class PinnacleParser {
             // specials
             switch(marketId.special.description) {
                 case "Double Chance 1st Half":
-                    return BetType.DOUBLE_CHANCE_1H
+                    return BetType.DOUBLE_CHANCE_H1
                 case "Double Chance":
                     return BetType.DOUBLE_CHANCE
                 case "Total Goals Odd/Even 1st Half":
@@ -1556,7 +1277,7 @@ export class PinnacleParser {
                 case "Both Teams To Score":
                     return BetType.BOTH_TEAMS_SCORE
                 case "Draw No Bet 1st Half":
-                    return BetType.DRAW_NO_BET_1H
+                    return BetType.DRAW_NO_BET_H1
                 case "Exact Total Goals":
                     return BetType.EXACT_GOALS
                 case "Draw No Bet":

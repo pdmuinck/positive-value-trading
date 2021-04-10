@@ -2,10 +2,11 @@ import {EventInfo} from "../service/events";
 import axios from "axios";
 import {ApiResponse} from "./scraper";
 import {RequestType} from "../domain/betoffer";
-import {Provider} from "../service/bookmaker";
-import {parseBwinBetOffers, parseSbtechBetOffers} from "../service/parser";
+import {BetType, Provider} from "../service/bookmaker"
 import {BetOffer} from "../service/betoffers";
 import {parseKambiBetOffers} from "./kambi/kambi";
+import {parseSbtechBetOffers} from "./sbtech/sbtech";
+import {parseBwinBetOffers} from "./bwin";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {

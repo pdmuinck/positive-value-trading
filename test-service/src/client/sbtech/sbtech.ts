@@ -1,9 +1,9 @@
 import {BookMakerInfo, EventInfo} from "../../service/events"
-import {Bookmaker, Provider} from "../../service/bookmaker"
+import {BetType, Bookmaker, Provider} from "../../service/bookmaker"
 import axios from "axios"
 import {SportRadarScraper} from "../sportradar/sportradar"
-import {parseSbtechBetOffers} from "../../service/parser";
-import {getBetOffers} from "../utils";
+import {ApiResponse} from "../scraper";
+import {BetOffer} from "../../service/betoffers";
 
 class SbtechTokenRequest {
     private readonly _bookmaker: Bookmaker
@@ -47,70 +47,152 @@ export class TokenResponse {
     }
 }
 
-export class SbtechScraper {
+export async function getSbtechEventsForCompetition(id: string): Promise<EventInfo[]> {
+    const books = [
+        new SbtechTokenRequest(Bookmaker.BET777, "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", "V1"),
+        new SbtechTokenRequest(Bookmaker.BETFIRST, "https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28", "V1"),
+    ]
 
-    static async getBetOffersForEvent(event: EventInfo) {
-        return getBetOffers(event)
-    }
-
-    static async getEventsForCompetition(id: string): Promise<EventInfo[]> {
-        const books = [
-            new SbtechTokenRequest(Bookmaker.BET777, "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", "V1"),
-            new SbtechTokenRequest(Bookmaker.BETFIRST, "https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28", "V1"),
-        ]
-
-        const tokenRequests = books.map(book => {
-            const tokenUrl = book.url
-            return axios.get(tokenUrl).then(tokenResponse => {
-                return new TokenResponse(this.getToken(tokenResponse.data, book.api), book.bookmaker)
-            })
+    const tokenRequests = books.map(book => {
+        const tokenUrl = book.url
+        return axios.get(tokenUrl).then(tokenResponse => {
+            return new TokenResponse(getToken(tokenResponse.data, book.api), book.bookmaker)
         })
+    })
 
-        return Promise.all(tokenRequests).then(tokens => {
-            const token = tokens[0].token
-            const bookmaker = tokens[0].bookmaker
-            const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
+    return Promise.all(tokenRequests).then(tokens => {
+        const token = tokens[0].token
+        const bookmaker = tokens[0].bookmaker
+        const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
 
-            const headers = {
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'locale': 'en',
-                    'accept-encoding': 'gzip, enflate, br'
-                }
+        const headers = {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'locale': 'en',
+                'accept-encoding': 'gzip, enflate, br'
             }
-            const leagueUrl = 'https://sbapi.sbtech.com/' + bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
-            return axios.post(leagueUrl, page, headers)
-                .then(response => {
-                    return response.data.events.map(event => {
-                        const bookmakerInfos = books.map(book => {
-                            const token = tokens.filter(token => token.bookmaker === book.bookmaker)[0].token
-                            const headers = {
-                                headers: {
-                                    'Authorization': 'Bearer ' + token,
-                                    'locale': 'en',
-                                    'accept-encoding': 'gzip, enflate, br'
-                                }
-                            }
-                            const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
-                            const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
-                            return new BookMakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
-                                leagueUrl, eventUrl, headers, undefined, "GET")
-                        })
-                        const sportRadarId = parseInt(event.media[0].providerEventId)
-                        return new EventInfo(sportRadarId, SportRadarScraper.getEventUrl(sportRadarId), bookmakerInfos)
-                    })
-                })
-        })
-    }
-
-    static getToken(response: string, api: string) {
-        if(api.toUpperCase() === "V1") {
-            return response.split('ApiAccessToken = \'')[1].replace('\'', '')
-        } else {
-            //@ts-ignore
-            return response.token
         }
+        const leagueUrl = 'https://sbapi.sbtech.com/' + bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
+        return axios.post(leagueUrl, page, headers)
+            .then(response => {
+                return response.data.events.map(event => {
+                    const bookmakerInfos = books.map(book => {
+                        const token = tokens.filter(token => token.bookmaker === book.bookmaker)[0].token
+                        const headers = {
+                            headers: {
+                                'Authorization': 'Bearer ' + token,
+                                'locale': 'en',
+                                'accept-encoding': 'gzip, enflate, br'
+                            }
+                        }
+                        const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
+                        const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
+                        return new BookMakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
+                            leagueUrl, eventUrl, headers, undefined, "GET")
+                    })
+                    const sportRadarId = parseInt(event.media[0].providerEventId)
+                    return new EventInfo(sportRadarId, SportRadarScraper.getEventUrl(sportRadarId), bookmakerInfos)
+                })
+            })
+    })
+}
+
+function getToken(response: string, api: string) {
+    if(api.toUpperCase() === "V1") {
+        return response.split('ApiAccessToken = \'')[1].replace('\'', '')
+    } else {
+        //@ts-ignore
+        return response.token
     }
+}
+
+function determineOutcomeType(outcomeType): string {
+    switch(outcomeType){
+        case 'Home':
+            return '1'
+        case 'Away':
+            return '2'
+        case 'Tie':
+            return 'X'
+        default:
+            return outcomeType ? outcomeType.toUpperCase() : outcomeType
+    }
+}
+
+function determineBetOfferType(typeId: string): BetType {
+    switch(typeId){
+        case "1_0":
+            return BetType._1X2
+        case "1_1":
+            return BetType._1X2_H1
+        case "1_2":
+            return BetType._1X2_H2
+        case "2_157":
+            return BetType.DRAW_NO_BET
+        case "2_0":
+            return BetType.ASIAN_HANDICAP
+        case "2_1":
+            return BetType.ASIAN_HANDICAP_H1
+        case "2_2":
+            return BetType.ASIAN_HANDICAP_H2
+        case "3_0":
+            return BetType.OVER_UNDER
+        case "3_1":
+            return BetType.OVER_UNDER_H1
+        case "3_2":
+            return BetType.OVER_UNDER_H2
+        case "154":
+            return BetType.TOTAL_GOALS
+        case "696":
+            return BetType.WIN_TO_NIL
+        case "701":
+            return BetType.TO_WIN_FROM_BEHIND
+        case "38":
+            return BetType.ODD_EVEN
+        case "278":
+            return BetType.ODD_EVEN_TEAMS_H2
+        case "276":
+            return BetType.ODD_EVEN_TEAMS_H1
+        case "158":
+            return BetType.BOTH_TEAMS_SCORE
+        case "2936":
+            return BetType.BOTH_TEAMS_SCORE_H2
+        case "2935":
+            return BetType.BOTH_TEAMS_SCORE_H1
+        case "61":
+            return BetType.DOUBLE_CHANCE
+        case "145":
+            return BetType.DOUBLE_CHANCE_H1
+        case "60":
+            return BetType.CORRECT_SCORE
+        case "3_7":
+            return BetType.OVER_UNDER_TEAM
+        default:
+            return BetType.UNKNOWN
+
+    }
+}
+
+export function parseSbtechBetOffers(apiResponse: ApiResponse) {
+    return apiResponse.data.data.markets
+        .map(market => {
+            const typeId = market.marketType.id
+            const betOfferType = determineBetOfferType(typeId)
+            const betOffers = []
+            if(betOfferType !== BetType.UNKNOWN) {
+                const eventId = market.eventId
+                market.selections.forEach(selection => {
+                    const outcomeType = determineOutcomeType(selection.outcomeType)
+                    const price = selection.trueOdds
+                    const line = selection.points ? selection.points : undefined
+                    betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
+                })
+            }
+            return betOffers
+        }).flat().filter(x => x)
+}
+
+
 
 
     /*
@@ -135,4 +217,3 @@ export class SbtechScraper {
     "OREGON_LOTTERY": {api: 'V2', name: 'oregonlottery', licenses: ['US'], tokenUrl: 'https://api-orp.sbtech.com/auth/v2/getTokenBySiteId/15002', dataUrl: 'https://api-orp.sbtech.com/oregonlottery/sportscontent/sportsbook/v1/Events/GetBySportId'},
     "BETPT": {api: 'V2', name: 'betpt', licenses: ['PT'], tokenUrl: 'https://api.play-gaming.com/auth/v2/getTokenBySiteId/85', dataUrl: 'https://sbapi.sbtech.com/betpt/sportscontent/sportsbook/v1/Events/getBySportId'}
 */
-}
