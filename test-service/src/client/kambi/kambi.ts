@@ -1,7 +1,7 @@
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import axios from "axios";
-import {SportRadarScraper} from "../sportradar/sportradar";
+import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 
@@ -124,35 +124,6 @@ export function kambiBetOfferTypes(betOffer) {
 
         default:
             return BetType.UNKNOWN
-    /*
-    switch(betOffer.betOfferType.id) {
-        case 2:
-            if(betOffer.criterion.id === 1001159858 || betOffer.criterion.id === 1000316018 || betOffer.criterion.id === 1001159826) return BetType._1X2
-            if(betOffer.criterion.id === 1001159666 || betOffer.criterion.id === 1001159884 || betOffer.criterion.id === 1001421321) return BetType.DRAW_NO_BET
-        case 3:
-            return BetType.CORRECT_SCORE
-        case 6:
-            if(betOffer.criterion.id === 1001159967) return BetType.OVER_UNDER_TEAM1
-            if(betOffer.criterion.id === 1001159633) return BetType.OVER_UNDER_TEAM2
-            return BetType.OVER_UNDER
-        case 7:// asian handicap
-            return BetType.ASIAN_HANDICAP
-        case 8:
-            return BetType.HALF_TIME_FULL_TIME
-        case 10:
-            if(betOffer.criterion.id === 1001160024) return BetType.ODD_EVEN_TEAM2
-            if(betOffer.criterion.id === 1001159808) return BetType.ODD_EVEN_TEAM1
-            return BetType.ODD_EVEN
-        case 11:
-            return BetType.HANDICAP
-        case 12:
-            return BetType.DOUBLE_CHANCE
-        case 18:// yesno
-        case 21:// asian total
-            return BetType.OVER_UNDER
-        default: return BetType.UNKNOWN
-        */
-
     }
 }
 
@@ -185,7 +156,7 @@ export async function getKambiEventsForCompetition(id: string): Promise<EventInf
                             'https://eu-offering.kambicdn.org/offering/v2018/' + book + '/betoffer/event/'  + event.id + '.json?includeParticipants=false',
                             undefined, undefined, "GET")
                     }).flat()
-                    return new EventInfo(parseInt(sportRadarId), SportRadarScraper.getEventUrl(sportRadarId), bookMakerInfos)
+                    return new EventInfo(parseInt(sportRadarId), getSportRadarEventUrl(sportRadarId), bookMakerInfos)
                 }).catch(error => [])
         })
         return Promise.all(requests).then((sportRadarResponses) => {

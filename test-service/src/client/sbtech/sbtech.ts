@@ -1,9 +1,10 @@
 import {BookMakerInfo, EventInfo} from "../../service/events"
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker"
 import axios from "axios"
-import {SportRadarScraper} from "../sportradar/sportradar"
+
 import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {getSportRadarEventUrl} from "../sportradar/sportradar";
 
 class SbtechTokenRequest {
     private readonly _bookmaker: Bookmaker
@@ -91,7 +92,7 @@ export async function getSbtechEventsForCompetition(id: string): Promise<EventIn
                             leagueUrl, eventUrl, headers, undefined, "GET")
                     })
                     const sportRadarId = parseInt(event.media[0].providerEventId)
-                    return new EventInfo(sportRadarId, SportRadarScraper.getEventUrl(sportRadarId), bookmakerInfos)
+                    return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
                 })
             })
     })
@@ -106,8 +107,11 @@ function getToken(response: string, api: string) {
     }
 }
 
-function determineOutcomeType(outcomeType): string {
-    switch(outcomeType){
+function determineOutcomeType(selection, betType: BetType): string {
+    if(betType === BetType.CORRECT_SCORE) {
+        return selection.name.toUpperCase()
+    }
+    switch(selection.outcomeType){
         case 'Home':
             return '1'
         case 'Away':
@@ -115,7 +119,7 @@ function determineOutcomeType(outcomeType): string {
         case 'Tie':
             return 'X'
         default:
-            return outcomeType ? outcomeType.toUpperCase() : outcomeType
+            return selection.outcomeType ? selection.outcomeType.toUpperCase() : selection.outcomeType
     }
 }
 
@@ -189,22 +193,54 @@ function determineBetOfferType(typeId: string): BetType {
 }
 
 export function parseSbtechBetOffers(apiResponse: ApiResponse) {
+    const homeId = apiResponse.data.data.events[0].participants.filter(participant => participant.venueRole === "Home")[0].id
     return apiResponse.data.data.markets
         .map(market => {
             const typeId = market.marketType.id
             const betOfferType = determineBetOfferType(typeId)
             const betOffers = []
-            if(betOfferType === BetType.ODD_EVEN_TEAMS || betOfferType === BetType.ODD_EVEN_TEAMS_H1 || betOfferType === BetType.ODD_EVEN_TEAMS_H2) {
+            const eventId = market.eventId
+
+            if(betOfferType === BetType.OVER_UNDER_TEAM) {
+                if(market.participantMapping === homeId) {
+                    market.selections.forEach(selection => {
+                        const line = selection.points ? selection.points : undefined
+                        const outcomeType = determineOutcomeType(selection, betOfferType)
+                        const price = selection.trueOdds
+                        betOffers.push(BetType.OVER_UNDER_TEAM1,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                    })
+                } else {
+                    market.selections.forEach(selection => {
+                        const line = selection.points ? selection.points : undefined
+                        const outcomeType = determineOutcomeType(selection, betOfferType)
+                        const price = selection.trueOdds
+                        betOffers.push(BetType.OVER_UNDER_TEAM2,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                    })
+                }
+                return betOffers
+            }
+            if(betOfferType === BetType.ODD_EVEN_TEAMS) {
                 // first selection is away team ODD
                 // second is home team ODD
-
-                market.selections
+                market.selections.forEach(selection => {
+                    const line = selection.points ? selection.points : undefined
+                    const outcomeType = determineOutcomeType(selection, betOfferType)
+                    const price = selection.trueOdds
+                    if(selection.metadata.type === "13") {
+                        betOffers.push(BetType.ODD_EVEN_TEAM1,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                    } else if(selection.metadata.type === "14") {
+                        betOffers.push(BetType.ODD_EVEN_TEAM2,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                    }
+                })
+                return betOffers
             }
             if(betOfferType !== BetType.UNKNOWN) {
-                const eventId = market.eventId
                 market.selections.forEach(selection => {
-
-                    const outcomeType = determineOutcomeType(selection.outcomeType)
+                    const outcomeType = determineOutcomeType(selection, betOfferType).replace(":", "-")
                     const price = selection.trueOdds
                     const line = selection.points ? selection.points : undefined
                     betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))

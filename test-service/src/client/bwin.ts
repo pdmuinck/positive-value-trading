@@ -1,9 +1,9 @@
 import {BookMakerInfo, EventInfo} from "../service/events";
 import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../service/bookmaker";
-import {SportRadarScraper} from "./sportradar/sportradar";
 import {ApiResponse} from "./scraper";
 import {BetOffer} from "../service/betoffers";
+import {getSportRadarEventUrl} from "./sportradar/sportradar";
 
 export async function getBwinEventsForCompetition(id: string): Promise<EventInfo[]> {
     const leagueUrl = 'https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
@@ -16,7 +16,7 @@ export async function getBwinEventsForCompetition(id: string): Promise<EventInfo
             const bookmakerInfo = new BookMakerInfo(Provider.BWIN, Bookmaker.BWIN, id, event.id, "",
                 "https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + event.id + "&state=Latest",
                 undefined, undefined, "GET")
-            return new EventInfo(parseInt(sportRadarId), SportRadarScraper.getEventUrl(sportRadarId), [bookmakerInfo])
+            return new EventInfo(parseInt(sportRadarId), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
     })
 }
@@ -27,7 +27,7 @@ export function parseBwinBetOffers(apiResponse: ApiResponse) {
     return event.games.map(game => {
         const betType = determineBetType(game.templateId)
         if (betType !== BetType.UNKNOWN) {
-            const line = game.attr ? game.attr : undefined
+            const line = game.attr ? game.attr.replace(",", ".") : undefined
             return game.results.map((result, index) => {
                 const price = result.odds
                 const outcome = determineOutcome(betType, result, index)
@@ -64,6 +64,16 @@ function determineOutcome(betType, result, index) {
 
 function determineBetType(templateId) {
     switch(templateId) {
+        // 1X2
+        case 17:
+            return BetType._1X2
+        case 2488:
+            return BetType._1X2_H1
+
+        // DRAW NO BET
+        case 12119:
+            return BetType.DRAW_NO_BET
+
         case 15085:
             return BetType.BOTH_TEAMS_SCORE_H1
         case 11748:
@@ -110,8 +120,7 @@ function determineBetType(templateId) {
             return BetType.TOTAL_GOALS_TEAM1_H1
         case 4734:
             return BetType.TOTAL_GOALS_TEAM2_H2
-        case 17:
-            return BetType._1X2
+
         case 173:
             return BetType.OVER_UNDER
         case 859:
@@ -128,14 +137,11 @@ function determineBetType(templateId) {
             return BetType.DOUBLE_CHANCE
         case 7824:
             return BetType.BOTH_TEAMS_SCORE
-        case 12119:
-            return BetType.DRAW_NO_BET
         case 52:
             return BetType.HANDICAP
         case 54:
             return BetType.HANDICAP
-        case 2488:
-            return BetType._1X2_H1
+
         case 7688:
             return BetType.OVER_UNDER_H1
         case 7689:

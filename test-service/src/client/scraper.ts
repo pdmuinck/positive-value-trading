@@ -21,6 +21,8 @@ import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
 import {getKambiEventsForCompetition} from "./kambi/kambi";
 import {getBwinEventsForCompetition} from "./bwin";
+import {getPinnacleEventsForCompetition} from "./pinnacle/pinnacle";
+import {getSportRadarMatch, SportRadarMatch} from "./sportradar/sportradar";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -38,15 +40,29 @@ export class Scraper {
             "JUPILER_PRO_LEAGUE": [
                 getSbtechEventsForCompetition("40815"),
                 getKambiEventsForCompetition("1000094965"),
-                getBwinEventsForCompetition("16409")
+                getBwinEventsForCompetition("16409"),
             ]
         }
+
         const leagueRequests = requests[leagueName.toUpperCase()]
         // @ts-ignore
-        return Promise.all(leagueRequests).then(values => this.mergeEvents(values))
+        events = await Promise.all(leagueRequests).then(values => this.mergeEvents(values))
+
+        const requestsNotMappedToSportRadar = {
+            "JUPILER_PRO_LEAGUE": [
+                getPinnacleEventsForCompetition("1817", events)
+            ]
+        }
+
+        const leagueRequestsNotMapped = requestsNotMappedToSportRadar[leagueName.toUpperCase()]
+        // @ts-ignore
+        return Promise.all(leagueRequestsNotMapped).then(values => this.mergeEvents(values, events))
     }
 
-    static mergeEvents(events: EventInfo[]): EventInfo[] {
+    static mergeEvents(events: EventInfo[], other?: EventInfo[]): EventInfo[] {
+        if(other) {
+            events = events.flat().concat(other.flat())
+        }
         const result: Map<number, EventInfo> = new Map()
         events.flat().forEach(event => {
             const storedEvent: EventInfo = result[event.sportRadarId]

@@ -7,12 +7,18 @@ export class EventInfo {
     private readonly _sportRadarHttpMethod = "GET"
     private readonly _bookmakers: BookMakerInfo[]
     private readonly _betOffers
+    private readonly _sportRadarParticipants
 
-    constructor(sportRadarId: number, sportRadarEventUrl: string, bookmakers: BookMakerInfo[], betOffers?) {
+    constructor(sportRadarId: number, sportRadarEventUrl: string, bookmakers: BookMakerInfo[], betOffers?, sportRadarParticipants?) {
         this._sportRadarId = sportRadarId
         this._sportRadarEventUrl = sportRadarEventUrl
         this._bookmakers = bookmakers
         this._betOffers = betOffers
+        this._sportRadarParticipants = sportRadarParticipants
+    }
+
+    get sportRadarParticipants() {
+        return this._sportRadarParticipants
     }
 
     get sportRadarId(): number {
