@@ -75,8 +75,12 @@ export function kambiBetOfferTypes(betOffer) {
         // OVER UNDER
         case 1001159926:
             return BetType.OVER_UNDER
+        case 1002244276:
+            return BetType.OVER_UNDER // ASIAN TOTAL
         case 1001159532:
             return BetType.OVER_UNDER_H1
+        case 1002558602:
+            return BetType.OVER_UNDER_H1 // ASIAN TOTAL
         case 1001243173:
             return BetType.OVER_UNDER_H2
         case 1001159967:
@@ -92,27 +96,13 @@ export function kambiBetOfferTypes(betOffer) {
         case 1000505272:
             return BetType.CORRECT_SCORE_H1
 
-
-        case 1001159711:
-            return BetType.HANDICAP
-        case 1001642858:
-            return BetType.BOTH_TEAMS_SCORE
-        case 1001159897:
-            return BetType.OVER_UNDER_CORNERS
-        case 1001239606:
-            return BetType.ODD_EVEN_CORNERS
-        case 1002244276:
-            return BetType.ASIAN_OVER_UNDER
-        case 1001642858:
-            return BetType.BOTH_TEAMS_SCORE
-
         // HANDICAP
         case 1001224081:
-            return BetType._3_WAY_HANDICAP
+            return BetType.HANDICAP
         case 1001568620:
-            return BetType._3_WAY_HANDICAP_H1
+            return BetType.HANDICAP_H1
         case 1001568621:
-            return BetType._3_WAY_HANDICAP_H2
+            return BetType.HANDICAP_H2
 
         // ASIAN HANDICAP
         case 1002275572:
@@ -120,14 +110,18 @@ export function kambiBetOfferTypes(betOffer) {
         case 1002275573:
             return BetType.ASIAN_HANDICAP_H1
 
-
-
-        case 1001160024:
-            return BetType.ODD_EVEN_TEAM2
+        // ODD EVEN
         case 1001160038:
             return BetType.ODD_EVEN
         case 1001159808:
+            return BetType.ODD_EVEN_TEAM1
+        case 1001160024:
             return BetType.ODD_EVEN_TEAM2
+
+        // OTHER
+        case 1001642858:
+            return BetType.BOTH_TEAMS_SCORE
+
         default:
             return BetType.UNKNOWN
     /*

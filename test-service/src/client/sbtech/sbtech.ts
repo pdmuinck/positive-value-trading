@@ -121,52 +121,67 @@ function determineOutcomeType(outcomeType): string {
 
 function determineBetOfferType(typeId: string): BetType {
     switch(typeId){
+        // 1X2
         case "1_0":
             return BetType._1X2
         case "1_1":
             return BetType._1X2_H1
         case "1_2":
             return BetType._1X2_H2
+
+        // DRAW NO BET
         case "2_157":
             return BetType.DRAW_NO_BET
-        case "2_0":
-            return BetType.ASIAN_HANDICAP
-        case "2_1":
-            return BetType.ASIAN_HANDICAP_H1
-        case "2_2":
-            return BetType.ASIAN_HANDICAP_H2
+
+        // DOUBLE CHANCE
+        case "61":
+            return BetType.DOUBLE_CHANCE
+        case "145":
+            return BetType.DOUBLE_CHANCE_H1
+
+        // OVER UNDER
         case "3_0":
             return BetType.OVER_UNDER
         case "3_1":
             return BetType.OVER_UNDER_H1
         case "3_2":
             return BetType.OVER_UNDER_H2
-        case "154":
-            return BetType.TOTAL_GOALS
-        case "696":
-            return BetType.WIN_TO_NIL
-        case "701":
-            return BetType.TO_WIN_FROM_BEHIND
+        case "3_7":
+            return BetType.OVER_UNDER_TEAM
+
+        // CORRECT SCORE
+        case "60":
+            return BetType.CORRECT_SCORE
+
+
+        // ASIAN HANDICAP
+        case "2_0":
+            return BetType.ASIAN_HANDICAP
+        case "2_1":
+            return BetType.ASIAN_HANDICAP_H1
+        case "2_2":
+            return BetType.ASIAN_HANDICAP_H2
+
+        // ODD_EVEN
         case "38":
             return BetType.ODD_EVEN
+        case "267":
+            return BetType.ODD_EVEN_H2
+        case "274":
+            return BetType.ODD_EVEN_TEAMS
         case "278":
             return BetType.ODD_EVEN_TEAMS_H2
         case "276":
             return BetType.ODD_EVEN_TEAMS_H1
+
+        // OTHER
         case "158":
             return BetType.BOTH_TEAMS_SCORE
         case "2936":
             return BetType.BOTH_TEAMS_SCORE_H2
         case "2935":
             return BetType.BOTH_TEAMS_SCORE_H1
-        case "61":
-            return BetType.DOUBLE_CHANCE
-        case "145":
-            return BetType.DOUBLE_CHANCE_H1
-        case "60":
-            return BetType.CORRECT_SCORE
-        case "3_7":
-            return BetType.OVER_UNDER_TEAM
+
         default:
             return BetType.UNKNOWN
 
@@ -179,9 +194,16 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
             const typeId = market.marketType.id
             const betOfferType = determineBetOfferType(typeId)
             const betOffers = []
+            if(betOfferType === BetType.ODD_EVEN_TEAMS || betOfferType === BetType.ODD_EVEN_TEAMS_H1 || betOfferType === BetType.ODD_EVEN_TEAMS_H2) {
+                // first selection is away team ODD
+                // second is home team ODD
+
+                market.selections
+            }
             if(betOfferType !== BetType.UNKNOWN) {
                 const eventId = market.eventId
                 market.selections.forEach(selection => {
+
                     const outcomeType = determineOutcomeType(selection.outcomeType)
                     const price = selection.trueOdds
                     const line = selection.points ? selection.points : undefined
