@@ -48,15 +48,16 @@ export class Scraper {
         // @ts-ignore
         events = await Promise.all(leagueRequests).then(values => this.mergeEvents(values))
 
+        const sportRadarMatches = await Promise.all(events.map(event => getSportRadarMatch(event.sportRadarId))).then(values => values)
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
-                getPinnacleEventsForCompetition("1817", events)
+                getPinnacleEventsForCompetition("1817", sportRadarMatches)
             ]
         }
 
         const leagueRequestsNotMapped = requestsNotMappedToSportRadar[leagueName.toUpperCase()]
         // @ts-ignore
-        return Promise.all(leagueRequestsNotMapped).then(values => this.mergeEvents(values, events))
+        return Promise.all(leagueRequestsNotMapped).then(values => this.mergeEvents(values[0], events))
     }
 
     static mergeEvents(events: EventInfo[], other?: EventInfo[]): EventInfo[] {

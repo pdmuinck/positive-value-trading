@@ -11,13 +11,16 @@ import {parseBwinBetOffers} from "./bwin";
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
         const requests = event.bookmakers.map(bookmaker => {
-            return axios.get(bookmaker.eventUrl, bookmaker.headers)
-                .then(response => {
-                    const parser = getParserForBook(bookmaker.provider)
-                    return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
-                .catch(error => console.log(error))
+            bookmaker.eventUrl.map(eventUrl => {
+                return axios.get(eventUrl, bookmaker.headers)
+                    .then(response => {
+                        const parser = getParserForBook(bookmaker.provider)
+                        return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
+                    .catch(error => console.log(error))
+            })
         })
         return Promise.all(requests).then(values => {
+            // @ts-ignore
             const betOffers = mergeBetOffers(values)
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })

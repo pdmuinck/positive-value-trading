@@ -89,7 +89,7 @@ export async function getSbtechEventsForCompetition(id: string): Promise<EventIn
                         const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
                         const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
                         return new BookMakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
-                            leagueUrl, eventUrl, headers, undefined, "GET")
+                            leagueUrl, [eventUrl], headers, undefined, "GET")
                     })
                     const sportRadarId = parseInt(event.media[0].providerEventId)
                     return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
