@@ -2,26 +2,39 @@ import {EventInfo} from "../service/events";
 import axios from "axios";
 import {ApiResponse} from "./scraper";
 import {RequestType} from "../domain/betoffer";
-import {BetType, Provider} from "../service/bookmaker"
+import {Bookmaker, Provider} from "../service/bookmaker"
 import {BetOffer} from "../service/betoffers";
 import {parseKambiBetOffers} from "./kambi/kambi";
 import {parseSbtechBetOffers} from "./sbtech/sbtech";
 import {parseBwinBetOffers} from "./bwin";
+import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
-        const requests = event.bookmakers.map(bookmaker => {
-            bookmaker.eventUrl.map(eventUrl => {
+        const pinnacleBookmakerInfo = event.bookmakers.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
+        const pinnacleRequests = pinnacleBookmakerInfo?.eventUrl.map(eventUrl => {
+            return axios.get(eventUrl, pinnacleBookmakerInfo.headers)
+                .then(response => response.data)
+                .catch(error => console.log(error))
+        })
+        const requests = event.bookmakers.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE).map(bookmaker => {
+            return bookmaker.eventUrl.map(eventUrl => {
                 return axios.get(eventUrl, bookmaker.headers)
                     .then(response => {
                         const parser = getParserForBook(bookmaker.provider)
                         return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
                     .catch(error => console.log(error))
             })
-        })
+        }).flat().filter(x => x)
+        let pinnacleOffers = []
+        if(pinnacleRequests) {
+            pinnacleOffers = await Promise.all(pinnacleRequests).then(values => {
+                return parsePinnacleBetOffers(new ApiResponse(Provider.PINNACLE, values, RequestType.BET_OFFER))
+            })
+        }
         return Promise.all(requests).then(values => {
             // @ts-ignore
-            const betOffers = mergeBetOffers(values)
+            const betOffers = mergeBetOffers(values.concat(pinnacleOffers))
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }
@@ -60,5 +73,7 @@ function getParserForBook(provider: Provider) {
             return parseSbtechBetOffers
         case(Provider.BWIN):
             return parseBwinBetOffers
+        case(Provider.PINNACLE):
+            return parsePinnacleBetOffers
     }
 }

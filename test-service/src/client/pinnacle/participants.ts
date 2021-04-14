@@ -14,7 +14,7 @@ export const pinnacle_sportradar = {
     "Mouscron Peruwelz": 6542681,
     "Royal Antwerp": 5291,
     "Genk": 4675,
-    "Zulte-Waregem": 548844,
+    "SV Zulte-Waregem": 548844,
     "Gent": 4677,
     "Anderlecht": 4671
 }
