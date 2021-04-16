@@ -3,10 +3,7 @@ import axios from "axios";
 import {pinnacle_sportradar} from "./participants";
 import {BetType, Bookmaker, BookmakerId, Provider} from "../../service/bookmaker";
 import {ApiResponse} from "../scraper";
-import {IdType, Participant} from "../../domain/betoffer";
-import {Event} from "../../service/parser";
 import {BetOffer} from "../../service/betoffers";
-import {kambiBetOfferTypes, kambiPrices} from "../kambi/kambi";
 
 export async function getPinnacleEventsForCompetition(id: string, sportRadarMatches): Promise<EventInfo[]> {
     const requestConfig = {
@@ -50,7 +47,7 @@ function parseBetOffers(marketIds, offers): BetOffer[] {
             const betType = determineBetType(offer.key, marketId)
             if(betType !== BetType.UNKNOWN) {
                 offer.prices.forEach(price => {
-                    const outcome = determineOutcome(price.designation, marketId, price.participantId)
+                    const outcome = determineOutcome(price.designation, marketId, price.participantId, betType)
                     const line = price.points ? price.points : undefined
                     const odds = toDecimalOdds(price.price)
                     betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId.id, Bookmaker.PINNACLE, outcome, odds, line))
@@ -87,11 +84,14 @@ function determineBetType(key, marketId): BetType {
         }
 
         if(type === "ou") {
-            if(period === "0") return BetType.ASIAN_OVER_UNDER
-            if(period === "1") return BetType.ASIAN_OVER_UNDER_H1
+            if(period === "0") return BetType.OVER_UNDER
+            if(period === "1") return BetType.OVER_UNDER_H1
         }
     } else if(marketId.type === "special") {
+        const homeTeam = marketId.parent.participants.filter(p => p.alignment === "home").map(p => p.name)[0]
+        const awayTeam = marketId.parent.participants.filter(p => p.alignment === "away").map(p => p.name)[0]
         if(marketId.special.description.includes("3-way Handicap")) return BetType.HANDICAP
+
         // specials
         switch(marketId.special.description) {
             case "Double Chance 1st Half":
@@ -102,6 +102,8 @@ function determineBetType(key, marketId): BetType {
                 return BetType.ODD_EVEN_H1
             case "Both Teams To Score":
                 return BetType.BOTH_TEAMS_SCORE
+            case "Both Teams To Score 1st Half":
+                return BetType.BOTH_TEAMS_SCORE_H1
             case "Draw No Bet 1st Half":
                 return BetType.DRAW_NO_BET_H1
             case "Exact Total Goals":
@@ -110,8 +112,20 @@ function determineBetType(key, marketId): BetType {
                 return BetType.DRAW_NO_BET
             case "Total Goals Odd/Even":
                 return BetType.ODD_EVEN
+            case "Total Goals Odd/Even 1st Half":
+                return BetType.ODD_EVEN_H1
+            case "Correct Score":
+                return BetType.CORRECT_SCORE
 
         }
+
+        if(marketId.special.description === awayTeam + " Goals Odd/Even") return BetType.ODD_EVEN_TEAM2
+        if(marketId.special.description === homeTeam + " Goals Odd/Even") return BetType.ODD_EVEN_TEAM1
+        if(marketId.special.description === homeTeam + " Goals 1st Half") return BetType.TOTAL_GOALS_TEAM1_H1
+        if(marketId.special.description === awayTeam + " Goals 1st Half") return BetType.TOTAL_GOALS_TEAM2_H1
+        if(marketId.special.description === homeTeam + " Goals") return BetType.TOTAL_GOALS_TEAM1
+        if(marketId.special.description === awayTeam + " Goals") return BetType.TOTAL_GOALS_TEAM2
+
     }
 
     if(splitted)
@@ -132,7 +146,10 @@ function toDecimalOdds(americanOdds): number {
 
 }
 
-function determineOutcome(outcome: string, marketId, participantId) {
+function determineOutcome(outcome: string, marketId, participantId, betType) {
+    if(betType === BetType.CORRECT_SCORE || betType === BetType.CORRECT_SCORE_H1) {
+        return marketId.participants.filter(participant => participant.id === participantId)[0].name.split(",").map(o => o.split(" ")).map(test => test[test.length - 1]).join("-")
+    }
     if(!marketId.parent) {
         switch(outcome.toUpperCase()) {
             case 'HOME':
@@ -142,7 +159,7 @@ function determineOutcome(outcome: string, marketId, participantId) {
             case 'DRAW':
                 return 'X'
             default:
-                return outcome
+                return outcome.toUpperCase()
         }
     } else {
         return marketId.participants.filter(participant => participant.id === participantId)[0].name.toUpperCase()

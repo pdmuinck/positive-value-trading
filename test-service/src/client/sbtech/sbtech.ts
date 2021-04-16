@@ -143,20 +143,22 @@ function determineBetOfferType(typeId: string): BetType {
         case "145":
             return BetType.DOUBLE_CHANCE_H1
 
+
         // OVER UNDER
         case "3_0":
             return BetType.OVER_UNDER
+
         case "3_1":
             return BetType.OVER_UNDER_H1
         case "3_2":
             return BetType.OVER_UNDER_H2
+
         case "3_7":
             return BetType.OVER_UNDER_TEAM
 
         // CORRECT SCORE
         case "60":
             return BetType.CORRECT_SCORE
-
 
         // ASIAN HANDICAP
         case "2_0":

@@ -77,6 +77,7 @@ export function kambiBetOfferTypes(betOffer) {
             return BetType.OVER_UNDER
         case 1002244276:
             return BetType.OVER_UNDER // ASIAN TOTAL
+
         case 1001159532:
             return BetType.OVER_UNDER_H1
         case 1002558602:

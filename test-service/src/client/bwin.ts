@@ -120,7 +120,6 @@ function determineBetType(templateId) {
             return BetType.TOTAL_GOALS_TEAM1_H1
         case 4734:
             return BetType.TOTAL_GOALS_TEAM2_H2
-
         case 173:
             return BetType.OVER_UNDER
         case 859:
@@ -141,7 +140,6 @@ function determineBetType(templateId) {
             return BetType.HANDICAP
         case 54:
             return BetType.HANDICAP
-
         case 7688:
             return BetType.OVER_UNDER_H1
         case 7689:
