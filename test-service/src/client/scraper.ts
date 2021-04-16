@@ -566,47 +566,6 @@ export class Scraper {
 
     }
 
-    toPinnacleRequests(bookmakerId: BookmakerId, requestType: RequestType) {
-
-        // https://guest.api.arcadia.pinnacle.com/0.1/leagues/1980/matchups
-        //https://guest.api.arcadia.pinnacle.com/0.1/matchups/1273665536/related
-        // https://guest.api.arcadia.pinnacle.com/0.1/matchups/1273665536/markets/related/straight
-
-        // matchup ids in related can be found in markets/related/straight
-
-        const requestConfig = {
-            headers: {
-                "X-API-Key": "CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R",
-                "Referer": "https://www.pinnacle.com/",
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        }
-
-        return axios.get("https://guest.api.arcadia.pinnacle.com/0.1/leagues/" + bookmakerId.id + "/matchups", requestConfig).then(response => {
-            const events = Parser.parse(new ApiResponse(Provider.PINNACLE, response.data, RequestType.EVENT))
-            const betOfferRequests = []
-            events.forEach(event => {
-                betOfferRequests.push(axios.get("https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id.id + "/related", requestConfig).then(response => response.data))
-                betOfferRequests.push(axios.get("https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id.id + "/markets/related/straight", requestConfig).then(response => response.data))
-            })
-            return Promise.all(betOfferRequests).then(responses => {
-                return new ApiResponse(Provider.PINNACLE, responses, requestType)
-            })
-        })
-        /*
-        let url = 'https://guest.api.arcadia.pinnacle.com/0.1/' + (bookmakerId.idType === IdType.SPORT ?
-            'sports/' : 'leagues/') + bookmakerId.id + (requestType === RequestType.EVENT || requestType === RequestType.PARTICIPANT
-        ? '/matchups' : '/markets/straight?primaryOnly=true')
-        return [
-            axios.get(
-                url,
-                requestConfig
-            ).then(response => {return new ApiResponse(bookmakerId.provider, response.data, requestType)})
-                .catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType)})
-        ]*/
-    }
-
     private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
         const betcenterHeaders = {
             headers: {

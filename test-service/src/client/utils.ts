@@ -8,6 +8,7 @@ import {parseKambiBetOffers} from "./kambi/kambi";
 import {parseSbtechBetOffers} from "./sbtech/sbtech";
 import {parseBwinBetOffers} from "./bwin";
 import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
+import {parseBetcenterBetOffers} from "./betcenter/betcenter";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -19,11 +20,19 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
         })
         const requests = event.bookmakers.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE).map(bookmaker => {
             return bookmaker.eventUrl.map(eventUrl => {
-                return axios.get(eventUrl, bookmaker.headers)
-                    .then(response => {
-                        const parser = getParserForBook(bookmaker.provider)
-                        return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
-                    .catch(error => console.log(error))
+                if(bookmaker.httpMethod === "GET") {
+                    return axios.get(eventUrl, bookmaker.headers)
+                        .then(response => {
+                            const parser = getParserForBook(bookmaker.provider)
+                            return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
+                        .catch(error => console.log(error))
+                } else {
+                    return axios.post(eventUrl, bookmaker.requestBody, bookmaker.headers)
+                        .then(response => {
+                            const parser = getParserForBook(bookmaker.provider, bookmaker.bookmaker)
+                            return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
+                        .catch(error => console.log(error))
+                }
             })
         }).flat().filter(x => x)
         let pinnacleOffers = []
@@ -65,7 +74,7 @@ export async function getBetOffersForEvents(events: EventInfo[]) {
     })
 }
 
-function getParserForBook(provider: Provider) {
+function getParserForBook(provider: Provider, bookmaker?: string) {
     switch(provider) {
         case(Provider.KAMBI):
             return parseKambiBetOffers
@@ -75,5 +84,8 @@ function getParserForBook(provider: Provider) {
             return parseBwinBetOffers
         case(Provider.PINNACLE):
             return parsePinnacleBetOffers
+        case(Provider.CASHPOINT):
+            if(bookmaker === "BETCENTER") return parseBetcenterBetOffers
+
     }
 }
