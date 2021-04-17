@@ -1,14 +1,24 @@
 import {BookMakerInfo, EventInfo} from "../../service/events";
-import {BetType, Bookmaker, BookmakerId, Provider} from "../../service/bookmaker";
-import {RequestType} from "../../domain/betoffer";
+import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../../service/bookmaker";
 import axios from "axios";
-import {BetcenterParser, Event} from "../../service/parser";
 import {ApiResponse} from "../scraper";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetOffer} from "../../service/betoffers";
 
-export function getBetcenterEventsForCompetition(id: string): Promise<EventInfo[]> {
-    const betcenterHeaders = {
+const books = providers[Provider.CASHPOINT]
+
+const domains = {}
+domains[Bookmaker.TOTOLOTEK] = "oddsservice.totolotek.pl"
+domains[Bookmaker.MERKUR_SPORTS] = "oddsservice.merkur-sports.de"
+domains[Bookmaker.BETCENTER] = "oddsservice.betcenter.be"
+domains[Bookmaker.CASHPOINT] = "oddsservice.cashpoint.com"
+
+function getGamesUrl(domain: string) {
+    return "https://" + domain + "/odds/getGames/8"
+}
+
+export function getCashpointEventsForCompetition(id: string): Promise<EventInfo[]> {
+    const headers = {
         headers: {
             "x-language": 2,
             "x-brand": 7,
@@ -17,26 +27,29 @@ export function getBetcenterEventsForCompetition(id: string): Promise<EventInfo[
             "Content-Type":"application/json"
         }
     }
-    const url = 'https://oddsservice.betcenter.be/odds/getGames/8'
-    const betcenterPayload = {"leagueIds": [parseInt(id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
-    return axios.post(url, betcenterPayload, betcenterHeaders)
+    const payload = {"leagueIds": [parseInt(id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
+    const url = getGamesUrl(domains[Bookmaker.CASHPOINT])
+    return axios.post(url, payload, headers)
         .then(response => {
             return response.data.games.map(event => {
                 const sportRadarId = event.statisticsId
-                const bookmakerInfo = new BookMakerInfo(Provider.CASHPOINT, Bookmaker.BETCENTER, id, event.id, url, [url],
-                    betcenterHeaders, {
-                    gameIds: [event.id],
-                        gameTypes: [1, 4, 5],
-                        jurisdictionId: 30,
-                        limit: 20000,
-                        leagueIds: [parseInt(id)]
-                    }, "POST")
-                return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
+                const bookmakerInfos = books.map(book => {
+                    const url = getGamesUrl(domains[book])
+                    return new BookMakerInfo(Provider.CASHPOINT, book, id, event.id, url, [url],
+                        headers, {
+                            gameIds: [event.id],
+                            gameTypes: [1, 4, 5],
+                            jurisdictionId: 30,
+                            limit: 20000,
+                            leagueIds: [parseInt(id)]
+                        }, "POST")
+                })
+                return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
             })
         })
 }
 
-export function parseBetcenterBetOffers(apiResponse: ApiResponse): BetOffer[] {
+export function parseCashpointBetOffers(apiResponse: ApiResponse): BetOffer[] {
     if(!apiResponse.data.games) return []
     const betOffers = []
     apiResponse.data.games.forEach(event => {
@@ -53,7 +66,7 @@ export function parseBetcenterBetOffers(apiResponse: ApiResponse): BetOffer[] {
                         || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_TEAM1) {
                         outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
                     }
-                    betOffers.push(new BetOffer(betType, event.id, Provider.BETCENTER, outcome, price, line, NaN, handicap))
+                    betOffers.push(new BetOffer(betType, event.id, Provider.CASHPOINT, outcome, price, line, NaN, handicap))
                 })
             }
         })

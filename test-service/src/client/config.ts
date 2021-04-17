@@ -51,7 +51,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.SCOOORE, "18340", IdType.COMPETITION),
             new BookmakerId(Provider.STANLEYBET, "38", IdType.COMPETITION),
             //new BookmakerId(Provider.STAR_CASINO, "557", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6898", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6898", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "16409", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "101-pro_league_1a", IdType.COMPETITION)
@@ -78,7 +78,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "39", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "102-eredivisie", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "1957", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6931", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6931", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "6361", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "eredivisie", IdType.COMPETITION)
         ],
@@ -102,7 +102,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "42", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "268-bundesliga", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "541", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6843", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6843", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "43", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "bundesliga", IdType.COMPETITION)
         ],
@@ -126,7 +126,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "36", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "306-primera_division", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "545", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6938", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6938", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "16108", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "la-liga", IdType.COMPETITION)
         ],
@@ -150,7 +150,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "4", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "96-ligue_1", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "548", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6855", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6855", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "4131", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "ligue-1", IdType.COMPETITION)
         ],
@@ -174,7 +174,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "1", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "94-premier_league", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "538", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "6823", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "6823", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "46", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "premier-league", IdType.COMPETITION)
         ],
@@ -198,7 +198,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.STANLEYBET, "33", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "305-serie_a", IdType.COMPETITION),
             new BookmakerId(Provider.STAR_CASINO, "543", IdType.COMPETITION),
-            new BookmakerId(Provider.BETCENTER, "7134", IdType.COMPETITION),
+            new BookmakerId(Provider.CASHPOINT, "7134", IdType.COMPETITION),
             new BookmakerId(Provider.BWIN, "42", IdType.COMPETITION),
             new BookmakerId(Provider.BETWAY, "serie-a", IdType.COMPETITION)
         ],
@@ -222,7 +222,7 @@ export const sports = [
             new BookmakerId(Provider.MERIDIAN, "58", IdType.SPORT),
             new BookmakerId(Provider.SCOOORE, "", IdType.SPORT),
             new BookmakerId(Provider.STANLEYBET, "", IdType.SPORT),
-            new BookmakerId(Provider.BETCENTER, "1", IdType.SPORT),
+            new BookmakerId(Provider.CASHPOINT, "1", IdType.SPORT),
             new BookmakerId(Provider.BWIN, "4", IdType.SPORT),
             new BookmakerId(Provider.BETWAY, "soccer", IdType.SPORT),
             new BookmakerId(Provider.ZETBET, "", IdType.SPORT)

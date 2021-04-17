@@ -8,7 +8,7 @@ import {parseKambiBetOffers} from "./kambi/kambi";
 import {parseSbtechBetOffers} from "./sbtech/sbtech";
 import {parseBwinBetOffers} from "./bwin";
 import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
-import {parseBetcenterBetOffers} from "./betcenter/betcenter";
+import {parseCashpointBetOffers} from "./cashpoint/cashpoint";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -85,7 +85,7 @@ function getParserForBook(provider: Provider, bookmaker?: string) {
         case(Provider.PINNACLE):
             return parsePinnacleBetOffers
         case(Provider.CASHPOINT):
-            if(bookmaker === "BETCENTER") return parseBetcenterBetOffers
+            return parseCashpointBetOffers
 
     }
 }

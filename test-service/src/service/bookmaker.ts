@@ -90,6 +90,8 @@ export enum BetType {
 }
 
 export enum Bookmaker {
+    MERKUR_SPORTS= "merkur-sports",
+    SPORTWETTEN = "SPORTWETTEN",
     ZETBET = "ZETBET",
     BWIN = "BWIN",
     UNIBET_BELGIUM= 'ubbe',
@@ -98,6 +100,7 @@ export enum Bookmaker {
     BETFIRST= 'betfirst',
     GOLDEN_PALACE = 'goldenpalace',
     BETCENTER = 'BETCENTER',
+    CASHPOINT = "CASHPOINT",
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN',
     BET777 = 'bet777',
@@ -110,7 +113,8 @@ export enum Bookmaker {
     BINGOAL = 'BINGOAL',
     BETRADAR = 'BETRADAR',
     GOLDENVEGAS = 'GOLDENVEGAS',
-    BETWAY = 'BETWAY'
+    BETWAY = 'BETWAY',
+    TOTOLOTEK = "totolotek"
 }
 
 export enum Provider {
@@ -125,7 +129,6 @@ export enum Provider {
     BINGOAL = 'BINGOAL',
     STANLEYBET = 'STANLEYBET',
     STAR_CASINO = 'STAR_CASINO',
-    BETCENTER = 'BETCENTER',
     LADBROKES = 'LADBROKES',
     MERIDIAN = 'MERIDIAN',
     MAGIC_BETTING = 'MAGIC_BETTING',
@@ -162,7 +165,7 @@ export class BookmakerId {
 export const providers = {}
 providers[Provider.KAMBI] = [Bookmaker.NAPOLEON_GAMES, Bookmaker.UNIBET_BELGIUM]
 providers[Provider.SBTECH] = [Bookmaker.BET777, Bookmaker.BETFIRST]
-providers[Provider.BETCONSTRUCT] = [Bookmaker.CIRCUS, Bookmaker.GOLDENVEGAS]
+providers[Provider.BETCONSTRUCT] = [Bookmaker.CIRCUS, Bookmaker.GOLDENVEGAS, Bookmaker.SPORTWETTEN]
 providers[Provider.ALTENAR] = [Bookmaker.GOLDEN_PALACE]
 providers[Provider.BET90] = [Bookmaker.BET90]
 providers[Provider.PINNACLE] = [Bookmaker.PINNACLE]
@@ -170,7 +173,7 @@ providers[Provider.BETRADAR] = [Bookmaker.BETRADAR]
 providers[Provider.BINGOAL] = [Bookmaker.BINGOAL]
 providers[Provider.STANLEYBET] = [Bookmaker.STANLEYBET]
 providers[Provider.STAR_CASINO] = [Bookmaker.STAR_CASINO]
-providers[Provider.BETCENTER] = [Bookmaker.BETCENTER]
+providers[Provider.CASHPOINT] = [Bookmaker.BETCENTER, Bookmaker.CASHPOINT, Bookmaker.MERKUR_SPORTS, Bookmaker.TOTOLOTEK]
 providers[Provider.LADBROKES] = [Bookmaker.LADBROKES]
 providers[Provider.MERIDIAN] = [Bookmaker.MERIDIAN]
 providers[Provider.MAGIC_BETTING] = [Bookmaker.MAGIC_BETTING]

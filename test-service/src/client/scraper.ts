@@ -4,15 +4,12 @@ import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
-    AltenarParser,
     Bet90Parser,
-    BetcenterParser,
     BetConstructParser,
     BetwayParser,
     BingoalParser,
     LadbrokesParser,
     MeridianParser,
-    Parser,
     ScoooreParser,
     StanleyBetParser,
     ZetBetParser
@@ -22,7 +19,9 @@ import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
 import {getKambiEventsForCompetition} from "./kambi/kambi";
 import {getBwinEventsForCompetition} from "./bwin";
 import {getPinnacleEventsForCompetition} from "./pinnacle/pinnacle";
-import {getSportRadarMatch, SportRadarMatch} from "./sportradar/sportradar";
+import {getSportRadarMatch} from "./sportradar/sportradar";
+import {getAltenarEventsForCompetition} from "./altenar/altenar";
+import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -41,6 +40,8 @@ export class Scraper {
                 getSbtechEventsForCompetition("40815"),
                 getKambiEventsForCompetition("1000094965"),
                 getBwinEventsForCompetition("16409"),
+                getCashpointEventsForCompetition("6898"),
+                getAltenarEventsForCompetition("1000000490")
             ]
         }
 
@@ -543,54 +544,6 @@ export class Scraper {
 
     }
 
-    toAltenarRequests(bookmakerId: BookmakerId, requestType: RequestType, events) {
-        return providers[bookmakerId.provider].map(book => {
-            const url = 'https://sb1capi-altenar.biahosted.com/Sportsbook/GetEvents?timezoneOffset=-60&langId=1' +
-            '&skinName=' + book + '&configId=1&culture=en-GB&deviceType=Mobile&numformat=en&sportids=0&categoryids=0' +
-            '&champids=' + bookmakerId.id  +'&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none' +
-            '&couponType=0&startDate=2020-04-11T08%3A28%3A00.000Z&endDate=2200-04-18T08%3A27%3A00.000Z'
-            return axios.get(url)
-                .then(response => {
-                    if(RequestType.EVENT === requestType) {
-                        const data = response.data.Result.Items[0].Events.map(event => {
-                            return {eventId: event.Id, sportRadarId: event.ExtId}
-                        })
-                        return new ApiResponse(bookmakerId.provider, data, requestType)
-                    } else {
-                        const betOffers = AltenarParser.parse(new ApiResponse(bookmakerId.provider, response.data, RequestType.BET_OFFER))
-                        //const assignedBetOffers = this.assignBetOffersToSportRadarEvent(betOffers, events, Bookmaker.GOLDEN_PALACE)
-                        //return new ApiResponse(bookmakerId.provider, assignedBetOffers, requestType, Bookmaker.GOLDEN_PALACE)
-                    }
-                }).catch(error => {return new ApiResponse(bookmakerId.provider, null, requestType, book)})
-        })
-
-    }
-
-    private toBetcenterRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        const betcenterHeaders = {
-            headers: {
-                "x-language": 2,
-                "x-brand": 7,
-                "x-location": 21,
-                "x-client-country": 21,
-                "Content-Type":"application/json"
-            }
-        }
-        const betcenterPayload = {"leagueIds": [parseInt(bookmakerId.id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
-        return [
-            axios.post('https://oddsservice.betcenter.be/odds/getGames/8', betcenterPayload, betcenterHeaders)
-                .then(response => {
-                    if(requestType === RequestType.EVENT) {
-                        const events = response.data.games.map(event => {return {eventId: event.id, sportRadarId: event.statisticsId}})
-                        return new ApiResponse(Provider.BETCENTER, events, requestType)
-                    } else {
-                        const betOffers = BetcenterParser.parseBetOffers(new ApiResponse(Provider.BETCENTER, response.data, requestType))
-                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETCENTER)
-                    }
-
-                }).catch(error => console.log(error))
-        ]
-    }
 }
 
 export class ApiResponse {
