@@ -66,7 +66,7 @@ export function parseCashpointBetOffers(apiResponse: ApiResponse): BetOffer[] {
                         || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_TEAM1) {
                         outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
                     }
-                    betOffers.push(new BetOffer(betType, event.id, Provider.CASHPOINT, outcome, price, line, NaN, handicap))
+                    betOffers.push(new BetOffer(betType, event.id, apiResponse.bookmaker, outcome, price, line, NaN, handicap))
                 })
             }
         })

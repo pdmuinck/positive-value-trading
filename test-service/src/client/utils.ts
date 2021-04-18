@@ -9,6 +9,7 @@ import {parseSbtechBetOffers} from "./sbtech/sbtech";
 import {parseBwinBetOffers} from "./bwin";
 import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
 import {parseCashpointBetOffers} from "./cashpoint/cashpoint";
+import {parseAltenarBetOffers} from "./altenar/altenar";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -52,14 +53,16 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
 function mergeBetOffers(betOffers: BetOffer[]) {
     const merged = {}
     betOffers.flat().forEach(betOffer => {
-        const key = betOffer.key
-        const existing = merged[key]
-        if(existing) {
-            existing[betOffer.bookMaker] = betOffer.price
-        } else {
-            const prices = {}
-            prices[betOffer.bookMaker] = betOffer.price
-            merged[key] = prices
+        if(betOffer) {
+            const key = betOffer.key
+            const existing = merged[key]
+            if(existing) {
+                existing[betOffer.bookMaker] = betOffer.price
+            } else {
+                const prices = {}
+                prices[betOffer.bookMaker] = betOffer.price
+                merged[key] = prices
+            }
         }
     })
     return merged
@@ -86,6 +89,8 @@ function getParserForBook(provider: Provider, bookmaker?: string) {
             return parsePinnacleBetOffers
         case(Provider.CASHPOINT):
             return parseCashpointBetOffers
+        case(Provider.ALTENAR):
+            return parseAltenarBetOffers
 
     }
 }

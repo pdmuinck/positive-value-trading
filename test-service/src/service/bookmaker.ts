@@ -90,6 +90,11 @@ export enum BetType {
 }
 
 export enum Bookmaker {
+    FASTBET = "fastbet",
+    BETMOTION = "betmotion",
+    BET99 = "BET99",
+    CORAL = "CORAL",
+    LADBROKES_UK= "LADBROKES_UK",
     MERKUR_SPORTS= "merkur-sports",
     SPORTWETTEN = "SPORTWETTEN",
     ZETBET = "ZETBET",
