@@ -9,7 +9,6 @@ import {
     BetwayParser,
     BingoalParser,
     LadbrokesParser,
-    MeridianParser,
     ScoooreParser,
     StanleyBetParser,
     ZetBetParser
@@ -22,6 +21,7 @@ import {getPinnacleEventsForCompetition} from "./pinnacle/pinnacle";
 import {getSportRadarMatch} from "./sportradar/sportradar";
 import {getAltenarEventsForCompetition} from "./altenar/altenar";
 import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
+import {getMeridianEventsForCompetition} from "./meridian/meridian";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -41,7 +41,8 @@ export class Scraper {
                 getKambiEventsForCompetition("1000094965"),
                 getBwinEventsForCompetition("16409"),
                 getCashpointEventsForCompetition("6898"),
-                getAltenarEventsForCompetition("1000000490")
+                getAltenarEventsForCompetition("1000000490"),
+                getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a")
             ]
         }
 
@@ -264,9 +265,6 @@ export class Scraper {
                 return new ApiResponse(Provider.ZETBET, {bookmaker: Bookmaker.ZETBET, events: values.map(value => value.events).flat()}, requestType)
             })
         }
-
-
-
     }
 
     toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
@@ -299,10 +297,7 @@ export class Scraper {
                 // @ts-ignore
                 return new ApiResponse(Provider.BETWAY, {bookmaker: Bookmaker.BETWAY, events: values.map(value => value.events).flat()}, requestType)
             })
-
-
         }
-
     }
 
 
@@ -390,29 +385,6 @@ export class Scraper {
             return Promise.all(requests).then(values => {
                 // @ts-ignore
                 return new ApiResponse(Provider.SCOOORE, {bookmaker: Bookmaker.SCOOORE, events: values.map(value => value.events).flat()}, requestType)
-            })
-        }
-
-    }
-
-    toMeridianRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        if(requestType === RequestType.EVENT) {
-            return [axios.get(bookmakerId.id).then(response => {
-                const data = response.data[0].events.map(event => {
-                    return {eventId: event.id, sportRadarId: event.betradarUnified.id}
-                })
-                return new ApiResponse(Provider.MERIDIAN, data, requestType)
-            })]
-        } else {
-            const betOfferRequests = mappedEvents.map(event => {
-                return axios.get("https://meridianbet.be/sails/events/" + event.eventId).then(response => {
-                    const betOffers = MeridianParser.parseBetOffers(new ApiResponse(Provider.MERIDIAN, response.data, requestType))
-                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.MERIDIAN)
-                })
-            })
-            return Promise.all(betOfferRequests).then(values => {
-                // @ts-ignore
-                return new ApiResponse(Provider.MERIDIAN, {bookmaker: Bookmaker.MERIDIAN, events: values.map(value => value.events).flat()}, requestType)
             })
         }
 
