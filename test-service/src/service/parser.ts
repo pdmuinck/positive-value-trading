@@ -46,8 +46,6 @@ export class Parser {
                     return LadbrokesParser.parse(apiResponse)
                 case Provider.BET90:
                     return Bet90Parser.parse(apiResponse)
-                case Provider.BETCONSTRUCT:
-                    return BetConstructParser.parse(apiResponse)
                 case Provider.BINGOAL:
                     return BingoalParser.parse(apiResponse)
                 case Provider.BETWAY:
@@ -617,75 +615,6 @@ export class BingoalParser {
                 return BetType._1X2_H1
             default:
                 return BetType.UNKNOWN
-        }
-    }
-}
-
-export class BetConstructParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType) {
-            case RequestType.BET_OFFER:
-                return this.parseBetOffers(apiResponse)
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
-        }
-    }
-
-    static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
-    }
-
-    static parseEvents(apiResponse: ApiResponse): Event[] {
-        const response =  JSON.parse(apiResponse.data.Requests[0].Content)
-        return response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
-            .filter(event => event.DefaultMarketType === "P1XP2").map(event => {
-            const participants = [new Participant(getParticipantName(event.Team1Name),
-                [new BookmakerId(Provider.BETCONSTRUCT, event.Team1Name.toUpperCase(), IdType.PARTICIPANT)]),
-                new Participant(getParticipantName(event.Team2Name),
-                    [new BookmakerId(Provider.BETCONSTRUCT, event.Team2Name.toUpperCase(), IdType.PARTICIPANT)])]
-            return new Event(new BookmakerId(Provider.BETCONSTRUCT, event.EventId.toString(), IdType.EVENT), event.StartDate, participants)
-        }).flat()
-    }
-
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const response =  JSON.parse(apiResponse.data.Requests[0].Content)
-        const betOffers: BetOffer[] = []
-        response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
-            .filter(event => event.DefaultMarketType === "P1XP2").map(event => event.MarketItems).flat().forEach(marketItem => {
-                const betType: BetType = this.determineBetOfferType(marketItem.BetType)
-                marketItem.OutcomeItems.forEach(outcomeItem => {
-                    let betOption = outcomeItem.Name
-                    if(betType === BetType._1X2) {
-                        if(outcomeItem.OrderPosition === 1) betOption = "1"
-                        if(outcomeItem.OrderPosition === 2) betOption = "X"
-                        if(outcomeItem.OrderPosition === 3) betOption = "2"
-                    }
-                    const line = outcomeItem.Base ? outcomeItem.Base : NaN
-                    betOffers.push(new BetOffer(betType, marketItem.EventId, apiResponse.bookmaker, betOption, outcomeItem.Odd, line))
-                })
-        })
-        return betOffers
-    }
-
-    private static determineBetOfferType(typeId): BetType  {
-        switch(typeId){
-            case "P1XP2":
-                return BetType._1X2
-            case "total-OverUnder":
-                return BetType.OVER_UNDER
-            case "1X12X2":
-                return BetType.DOUBLE_CHANCE
-            case "both-teams-to-score":
-                return BetType.BOTH_TEAMS_SCORE
-            case "handicap-TeamNumber":
-                return BetType.HANDICAP
-            case "draw-no-bet":
-                return BetType.DRAW_NO_BET
-            case "1st-half-1x2":
-                return BetType._1X2_H1
         }
     }
 }

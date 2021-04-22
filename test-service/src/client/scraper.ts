@@ -5,7 +5,6 @@ import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker"
 import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     Bet90Parser,
-    BetConstructParser,
     BetwayParser,
     BingoalParser,
     LadbrokesParser,
@@ -22,6 +21,7 @@ import {getSportRadarMatch} from "./sportradar/sportradar";
 import {getAltenarEventsForCompetition} from "./altenar/altenar";
 import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 import {getMeridianEventsForCompetition} from "./meridian/meridian";
+import {getBetconstructEventsForCompetition} from "./betconstruct/betconstruct";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
@@ -42,7 +42,8 @@ export class Scraper {
                 getBwinEventsForCompetition("16409"),
                 getCashpointEventsForCompetition("6898"),
                 getAltenarEventsForCompetition("1000000490"),
-                getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a")
+                getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
+                getBetconstructEventsForCompetition("227875758")
             ]
         }
 
@@ -63,7 +64,7 @@ export class Scraper {
     }
 
     static mergeEvents(events: EventInfo[], other?: EventInfo[]): EventInfo[] {
-        if(other) {
+        if (other) {
             events = events.flat().concat(other.flat())
         }
         const result: Map<number, EventInfo> = new Map()
@@ -79,44 +80,8 @@ export class Scraper {
             }
         })
         return Object.values(result)
+
     }
-
-    toBetConstructRequests(bookmakerId: BookmakerId, requestType: RequestType, bookmaker: Bookmaker, mappedEvents?): Promise<ApiResponse> {
-        this.startBetConstructWSV2(bookmakerId, bookmaker)
-        return new Promise(resolve => {
-            const interval = setInterval(() => {
-                if(bookmaker === Bookmaker.CIRCUS) {
-                    if (circusEvents) {
-                        const data = this.dealWithBetConstructResponse(circusEvents, requestType, mappedEvents, bookmaker)
-                        resolve(new ApiResponse(Provider.BETCONSTRUCT, data, requestType, bookmaker))
-                        clearInterval(interval)
-                    }
-                } else {
-                    if (goldenVegasEvents) {
-                        const data = this.dealWithBetConstructResponse(goldenVegasEvents, requestType, mappedEvents, bookmaker)
-                        resolve(new ApiResponse(Provider.BETCONSTRUCT, data, requestType, bookmaker))
-                        clearInterval(interval)
-                    }
-                }
-
-            }, 100)
-        })
-    }
-
-    dealWithBetConstructResponse(events, requestType: RequestType, mappedEvents, bookmaker: Bookmaker) {
-        const data = JSON.parse(events.Requests[0].Content).LeagueDataSource.LeagueItems[0].EventItems.map(event => {
-            if(requestType === RequestType.EVENT) {
-                const splitted = event.UrlBetStats.split("/")
-                const sportRadarId = splitted[splitted.length - 1]
-                return {eventId: event.EventId, sportRadarId: sportRadarId}
-            } else {
-                const betOffers = BetConstructParser.parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, events, requestType, bookmaker))
-                //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, bookmaker)
-            }
-        })
-        return data
-    }
-
     toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
         this.startMagicBettingWS(bookmakerId, requestType)
         return new Promise(resolve => {

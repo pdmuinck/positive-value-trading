@@ -11,6 +11,7 @@ import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
 import {parseCashpointBetOffers} from "./cashpoint/cashpoint";
 import {parseAltenarBetOffers} from "./altenar/altenar";
 import {parserMeridianBetOffers} from "./meridian/meridian";
+import {getBetconstructBetOffersForCompetition} from "./betconstruct/betconstruct";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -28,12 +29,15 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                             const parser = getParserForBook(bookmaker.provider)
                             return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
                         .catch(error => console.log(error))
-                } else {
+                } else if(bookmaker.httpMethod === "POST") {
                     return axios.post(eventUrl, bookmaker.requestBody, bookmaker.headers)
                         .then(response => {
                             const parser = getParserForBook(bookmaker.provider, bookmaker.bookmaker)
                             return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
                         .catch(error => console.log(error))
+                } else {
+                    // wss taken care before
+
                 }
             })
         }).flat().filter(x => x)
@@ -70,10 +74,14 @@ function mergeBetOffers(betOffers: BetOffer[]) {
 }
 
 export async function getBetOffersForEvents(events: EventInfo[]) {
+    // TODO betconstruct betoffers for both circus and golden vegas
+    const betConstructRequests = events[0].bookmakers.filter(bookmaker => bookmaker.provider === Provider.BETCONSTRUCT).map(bookmaker => {
+        return getBetconstructBetOffersForCompetition(bookmaker)
+    })
     const requests = events.map(event => {
         return getBetOffers(event)
     })
-    return Promise.all(requests).then(values => {
+    return Promise.all(requests.concat()).then(values => {
         return values
     })
 }
