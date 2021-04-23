@@ -4,6 +4,8 @@ import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 import {RequestType} from "../../domain/betoffer";
+import {pinnacle_sportradar} from "../pinnacle/participants";
+import {star_casino_sportradar} from "./participants";
 
 const WebSocket = require("ws")
 
@@ -15,19 +17,50 @@ books[Bookmaker.CIRCUS] = "wss://wss01.circus.be"
 books[Bookmaker.GOLDENVEGAS] = "wss://wss.goldenvegas.be"
 
 let events = undefined
+let starCasinoEvents = undefined
 
 function startWebSocket(bookmaker, id) {
-    const ws = new WebSocket(books[bookmaker])
+    let url = books[bookmaker]
+    if(!url) url = books_bcapps[bookmaker]
+    const ws = new WebSocket(url)
     ws.on('open', function open() {
         ws.send(JSON.stringify(connectMessage(bookmaker)))
-        ws.send(JSON.stringify(requestMessage(id)))
+        ws.send(JSON.stringify(requestMessage(bookmaker, id)))
     })
 
     ws.on('message', function incoming(data) {
-        const dataParsed = JSON.parse(data)
-        if(dataParsed.MessageType === 1000) {
-            events = JSON.parse(dataParsed.Message)
+        if(bookmaker === Bookmaker.CIRCUS || bookmaker === Bookmaker.GOLDENVEGAS) {
+            const dataParsed = JSON.parse(data)
+            if(dataParsed.MessageType === 1000) {
+                events = JSON.parse(dataParsed.Message)
+            }
+        } else {
+            const bla = JSON.parse(data)
+            if(bla.data.data) {
+                starCasinoEvents = Object.values(bla.data.data.sport["1"].region["290001"].competition["557"].game)
+            }
         }
+    })
+}
+
+export async function getBetconstructBcapsEventsForCompetition(id: string, sportRadarMatches) {
+    startWebSocket(Bookmaker.STAR_CASINO, id)
+    return new Promise(resolve => {
+        const interval = setInterval(() => {
+            if(starCasinoEvents) {
+                const events = starCasinoEvents.map(event => {
+                    const match = sportRadarMatches.filter(match => match && match.participants[0] === star_casino_sportradar[event.team1_id] &&
+                        match.participants[1] === star_casino_sportradar[event.team2_id])[0]
+                    if(match) {
+                        const bookmakerInfo = new BookMakerInfo(Provider.BETCONSTRUCT, Bookmaker.STAR_CASINO, id, event.id,
+                            undefined, [],
+                            undefined, undefined, undefined)
+                        return new EventInfo(match.sportRadarId, match.sportRadarEventUrl, [bookmakerInfo])
+                    }
+                })
+                resolve(events)
+                clearInterval(interval)
+            }}, 100)
     })
 }
 
@@ -64,12 +97,21 @@ export async function getBetconstructBetOffersForCompetition(bookmakerInfo: Book
 }
 
 function connectMessage(bookmaker: Bookmaker) {
-    return {"TTL":10,"MessageType":1,
-        "Message":"{\"NodeType\":1,\"ClientInformations\":{\"RoomDomainName\":\"" + bookmaker + "\"}}"}
+    if(bookmaker === Bookmaker.STAR_CASINO) {
+        return {"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"16062033821871"}
+    } else {
+        return {"TTL":10,"MessageType":1,
+            "Message":"{\"NodeType\":1,\"ClientInformations\":{\"RoomDomainName\":\"" + bookmaker + "\"}}"}
+    }
 }
 
-function requestMessage(league: string){
-    return {"TTL":10,"MessageType":1000,"Message":"{\"Requests\":[{\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":false,\\\"EventSkip\\\":0,\\\"EventTake\\\":20,\\\"EventType\\\":0,\\\"SportId\\\":" + "844" + ",\\\"RequestString\\\":\\\"LeagueIds=" + league + "&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}
+function requestMessage(bookmaker, league: string){
+    if(bookmaker === Bookmaker.STAR_CASINO) {
+        return {"command":"get","params":{"source":"betting","what":{"sport":["id","name","alias"],"competition":["id","name"],"region":["id","name","alias"],"game":[["id","start_ts","team1_name","team2_name","team1_external_id","team2_external_id","team1_id","team2_id","type","show_type","markets_count","is_blocked","exclude_ids","is_stat_available","game_number","game_external_id","is_live","is_neutral_venue","game_info"]],"event":["id","price","type","name","order","base","price_change"],"market":["type","express_id","name","base","display_key","display_sub_key","main_order","col_count","id"]},"where":{"competition":{"id":parseInt(league)},"game":{"type":{"@in":[0,2]}},"market":{"@or":[{"type":{"@in":["P1P2","P1XP2","1X12X2","OverUnder","Handicap","AsianHandicap","BothTeamsToScore","HalfTimeResult","HalfTimeDoubleChance","HalfTimeOverUnder","HalfTimeAsianHandicap","2ndHalfTotalOver/Under"]}},{"display_key":{"@in":["WINNER","HANDICAP","TOTALS"]}}]}},"subscribe":true},"rid":"161598169637418"}
+    } else {
+        return {"TTL":10,"MessageType":1000,"Message":"{\"Requests\":[{\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":false,\\\"EventSkip\\\":0,\\\"EventTake\\\":20,\\\"EventType\\\":0,\\\"SportId\\\":" + "844" + ",\\\"RequestString\\\":\\\"LeagueIds=" + league + "&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}
+    }
+
 }
 
 function parseBetOffers(apiResponse: ApiResponse): BetOffer[] {

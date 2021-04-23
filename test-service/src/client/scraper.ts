@@ -2,7 +2,6 @@ import {RequestType} from "../domain/betoffer"
 import axios from "axios"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
-import {circusConfig, goldenVegasConfig} from "./websocket/config"
 import {
     Bet90Parser,
     BetwayParser,
@@ -21,15 +20,16 @@ import {getSportRadarMatch} from "./sportradar/sportradar";
 import {getAltenarEventsForCompetition} from "./altenar/altenar";
 import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 import {getMeridianEventsForCompetition} from "./meridian/meridian";
-import {getBetconstructEventsForCompetition} from "./betconstruct/betconstruct";
+import {
+    getBetconstructBcapsEventsForCompetition,
+    getBetconstructEventsForCompetition
+} from "./betconstruct/betconstruct";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
 
 let events
 let starCasinoEvents
-let circusEvents
-let goldenVegasEvents
 
 
 export class Scraper {
@@ -43,7 +43,8 @@ export class Scraper {
                 getCashpointEventsForCompetition("6898"),
                 getAltenarEventsForCompetition("1000000490"),
                 getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
-                getBetconstructEventsForCompetition("227875758")
+                getBetconstructEventsForCompetition("227875758"),
+
             ]
         }
 
@@ -54,13 +55,17 @@ export class Scraper {
         const sportRadarMatches = await Promise.all(events.map(event => getSportRadarMatch(event.sportRadarId))).then(values => values)
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
-                getPinnacleEventsForCompetition("1817", sportRadarMatches)
+                getPinnacleEventsForCompetition("1817", sportRadarMatches),
+                getBetconstructBcapsEventsForCompetition("557", sportRadarMatches)
             ]
         }
 
         const leagueRequestsNotMapped = requestsNotMappedToSportRadar[leagueName.toUpperCase()]
         // @ts-ignore
-        return Promise.all(leagueRequestsNotMapped).then(values => this.mergeEvents(values[0], events))
+        return Promise.all(leagueRequestsNotMapped).then(values => {
+            // @ts-ignore
+            this.mergeEvents(values.flat().filter(x => x), events)
+        })
     }
 
     static mergeEvents(events: EventInfo[], other?: EventInfo[]): EventInfo[] {
@@ -91,63 +96,6 @@ export class Scraper {
                     clearInterval(interval)
                 }
             }, 100)
-        })
-    }
-
-    toStarCasinoRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?): Promise<ApiResponse> {
-        this.startStarCasino(bookmakerId, requestType)
-        return new Promise(resolve => {
-            const interval = setInterval(() => {
-                if (starCasinoEvents) {
-                    resolve(new ApiResponse(Provider.STAR_CASINO, starCasinoEvents, requestType))
-                    clearInterval(interval)
-                }
-            }, 100)
-        })
-    }
-
-    private startBetConstructWSV2(bookmakerId: BookmakerId, bookmaker: Bookmaker) {
-        const books = {}
-        books[Bookmaker.CIRCUS] = circusConfig
-        books[Bookmaker.GOLDENVEGAS] = goldenVegasConfig
-
-        const config = books[bookmaker]
-
-        const ws = new WebSocket(config.url)
-        ws.on('open', function open() {
-            ws.send(JSON.stringify(config.getConnectMessage()))
-            ws.send(JSON.stringify(config.getEventRequestMessage("844", bookmakerId.id)))
-        })
-
-        ws.on('message', function incoming(data) {
-            const dataParsed = JSON.parse(data)
-            if(dataParsed.MessageType === 1000) {
-                if(bookmaker === Bookmaker.CIRCUS) {
-                    circusEvents = JSON.parse(dataParsed.Message)
-                } else {
-                    goldenVegasEvents =JSON.parse(dataParsed.Message)
-                }
-            }
-        })
-    }
-
-    async startStarCasino(bookmakerId: BookmakerId, requestType: RequestType) {
-        const starWS = new WebSocket("wss://eu-swarm-ws-re.bcapps.net/")
-
-        starWS.on('open', function open() {
-
-            starWS.send(JSON.stringify({"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"16062033821871"}))
-            starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"sport":["id","name","alias"],"competition":["id","name"],"region":["id","name","alias"],"game":[["id","start_ts","team1_name","team2_name","team1_external_id","team2_external_id","team1_id","team2_id","type","show_type","markets_count","is_blocked","exclude_ids","is_stat_available","game_number","game_external_id","is_live","is_neutral_venue","game_info"]],"event":["id","price","type","name","order","base","price_change"],"market":["type","express_id","name","base","display_key","display_sub_key","main_order","col_count","id"]},"where":{"competition":{"id":parseInt(bookmakerId.id)},"game":{"type":{"@in":[0,2]}},"market":{"@or":[{"type":{"@in":["P1P2","P1XP2","1X12X2","OverUnder","Handicap","AsianHandicap","BothTeamsToScore","HalfTimeResult","HalfTimeDoubleChance","HalfTimeOverUnder","HalfTimeAsianHandicap","2ndHalfTotalOver/Under"]}},{"display_key":{"@in":["WINNER","HANDICAP","TOTALS"]}}]}},"subscribe":true},"rid":"161598169637418"}))
-            //starWS.send(JSON.stringify({"command":"get","params":{"source":"betting","what":{"game":["id","team1_id","team2_id","team1_name","team2_name"]},"where":{"game":{},"sport":{"id":1},"region":{},"competition":{"id":bookmakerId.id}},"subscribe":false},"rid": "161497920766016"}))
-        })
-
-        starWS.on('message', function incoming(data) {
-            const bla = JSON.parse(data)
-            if(bla.data.data) {
-                const events = Object.values(bla.data.data.sport["1"].region["290001"].competition["557"].game)
-                starCasinoEvents = events
-            }
-
         })
     }
 
