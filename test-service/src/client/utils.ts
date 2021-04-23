@@ -13,7 +13,7 @@ import {parseAltenarBetOffers} from "./altenar/altenar";
 import {parserMeridianBetOffers} from "./meridian/meridian";
 import {getBetconstructBetOffersForCompetition} from "./betconstruct/betconstruct";
 
-export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
+export async function getBetOffers(event: EventInfo, betconstructOffers: BetOffer[]): Promise<EventInfo> {
     if(event instanceof EventInfo) {
         const pinnacleBookmakerInfo = event.bookmakers.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
         const pinnacleRequests = pinnacleBookmakerInfo?.eventUrl.map(eventUrl => {
@@ -21,7 +21,8 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                 .then(response => response.data)
                 .catch(error => console.log(error))
         })
-        const requests = event.bookmakers.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE).map(bookmaker => {
+        const requests = event.bookmakers.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE
+            && bookmaker.provider !== Provider.BETCONSTRUCT).map(bookmaker => {
             return bookmaker.eventUrl.map(eventUrl => {
                 if(bookmaker.httpMethod === "GET") {
                     return axios.get(eventUrl, bookmaker.headers)
@@ -36,7 +37,7 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                             return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
                         .catch(error => console.log(error))
                 } else {
-                    // wss taken care before
+                    // wss taken care before, see betconstructRequests
 
                 }
             })
@@ -49,7 +50,7 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
         }
         return Promise.all(requests).then(values => {
             // @ts-ignore
-            const betOffers = mergeBetOffers(values.concat(pinnacleOffers))
+            const betOffers = mergeBetOffers(values.concat(pinnacleOffers).concat(betconstructOffers.filter(betOffer => betOffer.eventId === event.bookmakers.filter(bookmaker => bookmaker && bookmaker.provider === "BETCONSTRUCT")[0]?.eventId)))
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }
@@ -75,13 +76,16 @@ function mergeBetOffers(betOffers: BetOffer[]) {
 
 export async function getBetOffersForEvents(events: EventInfo[]) {
     // TODO betconstruct betoffers for both circus and golden vegas
-    const betConstructRequests = events[0].bookmakers.filter(bookmaker => bookmaker.provider === Provider.BETCONSTRUCT).map(bookmaker => {
+    const betConstructRequests = events[1].bookmakers.filter(bookmaker => bookmaker.provider === Provider.BETCONSTRUCT).map(bookmaker => {
         return getBetconstructBetOffersForCompetition(bookmaker)
     })
-    const requests = events.map(event => {
-        return getBetOffers(event)
+    const betConstructOffers = await Promise.all(betConstructRequests).then(values => {
+        return values.flat()
     })
-    return Promise.all(requests.concat()).then(values => {
+    const requests = events.map(event => {
+        return getBetOffers(event, betConstructOffers)
+    })
+    return Promise.all(requests).then(values => {
         return values
     })
 }

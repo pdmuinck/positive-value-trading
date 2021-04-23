@@ -51,7 +51,7 @@ export async function getBetconstructEventsForCompetition(id: string) {
     })
 }
 
-export async function getBetconstructBetOffersForCompetition(bookmakerInfo: BookMakerInfo) {
+export async function getBetconstructBetOffersForCompetition(bookmakerInfo: BookMakerInfo): Promise<BetOffer[]> {
     startWebSocket(bookmakerInfo.bookmaker, bookmakerInfo.leagueId)
     return new Promise(resolve => {
         const interval = setInterval(() => {
@@ -77,7 +77,7 @@ function parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
     const betOffers: BetOffer[] = []
     response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
         .filter(event => event.DefaultMarketType === "P1XP2").map(event => event.MarketItems).flat().forEach(marketItem => {
-        const betType: BetType = this.determineBetOfferType(marketItem.BetType)
+        const betType: BetType = determineBetOfferType(marketItem.BetType)
         marketItem.OutcomeItems.forEach(outcomeItem => {
             let betOption = outcomeItem.Name
             if(betType === BetType._1X2) {
@@ -85,7 +85,7 @@ function parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
                 if(outcomeItem.OrderPosition === 2) betOption = "X"
                 if(outcomeItem.OrderPosition === 3) betOption = "2"
             }
-            const line = outcomeItem.Base ? outcomeItem.Base : NaN
+            const line = outcomeItem.Base ? outcomeItem.Base : undefined
             betOffers.push(new BetOffer(betType, marketItem.EventId, apiResponse.bookmaker, betOption, outcomeItem.Odd, line))
         })
     })
