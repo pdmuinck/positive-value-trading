@@ -64,7 +64,7 @@ export class Scraper {
         // @ts-ignore
         return Promise.all(leagueRequestsNotMapped).then(values => {
             // @ts-ignore
-            this.mergeEvents(values.flat().filter(x => x), events)
+            return this.mergeEvents(values.flat().filter(x => x), events)
         })
     }
 
@@ -84,9 +84,10 @@ export class Scraper {
                 result[event.sportRadarId] = event
             }
         })
-        return Object.values(result)
+        return Object.values(result).filter(event => event.sportRadarId != "")
 
     }
+
     toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
         this.startMagicBettingWS(bookmakerId, requestType)
         return new Promise(resolve => {
