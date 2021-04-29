@@ -50,7 +50,7 @@ export async function getBetOffers(event: EventInfo, betconstructOffers: BetOffe
         }
         return Promise.all(requests).then(values => {
             // @ts-ignore
-            const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers).concat(betconstructOffers.filter(betOffer => betOffer.eventId === event.bookmakers.filter(bookmaker => bookmaker && bookmaker.provider === "BETCONSTRUCT")[0]?.eventId)))
+            const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers).concat(betconstructOffers.filter(betOffer => event.bookmakers.filter(bookmaker => bookmaker && bookmaker.provider === "BETCONSTRUCT").map(info => info.eventId).includes(betOffer.eventId))))
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }

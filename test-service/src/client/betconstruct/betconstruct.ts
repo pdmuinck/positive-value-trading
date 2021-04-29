@@ -4,7 +4,6 @@ import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 import {RequestType} from "../../domain/betoffer";
-import {pinnacle_sportradar} from "../pinnacle/participants";
 import {star_casino_sportradar} from "./participants";
 
 const WebSocket = require("ws")
