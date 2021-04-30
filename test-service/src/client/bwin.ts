@@ -16,7 +16,7 @@ export async function getBwinEventsForCompetition(id: string): Promise<EventInfo
             const bookmakerInfo = new BookMakerInfo(Provider.BWIN, Bookmaker.BWIN, id, event.id, "",
                 ["https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + event.id + "&state=Latest"],
                 undefined, undefined, "GET")
-            return new EventInfo(parseInt(sportRadarId), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
+            return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
     })
 }

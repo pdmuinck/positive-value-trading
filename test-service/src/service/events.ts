@@ -1,20 +1,20 @@
 import {Provider} from "./bookmaker";
 
 export class EventInfo {
-    private readonly _sportRadarId: number
+    private readonly _sportRadarId: string
     private readonly _sportRadarEventUrl: string
     private readonly _sportRadarHttpMethod = "GET"
     private readonly _bookmakers: BookMakerInfo[]
     private readonly _betOffers
 
-    constructor(sportRadarId: number, sportRadarEventUrl: string, bookmakers: BookMakerInfo[], betOffers?) {
+    constructor(sportRadarId: string, sportRadarEventUrl: string, bookmakers: BookMakerInfo[], betOffers?) {
         this._sportRadarId = sportRadarId
         this._sportRadarEventUrl = sportRadarEventUrl
         this._bookmakers = bookmakers
         this._betOffers = betOffers
     }
 
-    get sportRadarId(): number {
+    get sportRadarId(): string {
         return this._sportRadarId
     }
 

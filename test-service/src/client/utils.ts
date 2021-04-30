@@ -11,10 +11,10 @@ import {parsePinnacleBetOffers} from "./pinnacle/pinnacle";
 import {parseCashpointBetOffers} from "./cashpoint/cashpoint";
 import {parseAltenarBetOffers} from "./altenar/altenar";
 import {parserMeridianBetOffers} from "./meridian/meridian";
-import {getBetconstructBetOffersForCompetition} from "./betconstruct/betconstruct";
-import {getPlaytechBetOffers} from "./playtech/playtech";
+import {parseBetwayBetOffers} from "./betway/betway";
+import {parseZetBetBetOffers} from "./zetbet/zetbet";
 
-export async function getBetOffers(event: EventInfo, websocketOffers: BetOffer[]): Promise<EventInfo> {
+export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
         const pinnacleBookmakerInfo = event.bookmakers.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
         const pinnacleRequests = pinnacleBookmakerInfo?.eventUrl.map(eventUrl => {
@@ -51,7 +51,7 @@ export async function getBetOffers(event: EventInfo, websocketOffers: BetOffer[]
         }
         return Promise.all(requests).then(values => {
             // @ts-ignore
-            const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers).concat(websocketOffers.filter(betOffer => event.bookmakers.filter(bookmaker => bookmaker && (bookmaker.provider === "BETCONSTRUCT" || bookmaker.provider === "PLAYTECH")).map(info => info.eventId).includes(betOffer.eventId))))
+            const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers))
             return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
         })
     }
@@ -76,16 +76,16 @@ function mergeBetOffers(betOffers: BetOffer[]) {
 }
 
 export async function getBetOffersForEvents(events: EventInfo[]) {
-    const magicBettingMarketIds = events.map(event => event.bookmakers).flat().filter(bookmaker => bookmaker.provider === Provider.PLAYTECH).map(bookmaker => bookmaker.eventUrl).flat()
+    /*const magicBettingMarketIds = events.map(event => event.bookmakers).flat().filter(bookmaker => bookmaker.provider === Provider.PLAYTECH).map(bookmaker => bookmaker.eventUrl).flat()
     const websocketRequests = events[1].bookmakers.filter(bookmaker => bookmaker.provider === Provider.BETCONSTRUCT).map(bookmaker => {
         return getBetconstructBetOffersForCompetition(bookmaker)
     })
     websocketRequests.push(getPlaytechBetOffers(magicBettingMarketIds))
     const websocketOffers = await Promise.all(websocketRequests).then(values => {
         return values.flat()
-    })
+    })*/
     const requests = events.map(event => {
-        return getBetOffers(event, websocketOffers)
+        return getBetOffers(event)
     })
     return Promise.all(requests).then(values => {
         return values
@@ -108,6 +108,10 @@ function getParserForBook(provider: Provider, bookmaker?: string) {
             return parseAltenarBetOffers
         case(Provider.MERIDIAN):
             return parserMeridianBetOffers
+        case(Provider.BETWAY):
+            return parseBetwayBetOffers
+        case(Provider.ZETBET):
+            return parseZetBetBetOffers
 
     }
 }

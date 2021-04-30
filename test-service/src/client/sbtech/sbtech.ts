@@ -97,7 +97,7 @@ export async function getSbtechEventsForCompetition(id: string): Promise<EventIn
                             leagueUrl, [eventUrl], headers, undefined, "GET")
                     })
                     const sportRadarId = parseInt(event.media[0].providerEventId)
-                    return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
+                    return new EventInfo(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), bookmakerInfos)
                 })
             })
     })

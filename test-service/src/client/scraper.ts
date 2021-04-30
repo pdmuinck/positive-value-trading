@@ -4,12 +4,10 @@ import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {
     Bet90Parser,
-    BetwayParser,
     BingoalParser,
     LadbrokesParser,
     ScoooreParser,
-    StanleyBetParser,
-    ZetBetParser
+    StanleyBetParser
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
@@ -20,13 +18,9 @@ import {getSportRadarMatch} from "./sportradar/sportradar";
 import {getAltenarEventsForCompetition} from "./altenar/altenar";
 import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 import {getMeridianEventsForCompetition} from "./meridian/meridian";
-import {
-    getBetconstructBcapsEventsForCompetition,
-    getBetconstructEventsForCompetition
-} from "./betconstruct/betconstruct";
-import {getPlaytechEventsForCompetition} from "./playtech/playtech";
+import {getBetwayEventsForCompetition} from "./betway/betway";
+import {getZetBetEventsForCompetition} from "./zetbet/zetbet";
 
-const WebSocket = require("ws")
 const parser = require('node-html-parser')
 
 let events
@@ -43,9 +37,9 @@ export class Scraper {
                 getCashpointEventsForCompetition("6898"),
                 getAltenarEventsForCompetition("1000000490"),
                 getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
-                getBetconstructEventsForCompetition("227875758"),
-
-
+                getBetwayEventsForCompetition("first-division-a"),
+                getZetBetEventsForCompetition("101-pro_league_1a")
+                //getBetconstructEventsForCompetition("227875758"),
             ]
         }
 
@@ -57,8 +51,8 @@ export class Scraper {
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
                 getPinnacleEventsForCompetition("1817", sportRadarMatches),
-                getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
-                getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
+                //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
+                //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
             ]
         }
 
@@ -76,87 +70,21 @@ export class Scraper {
         }
         const result: Map<number, EventInfo> = new Map()
         events.flat().forEach(event => {
-            const storedEvent: EventInfo = result[event.sportRadarId]
-            if (storedEvent) {
-                if (storedEvent.bookmakers) {
-                    const bookMakerInfos: BookMakerInfo[] = storedEvent.bookmakers.concat(event.bookmakers)
-                    result[event.sportRadarId] = new EventInfo(event.sportRadarId, event.sportRadarEventUrl, bookMakerInfos)
+            if(event && event.sportRadarId) {
+                const sportRadarId = event.sportRadarId.toString()
+                const storedEvent: EventInfo = result[sportRadarId]
+                if (storedEvent) {
+                    if (storedEvent.bookmakers) {
+                        const bookMakerInfos: BookMakerInfo[] = storedEvent.bookmakers.concat(event.bookmakers)
+                        result[sportRadarId] = new EventInfo(sportRadarId, event.sportRadarEventUrl, bookMakerInfos)
+                    }
+                } else {
+                    result[sportRadarId] = event
                 }
-            } else {
-                result[event.sportRadarId] = event
             }
         })
         return Object.values(result).filter(event => event.sportRadarId != "")
 
-    }
-
-    toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        if(requestType === RequestType.EVENT) {
-            return [
-                axios.get('https://www.zebet.be/en/competition/' + bookmakerId.id)
-                    .then(response => {
-                        const parent = parser.parse(response.data)
-                        const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
-                        const requests = events.map(event => {
-                            return axios.get("https://www.zebet.be/" + event).then(response => {
-                                const parent = parser.parse(response.data)
-                                const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
-                                const sportRadarId = splitted[splitted.length - 1]
-                                return {eventId: event, sportRadarId: sportRadarId}
-                            })
-                        })
-                        return Promise.all(requests).then(responses => {
-                            return new ApiResponse(Provider.ZETBET, responses, requestType)
-                        })
-
-                    })
-            ]
-        } else {
-            const requests = mappedEvents.map(event => {
-                return axios.get('https://www.zebet.be/' + event.eventId)
-                    .then(response => {
-                        const betOffers = ZetBetParser.parseBetOffers(new ApiResponse(Provider.ZETBET, {data: response.data, eventId: event.eventId}, requestType))
-                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents,Bookmaker.ZETBET)
-                    })
-            })
-            return Promise.all(requests).then(values => {
-                // @ts-ignore
-                return new ApiResponse(Provider.ZETBET, {bookmaker: Bookmaker.ZETBET, events: values.map(value => value.events).flat()}, requestType)
-            })
-        }
-    }
-
-    toBetwayRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
-        const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":bookmakerId.id}
-        if(requestType === RequestType.EVENT) {
-            return [
-                axios.post('https://sports.betway.be/api/Events/V2/GetGroup', eventIdPayload)
-                    .then(response => {
-                        const eventIds = response.data.Categories[0].Events
-                            return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
-                            ,"MarketCName":markets[0],"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}).then(response => {
-                                const data = response.data.Events.map(event => {
-                                    return {eventId: event.Id, sportRadarId: event.SportsRadarId}
-                                })
-                                return new ApiResponse(Provider.BETWAY, data, requestType)
-                            }).catch(error => console.log(error))
-                    }).catch(error => console.log(error))
-            ]
-        } else {
-            const betOfferRequests = mappedEvents.map(event => {
-                const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.eventId
-                    ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
-                return axios.post('https://sports.betway.be/api/Events/V2/GetEventDetails', payload).then(response => {
-                    const betOffers = BetwayParser.parseBetOffers(new ApiResponse(Provider.BETWAY, response.data, requestType))
-                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.BETWAY)
-                }).catch(error => console.log(error))
-            })
-            return Promise.all(betOfferRequests).then(values => {
-                // @ts-ignore
-                return new ApiResponse(Provider.BETWAY, {bookmaker: Bookmaker.BETWAY, events: values.map(value => value.events).flat()}, requestType)
-            })
-        }
     }
 
 

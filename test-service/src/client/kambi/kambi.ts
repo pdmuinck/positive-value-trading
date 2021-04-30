@@ -157,7 +157,7 @@ export async function getKambiEventsForCompetition(id: string): Promise<EventInf
                             ['https://eu-offering.kambicdn.org/offering/v2018/' + book + '/betoffer/event/'  + event.id + '.json?includeParticipants=false'],
                             undefined, undefined, "GET")
                     }).flat()
-                    return new EventInfo(parseInt(sportRadarId), getSportRadarEventUrl(sportRadarId), bookMakerInfos)
+                    return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), bookMakerInfos)
                 }).catch(error => [])
         })
         return Promise.all(requests).then((sportRadarResponses) => {
