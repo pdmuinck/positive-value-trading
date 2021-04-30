@@ -47,7 +47,7 @@ export class BookMakerInfo {
     private readonly _httpMethod: string
 
     constructor(provider: Provider, bookmaker: string, leagueId: string, eventId: string, leagueUrl: string,
-                eventUrl: string[], headers: object, requestBody: object, httpMethod: string) {
+                eventUrl: string[], headers: object, requestBody: any, httpMethod: string) {
         this._provider = provider
         this._bookmaker = bookmaker
         this._leagueId = leagueId

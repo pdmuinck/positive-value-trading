@@ -7,7 +7,6 @@ import {
     BingoalParser,
     LadbrokesParser,
     ScoooreParser,
-    StanleyBetParser
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
@@ -20,6 +19,7 @@ import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 import {getMeridianEventsForCompetition} from "./meridian/meridian";
 import {getBetwayEventsForCompetition} from "./betway/betway";
 import {getZetBetEventsForCompetition} from "./zetbet/zetbet";
+import {getStanleybetEventsForCompetition} from "./stanleybet/stanleybet";
 
 const parser = require('node-html-parser')
 
@@ -38,7 +38,8 @@ export class Scraper {
                 getAltenarEventsForCompetition("1000000490"),
                 getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
                 getBetwayEventsForCompetition("first-division-a"),
-                getZetBetEventsForCompetition("101-pro_league_1a")
+                getZetBetEventsForCompetition("101-pro_league_1a"),
+                getStanleybetEventsForCompetition("38")
                 //getBetconstructEventsForCompetition("227875758"),
             ]
         }
@@ -84,67 +85,6 @@ export class Scraper {
             }
         })
         return Object.values(result).filter(event => event.sportRadarId != "")
-
-    }
-
-
-
-    toStanleyBet(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        const headers = {
-            headers: {
-                'Content-Type': 'text/plain'
-            }
-        }
-        if(requestType === RequestType.EVENT) {
-            const getEventsUrl = 'https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimenti.getEventi.dwr'
-            const body = 'callCount=1\nnextReverseAjaxIndex=0\nc0-scriptName=IF_GetAvvenimenti\nc0-methodName=getEventi\n' +
-                'c0-id=0\nc0-param0=number:6\nc0-param1=string:\nc0-param2=string:\nc0-param3=number:1\nc0-param4=number:'
-                + bookmakerId.id + '\nc0-param5=boolean:false\nc0-param6=string:STANLEYBET\nc0-param7=number:0\nc0-param8=' +
-                'number:0\nc0-param9=string:nl\nbatchId=8\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code' +
-                '%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=jUP0TgbNU12ga86ZyrjLTrS8NRSwl721Uon/AVY2Uon-upTglJydk\n'
-            return [axios.post(getEventsUrl, body, headers).then(response => {
-                const data = response.data.split("avv:").slice(1).map(event => {
-                    const eventId = event.split(',')[0].toString()
-                    const sportRadarId = event.split('"bet_radar_it":')[1].split(",")[0]
-                    const pal = event.split("pal:")[1].split(",")[0]
-                    return {eventId: eventId, sportRadarId: sportRadarId, pal: pal}
-                })
-                return new ApiResponse(Provider.STANLEYBET, data, requestType)
-            })
-                .catch(error => console.log(error))]
-        } else {
-            const eventDetailUrl = "https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimentoSingolo.getEvento.dwr"
-            const requests = mappedEvents.map(event => {
-                const body = "callCount=1\n" +
-                    "nextReverseAjaxIndex=0\n" +
-                    "c0-scriptName=IF_GetAvvenimentoSingolo\n" +
-                    "c0-methodName=getEvento\n" +
-                    "c0-id=0\n" +
-                    "c0-param0=number:1\n" +
-                    "c0-param1=string:" + bookmakerId.id + "\n" +
-                    "c0-param2=number:" + event.pal + "\n" +
-                    "c0-param3=number:" + event.eventId + "\n" +
-                    "c0-param4=string:STANLEYBET\n" +
-                    "c0-param5=number:0\n" +
-                    "c0-param6=number:0\n" +
-                    "c0-param7=string:nl\n" +
-                    "c0-param8=boolean:false\n" +
-                    "batchId=35\n" +
-                    "instanceId=0\n" +
-                    "page=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\n" +
-                    "scriptSessionId=brsZLHHlZCZLuWNodA~xgit5tl4fa5OPqxn/BRNPqxn-QDQkzKIEx"
-                return axios.post(eventDetailUrl, body, headers).then(response => {
-                    const betOffers = StanleyBetParser.parseBetOffers(new ApiResponse(Provider.STANLEYBET, response.data, RequestType.BET_OFFER))
-                    //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.STANLEYBET)
-                })
-            })
-
-            return Promise.all(requests).then(values => {
-                // @ts-ignore
-                return new ApiResponse(Provider.STANLEYBET, {bookmaker: Bookmaker.STANLEYBET, events: values.map(value => value.events).flat()}, requestType)
-            })
-
-        }
 
     }
 
