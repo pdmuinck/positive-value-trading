@@ -24,12 +24,12 @@ import {
     getBetconstructBcapsEventsForCompetition,
     getBetconstructEventsForCompetition
 } from "./betconstruct/betconstruct";
+import {getPlaytechEventsForCompetition} from "./playtech/playtech";
 
 const WebSocket = require("ws")
 const parser = require('node-html-parser')
 
 let events
-let starCasinoEvents
 
 
 export class Scraper {
@@ -45,6 +45,7 @@ export class Scraper {
                 getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
                 getBetconstructEventsForCompetition("227875758"),
 
+
             ]
         }
 
@@ -56,7 +57,8 @@ export class Scraper {
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
                 getPinnacleEventsForCompetition("1817", sportRadarMatches),
-                getBetconstructBcapsEventsForCompetition("557", sportRadarMatches)
+                getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
+                getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
             ]
         }
 
@@ -86,63 +88,6 @@ export class Scraper {
         })
         return Object.values(result).filter(event => event.sportRadarId != "")
 
-    }
-
-    toMagicBettingRequests(bookmakerId: BookmakerId, requestType: RequestType): Promise<ApiResponse> {
-        this.startMagicBettingWS(bookmakerId, requestType)
-        return new Promise(resolve => {
-            const interval = setInterval(() => {
-                if (events) {
-                    resolve(new ApiResponse(Provider.MAGIC_BETTING, events, requestType))
-                    clearInterval(interval)
-                }
-            }, 100)
-        })
-    }
-
-    async startMagicBettingWS(bookmakerId: BookmakerId, requestType: RequestType) {
-
-        function string(t) {
-            const crypto = require("crypto")
-            const s = "abcdefghijklmnopqrstuvwxyz012345"
-            const i = 43
-            for (var e = s.length, n = crypto.randomBytes(t), r = [], o = 0; o < t; o++) r.push(s.substr(n[o] % e, 1));
-            return r.join("")
-        }
-
-        function number(t) {
-            return Math.floor(Math.random() * t)
-        }
-
-        function numberString(t) {
-            var e = ("" + (t - 1)).length;
-            return (new Array(e + 1).join("0") + number(t)).slice(-e)
-        }
-
-
-        function getMagicBettingApiUrl() {
-            const generatedId = string(8)
-            const server = numberString(1e3)
-            const url = "wss://magicbetting.be/api/" + server + "/" + generatedId + "/websocket"
-            return url
-        }
-
-        const leagueId = bookmakerId.id
-        let ws = new WebSocket(getMagicBettingApiUrl(), null, {rejectUnauthorized: false})
-
-        ws.on('open', function open() {
-            ws.send(JSON.stringify(["CONNECT\nprotocol-version:1.5\naccept-version:1.1,1.0\nheart-beat:100000,100000\n\n\u0000"]))
-            ws.send(JSON.stringify(["SUBSCRIBE\nid:/user/request-response\ndestination:/user/request-response\n\n\u0000"]))
-            ws.send(JSON.stringify(["SUBSCRIBE\nid:/api/items/list/all-sports-with-events\ndestination:/api/items/list/all-sports-with-events\n\n\u0000"]))
-            ws.send(JSON.stringify(["SUBSCRIBE\nid:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\ndestination:/api/eventgroups/" + leagueId + "-all-match-events-grouped-by-type\nlocale:nl\n\n\u0000"]))
-        })
-
-        ws.on('message', function incoming(data) {
-            if(data.includes('soccer-be-sb_type_19372')) {
-                events = data
-                ws.close()
-            }
-        })
     }
 
     toZetbetRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {

@@ -123,6 +123,7 @@ export enum Bookmaker {
 }
 
 export enum Provider {
+    PLAYTECH = "PLAYTECH",
     CASHPOINT = "CASHPOINT",
     KAMBI = 'KAMBI',
     SBTECH = 'SBTECH',
