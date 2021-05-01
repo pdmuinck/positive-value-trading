@@ -20,6 +20,7 @@ import {getStanleybetEventsForCompetition} from "./stanleybet/stanleybet";
 import {getScoooreEventsForCompetition} from "./scooore/scooore";
 import {getLadbrokesEventsForCompetition} from "./ladbrokes/ladbrokes";
 import {getBingoalEventsForCompetition} from "./bingoal/bingoal";
+import {getBet90EventsForCompetition} from "./bet90/bet90";
 
 const parser = require('node-html-parser')
 
@@ -55,6 +56,7 @@ export class Scraper {
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
                 getPinnacleEventsForCompetition("1817", sportRadarMatches),
+                //getBet90EventsForCompetition("457", sportRadarMatches)
                 //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
                 //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
             ]
