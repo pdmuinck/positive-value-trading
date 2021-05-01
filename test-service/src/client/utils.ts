@@ -16,6 +16,7 @@ import {parseZetBetBetOffers} from "./zetbet/zetbet";
 import {parseStanleybetBetOffers} from "./stanleybet/stanleybet";
 import {parseScoooreBetOffers} from "./scooore/scooore";
 import {parseLadbrokesBetOffers} from "./ladbrokes/ladbrokes";
+import {parseBingoalBetOffers} from "./bingoal/bingoal";
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
@@ -121,6 +122,8 @@ function getParserForBook(provider: Provider, bookmaker?: string) {
             return parseScoooreBetOffers
         case(Provider.LADBROKES):
             return parseLadbrokesBetOffers
+        case(Provider.BINGOAL):
+            return parseBingoalBetOffers
 
     }
 }

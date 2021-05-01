@@ -44,8 +44,6 @@ export class Parser {
             switch(apiResponse.provider) {
                 case Provider.BET90:
                     return Bet90Parser.parse(apiResponse)
-                case Provider.BINGOAL:
-                    return BingoalParser.parse(apiResponse)
                 default:
                     return []
             }
@@ -100,65 +98,6 @@ export class BetradarParser {
     static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betOffers: BetOffer[] = []
         return betOffers
-    }
-}
-
-export class BingoalParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType) {
-            case RequestType.BET_OFFER:
-                return this.parseBetOffers(apiResponse)
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-        }
-    }
-
-
-    static parseEvents(apiResponse: ApiResponse): Event[] {
-        return apiResponse.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).map(match => {
-            const participants = [
-                new Participant(getParticipantName(match.team1.name),
-                    [new BookmakerId(Provider.BINGOAL, match.team1.ID, IdType.PARTICIPANT)]),
-                new Participant(getParticipantName(match.team2.name),
-                    [new BookmakerId(Provider.BINGOAL, match.team2.ID, IdType.PARTICIPANT)]),
-            ]
-            return new Event(new BookmakerId(Provider.BINGOAL, match.ID, IdType.EVENT), match.date, participants)
-        })
-    }
-
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const betOffers: BetOffer[] = []
-        const event = apiResponse.data.box[0].match
-        event.importantSubbets.forEach(subbet => {
-            const betType: BetType = this.determineBetType(subbet)
-            if(betType !== BetType.UNKNOWN) {
-                subbet.tips.forEach(tip => {
-                    betOffers.push(new BetOffer(betType, event.ID, Bookmaker.BINGOAL, tip.shortName, tip.odd, NaN))
-                })
-            }
-        })
-        return betOffers
-    }
-
-    static determineBetType(subbet) {
-        switch(subbet.marketID) {
-            case "1":
-                return BetType._1X2
-            case "10":
-                return BetType.DOUBLE_CHANCE
-            case "11":
-                return BetType.DRAW_NO_BET
-            case "14":
-                return BetType.HANDICAP
-            case "17":
-                return BetType.OVER_UNDER
-            case "27":
-                return BetType.BOTH_TEAMS_SCORE
-            case "55":
-                return BetType._1X2_H1
-            default:
-                return BetType.UNKNOWN
-        }
     }
 }
 

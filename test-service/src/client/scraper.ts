@@ -4,7 +4,6 @@ import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
 import {
     Bet90Parser,
-    BingoalParser,
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
@@ -20,6 +19,7 @@ import {getZetBetEventsForCompetition} from "./zetbet/zetbet";
 import {getStanleybetEventsForCompetition} from "./stanleybet/stanleybet";
 import {getScoooreEventsForCompetition} from "./scooore/scooore";
 import {getLadbrokesEventsForCompetition} from "./ladbrokes/ladbrokes";
+import {getBingoalEventsForCompetition} from "./bingoal/bingoal";
 
 const parser = require('node-html-parser')
 
@@ -41,7 +41,8 @@ export class Scraper {
                 getZetBetEventsForCompetition("101-pro_league_1a"),
                 getStanleybetEventsForCompetition("38"),
                 getScoooreEventsForCompetition("18340"),
-                getLadbrokesEventsForCompetition("be-jupiler-league1")
+                getLadbrokesEventsForCompetition("be-jupiler-league1"),
+                getBingoalEventsForCompetition("25")
                 //getBetconstructEventsForCompetition("227875758"),
             ]
         }
@@ -88,52 +89,6 @@ export class Scraper {
         })
         return Object.values(result).filter(event => event.sportRadarId != "")
 
-    }
-
-    bingoalQueryKParam(response) {
-        const ieVars = response.data.split("var _ie")[1]
-        return ieVars.split("_k")[1].split(',')[0].split("=")[1].split("'").join("").trim()
-    }
-
-    bingoalHeaders(response) {
-        const cookie = response.headers["set-cookie"].map(entry => entry.split(";")[0]).join("; ")
-        const headers = {
-            headers : {
-                "Cookie": cookie
-            }
-        }
-        return headers
-    }
-
-    toBingoalRequests(bookmakerId: BookmakerId, requestType: RequestType, eventsMap?) {
-        if(requestType === RequestType.EVENT ) {
-            return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
-                const headers = this.bingoalHeaders(response)
-                const k = this.bingoalQueryKParam(response)
-                return axios.get("https://www.bingoal.be/A/sport?k=" + k + "&func=sport&id=" + bookmakerId.id, headers)
-                    .then(response => {
-                        const data = response.data.sports.map(sport => sport.matches).flat().filter(match => !match.outright).map(match => {
-                            return {eventId: match.ID, sportRadarId: match.betradarID}
-                        })
-                        return new ApiResponse(Provider.BINGOAL, data, requestType)})})]
-        } else {
-            // takes long
-            return [axios.get("https://www.bingoal.be/nl/Sport").then(response => {
-                const headers = this.bingoalHeaders(response)
-                const k = this.bingoalQueryKParam(response)
-                const betOfferRequests = eventsMap.map(event => {
-                    const url = "https://www.bingoal.be/A/sport?k=" + k + "&func=detail&id=" + event.eventId
-                    return axios.get(url, headers).then(response => {
-                        const betOffers = BingoalParser.parseBetOffers(new ApiResponse(Provider.BINGOAL, response.data, requestType))
-                        //return this.assignBetOffersToSportRadarEvent(betOffers, eventsMap, Bookmaker.BINGOAL)
-                    })
-                })
-                return Promise.all(betOfferRequests).then(values => {
-                    // @ts-ignore
-                    return new ApiResponse(Provider.BINGOAL, {bookmaker: Bookmaker.BINGOAL, events: values.map(value => value.events).flat()}, requestType)
-                })
-            })]
-        }
     }
 
     toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {
