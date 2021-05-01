@@ -5,7 +5,6 @@ import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker"
 import {
     Bet90Parser,
     BingoalParser,
-    LadbrokesParser,
 } from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
@@ -20,6 +19,7 @@ import {getBetwayEventsForCompetition} from "./betway/betway";
 import {getZetBetEventsForCompetition} from "./zetbet/zetbet";
 import {getStanleybetEventsForCompetition} from "./stanleybet/stanleybet";
 import {getScoooreEventsForCompetition} from "./scooore/scooore";
+import {getLadbrokesEventsForCompetition} from "./ladbrokes/ladbrokes";
 
 const parser = require('node-html-parser')
 
@@ -40,7 +40,8 @@ export class Scraper {
                 getBetwayEventsForCompetition("first-division-a"),
                 getZetBetEventsForCompetition("101-pro_league_1a"),
                 getStanleybetEventsForCompetition("38"),
-                getScoooreEventsForCompetition("18340")
+                getScoooreEventsForCompetition("18340"),
+                getLadbrokesEventsForCompetition("be-jupiler-league1")
                 //getBetconstructEventsForCompetition("227875758"),
             ]
         }
@@ -86,42 +87,6 @@ export class Scraper {
             }
         })
         return Object.values(result).filter(event => event.sportRadarId != "")
-
-    }
-
-    toLadbrokesRequests(bookmakerId: BookmakerId, requestType: RequestType, mappedEvents?) {
-        const headers = {
-            headers: {
-                'x-eb-accept-language': 'en_BE',
-                'x-eb-marketid': 5,
-                'x-eb-platformid': 2
-            }
-        }
-        if(requestType == RequestType.EVENT) {
-            return [axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
-                + bookmakerId.id + '?prematch=1&live=0', headers).then(response => {
-                const events = response.data.result.dataGroupList.map(group => group.itemList).flat()
-                    .map(event => {
-                        return {
-                            eventId: event.eventInfo.aliasUrl,
-                            sportRadarId: event.eventInfo.programBetradarInfo.matchId
-                        }
-                    })
-                return new ApiResponse(Provider.LADBROKES, events, requestType)})]
-        } else {
-            const betOfferRequests = mappedEvents.map(event => {
-                return axios.get('https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
-                    + bookmakerId.id + '/' + event.eventId + '?prematch=1&live=0', headers).then(
-                    response => {
-                        const betOffers = LadbrokesParser.parseBetOffers(new ApiResponse(Provider.LADBROKES, response.data, requestType))
-                        //return this.assignBetOffersToSportRadarEvent(betOffers, mappedEvents, Bookmaker.LADBROKES)
-                    }
-                )})
-            return Promise.all(betOfferRequests).then(values => {
-                // @ts-ignore
-                return new ApiResponse(Provider.LADBROKES, {bookmaker: Bookmaker.LADBROKES, events: values.map(value => value.events).flat()}, requestType)
-            })
-            }
 
     }
 

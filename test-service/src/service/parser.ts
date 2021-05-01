@@ -42,8 +42,6 @@ export class Parser {
     static parse(apiResponse: ApiResponse): any[] {
         if(apiResponse){
             switch(apiResponse.provider) {
-                case Provider.LADBROKES:
-                    return LadbrokesParser.parse(apiResponse)
                 case Provider.BET90:
                     return Bet90Parser.parse(apiResponse)
                 case Provider.BINGOAL:
@@ -158,77 +156,6 @@ export class BingoalParser {
                 return BetType.BOTH_TEAMS_SCORE
             case "55":
                 return BetType._1X2_H1
-            default:
-                return BetType.UNKNOWN
-        }
-    }
-}
-
-export class LadbrokesParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType) {
-            case RequestType.BET_OFFER:
-                return this.parseBetOffers(apiResponse)
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-        }
-
-        return
-    }
-
-    private static parseEvents(apiResponse: ApiResponse): Event[]{
-        if(!apiResponse.data.result.dataGroupList) return []
-        return apiResponse.data.result.dataGroupList.map(group => group.itemList).flat()
-            .map(event => {
-                const eventId = event.eventInfo.aliasUrl
-                const participants = [
-                    new Participant(getParticipantName(event.eventInfo.teamHome.description),
-                        [new BookmakerId(Provider.LADBROKES, event.eventInfo.teamHome.description.toUpperCase(), IdType.PARTICIPANT)]),
-                    new Participant(getParticipantName(event.eventInfo.teamAway.description),
-                        [new BookmakerId(Provider.LADBROKES, event.eventInfo.teamAway.description.toUpperCase(), IdType.PARTICIPANT)])
-                ]
-                return new Event(new BookmakerId(Provider.LADBROKES, eventId, IdType.EVENT), event.eventInfo.eventData.toString(), participants)
-            }).flat()
-    }
-
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        if(!apiResponse.data.result) return []
-        const betOffers = []
-        apiResponse.data.result.betGroupList.map(betGroup => betGroup.oddGroupList).flat().forEach(oddGroup => {
-            const betType = LadbrokesParser.determineBetOfferType(oddGroup.betId)
-            const line = oddGroup.additionalDescription ? parseFloat(oddGroup.additionalDescription.toUpperCase().trim()): NaN
-            oddGroup.oddList.forEach(option => {
-                const outcome = option.oddDescription.toUpperCase()
-                const price = option.oddValue / 100
-                betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line))
-            })
-        })
-        return betOffers
-    }
-
-    // @ts-ignore
-    private static determineBetOfferType(id: number): BetType {
-        switch(id){
-            case 24:
-                return BetType._1X2
-            case 1907:
-                return BetType.OVER_UNDER
-            case 1550:
-                return BetType.BOTH_TEAMS_SCORE
-            case 1555:
-                return BetType.DOUBLE_CHANCE
-            case 53:
-                return BetType.HANDICAP
-            case 74:
-                return BetType.HALF_TIME_FULL_TIME
-            case 51:
-                return BetType.CORRECT_SCORE
-            case 79:
-                return BetType.ODD_EVEN
-            case 363:
-                return BetType._1X2_H1
-            case 372:
-                return BetType.BOTH_TEAMS_SCORE_H1
             default:
                 return BetType.UNKNOWN
         }
