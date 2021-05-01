@@ -1,5 +1,6 @@
 import {BetType, Bookmaker, BookmakerId, Provider} from "../service/bookmaker";
 import {BetOffer} from "../service/betoffers";
+import {EventInfo} from "../service/events";
 
 export class Sport{
     private readonly _name: SportName
@@ -141,35 +142,6 @@ export class SportEvent {
         return this._participants
     }
 
-    detectValueBets(betOfferKey?: string): ValueBetFoundEvent[] {
-        if(betOfferKey) {
-            return this.findValue(betOfferKey)
-        } else {
-            const foundValueBets = []
-            Object.keys(this._betOffers).forEach(betOfferKey => {
-                const valueBets = this.findValue(betOfferKey)
-                if(valueBets) foundValueBets.push(valueBets.filter(valueBet => valueBet))
-            })
-            return foundValueBets.flat()
-        }
-    }
-
-    private findValue(betOfferKey): ValueBetFoundEvent[]{
-        const pinnacleBetOffer = this._betOffers[betOfferKey][Bookmaker.PINNACLE]
-        if(pinnacleBetOffer) {
-            return Object.keys(this._betOffers[betOfferKey]).filter(bookmaker => bookmaker != Bookmaker.PINNACLE)
-                .map(bookmaker => {
-                if(bookmaker != Bookmaker.PINNACLE) {
-                    const betOffer = this._betOffers[betOfferKey][bookmaker]
-                    const value = (1 / pinnacleBetOffer.vigFreePrice * betOffer.price) - 1
-                    if (value > 0) {
-                        return new ValueBetFoundEvent(betOffer, value)
-                    }
-                }
-            })
-        }
-    }
-
     calculateMetrics(tradedBetOffer: TradedBetOffer, closingLine: ClosingLineRegistered): PerformanceMetric {
         if(closingLine.bookMaker === Bookmaker.PINNACLE) {
             // only check closing line pinnacle or other sharp, because that is the best guess of outcome game
@@ -279,12 +251,18 @@ export enum CompetitionName {
 }
 
 export class ValueBetFoundEvent {
-    private readonly _betOffer: BetOffer
+    private readonly _eventInfo: EventInfo
+    private readonly _betOffer: string
     private readonly _value: number
+    private readonly _bookmaker: Bookmaker
+    private readonly _price: number
 
-    constructor(betOffer: BetOffer, value: number){
+    constructor(betOffer: string, value: number, eventInfo, bookmaker, price){
         this._betOffer = betOffer
         this._value = value
+        this._eventInfo = eventInfo
+        this._bookmaker = bookmaker
+        this._price = price
     }
 
     get betOffer(){
@@ -293,5 +271,17 @@ export class ValueBetFoundEvent {
 
     get value() {
         return this._value
+    }
+
+    get bookmaker() {
+        return this._bookmaker
+    }
+
+    get eventInfo() {
+        return this._eventInfo
+    }
+
+    get price() {
+        return this._price
     }
 }

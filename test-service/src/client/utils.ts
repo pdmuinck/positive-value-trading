@@ -1,7 +1,7 @@
 import {EventInfo} from "../service/events";
 import axios from "axios";
 import {ApiResponse} from "./scraper";
-import {RequestType} from "../domain/betoffer";
+import {RequestType, ValueBetFoundEvent} from "../domain/betoffer";
 import {Bookmaker, Provider} from "../service/bookmaker"
 import {BetOffer} from "../service/betoffers";
 import {parseKambiBetOffers} from "./kambi/kambi";
@@ -17,6 +17,22 @@ import {parseStanleybetBetOffers} from "./stanleybet/stanleybet";
 import {parseScoooreBetOffers} from "./scooore/scooore";
 import {parseLadbrokesBetOffers} from "./ladbrokes/ladbrokes";
 import {parseBingoalBetOffers} from "./bingoal/bingoal";
+
+export function identifyValueBets(eventInfo: EventInfo){
+    return Object.keys(eventInfo.betOffers).map(betOfferType => {
+        const betOffers = eventInfo.betOffers[betOfferType]
+        if(Object.keys(betOffers).includes("PINNACLE")) {
+            const pinnaclePrice = betOffers["PINNACLE"]
+            return Object.keys(betOffers).filter(bookmaker => bookmaker !== "PINNACLE").map(bookmaker => {
+                const bookmakerPrice = betOffers[bookmaker]
+                const value = (1 / pinnaclePrice * bookmakerPrice) - 1;
+                if (value > 0) {
+                    return new ValueBetFoundEvent(betOfferType, value, eventInfo, bookmaker, bookmakerPrice);
+                }
+            }).filter(x => x).flat()
+        }
+    }).filter(x => x).flat()
+}
 
 export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
     if(event instanceof EventInfo) {
