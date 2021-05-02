@@ -1,8 +1,8 @@
-FROM public.ecr.aws/lambda/nodejs:14
+FROM node:16
+COPY ../../. /app
+RUN npm install --save-dev typescript
+RUN npm run build
 
-# Copy function code
-COPY events ${LAMBDA_TASK_ROOT}
-RUN make ${LAMBDA_TASK_ROOT}
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
 CMD [ "app.handler" ]
