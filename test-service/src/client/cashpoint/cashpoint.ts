@@ -1,9 +1,10 @@
 import {BookMakerInfo, EventInfo} from "../../service/events";
-import {BetType, Bookmaker, BookmakerId, Provider, providers} from "../../service/bookmaker";
+import {BetType, Bookmaker, Provider, providers} from "../../service/bookmaker";
 import axios from "axios";
-import {ApiResponse} from "../scraper";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 const books = providers[Provider.CASHPOINT]
 
@@ -32,7 +33,7 @@ export function getCashpointEventsForCompetition(id: string): Promise<EventInfo[
     return axios.post(url, payload, headers)
         .then(response => {
             return response.data.games.map(event => {
-                const sportRadarId = event.statisticsId
+                const sportRadarId = event.statisticsId.toString()
                 const bookmakerInfos = books.map(book => {
                     const url = getGamesUrl(domains[book])
                     return new BookMakerInfo(Provider.CASHPOINT, book, id, event.id, url, [url],
@@ -56,8 +57,8 @@ export function parseCashpointBetOffers(apiResponse: ApiResponse): BetOffer[] {
         event.markets.forEach(market => {
             const betType = determineBetType(market.id)
             const line = market.anchor ? market.anchor : market.hc
-            const handicap = market.hc
             if(betType) {
+                const margin = calculateMargin(market.tips.map(tip => tip.odds / 100))
                 market.tips.forEach(tip => {
                     let outcome = tip.text.toUpperCase()
 
@@ -66,7 +67,7 @@ export function parseCashpointBetOffers(apiResponse: ApiResponse): BetOffer[] {
                         || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_TEAM1) {
                         outcome = outcome.includes('+') ? 'OVER' : 'UNDER'
                     }
-                    betOffers.push(new BetOffer(betType, event.id, apiResponse.bookmaker, outcome, price, line, NaN, handicap))
+                    betOffers.push(new BetOffer(betType, event.id, apiResponse.bookmaker, outcome, price, line, margin))
                 })
             }
         })

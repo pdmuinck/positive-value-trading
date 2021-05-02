@@ -1,27 +1,5 @@
-import {Competition, CompetitionName, IdType, Participant, ParticipantName, Sport, SportName} from "../domain/betoffer"
 
-import {BookmakerId, Provider, providers} from "../service/bookmaker";
 
-import {jupilerProLeagueParticipantsRaw} from "./resources/jupiler_pro_league";
-
-export const jupilerProLeagueParticipants: Participant[] = toParticipants(jupilerProLeagueParticipantsRaw)
-
-function toParticipants(rawData): Participant[] {
-    const participants = []
-    Object.keys(rawData).forEach((key: ParticipantName) => {
-        const bookmakerIds: BookmakerId[] = []
-        Object.keys(providers).forEach(provider => {
-            providers[provider].forEach(bookmaker => {
-                let ids = []
-                ids = rawData[key][bookmaker]
-                ids?.forEach(id => bookmakerIds.push(
-                    new BookmakerId(bookmaker, id.toString(), IdType.PARTICIPANT)))
-            })
-        })
-        participants.push(new Participant(key, bookmakerIds))
-    })
-    return participants
-}
 
 const eredivisieParticipants = []
 const bundesligaParticipants = []
@@ -30,6 +8,7 @@ const ligue1Participants = []
 const premierLeagueParticipants = []
 const serieAParticipants = []
 
+/*
 export const footballCompetitions = [
     new Competition(
         CompetitionName.JUPILER_PRO_LEAGUE,
@@ -37,7 +16,6 @@ export const footballCompetitions = [
             //new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
             new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
             //new BookmakerId(Provider.ALTENAR, "1000000490", IdType.COMPETITION),
-            /*
             new BookmakerId(Provider.KAMBI, "1000094965", IdType.COMPETITION),
             new BookmakerId(Provider.SBTECH, "40815", IdType.COMPETITION),
             //new BookmakerId(Provider.PINNACLE, "1817", IdType.COMPETITION),
@@ -56,7 +34,7 @@ export const footballCompetitions = [
             new BookmakerId(Provider.BETWAY, "first-division-a", IdType.COMPETITION),
             new BookmakerId(Provider.ZETBET, "101-pro_league_1a", IdType.COMPETITION)
 
-             */
+
         ],
         jupilerProLeagueParticipants
     ),
@@ -230,5 +208,8 @@ export const sports = [
         footballCompetitions
     )
 ]
+
+ */
+
 
 

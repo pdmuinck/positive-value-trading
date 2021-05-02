@@ -2,8 +2,9 @@ import axios from "axios";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 const headers = {
     headers: {
@@ -23,7 +24,7 @@ export async function getLadbrokesEventsForCompetition(id: string) {
                 + id + '/' + eventId + '?prematch=1&live=0'
             const sportRadarId = event.eventInfo.programBetradarInfo.matchId
             const bookmakerInfo = new BookMakerInfo(Provider.LADBROKES, Bookmaker.LADBROKES, id, eventId, leagueUrl, [eventUrl], headers, undefined, "GET")
-            return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
+            return new EventInfo(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
     })
 }
@@ -34,10 +35,11 @@ export function parseLadbrokesBetOffers(apiResponse: ApiResponse): BetOffer[] {
     apiResponse.data.result.betGroupList.map(betGroup => betGroup.oddGroupList).flat().forEach(oddGroup => {
         const betType = determineBetOfferType(oddGroup.betId)
         const line = oddGroup.additionalDescription ? parseFloat(oddGroup.additionalDescription.toUpperCase().trim()): undefined
+        const margin = calculateMargin(oddGroup.oddList.map(option => option.oddValue / 100))
         oddGroup.oddList.forEach(option => {
             const outcome = option.oddDescription.toUpperCase()
             const price = option.oddValue / 100
-            betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line))
+            betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line, margin))
         })
     })
     return betOffers

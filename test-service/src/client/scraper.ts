@@ -1,16 +1,12 @@
-import {RequestType} from "../domain/betoffer"
 import axios from "axios"
 import {bet90Map} from "./bet90/leagues";
 import {Bookmaker, BookmakerId, Provider, providers} from "../service/bookmaker";
-import {
-    Bet90Parser,
-} from "../service/parser";
 import {BookMakerInfo, EventInfo} from "../service/events";
 import {getSbtechEventsForCompetition} from "./sbtech/sbtech";
 import {getKambiEventsForCompetition} from "./kambi/kambi";
 import {getBwinEventsForCompetition} from "./bwin";
 import {getPinnacleEventsForCompetition} from "./pinnacle/pinnacle";
-import {getSportRadarMatch} from "./sportradar/sportradar";
+import {getSportRadarMatch, SportRadarMatch} from "./sportradar/sportradar";
 import {getAltenarEventsForCompetition} from "./altenar/altenar";
 import {getCashpointEventsForCompetition} from "./cashpoint/cashpoint";
 import {getMeridianEventsForCompetition} from "./meridian/meridian";
@@ -29,7 +25,7 @@ let events
 
 export class Scraper {
 
-    static async getEventsForLeague(leagueName: string): Promise<EventInfo[]> {
+    static async getEventsForLeague(): Promise<EventInfo[]> {
         const requests = {
             "JUPILER_PRO_LEAGUE": [
                 getSbtechEventsForCompetition("40815"),
@@ -39,41 +35,60 @@ export class Scraper {
                 getAltenarEventsForCompetition("1000000490"),
                 getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
                 getBetwayEventsForCompetition("first-division-a"),
-                getZetBetEventsForCompetition("101-pro_league_1a"),
+                //getZetBetEventsForCompetition("101-pro_league_1a"),
                 getStanleybetEventsForCompetition("38"),
                 getScoooreEventsForCompetition("18340"),
                 getLadbrokesEventsForCompetition("be-jupiler-league1"),
                 getBingoalEventsForCompetition("25")
                 //getBetconstructEventsForCompetition("227875758"),
+            ],
+            "EREDIVISIE": [
+                getSbtechEventsForCompetition("41372"),
+                getKambiEventsForCompetition("1000094980"),
+                getBwinEventsForCompetition("6361"),
+                getCashpointEventsForCompetition("6931"),
+                getAltenarEventsForCompetition("1000000282"),
+                getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/25/league/eredivisie"),
+                getBetwayEventsForCompetition("eredivisie"),
+                //getZetBetEventsForCompetition("102-eredivisie"),
+                getStanleybetEventsForCompetition("39"),
+                getScoooreEventsForCompetition("21463"),
+                getLadbrokesEventsForCompetition("nl-eredivisie1"),
+                getBingoalEventsForCompetition("24")
+                //getBetconstructEventsForCompetition("54375423"),
             ]
         }
 
-        const leagueRequests = requests[leagueName.toUpperCase()]
+        const leagueRequests = Object.values(requests).flat()
         // @ts-ignore
-        events = await Promise.all(leagueRequests).then(values => this.mergeEvents(values))
-
-        const sportRadarMatches = await Promise.all(events.map(event => getSportRadarMatch(event.sportRadarId))).then(values => values)
+        events = await Promise.all(leagueRequests).then(values => values)
+        const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
+        // @ts-ignore
+        const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
         const requestsNotMappedToSportRadar = {
             "JUPILER_PRO_LEAGUE": [
                 getPinnacleEventsForCompetition("1817", sportRadarMatches),
                 //getBet90EventsForCompetition("457", sportRadarMatches)
                 //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
                 //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
+            ],
+            "EREDIVISIE": [
+                getPinnacleEventsForCompetition("1928", sportRadarMatches),
+                //getBet90EventsForCompetition("457", sportRadarMatches)
+                //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
+                //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
             ]
         }
 
-        const leagueRequestsNotMapped = requestsNotMappedToSportRadar[leagueName.toUpperCase()]
+        const leagueRequestsNotMapped = Object.values(requestsNotMappedToSportRadar).flat()
         // @ts-ignore
         return Promise.all(leagueRequestsNotMapped).then(values => {
             // @ts-ignore
-            return this.mergeEvents(values.flat().filter(x => x), events)
+            return this.mergeEvents(values.flat().filter(x => x).concat(events.flat()), sportRadarMatches)
         })
     }
 
-    static mergeEvents(events: EventInfo[], other?: EventInfo[]): EventInfo[] {
-        if (other) {
-            events = events.flat().concat(other.flat())
-        }
+    static mergeEvents(events: EventInfo[], sportRadarMatches: SportRadarMatch[]): EventInfo[] {
         const result: Map<number, EventInfo> = new Map()
         events.flat().forEach(event => {
             if(event && event.sportRadarId) {
@@ -82,24 +97,26 @@ export class Scraper {
                 if (storedEvent) {
                     if (storedEvent.bookmakers) {
                         const bookMakerInfos: BookMakerInfo[] = storedEvent.bookmakers.concat(event.bookmakers)
-                        result[sportRadarId] = new EventInfo(sportRadarId, event.sportRadarEventUrl, bookMakerInfos)
+                        result[sportRadarId] = new EventInfo(sportRadarId, event.sportRadarEventUrl, bookMakerInfos,
+                            undefined, sportRadarMatches.filter(match => match.sportRadarId.toString() === sportRadarId)[0])
                     }
                 } else {
                     result[sportRadarId] = event
                 }
             }
         })
-        return Object.values(result).filter(event => event.sportRadarId != "")
+        return Object.values(result).filter(event => event.sportRadarId != "" && event.sportRadarMatch)
 
     }
 
-    toBet90Requests(bookmakerId: BookmakerId, requestType: RequestType) {
+    toBet90Requests(bookmakerId: BookmakerId) {
         const headers = {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Content-Type': 'application/json; charset=UTF-8',
             }
         }
+        /*
         switch(requestType) {
             case RequestType.BET_OFFER:
                 const map = bet90Map.filter(key => key.id === parseInt(bookmakerId.id))[0]
@@ -137,63 +154,6 @@ export class Scraper {
 
     }
 
-}
+         */
 
-export class ApiResponse {
-    private readonly _provider: Provider
-    private readonly _data
-    private readonly _requestType: RequestType
-    private readonly _bookmaker: string
-
-    constructor(provider: Provider, data, requestType: RequestType, bookmaker?: string){
-        this._provider = provider
-        this._data = data
-        this._requestType = requestType
-        this._bookmaker = bookmaker
-    }
-
-    get bookmaker() {
-        return this._bookmaker
-    }
-
-    get provider(){
-        return this._provider
-    }
-
-    get data(){
-        return this._data
-    }
-
-    get requestType(){
-        return this._requestType
-    }
-}
-
-class SbtechTokenRequest {
-    private readonly _bookmaker: Bookmaker
-    private readonly _url: string
-    private readonly _api: SbtechApi
-
-    constructor(bookmaker: Bookmaker, url: string, api: SbtechApi) {
-        this._bookmaker = bookmaker
-        this._url = url
-        this._api = api
-    }
-
-    get bookmaker(){
-        return this._bookmaker
-    }
-
-    get url(){
-        return this._url
-    }
-
-    get api(){
-        return this._api
-    }
-}
-
-enum SbtechApi {
-    V1= "V1",
-    V2 = "V2"
-}
+}}

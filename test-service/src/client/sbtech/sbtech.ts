@@ -1,10 +1,10 @@
 import {BookMakerInfo, EventInfo} from "../../service/events"
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker"
 import axios from "axios"
-
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 /*
 you can choose api rest calls or websocket:
@@ -207,6 +207,7 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
             const betOfferType = determineBetOfferType(typeId)
             const betOffers = []
             const eventId = market.eventId
+            const margin = calculateMargin(market.selections.map(selection => selection.trueOdds))
 
             if(betOfferType === BetType.OVER_UNDER_TEAM) {
                 if(market.participantMapping === homeId) {
@@ -214,16 +215,16 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
                         const line = selection.points ? selection.points : undefined
                         const outcomeType = determineOutcomeType(selection, betOfferType)
                         const price = selection.trueOdds
-                        betOffers.push(BetType.OVER_UNDER_TEAM1,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                        betOffers.push(new BetOffer(BetType.OVER_UNDER_TEAM1,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                     })
                 } else {
                     market.selections.forEach(selection => {
                         const line = selection.points ? selection.points : undefined
                         const outcomeType = determineOutcomeType(selection, betOfferType)
                         const price = selection.trueOdds
-                        betOffers.push(BetType.OVER_UNDER_TEAM2,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                        betOffers.push(new BetOffer(BetType.OVER_UNDER_TEAM2,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                     })
                 }
                 return betOffers
@@ -236,11 +237,11 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
                     const outcomeType = determineOutcomeType(selection, betOfferType)
                     const price = selection.trueOdds
                     if(selection.metadata.type === "13") {
-                        betOffers.push(BetType.ODD_EVEN_TEAM1,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                        betOffers.push(new BetOffer(BetType.ODD_EVEN_TEAM1,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                     } else if(selection.metadata.type === "14") {
-                        betOffers.push(BetType.ODD_EVEN_TEAM2,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line)
+                        betOffers.push(new BetOffer(BetType.ODD_EVEN_TEAM2,
+                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                     }
                 })
                 return betOffers
@@ -250,7 +251,7 @@ export function parseSbtechBetOffers(apiResponse: ApiResponse) {
                     const outcomeType = determineOutcomeType(selection, betOfferType).replace(":", "-")
                     const price = selection.trueOdds
                     const line = selection.points ? selection.points : undefined
-                    betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line))
+                    betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                 })
             }
             return betOffers

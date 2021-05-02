@@ -1,4 +1,3 @@
-import {IdType} from "../domain/betoffer";
 
 export enum Period {
     _O= "FULL_GAME",
@@ -22,6 +21,15 @@ export class BetLine {
     get line() {
         return this._line
     }
+}
+
+export enum IdType {
+    BET_OFFER = 'BET_OFFER',
+    PARTICIPANT = 'PARTICIPANT',
+    EVENT = 'EVENT',
+    COMPETITION = 'COMPETITION',
+    SPORT = 'SPORT',
+    MARKET = 'MARKET'
 }
 
 export enum BetType {

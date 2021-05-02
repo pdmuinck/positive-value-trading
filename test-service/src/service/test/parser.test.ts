@@ -1,4 +1,4 @@
-import {ApiResponse} from "../../client/scraper";
+/*
 import bet90 from "./resources/bet90/events.json"
 import bet90ExpectedEvents from './resources/bet90/expected_events.json'
 import bet90ExpectedSpecialBetOffers from './resources/bet90/expected_special_betoffers.json'
@@ -57,5 +57,7 @@ describe('Parser tests', function() {
     })
 
 })
+
+ */
 
 

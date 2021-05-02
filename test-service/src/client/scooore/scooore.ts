@@ -1,9 +1,10 @@
 import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
-import {ApiResponse} from "../scraper";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 
 export async function getScoooreEventsForCompetition(id: string){
@@ -26,10 +27,11 @@ export function parseScoooreBetOffers(apiResponse: ApiResponse): BetOffer[] {
     return apiResponse.data.eventmarketgroups.map(marketGroup => marketGroup.fullmarkets).flat().map(betOffer => {
         const betType = determineBetType(betOffer.markettypename)
         if(betType !== BetType.UNKNOWN) {
+            const margin = calculateMargin(betOffer.selections.map(selection => selection.price))
             const line = betOffer.currentmatchhandicap ? betOffer.currentmatchhandicap : undefined
             return betOffer.selections.map(selection => {
                 const outcome = determineOutcome(betType, selection)
-                return new BetOffer(betType, betOffer.idfoevent.toString(), Bookmaker.SCOOORE, outcome, selection.price, line)
+                return new BetOffer(betType, betOffer.idfoevent.toString(), Bookmaker.SCOOORE, outcome, selection.price, line, margin)
             }).flat()
         }
     })

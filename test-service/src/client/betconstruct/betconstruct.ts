@@ -1,10 +1,10 @@
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
-import {RequestType} from "../../domain/betoffer";
 import {star_casino_sportradar} from "./participants";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 const WebSocket = require("ws")
 
@@ -100,11 +100,11 @@ export async function getBetconstructBetOffersForCompetition(bookmakerInfo: Book
                 clearInterval(interval)
                 circusEvents = undefined
             } else if(starCasinoEvents) {
-                resolve(parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, starCasinoEvents, RequestType.BET_OFFER, Bookmaker.STAR_CASINO)).flat())
+                resolve(parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, starCasinoEvents, Bookmaker.STAR_CASINO)).flat())
                 clearInterval(interval)
                 starCasinoEvents = undefined
             } else if(goldenVegasEvents) {
-                resolve(parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, goldenVegasEvents, RequestType.BET_OFFER, Bookmaker.GOLDENVEGAS)))
+                resolve(parseBetOffers(new ApiResponse(Provider.BETCONSTRUCT, goldenVegasEvents, Bookmaker.GOLDENVEGAS)))
                 clearInterval(interval)
                 goldenVegasEvents = undefined
             }}, 100)
@@ -165,6 +165,7 @@ function parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
         response.LeagueDataSource.LeagueItems.map(league => league.EventItems).flat()
             .filter(event => event.DefaultMarketType === "P1XP2").map(event => event.MarketItems).flat().forEach(marketItem => {
             const betType: BetType = determineBetOfferType(marketItem.BetType)
+            const margin = calculateMargin(marketItem.OutcomeItems.map(outcomeItem => outcomeItem.Odd))
             marketItem.OutcomeItems.forEach(outcomeItem => {
                 let betOption = outcomeItem.Name
                 if(betType === BetType._1X2) {
@@ -173,7 +174,7 @@ function parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
                     if(outcomeItem.OrderPosition === 3) betOption = "2"
                 }
                 const line = outcomeItem.Base ? outcomeItem.Base : undefined
-                betOffers.push(new BetOffer(betType, marketItem.EventId, apiResponse.bookmaker, betOption, outcomeItem.Odd, line))
+                betOffers.push(new BetOffer(betType, marketItem.EventId, apiResponse.bookmaker, betOption, outcomeItem.Odd, line, margin))
             })
         })
         return betOffers

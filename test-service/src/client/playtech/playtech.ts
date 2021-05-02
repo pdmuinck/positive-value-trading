@@ -1,11 +1,8 @@
 import {BetType, Bookmaker, BookmakerId, Provider} from "../../service/bookmaker";
-import {RequestType} from "../../domain/betoffer";
-import {ApiResponse} from "../scraper";
 import {BookMakerInfo, EventInfo} from "../../service/events";
-import {pinnacle_sportradar} from "../pinnacle/participants";
-import {star_casino_sportradar} from "../betconstruct/participants";
 import {magicbetting_sportradar} from "./participants";
 import {BetOffer} from "../../service/betoffers";
+import {calculateMargin} from "../utils";
 
 const WebSocket = require("ws")
 
@@ -55,11 +52,12 @@ export async function getPlaytechBetOffers(marketIds): Promise<BetOffer[]> {
                 magicBettingMarkets.forEach(market => {
                     const betType = determineBetType(market.type)
                     if(betType !== BetType.UNKNOWN) {
+                        const margin = calculateMargin(market.selectionMap.map(selection => parseFloat(selection.prices[0].decimalLabel)))
                         return Object.values(market.selectionMap).forEach(selection => {
                             // @ts-ignore
                             const line = selection.handicapLabel ? selection.handicapLabel : undefined
                             // @ts-ignore
-                            betOffers.push(new BetOffer(betType, selection.eventId, Bookmaker.MAGIC_BETTING, determineOutcome(selection.type), parseFloat(selection.prices[0].decimalLabel), line))
+                            betOffers.push(new BetOffer(betType, selection.eventId, Bookmaker.MAGIC_BETTING, determineOutcome(selection.type), parseFloat(selection.prices[0].decimalLabel), line, margin))
                         })
                     }
                 })

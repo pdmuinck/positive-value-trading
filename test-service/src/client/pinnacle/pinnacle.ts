@@ -2,8 +2,9 @@ import {BookMakerInfo, EventInfo} from "../../service/events";
 import axios from "axios";
 import {pinnacle_sportradar} from "./participants";
 import {BetType, Bookmaker, BookmakerId, Provider} from "../../service/bookmaker";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 export async function getPinnacleEventsForCompetition(id: string, sportRadarMatches): Promise<EventInfo[]> {
     const requestConfig = {
@@ -46,11 +47,13 @@ function parseBetOffers(marketIds, offers): BetOffer[] {
         marketOffers.forEach(offer => {
             const betType = determineBetType(offer.key, marketId)
             if(betType !== BetType.UNKNOWN) {
+                const margin = calculateMargin(offer.prices.map(price => toDecimalOdds(price.price)))
                 offer.prices.forEach(price => {
                     const outcome = determineOutcome(price.designation, marketId, price.participantId, betType)
                     const line = price.points ? price.points : undefined
                     const odds = toDecimalOdds(price.price)
-                    betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId.id, Bookmaker.PINNACLE, outcome, odds, line))
+
+                    betOffers.push(new BetOffer(betType, marketId.parent ? marketId.parent.id : marketId.id, Bookmaker.PINNACLE, outcome, odds, line, margin))
                 })
             }
         })

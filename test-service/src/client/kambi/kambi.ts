@@ -2,8 +2,9 @@ import {BookMakerInfo, EventInfo} from "../../service/events";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import axios from "axios";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 function kambiBetOption(outcome) {
     return outcome.type.toUpperCase()
@@ -133,10 +134,11 @@ export function parseKambiBetOffers(apiResponse: ApiResponse) {
     return apiResponse.data.betOffers.map(betOffer => {
         const betType = kambiBetOfferTypes(betOffer)
         if(betType !== BetType.UNKNOWN) {
+            const margin = calculateMargin(kambiPrices(betOffer, betType).map(price => price.price))
             const eventId = betOffer.eventId
             const prices = kambiPrices(betOffer, betType)
             return prices.map(price => {
-                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line)
+                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line, margin)
             })
         }
     }).flat().filter(x => x)

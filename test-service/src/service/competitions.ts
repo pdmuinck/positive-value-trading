@@ -1,4 +1,5 @@
-import { Competition, CompetitionName, IdType} from "../domain/betoffer";
+
+/*import { Competition, CompetitionName, IdType} from "../domain/betoffer";
 import {BookmakerId, Provider} from "./bookmaker";
 import {jupilerProLeagueParticipants} from "../client/config";
 
@@ -102,3 +103,5 @@ export const footballCompetitions = [
         undefined
     )
 ]
+
+ */

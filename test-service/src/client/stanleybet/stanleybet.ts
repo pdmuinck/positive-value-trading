@@ -2,8 +2,9 @@ import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 
 export async function getStanleybetEventsForCompetition(id: string){
@@ -57,10 +58,11 @@ export function parseStanleybetBetOffers(apiResponse: ApiResponse): BetOffer[] {
         if(line === 0) line = undefined
         if(betType !== BetType.UNKNOWN) {
             const selections = betOffer.split("EsitoDTO").slice(1)
+            const margin = calculateMargin(selections.map(selection => parseInt(selection.split("quota:")[1])/100))
             return selections.map(selection => {
                 const outcome = determineOutcome(selection.split('"desc_esito":"')[1].split('","')[0])
                 const price = parseInt(selection.split("quota:")[1])/100
-                return new BetOffer(betType, eventId, Bookmaker.STANLEYBET, outcome, price, line)
+                return new BetOffer(betType, eventId, Bookmaker.STANLEYBET, outcome, price, line, margin)
             })
         }
 

@@ -1,117 +1,7 @@
-import {IdType, Participant, ParticipantName, RequestType} from '../domain/betoffer'
-import {ApiResponse} from "../client/scraper";
-import {participantMap} from "./mapper";
-import {BetLine, BetType, Bookmaker, BookmakerId, Provider} from "./bookmaker";
-import {BetOffer} from "./betoffers";
-
 const parser = require('node-html-parser')
 
 
-
-export class Event {
-    private readonly _startTime
-    private readonly _participants: Participant[]
-    private readonly _id: BookmakerId
-    private readonly _sportsRadarId: string
-
-    constructor(id: BookmakerId, startTime, participants: Participant[], sportsRadarId?:string){
-        this._id = id
-        this._startTime = startTime
-        this._participants = participants
-        this._sportsRadarId = sportsRadarId
-    }
-
-    get sportsRadarId() {
-        return this._sportsRadarId
-    }
-
-    get id(){
-        return this._id
-    }
-
-    get startTime(){
-        return this._startTime
-    }
-
-    get participants(){
-        return this._participants
-    }
-}
-
-export class Parser {
-    static parse(apiResponse: ApiResponse): any[] {
-        if(apiResponse){
-            switch(apiResponse.provider) {
-                case Provider.BET90:
-                    return Bet90Parser.parse(apiResponse)
-                default:
-                    return []
-            }
-        } else {
-            return []
-        }
-    }
-
-    static toDecimalOdds(americanOdds): number {
-
-        if(americanOdds < 0) {
-            return parseFloat(((100 / Math.abs(americanOdds)) + 1).toFixed(2))
-        } else {
-            return parseFloat(((americanOdds / 100) + 1).toFixed(2))
-        }
-
-    }
-}
-
-
-
-export class BetradarParser {
-    static parse(apiResponse: ApiResponse): any[] {
-        switch(apiResponse.requestType) {
-            case RequestType.BET_OFFER:
-                return this.parseBetOffers(apiResponse)
-            case RequestType.EVENT:
-                return this.parseEvents(apiResponse)
-            case RequestType.PARTICIPANT:
-                return this.parseParticipants(apiResponse)
-        }
-    }
-
-    static parseParticipants(apiResponse: ApiResponse): Participant[] {
-        const events = this.parseEvents(apiResponse)
-        return events.map(event => event.participants).flat()
-    }
-
-    static parseEvents(apiResponse: ApiResponse): Event[] {
-        // expected bingoal response
-        return apiResponse.data.sports.map(sport => sport.matches).flat().map(match => {
-            const participants = [
-                new Participant(getParticipantName(match.team1.name),
-                    [new BookmakerId(Provider.BETRADAR, match.team1.betradarID.toString(), IdType.PARTICIPANT)]),
-                new Participant(getParticipantName(match.team2.name),
-                    [new BookmakerId(Provider.BETRADAR, match.team2.betradarID.toString(), IdType.PARTICIPANT)]),
-            ]
-            new Event(new BookmakerId(Provider.BETRADAR, match.betradarID.toString(), IdType.EVENT), match.date, participants)
-        })
-    }
-
-    static parseBetOffers(apiResponse: ApiResponse): BetOffer[] {
-        const betOffers: BetOffer[] = []
-        return betOffers
-    }
-}
-
-function getParticipantName(name: string): ParticipantName{
-    let found
-    Object.keys(participantMap).forEach(key => {
-        if(participantMap[key].includes(name.toUpperCase())) {
-            found = key
-        }
-    })
-    if(found) return found
-    return ParticipantName.NOT_FOUND
-}
-
+/*
 export class Bet90Parser {
     static parse(apiResponse: ApiResponse): any[] {
         switch(apiResponse.requestType) {
@@ -230,3 +120,5 @@ export class Bet90Parser {
         return parsedEvents
     }
 }
+
+ */

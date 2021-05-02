@@ -1,9 +1,10 @@
 import axios from "axios";
 import {BetLine, BetType, Bookmaker, Provider} from "../../service/bookmaker";
-import {ApiResponse} from "../scraper";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetOffer} from "../../service/betoffers";
+import {calculateMargin} from "../utils";
+import {ApiResponse} from "../apiResponse";
 const parser = require('node-html-parser')
 
 export async function getZetBetEventsForCompetition(id: string) {
@@ -51,11 +52,12 @@ export function parseZetBetBetOffers(apiResponse: ApiResponse) {
         const prices = betOffers[key].elements
         const betLine = determineLine(key)
         if(betLine.betType !== BetType.UNKNOWN) {
+            const margin = calculateMargin(prices.map(price => price.querySelectorAll(".pmq-cote").map(element => parseFloat(element.childNodes[0].rawText.split("\n")[1].trim().replace(",", ".")))[0]))
             return prices.map((price, index) => {
                 let outcome = price.querySelectorAll(".pmq-cote-acteur").flat().map(element => element.childNodes[0].rawText.split("\n")[1].trim())[0]
                 outcome = determineOutcome(outcome, betLine.betType, index)
                 const odd = price.querySelectorAll(".pmq-cote").map(element => parseFloat(element.childNodes[0].rawText.split("\n")[1].trim().replace(",", ".")))[0]
-                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, outcome ? outcome.toUpperCase(): outcome, odd, betLine.line ? betLine.line : undefined)
+                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, outcome ? outcome.toUpperCase(): outcome, odd, betLine.line ? betLine.line : undefined, margin)
             }).flat()
         }
     }).flat().filter(x => x)

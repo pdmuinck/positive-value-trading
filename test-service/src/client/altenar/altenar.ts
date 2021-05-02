@@ -1,9 +1,10 @@
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import axios from "axios";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
+import {ApiResponse} from "../apiResponse";
+import {calculateMargin} from "../utils";
 
 const books = [Bookmaker.GOLDEN_PALACE]
 
@@ -33,6 +34,7 @@ export function parseAltenarBetOffers(apiResponse: ApiResponse): BetOffer[] {
         .map(group => group.Items).flat().forEach(betOffer => {
         const betType = determineBetType(betOffer.MarketTypeId)
         if(betType) {
+            const margin = calculateMargin(betOffer.Items.map(option => option.Price))
             return betOffer.Items.forEach(option => {
                 const price = option.Price
                 let outcome = option.Name.toUpperCase()
@@ -45,7 +47,7 @@ export function parseAltenarBetOffers(apiResponse: ApiResponse): BetOffer[] {
                 } else if(betType === BetType.CORRECT_SCORE || betType === BetType.CORRECT_SCORE_H1 || betType === BetType.CORRECT_SCORE_H2) {
                     outcome = outcome.replace(":", "-")
                 }
-                betOffers.push(new BetOffer(betType, apiResponse.data.Result.Id, apiResponse.bookmaker, outcome, price, line))
+                betOffers.push(new BetOffer(betType, apiResponse.data.Result.Id, apiResponse.bookmaker, outcome, price, line, margin))
             })
         }
     })

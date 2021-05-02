@@ -2,8 +2,9 @@ import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
-import {ApiResponse} from "../scraper";
 import {BetOffer} from "../../service/betoffers";
+import {calculateMargin} from "../utils";
+import {ApiResponse} from "../apiResponse";
 
 export async function getMeridianEventsForCompetition(id: string): Promise<EventInfo[]> {
     return axios.get(id).then(response => {
@@ -23,10 +24,11 @@ export function parserMeridianBetOffers(apiResponse: ApiResponse): BetOffer[] {
         const betType = determineBetType(betOffer.templateId)
         if(betType !== BetType.UNKNOWN) {
             const line = betOffer.overUnder ? parseFloat(betOffer.overUnder) : undefined
+            const margin = calculateMargin(betOffer.selection.map(option => option.price))
             betOffer.selection.forEach(option => {
                 const price = parseFloat(option.price)
                 const outcome = determineOutcome(option)
-                betOffers.push(new BetOffer(betType, apiResponse.data.id, Provider.MERIDIAN, outcome, price, line))
+                betOffers.push(new BetOffer(betType, apiResponse.data.id, Provider.MERIDIAN, outcome, price, line, margin))
             })
         }
     })

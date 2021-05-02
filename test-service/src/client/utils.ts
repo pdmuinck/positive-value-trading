@@ -1,7 +1,5 @@
 import {EventInfo} from "../service/events";
 import axios from "axios";
-import {ApiResponse} from "./scraper";
-import {RequestType, ValueBetFoundEvent} from "../domain/betoffer";
 import {Bookmaker, Provider} from "../service/bookmaker"
 import {BetOffer} from "../service/betoffers";
 import {parseKambiBetOffers} from "./kambi/kambi";
@@ -17,17 +15,29 @@ import {parseStanleybetBetOffers} from "./stanleybet/stanleybet";
 import {parseScoooreBetOffers} from "./scooore/scooore";
 import {parseLadbrokesBetOffers} from "./ladbrokes/ladbrokes";
 import {parseBingoalBetOffers} from "./bingoal/bingoal";
+import {ValueBetFoundEvent} from "../domain/valuebet";
+import {ApiResponse} from "./apiResponse";
+
+export function calculateMargin(odds): number {
+    let margin = 0
+    odds.forEach(odd => {
+        margin += 1/odd
+    })
+    return margin
+}
 
 export function identifyValueBets(eventInfo: EventInfo){
     return Object.keys(eventInfo.betOffers).map(betOfferType => {
         const betOffers = eventInfo.betOffers[betOfferType]
         if(Object.keys(betOffers).includes("PINNACLE")) {
             const pinnaclePrice = betOffers["PINNACLE"]
+            const vigFreePrediction = pinnaclePrice.price * pinnaclePrice.margin
             return Object.keys(betOffers).filter(bookmaker => bookmaker !== "PINNACLE").map(bookmaker => {
                 const bookmakerPrice = betOffers[bookmaker]
-                const value = (1 / pinnaclePrice * bookmakerPrice) - 1;
+                const value = (1 / vigFreePrediction * bookmakerPrice.price) - 1;
                 if (value > 0) {
-                    return new ValueBetFoundEvent(betOfferType, value, eventInfo, bookmaker, bookmakerPrice);
+                    return new ValueBetFoundEvent(betOfferType, value, eventInfo, bookmaker, bookmakerPrice.price,
+                        bookmakerPrice.margin, vigFreePrediction, pinnaclePrice.price, pinnaclePrice.margin);
                 }
             }).filter(x => x).flat()
         }
@@ -49,13 +59,13 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
                     return axios.get(eventUrl, bookmaker.headers)
                         .then(response => {
                             const parser = getParserForBook(bookmaker.provider)
-                            return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
+                            return parser(new ApiResponse(bookmaker.provider, response.data, bookmaker.bookmaker))})
                         .catch(error => console.log(error))
                 } else if(bookmaker.httpMethod === "POST") {
                     return axios.post(eventUrl, bookmaker.requestBody, bookmaker.headers)
                         .then(response => {
                             const parser = getParserForBook(bookmaker.provider, bookmaker.bookmaker)
-                            return parser(new ApiResponse(bookmaker.provider, response.data, RequestType.BET_OFFER, bookmaker.bookmaker))})
+                            return parser(new ApiResponse(bookmaker.provider, response.data, bookmaker.bookmaker))})
                         .catch(error => console.log(error))
                 } else {
                     // wss taken care before, see betconstructRequests
@@ -66,13 +76,13 @@ export async function getBetOffers(event: EventInfo): Promise<EventInfo> {
         let pinnacleOffers = []
         if(pinnacleRequests) {
             pinnacleOffers = await Promise.all(pinnacleRequests).then(values => {
-                return parsePinnacleBetOffers(new ApiResponse(Provider.PINNACLE, values, RequestType.BET_OFFER))
+                return parsePinnacleBetOffers(new ApiResponse(Provider.PINNACLE, values))
             })
         }
         return Promise.all(requests).then(values => {
             // @ts-ignore
             const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers))
-            return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers)
+            return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers, event.sportRadarMatch)
         })
     }
 }
@@ -84,10 +94,10 @@ function mergeBetOffers(betOffers: BetOffer[]) {
             const key = betOffer.key
             const existing = merged[key]
             if(existing) {
-                existing[betOffer.bookMaker] = betOffer.price
+                existing[betOffer.bookMaker] = {price: betOffer.price, margin: betOffer.margin}
             } else {
                 const prices = {}
-                prices[betOffer.bookMaker] = betOffer.price
+                prices[betOffer.bookMaker] = {price: betOffer.price, margin: betOffer.margin}
                 merged[key] = prices
             }
         }

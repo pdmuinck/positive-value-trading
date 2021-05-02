@@ -1,9 +1,10 @@
 import {BookMakerInfo, EventInfo} from "../service/events";
 import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../service/bookmaker";
-import {ApiResponse} from "./scraper";
 import {BetOffer} from "../service/betoffers";
 import {getSportRadarEventUrl} from "./sportradar/sportradar";
+import {calculateMargin} from "./utils";
+import {ApiResponse} from "./apiResponse";
 
 export async function getBwinEventsForCompetition(id: string): Promise<EventInfo[]> {
     const leagueUrl = 'https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
@@ -16,7 +17,7 @@ export async function getBwinEventsForCompetition(id: string): Promise<EventInfo
             const bookmakerInfo = new BookMakerInfo(Provider.BWIN, Bookmaker.BWIN, id, event.id, "",
                 ["https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + event.id + "&state=Latest"],
                 undefined, undefined, "GET")
-            return new EventInfo(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
+            return new EventInfo(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
     })
 }
@@ -27,11 +28,12 @@ export function parseBwinBetOffers(apiResponse: ApiResponse) {
     return event.games.map(game => {
         const betType = determineBetType(game.templateId)
         if (betType !== BetType.UNKNOWN) {
+            const margin = calculateMargin(game.results.map(result => result.odds))
             const line = game.attr ? game.attr.replace(",", ".") : undefined
             return game.results.map((result, index) => {
                 const price = result.odds
                 const outcome = determineOutcome(betType, result, index)
-                return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line)
+                return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line, margin)
             })
         }
     }).flat().filter(x => x)

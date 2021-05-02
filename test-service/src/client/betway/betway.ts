@@ -1,9 +1,10 @@
 import axios from "axios";
 import {BetType, Bookmaker, Provider} from "../../service/bookmaker";
-import {ApiResponse} from "../scraper";
 import {BookMakerInfo, EventInfo} from "../../service/events";
 import {getSportRadarEventUrl} from "../sportradar/sportradar";
 import {BetOffer} from "../../service/betoffers";
+import {calculateMargin} from "../utils";
+import {ApiResponse} from "../apiResponse";
 
 const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
 
@@ -22,7 +23,9 @@ export async function getBetwayEventsForCompetition(id: string): Promise<EventIn
                     const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.Id
                         ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
                     const bookmakerInfo = new BookMakerInfo(Provider.BETWAY, Bookmaker.BETWAY, id, event.Id, leagueUrl, [eventUrl], undefined, payload, "POST")
-                    return new EventInfo(event.SportsRadarId, getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
+                    if(event.SportsRadarId) {
+                        return new EventInfo(event.SportsRadarId.toString(), getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
+                    }
                 })
             }).catch(error => console.log(error))
         }).catch(error => console.log(error))
@@ -40,10 +43,11 @@ export function parseBetwayBetOffers(apiResponse: ApiResponse): BetOffer[] {
                 const titleSplitted = market.Title.split(" ")
                 line = parseFloat(titleSplitted[titleSplitted.length - 1])
             }
+            const margin = calculateMargin(outcomes.filter(outcome => market.Outcomes[0].includes(outcome.Id)))
             return market.Outcomes[0].map(outcomeToSearch => {
                 const outcome = outcomes.filter(outcomeElement => outcomeElement.Id === outcomeToSearch)[0]
                 const option = determineOption(betType, outcome.CouponName.toUpperCase(), outcome.SortIndex)
-                return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, parseFloat(outcome.OddsDecimalDisplay), line)
+                return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, parseFloat(outcome.OddsDecimalDisplay), line, margin)
             })
         }
     }).flat().filter(x => x)
