@@ -1,4 +1,5 @@
 const BetType = {
+    "UNKNOWN": "UNKNOWN",
     "_1X2": "1X2",
     "_1X2_H1": "1X2_H1",
     "_1X2_H2": "1X2_H2",

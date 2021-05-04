@@ -1,10 +1,12 @@
-const Altenar = require("../books/altenar")
-const SportRadar = require("../books/sportradar")
-const Event = require("../event").Event
+const {getSportRadarMatch} = require("../books/sportradar");
+const {getAltenarEventsForCompetition} = require("../books/altenar");
+const {getBetwayEventsForCompetition} = require("../books/betway");
+const {Event} = require("../event")
 
 const requests = {
     "JUPILER_PRO_LEAGUE": [
-        Altenar.getAltenarEventsForCompetition("1000000490")
+        getAltenarEventsForCompetition("1000000490"),
+        getBetwayEventsForCompetition("first-division-a")
     ]
 }
 
@@ -12,7 +14,7 @@ async function getEvents() {
     const leagueRequests = Object.values(requests).flat()
     const events = await Promise.all(leagueRequests).then(values => values)
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
-    const sportRadarMatches = await Promise.all(sportRadarIds.map(id => SportRadar.getSportRadarMatch(id))).then(values => values.filter(x => x))
+    const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
     const eventsMerged = mergeEvents(events.flat(), sportRadarMatches)
     console.log(eventsMerged)
 }
