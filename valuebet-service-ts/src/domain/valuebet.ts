@@ -1,6 +1,5 @@
 import {EventInfo} from "../service/events";
 import {Bookmaker} from "../service/bookmaker";
-import {SportRadarMatch} from "../client/sportradar/sportradar";
 
 export class ValueBetFoundEvent {
     private readonly _eventInfo: EventInfo

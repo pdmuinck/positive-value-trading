@@ -2,44 +2,138 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1c779c3-30f1-4114-b20f-f020ab780724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test-service/src/client/apiResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-service/src/domain/valuebet.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-service/src/service/test/utils.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/altenar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-service/bookmaker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-service/books/altenar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-service/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-service/valuebet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/altenar/altenar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/altenar/altenar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/betconstruct/betconstruct.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/betconstruct/betconstruct.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/betway/betway.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/betway/betway.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/bingoal/bingoal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/bingoal/bingoal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/bwin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/bwin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/cashpoint/cashpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/cashpoint/cashpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/circus/leagues.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/kambi/kambi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/kambi/kambi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/ladbrokes/ladbrokes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/ladbrokes/ladbrokes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/meridian/meridian.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/meridian/meridian.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/pinnacle/pinnacle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/pinnacle/pinnacle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/playtech/playtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/playtech/playtech.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/resources/jupiler_pro_league.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/resources/jupiler_pro_league.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/sbtech/sbtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/sbtech/sbtech.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/scooore/scooore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/scooore/scooore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/scraper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/scraper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/sportradar/sportradar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/sportradar/sportradar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/stanleybet/stanleybet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/stanleybet/stanleybet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/client/zetbet/zetbet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/client/zetbet/zetbet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/domain/betoffer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/domain/betoffer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/betoffers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/betoffers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/bookmaker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/bookmaker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/competitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/competitions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/events.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/events.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/mapper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/parser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/parser.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/test/valuebet-service.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-service/src/service/valuebet-service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/main.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/provider.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/provider.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/tf-state.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/tf-state.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/test/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/test/main.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/test/tf-state.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/test/tf-state.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/all_books.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/all_books.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/altenar/altenar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/altenar/altenar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/apiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/apiResponse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bet90/bet90.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bet90/leagues.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/leagues.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betconstruct/betconstruct.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betconstruct/betconstruct.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betconstruct/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betconstruct/participants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betway/betway.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betway/betway.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bingoal/bingoal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bingoal/bingoal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bwin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bwin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/cashpoint/cashpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/cashpoint/cashpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/bookmakers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/bookmakers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/kambi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/kambi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/leagues.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/sports.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/sports.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/unibet_betoffer_type_2_fake.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/unibet_betoffer_type_2_fake.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/unibet_betoffer_type_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/unibet_betoffer_type_6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/ladbrokes/ladbrokes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/ladbrokes/ladbrokes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/meridian/meridian.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/meridian/meridian.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/openbet/openbet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/openbet/openbet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/participants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/pinnacle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/pinnacle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/pinnacle_betoffer_fake.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/pinnacle_betoffer_fake.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/playtech/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/playtech/participants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/playtech/playtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/playtech/playtech.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/BUNDESLIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/BUNDESLIGA.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/CHAMPIONSHIP.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/CHAMPIONSHIP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/EREDIVISIE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/EREDIVISIE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/LA_LIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/LA_LIGA.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/LIGUE_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/LIGUE_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/PREMIER_LEAGUE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/PREMIER_LEAGUE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/SERIE_A.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/SERIE_A.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/sbtech/sbtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/sbtech/sbtech.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/scooore/scooore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/scooore/scooore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/scraper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/scraper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/sportradar/sportradar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/sportradar/sportradar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/stanleybet/stanleybet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/stanleybet/stanleybet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/zetbet/zetbet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/zetbet/zetbet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/domain/valuebet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/domain/valuebet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/event-mapper/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/event-mapper/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/event-mapper/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/event-mapper/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/betoffers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/betoffers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/bookmaker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/bookmaker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/competitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/competitions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/events.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/events.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/parser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/parser.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_special_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_special_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/special_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/special_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bwin/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bwin/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bwin/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bwin/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/magicbetting/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/magicbetting/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/magicbetting/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/magicbetting/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sample.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sample.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/expected_betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/expected_events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/scooore/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/scooore/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/scooore/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/scooore/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/stanleybet/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/stanleybet/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/stanleybet/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/stanleybet/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/starcasino/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/starcasino/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/starcasino/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/starcasino/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/zetbet/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/zetbet/betoffers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/zetbet/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/zetbet/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/scraper.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/scraper.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/utils.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/utils.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/betoffer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/betoffer.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/parser.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/parser.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/scraper.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/scraper.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/test-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/test-data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/valuebet-service.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/valuebet-service.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-service/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,48 +172,46 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Scala" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-service/src/client/playtech" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/valuebet-service/infra/prod" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/test-service/node_modules/mocha" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/valuebet-service/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="scala_project_settings_configurable.last_selected_tab_index" value="0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/test-service/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/valuebet-service/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/valuebet-service/infra/prod" />
       <recent name="$PROJECT_DIR$/test-service/src/client/playtech" />
       <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/betway" />
       <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/meridian" />
       <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/ladbrokes" />
-      <recent name="$PROJECT_DIR$/test-service/src/client/circus" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/betconstruct" />
-      <recent name="$PROJECT_DIR$/test-service/src/client/websocket" />
-      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources" />
-      <recent name="$PROJECT_DIR$/node-typescript-starter/src/service/test" />
-      <recent name="$PROJECT_DIR$/valuebet-service/client" />
+      <recent name="$PROJECT_DIR$/test/src" />
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/valuebet-service/src/event-mapper" />
+      <recent name="$PROJECT_DIR$/valuebet-service/infra/test" />
+      <recent name="$PROJECT_DIR$/valuebet-service/src" />
     </key>
   </component>
   <component name="RunManager" selected="Mocha.scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -208,7 +300,7 @@
     <configuration name="scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
-      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
+      <mocha-package>$PROJECT_DIR$/valuebet-service/node_modules/mocha</mocha-package>
       <working-directory>$PROJECT_DIR$/test-service</working-directory>
       <pass-parent-env>true</pass-parent-env>
       <ui>exports</ui>
@@ -413,35 +505,8 @@
       <workItem from="1619762783199" duration="5663000" />
       <workItem from="1619809619416" duration="5459000" />
       <workItem from="1619865743914" duration="6957000" />
-      <workItem from="1619951955414" duration="7364000" />
-    </task>
-    <task id="LOCAL-00073" summary="create scooore parser">
-      <created>1616416106721</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1616416106722</updated>
-    </task>
-    <task id="LOCAL-00074" summary="create stanleybet parser">
-      <created>1616419553844</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1616419553844</updated>
-    </task>
-    <task id="LOCAL-00075" summary="create stanleybet parser">
-      <created>1616434303946</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1616434303946</updated>
-    </task>
-    <task id="LOCAL-00076" summary="create stanleybet parser">
-      <created>1616441899253</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1616441899253</updated>
+      <workItem from="1619951955414" duration="15072000" />
+      <workItem from="1620109203928" duration="3737000" />
     </task>
     <task id="LOCAL-00077" summary="bwin parser">
       <created>1616445455954</created>
@@ -758,12 +823,47 @@
       <option name="project" value="LOCAL" />
       <updated>1619872672228</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="cleanup">
+      <created>1619961603893</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1619961603894</updated>
+    </task>
+    <task id="LOCAL-00123" summary="cleanup">
+      <created>1619961886783</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1619961886783</updated>
+    </task>
+    <task id="LOCAL-00124" summary="setup lambda">
+      <created>1619964938359</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1619964938359</updated>
+    </task>
+    <task id="LOCAL-00125" summary="attempt dockerfile and make file">
+      <created>1619980325753</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1619980325753</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <option name="searchClosedTasks" value="true" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/test/src/test.js.map" />
+        <option value="$PROJECT_DIR$/test/src/test.js" />
+        <option value="$PROJECT_DIR$/valuebet-service/src/client/altenar/altenar.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -788,9 +888,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clean kambiparser" />
-    <MESSAGE value="move kambi parser logic to kambi.ts" />
-    <MESSAGE value="cleanup" />
     <MESSAGE value="tes" />
     <MESSAGE value="start with pinnacle" />
     <MESSAGE value="map pinnacle events" />
@@ -813,7 +910,10 @@
     <MESSAGE value="add bingoal" />
     <MESSAGE value="try out bete90" />
     <MESSAGE value="add value bet detector" />
-    <option name="LAST_COMMIT_MESSAGE" value="add value bet detector" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="setup lambda" />
+    <MESSAGE value="attempt dockerfile and make file" />
+    <option name="LAST_COMMIT_MESSAGE" value="attempt dockerfile and make file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -864,61 +964,58 @@
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/node_modules/ws/lib/websocket.js</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/node_modules/ws/lib/websocket.js</url>
           <line>603</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/service/test/parser.test.ts</url>
           <line>33</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/service/test/parser.test.ts</url>
           <line>45</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/service/test/parser.test.ts</url>
           <line>54</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
           <line>32</line>
           <option name="timeStamp" value="472" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
           <line>33</line>
           <option name="timeStamp" value="473" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
           <line>20</line>
           <option name="timeStamp" value="476" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
           <line>22</line>
           <option name="timeStamp" value="477" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/client/config.ts</url>
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/config.ts</url>
           <line>186</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="479" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</url>
-          <line>13</line>
-          <properties lambdaOrdinal="-1" />
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/service/test/scraper.test.ts</url>
+          <line>14</line>
           <option name="timeStamp" value="481" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</url>
-          <line>11</line>
-          <properties lambdaOrdinal="-1" />
+          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/service/test/scraper.test.ts</url>
+          <line>12</line>
           <option name="timeStamp" value="485" />
         </line-breakpoint>
       </breakpoints>
