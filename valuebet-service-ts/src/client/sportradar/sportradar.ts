@@ -1,9 +1,9 @@
 import axios from "axios";
 
+
 export function getSportRadarEventUrl(id: number): string {
     return "https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/" + id
 }
-
 export function getSportRadarMatch(eventId: number): Promise<SportRadarMatch> {
     const url = getSportRadarEventUrl(eventId)
     return axios.get(url).then(response => {

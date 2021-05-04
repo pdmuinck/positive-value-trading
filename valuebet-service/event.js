@@ -1,4 +1,4 @@
-export class Event {
+class Event {
     constructor(sportRadarId, sportRadarEventUrl, bookmakerInfo, sportRadarMatch, betOffers) {
         this.sportRadarId = sportRadarId
         this.sportRadarEventUrl = sportRadarEventUrl
@@ -7,3 +7,5 @@ export class Event {
         this.betOffers = betOffers
     }
 }
+
+exports.Event = Event
