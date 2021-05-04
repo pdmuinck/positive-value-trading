@@ -1,3 +1,4 @@
+const {getBingoalEventsForCompetition} = require("../books/bingoal");
 const {getSportRadarMatch} = require("../books/sportradar");
 const {getAltenarEventsForCompetition} = require("../books/altenar");
 const {getBetwayEventsForCompetition} = require("../books/betway");
@@ -6,7 +7,8 @@ const {Event} = require("../event")
 const requests = {
     "JUPILER_PRO_LEAGUE": [
         getAltenarEventsForCompetition("1000000490"),
-        getBetwayEventsForCompetition("first-division-a")
+        getBetwayEventsForCompetition("first-division-a"),
+        getBingoalEventsForCompetition("25")
     ]
 }
 
