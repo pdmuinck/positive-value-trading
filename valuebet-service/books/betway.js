@@ -1,15 +1,12 @@
-const Bookmaker = require("../bookmaker").Bookmaker
-const Provider = require("../bookmaker").Provider
-const BookmakerInfo = require("../bookmaker").BookmakerInfo
-const BetType = require("../bookmaker").BetType
-const Event = require("../event").Event
-const BetOffer = require("../betoffer").BetOffer
-const SportRadar = require("../books/sportradar")
+const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
+const {Event} = require("../event")
+const {BetOffer} = require("../betoffer")
+const {getSportRadarEventUrl} = require("../books/sportradar")
 const axios = require("axios")
 
 const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
 
-async function getBetwayEventsForCompetition(id) {
+exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompetition(id) {
     const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,
         "ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":id }
 
@@ -25,14 +22,14 @@ async function getBetwayEventsForCompetition(id) {
                         ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
                     const bookmakerInfo = new BookmakerInfo(Provider.BETWAY, Bookmaker.BETWAY, id, event.Id, leagueUrl, [eventUrl], undefined, payload, "POST")
                     if(event.SportsRadarId) {
-                        return new Event(event.SportsRadarId.toString(), SportRadar.getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
+                        return new Event(event.SportsRadarId.toString(), getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
                     }
                 })
             }).catch(error => console.log(error))
         }).catch(error => console.log(error))
 }
 
-function parseBetwayBetOffers(apiResponse) {
+exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
     const eventId = apiResponse.data.Event.Id
     const markets = apiResponse.data.Markets
     const outcomes = apiResponse.data.Outcomes
@@ -190,6 +187,3 @@ function determineBetType(title) {
             return BetType.UNKNOWN
     }
 }
-
-exports.getBetwayEventsForCompetition = getBetwayEventsForCompetition
-exports.parseBetwayBetOffers = parseBetwayBetOffers

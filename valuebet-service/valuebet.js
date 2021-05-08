@@ -1,4 +1,4 @@
-export class ValueBetFoundEvent {
+class ValueBetFoundEvent {
     constructor(betOffer, value, eventInfo, bookmaker, price, margin, prediction, pinnaclePrice, pinnacleMargin){
         this.betOffer = betOffer
         this.value = value
@@ -11,3 +11,5 @@ export class ValueBetFoundEvent {
         this.pinnaclePrice = pinnaclePrice
     }
 }
+
+exports.ValueBetFoundEvent = ValueBetFoundEvent

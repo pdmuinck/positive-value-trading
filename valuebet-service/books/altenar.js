@@ -1,10 +1,7 @@
-const Bookmaker = require("../bookmaker").Bookmaker
-const Provider = require("../bookmaker").Provider
-const BookmakerInfo = require("../bookmaker").BookmakerInfo
-const BetType = require("../bookmaker").BetType
-const Event = require("../event").Event
-const BetOffer = require("../betoffer").BetOffer
-const SportRadar = require("../books/sportradar")
+const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
+const {Event} = require("../event")
+const {BetOffer} = require("../betoffer")
+const {getSportRadarEventUrl} = require("../books/sportradar")
 const axios = require("axios")
 
 const books = [Bookmaker.GOLDEN_PALACE]
@@ -24,7 +21,7 @@ exports.getAltenarEventsForCompetition = async function getAltenarEventsForCompe
                     return new BookmakerInfo(Provider.ALTENAR, book, id, event.Id, url, [eventUrl],
                         undefined, undefined, "GET")
                 })
-                return new Event(sportRadarId, SportRadar.getSportRadarEventUrl(sportRadarId), bookmakerInfos)
+                return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
             })
         }).catch(error => console.log(error))
 }

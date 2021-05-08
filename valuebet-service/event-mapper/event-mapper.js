@@ -1,14 +1,34 @@
+
+
+const {getKambiEventsForCompetition} = require("../books/kambi")
+const {getBwinEventsForCompetition} = require("../books/bwin");
 const {getBingoalEventsForCompetition} = require("../books/bingoal");
 const {getSportRadarMatch} = require("../books/sportradar");
 const {getAltenarEventsForCompetition} = require("../books/altenar");
 const {getBetwayEventsForCompetition} = require("../books/betway");
+const {getCashPointEventsForCompetition} = require("../books/cashpoint")
+const {getLadbrokesEventsForCompetition} = require("../books/ladbrokes")
+const {getMeridianEventsForCompetition} = require("../books/meridian")
+const {getSbtechEventsForCompetition} = require("../books/sbtech")
+const {getScoooreEventsForCompetition} = require("../books/scooore")
+const {getStanleybetEventsForCompetition} = require("../books/stanleybet")
+const {getZetBetEventsForCompetition} = require("../books/zetbet")
 const {Event} = require("../event")
 
 const requests = {
     "JUPILER_PRO_LEAGUE": [
         getAltenarEventsForCompetition("1000000490"),
         getBetwayEventsForCompetition("first-division-a"),
-        getBingoalEventsForCompetition("25")
+        getBingoalEventsForCompetition("25"),
+        getCashPointEventsForCompetition("6898"),
+        getBwinEventsForCompetition("16409"),
+        getKambiEventsForCompetition("1000094965"),
+        getLadbrokesEventsForCompetition("be-jupiler-league1"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
+        getSbtechEventsForCompetition("40815"),
+        getScoooreEventsForCompetition("18340"),
+        getStanleybetEventsForCompetition("38"),
+        getZetBetEventsForCompetition("101-pro_league_1a")
     ]
 }
 

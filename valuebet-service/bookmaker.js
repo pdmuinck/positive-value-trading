@@ -59,7 +59,8 @@ Object.freeze(Bookmaker)
 
 
 const Provider = {
-    "ALTENAR": "ALTENAR"
+    "ALTENAR": "ALTENAR",
+    "CASHPOINT": "CASHPOINT"
 }
 
 Object.freeze(Provider)
