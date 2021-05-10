@@ -1,7 +1,7 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
 const {Event} = require("../event")
 const {BetOffer} = require("../betoffer")
-const {getSportRadarEventUrl} = require("../books/sportradar")
+const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
 
 const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
