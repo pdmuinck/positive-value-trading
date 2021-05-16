@@ -39,6 +39,8 @@ async function getEvents() {
     console.log(eventsMerged)
 }
 
+getEvents()
+
 function mergeEvents(events, sportRadarMatches) {
     const result = {}
     events.forEach(event => {
@@ -59,6 +61,4 @@ function mergeEvents(events, sportRadarMatches) {
     })
     return Object.values(result).filter(event => event.sportRadarId != "" && event.sportRadarMatch)
 }
-
-getEvents()
 
