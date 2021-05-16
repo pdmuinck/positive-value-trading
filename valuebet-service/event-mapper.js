@@ -30,7 +30,7 @@ const requests = {
     ]
 }
 
-async function getEvents() {
+exports.getEvents = async function getEvents() {
     const leagueRequests = Object.values(requests).flat()
     const events = await Promise.all(leagueRequests).then(values => values)
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
@@ -38,8 +38,6 @@ async function getEvents() {
     const eventsMerged = mergeEvents(events.flat(), sportRadarMatches)
     console.log(eventsMerged)
 }
-
-getEvents()
 
 function mergeEvents(events, sportRadarMatches) {
     const result = {}
