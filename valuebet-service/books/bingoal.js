@@ -2,6 +2,7 @@ const {BookmakerInfo, Bookmaker, BetType, Provider} = require("../bookmaker")
 const {Event} = require("../event")
 const {BetOffer} = require("../betoffer")
 const axios = require("axios")
+const {calculateMargin} = require("../utils/utils");
 const {getSportRadarEventUrl} = require("./sportradar");
 
 function bingoalQueryKParam(response) {

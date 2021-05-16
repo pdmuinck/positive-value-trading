@@ -3,6 +3,7 @@ const {Event} = require("../event")
 const {BetOffer} = require("../betoffer")
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
+const {calculateMargin} = require("../utils/utils");
 
 const books = [Bookmaker.TOTOLOTEK, Bookmaker.MERKUR_SPORTS, Bookmaker.BETCENTER, Bookmaker.CASHPOINT]
 

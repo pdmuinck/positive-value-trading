@@ -3,6 +3,7 @@ const {Event} = require("../event")
 const {BetOffer} = require("../betoffer")
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
+const {calculateMargin} = require("../utils/utils");
 
 const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
 

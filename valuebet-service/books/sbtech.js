@@ -1,4 +1,4 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
+const {Provider, BookmakerInfo, BetType} = require("../bookmaker")
 const {Event} = require("../event")
 const {BetOffer} = require("../betoffer")
 const {getSportRadarEventUrl} = require("./sportradar")
