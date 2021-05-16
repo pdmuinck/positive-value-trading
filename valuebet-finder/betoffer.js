@@ -1,44 +1,17 @@
-import {parseKambiBetOffers} from "./books/kambi";
-import {parseBwinBetOffers} from "./books/bwin";
-import {parsePinnacleBetOffers} from "./books/pinnacle";
-import {parseAltenarBetOffers} from "./books/altenar";
-import {parserMeridianBetOffers} from "./books/meridian";
-import {parseBetwayBetOffers} from "./books/betway";
-import {parseZetBetBetOffers} from "./books/zetbet";
-import {parseStanleybetBetOffers} from "./books/stanleybet";
-import {parseScoooreBetOffers} from "./books/scooore";
-import {parseBingoalBetOffers} from "./books/bingoal";
-import {EventInfo} from "../valuebet-service-ts/src/service/events";
-import {Bookmaker} from "../valuebet-service-ts/src/service/bookmaker";
-import {parseLadbrokesBetOffers} from "./books/ladbrokes";
-import {parseSbtechBetOffers} from "./books/sbtech";
-import {parseCashPointBetOffers} from "./books/cashpoint";
-
-class BetOffer {
-    constructor(betType, eventId, bookMaker, betOptionName, price, line, margin) {
-        this.betOptionName = betOptionName
-        this.price = price
-        this.line = line
-        this.betType = betType
-        this.eventId = eventId
-        this.bookMaker = bookMaker
-        this.margin = margin
-    }
-}
-
-class ValueBetFoundEvent {
-    constructor(betOffer, value, eventInfo, bookmaker, price, margin, prediction, pinnaclePrice, pinnacleMargin){
-        this.betOffer = betOffer
-        this.value = value
-        this.eventInfo = eventInfo
-        this.bookmaker = bookmaker
-        this.price = price
-        this.margin = margin
-        this.prediction = prediction
-        this.pinnacleMargin = pinnacleMargin
-        this.pinnaclePrice = pinnaclePrice
-    }
-}
+import {parseKambiBetOffers} from "../books/kambi";
+import {parseBwinBetOffers} from "../books/bwin";
+import {parsePinnacleBetOffers} from "../books/pinnacle";
+import {parseAltenarBetOffers} from "../books/altenar";
+import {parserMeridianBetOffers} from "../books/meridian";
+import {parseBetwayBetOffers} from "../books/betway";
+import {parseZetBetBetOffers} from "../books/zetbet";
+import {parseStanleybetBetOffers} from "../books/stanleybet";
+import {parseScoooreBetOffers} from "../books/scooore";
+import {parseBingoalBetOffers} from "../books/bingoal";
+import {parseLadbrokesBetOffers} from "../books/ladbrokes";
+import {parseSbtechBetOffers} from "../books/sbtech";
+import {parseCashPointBetOffers} from "../books/cashpoint";
+const axios = require("axios")
 
 function identifyValueBets(eventInfo){
     return Object.keys(eventInfo.betOffers).map(betOfferType => {
@@ -163,3 +136,4 @@ exports.BetOffer = BetOffer
 exports.getBetOffersForEvents = getBetOffersForEvents
 exports.ValueBetFoundEvent = ValueBetFoundEvent
 exports.identifyValueBets = identifyValueBets
+exports.handler = getBetOffersForEvents

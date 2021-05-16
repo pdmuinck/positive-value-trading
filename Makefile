@@ -1,5 +1,8 @@
+event_mapper:clean
+	docker build -f event-mapper/Dockerfile . -t $(tag)
+
 clean:
-	rm -r node_modules
+	rm -rf node_modules
 
 pre-build:clean
 	npm install

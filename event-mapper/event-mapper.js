@@ -1,16 +1,16 @@
-const {getKambiEventsForCompetition} = require("./books/kambi")
-const {getBwinEventsForCompetition} = require("./books/bwin");
-const {getBingoalEventsForCompetition} = require("./books/bingoal");
-const {getSportRadarMatch} = require("./books/sportradar");
-const {getAltenarEventsForCompetition} = require("./books/altenar");
-const {getBetwayEventsForCompetition} = require("./books/betway");
-const {getCashPointEventsForCompetition} = require("./books/cashpoint")
-const {getLadbrokesEventsForCompetition} = require("./books/ladbrokes")
-const {getMeridianEventsForCompetition} = require("./books/meridian")
-const {getSbtechEventsForCompetition} = require("./books/sbtech")
-const {getScoooreEventsForCompetition} = require("./books/scooore")
-const {getStanleybetEventsForCompetition} = require("./books/stanleybet")
-const {getZetBetEventsForCompetition} = require("./books/zetbet")
+const {getKambiEventsForCompetition} = require("../books/kambi")
+const {getBwinEventsForCompetition} = require("../books/bwin");
+const {getBingoalEventsForCompetition} = require("../books/bingoal");
+const {getSportRadarMatch} = require("../books/sportradar");
+const {getAltenarEventsForCompetition} = require("../books/altenar");
+const {getBetwayEventsForCompetition} = require("../books/betway");
+const {getCashPointEventsForCompetition} = require("../books/cashpoint")
+const {getLadbrokesEventsForCompetition} = require("../books/ladbrokes")
+const {getMeridianEventsForCompetition} = require("../books/meridian")
+const {getSbtechEventsForCompetition} = require("../books/sbtech")
+const {getScoooreEventsForCompetition} = require("../books/scooore")
+const {getStanleybetEventsForCompetition} = require("../books/stanleybet")
+const {getZetBetEventsForCompetition} = require("../books/zetbet")
 const {Event} = require("./event")
 
 const requests = {
@@ -35,8 +35,7 @@ exports.getEvents = async function getEvents() {
     const events = await Promise.all(leagueRequests).then(values => values)
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
     const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
-    const eventsMerged = mergeEvents(events.flat(), sportRadarMatches)
-    console.log(eventsMerged)
+    return mergeEvents(events.flat(), sportRadarMatches)
 }
 
 function mergeEvents(events, sportRadarMatches) {

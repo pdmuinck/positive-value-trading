@@ -1,6 +1,6 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
-const {Event} = require("../event")
-const {BetOffer} = require("../betoffer")
+const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
+const {Event} = require("../event-mapper/event")
+const {BetOffer} = require("../utils/utils");
 const {calculateMargin} = require("../utils/utils")
 const WebSocket = require("ws")
 

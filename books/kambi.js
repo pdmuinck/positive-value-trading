@@ -1,8 +1,8 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
-const {Event} = require("../event")
-const {BetOffer} = require("../betoffer")
+const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
+const {Event} = require("../event-mapper/event")
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
+const {BetOffer} = require("../utils/utils");
 const {calculateMargin} = require("../utils/utils")
 
 exports.getKambiEventsForCompetition = async function getKambiEventsForCompetition(id) {

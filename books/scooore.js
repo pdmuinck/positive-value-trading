@@ -1,6 +1,6 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("../bookmaker")
-const {Event} = require("../event")
-const {BetOffer} = require("../betoffer")
+const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
+const {Event} = require("../event-mapper/event")
+const {BetOffer} = require("../utils/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
 const {calculateMargin} = require("../utils/utils")
