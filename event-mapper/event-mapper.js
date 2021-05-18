@@ -1,7 +1,8 @@
 const {getKambiEventsForCompetition, getBwinEventsForCompetition, getBingoalEventsForCompetition,
     getAltenarEventsForCompetition, getBetwayEventsForCompetition, getCashPointEventsForCompetition,
     getLadbrokesEventsForCompetition, getMeridianEventsForCompetition, getSbtechEventsForCompetition,
-    getScoooreEventsForCompetition, getStanleybetEventsForCompetition, getZetBetEventsForCompetition} = require("./books")
+    getScoooreEventsForCompetition, getStanleybetEventsForCompetition, getZetBetEventsForCompetition,
+    getPinnacleEventsForCompetition} = require("./books")
 const {getSportRadarMatch} = require("./sportradar");
 const {Event} = require("./event")
 
@@ -18,7 +19,7 @@ const requests = {
         getSbtechEventsForCompetition("40815"),
         getScoooreEventsForCompetition("18340"),
         getStanleybetEventsForCompetition("38"),
-        getZetBetEventsForCompetition("101-pro_league_1a")
+        getZetBetEventsForCompetition("101-pro_league_1a"),
     ]
 }
 
@@ -27,7 +28,18 @@ exports.getEvents = async function getEvents() {
     const events = await Promise.all(leagueRequests).then(values => values)
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
     const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
-    return mergeEvents(events.flat(), sportRadarMatches)
+    const requestsNotMappedToSportRadar = {
+        "JUPILER_PRO_LEAGUE": [
+            getPinnacleEventsForCompetition("1817", sportRadarMatches),
+            //getBet90EventsForCompetition("457", sportRadarMatches)
+            //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
+            //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
+        ]
+    }
+    const leagueRequestsNotMapped = Object.values(requestsNotMappedToSportRadar).flat()
+    return Promise.all(leagueRequestsNotMapped).then(values => {
+        return mergeEvents(values.flat().filter(x => x).concat(events.flat()), sportRadarMatches)
+    })
 }
 
 function mergeEvents(events, sportRadarMatches) {

@@ -60,7 +60,36 @@ class BookmakerInfo {
 }
 
 const Bookmaker = {
-    "GOLDEN_PALACE": "GOLDEN_PALACE"
+    "GOLDEN_PALACE": "GOLDEN_PALACE",
+    "FASTBET" : "fastbet",
+    "BETMOTION" : "betmotion",
+    "BET99" : "BET99",
+    "CORAL" : "CORAL",
+    "LADBROKES_UK": "LADBROKES_UK",
+    "MERKUR_SPORTS": "merkur-sports",
+    "SPORTWETTEN" : "SPORTWETTEN",
+    "ZETBET" : "ZETBET",
+    "BWIN" : "BWIN",
+    "UNIBET_BELGIUM": 'ubbe',
+    "NAPOLEON_GAMES" : 'ngbe',
+    "PINNACLE": 'PINNACLE',
+    "BETFIRST": 'betfirst',
+    "BETCENTER" : 'BETCENTER',
+    "CASHPOINT" : "CASHPOINT",
+    "LADBROKES" : 'LADBROKES',
+    "MERIDIAN" : 'MERIDIAN',
+    "BET777" : 'bet777',
+    "BET90" : 'BET90',
+    "MAGIC_BETTING" : 'MAGIC_BETTING',
+    "STAR_CASINO" : 'STAR_CASINO',
+    "SCOOORE" : 'SCOOORE',
+    "CIRCUS" : 'CIRCUS',
+    "STANLEYBET" : 'STANLEYBET',
+    "BINGOAL" : 'BINGOAL',
+    "BETRADAR" : 'BETRADAR',
+    "GOLDENVEGAS" : 'GOLDENVEGAS',
+    "BETWAY" : 'BETWAY',
+    "TOTOLOTEK" : "totolotek"
 }
 
 Object.freeze(Bookmaker)

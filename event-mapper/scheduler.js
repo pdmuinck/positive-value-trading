@@ -2,7 +2,7 @@ const schedule = require("node-schedule")
 const {getEvents} = require("./event-mapper")
 const fs = require("fs")
 
-getEvents().then(response => console.log(JSON.stringify(response, null, 2), { depth: null }))
+getEvents().then(response => console.log(JSON.stringify(response[0], null, 2), { depth: null }))
 
 /*
 const getValueBetsJob = schedule.scheduleJob('* * * * *', function(){

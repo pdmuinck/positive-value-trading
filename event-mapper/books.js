@@ -219,6 +219,27 @@ exports.getPinnacleEventsForCompetition = async function getPinnacleEventsForCom
     })
 }
 
+const pinnacle_sportradar = {
+    "Sint Truiden": 4958,
+    "Standard Liege": 4954,
+    "KFCO Beerschot-Wilrijk": 10547664,
+    "KV Kortrijk": 923904,
+    "KV Mechelen": 4682,
+    "Oud-Heverlee Leuven": 5583073,
+    "Waasland-Beveren": 5583071,
+    "Charleroi": 4672,
+    "Eupen": 5325576,
+    "Oostende": 357080,
+    "Cercle Brugge": 230652,
+    "Club Brugge": 5289,
+    "Mouscron Peruwelz": 6542681,
+    "Royal Antwerp": 5291,
+    "Genk": 4675,
+    "SV Zulte-Waregem": 548844,
+    "Gent": 4677,
+    "Anderlecht": 4671
+};
+
 exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompetition(id) {
     const books = [
         {bookmaker: "bet777", url: "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", api: "V1"},

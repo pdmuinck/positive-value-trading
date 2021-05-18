@@ -81,6 +81,7 @@ async function getBetOffers(event) {
 }
 
 function mergeBetOffers(betOffers) {
+    console.log(JSON.stringify(betOffers))
     const merged = {}
     betOffers.flat().forEach(betOffer => {
         if(betOffer) {
@@ -104,7 +105,7 @@ async function getBetOffersForEvents(events) {
             return getBetOffers(event)
         })
         return Promise.all(requests).then(values => {
-            return values.map(value => identifyValueBets(value)).flat()
+            return values
         })
     }
 
