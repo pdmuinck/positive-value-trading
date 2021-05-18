@@ -97,8 +97,25 @@ Object.freeze(Bookmaker)
 
 
 const Provider = {
-    "ALTENAR": "ALTENAR",
-    "CASHPOINT": "CASHPOINT"
+    "PLAYTECH" : "PLAYTECH",
+    "CASHPOINT" : "CASHPOINT",
+    "KAMBI" : 'KAMBI',
+    "SBTECH" : 'SBTECH',
+    "BETCONSTRUCT" : 'BETCONSTRUCT',
+    "ALTENAR" : 'ALTENAR',
+    "PINNACLE" : 'PINNACLE',
+    "BET90" : 'BET90',
+    "BETRADAR" : 'BETRADAR',
+    "BINGOAL" : 'BINGOAL',
+    "STANLEYBET" : 'STANLEYBET',
+    "STAR_CASINO" : 'STAR_CASINO',
+    "LADBROKES" : 'LADBROKES',
+    "MERIDIAN" : 'MERIDIAN',
+    "MAGIC_BETTING" : 'MAGIC_BETTING',
+    "SCOOORE" : 'SCOOORE',
+    "BWIN" : 'BWIN',
+    "BETWAY" : 'BETWAY',
+    "ZETBET" : 'ZETBET'
 }
 
 Object.freeze(Provider)
