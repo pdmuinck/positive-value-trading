@@ -1,34 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils");
+const {calculateMargin} = require("../event-mapper/utils");
 
-const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
-
-exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompetition(id) {
-    const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,
-        "ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":id }
-
-    const leagueUrl = "https://sports.betway.be/api/Events/V2/GetGroup"
-    const eventUrl = "https://sports.betway.be/api/Events/V2/GetEventDetails"
-    return axios.post(leagueUrl, eventIdPayload)
-        .then(response => {
-            const eventIds = response.data.Categories[0].Events
-            return axios.post('https://sports.betway.be/api/Events/V2/GetEvents', {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":eventIds
-                ,"MarketCName":markets[0],"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}).then(response => {
-                return response.data.Events.map(event => {
-                    const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.Id
-                        ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
-                    const bookmakerInfo = new BookmakerInfo(Provider.BETWAY, Bookmaker.BETWAY, id, event.Id, leagueUrl, [eventUrl], undefined, payload, "POST")
-                    if(event.SportsRadarId) {
-                        return new Event(event.SportsRadarId.toString(), getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
-                    }
-                })
-            }).catch(error => console.log(error))
-        }).catch(error => console.log(error))
-}
 
 exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
     const eventId = apiResponse.data.Event.Id

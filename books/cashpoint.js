@@ -1,9 +1,9 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils");
+const {calculateMargin} = require("../event-mapper/utils");
 
 const books = [Bookmaker.TOTOLOTEK, Bookmaker.MERKUR_SPORTS, Bookmaker.BETCENTER, Bookmaker.CASHPOINT]
 
@@ -13,46 +13,7 @@ domains[Bookmaker.MERKUR_SPORTS] = "oddsservice.merkur-sports.de"
 domains[Bookmaker.BETCENTER] = "oddsservice.betcenter.be"
 domains[Bookmaker.CASHPOINT] = "oddsservice.cashpoint.com"
 
-function getGamesUrl(domain) {
-    return "https://" + domain + "/odds/getGames/8"
-}
 
-async function getCashPointEventsForCompetition(id) {
-    const domains = {}
-    domains[Bookmaker.TOTOLOTEK] = "oddsservice.totolotek.pl"
-    domains[Bookmaker.MERKUR_SPORTS] = "oddsservice.merkur-sports.de"
-    domains[Bookmaker.BETCENTER] = "oddsservice.betcenter.be"
-    domains[Bookmaker.CASHPOINT] = "oddsservice.cashpoint.com"
-    const headers = {
-        headers: {
-            "x-language": 2,
-            "x-brand": 7,
-            "x-location": 21,
-            "x-client-country": 21,
-            "Content-Type":"application/json"
-        }
-    }
-    const payload = {"leagueIds": [parseInt(id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
-    const url = getGamesUrl(domains[Bookmaker.CASHPOINT])
-    return axios.post(url, payload, headers)
-        .then(response => {
-            return response.data.games.map(event => {
-                const sportRadarId = event.statisticsId.toString()
-                const bookmakerInfos = books.map(book => {
-                    const url = getGamesUrl(domains[book])
-                    return new BookmakerInfo(Provider.CASHPOINT, book, id, event.id, url, [url],
-                        headers, {
-                            gameIds: [event.id],
-                            gameTypes: [1, 4, 5],
-                            jurisdictionId: 30,
-                            limit: 20000,
-                            leagueIds: [parseInt(id)]
-                        }, "POST")
-                })
-                return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
-            })
-        })
-}
 
 function parseCashPointBetOffers(apiResponse) {
     if(!apiResponse.data.games) return []

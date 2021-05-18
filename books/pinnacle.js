@@ -1,33 +1,9 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 
-exports.getPinnacleEventsForCompetition = async function getPinnacleEventsForCompetition(id, sportRadarMatches) {
-    const requestConfig = {
-        headers: {
-            "X-API-Key": "CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R",
-            "Referer": "https://www.pinnacle.com/",
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        }
-    }
-    const leagueUrl = "https://guest.api.arcadia.pinnacle.com/0.1/leagues/" + id + "/matchups"
-    return axios.get(leagueUrl, requestConfig).then(response => {
-        return response.data.filter(event => !event.parent).map(event => {
-            const match = sportRadarMatches.filter(match => match && match.participants[0] === pinnacle_sportradar[event.participants[0].name] &&
-                match.participants[1] === pinnacle_sportradar[event.participants[1].name])[0]
-            if(match) {
-                const bookmakerInfo = new BookmakerInfo(Provider.PINNACLE, Bookmaker.PINNACLE, id, event.id,
-                    leagueUrl, ["https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id + "/related",
-                        "https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id + "/markets/related/straight"],
-                    requestConfig, undefined, "GET")
-                return new Event(match.sportRadarId, match.sportRadarEventUrl, [bookmakerInfo])
-            }
-        })
-    })
-}
 
 exports.parsePinnacleBetOffers = function parsePinnacleBetOffers(apiResponse) {
     let betOffers = []

@@ -1,30 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils")
+const {BetOffer} = require("../event-mapper/utils")
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 const parser = require('node-html-parser')
-
-exports.getZetBetEventsForCompetition = async function getZetBetEventsForCompetition(id) {
-    const leagueUrl = "https://www.zebet.be/en/competition/" + id
-    return axios.get(leagueUrl)
-        .then(response => {
-            const parent = parser.parse(response.data)
-            const events = parent.querySelectorAll('.bet-activebets').map(node => node.childNodes[1].rawAttrs.split("href=")[1].split('"')[1]).flat()
-            const requests = events.map(event => {
-                const eventUrl = "https://www.zebet.be/" + event
-                return axios.get(eventUrl).then(response => {
-                    const parent = parser.parse(response.data)
-                    const splitted = parent.querySelectorAll('.bet-stats')[0].childNodes[1].rawAttrs.split('"')[1].split("/")
-                    const sportRadarId = splitted[splitted.length - 1]
-                    const bookmakerInfo = new BookmakerInfo(Provider.ZETBET, Bookmaker.ZETBET, id, event, leagueUrl, [eventUrl], undefined, undefined, "GET")
-                    return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-                })
-            })
-            return Promise.all(requests).then(responses => responses)
-        })
-}
 
 exports.parseZetBetBetOffers = function parseZetBetBetOffers(apiResponse) {
     const root = parser.parse(apiResponse.data)

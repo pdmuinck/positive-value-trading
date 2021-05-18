@@ -1,20 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 
-exports.getMeridianEventsForCompetition = async function getMeridianEventsForCompetition(id) {
-    return axios.get(id).then(response => {
-        return response.data[0].events.map(event => {
-            const eventUrl = "https://meridianbet.be/sails/events/" + event.id
-            const sportRadarId = event.betradarUnified.id
-            const bookmakerInfo = new BookmakerInfo(Provider.MERIDIAN, Bookmaker.MERIDIAN, id, event.id, id, [eventUrl], undefined, undefined, "GET")
-            return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-        })
-    })
-}
 
 exports.parserMeridianBetOffers = function parserMeridianBetOffers(apiResponse) {
     if(!apiResponse.data.market) return []

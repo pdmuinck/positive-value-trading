@@ -1,25 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 
-
-exports.getScoooreEventsForCompetition = async function getScoooreEventsForCompetition(id){
-    const leagueUrl = "https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/" + id + ".1-0.json"
-    return axios.get(leagueUrl)
-        .then(response => {
-            return response.data.markets.map(event => {
-                const eventId = event.idfoevent.toString()
-                const eventUrl = "https://www.e-lotto.be/cache/evenueEventMarketGroupWithMarketsSB/NL/420/" + eventId + ".json"
-                const sportRadarId = event.extevents[0].idefevent.split('_')[1]
-                const bookmakerInfo = new BookmakerInfo(Provider.SCOOORE, Bookmaker.SCOOORE, id, eventId, leagueUrl,
-                    [eventUrl], undefined, undefined, "GET")
-                return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-            })
-        }).catch(error => console.log(error))
-}
 
 exports.parseScoooreBetOffers = function parseScoooreBetOffers(apiResponse) {
     if(!apiResponse.data.eventmarketgroups) return []

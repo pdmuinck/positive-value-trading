@@ -1,32 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 
-const headers = {
-    headers: {
-        'x-eb-accept-language': 'en_BE',
-        'x-eb-marketid': 5,
-        'x-eb-platformid': 2
-    }
-}
-
-exports.getLadbrokesEventsForCompetition = async function getLadbrokesEventsForCompetition(id) {
-    const leagueUrl = 'https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'
-        + id + '?prematch=1&live=0'
-    return axios.get(leagueUrl, headers).then(response => {
-        return response.data.result.dataGroupList.map(group => group.itemList).flat().map(event => {
-            const eventId = event.eventInfo.aliasUrl
-            const eventUrl = 'https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
-                + id + '/' + eventId + '?prematch=1&live=0'
-            const sportRadarId = event.eventInfo.programBetradarInfo.matchId
-            const bookmakerInfo = new BookmakerInfo(Provider.LADBROKES, Bookmaker.LADBROKES, id, eventId, leagueUrl, [eventUrl], headers, undefined, "GET")
-            return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-        })
-    })
-}
 
 exports.parseLadbrokesBetOffers = function parseLadbrokesBetOffers(apiResponse) {
     if(!apiResponse.data.result) return []

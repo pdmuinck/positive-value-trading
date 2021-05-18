@@ -1,16 +1,4 @@
-import {parseKambiBetOffers} from "../books/kambi";
-import {parseBwinBetOffers} from "../books/bwin";
-import {parsePinnacleBetOffers} from "../books/pinnacle";
-import {parseAltenarBetOffers} from "../books/altenar";
-import {parserMeridianBetOffers} from "../books/meridian";
-import {parseBetwayBetOffers} from "../books/betway";
-import {parseZetBetBetOffers} from "../books/zetbet";
-import {parseStanleybetBetOffers} from "../books/stanleybet";
-import {parseScoooreBetOffers} from "../books/scooore";
-import {parseBingoalBetOffers} from "../books/bingoal";
-import {parseLadbrokesBetOffers} from "../books/ladbrokes";
-import {parseSbtechBetOffers} from "../books/sbtech";
-import {parseCashPointBetOffers} from "../books/cashpoint";
+const parseKambiBetOffers = require("./books/kambi").parseKambiBetOffers()
 const axios = require("axios")
 
 function identifyValueBets(eventInfo){
@@ -105,6 +93,7 @@ function getParserForBook(provider, bookmaker) {
     switch(provider) {
         case(Provider.KAMBI):
             return parseKambiBetOffers
+        /*
         case(Provider.SBTECH):
             return parseSbtechBetOffers
         case(Provider.BWIN):
@@ -129,11 +118,9 @@ function getParserForBook(provider, bookmaker) {
             return parseLadbrokesBetOffers
         case(Provider.BINGOAL):
             return parseBingoalBetOffers
+
+         */
     }
 }
 
-exports.BetOffer = BetOffer
-exports.getBetOffersForEvents = getBetOffersForEvents
-exports.ValueBetFoundEvent = ValueBetFoundEvent
-exports.identifyValueBets = identifyValueBets
 exports.handler = getBetOffersForEvents

@@ -1,16 +1,8 @@
-const {getKambiEventsForCompetition} = require("../books/kambi")
-const {getBwinEventsForCompetition} = require("../books/bwin");
-const {getBingoalEventsForCompetition} = require("../books/bingoal");
-const {getSportRadarMatch} = require("../books/sportradar");
-const {getAltenarEventsForCompetition} = require("../books/altenar");
-const {getBetwayEventsForCompetition} = require("../books/betway");
-const {getCashPointEventsForCompetition} = require("../books/cashpoint")
-const {getLadbrokesEventsForCompetition} = require("../books/ladbrokes")
-const {getMeridianEventsForCompetition} = require("../books/meridian")
-const {getSbtechEventsForCompetition} = require("../books/sbtech")
-const {getScoooreEventsForCompetition} = require("../books/scooore")
-const {getStanleybetEventsForCompetition} = require("../books/stanleybet")
-const {getZetBetEventsForCompetition} = require("../books/zetbet")
+const {getKambiEventsForCompetition, getBwinEventsForCompetition, getBingoalEventsForCompetition,
+    getAltenarEventsForCompetition, getBetwayEventsForCompetition, getCashPointEventsForCompetition,
+    getLadbrokesEventsForCompetition, getMeridianEventsForCompetition, getSbtechEventsForCompetition,
+    getScoooreEventsForCompetition, getStanleybetEventsForCompetition, getZetBetEventsForCompetition} = require("./books")
+const {getSportRadarMatch} = require("./sportradar");
 const {Event} = require("./event")
 
 const requests = {

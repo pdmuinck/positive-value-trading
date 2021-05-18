@@ -1,25 +1,10 @@
 const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 
-exports.getBwinEventsForCompetition = async function getBwinEventsForCompetition(id) {
-    const leagueUrl = 'https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
-        'WJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&fixtureTypes=Standard&state=Late' +
-        'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
-        'mpetitionIds=' + id + '&skip=0&take=50&sortBy=Tags'
-    return axios.get(leagueUrl).then(response => {
-        return response.data.fixtures.map(event => {
-            const sportRadarId = event.addons.betRadar
-            const bookmakerInfo = new BookmakerInfo(Provider.BWIN, Bookmaker.BWIN, id, event.id, "",
-                ["https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&offerMapping=All&fixtureIds=" + event.id + "&state=Latest"],
-                undefined, undefined, "GET")
-            return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-        })
-    })
-}
 
 exports.parseBwinBetOffers = function parseBwinBetOffers(apiResponse) {
     if (!apiResponse.data.fixture) return []

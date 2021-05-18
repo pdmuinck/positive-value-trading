@@ -2,31 +2,9 @@ const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {BetOffer} = require("../utils/utils");
-const {calculateMargin} = require("../utils/utils")
+const {BetOffer} = require("../event-mapper/utils");
+const {calculateMargin} = require("../event-mapper/utils")
 
-exports.getKambiEventsForCompetition = async function getKambiEventsForCompetition(id) {
-    const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES]
-    return axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
-        + id + '.json?includeParticipants=false').then(eventResponses => {
-        const requests = eventResponses.data.events.map(event => {
-            return axios.get("https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/" + event.id)
-                .then(sportRadarResponse => {
-                const sportRadarId = sportRadarResponse.data.content[0].Resource.split("matchId=")[1]
-                const bookMakerInfos = books.map(book => {
-                    return new BookmakerInfo(Provider.KAMBI, book, id, event.id,
-                        'https://eu-offering.kambicdn.org/offering/v2018/' + book + '/event/group/' + id + '.json?includeParticipants=false',
-                        ['https://eu-offering.kambicdn.org/offering/v2018/' + book + '/betoffer/event/'  + event.id + '.json?includeParticipants=false'],
-                        undefined, undefined, "GET")
-                }).flat()
-                return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), bookMakerInfos)
-            }).catch(error => [])
-        })
-        return Promise.all(requests).then((sportRadarResponses) => {
-            return sportRadarResponses
-        })
-    })
-}
 
 function kambiBetOption(outcome) {
     return outcome.type.toUpperCase()

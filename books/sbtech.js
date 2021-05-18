@@ -1,71 +1,15 @@
 const {Provider, BookmakerInfo, BetType} = require("./bookmaker")
 const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../utils/utils");
+const {BetOffer} = require("../event-mapper/utils");
 const {getSportRadarEventUrl} = require("./sportradar")
 const axios = require("axios")
-const {calculateMargin} = require("../utils/utils")
+const {calculateMargin} = require("../event-mapper/utils")
 /*
 you can choose api rest calls or websocket:
 wss://sbapi.sbtech.com/bethard/sportscontent/sportsbook/v1/Websocket?jwt=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTg3NTIyMDksImlzcyI6IkJldGhhcmQiLCJTaXRlSWQiOjk5LCJJc0Fub255bW91cyI6dHJ1ZSwiU2Vzc2lvbklkIjoiMzU2NDMyMjItOTM1Ni00ZTc1LWJlZmQtZGYxZDkyZDU2ZDliIiwibmJmIjoxNjE4NzQ1MDA5LCJpYXQiOjE2MTg3NDUwMDl9.a6gpwBUGq0m8xMQz1Wd2WM2KURwqgEr-0u1ISspozqMbKukZOZ_dB9GbBSz6GVy7ZXY0eCu0ZeASjXWDBtUGGjLQA8qgw71Ary8ZuLFK1XQ2MO7y4JFYhMYIoEv__ZAtTUzPipwhKigfjfnvVV99k-SY5zUxgTmo5W1klYbBggRew-q9OVHsgqH7GpEyso9ynF7JoRqS-Nf3uGcyM1O-RLl1iP_4ai-pBKNwGXyCBnrCo76sboNrru1y5MNS9E0-5pLZJdidpJ4KjkTn5OyrkclSdemC81laUMyghCa4To6zSb1f7iz913AVPT7RV4X0x9i2YfNIrAKtLJzAKECzkQ&locale=en
  */
 
-exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompetition(id) {
-    const books = [
-        {bookmaker: "bet777", url: "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", api: "V1"},
-        {bookmaker: "betfirst", url: "https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28", api: "V1"},
-    ]
 
-    const tokenRequests = books.map(book => {
-        const tokenUrl = book.url
-        return axios.get(tokenUrl).then(tokenResponse => {
-            return {token: getToken(tokenResponse.data, book.api), bookmaker: book.bookmaker}
-        })
-    })
-
-    return Promise.all(tokenRequests).then(tokens => {
-        const token = tokens[0].token
-        const bookmaker = tokens[0].bookmaker
-        const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
-
-        const headers = {
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'locale': 'en',
-                'accept-encoding': 'gzip, enflate, br'
-            }
-        }
-        const leagueUrl = 'https://sbapi.sbtech.com/' + bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
-        return axios.post(leagueUrl, page, headers)
-            .then(response => {
-                return response.data.events.map(event => {
-                    const bookmakerInfos = books.map(book => {
-                        const token = tokens.filter(token => token.bookmaker === book.bookmaker)[0].token
-                        const headers = {
-                            headers: {
-                                'Authorization': 'Bearer ' + token,
-                                'locale': 'en',
-                                'accept-encoding': 'gzip, enflate, br'
-                            }
-                        }
-                        const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
-                        const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
-                        return new BookmakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
-                            leagueUrl, [eventUrl], headers, undefined, "GET")
-                    })
-                    const sportRadarId = parseInt(event.media[0].providerEventId)
-                    return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), bookmakerInfos)
-                })
-            })
-    })
-}
-
-function getToken(response, api) {
-    if(api.toUpperCase() === "V1") {
-        return response.split('ApiAccessToken = \'')[1].replace('\'', '')
-    } else {
-        return response.token
-    }
-}
 
 function determineOutcomeType(selection, betType) {
     if(betType === BetType.CORRECT_SCORE) {
