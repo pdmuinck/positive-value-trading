@@ -1,5 +1,23 @@
-const parseKambiBetOffers = require("./books/kambi").parseKambiBetOffers()
+const {parsePinnacleBetOffers} = require("./books/pinnacle")
+const {parseBwinBetOffers} = require("./books/bwin")
+const {parseSbtechBetOffers} = require("./books/sbtech")
+const {parseKambiBetOffers} = require("./books/kambi")
+const {parseScoooreBetOffers} = require("./books/scooore")
+const {parseStanleybetBetOffers} = require("./books/stanleybet")
+const {parseZetBetBetOffers} = require("./books/zetbet")
+const {parseBetwayBetOffers} = require("./books/betway")
+const {parserMeridianBetOffers} = require("./books/meridian")
+const {parseAltenarBetOffers} = require("./books/altenar")
+const {parseCashPointBetOffers} = require("./books/cashpoint")
+const {parseLadbrokesBetOffers} = require("./books/ladbrokes")
+const {parseBingoalBetOffers} = require("./books/bingoal")
 const axios = require("axios")
+const {Bookmaker} = require("./books/bookmaker");
+const {ApiResponse} = require("./books/bookmaker");
+const {ValueBetFoundEvent} = require("./utils");
+const {Provider} = require("./books/bookmaker");
+const {Event} = require("./event")
+
 
 function identifyValueBets(eventInfo){
     return Object.keys(eventInfo.betOffers).map(betOfferType => {
@@ -20,14 +38,14 @@ function identifyValueBets(eventInfo){
 }
 
 async function getBetOffers(event) {
-    if(event instanceof EventInfo) {
-        const pinnacleBookmakerInfo = event.bookmakers.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
+    if(event) {
+        const pinnacleBookmakerInfo = event.bookmakerInfo.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
         const pinnacleRequests = pinnacleBookmakerInfo?.eventUrl.map(eventUrl => {
             return axios.get(eventUrl, pinnacleBookmakerInfo.headers)
                 .then(response => response.data)
                 .catch(error => console.log(error))
         })
-        const requests = event.bookmakers.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE
+        const requests = event.bookmakerInfo.filter(bookmaker => bookmaker.bookmaker !== Bookmaker.PINNACLE
             && bookmaker.provider !== Provider.BETCONSTRUCT).map(bookmaker => {
             return bookmaker.eventUrl.map(eventUrl => {
                 if(bookmaker.httpMethod === "GET") {
@@ -57,7 +75,7 @@ async function getBetOffers(event) {
         return Promise.all(requests).then(values => {
             // @ts-ignore
             const betOffers = mergeBetOffers(values.flat().concat(pinnacleOffers))
-            return new EventInfo(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, betOffers, event.sportRadarMatch)
+            return new Event(event.sportRadarId, event.sportRadarEventUrl, event.bookmakers, event.sportRadarMatch, betOffers)
         })
     }
 }
@@ -66,7 +84,7 @@ function mergeBetOffers(betOffers) {
     const merged = {}
     betOffers.flat().forEach(betOffer => {
         if(betOffer) {
-            const key = betOffer.key
+            const key = [betOffer.betType, betOffer.betOptionName, betOffer.line].join(';')
             const existing = merged[key]
             if(existing) {
                 existing[betOffer.bookMaker] = {price: betOffer.price, margin: betOffer.margin}
@@ -81,19 +99,21 @@ function mergeBetOffers(betOffers) {
 }
 
 async function getBetOffersForEvents(events) {
-    const requests = events.map(event => {
-        return getBetOffers(event)
-    })
-    return Promise.all(requests).then(values => {
-        return values
-    })
+    if(events) {
+        const requests = events.map(event => {
+            return getBetOffers(event)
+        })
+        return Promise.all(requests).then(values => {
+            return values.map(value => identifyValueBets(value)).flat()
+        })
+    }
+
 }
 
 function getParserForBook(provider, bookmaker) {
     switch(provider) {
         case(Provider.KAMBI):
             return parseKambiBetOffers
-        /*
         case(Provider.SBTECH):
             return parseSbtechBetOffers
         case(Provider.BWIN):
@@ -118,8 +138,6 @@ function getParserForBook(provider, bookmaker) {
             return parseLadbrokesBetOffers
         case(Provider.BINGOAL):
             return parseBingoalBetOffers
-
-         */
     }
 }
 

@@ -2,7 +2,7 @@ event_mapper:clean
 	cd event-mapper && docker build . -t $(tag)
 
 value_bet_finder:clean
-	docker build -f valuebet-finder/Dockerfile . -t $(tag) --progress=plain --no-cache
+	cd value-bet-finder && docker build . -t $(tag)
 
 clean:
 	rm -rf node_modules

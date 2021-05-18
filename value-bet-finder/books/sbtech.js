@@ -1,9 +1,5 @@
-const {Provider, BookmakerInfo, BetType} = require("./bookmaker")
-const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../event-mapper/utils");
-const {getSportRadarEventUrl} = require("./sportradar")
-const axios = require("axios")
-const {calculateMargin} = require("../event-mapper/utils")
+const {Bookmaker, BetType} = require("./bookmaker")
+const {calculateMargin, BetOffer} = require("../utils")
 /*
 you can choose api rest calls or websocket:
 wss://sbapi.sbtech.com/bethard/sportscontent/sportsbook/v1/Websocket?jwt=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTg3NTIyMDksImlzcyI6IkJldGhhcmQiLCJTaXRlSWQiOjk5LCJJc0Fub255bW91cyI6dHJ1ZSwiU2Vzc2lvbklkIjoiMzU2NDMyMjItOTM1Ni00ZTc1LWJlZmQtZGYxZDkyZDU2ZDliIiwibmJmIjoxNjE4NzQ1MDA5LCJpYXQiOjE2MTg3NDUwMDl9.a6gpwBUGq0m8xMQz1Wd2WM2KURwqgEr-0u1ISspozqMbKukZOZ_dB9GbBSz6GVy7ZXY0eCu0ZeASjXWDBtUGGjLQA8qgw71Ary8ZuLFK1XQ2MO7y4JFYhMYIoEv__ZAtTUzPipwhKigfjfnvVV99k-SY5zUxgTmo5W1klYbBggRew-q9OVHsgqH7GpEyso9ynF7JoRqS-Nf3uGcyM1O-RLl1iP_4ai-pBKNwGXyCBnrCo76sboNrru1y5MNS9E0-5pLZJdidpJ4KjkTn5OyrkclSdemC81laUMyghCa4To6zSb1f7iz913AVPT7RV4X0x9i2YfNIrAKtLJzAKECzkQ&locale=en

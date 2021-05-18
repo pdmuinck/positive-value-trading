@@ -1,7 +1,8 @@
 const schedule = require("node-schedule")
 const {getEvents} = require("./event-mapper")
+const fs = require("fs")
 
-getEvents().then(response => console.log(response))
+getEvents().then(response => console.log(JSON.stringify(response, null, 2), { depth: null }))
 
 /*
 const getValueBetsJob = schedule.scheduleJob('* * * * *', function(){
@@ -18,6 +19,6 @@ const getValueBetsJob = schedule.scheduleJob('* * * * *', function(){
 
 const getEventsJob = schedule.scheduleJob('0 * * * *', async function(){
     events = await getEvents()
-    console.log(events)
+    console.dir(events, { depth: null })
 })
 

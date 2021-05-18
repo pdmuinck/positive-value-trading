@@ -1,9 +1,5 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
-const {Event} = require("../event-mapper/event")
-const {getSportRadarEventUrl} = require("./sportradar")
-const axios = require("axios")
-const {BetOffer} = require("../event-mapper/utils");
-const {calculateMargin} = require("../event-mapper/utils")
+const {BetType} = require("./bookmaker")
+const {calculateMargin, BetOffer} = require("../utils")
 
 
 function kambiBetOption(outcome) {

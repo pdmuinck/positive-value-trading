@@ -1,8 +1,5 @@
 FROM public.ecr.aws/lambda/nodejs:latest
 WORKDIR /var/task
-COPY /valuebet-finder ./
-COPY /books ./books
-COPY /utils ./utils
-COPY package*.json ./
+COPY . .
 RUN npm install
 CMD ["betoffer.handler"]

@@ -1,9 +1,5 @@
-const {BookmakerInfo, Bookmaker, BetType, Provider} = require("./bookmaker")
-const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../event-mapper/utils");
-const axios = require("axios")
-const {calculateMargin} = require("../event-mapper/utils");
-const {getSportRadarEventUrl} = require("./sportradar");
+const {Bookmaker, BetType} = require("./bookmaker")
+const {calculateMargin, BetOffer} = require("../utils")
 
 
 function parseBingoalBetOffers(apiResponse) {

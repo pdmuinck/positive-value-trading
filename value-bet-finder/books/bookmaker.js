@@ -1,3 +1,12 @@
+exports.ApiResponse = class ApiResponse {
+    constructor(provider, data, bookmaker) {
+    this.provider = provider
+    this.data = data
+    this.bookmaker = bookmaker
+    }
+}
+
+
 const BetType = {
     "UNKNOWN": "UNKNOWN",
     "_1X2": "1X2",

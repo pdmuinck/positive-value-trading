@@ -1,9 +1,5 @@
-const {Bookmaker, Provider, BookmakerInfo, BetType} = require("./bookmaker")
-const {Event} = require("../event-mapper/event")
-const {BetOffer} = require("../event-mapper/utils");
-const {getSportRadarEventUrl} = require("./sportradar")
-const axios = require("axios")
-const {calculateMargin} = require("../event-mapper/utils");
+const {Bookmaker, BetType} = require("./bookmaker")
+const {calculateMargin, BetOffer} = require("../utils")
 
 const books = [Bookmaker.TOTOLOTEK, Bookmaker.MERKUR_SPORTS, Bookmaker.BETCENTER, Bookmaker.CASHPOINT]
 
@@ -15,7 +11,7 @@ domains[Bookmaker.CASHPOINT] = "oddsservice.cashpoint.com"
 
 
 
-function parseCashPointBetOffers(apiResponse) {
+exports.parseCashPointBetOffers = function parseCashPointBetOffers(apiResponse) {
     if(!apiResponse.data.games) return []
     const betOffers = []
     apiResponse.data.games.forEach(event => {
@@ -59,6 +55,3 @@ function determineBetType(id) {
     if(overUnders_1H.includes(id)) return BetType.OVER_UNDER_H1
     if(handicaps_1H.includes(id)) return BetType.HANDICAP_H1
 }
-
-exports.getCashPointEventsForCompetition = getCashPointEventsForCompetition
-exports.parseCashPointBetOffers = parseCashPointBetOffers
