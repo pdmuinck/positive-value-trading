@@ -105,7 +105,7 @@ async function getBetOffersForEvents(events) {
             return getBetOffers(event)
         })
         return Promise.all(requests).then(values => {
-            return values
+            return values.map(value => identifyValueBets(value)).flat()
         })
     }
 

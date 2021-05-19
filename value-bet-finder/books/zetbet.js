@@ -139,6 +139,6 @@ function determineLine(betType) {
         case "Handicap (-0.5)  - To win the 2nd half":
             return {betType: BetType.HANDICAP_H2}
         default:
-            return new BetLine(BetType.UNKNOWN)
+            return {betType: BetType.UNKNOWN}
     }
 }
