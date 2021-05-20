@@ -9,15 +9,11 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
     return markets.map(market => {
         const betType = determineBetType(market.Title)
         if(betType !== BetType.UNKNOWN) {
-            let line = market.Handicap ? market.Handicap : undefined
-            if(betType === BetType.OVER_UNDER || betType === BetType.OVER_UNDER_H1) {
-                const titleSplitted = market.Title.split(" ")
-                line = parseFloat(titleSplitted[titleSplitted.length - 1])
-            }
             const margin = calculateMargin(outcomes.filter(outcome => market.Outcomes[0].includes(outcome.Id)))
             return market.Outcomes[0].map(outcomeToSearch => {
                 const outcome = outcomes.filter(outcomeElement => outcomeElement.Id === outcomeToSearch)[0]
                 const option = determineOption(betType, outcome.CouponName.toUpperCase(), outcome.SortIndex)
+                const line = outcome.HandicapDisplay === "" ? undefined : outcome.HandicapDisplay
                 return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, parseFloat(outcome.OddsDecimalDisplay), line, margin)
             })
         }
@@ -25,8 +21,7 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
 }
 
 function determineOption(betType, couponName, sortIndex) {
-    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType  === BetType.ASIAN_OVER_UNDER
-        || betType === BetType.ASIAN_OVER_UNDER_H1) {
+    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
         if(sortIndex === 1) return "1"
         return "2"
     }
@@ -43,7 +38,6 @@ function determineOption(betType, couponName, sortIndex) {
             return "12"
         case "AWAY & DRAW":
             return "X2"
-
         default:
             return couponName
 
@@ -61,6 +55,8 @@ function determineBetType(title) {
         case "Both Teams To Score":
             return BetType.BOTH_TEAMS_SCORE
 
+        case "Total Goals 0.5":
+            return BetType.OVER_UNDER
         case "Total Goals 1.5":
             return BetType.OVER_UNDER
         case "Total Goals 2.5":

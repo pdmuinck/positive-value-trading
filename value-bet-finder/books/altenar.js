@@ -43,7 +43,7 @@ function determineBetType(typeId) {
     if(typeId.startsWith("65_")) return BetType.HANDICAP_H1
     if(typeId.startsWith("88_")) return BetType.HANDICAP_H2
     if(typeId.startsWith("18_")) return BetType.OVER_UNDER
-    if(typeId.startsWith("16_")) return BetType.OVER_UNDER
+    if(typeId.startsWith("16_")) return BetType.HANDICAP
     if(typeId.startsWith("68_")) return BetType.OVER_UNDER_H1
     if(typeId.startsWith("90_")) return BetType.OVER_UNDER_H2
     if(typeId.startsWith("19_")) return BetType.TOTAL_GOALS_TEAM1
