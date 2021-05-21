@@ -1,5 +1,5 @@
 const {Bookmaker, BetType} = require("./bookmaker")
-const {calculateMargin, BetOffer} = require("../utils");
+const {calculateMargin, BetOffer, sortBetOffers} = require("../utils");
 
 
 exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
@@ -13,15 +13,26 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
             return market.Outcomes[0].map(outcomeToSearch => {
                 const outcome = outcomes.filter(outcomeElement => outcomeElement.Id === outcomeToSearch)[0]
                 const option = determineOption(betType, outcome.CouponName.toUpperCase(), outcome.SortIndex)
-                const line = outcome.HandicapDisplay === "" ? undefined : outcome.HandicapDisplay
+                let line = outcome.HandicapDisplay === "" ? null : outcome.HandicapDisplay
+                if(!line && betType ===  BetType.OVER_UNDER) {
+                    const titleSplitted = market.Title.split(" ")
+                    line = titleSplitted[titleSplitted.length - 1]
+                }
+                if(betType === BetType.HANDICAP) {
+                    if(line === "-1") line = "0:1"
+                    if(line === "+1") line = "1:0"
+                }
                 return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, parseFloat(outcome.OddsDecimalDisplay), line, margin)
             })
         }
-    }).flat().filter(x => x)
+    }).flat().filter(x => x).flat().sort(sortBetOffers).map(betOffer => {
+        betOffer.betType = betOffer.betType.name
+        return betOffer
+    })
 }
 
 function determineOption(betType, couponName, sortIndex) {
-    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
+    if(betType === BetType.HANDICAP || betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
         if(sortIndex === 1) return "1"
         return "2"
     }
@@ -45,6 +56,7 @@ function determineOption(betType, couponName, sortIndex) {
 }
 function determineBetType(title) {
     switch(title) {
+        // 1X2
         case "Win/Draw/Win":
             return BetType._1X2
         case "1st Half - Win/Draw/Win":
@@ -52,9 +64,31 @@ function determineBetType(title) {
         case "2nd Half - Win/Draw/Win":
             return BetType._1X2_H2
 
-        case "Both Teams To Score":
-            return BetType.BOTH_TEAMS_SCORE
+        // DOUBLE CHANCE
+        case "Double Chance":
+            return BetType.DOUBLE_CHANCE
+        case "1st Half - Double Chance":
+            return BetType.DOUBLE_CHANCE_H1
+        case "2nd Half - Double Chance":
+            return BetType.DOUBLE_CHANCE_H2
 
+        // DRAW NO BET
+        case "Draw No Bet":
+            return BetType.DRAW_NO_BET
+        case "1st Half - Draw No Bet":
+            return BetType.DRAW_NO_BET_H1
+        case "2nd Half - Draw No Bet":
+            return BetType.DRAW_NO_BET_H2
+
+        // 3-WAY HANDICAP
+        case "Handicap 3-Way":
+            return BetType.HANDICAP
+
+        // ASIAN HANDICAP
+        case "Asian Handicap":
+            return BetType.ASIAN_HANDICAP
+
+        // TOTAL GOALS
         case "Total Goals 0.5":
             return BetType.OVER_UNDER
         case "Total Goals 1.5":
@@ -65,7 +99,23 @@ function determineBetType(title) {
             return BetType.OVER_UNDER
         case "Total Goals 4.5":
             return BetType.OVER_UNDER
+        case "Total Goals 5.5":
+            return BetType.OVER_UNDER
 
+        // ODD EVEN
+        case "Total Goals Odd/Even":
+            return BetType.ODD_EVEN
+
+        // BOTH TEAMS TO SCORE
+        case "Both Teams To Score":
+            return BetType.BOTH_TEAMS_SCORE
+        case "2nd Half Both Teams To Score":
+            return BetType.BOTH_TEAMS_SCORE_H2
+        case "1st Half Both Teams To Score":
+            return BetType.BOTH_TEAMS_SCORE_H1
+
+
+        /*
         case "1st Half - Total Goals 0.5":
             return BetType.OVER_UNDER_H1
         case "1st Half - Total Goals 1.5":
@@ -81,7 +131,7 @@ function determineBetType(title) {
             return BetType.OVER_UNDER_H2
         case "2nd Half - Total Goals 3.5":
             return BetType.OVER_UNDER_H2
-
+/*
         case "1st Half - Team A - Total Goals 0.5":
             return BetType.OVER_UNDER_TEAM1_H1
         case "1st Half - Team A - Total Goals 1.5":
@@ -109,7 +159,7 @@ function determineBetType(title) {
         case "2nd Half Team B Total Goals 3.5":
             return BetType.OVER_UNDER_TEAM2_H2
 
-
+/*
         case "Team A Total Goals 0.5":
             return BetType.OVER_UNDER_TEAM1
         case "Team A Total Goals 1.5":
@@ -129,29 +179,19 @@ function determineBetType(title) {
             return BetType.OVER_UNDER_TEAM2
 
 
-        case "Double Chance":
-            return BetType.DOUBLE_CHANCE
-        case "2nd Half - Double Chance":
-            return BetType.DOUBLE_CHANCE_H2
+ */
 
-        case "Handicap 3-Way":
-            return BetType.HANDICAP
-
+        /*
         case "1st Half Asian Handicap":
             return BetType.ASIAN_HANDICAP_H1
 
+         */
+
+        /*
         case "Correct Score":
             return BetType.CORRECT_SCORE
 
-        case "Draw No Bet":
-            return BetType.DRAW_NO_BET
-        case "1st Half - Draw No Bet":
-            return BetType.DRAW_NO_BET_H1
-        case "2nd Half - Draw No Bet":
-            return BetType.DRAW_NO_BET_H2
-
-        case "handicap-wdw":
-            return BetType.HANDICAP
+         */
         default:
             return BetType.UNKNOWN
     }

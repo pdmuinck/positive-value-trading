@@ -13,6 +13,12 @@ exports.parseAltenarBetOffers = function parseAltenarBetOffers(apiResponse) {
             return betOffer.Items.forEach(option => {
                 const price = option.Price
                 let line = betOffer.SpecialOddsValue === '' || !betOffer.SpecialOddsValue ? null : betOffer.SpecialOddsValue
+                if(betType === BetType.OVER_UNDER) {
+                    line = option.Name.split("Over ")[1]
+                    if(!line) {
+                        line = option.Name.split("Under ")[1]
+                    }
+                }
                 const outcome = determineOutcome(betType, option)
                 betOffers.push(new BetOffer(betType, apiResponse.data.Result.Id, apiResponse.bookmaker, outcome, price, line, margin))
             })
@@ -27,8 +33,8 @@ exports.parseAltenarBetOffers = function parseAltenarBetOffers(apiResponse) {
 
 function determineOutcome(betType, option) {
     const outcome = option.Name.toUpperCase()
-    if(betType === BetType.HANDICAP || betType === BetType.HANDICAP_H1 || betType === BetType.HANDICAP_H2) {
-        return option.Name.split('(')[1].split(')')[0].trim().toUpperCase()
+    if(betType === BetType.HANDICAP || betType === BetType.HANDICAP_H1 || betType === BetType.HANDICAP_H2 || betType === BetType.ASIAN_HANDICAP) {
+        return option.Name.split('(')[0].trim()
     } else if(betType === BetType.OVER_UNDER || betType === BetType.OVER_UNDER_H1 || betType === BetType.OVER_UNDER_H2){
         return outcome.includes('OVER') ? 'OVER' : 'UNDER'
     } else if(betType === BetType.BOTH_TEAMS_SCORE || betType === BetType.BOTH_TEAMS_SCORE_H1 || betType === BetType.BOTH_TEAMS_SCORE_H2) {

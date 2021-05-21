@@ -33,6 +33,8 @@ exports.ValueBetFoundEvent = class ValueBetFoundEvent {
 }
 
 exports.sortBetOffers = function compare( a, b ) {
+    console.log(a)
+    console.log(b)
     if ( a.betType.sortIndex < b.betType.sortIndex ){
         return -1;
     }

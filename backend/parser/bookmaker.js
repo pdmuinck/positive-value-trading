@@ -41,6 +41,7 @@ const BetType = {
     "CORRECT_SCORE": {name: "CORRECT_SCORE", sortIndex: 29},
     "CORRECT_SCORE_H1": {name: "CORRECT_SCORE_H1", sortIndex: 30},
     "CORRECT_SCORE_H2": {name: "CORRECT_SCORE_H2", sortIndex: 31},
+    "ASIAN_HANDICAP": {name: "ASIAN_HANDICAP", sortIndex: 32}
 }
 
 Object.freeze(BetType)
