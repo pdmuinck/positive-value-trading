@@ -1,0 +1,146 @@
+[
+  {
+    "_betOptionName": "OVER",
+    "_price": "1.75",
+    "_line": "2.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "2.05",
+    "_line": "2.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": "1.05",
+    "_line": "0.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "9.00",
+    "_line": "0.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": "1.25",
+    "_line": "1.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "3.80",
+    "_line": "1.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": "2.90",
+    "_line": "3.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "1.40",
+    "_line": "3.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": "5.20",
+    "_line": "4.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "1.15",
+    "_line": "4.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "OVER",
+    "_price": "9.00",
+    "_line": "5.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "UNDER",
+    "_price": "1.05",
+    "_line": "5.5",
+    "_betType": "OVER_UNDER",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "1X",
+    "_price": "1.33",
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "12",
+    "_price": "1.31",
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "X2",
+    "_price": "1.70",
+    "_line": null,
+    "_betType": "DOUBLE_CHANCE",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "1",
+    "_price": "2.05",
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "X",
+    "_price": "3.55",
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  },
+  {
+    "_betOptionName": "2",
+    "_price": "3.30",
+    "_line": null,
+    "_betType": "1X2",
+    "_eventId": "1121449",
+    "_bookMaker": "BET90"
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "_id": {
+      "_id": "3142638922",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-12T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "104746",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "209595",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142638912",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-15T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "208659",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "209595",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566212",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-19T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "208657",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "209604",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566232",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-20T15:15:00Z",
+    "_participants": [
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "208654",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "208656",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566202",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "208655",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "208658",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566222",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_id": "104362",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "104751",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566252",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-20T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "111180",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "104746",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566192",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-21T12:30:00Z",
+    "_participants": [
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "209595",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "105982",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566242",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-21T15:00:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "105111",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "209101",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566182",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-21T17:15:00Z",
+    "_participants": [
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_id": "208586",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "104734",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142566172",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-03-21T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "208659",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "209603",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692012",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-03T14:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "104751",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "208654",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692042",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-03T16:30:00Z",
+    "_participants": [
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "104734",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "208655",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692062",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-03T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "208658",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "38993",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692022",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-04T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "209603",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "111180",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692032",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-04T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "209604",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "71035",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692052",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-04T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "104746",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_id": "104362",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692082",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-05T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "209101",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "208657",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692072",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-05T14:00:00Z",
+    "_participants": [
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "208656",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "105111",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "3142692002",
+      "_idType": "EVENT",
+      "_provider": "BETCENTER"
+    },
+    "_startTime": "2021-04-05T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "105982",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      },
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_id": "208586",
+            "_idType": "PARTICIPANT",
+            "_provider": "BETCENTER"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "_id": {
+      "_id": "1007407954",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-12T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "1002206222",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000199",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007405275",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-15T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "1000032662",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000199",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294181",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-19T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000234",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000235",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294175",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-20T15:15:00Z",
+    "_participants": [
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "1000818435",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000011409",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294183",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "1000046509",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "1000004832",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294182",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_id": "1000041283",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "1000010829",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294180",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-20T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "1001685650",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "1002206222",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294176",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-21T12:30:00Z",
+    "_participants": [
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000199",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000055718",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294179",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-21T15:00:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "1000015734",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "1000194369",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294177",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-21T17:15:00Z",
+    "_participants": [
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000200",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000546",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294178",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-03-21T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "1000032662",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000042279",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294186",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-03T14:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "1000010829",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "1000818435",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294187",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-03T16:30:00Z",
+    "_participants": [
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000546",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "1000046509",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294192",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-03T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000199",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "1000004832",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294190",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-04T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000042279",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "1001685650",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294184",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-04T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000235",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "1000032662",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294191",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-04T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_id": "1000041283",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "1002206222",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294188",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-05T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000234",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "1000194369",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294193",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-05T14:00:00Z",
+    "_participants": [
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000011409",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "1000015734",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "1007294185",
+      "_idType": "EVENT",
+      "_provider": "KAMBI"
+    },
+    "_startTime": "2021-04-05T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_id": "1000000200",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "1000055718",
+            "_idType": "PARTICIPANT",
+            "_provider": "KAMBI"
+          }
+        ]
+      }
+    ]
+  }
+]

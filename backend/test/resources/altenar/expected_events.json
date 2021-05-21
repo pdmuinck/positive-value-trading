@@ -1,0 +1,542 @@
+[
+  {
+    "_id": {
+      "_id": "200001715940",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-12T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "SPORTING DE CHARLEROI",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001712083",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-15T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "GENT",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684378",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-19T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "KRC GENK",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "STANDARD DE LIÈGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684381",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-20T15:15:00Z",
+    "_participants": [
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "WAASLAND-BEVEREN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "SINT-TRUIDEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684379",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "KAS EUPEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "KORTRIJK",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001697234",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-20T17:30:00Z",
+    "_participants": [
+      {
+        "_name": "Royal Excel Mouscron",
+        "_bookmakerIds": [
+          {
+            "_id": "ROYAL EXCEL MOUSCRON",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "KV OOSTENDE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684386",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-20T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "K BEERSCHOT VA",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "R. Charleroi S.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "SPORTING DE CHARLEROI",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684377",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-21T12:30:00Z",
+    "_participants": [
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Royal Antwerp F.C.",
+        "_bookmakerIds": [
+          {
+            "_id": "ROYAL ANTWERP FC",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001684389",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-21T15:00:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "KV MECHELEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "OUD-HEVERLEE LEUVEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001697233",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-21T17:15:00Z",
+    "_participants": [
+      {
+        "_name": "R.S.C Anderlecht",
+        "_bookmakerIds": [
+          {
+            "_id": "ANDERLECHT",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "ZULTE WAREGEM",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001697236",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-03-21T19:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "GENT",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731247",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-03T14:15:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Oostende",
+        "_bookmakerIds": [
+          {
+            "_id": "KV OOSTENDE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Waasland-Beveren",
+        "_bookmakerIds": [
+          {
+            "_id": "WAASLAND-BEVEREN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731250",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-03T16:30:00Z",
+    "_participants": [
+      {
+        "_name": "S.V. Zulte Waregem",
+        "_bookmakerIds": [
+          {
+            "_id": "ZULTE WAREGEM",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.S. Eupen",
+        "_bookmakerIds": [
+          {
+            "_id": "KAS EUPEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731251",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-03T18:45:00Z",
+    "_participants": [
+      {
+        "_name": "K.V. Kortrijk",
+        "_bookmakerIds": [
+          {
+            "_id": "KORTRIJK",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "Club Brugge KV",
+        "_bookmakerIds": [
+          {
+            "_id": "CLUB BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731252",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-04T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Cercle Brugge K.S.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "CERCLE BRUGGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K Beerschot VA",
+        "_bookmakerIds": [
+          {
+            "_id": "K BEERSCHOT VA",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731253",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-04T16:15:00Z",
+    "_participants": [
+      {
+        "_name": "Standard Liège",
+        "_bookmakerIds": [
+          {
+            "_id": "STANDARD DE LIÈGE",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.A.A. Gent",
+        "_bookmakerIds": [
+          {
+            "_id": "GENT",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731255",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-05T11:30:00Z",
+    "_participants": [
+      {
+        "_name": "Oud-Heverlee Leuven",
+        "_bookmakerIds": [
+          {
+            "_id": "OUD-HEVERLEE LEUVEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.R.C. Genk",
+        "_bookmakerIds": [
+          {
+            "_id": "KRC GENK",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": {
+      "_id": "200001731256",
+      "_idType": "EVENT",
+      "_provider": "ALTENAR"
+    },
+    "_startTime": "2021-04-05T14:00:00Z",
+    "_participants": [
+      {
+        "_name": "Sint-Truidense V.V.",
+        "_bookmakerIds": [
+          {
+            "_id": "SINT-TRUIDEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      },
+      {
+        "_name": "K.V. Mechelen",
+        "_bookmakerIds": [
+          {
+            "_id": "KV MECHELEN",
+            "_idType": "PARTICIPANT",
+            "_provider": "ALTENAR"
+          }
+        ]
+      }
+    ]
+  }
+]
