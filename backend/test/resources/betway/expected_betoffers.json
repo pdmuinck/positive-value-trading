@@ -320,38 +320,6 @@
     "bookMaker": "BETWAY"
   },
   {
-    "betOptionName": "ODD",
-    "price": 2.06,
-    "line": null,
-    "betType": "ODD_EVEN_H1",
-    "eventId": 7687739,
-    "bookMaker": "BETWAY"
-  },
-  {
-    "betOptionName": "EVEN",
-    "price": 1.68,
-    "line": null,
-    "betType": "ODD_EVEN_H1",
-    "eventId": 7687739,
-    "bookMaker": "BETWAY"
-  },
-  {
-    "betOptionName": "ODD",
-    "price": 1.93,
-    "line": null,
-    "betType": "ODD_EVEN_H2",
-    "eventId": 7687739,
-    "bookMaker": "BETWAY"
-  },
-  {
-    "betOptionName": "EVEN",
-    "price": 1.78,
-    "line": null,
-    "betType": "ODD_EVEN_H2",
-    "eventId": 7687739,
-    "bookMaker": "BETWAY"
-  },
-  {
     "betOptionName": "YES",
     "price": 1.72,
     "line": null,
@@ -396,6 +364,22 @@
     "price": 1.33,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
+    "eventId": 7687739,
+    "bookMaker": "BETWAY"
+  },
+  {
+    "betOptionName": "1",
+    "price": 2.04,
+    "line": "0.25",
+    "betType": "ASIAN_HANDICAP",
+    "eventId": 7687739,
+    "bookMaker": "BETWAY"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.87,
+    "line": "0.25",
+    "betType": "ASIAN_HANDICAP",
     "eventId": 7687739,
     "bookMaker": "BETWAY"
   }

@@ -10,7 +10,7 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
         const betType = determineBetType(market.Title)
         if(betType !== BetType.UNKNOWN) {
             const margin = calculateMargin(outcomes.filter(outcome => market.Outcomes[0].includes(outcome.Id)))
-            return market.Outcomes[0].map(outcomeToSearch => {
+            return market.Outcomes.flat().map(outcomeToSearch => {
                 const outcome = outcomes.filter(outcomeElement => outcomeElement.Id === outcomeToSearch)[0]
                 const option = determineOption(betType, outcome.CouponName.toUpperCase(), outcome.SortIndex)
                 let line = outcome.HandicapDisplay === "" ? null : outcome.HandicapDisplay
@@ -19,8 +19,16 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
                     line = titleSplitted[titleSplitted.length - 1]
                 }
                 if(betType === BetType.HANDICAP) {
-                    if(line === "-1") line = "0:1"
-                    if(line === "+1") line = "1:0"
+                    if(outcome.SortIndex === 1 && outcome.HandicapDisplay === "-1") line = "0:1"
+                    if(outcome.SortIndex === 1 && outcome.HandicapDisplay === "+1") line = "1:0"
+                    if(outcome.SortIndex === 2 && outcome.HandicapDisplay === "-1") line = "1:0"
+                    if(outcome.SortIndex === 2 && outcome.HandicapDisplay === "+1") line = "0:1"
+                    if(outcome.SortIndex === 3 && outcome.HandicapDisplay === "-1") line = "1:0"
+                    if(outcome.SortIndex === 3 && outcome.HandicapDisplay === "+1") line = "0:1"
+                }
+
+                if(betType === BetType.ASIAN_HANDICAP) {
+                    line = Math.abs(outcome.Handicap).toString()
                 }
                 return new BetOffer(betType, eventId, Bookmaker.BETWAY, option, parseFloat(outcome.OddsDecimalDisplay), line, margin)
             })
@@ -32,8 +40,13 @@ exports.parseBetwayBetOffers = function parseBetwayBetOffers(apiResponse) {
 }
 
 function determineOption(betType, couponName, sortIndex) {
-    if(betType === BetType.HANDICAP || betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
+    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.ASIAN_HANDICAP_H1 || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
         if(sortIndex === 1) return "1"
+        return "2"
+    }
+    if(betType === BetType.HANDICAP) {
+        if(sortIndex === 1) return "1"
+        if(sortIndex === 2) return "X"
         return "2"
     }
     switch(couponName) {

@@ -11,7 +11,7 @@ describe("Parsers", function() {
             const expected = require("../test/resources/" + book.name + "/expected_betoffers.json")
             const result = book.parser(betOffers)
             result.forEach(result => delete result.margin)
-            assert.deepStrictEqual(result, expected)
+            assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
         })
     })
 
