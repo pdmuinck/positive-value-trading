@@ -26,7 +26,7 @@ function parseBingoalBetOffers(apiResponse) {
 }
 
 function determineBetOption(betType, tip) {
-    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET-H1 || betType === BetType.DRAW_NO_BET_H2) {
+    if(betType === BetType.ASIAN_HANDICAP || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
         return tip.team.toString()
     }
 
@@ -35,7 +35,7 @@ function determineBetOption(betType, tip) {
         return "UNDER"
     }
 
-    if(BetType === BetType.ODD_EVEN){
+    if(betType === BetType.ODD_EVEN){
         if(tip.shortname === "Oneven") return "ODD"
         return "EVEN"
     }
