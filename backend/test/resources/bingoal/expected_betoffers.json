@@ -1,3258 +1,458 @@
 [
   {
-    "_betOptionName": "1",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 1.62,
+    "line": null,
+    "betType": "1X2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "X",
+    "price": 4.20,
+    "line": null,
+    "betType": "1X2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "2",
+    "price": 5.20,
+    "line": null,
+    "betType": "1X2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1",
+    "price": 2.20,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "X",
+    "price": 2.45,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "2",
+    "price": 5.40,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1",
+    "price": 1.96,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "X",
+    "price": 2.95,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "2",
+    "price": 5.00,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1X",
+    "price": 1.18,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.24,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "X2",
+    "price": 2.20,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1X",
+    "price": 1.18,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "12",
+    "price": 1.54,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "1.57",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "X2",
+    "price": 1.66,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1X",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1X",
+    "price": 1.20,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "12",
-    "_price": "1.25",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "12",
+    "price": 1.40,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X2",
-    "_price": "1.15",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "X2",
+    "price": 1.82,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1",
-    "_price": "4.40",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 1.26,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "1.22",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 3.85,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1",
-    "_price": "16.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 1.35,
+    "line": null,
+    "betType": "DRAW_NO_BET_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X",
-    "_price": "7.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 3.20,
+    "line": null,
+    "betType": "DRAW_NO_BET_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "1.14",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 1.34,
+    "line": null,
+    "betType": "DRAW_NO_BET_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1",
-    "_price": "40.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 3.30,
+    "line": null,
+    "betType": "DRAW_NO_BET_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X",
-    "_price": "13.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 2.65,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "1.02",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "X",
+    "price": 4.00,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1",
-    "_price": "2.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 2.35,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X",
-    "_price": "3.70",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 5.20,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "2.55",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "X",
+    "price": 5.00,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "1",
-    "_price": "1.50",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 1.51,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "X",
-    "_price": "4.70",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "1",
+    "price": 1.19,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "2",
-    "_price": "5.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "X",
+    "price": 7.40,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 0.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "2",
+    "price": 14.00,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 0.5",
-    "_price": "10.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 1.04,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 1.5",
-    "_price": "1.29",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 12.00,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 1.5",
-    "_price": "3.65",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 1.22,
+    "line": "1.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 2.5",
-    "_price": "1.88",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 4.30,
+    "line": "1.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 2.5",
-    "_price": "1.93",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 1.70,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 3.5",
-    "_price": "3.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 2.18,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 3.5",
-    "_price": "1.36",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 2.70,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 4.5",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 1.47,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 4.5",
-    "_price": "1.13",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 4.90,
+    "line": "4.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "O 5.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 1.18,
+    "line": "4.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "U 5.5",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "OVER",
+    "price": 9.20,
+    "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   },
   {
-    "_betOptionName": "ja",
-    "_price": "1.97",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "1.84",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "6.20",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.35",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.16",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64176",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.20",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.45",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.25",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.65",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.32",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.36",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.62",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "6.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.36",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "17.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "8.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.10",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.66",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.22",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "6.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "9.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.26",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "3.90",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.82",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "3.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "5.60",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.15",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.68",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.20",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.80",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.85",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "64849",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.12",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.60",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.35",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.34",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.31",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.71",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.56",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.45",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.85",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.72",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "8.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "6.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.25",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.33",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "7.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.09",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "9.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "18.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.25",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.78",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.06",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.90",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.42",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "5.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.16",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "10.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.67",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.20",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.75",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.95",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59530",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.50",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.50",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.08",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.73",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.32",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.31",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.55",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.52",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "7.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.31",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "19.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "9.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.09",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.75",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.70",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.27",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "8.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.23",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.74",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.10",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.80",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.45",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "5.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "9.60",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.06",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.64",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.00",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.35",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.65",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59531",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.50",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.45",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.12",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.71",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.32",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.32",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.50",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.53",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "7.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.31",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "20.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "9.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.08",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.73",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.85",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.25",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "8.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "10.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.26",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "3.85",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.84",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "1.98",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "3.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.39",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "5.80",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.14",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.70",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.16",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.75",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59532",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.45",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.35",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.95",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.41",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.34",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.55",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.75",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.08",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.55",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.18",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.41",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "6.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.12",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "8.20",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "15.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.05",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "10.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.28",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "3.75",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.88",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "1.93",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "3.10",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.37",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.13",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.70",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.18",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.10",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.25",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.55",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59533",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.60",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.40",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.70",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.47",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.33",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.50",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.87",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.95",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "5.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.51",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.47",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.70",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.15",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "13.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "11.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.23",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.73",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.12",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.75",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.45",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "5.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "9.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.06",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.60",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.35",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.15",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.30",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59534",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.53",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.40",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.80",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.15",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.22",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "2.40",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.21",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "4.40",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.35",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.50",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.50",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.56",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.14",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "15.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "13.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "40.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.22",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.30",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.69",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.18",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.70",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.47",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "4.90",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.18",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "9.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.06",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.83",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "1.99",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.08",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.50",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "6.00",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59529",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.96",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.65",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.75",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.29",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.29",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "1.82",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.46",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.75",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "3.25",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.30",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.84",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "6.60",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.32",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.28",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "5.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "7.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.08",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "9.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "19.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "13.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "5.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.56",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.45",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.61",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.24",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "7.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.09",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.52",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.55",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.45",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.50",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "4.00",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59535",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.63",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.00",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.19",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.24",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "2.20",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.27",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "3.80",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.55",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.90",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.50",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.04",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "29.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "13.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.18",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.90",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.58",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.57",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "4.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.23",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "7.80",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.09",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.65",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.25",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.16",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.55",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.20",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59536",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.58",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.30",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.40",
-    "_line": null,
-    "_betType": "1X2",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": "1.17",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "12",
-    "_price": "1.23",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": "2.30",
-    "_line": null,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.24",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "4.10",
-    "_line": null,
-    "_betType": "DRAW_NO_BET",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.45",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "3.85",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "2.40",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "4.70",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "4.80",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "1.52",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.16",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "7.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "14.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "35.00",
-    "_line": null,
-    "_betType": "HANDICAP",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 0.5",
-    "_price": "1.03",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 0.5",
-    "_price": "12.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 1.5",
-    "_price": "1.21",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 1.5",
-    "_price": "4.40",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 2.5",
-    "_price": "1.67",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 2.5",
-    "_price": "2.20",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 3.5",
-    "_price": "2.65",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 3.5",
-    "_price": "1.49",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 4.5",
-    "_price": "4.80",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 4.5",
-    "_price": "1.19",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "O 5.5",
-    "_price": "9.00",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "U 5.5",
-    "_price": "1.07",
-    "_line": null,
-    "_betType": "OVER_UNDER",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "ja",
-    "_price": "1.77",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "nee",
-    "_price": "2.08",
-    "_line": null,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": "2.14",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": "2.50",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": "5.60",
-    "_line": null,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": "59537",
-    "_bookMaker": "BINGOAL"
+    "betOptionName": "UNDER",
+    "price": 1.06,
+    "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "ODD",
+    "price": 1.93,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "EVEN",
+    "price": 1.88,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 1.76,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 2.08,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 4.40,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 1.21,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H1",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 3.25,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 1.35,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H2",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1",
+    "price": 1.61,
+    "line": "0.5",
+    "betType": "ASIAN_HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "2",
+    "price": 2.30,
+    "line": "0.5",
+    "betType": "ASIAN_HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "1",
+    "price": 2.65,
+    "line": "1.5",
+    "betType": "ASIAN_HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.49,
+    "line": "1.5",
+    "betType": "ASIAN_HANDICAP",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
   }
 ]
