@@ -84,7 +84,7 @@ function mergeBetOffers(betOffers) {
     const merged = {}
     betOffers.flat().forEach(betOffer => {
         if(betOffer) {
-            const key = [betOffer.betType, betOffer.betOptionName, betOffer.line].join(';')
+            const key = betOffer.key
             const existing = merged[key]
             if(existing) {
                 existing[betOffer.bookMaker] = {price: betOffer.price, margin: betOffer.margin}

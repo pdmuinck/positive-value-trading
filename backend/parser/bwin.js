@@ -6,7 +6,7 @@ exports.parseBwinBetOffers = function parseBwinBetOffers(apiResponse) {
     if (!apiResponse.data.fixture) return []
     const event = apiResponse.data.fixture
     return event.games.map(game => {
-        const betType = determineBetType(game.templateId)
+        const betType = determineBetType(game.categoryId, game.name.value)
         if (betType !== BetType.UNKNOWN) {
             const margin = calculateMargin(game.results.map(result => result.odds))
             const line = game.attr ? game.attr.replace(",", ".") : undefined
@@ -16,7 +16,10 @@ exports.parseBwinBetOffers = function parseBwinBetOffers(apiResponse) {
                 return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line, margin)
             })
         }
-    }).flat().filter(x => x)
+    }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
+        betOffer.betType = betOffer.betType.name
+        return betOffer
+    })
 }
 
 function determineOutcome(betType, result, index) {
@@ -44,30 +47,81 @@ function determineOutcome(betType, result, index) {
 
 }
 
-function determineBetType(templateId) {
-    switch(templateId) {
+function determineBetType(categoryId, name) {
+    switch(categoryId) {
+        // TOTAL GOALS
+        case 31:
+            if(name === "Total Goals O/U - 2nd Half") return BetType.OVER_UNDER_H2
+            if(name === "Total Goals O/U - 1st Half") return BetType.OVER_UNDER_H1
+            return BetType.OVER_UNDER
+
+        // 1X2
+        case 25:
+            return BetType._1X2
+        case 30:
+            if(name === "Half Time result") return BetType._1X2_H1
+
+
+
+
+
         // 1X2
         case 17:
             return BetType._1X2
         case 2488:
             return BetType._1X2_H1
 
+        // DOUBLE CHANCE
+        case 3187:
+            return BetType.DOUBLE_CHANCE
+        case 11748:
+            return BetType.DOUBLE_CHANCE_H1
+
+
         // DRAW NO BET
         case 12119:
             return BetType.DRAW_NO_BET
 
+        // BOTH TEAMS TO SCORE
+        case 7824:
+            return BetType.BOTH_TEAMS_SCORE
         case 15085:
             return BetType.BOTH_TEAMS_SCORE_H1
-        case 11748:
-            return BetType.DOUBLE_CHANCE_H1
+
+        // OVER UNDER
+        case 173:
+            return BetType.OVER_UNDER
+        case 859:
+            return BetType.OVER_UNDER
+        case 7233:
+            return BetType.OVER_UNDER
+        case 1772:
+            return BetType.OVER_UNDER
+        case 1791:
+            return BetType.OVER_UNDER
+        case 8933:
+            return BetType.OVER_UNDER
+
+        // ODD EVEN
         case 4665:
             return BetType.ODD_EVEN
         case 16449:
             return BetType.ODD_EVEN_H1
+
+        case 509:
+            return BetType.HANDICAP
+
+        case 52:
+            return BetType.HANDICAP
+        case 54:
+            return BetType.HANDICAP
+
+        /*
         case 19193:
             return BetType.CORRECT_SCORE
         case 26644:
             return BetType.CORRECT_SCORE_H1
+
         case 16454:
             return BetType.OVER_UNDER_TEAM1
         case 16455:
@@ -86,10 +140,15 @@ function determineBetType(templateId) {
             return BetType.OVER_UNDER_TEAM2_H1
         case 4727:
             return BetType.TOTAL_GOALS_TEAM2
+
+
+
+        // TOTAL GOALS
         case 2196:
             return BetType.TOTAL_GOALS
         case 20095:
             return BetType.TOTAL_GOALS
+        /*
         case 4718:
             return BetType.TOTAL_GOALS_H1
         case 4732:
@@ -102,26 +161,9 @@ function determineBetType(templateId) {
             return BetType.TOTAL_GOALS_TEAM1_H1
         case 4734:
             return BetType.TOTAL_GOALS_TEAM2_H2
-        case 173:
-            return BetType.OVER_UNDER
-        case 859:
-            return BetType.OVER_UNDER
-        case 7233:
-            return BetType.OVER_UNDER
-        case 1772:
-            return BetType.OVER_UNDER
-        case 1791:
-            return BetType.OVER_UNDER
-        case 8933:
-            return BetType.OVER_UNDER
-        case 3187:
-            return BetType.DOUBLE_CHANCE
-        case 7824:
-            return BetType.BOTH_TEAMS_SCORE
-        case 52:
-            return BetType.HANDICAP
-        case 54:
-            return BetType.HANDICAP
+
+         */
+        /*
         case 7688:
             return BetType.OVER_UNDER_H1
         case 7689:
@@ -138,6 +180,8 @@ function determineBetType(templateId) {
             return BetType.OVER_UNDER_H2
         case 20506:
             return BetType.OVER_UNDER_H2
+
+         */
         default:
             return BetType.UNKNOWN
     }

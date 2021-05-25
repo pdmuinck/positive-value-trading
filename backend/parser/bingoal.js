@@ -4,7 +4,7 @@ const {calculateMargin, BetOffer} = require("../utils")
 
 
 function parseBingoalBetOffers(apiResponse) {
-    const betOffers = []
+    const betOffers = {}
     const event = apiResponse.data.box[0].match
     event.categories.forEach(category => {
         category.subbets.forEach(subbet => {
@@ -13,20 +13,33 @@ function parseBingoalBetOffers(apiResponse) {
                 const margin = calculateMargin(subbet.tips.map(tip => parseFloat(tip.odd)))
                 subbet.tips.forEach(tip => {
                     const option = determineBetOption(betType, tip)
-                    const line = tip.sov === "" || !tip.sov ? null : tip.sov
-                    betOffers.push(new BetOffer(betType, event.ID, Bookmaker.BINGOAL, option, parseFloat(tip.odd), line, margin))
+                    const line = tip.sov === "" || !tip.sov ? null : determineLine(betType, tip.sov)
+                    const betOffer = new BetOffer(betType, event.ID, Bookmaker.BINGOAL, option, parseFloat(tip.odd), line, margin)
+                    betOffers[betOffer.key] = betOffer
                 })
             }
         })
     })
-    return betOffers.sort(sortBetOffers).map(betOffer => {
+    return Object.values(betOffers).sort(sortBetOffers).map(betOffer => {
         betOffer.betType = betOffer.betType.name
         return betOffer
     })
 }
 
+function determineLine(betType, line) {
+    if(betType === BetType.ASIAN_HANDICAP) {
+        return Math.abs(parseFloat(line)).toString()
+    }
+    return line
+}
+
 function determineBetOption(betType, tip) {
     if(betType === BetType.ASIAN_HANDICAP || betType === BetType.DRAW_NO_BET || betType === BetType.DRAW_NO_BET_H1 || betType === BetType.DRAW_NO_BET_H2) {
+        return tip.team.toString()
+    }
+
+    if(betType === BetType._1X2_H2 || betType === BetType._1X2_H1) {
+        if(tip.team === 0) return "X"
         return tip.team.toString()
     }
 
@@ -36,12 +49,12 @@ function determineBetOption(betType, tip) {
     }
 
     if(betType === BetType.ODD_EVEN){
-        if(tip.shortname === "Oneven") return "ODD"
+        if(tip.shortName === "Oneven") return "ODD"
         return "EVEN"
     }
 
-    if(tip.shortName === "ja") return "YES"
-    if(tip.shortName === "nee") return "NO"
+    if(tip.shortName.toUpperCase() === "JA") return "YES"
+    if(tip.shortName.toUpperCase() === "NEE") return "NO"
     return tip.shortName.toUpperCase()
 }
 

@@ -33,7 +33,7 @@
   },
   {
     "betOptionName": "X",
-    "price": 2.45,
+    "price": 2.40,
     "line": null,
     "betType": "1X2_H1",
     "eventId": "149998",
@@ -105,7 +105,7 @@
   },
   {
     "betOptionName": "12",
-    "price": 1.54,
+    "price": 1.55,
     "line": null,
     "betType": "DOUBLE_CHANCE_H1",
     "eventId": "149998",
@@ -113,7 +113,7 @@
   },
   {
     "betOptionName": "X2",
-    "price": 1.66,
+    "price": 1.65,
     "line": null,
     "betType": "DOUBLE_CHANCE_H1",
     "eventId": "149998",
@@ -129,7 +129,7 @@
   },
   {
     "betOptionName": "12",
-    "price": 1.40,
+    "price": 1.41,
     "line": null,
     "betType": "DOUBLE_CHANCE_H2",
     "eventId": "149998",
@@ -137,7 +137,7 @@
   },
   {
     "betOptionName": "X2",
-    "price": 1.82,
+    "price": 1.81,
     "line": null,
     "betType": "DOUBLE_CHANCE_H2",
     "eventId": "149998",
@@ -193,7 +193,7 @@
   },
   {
     "betOptionName": "1",
-    "price": 2.65,
+    "price": 2.70,
     "line": "0:1",
     "betType": "HANDICAP",
     "eventId": "149998",
@@ -201,7 +201,7 @@
   },
   {
     "betOptionName": "X",
-    "price": 4.00,
+    "price": 3.95,
     "line": "0:1",
     "betType": "HANDICAP",
     "eventId": "149998",
@@ -217,7 +217,7 @@
   },
   {
     "betOptionName": "1",
-    "price": 5.20,
+    "price": 5.40,
     "line": "0:2",
     "betType": "HANDICAP",
     "eventId": "149998",
@@ -233,7 +233,7 @@
   },
   {
     "betOptionName": "2",
-    "price": 1.51,
+    "price": 1.50,
     "line": "0:2",
     "betType": "HANDICAP",
     "eventId": "149998",
@@ -281,7 +281,7 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 1.22,
+    "price": 1.23,
     "line": "1.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -289,7 +289,7 @@
   },
   {
     "betOptionName": "UNDER",
-    "price": 4.30,
+    "price": 4.20,
     "line": "1.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -297,7 +297,7 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 1.70,
+    "price": 1.73,
     "line": "2.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -305,7 +305,7 @@
   },
   {
     "betOptionName": "UNDER",
-    "price": 2.18,
+    "price": 2.12,
     "line": "2.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -313,7 +313,7 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 2.70,
+    "price": 2.80,
     "line": "3.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -321,7 +321,7 @@
   },
   {
     "betOptionName": "UNDER",
-    "price": 1.47,
+    "price": 1.44,
     "line": "3.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -329,7 +329,7 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 4.90,
+    "price": 5.20,
     "line": "4.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -337,7 +337,7 @@
   },
   {
     "betOptionName": "UNDER",
-    "price": 1.18,
+    "price": 1.17,
     "line": "4.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -345,7 +345,7 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 9.20,
+    "price": 9.60,
     "line": "5.5",
     "betType": "OVER_UNDER",
     "eventId": "149998",
@@ -360,14 +360,6 @@
     "bookMaker": "BINGOAL"
   },
   {
-    "betOptionName": "ODD",
-    "price": 1.93,
-    "line": null,
-    "betType": "ODD_EVEN",
-    "eventId": "149998",
-    "bookMaker": "BINGOAL"
-  },
-  {
     "betOptionName": "EVEN",
     "price": 1.88,
     "line": null,
@@ -376,8 +368,16 @@
     "bookMaker": "BINGOAL"
   },
   {
+    "betOptionName": "ODD",
+    "price": 1.93,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": "149998",
+    "bookMaker": "BINGOAL"
+  },
+  {
     "betOptionName": "YES",
-    "price": 1.76,
+    "price": 1.79,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
     "eventId": "149998",
@@ -385,7 +385,7 @@
   },
   {
     "betOptionName": "NO",
-    "price": 2.08,
+    "price": 2.04,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
     "eventId": "149998",
@@ -393,7 +393,7 @@
   },
   {
     "betOptionName": "YES",
-    "price": 4.40,
+    "price": 4.50,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H1",
     "eventId": "149998",
@@ -409,7 +409,7 @@
   },
   {
     "betOptionName": "YES",
-    "price": 3.25,
+    "price": 3.30,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
     "eventId": "149998",
@@ -417,7 +417,7 @@
   },
   {
     "betOptionName": "NO",
-    "price": 1.35,
+    "price": 1.34,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
     "eventId": "149998",

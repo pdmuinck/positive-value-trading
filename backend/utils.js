@@ -15,6 +15,7 @@ exports.BetOffer = class BetOffer {
         this.eventId = eventId
         this.bookMaker = bookMaker
         this.margin = margin
+        this.key = [this.betType.name, this.betOptionName, this.line].join(';')
     }
 }
 
@@ -33,8 +34,6 @@ exports.ValueBetFoundEvent = class ValueBetFoundEvent {
 }
 
 exports.sortBetOffers = function compare( a, b ) {
-    console.log(a)
-    console.log(b)
     if ( a.betType.sortIndex < b.betType.sortIndex ){
         return -1;
     }
