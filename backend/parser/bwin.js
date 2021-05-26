@@ -1,19 +1,18 @@
 const {Bookmaker, BetType} = require("./bookmaker")
-const {calculateMargin, BetOffer} = require("../utils")
+const {calculateMargin, BetOffer, sortBetOffers} = require("../utils")
 
 
 exports.parseBwinBetOffers = function parseBwinBetOffers(apiResponse) {
     if (!apiResponse.data.fixture) return []
-    const event = apiResponse.data.fixture
-    return event.games.map(game => {
-        const betType = determineBetType(game.categoryId, game.name.value)
+    return apiResponse.data.fixture.games.map(game => {
+        const betType = determineBetType(game.name.value)
         if (betType !== BetType.UNKNOWN) {
             const margin = calculateMargin(game.results.map(result => result.odds))
-            const line = game.attr ? game.attr.replace(",", ".") : undefined
+            const line = determineLine(game)
             return game.results.map((result, index) => {
                 const price = result.odds
                 const outcome = determineOutcome(betType, result, index)
-                return new BetOffer(betType, event.id, Bookmaker.BWIN, outcome, price, line, margin)
+                return new BetOffer(betType, apiResponse.data.fixture.id, Bookmaker.BWIN, outcome, price, line, margin)
             })
         }
     }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
@@ -22,8 +21,15 @@ exports.parseBwinBetOffers = function parseBwinBetOffers(apiResponse) {
     })
 }
 
+function determineLine(game) {
+    if(game.name.value.includes("Handicap")) {
+        return game.name.value.split(" ")[1]
+    }
+    return game.attr ? game.attr.replace(",", ".") : null
+}
+
 function determineOutcome(betType, result, index) {
-    if(betType === BetType.DOUBLE_CHANCE) {
+    if(betType === BetType.DOUBLE_CHANCE || betType === BetType.DOUBLE_CHANCE_H1) {
         if(result.name.value.includes("X or")) return "X2"
         if(result.name.value.includes("or X")) return "1X"
         return "12"
@@ -47,37 +53,60 @@ function determineOutcome(betType, result, index) {
 
 }
 
-function determineBetType(categoryId, name) {
-    switch(categoryId) {
-        // TOTAL GOALS
-        case 31:
-            if(name === "Total Goals O/U - 2nd Half") return BetType.OVER_UNDER_H2
-            if(name === "Total Goals O/U - 1st Half") return BetType.OVER_UNDER_H1
-            return BetType.OVER_UNDER
-
+function determineBetType(name) {
+    switch(name) {
         // 1X2
-        case 25:
+        case "Match Result":
             return BetType._1X2
-        case 30:
-            if(name === "Half Time result") return BetType._1X2_H1
-
-
-
-
-
-        // 1X2
-        case 17:
-            return BetType._1X2
-        case 2488:
+        case "Half Time result":
             return BetType._1X2_H1
 
+        // TOTAL GOALS
+        case "Total Goals O/U - 2nd Half":
+            return BetType.OVER_UNDER_H2
+        case "Total Goals O/U - 1st Half":
+            return BetType.OVER_UNDER_H1
+        case "Total Goals - Over/Under":
+            return BetType.OVER_UNDER
+
         // DOUBLE CHANCE
-        case 3187:
+        case "Double Chance":
             return BetType.DOUBLE_CHANCE
-        case 11748:
+        case "Half Time Double Chance":
             return BetType.DOUBLE_CHANCE_H1
 
+        // BOTH TEAMS TO SCORE
+        case "Both Teams to Score":
+            return BetType.BOTH_TEAMS_SCORE
+        case "Both Teams to Score 1st Half":
+            return BetType.BOTH_TEAMS_SCORE_H1
+        case "Both Teams to Score in 2nd Half":
+            return BetType.BOTH_TEAMS_SCORE_H2
 
+
+        case "Draw No Bet":
+            return BetType.DRAW_NO_BET
+
+        // ODD EVEN
+        case "Number of Goals - Odd/Even (no Goal counts as even)":
+            return BetType.ODD_EVEN
+
+        // HANDICAP
+        case "Handicap 0:1":
+            return BetType.HANDICAP
+        case "Handicap 0:2":
+            return BetType.HANDICAP
+        case "Handicap 0:3":
+            return BetType.HANDICAP
+        case "Handicap 1:0":
+            return BetType.HANDICAP
+        case "Handicap 2:0":
+            return BetType.HANDICAP
+        case "Handicap 3:0":
+            return BetType.HANDICAP
+
+
+        /*
         // DRAW NO BET
         case 12119:
             return BetType.DRAW_NO_BET

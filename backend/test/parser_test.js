@@ -6,7 +6,7 @@ const {parseBingoalBetOffers} = require("../parser/bingoal");
 const {describe} = require("mocha")
 
 describe("Parsers", function() {
-    const books = [{name: "bwin", parser: parseBwinBetOffers()}]
+    const books = [{name: "bwin", parser: parseBwinBetOffers}]
     books.forEach(book => {
         it("check " + book, function() {
             const betOffers = require("../test/resources/" + book.name + "/betoffers.json")
