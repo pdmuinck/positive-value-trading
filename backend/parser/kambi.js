@@ -1,3 +1,4 @@
+const {sortBetOffers} = require("../utils");
 const {BetType} = require("./bookmaker")
 const {calculateMargin, BetOffer} = require("../utils")
 
@@ -36,7 +37,16 @@ function kambiPrices(betOffer, betType) {
         })
     }
     if(betType === BetType.HANDICAP) {
-        return betOffer.outcomes.map(outcome => {return {option: kambiBetOption(outcome), price: kambiOdds(outcome), line: kambiLine(outcome)}})
+        let line = kambiLine(outcome)
+        if(line === 1) line = "1:0"
+        if(line === 2) line = "2:0"
+        if(line === 3) line = "3:0"
+        if(line === 4) line = "4:0"
+        if(line === -1) line = "0:1"
+        if(line === -2) line = "0:2"
+        if(line === -3) line = "0:3"
+        if(line === -4) line = "0:4"
+        return betOffer.outcomes.map(outcome => {return {option: kambiBetOption(outcome), price: kambiOdds(outcome), line: line}})
     }
     return betOffer.outcomes.map(outcome => {
         return {option: kambiBetOption(outcome), price: kambiOdds(outcome)}
@@ -56,24 +66,33 @@ function kambiBetOfferTypes(betOffer) {
         // DRAW NO BET
         case 1001159666:
             return BetType.DRAW_NO_BET
+        /*
         case 1001159884:
             return BetType.DRAW_NO_BET_H1
         case 1001421321:
             return BetType.DRAW_NO_BET_H2
+
+         */
 
         // DOUBLE CHANCE
         case 1001159922:
             return BetType.DOUBLE_CHANCE
         case 1001159668:
             return BetType.DOUBLE_CHANCE_H1
+        /*
         case 1001421320:
             return BetType.DOUBLE_CHANCE_H2
+
+         */
 
         // OVER UNDER
         case 1001159926:
             return BetType.OVER_UNDER
+        /*
         case 1002244276:
             return BetType.OVER_UNDER // ASIAN TOTAL
+
+
 
         case 1001159532:
             return BetType.OVER_UNDER_H1
@@ -86,6 +105,7 @@ function kambiBetOfferTypes(betOffer) {
         case 1001159633:
             return BetType.OVER_UNDER_TEAM2
 
+
         // CORRECT SCORE
         case 1001159780:
             return BetType.CORRECT_SCORE
@@ -94,11 +114,15 @@ function kambiBetOfferTypes(betOffer) {
         case 1000505272:
             return BetType.CORRECT_SCORE_H1
 
+         */
+
         // HANDICAP
         case 1001224081:
             return BetType.HANDICAP
+        /*
         case 1001568620:
             return BetType.HANDICAP_H1
+
         case 1001568621:
             return BetType.HANDICAP_H2
 
@@ -108,17 +132,26 @@ function kambiBetOfferTypes(betOffer) {
         case 1002275573:
             return BetType.ASIAN_HANDICAP_H1
 
+         */
+
         // ODD EVEN
         case 1001160038:
             return BetType.ODD_EVEN
+        /*
         case 1001159808:
             return BetType.ODD_EVEN_TEAM1
         case 1001160024:
             return BetType.ODD_EVEN_TEAM2
 
+         */
+
         // OTHER
         case 1001642858:
             return BetType.BOTH_TEAMS_SCORE
+        case 1001642863:
+            return BetType.BOTH_TEAMS_SCORE_H1
+        case 1001642868:
+            return BetType.BOTH_TEAMS_SCORE_H2
 
         default:
             return BetType.UNKNOWN
@@ -134,8 +167,12 @@ exports.parseKambiBetOffers = function parseKambiBetOffers(apiResponse) {
             const eventId = betOffer.eventId
             const prices = kambiPrices(betOffer, betType)
             return prices.map(price => {
-                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line, margin)
+                if(isNan(price.price)) return
+                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line ? price.line.toString() : null, margin)
             })
         }
-    }).flat().filter(x => x)
+    }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
+        betOffer.betType = betOffer.betType.name
+        return betOffer
+    })
 }
