@@ -1,12 +1,13 @@
 const {parseAltenarBetOffers} = require("../parser/altenar")
 const {parseBetwayBetOffers} = require("../parser/betway")
 const assert = require("assert")
+const {parseCashPointBetOffers} = require("../parser/cashpoint");
 const {parseBwinBetOffers} = require("../parser/bwin");
 const {parseBingoalBetOffers} = require("../parser/bingoal");
 const {describe} = require("mocha")
 
 describe("Parsers", function() {
-    const books = [{name: "bwin", parser: parseBwinBetOffers}]
+    const books = [{name: "betcenter", parser: parseCashPointBetOffers}]
     books.forEach(book => {
         it("check " + book, function() {
             const betOffers = require("../test/resources/" + book.name + "/betoffers.json")

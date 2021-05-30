@@ -1,1391 +1,458 @@
 [
   {
-    "_betOptionName": "1",
-    "_price": 6.33,
-    "_betType": "1X2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.8,
-    "_betType": "1X2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.59,
-    "_betType": "1X2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 2.33,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.26,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.14,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 14,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 7,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.14,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 19.5,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 11,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.03,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
+    "betOptionName": "1",
+    "price": 5.13,
+    "line": null,
+    "betType": "1X2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 4.10,
+    "line": null,
+    "betType": "1X2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.61,
+    "line": null,
+    "betType": "1X2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 5.10,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 2.32,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 2.11,
+    "line": null,
+    "betType": "1X2_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 4.80,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 2.90,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price":1.83,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1X",
+    "price": 2.27,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.23,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X2",
+    "price": 1.18,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1X",
+    "price": 1.56,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.46,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X2",
+    "price": 1.17,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 3.63,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.26,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 10.50,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 6.30,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.18,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 16.00,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 9.30,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.05,
+    "line": "0:2",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 24.50,
+    "line": "0:3",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 13.00,
+    "line": "0:3",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.01,
+    "line": "0:3",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 2.27,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 3.85,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 2.51,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 1.44,
+    "line": "2:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 4.65,
+    "line": "2:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 4.75,
+    "line": "2:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "1",
+    "price": 1.17,
+    "line": "3:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "X",
+    "price": 6.60,
+    "line": "3:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "2",
+    "price": 8.80,
+    "line": "3:0",
+    "betType": "HANDICAP",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.60,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 2.25,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.04,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 16.30,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.20,
+    "line": "1.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 4.30,
+    "line": "1.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 2.59,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.46,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 4.36,
+    "line": "4.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
   {
-    "_betOptionName": "1",
-    "_price": 52.5,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:3"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 15,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:3"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.33,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.75,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.54,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.44,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 4.6,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 4.95,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.17,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "3:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 6.7,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "3:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 9.6,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "3:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.85,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.89,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.06,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 12.1,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.27,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.55,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 3.19,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.32,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 5.5,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.13,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 8.9,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.04,
-    "_line": 5.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 29.3,
-    "_line": 6.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.01,
-    "_line": 6.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "YES",
-    "_price": 1.93,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "NO",
-    "_price": 1.82,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.2,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.58,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 16,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 4.9,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.61,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 3.1,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "EVEN",
-    "_price": 1.85,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "ODD",
-    "_price": 1.9,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 6.1,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 2.21,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.11,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.58,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.53,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.14,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 18,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 5.65,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.14,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.61,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.05,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 6.1,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.38,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.7,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.86,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.37,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 6,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.09,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638922,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.98,
-    "_betType": "1X2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.5,
-    "_betType": "1X2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.23,
-    "_betType": "1X2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.64,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.3,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.39,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 5.95,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 4.5,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.39,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 11,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 6.7,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.12,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:2"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.64,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.95,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 4.1,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.21,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 5.6,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 8.2,
-    "_betType": "HANDICAP",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "2:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.8,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.95,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.05,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 12.6,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.25,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.5,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.97,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.34,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 4.98,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.14,
-    "_line": 4.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "YES",
-    "_price": 1.67,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "NO",
-    "_price": 2.12,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.15,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.45,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 6.4,
-    "_betType": "OVER_UNDER_TEAM1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.8,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.47,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 4.55,
-    "_betType": "OVER_UNDER_TEAM2",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "EVEN",
-    "_price": 1.85,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "ODD",
-    "_price": 1.9,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 3.55,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 2.11,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 2.84,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.3,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.55,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.27,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 11,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.95,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.27,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.37,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.5,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 8.7,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.37,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.74,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.79,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.38,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 5.85,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.1,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142638912,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.1,
-    "_betType": "1X2",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.55,
-    "_betType": "1X2",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 3.01,
-    "_betType": "1X2",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.37,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.28,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.69,
-    "_betType": "DOUBLE_CHANCE",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 3.7,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.7,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.69,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.37,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 4.35,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 5.85,
-    "_betType": "HANDICAP",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.75,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.96,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.24,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 3.47,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.82,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.36,
-    "_line": 3.5,
-    "_betType": "OVER_UNDER",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "YES",
-    "_price": 1.64,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "NO",
-    "_price": 2.12,
-    "_betType": "BOTH_TEAMS_SCORE",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "EVEN",
-    "_price": 1.85,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "ODD",
-    "_price": 1.9,
-    "_betType": "ODD_EVEN",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 2.7,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 2.09,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 3.55,
-    "_betType": "1X2_FIRST_HALF",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1X",
-    "_price": 1.27,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "12",
-    "_price": 1.51,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "X2",
-    "_price": 1.3,
-    "_betType": "DOUBLE_CHANCE_1H",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 9.4,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.65,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 1.3,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "0:1"
-  },
-  {
-    "_betOptionName": "1",
-    "_price": 1.26,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "X",
-    "_price": 3.8,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "2",
-    "_price": 10.5,
-    "_betType": "HANDICAP_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null,
-    "_handicap": "1:0"
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 1.36,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 2.74,
-    "_line": 0.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 2.68,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.39,
-    "_line": 1.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "OVER",
-    "_price": 5.4,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
-  },
-  {
-    "_betOptionName": "UNDER",
-    "_price": 1.1,
-    "_line": 2.5,
-    "_betType": "OVER_UNDER_H1",
-    "_eventId": 3142566212,
-    "_bookMaker": "BETCENTER",
-    "_vigFreePrice": null
+    "betOptionName": "UNDER",
+    "price": 1.19,
+    "line": "4.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 7.25,
+    "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.07,
+    "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 20.90,
+    "line": "6.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.02,
+    "line": "6.5",
+    "betType": "OVER_UNDER",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "EVEN",
+    "price": 1.85,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "ODD",
+    "price": 1.90,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 1.67,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 2.13,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 4.20,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 1.20,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H1",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "YES",
+    "price": 2.98,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
+  },
+  {
+    "betOptionName": "NO",
+    "price": 1.36,
+    "line": null,
+    "betType": "BOTH_TEAMS_SCORE_H2",
+    "eventId": 3144721992,
+    "bookMaker": "BETCENTER"
   }
 ]
