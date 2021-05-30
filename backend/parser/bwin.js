@@ -62,10 +62,13 @@ function determineBetType(name) {
             return BetType._1X2_H1
 
         // TOTAL GOALS
+            /*
         case "Total Goals O/U - 2nd Half":
             return BetType.OVER_UNDER_H2
         case "Total Goals O/U - 1st Half":
             return BetType.OVER_UNDER_H1
+
+             */
         case "Total Goals - Over/Under":
             return BetType.OVER_UNDER
 

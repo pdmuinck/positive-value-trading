@@ -177,7 +177,7 @@
   },
   {
     "betOptionName": "2",
-    "price": 1.57,
+    "price": 3.10,
     "line": "1:0",
     "betType": "HANDICAP",
     "eventId": "11551112",
@@ -233,6 +233,22 @@
   },
   {
     "betOptionName": "OVER",
+    "price": 2.00,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": "11551112",
+    "bookMaker": "BWIN"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.75,
+    "line": "2.5",
+    "betType": "OVER_UNDER",
+    "eventId": "11551112",
+    "bookMaker": "BWIN"
+  },
+  {
+    "betOptionName": "OVER",
     "price": 1.06,
     "line": "0.5",
     "betType": "OVER_UNDER",
@@ -259,22 +275,6 @@
     "betOptionName": "UNDER",
     "price": 3.00,
     "line": "1.5",
-    "betType": "OVER_UNDER",
-    "eventId": "11551112",
-    "bookMaker": "BWIN"
-  },
-  {
-    "betOptionName": "OVER",
-    "price": 2.00,
-    "line": "2.5",
-    "betType": "OVER_UNDER",
-    "eventId": "11551112",
-    "bookMaker": "BWIN"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 1.75,
-    "line": "2.5",
     "betType": "OVER_UNDER",
     "eventId": "11551112",
     "bookMaker": "BWIN"
@@ -323,6 +323,22 @@
     "betOptionName": "UNDER",
     "price": 1.02,
     "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": "11551112",
+    "bookMaker": "BWIN"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 23.00,
+    "line": "6.5",
+    "betType": "OVER_UNDER",
+    "eventId": "11551112",
+    "bookMaker": "BWIN"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.01,
+    "line": "6.5",
     "betType": "OVER_UNDER",
     "eventId": "11551112",
     "bookMaker": "BWIN"
