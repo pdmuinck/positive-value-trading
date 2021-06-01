@@ -170,7 +170,7 @@ exports.parseKambiBetOffers = function parseKambiBetOffers(apiResponse) {
             const prices = kambiPrices(betOffer, betType)
             return prices.map(price => {
                 if(isNaN(price.price)) return
-                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line ? price.line.toString() : null, null)
+                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line ? price.line.toString() : null, margin)
             })
         }
     }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {

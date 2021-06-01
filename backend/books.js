@@ -176,7 +176,7 @@ exports.getLadbrokesEventsForCompetition = async function getLadbrokesEventsForC
         return response.data.result.dataGroupList.map(group => group.itemList).flat().map(event => {
             const eventId = event.eventInfo.aliasUrl
             const eventUrl = 'https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'
-                + id + '/' + eventId + '?prematch=1&live=0'
+                + id + '/' + eventId + '/tutte?prematch=1&live=0'
             const sportRadarId = event.eventInfo.programBetradarInfo.matchId
             const bookmakerInfo = new BookmakerInfo(Provider.LADBROKES, Bookmaker.LADBROKES, id, eventId, leagueUrl, [eventUrl], headers, undefined, "GET")
             return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
