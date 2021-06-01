@@ -137,30 +137,6 @@
   },
   {
     "betOptionName": "1",
-    "price": 12.50,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "X",
-    "price": 7.00,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "2",
-    "price": 1.14,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "1",
     "price": 36.00,
     "line": "0:2",
     "betType": "HANDICAP",
@@ -185,30 +161,6 @@
   },
   {
     "betOptionName": "1",
-    "price": 2.30,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "X",
-    "price": 3.75,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "2",
-    "price": 2.55,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "1",
     "price": 1.44,
     "line": "2:0",
     "betType": "HANDICAP",
@@ -227,6 +179,54 @@
     "betOptionName": "2",
     "price": 5.00,
     "line": "2:0",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "1",
+    "price": 12.50,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "X",
+    "price": 7.00,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "2",
+    "price": 1.14,
+    "line": "0:1",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "1",
+    "price": 2.30,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "X",
+    "price": 3.75,
+    "line": "1:0",
+    "betType": "HANDICAP",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "2",
+    "price": 2.55,
+    "line": "1:0",
     "betType": "HANDICAP",
     "eventId": 1007519027,
     "bookMaker": "ngbe"
@@ -281,38 +281,6 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 1.01,
-    "line": "0.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 16.00,
-    "line": "0.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "OVER",
-    "price": 1.18,
-    "line": "1.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 4.80,
-    "line": "1.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "OVER",
     "price": 1.60,
     "line": "2.5",
     "betType": "OVER_UNDER",
@@ -323,22 +291,6 @@
     "betOptionName": "UNDER",
     "price": 2.35,
     "line": "2.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "OVER",
-    "price": 2.55,
-    "line": "3.5",
-    "betType": "OVER_UNDER",
-    "eventId": 1007519027,
-    "bookMaker": "ngbe"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 1.50,
-    "line": "3.5",
     "betType": "OVER_UNDER",
     "eventId": 1007519027,
     "bookMaker": "ngbe"
@@ -361,6 +313,46 @@
   },
   {
     "betOptionName": "OVER",
+    "price": 2.55,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.50,
+    "line": "3.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.01,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 16.00,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 20.00,
+    "line": "6.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "OVER",
     "price": 9.00,
     "line": "5.5",
     "betType": "OVER_UNDER",
@@ -377,8 +369,16 @@
   },
   {
     "betOptionName": "OVER",
-    "price": 20.00,
-    "line": "6.5",
+    "price": 1.18,
+    "line": "1.5",
+    "betType": "OVER_UNDER",
+    "eventId": 1007519027,
+    "bookMaker": "ngbe"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 4.80,
+    "line": "1.5",
     "betType": "OVER_UNDER",
     "eventId": 1007519027,
     "bookMaker": "ngbe"

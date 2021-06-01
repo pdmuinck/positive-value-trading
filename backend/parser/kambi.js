@@ -37,16 +37,18 @@ function kambiPrices(betOffer, betType) {
         })
     }
     if(betType === BetType.HANDICAP) {
-        let line = kambiLine(outcome)
-        if(line === 1) line = "1:0"
-        if(line === 2) line = "2:0"
-        if(line === 3) line = "3:0"
-        if(line === 4) line = "4:0"
-        if(line === -1) line = "0:1"
-        if(line === -2) line = "0:2"
-        if(line === -3) line = "0:3"
-        if(line === -4) line = "0:4"
-        return betOffer.outcomes.map(outcome => {return {option: kambiBetOption(outcome), price: kambiOdds(outcome), line: line}})
+        return betOffer.outcomes.map(outcome => {
+            let line = kambiLine(outcome)
+            if(line === 1) line = "1:0"
+            if(line === 2) line = "2:0"
+            if(line === 3) line = "3:0"
+            if(line === 4) line = "4:0"
+            if(line === -1) line = "0:1"
+            if(line === -2) line = "0:2"
+            if(line === -3) line = "0:3"
+            if(line === -4) line = "0:4"
+            return {option: kambiBetOption(outcome), price: kambiOdds(outcome), line: line}
+        })
     }
     return betOffer.outcomes.map(outcome => {
         return {option: kambiBetOption(outcome), price: kambiOdds(outcome)}
@@ -167,8 +169,8 @@ exports.parseKambiBetOffers = function parseKambiBetOffers(apiResponse) {
             const eventId = betOffer.eventId
             const prices = kambiPrices(betOffer, betType)
             return prices.map(price => {
-                if(isNan(price.price)) return
-                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line ? price.line.toString() : null, margin)
+                if(isNaN(price.price)) return
+                return new BetOffer(betType, eventId, apiResponse.bookmaker, price.option, price.price, price.line ? price.line.toString() : null, null)
             })
         }
     }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
