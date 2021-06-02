@@ -34,8 +34,8 @@ function determineLine(betType, betOffer) {
         if(betOffer.handicap === "-2.0") return "0:2"
         if(betOffer.handicap === "-3.0") return "0:3"
         if(betOffer.handicap === "1.0") return "1:0"
-        if(betOffer.handicap === "1.0") return "2:0"
-        if(betOffer.handicap === "1.0") return "3:0"
+        if(betOffer.handicap === "2.0") return "2:0"
+        if(betOffer.handicap === "3.0") return "3:0"
     }
     return null
 }
