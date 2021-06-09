@@ -1,6 +1,7 @@
 const {parseAltenarBetOffers} = require("../parser/altenar")
 const {parseBetwayBetOffers} = require("../parser/betway")
 const assert = require("assert")
+const {parseSbtechBetOffers} = require("../parser/sbtech");
 const {parsePinnacleBetOffers} = require("../parser/pinnacle");
 const {parserMeridianBetOffers} = require("../parser/meridian");
 const {parseLadbrokesBetOffers} = require("../parser/ladbrokes");
@@ -11,22 +12,31 @@ const {parseBingoalBetOffers} = require("../parser/bingoal");
 const {describe} = require("mocha")
 
 describe("Parsers", function() {
-    const books = []
-    //const books = [{name: "pinnacle", parser: parsePinnacleBetOffers}]
+    //const books = []
+    const books = [{name: "sbtech", parser: parseSbtechBetOffers}]
     books.forEach(book => {
         it("check " + book, function() {
             const betOffers = require("../test/resources/" + book.name + "/betoffers.json")
             const expected = require("../test/resources/" + book.name + "/expected_betoffers.json")
             const result = book.parser(betOffers)
+            //console.log(result)
+
+
+
             result.forEach(result => {
                 delete result.margin
                 delete result.key
             })
-            //assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
-            assert.deepStrictEqual(result, expected)
+            assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
+            //assert.deepStrictEqual(result, expected)
+
+
+
+
+
         })
     })
-
+/*
     it("check pinnacle", function() {
         const betTypes = require("./resources/pinnacle/markets.json")
         const betOffers = require("../test/resources/pinnacle/betoffers.json")
@@ -39,5 +49,7 @@ describe("Parsers", function() {
         //assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
         assert.deepStrictEqual(result, expected)
     })
+
+ */
 
 })

@@ -1,3 +1,4 @@
+const {sortBetOffers} = require("../utils");
 const {Bookmaker, BetType} = require("./bookmaker")
 const {calculateMargin, BetOffer} = require("../utils")
 /*
@@ -8,9 +9,6 @@ wss://sbapi.sbtech.com/bethard/sportscontent/sportsbook/v1/Websocket?jwt=eyJhbGc
 
 
 function determineOutcomeType(selection, betType) {
-    if(betType === BetType.CORRECT_SCORE) {
-        return selection.name.toUpperCase()
-    }
     switch(selection.outcomeType){
         case 'Home':
             return '1'
@@ -21,6 +19,43 @@ function determineOutcomeType(selection, betType) {
         default:
             return selection.outcomeType ? selection.outcomeType.toUpperCase() : selection.outcomeType
     }
+}
+
+function determineLine(selection, betType, outcome) {
+    if(betType === BetType.HANDICAP) {
+        const line = selection.points
+        if(outcome === "2" && line === -1) return "1:0"
+        if(outcome === "2" && line === -2) return "2:0"
+        if(outcome === "2" && line === -3) return "3:0"
+        if(outcome === "2" && line === -4) return "4:0"
+        if(outcome === "2" && line === -5) return "5:0"
+        if(outcome === "2" && line === 1) return "0:1"
+        if(outcome === "2" && line === 2) return "0:2"
+        if(outcome === "2" && line === 3) return "0:3"
+        if(outcome === "2" && line === 4) return "0:4"
+        if(outcome === "2" && line === 5) return "0:5"
+        if(outcome === "1" && line === -1) return "0:1"
+        if(outcome === "1" && line === -2) return "0:2"
+        if(outcome === "1" && line === -3) return "0:3"
+        if(outcome === "1" && line === -4) return "0:4"
+        if(outcome === "1" && line === -5) return "0:5"
+        if(outcome === "1" && line === 1) return "1:0"
+        if(outcome === "1" && line === 2) return "2:0"
+        if(outcome === "1" && line === 3) return "3:0"
+        if(outcome === "1" && line === 4) return "4:0"
+        if(outcome === "1" && line === 5) return "5:0"
+        if(outcome === "X" && line === -1) return "0:1"
+        if(outcome === "X" && line === -2) return "0:2"
+        if(outcome === "X" && line === -3) return "0:3"
+        if(outcome === "X" && line === -4) return "0:4"
+        if(outcome === "X" && line === -5) return "0:5"
+        if(outcome === "X" && line === 1) return "1:0"
+        if(outcome === "X" && line === 2) return "2:0"
+        if(outcome === "X" && line === 3) return "3:0"
+        if(outcome === "X" && line === 4) return "4:0"
+        if(outcome === "X" && line === 5) return "5:0"
+    }
+    return selection.points ? selection.points.toString() : null
 }
 
 function determineBetOfferType(typeId) {
@@ -45,9 +80,10 @@ function determineBetOfferType(typeId) {
 
 
         // OVER UNDER
-        case "3_0":
+        case "3_200":
             return BetType.OVER_UNDER
 
+        /*
         case "3_1":
             return BetType.OVER_UNDER_H1
         case "3_2":
@@ -60,17 +96,24 @@ function determineBetOfferType(typeId) {
         case "60":
             return BetType.CORRECT_SCORE
 
+         */
+
         // ASIAN HANDICAP
+            /*
         case "2_0":
             return BetType.ASIAN_HANDICAP
+        /*
         case "2_1":
             return BetType.ASIAN_HANDICAP_H1
         case "2_2":
             return BetType.ASIAN_HANDICAP_H2
 
+         */
+
         // ODD_EVEN
         case "38":
             return BetType.ODD_EVEN
+        /*
         case "267":
             return BetType.ODD_EVEN_H2
         case "274":
@@ -80,6 +123,9 @@ function determineBetOfferType(typeId) {
         case "276":
             return BetType.ODD_EVEN_TEAMS_H1
 
+
+         */
+
         // OTHER
         case "158":
             return BetType.BOTH_TEAMS_SCORE
@@ -88,6 +134,9 @@ function determineBetOfferType(typeId) {
         case "2935":
             return BetType.BOTH_TEAMS_SCORE_H1
 
+        case "270":
+            return BetType.HANDICAP
+
         default:
             return BetType.UNKNOWN
 
@@ -95,7 +144,7 @@ function determineBetOfferType(typeId) {
 }
 
 exports.parseSbtechBetOffers = function parseSbtechBetOffers(apiResponse) {
-    const homeId = apiResponse.data.data.events[0].participants.filter(participant => participant.venueRole === "Home")[0].id
+    //const homeId = apiResponse.data.data.events[0].participants.filter(participant => participant.venueRole === "Home")[0].id
     return apiResponse.data.data.markets
         .map(market => {
             const typeId = market.marketType.id
@@ -104,53 +153,19 @@ exports.parseSbtechBetOffers = function parseSbtechBetOffers(apiResponse) {
             const eventId = market.eventId
             const margin = calculateMargin(market.selections.map(selection => selection.trueOdds))
 
-            if(betOfferType === BetType.OVER_UNDER_TEAM) {
-                if(market.participantMapping === homeId) {
-                    market.selections.forEach(selection => {
-                        const line = selection.points ? selection.points : undefined
-                        const outcomeType = determineOutcomeType(selection, betOfferType)
-                        const price = selection.trueOdds
-                        betOffers.push(new BetOffer(BetType.OVER_UNDER_TEAM1,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
-                    })
-                } else {
-                    market.selections.forEach(selection => {
-                        const line = selection.points ? selection.points : undefined
-                        const outcomeType = determineOutcomeType(selection, betOfferType)
-                        const price = selection.trueOdds
-                        betOffers.push(new BetOffer(BetType.OVER_UNDER_TEAM2,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
-                    })
-                }
-                return betOffers
-            }
-            if(betOfferType === BetType.ODD_EVEN_TEAMS) {
-                // first selection is away team ODD
-                // second is home team ODD
-                market.selections.forEach(selection => {
-                    const line = selection.points ? selection.points : undefined
-                    const outcomeType = determineOutcomeType(selection, betOfferType)
-                    const price = selection.trueOdds
-                    if(selection.metadata.type === "13") {
-                        betOffers.push(new BetOffer(BetType.ODD_EVEN_TEAM1,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
-                    } else if(selection.metadata.type === "14") {
-                        betOffers.push(new BetOffer(BetType.ODD_EVEN_TEAM2,
-                            eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
-                    }
-                })
-                return betOffers
-            }
             if(betOfferType !== BetType.UNKNOWN) {
                 market.selections.forEach(selection => {
-                    const outcomeType = determineOutcomeType(selection, betOfferType).replace(":", "-")
-                    const price = selection.trueOdds
-                    const line = selection.points ? selection.points : undefined
+                    const outcomeType = determineOutcomeType(selection, betOfferType)
+                    const price = parseFloat(selection.displayOdds.decimal)
+                    const line = determineLine(selection, betOfferType, outcomeType)
                     betOffers.push(new BetOffer(betOfferType, eventId, apiResponse.bookmaker, outcomeType, price, line, margin))
                 })
             }
             return betOffers
-        }).flat().filter(x => x)
+        }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
+            betOffer.betType = betOffer.betType.name
+            return betOffer
+        })
 }
 
 
