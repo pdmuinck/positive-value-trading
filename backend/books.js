@@ -5,7 +5,7 @@ const axios = require("axios")
 const parser = require('node-html-parser')
 
 exports.getKambiEventsForCompetition = async function getKambiEventsForCompetition(id) {
-    const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES]
+    const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES, Bookmaker.SCOOORE]
     return axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
         + id + '.json?includeParticipants=false').then(eventResponses => {
         const requests = eventResponses.data.events.map(event => {

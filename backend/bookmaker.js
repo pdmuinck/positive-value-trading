@@ -75,7 +75,7 @@ const Bookmaker = {
     "BET90" : 'BET90',
     "MAGIC_BETTING" : 'MAGIC_BETTING',
     "STAR_CASINO" : 'STAR_CASINO',
-    "SCOOORE" : 'SCOOORE',
+    "SCOOORE" : 'bnlbe',
     "CIRCUS" : 'CIRCUS',
     "STANLEYBET" : 'STANLEYBET',
     "BINGOAL" : 'BINGOAL',
