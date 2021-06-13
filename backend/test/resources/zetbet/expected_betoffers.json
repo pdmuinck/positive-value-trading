@@ -1,474 +1,322 @@
 [
   {
     "betOptionName": "1",
-    "price": 2.36,
+    "price": 1.57,
     "line": null,
     "betType": "1X2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "X",
-    "price": 2.90,
-    "line": null,
-    "betType": "1X2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 3.35,
-    "line": null,
-    "betType": "1X2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 3.15,
-    "line": null,
-    "betType": "1X2_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price": 1.93,
-    "line": null,
-    "betType": "1X2_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
     "price": 4.10,
     "line": null,
-    "betType": "1X2_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "2",
+    "price": 7.25,
+    "line": null,
+    "betType": "1X2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "1",
-    "price": 2.75,
+    "price": 2.00,
     "line": null,
-    "betType": "1X2_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "X",
-    "price": 2.27,
+    "price": 2.20,
     "line": null,
-    "betType": "1X2_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "2",
-    "price": 3.60,
+    "price": 6.30,
     "line": null,
-    "betType": "1X2_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1X",
-    "price": 1.32,
-    "line": null,
-    "betType": "DOUBLE_CHANCE",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "12",
-    "price": 1.39,
-    "line": null,
-    "betType": "DOUBLE_CHANCE",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X2",
-    "price": 1.54,
-    "line": null,
-    "betType": "DOUBLE_CHANCE",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1X",
-    "price": 1.21,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "12",
-    "price": 1.72,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X2",
-    "price": 1.31,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1X",
-    "price": 1.26,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "12",
-    "price": 1.53,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X2",
-    "price": 1.38,
-    "line": null,
-    "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "1",
-    "price": 1.61,
+    "price": 1.78,
     "line": null,
-    "betType": "DRAW_NO_BET",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "X",
+    "price": 2.62,
+    "line": null,
+    "betType": "1X2_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "2",
-    "price": 2.24,
+    "price": 6.10,
     "line": null,
-    "betType": "DRAW_NO_BET",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "1X2_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "1",
+    "betOptionName": "1X",
+    "price": 1.04,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.16,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "X2",
+    "price": 2.35,
+    "line": null,
+    "betType": "DOUBLE_CHANCE",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "1X",
+    "price": 1.06,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.52,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "X2",
     "price": 1.65,
     "line": null,
-    "betType": "DRAW_NO_BET_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "betType": "DOUBLE_CHANCE_H1",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "2",
-    "price": 2.15,
-    "line": null,
-    "betType": "DRAW_NO_BET_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 1.64,
-    "line": null,
-    "betType": "DRAW_NO_BET_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 2.12,
-    "line": null,
-    "betType": "DRAW_NO_BET_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 5.00,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price": 3.95,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 1.56,
-    "line": "0:1",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 13,
-    "line": "0:2",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price": 6.80,
-    "line": "0:2",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 1.16,
-    "line": "0:2",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 1.32,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price": 4.80,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 8.40,
-    "line": "1:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 1.07,
-    "line": "2:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price":9.00,
-    "line": "2:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 23,
-    "line": "2:0",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "1",
-    "price": 30,
-    "line": "0:3",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "X",
-    "price": 12,
-    "line": "0:3",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "2",
-    "price": 1.03,
-    "line":  "0:3",
-    "betType": "HANDICAP",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 7.00,
-    "line": "0.5",
-    "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "OVER",
+    "betOptionName": "1X",
     "price": 1.08,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "12",
+    "price": 1.36,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "X2",
+    "price": 1.83,
+    "line": null,
+    "betType": "DOUBLE_CHANCE_H2",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "1",
+    "price": 1.14,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "2",
+    "price": 4.90,
+    "line": null,
+    "betType": "DRAW_NO_BET",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.04,
     "line": "0.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "UNDER",
-    "price": 2.65,
+    "price": 10.50,
+    "line": "0.5",
+    "betType": "OVER_UNDER",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "OVER",
+    "price": 1.30,
     "line": "1.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "OVER",
-    "price": 1.45,
+    "betOptionName": "UNDER",
+    "price": 3.30,
     "line": "1.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "UNDER",
-    "price": 1.53,
+    "betOptionName": "OVER",
+    "price": 1.98,
     "line": "2.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "OVER",
-    "price": 2.43,
+    "betOptionName": "UNDER",
+    "price": 1.73,
     "line": "2.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "UNDER",
-    "price": 1.19,
+    "betOptionName": "OVER",
+    "price": 3.45,
     "line": "3.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
-    "betOptionName": "OVER",
-    "price": 4.40,
+    "betOptionName": "UNDER",
+    "price": 1.27,
     "line": "3.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 1.06,
-    "line": "4.5",
-    "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "OVER",
-    "price": 8.40,
+    "price": 7.50,
     "line": "4.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "UNDER",
-    "price": 1.01,
-    "line": "5.5",
+    "price": 1.07,
+    "line": "4.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "OVER",
-    "price": 14,
+    "price": 17.0,
     "line": "5.5",
     "betType": "OVER_UNDER",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "UNDER",
+    "price": 1.00,
+    "line": "5.5",
+    "betType": "OVER_UNDER",
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "ODD",
-    "price": 2.02,
+    "price": 1.91,
     "line": null,
     "betType": "ODD_EVEN",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "EVEN",
-    "price": 1.80,
+    "price": 1.81,
     "line": null,
     "betType": "ODD_EVEN",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "YES",
-    "price": 2.10,
+    "price": 2.15,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "NO",
-    "price": 1.71,
+    "price": 1.63,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "YES",
-    "price": 5.80,
+    "price": 5.70,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "NO",
-    "price": 1.13,
+    "price": 1.11,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H1",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "YES",
     "price": 4.20,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "NO",
-    "price": 1.21,
+    "price": 1.20,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
-    "eventId": "9540698",
-    "bookMaker": "MERIDIAN"
+    "eventId": "rczo1-england_croatia",
+    "bookMaker": "ZETBET"
   }
 ]

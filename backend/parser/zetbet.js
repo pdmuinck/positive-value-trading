@@ -1,6 +1,7 @@
 const {Bookmaker, BetType} = require("./bookmaker")
 const {calculateMargin, BetOffer} = require("../utils")
 const parser = require('node-html-parser')
+const {sortBetOffers} = require("../utils");
 
 exports.parseZetBetBetOffers = function parseZetBetBetOffers(apiResponse) {
     const root = parser.parse(apiResponse.data)
@@ -10,8 +11,9 @@ exports.parseZetBetBetOffers = function parseZetBetBetOffers(apiResponse) {
     let currentMarket
     for (let i = 0; i < marketNodes.length; i++) {
         const element = marketNodes[i]
-        if (element.rawAttrs === 'class="uk-icon-bullseye"') {
-            currentMarket = element.parentNode.childNodes[1].rawText.split("\n")[1].trim()
+        if (element.childNodes[1].rawAttrs.includes('class="bet-question"')) {
+            currentMarket = element.parentNode.parentNode.childNodes[0].childNodes[0]
+            console.log(currentMarket)
         } else {
             if (!betOffers[currentMarket]) {
                 betOffers[currentMarket] = {elements: [element]}
@@ -32,10 +34,13 @@ exports.parseZetBetBetOffers = function parseZetBetBetOffers(apiResponse) {
                 let outcome = price.querySelectorAll(".pmq-cote-acteur").flat().map(element => element.childNodes[0].rawText.split("\n")[1].trim())[0]
                 outcome = determineOutcome(outcome, betLine.betType, index)
                 const odd = price.querySelectorAll(".pmq-cote").map(element => parseFloat(element.childNodes[0].rawText.split("\n")[1].trim().replace(",", ".")))[0]
-                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, outcome ? outcome.toUpperCase(): outcome, odd, betLine.line ? betLine.line : undefined, margin)
+                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, outcome ? outcome.toUpperCase(): outcome, odd, betLine.line ? betLine.line : null, margin)
             }).flat()
         }
-    }).flat().filter(x => x)
+    }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
+        betOffer.betType = betOffer.betType.name
+        return betOffer
+    })
 }
 
 function determineOutcome(outcome, betType, index) {
