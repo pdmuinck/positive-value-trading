@@ -4,38 +4,19 @@ const parser = require('node-html-parser')
 const {sortBetOffers} = require("../utils");
 
 exports.parseZetBetBetOffers = function parseZetBetBetOffers(apiResponse) {
-    const root = parser.parse(apiResponse.data)
-    const eventId = ""
-    const marketNodes = root.querySelectorAll(".item-content  ")
-    const betOffers = {}
-    let currentMarket
-    for (let i = 0; i < marketNodes.length; i++) {
-        const element = marketNodes[i]
-        if (element.childNodes[1].rawAttrs.includes('class="bet-question"')) {
-            currentMarket = element.parentNode.parentNode.childNodes[0].childNodes[0]
-            console.log(currentMarket)
-        } else {
-            if (!betOffers[currentMarket]) {
-                betOffers[currentMarket] = {elements: [element]}
-            }
-            else {
-                const elements = betOffers[currentMarket].elements
-                elements.push(element)
-                betOffers[currentMarket] = {elements: elements}
-            }
-        }
-    }
-    return Object.keys(betOffers).map(key => {
-        const prices = betOffers[key].elements
-        const betLine = determineLine(key)
-        if(betLine.betType !== BetType.UNKNOWN) {
-            const margin = calculateMargin(prices.map(price => price.querySelectorAll(".pmq-cote").map(element => parseFloat(element.childNodes[0].rawText.split("\n")[1].trim().replace(",", ".")))[0]))
-            return prices.map((price, index) => {
-                let outcome = price.querySelectorAll(".pmq-cote-acteur").flat().map(element => element.childNodes[0].rawText.split("\n")[1].trim())[0]
-                outcome = determineOutcome(outcome, betLine.betType, index)
-                const odd = price.querySelectorAll(".pmq-cote").map(element => parseFloat(element.childNodes[0].rawText.split("\n")[1].trim().replace(",", ".")))[0]
-                return new BetOffer(betLine.betType, eventId, Bookmaker.ZETBET, outcome ? outcome.toUpperCase(): outcome, odd, betLine.line ? betLine.line : null, margin)
-            }).flat()
+    const betOffers = apiResponse.data.split("data-type=").slice(1)
+
+    return betOffers.map(betOffer => {
+        const dataType = console.log(betOffer.slice(0, 3).replaceAll('"', ''))
+        const betType = determineLine(dataType)
+        const outcomes = betOffer.split("bet-actorodd3").slice(1)
+        if(betType.betType !== BetType.UNKNOWN) {
+            outcomes.map((outcome, index) => {
+                const parsedOutcome = determineOutcome(outcome.split("class=\"pmq-cote-acteur uk-text-truncate\"").slice(1)[0].split("</span>")[0].split(">")[1].replace(/(?:\r\n|\r|\n)/g, '').trim(), betType, index)
+                const price = parseFloat(outcome.split("class=\"pmq-cote-acteur uk-text-truncate\"")[0].split(">")[1].split("</span")[0].replace(/(?:\r\n|\r|\n)/g, '').trim().replace(",", "."))
+                const test = new BetOffer(betType.betType, "", Bookmaker.ZETBET, parsedOutcome, price, betType.line, undefined)
+                //console.log(test)
+            })
         }
     }).flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
         betOffer.betType = betOffer.betType.name
@@ -55,50 +36,55 @@ function determineOutcome(outcome, betType, index) {
         if(index === 0) return "1"
         if(index === 1) return "2"
     }
-    return outcome
+    return outcome.toUpperCase()
+}
+
+function determineBetType(dataType) {
+    switch(dataType) {
+        case "1":
+            return BetType._1X2
+        case "18":
+            return BetType._1X2_H1
+
+        case "10":
+            return BetType.DOUBLE_CHANCE
+        case "121":
+            return BetType.DOUBLE_CHANCE_H1
+        case "9":
+            return BetType.OVER_UNDER
+        case "24":
+            return BetType.BOTH_TEAMS_SCORE
+        case "95":
+            return BetType.BOTH_TEAMS_SCORE_H2
+    }
 }
 
 function determineLine(betType) {
-    if(betType.includes("Over / Under") && betType.includes("goals")) {
-        const line = parseFloat(betType.split("Over / Under ")[1].split("goals")[0].trim())
-        if(betType.includes("1st half")) return {betType: BetType.OVER_UNDER_H1, line: line}
-        if(betType.includes("2nd half")) return {betType: BetType.OVER_UNDER_H2, line: line}
-        return {betType: BetType.OVER_UNDER, line: line}
-    }
-    if(betType.includes("Over Under") && betType.includes("goals")) {
-        const line = parseFloat(betType.split("Over Under ")[1].split("goals")[0].trim())
-        if(betType.includes("1st half")) return {betType: BetType.OVER_UNDER_H1, line: line}
-        if(betType.includes("2nd half")) return {betType: BetType.OVER_UNDER_H2, line: line}
-        return {betType: BetType.OVER_UNDER, line: line}
-    }
 
-    if(betType.toUpperCase().includes("TOTAL GOALS")) {
-        const upper = betType.toUpperCase()
-        const splitted = upper.split("TOTAL GOALS")
-        if(splitted.length > 1) {
-            return {betType: BetType.TOTAL_GOALS_TEAM1}
-        } else {
-            return {betType: BetType.TOTAL_GOALS}
-        }
-    }
+    console.log(betType)
 
-    if(betType.includes("odd or even")) {
-        if(betType.includes("total goals")) {
-            return {betType: BetType.ODD_EVEN_TEAM1}
-        }
-    }
-
-    switch(betType.trim()) {
-        case "Who will win the match?":
+    switch(betType) {
+        case "1":
             return {betType: BetType._1X2}
-        case "Double Chance":
+
+        case "10":
             return {betType: BetType.DOUBLE_CHANCE}
+        case "121":
+            return {betType: Bet}
+        case "9":
+            return {betType: BetType.OVER_UNDER}
+        case "24":
+            return {betType: BetType.}
+            /*
         case "Correct Score":
             return {betType: BetType.CORRECT_SCORE}
         case "Total goals":
             return {betType: BetType.TOTAL_GOALS}
         case "Half-Time Correct score":
             return {betType: BetType.CORRECT_SCORE_H1}
+
+             */
+            /*
         case "Both teams to score in 2nd half?":
             return {betType: BetType.BOTH_TEAMS_SCORE_H2}
         case "Who will win the 1st half?":
@@ -143,6 +129,8 @@ function determineLine(betType) {
             return {betType: BetType.HANDICAP_H2}
         case "Handicap (-0.5)  - To win the 2nd half":
             return {betType: BetType.HANDICAP_H2}
+
+             */
         default:
             return {betType: BetType.UNKNOWN}
     }
