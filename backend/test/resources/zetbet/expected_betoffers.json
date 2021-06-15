@@ -4,7 +4,7 @@
     "price": 1.57,
     "line": null,
     "betType": "1X2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -12,7 +12,7 @@
     "price": 4.10,
     "line": null,
     "betType": "1X2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -20,7 +20,7 @@
     "price": 7.25,
     "line": null,
     "betType": "1X2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -28,7 +28,7 @@
     "price": 2.00,
     "line": null,
     "betType": "1X2_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -36,7 +36,7 @@
     "price": 2.20,
     "line": null,
     "betType": "1X2_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -44,7 +44,7 @@
     "price": 6.30,
     "line": null,
     "betType": "1X2_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -52,7 +52,7 @@
     "price": 1.78,
     "line": null,
     "betType": "1X2_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -60,7 +60,7 @@
     "price": 2.62,
     "line": null,
     "betType": "1X2_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -68,7 +68,7 @@
     "price": 6.10,
     "line": null,
     "betType": "1X2_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -76,7 +76,7 @@
     "price": 1.04,
     "line": null,
     "betType": "DOUBLE_CHANCE",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -84,7 +84,7 @@
     "price": 1.16,
     "line": null,
     "betType": "DOUBLE_CHANCE",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -92,7 +92,7 @@
     "price": 2.35,
     "line": null,
     "betType": "DOUBLE_CHANCE",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -100,7 +100,7 @@
     "price": 1.06,
     "line": null,
     "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -108,7 +108,7 @@
     "price": 1.52,
     "line": null,
     "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -116,7 +116,7 @@
     "price": 1.65,
     "line": null,
     "betType": "DOUBLE_CHANCE_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -124,7 +124,7 @@
     "price": 1.08,
     "line": null,
     "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -132,7 +132,7 @@
     "price": 1.36,
     "line": null,
     "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -140,7 +140,7 @@
     "price": 1.83,
     "line": null,
     "betType": "DOUBLE_CHANCE_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -148,7 +148,7 @@
     "price": 1.14,
     "line": null,
     "betType": "DRAW_NO_BET",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -156,7 +156,7 @@
     "price": 4.90,
     "line": null,
     "betType": "DRAW_NO_BET",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -164,7 +164,7 @@
     "price": 1.04,
     "line": "0.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -172,7 +172,7 @@
     "price": 10.50,
     "line": "0.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -180,7 +180,7 @@
     "price": 1.30,
     "line": "1.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -188,7 +188,7 @@
     "price": 3.30,
     "line": "1.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -196,7 +196,7 @@
     "price": 1.98,
     "line": "2.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -204,7 +204,7 @@
     "price": 1.73,
     "line": "2.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -212,7 +212,7 @@
     "price": 3.45,
     "line": "3.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -220,7 +220,7 @@
     "price": 1.27,
     "line": "3.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -228,7 +228,7 @@
     "price": 7.50,
     "line": "4.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -236,7 +236,7 @@
     "price": 1.07,
     "line": "4.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -244,23 +244,7 @@
     "price": 17.0,
     "line": "5.5",
     "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
-    "bookMaker": "ZETBET"
-  },
-  {
-    "betOptionName": "UNDER",
-    "price": 1.00,
-    "line": "5.5",
-    "betType": "OVER_UNDER",
-    "eventId": "rczo1-england_croatia",
-    "bookMaker": "ZETBET"
-  },
-  {
-    "betOptionName": "ODD",
-    "price": 1.91,
-    "line": null,
-    "betType": "ODD_EVEN",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -268,7 +252,15 @@
     "price": 1.81,
     "line": null,
     "betType": "ODD_EVEN",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
+    "bookMaker": "ZETBET"
+  },
+  {
+    "betOptionName": "ODD",
+    "price": 1.91,
+    "line": null,
+    "betType": "ODD_EVEN",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -276,15 +268,15 @@
     "price": 2.15,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
     "betOptionName": "NO",
-    "price": 1.63,
+    "price": 1.65,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -292,7 +284,7 @@
     "price": 5.70,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -300,7 +292,7 @@
     "price": 1.11,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H1",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -308,7 +300,7 @@
     "price": 4.20,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   },
   {
@@ -316,7 +308,7 @@
     "price": 1.20,
     "line": null,
     "betType": "BOTH_TEAMS_SCORE_H2",
-    "eventId": "rczo1-england_croatia",
+    "eventId": "",
     "bookMaker": "ZETBET"
   }
 ]

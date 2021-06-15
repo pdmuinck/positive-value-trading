@@ -30,8 +30,8 @@ describe("Parsers", function() {
                 delete result.margin
                 delete result.key
             })
-            //assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
-           // assert.deepStrictEqual(result, expected)
+            assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
+            //assert.deepStrictEqual(result, expected)
 
 
 
