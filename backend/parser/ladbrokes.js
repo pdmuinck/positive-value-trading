@@ -9,18 +9,20 @@ exports.parseLadbrokesBetOffers = function parseLadbrokesBetOffers(apiResponse) 
     if(!apiResponse.data.result) return []
     const betOffers = []
     apiResponse.data.result.betGroupList.map(betGroup => betGroup.oddGroupList).flat().forEach(oddGroup => {
-        const betType = determineBetOfferType(oddGroup.betId, oddGroup.oddGroupDescription)
-        if(betType !== BetType.UNKNOWN) {
-            const line = determineLine(betType, oddGroup)
-            const margin = calculateMargin(oddGroup.oddList.map(option => option.oddValue / 100))
-            oddGroup.oddList.forEach(option => {
-                if(betType === BetType.DOUBLE_CHANCE && !["1X", "12", "X2"].includes(option.oddDescription)) {
-                    return
-                }
-                const outcome = option.oddDescription.toUpperCase()
-                const price = option.oddValue / 100
-                betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line, margin))
-            })
+        if(oddGroup) {
+            const betType = determineBetOfferType(oddGroup.betId, oddGroup.oddGroupDescription)
+            if(betType !== BetType.UNKNOWN) {
+                const line = determineLine(betType, oddGroup)
+                const margin = calculateMargin(oddGroup.oddList.map(option => option.oddValue / 100))
+                oddGroup.oddList.forEach(option => {
+                    if(betType === BetType.DOUBLE_CHANCE && !["1X", "12", "X2"].includes(option.oddDescription)) {
+                        return
+                    }
+                    const outcome = option.oddDescription.toUpperCase()
+                    const price = option.oddValue / 100
+                    betOffers.push(new BetOffer(betType, apiResponse.data.result.eventInfo.aliasUrl, Provider.LADBROKES, outcome, price, line, margin))
+                })
+            }
         }
     })
     return betOffers.flat().filter(x => x).sort(sortBetOffers).map(betOffer => {
