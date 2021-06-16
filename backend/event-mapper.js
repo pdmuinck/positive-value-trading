@@ -10,7 +10,7 @@ const requests = {
     /*
     "JUPILER_PRO_LEAGUE": [
         getAltenarEventsForCompetition("1000000490"),
-        getBetwayEventsForCompetition("first-division-a"),
+        getBetwayEventsForCompetition("belgium", "first-division-a"),
         getBingoalEventsForCompetition("25"),
         getCashPointEventsForCompetition("6898"),
         getBwinEventsForCompetition("16409"),
@@ -26,19 +26,21 @@ const requests = {
      */
     "EURO2020": [
         //getAltenarEventsForCompetition("3031"),
-        getBetwayEventsForCompetition("euro-2020"),
-        /*
-        getBingoalEventsForCompetition("101"),
+        //getBetwayEventsForCompetition("matches", "euro-2020"),
+
+        //getBingoalEventsForCompetition("9153"),
         //getCashPointEventsForCompetition("6898"),
         //getBwinEventsForCompetition("16409"),
-        getKambiEventsForCompetition("2000123941"),
-        getLadbrokesEventsForCompetition("eu-euro-2020"),
-        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
-        getSbtechEventsForCompetition("2744349"),
-        getStanleybetEventsForCompetition("-2690"),
-        getZetBetEventsForCompetition("36147-euro_2020"),
 
-         */
+        //getKambiEventsForCompetition("2000123941"),
+
+        //getLadbrokesEventsForCompetition("eu-euro-2020"),
+
+        //getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
+        //getSbtechEventsForCompetition("44349"),
+        //getStanleybetEventsForCompetition("-2690"),
+
+        getZetBetEventsForCompetition("36147-euro_2020")
     ]
 }
 

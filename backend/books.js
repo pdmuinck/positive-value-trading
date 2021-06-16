@@ -44,10 +44,10 @@ exports.getAltenarEventsForCompetition = async function getAltenarEventsForCompe
         }).catch(error => console.log(error))
 }
 
-exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompetition(id) {
+exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompetition(groupCName, subCategoryCName) {
     const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
     const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,
-        "ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":"belgium","GroupCName":id }
+        "ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":subCategoryCName,"GroupCName":groupCName }
 
     const leagueUrl = "https://sports.betway.be/api/Events/V2/GetGroup"
     const eventUrl = "https://sports.betway.be/api/Events/V2/GetEventDetails"
@@ -59,7 +59,7 @@ exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompeti
                 return response.data.Events.map(event => {
                     const payload = {"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"EventId":event.Id
                         ,"ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}}}
-                    const bookmakerInfo = new BookmakerInfo(Provider.BETWAY, Bookmaker.BETWAY, id, event.Id, leagueUrl, [eventUrl], undefined, payload, "POST")
+                    const bookmakerInfo = new BookmakerInfo(Provider.BETWAY, Bookmaker.BETWAY, subCategoryCName, event.Id, leagueUrl, [eventUrl], undefined, payload, "POST")
                     if(event.SportsRadarId) {
                         return new Event(event.SportsRadarId.toString(), getSportRadarEventUrl(event.SportsRadarId), [bookmakerInfo])
                     }
@@ -254,7 +254,7 @@ exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompeti
     return Promise.all(tokenRequests).then(tokens => {
         const token = tokens[0].token
         const bookmaker = tokens[0].bookmaker
-        const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
+        //const page = {"eventState":"Mixed","eventTypes":["Fixture"],"ids":[id],"pagination":{"top":300,"skip":0}}
 
         const headers = {
             headers: {
@@ -263,10 +263,10 @@ exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompeti
                 'accept-encoding': 'gzip, enflate, br'
             }
         }
-        const leagueUrl = 'https://sbapi.sbtech.com/' + bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
-        return axios.post(leagueUrl, page, headers)
+        const leagueUrl = "https://sbapi.sbtech.com/" + bookmaker + "/sportsdata/v2/events?query=%24filter%3DleagueId%20eq%20'" + id + "'&locale=en"
+        return axios.get(leagueUrl, headers)
             .then(response => {
-                return response.data.events.map(event => {
+                return response.data.data.events.filter(event => event.type === "Fixture").map(event => {
                     const bookmakerInfos = books.map(book => {
                         const token = tokens.filter(token => token.bookmaker === book.bookmaker)[0].token
                         const headers = {
@@ -276,7 +276,7 @@ exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompeti
                                 'accept-encoding': 'gzip, enflate, br'
                             }
                         }
-                        const leagueUrl = 'https://sbapi.sbtech.com/' + book.bookmaker + '/sportscontent/sportsbook/v1/Events/GetByLeagueId'
+                        const leagueUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3DleagueId%20eq%20'" + id + "'&locale=en"
                         const eventUrl = "https://sbapi.sbtech.com/" + book.bookmaker + "/sportsdata/v2/events?query=%24filter%3Did%20eq%20'"+ event.id + "'&includeMarkets=%24filter%3D"
                         return new BookmakerInfo(Provider.SBTECH, book.bookmaker, id, event.id,
                             leagueUrl, [eventUrl], headers, undefined, "GET")
