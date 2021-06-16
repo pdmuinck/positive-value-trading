@@ -1,14 +1,13 @@
 const schedule = require("node-schedule")
 const {getEvents} = require("./event-mapper")
 const fs = require("fs")
-const {identifyValueBets} = require("./betoffer");
 const {getBetOffersForEvents} = require("./betoffer");
 
 async function apply() {
     const events = await getEvents()
     console.log("Found events: " + events.length)
     const valueBets = await getBetOffersForEvents(events)
-    console.log(valueBets)
+    console.log(valueBets.map(valueBet => valueBet.csvLine))
 }
 
 apply()

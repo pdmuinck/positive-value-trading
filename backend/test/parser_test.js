@@ -18,9 +18,22 @@ const {describe} = require("mocha")
 
 describe("Parsers", function() {
     //const books = []
-    const books = [{name: "stanleybet", parser: parseStanleybetBetOffers}]
+    const books = [
+        {name: "stanleybet", parser: parseStanleybetBetOffers},
+        {name: "ladbrokes", parser: parseLadbrokesBetOffers},
+        {name: "altenar", parser: parseAltenarBetOffers},
+        {name: "betway", parser: parseBetwayBetOffers},
+        {name: "bingoal", parser: parseBingoalBetOffers},
+        {name: "bwin", parser: parseBwinBetOffers},
+        {name: "betcenter", parser: parseCashPointBetOffers},
+
+        {name: "kambi", parser: parseKambiBetOffers},
+        {name: "meridian", parser: parserMeridianBetOffers},
+        {name: "sbtech", parser: parseSbtechBetOffers},
+        {name: "zetbet", parser: parseZetBetBetOffers}
+    ]
     books.forEach(book => {
-        it("check " + book, function() {
+        it("check " + book.name, function() {
             const betOffers = require("../test/resources/" + book.name + "/betoffers.json")
             const expected = require("../test/resources/" + book.name + "/expected_betoffers.json")
             const result = book.parser(betOffers)
@@ -41,7 +54,7 @@ describe("Parsers", function() {
 
         })
     })
-/*
+
     it("check pinnacle", function() {
         const betTypes = require("./resources/pinnacle/markets.json")
         const betOffers = require("../test/resources/pinnacle/betoffers.json")
@@ -51,10 +64,9 @@ describe("Parsers", function() {
             delete result.margin
             delete result.key
         })
-        //assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
-        assert.deepStrictEqual(result, expected)
+        assert.deepStrictEqual(JSON.stringify(result), JSON.stringify(expected))
+        //assert.deepStrictEqual(result, expected)
     })
 
- */
 
 })

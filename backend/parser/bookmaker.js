@@ -1,8 +1,8 @@
-exports.ApiResponse = class ApiResponse {
+class ApiResponse {
     constructor(provider, data, bookmaker) {
-    this.provider = provider
-    this.data = data
-    this.bookmaker = bookmaker
+        this.provider = provider
+        this.data = data
+        this.bookmaker = bookmaker
     }
 }
 
@@ -125,3 +125,4 @@ exports.BetType = BetType
 exports.Bookmaker = Bookmaker
 exports.Provider = Provider
 exports.BookmakerInfo = BookmakerInfo
+exports.ApiResponse = ApiResponse

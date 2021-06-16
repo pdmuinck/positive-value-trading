@@ -15,21 +15,22 @@ exports.BetOffer = class BetOffer {
         this.eventId = eventId
         this.bookMaker = bookMaker
         this.margin = margin
-        this.key = [this.betType.name, this.betOptionName, this.line].join(';')
+        this.key = [this.betType.name, this.betOptionName, this.line].join('|')
     }
 }
 
 exports.ValueBetFoundEvent = class ValueBetFoundEvent {
-    constructor(betOffer, value, eventInfo, bookmaker, price, margin, prediction, pinnaclePrice, pinnacleMargin){
-        this.betOffer = betOffer
+    constructor(betOfferKey, value, event, bookmaker, price, margin, prediction, pinnaclePrice, pinnacleMargin){
+        this.betOfferKey = betOfferKey
         this.value = value
-        this.eventInfo = eventInfo
+        this.event = event
         this.bookmaker = bookmaker
         this.price = price
         this.margin = margin
         this.prediction = prediction
         this.pinnacleMargin = pinnacleMargin
         this.pinnaclePrice = pinnaclePrice
+        this.csvLine = [new Date(), this.betOfferKey, this.value, this.bookmaker, this.price, this.event.sportRadarEventUrl, this.prediction].join(";")
     }
 }
 

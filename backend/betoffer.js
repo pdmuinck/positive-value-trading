@@ -13,14 +13,15 @@ const {parseSbtechBetOffers} = require("./parser/sbtech");
 const {parseKambiBetOffers} = require("./parser/kambi");
 
 const axios = require("axios")
-const {Bookmaker, ApiResponse, Provider} = require("./bookmaker");
+const {ApiResponse} = require("./parser/bookmaker");
+const {Bookmaker, Provider} = require("./bookmaker");
 const {ValueBetFoundEvent} = require("./utils");
 const {Event} = require("./event")
 
 
 function identifyValueBets(eventInfo){
-    return Object.keys(eventInfo.betOffers).map(betOfferType => {
-        const betOffers = eventInfo.betOffers[betOfferType]
+    return Object.keys(eventInfo.betOffers).map(betOfferKey => {
+        const betOffers = eventInfo.betOffers[betOfferKey]
         if(Object.keys(betOffers).includes("PINNACLE")) {
             const pinnaclePrice = betOffers["PINNACLE"]
             const vigFreePrediction = pinnaclePrice.price * pinnaclePrice.margin
@@ -28,7 +29,7 @@ function identifyValueBets(eventInfo){
                 const bookmakerPrice = betOffers[bookmaker]
                 const value = (1 / vigFreePrediction * bookmakerPrice.price) - 1;
                 if (value > 0) {
-                    return new ValueBetFoundEvent(betOfferType, value, eventInfo, bookmaker, bookmakerPrice.price,
+                    return new ValueBetFoundEvent(betOfferKey, value, eventInfo, bookmaker, bookmakerPrice.price,
                         bookmakerPrice.margin, vigFreePrediction, pinnaclePrice.price, pinnaclePrice.margin);
                 }
             }).filter(x => x).flat()
