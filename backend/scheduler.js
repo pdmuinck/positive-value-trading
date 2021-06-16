@@ -1,25 +1,35 @@
 const schedule = require("node-schedule")
 const {getEvents} = require("./event-mapper")
 const fs = require("fs")
+const {identifyValueBets} = require("./betoffer");
+const {getBetOffersForEvents} = require("./betoffer");
 
-getEvents().then(response => console.log(JSON.stringify(response[0], null, 2), { depth: null }))
-
-/*
-const getValueBetsJob = schedule.scheduleJob('* * * * *', function(){
-    if(events) {
-        const betOffers = getBetOffersForEvents(events)
+async function apply() {
+    const events = await getEvents()
+    console.log("Found events: " + events.length)
+    /*
+    if(events.length > 0) {
+        const betOffers = await getBetOffersForEvents(events)
+        console.log("Found bet offers: " + betOffers.length)
         const valueBets = betOffers.map(betOffer => identifyValueBets(betOffer))
         console.log(valueBets)
-    } else {
-        events = getEvents()
     }
+
+     */
+
+}
+
+apply()
+
+
+
+/*
+const getValueBetsJob = schedule.scheduleJob('* * * * *', async function(){
+    const events = await getEvents()
+    const betOffers = await getBetOffersForEvents(events)
+    const valueBets = betOffers.map(betOffer => identifyValueBets(betOffer))
+    console.log(valueBets)
 })
 
  */
-
-
-const getEventsJob = schedule.scheduleJob('0 * * * *', async function(){
-    events = await getEvents()
-    console.dir(events, { depth: null })
-})
 

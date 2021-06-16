@@ -36,6 +36,8 @@ function identifyValueBets(eventInfo){
     }).filter(x => x).flat()
 }
 
+exports.identifyValueBets = identifyValueBets
+
 async function getBetOffers(event) {
     if(event) {
         const pinnacleBookmakerInfo = event.bookmakerInfo.filter(bookmaker => bookmaker.bookmaker === Bookmaker.PINNACLE)[0]
@@ -79,6 +81,8 @@ async function getBetOffers(event) {
     }
 }
 
+exports.getBetOffers = getBetOffers
+
 function mergeBetOffers(betOffers) {
     console.log(JSON.stringify(betOffers))
     const merged = {}
@@ -110,8 +114,10 @@ async function getBetOffersForEvents(events) {
 
 }
 
+exports.getBetOffersForEvents = getBetOffersForEvents
+
 function getParserForBook(provider, bookmaker) {
-    switch(provider) {
+    switch (provider) {
         case(Provider.KAMBI):
             return parseKambiBetOffers
         case(Provider.SBTECH):
@@ -140,5 +146,3 @@ function getParserForBook(provider, bookmaker) {
             return parseBingoalBetOffers
     }
 }
-
-exports.handler = getBetOffersForEvents
