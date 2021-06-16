@@ -25,21 +25,16 @@ const requests = {
 
      */
     "EURO2020": [
-        //getAltenarEventsForCompetition("3031"),
-        //getBetwayEventsForCompetition("matches", "euro-2020"),
-
-        //getBingoalEventsForCompetition("9153"),
+        getAltenarEventsForCompetition("3031"),
+        getBetwayEventsForCompetition("matches", "euro-2020"),
+        getBingoalEventsForCompetition("9153"),
         //getCashPointEventsForCompetition("6898"),
         //getBwinEventsForCompetition("16409"),
-
-        //getKambiEventsForCompetition("2000123941"),
-
-        //getLadbrokesEventsForCompetition("eu-euro-2020"),
-
-        //getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
-        //getSbtechEventsForCompetition("44349"),
-        //getStanleybetEventsForCompetition("-2690"),
-
+        getKambiEventsForCompetition("2000123941"),
+        getLadbrokesEventsForCompetition("eu-euro-2020"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
+        getSbtechEventsForCompetition("44349"),
+        getStanleybetEventsForCompetition("-2690"),
         getZetBetEventsForCompetition("36147-euro_2020")
     ]
 }

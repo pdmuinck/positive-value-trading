@@ -7,16 +7,8 @@ const {getBetOffersForEvents} = require("./betoffer");
 async function apply() {
     const events = await getEvents()
     console.log("Found events: " + events.length)
-    /*
-    if(events.length > 0) {
-        const betOffers = await getBetOffersForEvents(events)
-        console.log("Found bet offers: " + betOffers.length)
-        const valueBets = betOffers.map(betOffer => identifyValueBets(betOffer))
-        console.log(valueBets)
-    }
-
-     */
-
+    const valueBets = await getBetOffersForEvents(events)
+    console.log(valueBets)
 }
 
 apply()
