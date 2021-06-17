@@ -1,7 +1,3 @@
 #!/bin/bash
-
-
-events=./event_full_feed
-parsed_events=./parse_event_full_feed $events
-
-$parsed_events > parsed_events.json
+events="$(./event_full_feed | jq .)" 
+echo "${events}"
