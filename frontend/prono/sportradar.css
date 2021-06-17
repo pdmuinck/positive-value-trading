@@ -1,0 +1,2415 @@
+@import url("//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=latin,latin-ext");
+.sr-bb {
+	font-family: Roboto, Noto, Helvetica Neue, Helvetica, Arial, sans-serif;
+	text-align: left;
+	background: none
+}
+
+.sr-bb.sr-rtl {
+	text-align: right
+}
+
+.sr-bb .sr-bb {
+	background: none
+}
+
+.sr-bb .srt-base-1 {
+	background-color: #fff;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-win {
+	background-color: #fff;
+	color: #3aaa35;
+	border-color: #3aaa35
+}
+
+.sr-bb .srt-base-1-draw {
+	background-color: #fff;
+	color: #e3aa31;
+	border-color: #e3aa31
+}
+
+.sr-bb .srt-base-1-lose {
+	background-color: #fff;
+	color: #c83636;
+	border-color: #c83636
+}
+
+.sr-bb .srt-base-1-is-active {
+	background-color: #e5eee5;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-active-2 {
+	background-color: #e6e6e6;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-hoverable:hover {
+	background-color: #e5eee5;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-home-1,
+.sr-bb .srt-base-1-primary {
+	background-color: #fff;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-away-1 {
+	background-color: #fff;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-home-2 {
+	background-color: #fff;
+	color: #247423;
+	border-color: #154314
+}
+
+.sr-bb .srt-base-1-away-2 {
+	background-color: #fff;
+	color: #71a570;
+	border-color: #154314
+}
+
+.sr-bb .srt-base-1-home-3 {
+	background-color: #fff;
+	color: #247423;
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-away-3 {
+	background-color: #fff;
+	color: #71a570;
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-home-4 {
+	background-color: #fff;
+	color: #669e65;
+	border-color: #669e65
+}
+
+.sr-bb .srt-base-1-away-4 {
+	background-color: #fff;
+	color: #9cc09b;
+	border-color: #9cc09b
+}
+
+.sr-bb .srt-base-1-home-5 {
+	background-color: #fff;
+	color: #174b17;
+	border-color: #174b17
+}
+
+.sr-bb .srt-base-1-away-5 {
+	background-color: #fff;
+	color: #496b49;
+	border-color: #496b49
+}
+
+.sr-bb .srt-base-1-background,
+.sr-bb .srt-base-2 {
+	background-color: #fff;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-2-is-active,
+.sr-bb .srt-base-2-is-hoverable:hover,
+.sr-bb .srt-base-3 {
+	background-color: #e5eee5;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-3-is-active,
+.sr-bb .srt-base-3-is-hoverable:hover {
+	background-color: #dce9dc;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-3-background {
+	background-color: #e5eee5
+}
+
+.sr-bb .srt-base-3-background,
+.sr-bb .srt-base-4 {
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-4 {
+	background-color: #f4f8f4
+}
+
+.sr-bb .srt-base-5-is-active,
+.sr-bb .srt-base-5-is-hoverable:hover {
+	background-color: #c6dbc6;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-6 {
+	background-color: #fff;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .3)
+}
+
+.sr-bb .srt-primary-1 {
+	background-color: #247423;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-1-is-active,
+.sr-bb .srt-primary-1-is-hoverable:hover {
+	background-color: #1d5d1c;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-1-is-disabled {
+	background-color: #317c30;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-2 {
+	background-color: #247423;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-3,
+.sr-bb .srt-primary-4 {
+	background-color: #195119;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-5 {
+	background-color: #71a570;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-5-is-hoverable:hover,
+.sr-bb .srt-primary-6,
+.sr-bb .srt-primary-7,
+.sr-bb .srt-primary-8 {
+	background-color: #247423;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-8-is-active-1 {
+	background-color: #1d5d1c;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-8-is-active-2 {
+	background-color: #1d5d1c;
+	color: #fff;
+	border-color: #fff
+}
+
+.sr-bb .srt-primary-9 {
+	background-color: #bdd5bd;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-primary-10 {
+	background-color: #50904f;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-11 {
+	background-color: #71a570;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-primary-12 {
+	background-color: #247423;
+	color: #fff;
+	border-color: #fff
+}
+
+.sr-bb .srt-primary-13 {
+	background-color: #f4f8f4;
+	color: #fff;
+	border-color: rgba(36, 116, 35, .3)
+}
+
+.sr-bb .srt-base-1-primary-1,
+.sr-bb .srt-base-1-primary-2 {
+	background-color: #fff;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-primary-3,
+.sr-bb .srt-base-1-primary-4 {
+	background-color: #fff;
+	color: #195119;
+	border-color: #195119
+}
+
+.sr-bb .srt-base-1-primary-5 {
+	background-color: #fff;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-primary-6,
+.sr-bb .srt-base-1-primary-7,
+.sr-bb .srt-base-1-primary-8 {
+	background-color: #fff;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-primary-9 {
+	background-color: #fff;
+	color: #bdd5bd;
+	border-color: #bdd5bd
+}
+
+.sr-bb .srt-base-1-primary-10 {
+	background-color: #fff;
+	color: #50904f;
+	border-color: #50904f
+}
+
+.sr-bb .srt-base-1-primary-11 {
+	background-color: #fff;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-primary-13 {
+	background-color: #fff;
+	color: #f4f8f4;
+	border-color: rgba(36, 116, 35, .3)
+}
+
+.sr-bb .srt-base-1-neutral-1 {
+	background-color: #fff;
+	color: #ccc;
+	border-color: #ccc
+}
+
+.sr-bb .srt-base-1-neutral-2 {
+	background-color: #fff;
+	color: #1b1b1b;
+	border-color: #1b1b1b
+}
+
+.sr-bb .srt-base-1-neutral-3 {
+	background-color: #fff;
+	color: rgba(0, 0, 0, .12);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-neutral-4 {
+	background-color: #fff;
+	color: #595959;
+	border-color: #595959
+}
+
+.sr-bb .srt-base-1-neutral-5 {
+	background-color: #fff;
+	color: #404040;
+	border-color: #404040
+}
+
+.sr-bb .srt-base-1-neutral-6 {
+	background-color: #fff;
+	color: #c2c2c2;
+	border-color: #c2c2c2
+}
+
+.sr-bb .srt-base-1-neutral-7 {
+	background-color: #fff;
+	color: #595959;
+	border-color: #595959
+}
+
+.sr-bb .srt-base-1-neutral-8 {
+	background-color: #fff;
+	color: #dedede;
+	border-color: #dedede
+}
+
+.sr-bb .srt-base-1-neutral-9 {
+	background-color: #fff;
+	color: #f5f5f5;
+	border-color: #f5f5f5
+}
+
+.sr-bb .srt-base-1-neutral-10 {
+	background-color: #fff;
+	color: rgba(0, 0, 0, .12);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-neutral-11 {
+	background-color: #fff;
+	color: #999;
+	border-color: #999
+}
+
+.sr-bb .srt-base-1-neutral-12 {
+	background-color: #fff;
+	color: #4d4d4d;
+	border-color: #4d4d4d
+}
+
+.sr-bb .srt-base-1-neutral-13 {
+	background-color: #fff;
+	color: #e6e6e6;
+	border-color: #e6e6e6
+}
+
+.sr-bb .srt-base-1-is-active-home-1,
+.sr-bb .srt-base-1-is-active-primary {
+	background-color: #e5eee5;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-is-active-away-1 {
+	background-color: #e5eee5;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-is-active-home-2 {
+	background-color: #e5eee5;
+	color: #247423;
+	border-color: #154314
+}
+
+.sr-bb .srt-base-1-is-active-away-2 {
+	background-color: #e5eee5;
+	color: #71a570;
+	border-color: #154314
+}
+
+.sr-bb .srt-base-1-is-active-home-3 {
+	background-color: #e5eee5;
+	color: #247423;
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-active-away-3 {
+	background-color: #e5eee5;
+	color: #71a570;
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-active-home-4 {
+	background-color: #e5eee5;
+	color: #669e65;
+	border-color: #669e65
+}
+
+.sr-bb .srt-base-1-is-active-away-4 {
+	background-color: #e5eee5;
+	color: #9cc09b;
+	border-color: #9cc09b
+}
+
+.sr-bb .srt-base-1-is-active-home-5 {
+	background-color: #e5eee5;
+	color: #174b17;
+	border-color: #174b17
+}
+
+.sr-bb .srt-base-1-is-active-away-5 {
+	background-color: #e5eee5;
+	color: #496b49;
+	border-color: #496b49
+}
+
+.sr-bb .srt-base-1-is-active-primary-1,
+.sr-bb .srt-base-1-is-active-primary-2 {
+	background-color: #e5eee5;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-is-active-primary-3,
+.sr-bb .srt-base-1-is-active-primary-4 {
+	background-color: #e5eee5;
+	color: #195119;
+	border-color: #195119
+}
+
+.sr-bb .srt-base-1-is-active-primary-5 {
+	background-color: #e5eee5;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-is-active-primary-6,
+.sr-bb .srt-base-1-is-active-primary-7,
+.sr-bb .srt-base-1-is-active-primary-8 {
+	background-color: #e5eee5;
+	color: #247423;
+	border-color: #247423
+}
+
+.sr-bb .srt-base-1-is-active-primary-9 {
+	background-color: #e5eee5;
+	color: #bdd5bd;
+	border-color: #bdd5bd
+}
+
+.sr-bb .srt-base-1-is-active-primary-10 {
+	background-color: #e5eee5;
+	color: #50904f;
+	border-color: #50904f
+}
+
+.sr-bb .srt-base-1-is-active-primary-11 {
+	background-color: #e5eee5;
+	color: #71a570;
+	border-color: #71a570
+}
+
+.sr-bb .srt-base-1-is-active-neutral-1 {
+	background-color: #e5eee5;
+	color: #ccc;
+	border-color: #ccc
+}
+
+.sr-bb .srt-base-1-is-active-neutral-2 {
+	background-color: #e5eee5;
+	color: #1b1b1b;
+	border-color: #1b1b1b
+}
+
+.sr-bb .srt-base-1-is-active-neutral-3 {
+	background-color: #e5eee5;
+	color: rgba(0, 0, 0, .12);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-active-neutral-4 {
+	background-color: #e5eee5;
+	color: #595959;
+	border-color: #595959
+}
+
+.sr-bb .srt-base-1-is-active-neutral-5 {
+	background-color: #e5eee5;
+	color: #404040;
+	border-color: #404040
+}
+
+.sr-bb .srt-base-1-is-active-neutral-6 {
+	background-color: #e5eee5;
+	color: #c2c2c2;
+	border-color: #c2c2c2
+}
+
+.sr-bb .srt-base-1-is-active-neutral-7 {
+	background-color: #e5eee5;
+	color: #595959;
+	border-color: #595959
+}
+
+.sr-bb .srt-base-1-is-active-neutral-8 {
+	background-color: #e5eee5;
+	color: #dedede;
+	border-color: #dedede
+}
+
+.sr-bb .srt-base-1-is-active-neutral-9 {
+	background-color: #e5eee5;
+	color: #f5f5f5;
+	border-color: #f5f5f5
+}
+
+.sr-bb .srt-base-1-is-active-neutral-10 {
+	background-color: #e5eee5;
+	color: rgba(0, 0, 0, .12);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-base-1-is-active-neutral-11 {
+	background-color: #e5eee5;
+	color: #999;
+	border-color: #999
+}
+
+.sr-bb .srt-base-1-is-active-neutral-12 {
+	background-color: #e5eee5;
+	color: #4d4d4d;
+	border-color: #4d4d4d
+}
+
+.sr-bb .srt-base-1-is-active-neutral-13 {
+	background-color: #e5eee5;
+	color: #e6e6e6;
+	border-color: #e6e6e6
+}
+
+.sr-bb .srt-home-1 {
+	background-color: #247423;
+	color: #fff;
+	border-color: #247423
+}
+
+.sr-bb .srt-away-1 {
+	background-color: #71a570;
+	color: #fff;
+	border-color: #71a570
+}
+
+.sr-bb .srt-home-2 {
+	background-color: #247423;
+	color: #fff;
+	border-color: #154314
+}
+
+.sr-bb .srt-away-2 {
+	background-color: #71a570;
+	color: #fff;
+	border-color: #154314
+}
+
+.sr-bb .srt-home-3 {
+	background-color: #247423;
+	color: #fff;
+	border-color: #fff
+}
+
+.sr-bb .srt-away-3 {
+	background-color: #71a570;
+	color: #fff;
+	border-color: #fff
+}
+
+.sr-bb .srt-home-4 {
+	background-color: #669e65;
+	color: #fff;
+	border-color: #669e65
+}
+
+.sr-bb .srt-away-4 {
+	background-color: #9cc09b;
+	color: #fff;
+	border-color: #9cc09b
+}
+
+.sr-bb .srt-home-5 {
+	background-color: #174b17;
+	color: #fff;
+	border-color: #174b17
+}
+
+.sr-bb .srt-away-5 {
+	background-color: #496b49;
+	color: #fff;
+	border-color: #496b49
+}
+
+.sr-bb .srt-home-6 {
+	background-color: rgba(36, 116, 35, .2)
+}
+
+.sr-bb .srt-away-6,
+.sr-bb .srt-home-6 {
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-away-6 {
+	background-color: rgba(113, 165, 112, .2)
+}
+
+.sr-bb .srt-home-6-is-hoverable:hover {
+	background-color: rgba(36, 116, 35, .2);
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-away-6-is-hoverable:hover {
+	background-color: rgba(113, 165, 112, .2);
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-1 {
+	background-color: #ccc;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-2 {
+	background-color: #1b1b1b;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-3 {
+	background-color: rgba(0, 0, 0, .12);
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-4 {
+	background-color: #595959;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-5 {
+	background-color: #404040;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-6 {
+	background-color: #c2c2c2;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-7 {
+	background-color: #595959;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-8 {
+	background-color: #dedede
+}
+
+.sr-bb .srt-neutral-8,
+.sr-bb .srt-neutral-9 {
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-9 {
+	background-color: #f5f5f5
+}
+
+.sr-bb .srt-neutral-10 {
+	background-color: rgba(0, 0, 0, .12);
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-11 {
+	background-color: #999;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-neutral-12 {
+	background-color: #4d4d4d;
+	color: #fff;
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-neutral-13 {
+	background-color: #e6e6e6;
+	color: rgba(0, 0, 0, .82);
+	border-color: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-win {
+	background-color: #3aaa35
+}
+
+.sr-bb .srt-draw,
+.sr-bb .srt-win {
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-draw {
+	background-color: #e3aa31
+}
+
+.sr-bb .srt-lose {
+	background-color: #c83636;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-text-secondary {
+	opacity: .7;
+	-webkit-font-smoothing: antialiased
+}
+
+.sr-bb .srt-text-disabled {
+	opacity: .35
+}
+
+.sr-bb .srt-text-tertiary {
+	opacity: .54
+}
+
+.sr-bb .srt-primary-1 .srt-text-secondary,
+.sr-bb .srt-primary-1-is-active.srt-text-secondary,
+.sr-bb .srt-primary-1-is-active .srt-text-secondary,
+.sr-bb .srt-primary-1-is-disabled.srt-text-secondary,
+.sr-bb .srt-primary-1-is-disabled .srt-text-secondary,
+.sr-bb .srt-primary-1-is-hoverable:hover.srt-text-secondary,
+.sr-bb .srt-primary-1-is-hoverable:hover .srt-text-secondary,
+.sr-bb .srt-primary-1.srt-text-secondary,
+.sr-bb .srt-primary-2 .srt-text-secondary,
+.sr-bb .srt-primary-2.srt-text-secondary,
+.sr-bb .srt-primary-3 .srt-text-secondary,
+.sr-bb .srt-primary-3.srt-text-secondary,
+.sr-bb .srt-primary-4 .srt-text-secondary,
+.sr-bb .srt-primary-4.srt-text-secondary,
+.sr-bb .srt-primary-5 .srt-text-secondary,
+.sr-bb .srt-primary-5-is-hoverable:hover.srt-text-secondary,
+.sr-bb .srt-primary-5-is-hoverable:hover .srt-text-secondary,
+.sr-bb .srt-primary-5.srt-text-secondary,
+.sr-bb .srt-primary-6 .srt-text-secondary,
+.sr-bb .srt-primary-6.srt-text-secondary,
+.sr-bb .srt-primary-7 .srt-text-secondary,
+.sr-bb .srt-primary-7.srt-text-secondary,
+.sr-bb .srt-primary-8 .srt-text-secondary,
+.sr-bb .srt-primary-8-is-active-1 .srt-text-secondary,
+.sr-bb .srt-primary-8-is-active-1.srt-text-secondary,
+.sr-bb .srt-primary-8-is-active-2 .srt-text-secondary,
+.sr-bb .srt-primary-8-is-active-2.srt-text-secondary,
+.sr-bb .srt-primary-8.srt-text-secondary,
+.sr-bb .srt-primary-9 .srt-text-secondary,
+.sr-bb .srt-primary-9.srt-text-secondary,
+.sr-bb .srt-primary-10 .srt-text-secondary,
+.sr-bb .srt-primary-10.srt-text-secondary,
+.sr-bb .srt-primary-11 .srt-text-secondary,
+.sr-bb .srt-primary-11.srt-text-secondary,
+.sr-bb .srt-primary-12 .srt-text-secondary,
+.sr-bb .srt-primary-12.srt-text-secondary,
+.sr-bb .srt-primary-13 .srt-text-secondary,
+.sr-bb .srt-primary-13.srt-text-secondary {
+	opacity: .7;
+	-webkit-font-smoothing: antialiased
+}
+
+.sr-bb .srt-primary-1 .srt-text-disabled,
+.sr-bb .srt-primary-1-is-active.srt-text-disabled,
+.sr-bb .srt-primary-1-is-active .srt-text-disabled,
+.sr-bb .srt-primary-1-is-disabled.srt-text-disabled,
+.sr-bb .srt-primary-1-is-disabled .srt-text-disabled,
+.sr-bb .srt-primary-1-is-hoverable:hover.srt-text-disabled,
+.sr-bb .srt-primary-1-is-hoverable:hover .srt-text-disabled,
+.sr-bb .srt-primary-1.srt-text-disabled,
+.sr-bb .srt-primary-2 .srt-text-disabled,
+.sr-bb .srt-primary-2.srt-text-disabled,
+.sr-bb .srt-primary-3 .srt-text-disabled,
+.sr-bb .srt-primary-3.srt-text-disabled,
+.sr-bb .srt-primary-4 .srt-text-disabled,
+.sr-bb .srt-primary-4.srt-text-disabled,
+.sr-bb .srt-primary-5 .srt-text-disabled,
+.sr-bb .srt-primary-5-is-hoverable:hover.srt-text-disabled,
+.sr-bb .srt-primary-5-is-hoverable:hover .srt-text-disabled,
+.sr-bb .srt-primary-5.srt-text-disabled,
+.sr-bb .srt-primary-6 .srt-text-disabled,
+.sr-bb .srt-primary-6.srt-text-disabled,
+.sr-bb .srt-primary-7 .srt-text-disabled,
+.sr-bb .srt-primary-7.srt-text-disabled,
+.sr-bb .srt-primary-8 .srt-text-disabled,
+.sr-bb .srt-primary-8-is-active-1 .srt-text-disabled,
+.sr-bb .srt-primary-8-is-active-1.srt-text-disabled,
+.sr-bb .srt-primary-8-is-active-2 .srt-text-disabled,
+.sr-bb .srt-primary-8-is-active-2.srt-text-disabled,
+.sr-bb .srt-primary-8.srt-text-disabled,
+.sr-bb .srt-primary-9 .srt-text-disabled,
+.sr-bb .srt-primary-9.srt-text-disabled,
+.sr-bb .srt-primary-10 .srt-text-disabled,
+.sr-bb .srt-primary-10.srt-text-disabled,
+.sr-bb .srt-primary-11 .srt-text-disabled,
+.sr-bb .srt-primary-11.srt-text-disabled,
+.sr-bb .srt-primary-12 .srt-text-disabled,
+.sr-bb .srt-primary-12.srt-text-disabled,
+.sr-bb .srt-primary-13 .srt-text-disabled,
+.sr-bb .srt-primary-13.srt-text-disabled {
+	opacity: .35
+}
+
+.sr-bb .srt-primary-1 .srt-text-tertiary,
+.sr-bb .srt-primary-1-is-active.srt-text-tertiary,
+.sr-bb .srt-primary-1-is-active .srt-text-tertiary,
+.sr-bb .srt-primary-1-is-disabled.srt-text-tertiary,
+.sr-bb .srt-primary-1-is-disabled .srt-text-tertiary,
+.sr-bb .srt-primary-1-is-hoverable:hover.srt-text-tertiary,
+.sr-bb .srt-primary-1-is-hoverable:hover .srt-text-tertiary,
+.sr-bb .srt-primary-1.srt-text-tertiary,
+.sr-bb .srt-primary-2 .srt-text-tertiary,
+.sr-bb .srt-primary-2.srt-text-tertiary,
+.sr-bb .srt-primary-3 .srt-text-tertiary,
+.sr-bb .srt-primary-3.srt-text-tertiary,
+.sr-bb .srt-primary-4 .srt-text-tertiary,
+.sr-bb .srt-primary-4.srt-text-tertiary,
+.sr-bb .srt-primary-5 .srt-text-tertiary,
+.sr-bb .srt-primary-5-is-hoverable:hover.srt-text-tertiary,
+.sr-bb .srt-primary-5-is-hoverable:hover .srt-text-tertiary,
+.sr-bb .srt-primary-5.srt-text-tertiary,
+.sr-bb .srt-primary-6 .srt-text-tertiary,
+.sr-bb .srt-primary-6.srt-text-tertiary,
+.sr-bb .srt-primary-7 .srt-text-tertiary,
+.sr-bb .srt-primary-7.srt-text-tertiary,
+.sr-bb .srt-primary-8 .srt-text-tertiary,
+.sr-bb .srt-primary-8-is-active-1 .srt-text-tertiary,
+.sr-bb .srt-primary-8-is-active-1.srt-text-tertiary,
+.sr-bb .srt-primary-8-is-active-2 .srt-text-tertiary,
+.sr-bb .srt-primary-8-is-active-2.srt-text-tertiary,
+.sr-bb .srt-primary-8.srt-text-tertiary,
+.sr-bb .srt-primary-9 .srt-text-tertiary,
+.sr-bb .srt-primary-9.srt-text-tertiary,
+.sr-bb .srt-primary-10 .srt-text-tertiary,
+.sr-bb .srt-primary-10.srt-text-tertiary,
+.sr-bb .srt-primary-11 .srt-text-tertiary,
+.sr-bb .srt-primary-11.srt-text-tertiary,
+.sr-bb .srt-primary-12 .srt-text-tertiary,
+.sr-bb .srt-primary-12.srt-text-tertiary,
+.sr-bb .srt-primary-13 .srt-text-tertiary,
+.sr-bb .srt-primary-13.srt-text-tertiary {
+	opacity: .54
+}
+
+.sr-bb .srt-icon {
+	opacity: .33
+}
+
+.sr-bb .srt-icon-secondary {
+	opacity: .7
+}
+
+.sr-bb .srt-elevation-1 {
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2), 0 1px 3px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2), 0 1px 3px 0 rgba(0, 0, 0, .1)
+}
+
+.sr-bb .srt-elevation-2 {
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .23), 0 3px 6px 0 rgba(0, 0, 0, .16);
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .23), 0 3px 6px 0 rgba(0, 0, 0, .16)
+}
+
+.sr-bb .srt-elevation-3 {
+	-webkit-box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .26), 0 10px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .26), 0 10px 20px 0 rgba(0, 0, 0, .19)
+}
+
+.sr-bb .srt-elevation-center-2 {
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .23), 0 1px 5px rgba(0, 0, 0, .16);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, .23), 0 1px 5px rgba(0, 0, 0, .16)
+}
+
+.sr-bb .srt-inset-top-1 {
+	-webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-inset-bottom-1 {
+	-webkit-box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-inset-top-2 {
+	-webkit-box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-inset-bottom-2 {
+	-webkit-box-shadow: inset 0 -3px 6px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 -3px 6px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-inset-top-3 {
+	-webkit-box-shadow: inset 0 6px 6px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 6px 6px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-inset-bottom-3 {
+	-webkit-box-shadow: inset 0 -6px 6px 0 rgba(0, 0, 0, .23);
+	box-shadow: inset 0 -6px 6px 0 rgba(0, 0, 0, .23)
+}
+
+.sr-bb .srt-fill-blue-card {
+	fill: #2579ad
+}
+
+.sr-bb .srt-stroke-blue-card {
+	stroke: #2579ad
+}
+
+.sr-bb .srt-fill-soccer-yellow-card {
+	fill: #ffbf00
+}
+
+.sr-bb .srt-stroke-soccer-yellow-card {
+	stroke: #ffbf00
+}
+
+.sr-bb .srt-fill-soccer-red-card {
+	fill: #e43b3b
+}
+
+.sr-bb .srt-stroke-soccer-red-card {
+	stroke: #e43b3b
+}
+
+.sr-bb .srt-stroke-soccer-substitution-in {
+	stroke: #4fbe30;
+	fill: transparent
+}
+
+.sr-bb .srt-fill-soccer-substitution-in {
+	fill: #4fbe30
+}
+
+.sr-bb .srt-stroke-soccer-substitution-out {
+	stroke: #e43b3b;
+	fill: transparent
+}
+
+.sr-bb .srt-fill-soccer-substitution-out {
+	fill: #e43b3b
+}
+
+.sr-bb .srt-stroke-soccer-own-goal {
+	stroke: #e43b3b;
+	fill: transparent
+}
+
+.sr-bb .srt-fill-soccer-own-goal {
+	fill: #e43b3b
+}
+
+.sr-bb .srt-fill-soccer-relegation-1 {
+	fill: #fdd835
+}
+
+.sr-bb .srt-stroke-soccer-relegation-1 {
+	stroke: #fdd835
+}
+
+.sr-bb .srt-fill-soccer-relegation-2 {
+	fill: #ffb848
+}
+
+.sr-bb .srt-stroke-soccer-relegation-2 {
+	stroke: #ffb848
+}
+
+.sr-bb .srt-fill-soccer-relegation-3 {
+	fill: #ef6c00
+}
+
+.sr-bb .srt-stroke-soccer-relegation-3 {
+	stroke: #ef6c00
+}
+
+.sr-bb .srt-fill-soccer-relegation-4 {
+	fill: #e93a34
+}
+
+.sr-bb .srt-stroke-soccer-relegation-4 {
+	stroke: #e93a34
+}
+
+.sr-bb .srt-fill-soccer-relegation-5 {
+	fill: #941d1d
+}
+
+.sr-bb .srt-stroke-soccer-relegation-5 {
+	stroke: #941d1d
+}
+
+.sr-bb .srt-fill-soccer-promotion-1 {
+	fill: #005100
+}
+
+.sr-bb .srt-stroke-soccer-promotion-1 {
+	stroke: #005100
+}
+
+.sr-bb .srt-fill-soccer-promotion-2 {
+	fill: #1b911b
+}
+
+.sr-bb .srt-stroke-soccer-promotion-2 {
+	stroke: #1b911b
+}
+
+.sr-bb .srt-fill-soccer-promotion-3 {
+	fill: #51d151
+}
+
+.sr-bb .srt-stroke-soccer-promotion-3 {
+	stroke: #51d151
+}
+
+.sr-bb .srt-fill-soccer-promotion-4 {
+	fill: #1976d2
+}
+
+.sr-bb .srt-stroke-soccer-promotion-4 {
+	stroke: #1976d2
+}
+
+.sr-bb .srt-fill-soccer-promotion-5 {
+	fill: #64b5f6
+}
+
+.sr-bb .srt-stroke-soccer-promotion-5 {
+	stroke: #64b5f6
+}
+
+.sr-bb .srt-nfl-timeout-1 {
+	background-color: #f5a623;
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-nfl-timeout-2 {
+	background-color: rgba(245, 166, 35, .3);
+	color: #fff;
+	border-color: hsla(0, 0%, 100%, .16)
+}
+
+.sr-bb .srt-nfl-penalty {
+	background-color: #f4a621;
+	color: #fff;
+	border-color: #f4a621
+}
+
+.sr-bb .srt-nfl-negative-yards-1,
+.sr-bb .srt-nfl-negative-yards-2 {
+	background-color: #ac182e;
+	color: #fff;
+	border-color: #ac182e
+}
+
+.sr-bb .srt-nfl-first-line {
+	background-color: #4b90de;
+	color: #fff;
+	border-color: #4b90de
+}
+
+.sr-bb .srt-nfl-ten-line {
+	background-color: #f5a623;
+	color: #fff;
+	border-color: #f5a623
+}
+
+.sr-bb .srt-fill-nfl-penalty {
+	fill: #f4a621
+}
+
+.sr-bb .srt-stroke-nfl-penalty {
+	stroke: #f4a621
+}
+
+.sr-bb .srt-fill-nfl-negative-yards-1 {
+	fill: #ac182e
+}
+
+.sr-bb .srt-stroke-nfl-negative-yards-1 {
+	stroke: #ac182e
+}
+
+.sr-bb .srt-fill-nfl-negative-yards-2 {
+	fill: #ac182e
+}
+
+.sr-bb .srt-stroke-nfl-negative-yards-2 {
+	stroke: #ac182e
+}
+
+.sr-bb .srt-fill-nfl-first-line {
+	fill: #4b90de
+}
+
+.sr-bb .srt-stroke-nfl-first-line {
+	stroke: #4b90de
+}
+
+.sr-bb .srt-fill-nfl-ten-line {
+	fill: #f5a623
+}
+
+.sr-bb .srt-stroke-nfl-ten-line {
+	stroke: #f5a623
+}
+
+.sr-bb .srt-mlb-run-1 {
+	background-color: #090;
+	color: #fff;
+	border-color: #090
+}
+
+.sr-bb .srt-mlb-run-2 {
+	background-color: #fff;
+	color: #090;
+	border-color: #090
+}
+
+.sr-bb .srt-mlb-hit-1 {
+	background-color: #f7ab11;
+	color: rgba(0, 0, 0, .82);
+	border-color: #f7ab11
+}
+
+.sr-bb .srt-mlb-hit-2 {
+	background-color: #fff;
+	color: #f7ab11;
+	border-color: #f7ab11
+}
+
+.sr-bb .srt-mlb-hit-3 {
+	background-color: #00a4ff;
+	color: #fff;
+	border-color: #00a4ff
+}
+
+.sr-bb .srt-mlb-error-1 {
+	background-color: #d0021b;
+	color: #fff;
+	border-color: #d0021b
+}
+
+.sr-bb .srt-mlb-error-2 {
+	background-color: #fff;
+	color: #d0021b;
+	border-color: #d0021b
+}
+
+.sr-bb .srt-mlb-neutral-1 {
+	background-color: #212121;
+	color: #fff;
+	border-color: #fff
+}
+
+.sr-bb .srt-fill-mlb-base,
+.sr-bb .srt-strole-mlb-base {
+	fill: #00a4ff
+}
+
+.sr-bb .srt-fill-change-increase {
+	fill: #4fbe30
+}
+
+.sr-bb .srt-stroke-change-increase {
+	stroke: #4fbe30
+}
+
+.sr-bb .srt-fill-change-decrease {
+	fill: #e43b3b
+}
+
+.sr-bb .srt-stroke-change-decrease {
+	stroke: #e43b3b
+}
+
+.sr-bb .srt-fill-text {
+	fill: rgba(0, 0, 0, .82)
+}
+
+.sr-bb .srt-fill-text-invert {
+	fill: #fff
+}
+
+.sr-bb .srt-fill-text-secondary {
+	fill-opacity: .7
+}
+
+.sr-bb .srt-fill-text-disabled {
+	fill-opacity: .35
+}
+
+.sr-bb .srt-fill-base-1 {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-base-1 {
+	stroke: #fff
+}
+
+.sr-bb .srt-fill-base-1-active {
+	fill: #e5eee5
+}
+
+.sr-bb .srt-stroke-base-1-active {
+	stroke: #e5eee5
+}
+
+.sr-bb .srt-fill-base-1-active-2 {
+	fill: #e6e6e6
+}
+
+.sr-bb .srt-stroke-base-1-active-2 {
+	stroke: #e6e6e6
+}
+
+.sr-bb .srt-fill-base-1-primary {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-base-1-primary {
+	stroke: #fff
+}
+
+.sr-bb .srt-fill-base-1-home {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-base-1-home {
+	stroke: #fff
+}
+
+.sr-bb .srt-fill-base-1-away {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-base-1-away {
+	stroke: #fff
+}
+
+.sr-bb .srt-fill-base-2 {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-base-2 {
+	stroke: #fff
+}
+
+.sr-bb .srt-fill-base-2-active {
+	fill: #e5eee5
+}
+
+.sr-bb .srt-stroke-base-2-active {
+	stroke: #e5eee5
+}
+
+.sr-bb .srt-fill-base-2-hover {
+	fill: #e5eee5
+}
+
+.sr-bb .srt-stroke-base-2-hover {
+	stroke: #e5eee5
+}
+
+.sr-bb .srt-fill-base-3 {
+	fill: #e5eee5
+}
+
+.sr-bb .srt-stroke-base-3 {
+	stroke: #e5eee5
+}
+
+.sr-bb .srt-fill-base-3-active {
+	fill: #dce9dc
+}
+
+.sr-bb .srt-stroke-base-3-active {
+	stroke: #dce9dc
+}
+
+.sr-bb .srt-fill-base-3-hover {
+	fill: #dce9dc
+}
+
+.sr-bb .srt-stroke-base-3-hover {
+	stroke: #dce9dc
+}
+
+.sr-bb .srt-fill-primary-1 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-1 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-primary-2 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-2 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-primary-3 {
+	fill: #195119
+}
+
+.sr-bb .srt-stroke-primary-3 {
+	stroke: #195119
+}
+
+.sr-bb .srt-fill-primary-4 {
+	fill: #195119
+}
+
+.sr-bb .srt-stroke-primary-4 {
+	stroke: #195119
+}
+
+.sr-bb .srt-fill-primary-5 {
+	fill: #71a570
+}
+
+.sr-bb .srt-stroke-primary-5 {
+	stroke: #71a570
+}
+
+.sr-bb .srt-fill-primary-6 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-6 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-primary-7 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-7 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-primary-8 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-8 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-primary-8-is-active-1 {
+	fill: #1d5d1c
+}
+
+.sr-bb .srt-stroke-primary-8-is-active-1 {
+	stroke: #1d5d1c
+}
+
+.sr-bb .srt-fill-primary-8-is-active-2 {
+	fill: #1d5d1c
+}
+
+.sr-bb .srt-stroke-primary-8-is-active-2 {
+	stroke: #1d5d1c
+}
+
+.sr-bb .srt-fill-primary-9 {
+	fill: #bdd5bd
+}
+
+.sr-bb .srt-stroke-primary-9 {
+	stroke: #bdd5bd
+}
+
+.sr-bb .srt-fill-primary-10 {
+	fill: #50904f
+}
+
+.sr-bb .srt-stroke-primary-10 {
+	stroke: #50904f
+}
+
+.sr-bb .srt-fill-primary-11 {
+	fill: #71a570
+}
+
+.sr-bb .srt-stroke-primary-11 {
+	stroke: #71a570
+}
+
+.sr-bb .srt-fill-primary-12 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-primary-12 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-home-1 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-home-1 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-home-2 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-home-2 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-home-3 {
+	fill: #247423
+}
+
+.sr-bb .srt-stroke-home-3 {
+	stroke: #247423
+}
+
+.sr-bb .srt-fill-home-4 {
+	fill: #669e65
+}
+
+.sr-bb .srt-stroke-home-4 {
+	stroke: #669e65
+}
+
+.sr-bb .srt-fill-home-5 {
+	fill: #174b17
+}
+
+.sr-bb .srt-stroke-home-5 {
+	stroke: #174b17
+}
+
+.sr-bb .srt-fill-away-1 {
+	fill: #71a570
+}
+
+.sr-bb .srt-stroke-away-1 {
+	stroke: #71a570
+}
+
+.sr-bb .srt-fill-away-2 {
+	fill: #71a570
+}
+
+.sr-bb .srt-stroke-away-2 {
+	stroke: #71a570
+}
+
+.sr-bb .srt-fill-away-3 {
+	fill: #71a570
+}
+
+.sr-bb .srt-stroke-away-3 {
+	stroke: #71a570
+}
+
+.sr-bb .srt-fill-away-4 {
+	fill: #9cc09b
+}
+
+.sr-bb .srt-stroke-away-4 {
+	stroke: #9cc09b
+}
+
+.sr-bb .srt-fill-away-5 {
+	fill: #496b49
+}
+
+.sr-bb .srt-stroke-away-5 {
+	stroke: #496b49
+}
+
+.sr-bb .srt-fill-neutral-1 {
+	fill: #ccc
+}
+
+.sr-bb .srt-stroke-neutral-1 {
+	stroke: #ccc
+}
+
+.sr-bb .srt-fill-neutral-2 {
+	fill: #1b1b1b
+}
+
+.sr-bb .srt-stroke-neutral-2 {
+	stroke: #1b1b1b
+}
+
+.sr-bb .srt-fill-neutral-3 {
+	fill: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-stroke-neutral-3 {
+	stroke: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-fill-neutral-4 {
+	fill: #595959
+}
+
+.sr-bb .srt-stroke-neutral-4 {
+	stroke: #595959
+}
+
+.sr-bb .srt-fill-neutral-5 {
+	fill: #404040
+}
+
+.sr-bb .srt-stroke-neutral-5 {
+	stroke: #404040
+}
+
+.sr-bb .srt-fill-neutral-6 {
+	fill: #c2c2c2
+}
+
+.sr-bb .srt-stroke-neutral-6 {
+	stroke: #c2c2c2
+}
+
+.sr-bb .srt-fill-neutral-7 {
+	fill: #595959
+}
+
+.sr-bb .srt-stroke-neutral-7 {
+	stroke: #595959
+}
+
+.sr-bb .srt-fill-neutral-8 {
+	fill: #dedede
+}
+
+.sr-bb .srt-stroke-neutral-8 {
+	stroke: #dedede
+}
+
+.sr-bb .srt-fill-neutral-9 {
+	fill: #f5f5f5
+}
+
+.sr-bb .srt-stroke-neutral-9 {
+	stroke: #f5f5f5
+}
+
+.sr-bb .srt-fill-neutral-10 {
+	fill: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-stroke-neutral-10 {
+	stroke: rgba(0, 0, 0, .12)
+}
+
+.sr-bb .srt-fill-neutral-11 {
+	fill: #999
+}
+
+.sr-bb .srt-stroke-neutral-11 {
+	stroke: #999
+}
+
+.sr-bb .srt-fill-neutral-12 {
+	fill: #4d4d4d
+}
+
+.sr-bb .srt-stroke-neutral-12 {
+	stroke: #4d4d4d
+}
+
+.sr-bb .srt-fill-neutral-13 {
+	fill: #e6e6e6
+}
+
+.sr-bb .srt-stroke-neutral-13 {
+	stroke: #e6e6e6
+}
+
+.sr-bb .srt-fill-win {
+	fill: #3aaa35
+}
+
+.sr-bb .srt-stroke-win {
+	stroke: #3aaa35
+}
+
+.sr-bb .srt-fill-draw {
+	fill: #e3aa31
+}
+
+.sr-bb .srt-stroke-draw {
+	stroke: #e3aa31
+}
+
+.sr-bb .srt-fill-lose {
+	fill: #c83636
+}
+
+.sr-bb .srt-stroke-lose {
+	stroke: #c83636
+}
+
+.sr-bb .srt-stop-base-1 {
+	stop-color: #fff
+}
+
+.sr-bb .srt-stop-primary-1,
+.sr-bb .srt-stop-primary-2 {
+	stop-color: #247423
+}
+
+.sr-bb .srt-stop-primary-3,
+.sr-bb .srt-stop-primary-4 {
+	stop-color: #195119
+}
+
+.sr-bb .srt-stop-primary-5 {
+	stop-color: #71a570
+}
+
+.sr-bb .srt-stop-primary-6,
+.sr-bb .srt-stop-primary-7,
+.sr-bb .srt-stop-primary-8 {
+	stop-color: #247423
+}
+
+.sr-bb .srt-stop-primary-9 {
+	stop-color: #bdd5bd
+}
+
+.sr-bb .srt-stop-primary-10 {
+	stop-color: #50904f
+}
+
+.sr-bb .srt-stop-primary-11 {
+	stop-color: #71a570
+}
+
+.sr-bb .srt-stop-home-1,
+.sr-bb .srt-stop-primary-12 {
+	stop-color: #247423
+}
+
+.sr-bb .srt-stop-away-1 {
+	stop-color: #71a570
+}
+
+.sr-bb .srt-fill-neutral-14 {
+	fill: #fff
+}
+
+.sr-bb .srt-stroke-neutral-14 {
+	stroke: #fff
+}
+
+.sr-bb .srt-logo-powered-by-light {
+	display: inline-block
+}
+
+.sr-bb .sr-previous-meetings-graph__crest,
+.sr-bb .sr-sc-meeting__crest,
+.sr-bb .sr-sc-meeting__wsp,
+.sr-bb .sr-scoringprobabilityperperiod__title,
+.sr-bb .sr-wc-h2h-unibet-player-stats-tab-assists__crest,
+.sr-bb .sr-wc-h2h-unibet-player-stats-tab-cards__crest,
+.sr-bb .sr-wc-h2h-unibet-player-stats-tab-goals__crest,
+.sr-bb .sr-wc-h2h-unibet-player-stats-tab-players__crest,
+.sr-bb .sr-wc-h2h-unibet-probability-tab__funfacts-wrapper,
+.sr-bb .sr-wc-horizontal-scoreboard__crest-wrapper,
+.sr-bb .sr-wc-horizontal-scoreboard__result-wrapper,
+.sr-bb .sr-wc-scoreboard.sr-small .sr-wc-horizontal-scoreboard__crest-wrapper.srm-is-small,
+.sr-bb .srt-logo-powered-by-dark {
+	display: none
+}
+
+.sr-wc-scoreboard.sr-small .sr-wc-horizontal-scoreboard .sr-wc-horizontal-scoreboard__name,
+.sr-wc-scoreboard.sr-small .sr-wc-horizontal-scoreboard .sr-wc-horizontal-scoreboard__name.srm-is-post {
+	padding: 0
+}
+
+.sr-bb .sr-tournament-highlight-header__title,
+.sr-bb .sr-wc-tournament-highlight-header__title {
+	background: transparent;
+	text-align: left;
+	font-size: 16px;
+	color: #555;
+	height: 44px;
+	line-height: 44px;
+	text-transform: capitalize
+}
+
+.sr-bb .sr-tournament-highlight-header__tabs,
+.sr-bb .sr-wc-tournament-highlight-header__tabs {
+	background-color: #f5f5f5
+}
+
+.sr-bb .sr-tournament-highlight-header__tab,
+.sr-bb .sr-wc-tournament-highlight-header__tab {
+	color: #777;
+	text-transform: uppercase;
+	opacity: 1
+}
+
+.sr-bb .sr-tournament-highlight-header__tab.srm-is-active,
+.sr-bb .sr-wc-tournament-highlight-header__tab.srm-is-active {
+	color: #fff;
+	background-color: #555
+}
+
+.sr-bb .sr-wc-tournament-highlight-slider__wrapper {
+	background: transparent;
+	height: 44px
+}
+
+.sr-bb .sr-wc-tournament-highlight-slider__arrow {
+	margin: 16px
+}
+
+.sr-bb .sr-wc-tournament-highlight-slider__arrow-wrapper {
+	border: 0;
+	height: 100%;
+	width: auto
+}
+
+.sr-bb .sr-wc-tournament-highlight-slider__arrow-wrapper.srm-disabled {
+	opacity: .3
+}
+
+.sr-bb .sr-wc-tournament-highlight-slider__content-wrapper {
+	font-weight: 500;
+	text-transform: capitalize;
+	font-size: 12px
+}
+
+.sr-bb .sr-wc-tournament-highlight-fixtures__date-delimiter {
+	visibility: hidden;
+	margin: 0 1px
+}
+
+.sr-bb .sr-wc-tournament-highlight-fixtures__header-date-day,
+.sr-bb .sr-wc-tournament-highlight-fixtures__header-date-month {
+	font-weight: 500;
+	opacity: 1;
+	text-transform: capitalize
+}
+
+.sr-bb .sr-wc-tournament-highlight-fixtures__match-group {
+	position: relative;
+	top: auto;
+	left: auto;
+	-webkit-transform: none;
+	transform: none;
+	font-size: 10px
+}
+
+.sr-bb .sr-wc-tournament-highlight-fixtures__group-name {
+	font-weight: 400
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__teams {
+	padding: 0 16px;
+	height: auto
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__team-name-divider {
+	width: 16px;
+	-ms-flex-preferred-size: 16px;
+	flex-basis: 16px
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__team-name.srm-abbr-text {
+	display: block;
+	font-size: 16px;
+	font-weight: 300;
+	color: #333
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__status-wrapper {
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	height: 26px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-top: 0
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__status-wrapper.srm-no-stadium {
+	border-bottom: 1px solid rgba(0, 0, 0, .12)
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__team-wrapper {
+	padding: 16px 0
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__results-large {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 64px;
+	flex: 0 0 64px;
+	width: 64px;
+	height: 40px;
+	line-height: 40px;
+	background: #222;
+	color: #fff
+}
+
+.sr-bb.sr-wc-match-list-small .sr-wc-match__time {
+	font-size: 16px;
+	font-weight: 400
+}
+
+.sr-bb.sr-wc-fixtures-list.sr-wc-match-list-small .sr-wc-match__team-name.srm-long-text,
+.sr-bb.sr-wc-fixtures-list.sr-wc-match-list-small .sr-wc-match__team-name.srm-medium-text,
+.sr-bb.sr-wc-fixtures-list.sr-wc-match-list-small .sr-wc-match__team-name.srm-short-text,
+.sr-bb.sr-wc-match-list-small .sr-wc-match__team-odd-info {
+	display: none
+}
+
+.sr-bb .sr-wc-tournament-highlight__cuproster-wrapper {
+	margin: 8px 16px
+}
+
+.sr-bb .sr-wc-cup-roster__nav-container {
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	position: relative;
+	left: auto;
+	-webkit-transform: none;
+	transform: none;
+	margin-top: 8px
+}
+
+.sr-bb .sr-wc-cup-roster__arrow {
+	width: 50px;
+	height: 50px;
+	background: #d8d8d8;
+	border: 0
+}
+
+.sr-bb .sr-wc-cup-roster__arrow:hover {
+	background: #bbb
+}
+
+.sr-bb .sr-wc-cup-roster__arrow:active {
+	background: #0e5f31
+}
+
+.sr-bb .sr-wc-cup-roster__arrow-left,
+.sr-bb .sr-wc-cup-roster__arrow-right {
+	fill: #fff;
+	width: 22px;
+	height: 22px;
+	opacity: 1;
+	margin-top: 1px
+}
+
+.sr-bb .sr-wc-cup-roster__arrow-left {
+	margin-left: -2px
+}
+
+.sr-bb .sr-wc-cup-roster__arrow-right {
+	margin-right: -2px
+}
+
+.sr-bb .sr-wc-cup-roster-finals-match__team-result {
+	background: #e8e8e8;
+	color: #000
+}
+
+.sr-bb .sr-wc-cup-roster-finals-match__home-team-abbr {
+	font-weight: 400;
+	color: #333
+}
+
+.sr-bb .sr-wc-cup-roster-finals-match__date-day {
+	font-weight: 400;
+	color: #777
+}
+
+.sr-bb .sr-wc-top-teams__top-box {
+	background: transparent;
+	color: inherit;
+	padding: 4px 0
+}
+
+.sr-bb .sr-wc-top-teams__page-row {
+	min-height: 30px
+}
+
+.sr-bb .sr-wc-top-teams__page-row.srm-is-top {
+	border: 0
+}
+
+.sr-bb .sr-wc-top-teams__page-col {
+	padding-top: 5px;
+	padding-bottom: 5px
+}
+
+.sr-bb .sr-wc-top-teams__page-col-total {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end
+}
+
+.sr-bb .sr-wc-top-teams__page-col-index {
+	font-weight: 700;
+	color: #333;
+	margin-right: 8px
+}
+
+.sr-rtl.sr-bb .sr-wc-top-teams__page-col-index {
+	margin-right: 0;
+	margin-left: 8px
+}
+
+.sr-bb .sr-wc-top-teams__name {
+	margin-left: 8px
+}
+
+.sr-rtl.sr-bb .sr-wc-top-teams__name {
+	margin-left: 0;
+	margin-right: 8px
+}
+
+.sr-bb .sr-wc-tournament-highlight-leaders__block {
+	padding: 0 16px
+}
+
+.sr-bb .sr-wc-group-stage-group__table-header-wrapper {
+	height: 28px;
+	line-height: 28px
+}
+
+.sr-bb .sr-wc-group-stage-group__table-header-label {
+	padding: 0
+}
+
+.sr-bb .sr-wc-group-stage-group__form-item {
+	background: transparent;
+	border: 1px solid #ededed;
+	color: #000
+}
+
+.sr-bb .sr-wc-group-stage-group__title-team-position {
+	width: 33px;
+	margin-left: 16px
+}
+
+.sr-rtl.sr-bb .sr-wc-group-stage-group__title-team-position {
+	margin-left: 0;
+	margin-right: 16px
+}
+
+.sr-bb .sr-wc-group-stage-group__team-position {
+	font-weight: 700;
+	font-size: 14px;
+	margin: 0 16px
+}
+
+.sr-bb .sr-wc-group-stage-group__table-body,
+.sr-bb .sr-wc-group-stage-group__table-row,
+.sr-bb .sr-wc-group-stage-group__table-row.srm-is-open,
+.sr-bb .sr-wc-group-stage-group__table-wrapper {
+	border: 0
+}
+
+.sr-bb .sr-wc-group-stage-group__table-content-cell {
+	background: transparent
+}
+
+.sr-bb .sr-wc-group-stage-group__cell-icon {
+	padding: 11px 16px;
+	width: auto
+}
+
+.sr-bb .sr-wc-group-stage-group__data-table tr th {
+	border-bottom: 1px solid rgba(0, 0, 0, .12)
+}
+
+.sr-bb .sr-wc-group-stage-group__team-name {
+	margin-left: 12px;
+	font-size: 14px
+}
+
+.sr-rtl.sr-bb .sr-wc-group-stage-group__team-name {
+	margin-left: 0;
+	margin-right: 12px
+}
+
+.sr-bb .sr-wc-group-stage-group__table-row-item {
+	padding: 11px 16px;
+	background: #f5f5f5
+}
+
+.sr-bb .sr-wc-group-stage-group__table-header-icon {
+	width: 42px
+}
+
+.sr-bb .sr-wc-group-stage-matches__cell-w55 {
+	width: 100%;
+	padding: 0
+}
+
+.sr-bb .sr-wc-group-stage-matches__cell-w45 {
+	width: 85px
+}
+
+.sr-bb .sr-wc-group-stage-matches__scoreboard-wrapper {
+	background: #f5f5f5;
+	height: 36px
+}
+
+.sr-bb .sr-wc-group-stage-matches__scoreboard-inner.srm-is-not-last,
+.sr-bb .sr-wc-group-stage-matches__scoreboard-time.srm-is-not-last {
+	border: 0
+}
+
+.sr-bb .sr-wc-group-stage-matches__scoreboard-inner {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.sr-bb .sr-wc-group-stage-matches__result-wrapper,
+.sr-bb .sr-wc-group-stage-matches__time {
+	height: 26px;
+	line-height: 26px;
+	background: #000;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 400;
+	width: 64px;
+	margin: 0 auto
+}
+
+.sr-bb .sr-wc-group-stage-matches__team-name {
+	font-size: 14px;
+	padding: 1px 16px
+}
+
+.sr-bb .sr-wc-group-stage-matches__team-inner {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.sr-bb .sr-wc-group-stage-matches__scoreboard-time {
+	margin: 0
+}
+
+.sr-bb.sr-wc-tournament-highlight .sr-perspective-crest__image {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	width: 26px;
+	height: 26px
+}
+
+.sr-bb.sr-wc-tournament-highlight .sr-wc-cup-roster__arrow-left,
+.sr-bb.sr-wc-tournament-highlight .sr-wc-cup-roster__arrow-right {
+	width: 13px
+}
+
+.sr-bb.sr-wc-tournament-highlight .sr-wc-group-stage-group__team-name,
+.sr-bb.sr-wc-tournament-highlight .sr-wc-group-stage-group__team-position {
+	padding-top: 0
+}
+
+.sr-bb.sr-wc-tournament-highlight .sr-wc-group-stage-group__team-wrapper {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.sr-wc-h2h .sr-wc-h2h-unibet-h2h-tab__averagegoals-container .sr-averagegoalslite__wrapper,
+.sr-wc-h2h .sr-wc-h2h-unibet-h2h-tab__leagueposition-container .sr-wc-leagueposition__container {
+	padding: 0
+}
+
+.sr-bb .sr-lmt-pitch-soccer__container {
+	background-color: #299b59
+}
+
+.sr-bb .sr-lmt-pitch-soccer__svg {
+	stroke: #94cdac
+}
+
+.sr-bb .sr-lmt-basketball-pitch__bo-l,
+.sr-bb .sr-lmt-basketball-pitch__bo-s,
+.sr-bb .sr-lmt-corner-bottom__overlay,
+.sr-bb .sr-lmt-corner-top__overlay,
+.sr-bb .sr-lmt-goal__overlay {
+	background-color: #299b59
+}
+
+.sr-bb .sr-lmt-state {
+	background-image: url(https://widgets.sir.sportradar.com/static/a1e92dcb547358170e82a2fa82aef83b/U-Icon-white.png);
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+	background-position: 50%
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell.srm-semibold {
+	font-weight: 300
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell.srm-formtable {
+	width: 120px;
+	max-width: 120px
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell.srm-small {
+	display: table-cell
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell.srm-team {
+	padding: 4px 4px 4px 8px
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell:nth-child(9) {
+	font-weight: 500
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCell.srm-medium {
+	display: table-cell
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableHeader {
+	display: none
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCellForm {
+	border-radius: 50%;
+	height: 16px;
+	width: 16px;
+	line-height: inherit;
+	position: relative;
+	font-size: 8px;
+	font-weight: 500;
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1)
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableCellForm span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%)
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__formArrow {
+	width: 105px;
+	margin: 5px 3px
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__formArrow-line {
+	background: -webkit-gradient(linear, right top, left top, from(#299b59), to(transparent));
+	background: linear-gradient(270deg, #299b59, transparent);
+	width: 100px
+}
+
+.sr-rtl.sr-bb.sr-tournament-highlight .sr-livetable__formArrow-line {
+	background: -webkit-gradient(linear, left top, right top, from(#299b59), to(transparent));
+	background: linear-gradient(90deg, #299b59, transparent)
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__formArrow-point {
+	border-left: 5px solid #299b59
+}
+
+.sr-bb.sr-tournament-highlight .sr-livetable__tableFormWrap {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	padding: 0
+}
+
+.sr-bb .sr-tournament-highlight__livetable-wrapper .srm-is-livetable .sr-livetable__tableRow.srm-firstRow .sr-livetable__tableCell:nth-child(5),
+.sr-bb .sr-tournament-highlight__livetable-wrapper .srm-is-livetable .sr-livetable__tableRow.srm-firstRow .sr-livetable__tableCell:nth-child(6),
+.sr-bb .sr-tournament-highlight__livetable-wrapper .srm-is-livetable .sr-livetable__tableRow.srm-firstRow .sr-livetable__tableCell:nth-child(7) {
+	font-weight: 500
+}
+
+.sr-bb .sr-tournament-highlight__livetable-wrapper .srm-is-livetable .sr-livetable__tableRow.srm-firstRow .sr-livetable__tableCell:nth-child(9) {
+	font-weight: 300
+}
+
+@media (max-width:350px) {
+	.sr-bb .sr-tournament-highlight__livetable-wrapper .srm-is-formtable .sr-livetable__tableRow .sr-livetable__tableCell:nth-child(5) {
+		display: none
+	}
+}
+
+.sr-bb .sr-tournament-highlight-header__title {
+	background: transparent;
+	text-align: left;
+	font-size: 16px;
+	color: #555;
+	height: 44px;
+	line-height: 44px;
+	text-transform: capitalize
+}
+
+.sr-bb .sr-simple-pagination__title {
+	font-size: 12px
+}
+
+.sr-bb .sr-simple-pagination__nav-button-icon {
+	width: 12px;
+	height: 12px;
+	margin: 4px
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination,
+.sr-bb .sr-rankings .sr-simple-pagination {
+	padding: 16px;
+	border: 0
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__title-holder,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__title-holder,
+.sr-bb .sr-rankings .sr-simple-pagination__title-holder {
+	opacity: 1
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__nav-button-wrapper,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__nav-button-wrapper,
+.sr-bb .sr-rankings .sr-simple-pagination__nav-button-wrapper {
+	min-height: inherit;
+	min-width: inherit
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__nav-button,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__nav-button,
+.sr-bb .sr-rankings .sr-simple-pagination__nav-button {
+	opacity: 1
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__nav-button.srm-disabled .sr-simple-pagination__nav-button-icon,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__nav-button.srm-disabled .sr-simple-pagination__nav-button-icon,
+.sr-bb .sr-rankings .sr-simple-pagination__nav-button.srm-disabled .sr-simple-pagination__nav-button-icon {
+	fill: #d8d8d8
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__nav-button-icon,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__nav-button-icon,
+.sr-bb .sr-rankings .sr-simple-pagination__nav-button-icon {
+	margin: 0;
+	fill: #999;
+	width: 10px;
+	height: 14px
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__dot,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__dot,
+.sr-bb .sr-rankings .sr-simple-pagination__dot {
+	width: 10px;
+	height: 10px;
+	border: 1px solid #999;
+	margin: 0 4px
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__dot.srt-neutral-1,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__dot.srt-neutral-1,
+.sr-bb .sr-rankings .sr-simple-pagination__dot.srt-neutral-1 {
+	background: #999;
+	cursor: default
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__dot.srt-neutral-3,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__dot.srt-neutral-3,
+.sr-bb .sr-rankings .sr-simple-pagination__dot.srt-neutral-3 {
+	background: #fff
+}
+
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__dot:not(.srt-neutral-1):hover,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__dot:not(.srt-neutral-1):hover,
+.sr-bb .sr-rankings .sr-simple-pagination__dot:not(.srt-neutral-1):hover {
+	background: #e8e8e8
+}
+
+.sr-bb .sr-bb .sr-rankings .sr-simple-pagination,
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination {
+	border: 0
+}
+
+.sr-bb .sr-bb .sr-rankings .sr-simple-pagination__nav-button:not(.srm-disabled) .sr-simple-pagination__nav-button-icon:hover,
+.sr-bb .sr-fixed-height-cup-roster .sr-simple-pagination__nav-button:not(.srm-disabled) .sr-simple-pagination__nav-button-icon:hover,
+.sr-bb .sr-livetable__pagination-bottom .sr-simple-pagination__nav-button:not(.srm-disabled) .sr-simple-pagination__nav-button-icon:hover {
+	fill: #333
+}
+
+.sr-bb .sr-rankings__wrapper .sr-simple-pagination,
+.sr-bb .sr-tournament-highlight__livetable-wrapper .sr-simple-pagination {
+	border-bottom: 1px solid #e8e8e8
+}
+
+.sr-bb .sr-roster-nav__title {
+	font-size: 12px
+}
+
+.sr-bb .sr-roster-nav__nav-button-icon {
+	width: 12px;
+	height: 12px
+}
+
+.sr-livetable .sr-livetable__tableRow.srm-firstRow .sr-livetable__tableCell.srm-pos {
+	font-weight: 300
+}
+
+.sr-bb.sr-tournament-highlight .sr-rankings__icon {
+	fill: #0e5f31
+}
+
+.sr-bb.sr-tournament-highlight .sr-rankings__name {
+	font-weight: 300
+}
+
+.sr-bb.sr-tournament-highlight .sr-rankings__page-col-index {
+	font-weight: 500
+}
+
+.sr-bb .sr-custom-unibet-matchextended-header__wrapper {
+	background-color: #f5f5f5
+}
+
+.sr-bb .sr-custom-unibet-matchextended-header__tab {
+	color: #777
+}
+
+.sr-bb .sr-custom-unibet-matchextended-header__tab.srm-is-active {
+	color: #fff;
+	background-color: #555
+}
+
+.sr-bb .sr-custom-unibet-matchextended-header__tab.srm-not-active:hover {
+	color: #777;
+	background-color: #d8d8d8
+}
+
+.sr-bb .sr-custom-unibet-matchextended-lineups__player-row.srm-is-hoverable:hover {
+	background-color: #e7fce9
+}
+
+.sr-bb .sr-custom-unibet-matchextended-lastmeetings .sr-meeting__wrapper {
+	border-bottom-style: solid;
+	border-bottom-width: 1px
+}
+
+.sr-bb .sr-custom-unibet-matchextended-lastmeetings .sr-meeting__wrapper:first-child {
+	border-top-style: solid;
+	border-top-width: 1px
+}

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+event_full_feed() {
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/event_fullfeed/')
+    echo $output
+}
+
+event_full_feed

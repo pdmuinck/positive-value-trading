@@ -1,0 +1,10 @@
+#!/bin/bash
+
+head_to_head() {
+    team_1_id=$1
+    team_2_id=$2
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/stats_team_versusrecent/'$team_1_id/$team_2_id)
+    echo $output
+}
+
+head_to_head $1 $2

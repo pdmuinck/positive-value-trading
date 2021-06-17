@@ -1,0 +1,9 @@
+#!/bin/bash
+
+parse_event_full_feed() {
+    input=$1
+    local output=$input | jq '.doc | .[0].data | .[] | {sport: .name, tournaments: .realcategories | .[] | .tournaments | .[] | {id: ._id, name: .name, matchIds: .matches | map(._id)}}'
+    echo $output
+}
+
+parse_event_full_feed $1
