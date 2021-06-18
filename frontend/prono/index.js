@@ -49,10 +49,10 @@ async function getAtpRankings() {
 }
 
 function createRankingTable(players) {
-    var rankingTable = "<table><th><td></td><td>Rank</td><td>Player Name</td><td>Points</td></th>"
+    var rankingTable = "<table>"
     players.forEach(player => {
         const category = determineCategory(player.rank)
-        rankingTable += "<tr id=" + player.personId + " style=background-color:" + category.color + ";cursor:pointer onclick='addOrRemoveToSelection(this)'><td style=background-color:white><input type='checkbox' id=checkbox_" + player.personId + " onclick=addOrRemoveToSelection(this)></input></td><td>" + player.person + "</td><td>" + player.points + "</td></tr>"
+        rankingTable += "<tr id=" + player.personId + " style=background-color:" + category.color + ";cursor:pointer onclick='addOrRemoveToSelection(this)'><td style=background-color:white><input type='checkbox' id=checkbox_" + player.personId + " onclick=addOrRemoveToSelection(this)></input></td><td>" + player.person + "</td></tr>"
     })
     rankingTable += "</table>"
     return rankingTable
