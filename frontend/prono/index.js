@@ -1,31 +1,31 @@
 let players
 let selectedPlayers = []
 
-function assignPlayerToProno(event) {
-    const selectedPlayer = players.filter(player => player.personId === event.id)[0]
-    if(selectedPlayers.includes(selectedPlayer)){
-        document.getElementById("warning").innerHTML = "<span style=color:blue>Je hebt " + selectedPlayer.person + " al in je selectie."
-    } else if(selectedPlayers.filter(player => player.category.code === selectedPlayer.category.code).length === 3) {
-        document.getElementById("error").innerHTML = "<span style=color:red>Je hebt al 3 spelers uit de categorie " + selectedPlayer.category.code + " gekozen. Je kan uit je huidige selectie een speler verwijderen en daarna een nieuwe toevoegen."
+function addOrRemoveToSelection(event) {
+    const checkboxId = event.id.includes("checkbox") ? event.id : "checkbox_" + event.id
+    const checked = document.getElementById(checkboxId).checked
+    if(checked){
+        removePlayerFromProno(event)
+        document.getElementById("checkbox_" + event.id).checked = !checked
     } else {
-        selectedPlayers.push(selectedPlayer)
-        const table = createSelectedPlayersTable()
-        document.getElementById("selections").innerHTML = table
-    }
-}
+        const selectedPlayer = players.filter(player => player.personId === event.id)[0]
+        if(selectedPlayers.filter(player => player.category.code === selectedPlayer.category.code).length === 3) {
+            document.getElementById("error").innerHTML = "<span style=color:red>Je hebt al 3 spelers uit de categorie " + selectedPlayer.category.code + " gekozen. Je kan uit je huidige selectie een speler verwijderen en daarna een nieuwe toevoegen."
+        } else {
+            selectedPlayers.push(selectedPlayer)
+            document.getElementById("checkbox_" + event.id).checked = !checked
+        }
 
-function createSelectedPlayersTable() {
-    var table = "<table><th><td>Player Name</td></th>"
-    selectedPlayers.forEach(player => {
-        table += "<tr id=" + player.personId + " style=background-color:" + player.category.color + "><td>" + player.person + "</td></tr>"
-    })
-    table += "</table>"
-    return table
+    }
     
 }
 
-function removePlayerFromProno(selectedPlayers) {
-
+function removePlayerFromProno(event) {
+    const playerToRemove = players.filter(player => player.personId === event.id)[0]
+    const index = selectedPlayers.indexOf(playerToRemove)
+    if (index > -1) {
+        selectedPlayers.splice(index, 1)
+    }
 }
 
 function determineCategory(rank) {
@@ -49,10 +49,10 @@ async function getAtpRankings() {
 }
 
 function createRankingTable(players) {
-    var rankingTable = "<table><th><td>Rank</td><td>Player Name</td><td>Points</td></th>"
+    var rankingTable = "<table><th><td></td><td>Rank</td><td>Player Name</td><td>Points</td></th>"
     players.forEach(player => {
         const category = determineCategory(player.rank)
-        rankingTable += "<tr id=" + player.personId + " style=background-color:" + category.color + ";cursor:pointer onclick='assignPlayerToProno(this)'><td>" + player.rank + "</td><td>" + player.person + "</td><td>" + player.points + "</td></tr>"
+        rankingTable += "<tr id=" + player.personId + " style=background-color:" + category.color + ";cursor:pointer onclick='addOrRemoveToSelection(this)'><td style=background-color:white><input type='checkbox' id=checkbox_" + player.personId + " onclick=addOrRemoveToSelection(this)></input></td><td>" + player.person + "</td><td>" + player.points + "</td></tr>"
     })
     rankingTable += "</table>"
     return rankingTable
