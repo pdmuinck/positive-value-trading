@@ -1,0 +1,9 @@
+[
+    {"personId": "123", "person": "Pieterjan De Muinck", "rank": 1, "points": "1234556"},
+    {"personId": "37276", "person": "Aurélie Spileers", "rank": 2, "points": "232134"},
+    {"personId": "3382", "person": "Ola De Muinck", "rank": 5, "points": "1234556"},
+    {"personId": "28873", "person": "Yolo De Muinck", "rank": 4, "points": "1234556"},
+    {"personId": "03884", "person": "Charlie De Muinck", "rank": 23, "points": "2345"},
+    {"personId": "267188", "person": "Marijn Vereecken", "rank": 15, "points": "345"},
+    {"personId": "087483", "person": "Jonathan De Muinck", "rank": 99, "points": "234"}
+]

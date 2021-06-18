@@ -30,6 +30,12 @@ const server = http.createServer((req, res) => {
             }
         })
     }
+    if(req.url === "/stubs/atp-rankings") {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json')
+        const response = require("./stubs/rankings.json")
+        res.end(JSON.stringify(response))
+    }
     if(req.method === "POST" && req.url === "/submit-prono") {
         console.log(req.body)
         res.end(req.body)
