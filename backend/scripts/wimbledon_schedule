@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wimbledon_schedule() {
+    year=$1
+    schedule_number=$2
+    output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/schedule/schedule'"${schedule_number}"'.json')
+    echo "${output}"
+}
+
+wimbledon_schedule $1 $2
