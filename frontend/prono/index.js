@@ -103,16 +103,26 @@ async function saveProno() {
     const playerName = document.getElementById("input-player-name").value
     if(playerName) {
         const body = {playerName: playerName, team: allSelectedPlayers}
-        const response = await fetch("http://127.0.0.1:3000/submit-prono", {
+        await fetch("http://127.0.0.1:3000/submit-prono", {
             method: 'POST',
             mode: 'cors',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
+          }).then(async response => {
+            const text = await response.text()
+            if(response.status === 200) {
+                console.log('test')
+                document.getElementById("submit-status").innerHTML = "<span style=color:green>Jouw team is opgeslagen. Je kan ze bekijken op...</span>"
+            }
+            if(response.status === 400) {
+                document.getElementById("submit-status").innerHTML = "<span style=color:red>" + text + "</span>"
+            }
           })
+        
     } else {
-        document.getElementById("error-submit").innerHTML = "<span style=color:red>Je hebt geen naam meegegeven.</span>"
+        document.getElementById("submit-status").innerHTML = "<span style=color:red>Je hebt geen naam meegegeven.</span>"
     }
     
 }

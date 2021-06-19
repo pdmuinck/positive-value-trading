@@ -4,12 +4,24 @@
     </head>
     <body>
         <h1>Stel jouw team samen voor Wimbledon!</h1>
-        <p>De deadline voor het indienen van jouw team is middernacht 28 juni 2021.</p>
+        <p>Ben jij een koning in het voorspellen van tenniswedstrijden? Do mee aan ons Wimbledon spel. De deadline voor het indienen van jouw team is middernacht 28 juni 2021.</p>
         <h2>De spelregels</h2>
         <h3>Samenstelling team</h3>
-        <p>Jouw team bestaat uit maximum 24 tennisspelers (12 mannen en 12 vrouwen). De spelers zijn onderverdeeld in vier categorieën: A, B, C en D. Uit elke categorie selecteer je drie spelers. Je kan in totaal 6 kapiteinen kiezen, deze spelers verdubbelen de punten die ze verdienen.</p>
+        <p>Jouw team bestaat uit maximum 24 tennisspelers (12 mannen en 12 vrouwen). De spelers zijn onderverdeeld in vier categorieën: A, B, C en D. Uit elke categorie selecteer je drie spelers. Per spelronde kan je een kapitein aanduiden. De punten die een kapitein verdient wordt vermenigvuldigt met een factor bepaald per spelronde.</p>
         <h3>Puntentelling</h3>
-        <p>Iedere keer dat een speler een ronde verder komt, behaalt hij punten. Indien je speler een kapitein is, dan worden de punten vermenigvuldigd met een getal dat oploopt per ronde. Het aantal punten dat een speler kan scoren stijgt ook per ronde. Spelers uit lagere categorieën behalen meer punten dan spelers uit hogere categorieën.</p>
+        <p>Iedere keer dat een speler een ronde verder komt, behaalt hij/zij punten. Indien je speler een kapitein is, dan worden de punten vermenigvuldigd met een getal dat oploopt per ronde. Het aantal punten dat een speler kan scoren stijgt ook per ronde. Spelers uit lagere categorieën behalen meer punten dan spelers uit hogere categorieën. Per spelronde krijg je de kans om je kapitein te kiezen. Vergeet je dit een keer, geen probleem het systeem zal automatisch een kapitein aanduiden voor jou (winst is hier uiteraard niet gegarandeerd).</p>
+        <span>Factor kapitein:</span>
+        <ul>
+            <li>1e ronde: x2</li>
+            <li>2de ronde: x3</li>
+            <li>3de ronde: x4</li>
+            <li>4de ronde: x5</li>
+            <li>achtste finales: x6</li>
+            <li>kwartfinales: x7</li>
+            <li>halve finale: x8</li>
+            <li>finale: x8</li>
+        </ul>
+        <p>Heb je er zin in? Hieronder kan je je team samenstellen. Veel plezier!</p>
         <h2>Jouw team</h2>
         <div id="error"></div>
         <h3>Mannen</h3>
@@ -17,7 +29,7 @@
         <h3>Vrouwen</h3>
         <div id="playersWomen"></div>
         <div id="prono-form">
-            <div id="error-submit"></div>
+            <div id="submit-status"></div>
             <div id="player-name">
                 <label for="fname">Jouw naam:</label><br>
                 <input type="text" id="input-player-name" name="input-player-name" placeholder="Pietje">
