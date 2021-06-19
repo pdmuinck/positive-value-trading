@@ -3,21 +3,29 @@
         <script type="text/javascript" src="./index.js"></script>
     </head>
     <body>
-        <div id="warning"></div>
+        <h1>Stel jouw team samen voor Wimbledon!</h1>
+        <p>De deadline voor het indienen van jouw team is middernacht 28 juni 2021.</p>
+        <h2>De spelregels</h2>
+        <h3>Samenstelling team</h3>
+        <p>Jouw team bestaat uit maximum 24 tennisspelers (12 mannen en 12 vrouwen). De spelers zijn onderverdeeld in vier categorieën: A, B, C en D. Uit elke categorie selecteer je drie spelers. Je kan in totaal 6 kapiteinen kiezen, deze spelers verdubbelen de punten die ze verdienen.</p>
+        <h3>Puntentelling</h3>
+        <p>Iedere keer dat een speler een ronde verder komt, behaalt hij punten. Indien je speler een kapitein is, dan worden de punten vermenigvuldigd met een getal dat oploopt per ronde. Het aantal punten dat een speler kan scoren stijgt ook per ronde. Spelers uit lagere categorieën behalen meer punten dan spelers uit hogere categorieën.</p>
+        <h2>Jouw team</h2>
         <div id="error"></div>
+        <h3>Mannen</h3>
+        <div id="playersMen"></div>
+        <h3>Vrouwen</h3>
+        <div id="playersWomen"></div>
         <div id="prono-form">
+            <div id="error-submit"></div>
             <div id="player-name">
-                <label for="fname">Player name:</label><br>
+                <label for="fname">Jouw naam:</label><br>
                 <input type="text" id="input-player-name" name="input-player-name" placeholder="Pietje">
                 <div id="submit-prono">
-                    <input type="submit" id="input-submit-prono">
+                    <input type="submit" id="input-submit-prono" value="Bewaar" style="cursor:pointer" onclick="saveProno()">
                 </div>
             </div>
-            <h1>Selecteer 3 gouden, 3 zilveren, 3 bronzen en 3 zalmroze spelers.</h1>
-            <div id="selections">
-            </div>
-            
         </div>
-        <div id="players"></div>
+        <button style="cursor:pointer">Ga naar de eerste ronde</button>
     </body>
 </html>

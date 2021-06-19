@@ -1,0 +1,8 @@
+#!/bin/bash
+
+wta_rankings() {
+    local output=$(curl 'https://api.sporza.be/tennis/rankings/403')
+    echo "${output}"
+}
+
+wta_rankings

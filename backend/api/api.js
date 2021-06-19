@@ -30,6 +30,21 @@ const server = http.createServer((req, res) => {
             }
         })
     }
+    if(req.url === "/wta-rankings") {
+        exec("./scripts/wta_rankings", (err, stdout, stderr) => {
+            if(err) {
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'text/plain')
+                console.log(err)
+                res.end("Sorry there is an issue at our side.")
+            }
+            if(stdout) {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json')
+                res.end(stdout)
+            }
+        })
+    }
     if(req.url === "/stubs/atp-rankings") {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json')
