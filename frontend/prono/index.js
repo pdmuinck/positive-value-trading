@@ -2,26 +2,22 @@ let players
 let selectedPlayers = []
 
 function addOrRemoveToSelection(event) {
-    const checkboxId = event.id.includes("checkbox") ? event.id : "checkbox_" + event.id
-    const checked = document.getElementById(checkboxId).checked
+    const checked = document.getElementById(event.id).checked
     if(checked){
-        removePlayerFromProno(event)
-        document.getElementById("checkbox_" + event.id).checked = !checked
-    } else {
-        const selectedPlayer = players.filter(player => player.personId === event.id)[0]
+        const selectedPlayer = players.filter(player => player.personId === event.id.split("checkbox_")[1])[0]
         if(selectedPlayers.filter(player => player.category.code === selectedPlayer.category.code).length === 3) {
             document.getElementById("error").innerHTML = "<span style=color:red>Je hebt al 3 spelers uit de categorie " + selectedPlayer.category.code + " gekozen. Je kan uit je huidige selectie een speler verwijderen en daarna een nieuwe toevoegen."
+            document.getElementById(event.id).checked = !checked
         } else {
             selectedPlayers.push(selectedPlayer)
-            document.getElementById("checkbox_" + event.id).checked = !checked
-        }
-
+        } 
+    } else {
+        removePlayerFromProno(event)
     }
-    
 }
 
 function removePlayerFromProno(event) {
-    const playerToRemove = players.filter(player => player.personId === event.id)[0]
+    const playerToRemove = players.filter(player => player.personId === event.id.split("checkbox_")[1])[0]
     const index = selectedPlayers.indexOf(playerToRemove)
     if (index > -1) {
         selectedPlayers.splice(index, 1)
@@ -49,13 +45,11 @@ async function getAtpRankings() {
 }
 
 function createRankingTable(players) {
-    var rankingTable = "<table>"
+    var checkboxes = ""
     players.forEach(player => {
-        const category = determineCategory(player.rank)
-        rankingTable += "<tr id=" + player.personId + " style=background-color:" + category.color + ";cursor:pointer onclick='addOrRemoveToSelection(this)'><td style=background-color:white><input type='checkbox' id=checkbox_" + player.personId + " onclick=addOrRemoveToSelection(this)></input></td><td>" + player.person + "</td></tr>"
+        checkboxes += "<label id=" + player.personId + " style=background-color:" + player.category.color + ";cursor:pointer><input type=checkbox onclick=addOrRemoveToSelection(this) id=checkbox_" + player.personId + " style=cursor:pointer>" + player.person + "</label>"
     })
-    rankingTable += "</table>"
-    return rankingTable
+    return checkboxes
 }
 
 getAtpRankings()
