@@ -1,0 +1,9 @@
+#!/bin/bash
+
+wimbledon_players(){
+    year=$1
+    local output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/players/players.json')
+    echo "${output}" > players"${year}".json
+}
+
+wimbledon_players $1

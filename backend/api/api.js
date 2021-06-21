@@ -10,24 +10,7 @@ api.use(cors())
 const hostname = '127.0.0.1'
 const port = 3000;
 
-const scheduleCache = {}
 const teams = {}
-
-function populatePlayScheduleCache() {
-    const years = [2019, 2021]
-    years.forEach(year => {
-        scheduleCache[year] = []
-        for(let day = 1 ; day < 22 ; day++) {
-            exec("./scripts/wimbledon/wimbledon_schedule " + year + " " + day, (err, stdout, stderr) => {
-                if(stdout && !stdout.includes("html")) {
-                    scheduleCache[year].push(JSON.parse(stdout))
-                }
-            })
-        }
-    })
-}
-
-populatePlayScheduleCache()
 
 api.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
@@ -37,6 +20,25 @@ api.get("/", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain') 
     res.end('Hello World')
+})
+
+api.get("/players", (req, res) => {
+    exec("./scripts/wimbledon/players " + req.query.year, (err, stdout, stderr) => {
+        if(err) console.log(err)
+        if(stderr) console.log(stderr)
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.end(stdout)
+        
+    })
+    /*
+    const players = require("./scripts/wimbledon/players" + req.query.year + ".json")
+    const playersFiltered = players.players.filter(player => player.events_entered.filter(event => event.event_id === "MS" || event.event_id === "LS").length > 0)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(playersFiltered))
+
+    */
 })
 
 api.get("/teams", (req, res) => {
@@ -54,7 +56,8 @@ api.get("/teams", (req, res) => {
 
 })
 
-api.post("/teams", (req, res) => {
+function checkAuth(req, res) {
+    //TODO check valid auth
     if(!req.query.user || !req.query.pass) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
@@ -65,60 +68,18 @@ api.post("/teams", (req, res) => {
         res.setHeader('Content-Type', 'text/plain')
         res.end("Je hebt geen spelers geselecteerd. Selecteer 3 spelers per categorie voor mannen en vrouwen en ga daarna verder.")
     }
+}
 
-    //TODO check valid auth
+api.post("/competitions/:competition/editions/:edition/teams", (req, res) => {
+    checkAuth(req, res)
+    const competition = req.params.competition
+    const edition = req.params.edition
+    const schedule = scheduleCache[edition]
+    schedule.
     teams[req.query.user] = req.body.team
     res.statusCode = 200
     res.end()
     
-})
-
-
-api.get("/atp-rankings", (req, res) => {
-    exec("./scripts/atp_rankings", (err, stdout, stderr) => {
-        if(err) {
-            res.statusCode = 500;
-            res.setHeader('Content-Type', 'text/plain')
-            console.log(err)
-            res.end("Sorry there is an issue at our side.")
-        }
-        if(stdout) {
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json')
-            res.end(stdout)
-        }
-    })
-})
-
-api.get("/wta-rankings", (req, res) => {
-    exec("./scripts/wta_rankings", (err, stdout, stderr) => {
-        if(err) {
-            res.statusCode = 500;
-            res.setHeader('Content-Type', 'text/plain')
-            console.log(err)
-            res.end("Sorry there is an issue at our side.")
-        }
-        if(stdout) {
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json')
-            res.end(stdout)
-        }
-    })
-})
-
-api.get("/play-schedule", (req, res) => {
-    const year = req.query.year
-    const fromCache = scheduleCache[year]
-    if(fromCache) {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify(fromCache))
-    } else {
-        populatePlayScheduleCache()
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json')
-        res.end(scheduleCache[year])
-    }
 })
 
 

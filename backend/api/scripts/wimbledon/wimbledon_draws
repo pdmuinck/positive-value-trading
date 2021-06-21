@@ -1,9 +1,0 @@
-#!/bin/bash
-
-wimbledon_draws(){
-    year=$1
-    local output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/draws/draws.json')
-    echo "${output}"
-}
-
-wimbledon_draws $1

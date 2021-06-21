@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# competition like MS (men's singles) or LS (ladies's singles)
+wimbledon_draws(){
+    competition=$1
+    year=$2
+    local output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/draws/'"${competition}"'.json')
+    echo "${output}"
+}
+
+wimbledon_draws $1 $2
