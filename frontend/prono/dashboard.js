@@ -6,21 +6,36 @@ let selectedPlayersWomen = []
 let tab = "team"
 
 async function getDashboardData() {
-    getAtpRankings()
-    getTeam()
+    await getTeam()
+    await getPlayers()
     await getPlaySchedule()
 }
 
-function getTeam() {
+async function getTeam() {
+    this.selectedPlayersMen = []
+    this.selectedPlayersWomen = []
     const user = sessionStorage.getItem("user")
     const pass = sessionStorage.getItem("pass")
+    const response = await fetch("http://127.0.0.1:3000/teams?user=" + user + "&pass=" + pass)
+    if(response.status === 404) return
+    const team = await response.json()
+    team.forEach(player => {
+        if(player.gender === "M") {
+            selectedPlayersMen.push(player)
+        } else {
+            selectedPlayersWomen.push(player)
+        }
+    })
 }
 
 async function getPlaySchedule() {
+    const selectedPlayers = selectedPlayersWomen.concat(selectedPlayersMen).map(player => player.person)
+    const allPlayers = playersMen.concat(playersWomen)
+    const allPlayerNames = allPlayers.map(player => player.person)
     const response = await fetch("http://127.0.0.1:3000/play-schedule?year=2019")
     const schedules = await response.json()
     const matches = schedules.map(daySchedule => {
-        const dayMatches = daySchedule.courts.map(court => court.matches).flat()
+        const dayMatches = daySchedule.courts.map(court => court.matches.filter(match => match.eventCode === "MS" || match.eventCode === "LS")).flat()
         dayMatches.forEach(match => {
             match["date"] = daySchedule.displayDate
         })
@@ -29,13 +44,27 @@ async function getPlaySchedule() {
 
     const rounds = ["1", "2", "3", "4", "Q", "S", "F"]
     rounds.forEach(round => {
-        let overview = "<div id='schedule'><ul>"
-        matches.filter(match => match.roundCode === round).forEach(match => {
-            overview += "<li>" + match.match_id + "</li>"
+        const matchesRound = matches.filter(match => match.roundCode === round).sort(match => match.day)
+        let overview = "<div id='schedule'><h1>Selecteer je kapitein voor deze ronde</h1><div id='round-header'>" + matchesRound[0].date + "</div><ul>"
+        matchesRound.forEach(match => {
+            const participants = [match.team1[0].firstNameA + " " + match.team1[0].lastNameA, match.team2[0].firstNameA + " " + match.team2[0].lastNameA]
+            if(selectedPlayers.includes(participants[0]) || selectedPlayers.includes(participants[1])) {
+                const player1 = findPlayer(allPlayers, allPlayerNames, participants[0])
+                const player2 = findPlayer(allPlayers, allPlayerNames, participants[1])
+                console.log(player1)
+                overview += "<li>" + player1?.rank  + " VS. " + player2?.rank + "</li>"
+            }
         }) 
         overview += "</ul></div>"
         document.getElementById("round"+round).innerHTML = overview
     })
+}
+
+function findPlayer(allPlayers, allPlayerNames, participant) {
+    const index = allPlayerNames.indexOf(participant)
+    if(index > -1) {
+        return allPlayers[index]
+    } 
 }
 
 getDashboardData()
@@ -50,37 +79,25 @@ function changeTab(event) {
 
 async function saveTeam() {
     const allSelectedPlayers = selectedPlayersWomen.concat(selectedPlayersMen)
-    const playerName = document.getElementById("input-player-name").value
-    if(playerName) {
-        const body = {playerName: playerName, team: allSelectedPlayers}
-        await fetch("http://127.0.0.1:3000/submit-prono", {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-          }).then(async response => {
-            const text = await response.text()
-            if(response.status === 200) {
-                console.log('test')
-                document.getElementById("submit-status").innerHTML = "<span style=color:green>Jouw team is opgeslagen. Je kan ze bekijken op...</span>"
-            }
-            if(response.status === 400) {
-                document.getElementById("submit-status").innerHTML = "<span style=color:red>" + text + "</span>"
-            }
-          })
-        
-    } else {
-        document.getElementById("submit-status").innerHTML = "<span style=color:red>Je hebt geen naam meegegeven.</span>"
-    }
+    const body = {team: allSelectedPlayers}
+    await fetch("http://127.0.0.1:3000/teams?user=" + sessionStorage.getItem("user") + "&pass=" + sessionStorage.getItem("pass"), {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+        }).then(async response => {
+        const text = await response.text()
+    })
 }
 
-async function getAtpRankings() {
+async function getPlayers() {
     const responseMen = await fetch("http://127.0.0.1:3000/atp-rankings")
     const responseWomen = await fetch("http://127.0.0.1:3000/wta-rankings")
     playersMen = await responseMen.json()
     playersWomen = await responseWomen.json()
+    console.log(playersMen)
     playersMen.forEach(player => {
         const category = determineCategory(player.rank)
         player["category"] = category
@@ -91,8 +108,8 @@ async function getAtpRankings() {
         player["category"] = category
         player["gender"] = "W"
     })
-    const playersMenCheckboxes = createPlayerCheckboxes(playersMen)
-    const playersWomenCheckboxes = createPlayerCheckboxes(playersWomen)
+    const playersMenCheckboxes = createPlayerCheckboxes(playersMen, selectedPlayersMen)
+    const playersWomenCheckboxes = createPlayerCheckboxes(playersWomen, selectedPlayersWomen)
     document.getElementById("playersMen").innerHTML = playersMenCheckboxes
     document.getElementById("playersWomen").innerHTML = playersWomenCheckboxes
 }
@@ -105,13 +122,20 @@ function determineCategory(rank) {
     if(rankParsed > 33) return "D"
 }
 
-function createPlayerCheckboxes(players) {
+function createPlayerCheckboxes(players, selectedPlayers) {
+    const selectedIds = selectedPlayers.map(player => player.personId)
     var checkboxes = ""
     const categories = ["A", "B", "C", "D"]
     categories.forEach(category => {
         checkboxes += "<div><h4>Kies 3 spelers uit categorie " + category + "</h4>"
         players.filter(player => player.category === category).forEach(player => {
-            checkboxes += "<label id=" + player.personId + " style=cursor:pointer><input type=checkbox onclick=addOrRemoveToSelection(this) id=checkbox_" + player.personId + " style=cursor:pointer>" + player.person + "</label>"
+            const selected = selectedIds.indexOf(player.personId) > -1
+            if(selected) {
+                checkboxes += "<label id=" + player.personId + " style=cursor:pointer><input type=checkbox checked onclick=addOrRemoveToSelection(this) id=checkbox_" + player.personId + " style=cursor:pointer>" + player.person + "</label>"
+            } else {
+                checkboxes += "<label id=" + player.personId + " style=cursor:pointer><input type=checkbox onclick=addOrRemoveToSelection(this) id=checkbox_" + player.personId + " style=cursor:pointer>" + player.person + "</label>"
+            }
+            
         })
         checkboxes += "</div>"
     })
@@ -145,14 +169,18 @@ function addToTeam(players, selectedPlayers, event, checked) {
             document.getElementById(event.id).checked = !checked
         } else {
             selectedPlayers.push(selectedPlayer)
-        } 
+            saveTeam()
+        }
+    
 }
 
 function removeFromTeam(players, selectedPlayers, event) {
+    const selectedIds = selectedPlayers.map(player => player.personId)
     const playerToRemove = players.filter(player => player.personId === event.id.split("checkbox_")[1])[0]
-    const index = selectedPlayers.indexOf(playerToRemove)
+    const index = selectedIds.indexOf(playerToRemove.personId)
     if (index > -1) {
         selectedPlayers.splice(index, 1)
+        saveTeam()
     }
 }
 

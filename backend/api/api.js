@@ -11,6 +11,7 @@ const hostname = '127.0.0.1'
 const port = 3000;
 
 const scheduleCache = {}
+const teams = {}
 
 function populatePlayScheduleCache() {
     const years = [2019, 2021]
@@ -24,7 +25,6 @@ function populatePlayScheduleCache() {
             })
         }
     })
-    console.log("found play schedules")
 }
 
 populatePlayScheduleCache()
@@ -39,24 +39,35 @@ api.get("/", (req, res) => {
     res.end('Hello World')
 })
 
-api.post("/submit-prono", (req, res) => {
-    if(!req.body.playerName || req.body.playerName.length === 0) {
+api.get("/teams", (req, res) => {
+    const team = teams[req.query.user]
+    if(!team) {
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/plain')
+        res.end("Geen team gevonden voor gebruiker: " + req.query.user)
+    } else {
+        // check auth
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(teams[req.query.user]))
+    }
+
+})
+
+api.post("/teams", (req, res) => {
+    if(!req.query.user || !req.query.pass) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
-        res.end("Je hebt je naam niet meegegeven.")
+        res.end("Onjuiste gebruikersnaam/wachtwoord.")
     }
     if(!req.body.team) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
         res.end("Je hebt geen spelers geselecteerd. Selecteer 3 spelers per categorie voor mannen en vrouwen en ga daarna verder.")
     }
-    const categories = ["A", "B", "C", "D"]
-    const badCategories = categories.filter(category => req.body.team.filter(player => player.category === category).length !== 6)
-    if(badCategories.length > 0) {
-        res.statusCode = 400
-        res.setHeader('Content-Type', 'text/plain')
-        res.end("Je hebt niet genoeg of te veel spelers geselecteerd voor categorieën: " + badCategories.join(", "))
-    }
+
+    //TODO check valid auth
+    teams[req.query.user] = req.body.team
     res.statusCode = 200
     res.end()
     
@@ -99,7 +110,6 @@ api.get("/play-schedule", (req, res) => {
     const year = req.query.year
     const fromCache = scheduleCache[year]
     if(fromCache) {
-        console.log("from cache")
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify(fromCache))
