@@ -5,10 +5,10 @@ let selectedPlayersWomen = []
 
 let tab = "team"
 
-function getDashboardData() {
+async function getDashboardData() {
     getAtpRankings()
     getTeam()
-    getPlaySchedule()
+    await getPlaySchedule()
 }
 
 function getTeam() {
@@ -16,7 +16,26 @@ function getTeam() {
     const pass = sessionStorage.getItem("pass")
 }
 
-function getPlaySchedule() {
+async function getPlaySchedule() {
+    const response = await fetch("http://127.0.0.1:3000/play-schedule?year=2019")
+    const schedules = await response.json()
+    const matches = schedules.map(daySchedule => {
+        const dayMatches = daySchedule.courts.map(court => court.matches).flat()
+        dayMatches.forEach(match => {
+            match["date"] = daySchedule.displayDate
+        })
+        return dayMatches
+    }).flat()
+
+    const rounds = ["1", "2", "3", "4", "Q", "S", "F"]
+    rounds.forEach(round => {
+        let overview = "<div id='schedule'><ul>"
+        matches.filter(match => match.roundCode === round).forEach(match => {
+            overview += "<li>" + match.match_id + "</li>"
+        }) 
+        overview += "</ul></div>"
+        document.getElementById("round"+round).innerHTML = overview
+    })
 }
 
 getDashboardData()
@@ -136,3 +155,15 @@ function removeFromTeam(players, selectedPlayers, event) {
         selectedPlayers.splice(index, 1)
     }
 }
+
+setInterval(
+    function() {
+        if(document.getElementById("error")) {
+            document.getElementById("error").innerHTML = ""
+        }
+        if(document.getElementById("error-submit")) {
+            document.getElementById("error-submit").innerHTML = ""
+        }
+    },
+    10000
+)

@@ -10,6 +10,25 @@ api.use(cors())
 const hostname = '127.0.0.1'
 const port = 3000;
 
+const scheduleCache = {}
+
+function populatePlayScheduleCache() {
+    const years = [2019, 2021]
+    years.forEach(year => {
+        scheduleCache[year] = []
+        for(let day = 1 ; day < 22 ; day++) {
+            exec("./scripts/wimbledon/wimbledon_schedule " + year + " " + day, (err, stdout, stderr) => {
+                if(stdout && !stdout.includes("html")) {
+                    scheduleCache[year].push(JSON.parse(stdout))
+                }
+            })
+        }
+    })
+    console.log("found play schedules")
+}
+
+populatePlayScheduleCache()
+
 api.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 })
@@ -75,3 +94,21 @@ api.get("/wta-rankings", (req, res) => {
         }
     })
 })
+
+api.get("/play-schedule", (req, res) => {
+    const year = req.query.year
+    const fromCache = scheduleCache[year]
+    if(fromCache) {
+        console.log("from cache")
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(fromCache))
+    } else {
+        populatePlayScheduleCache()
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json')
+        res.end(scheduleCache[year])
+    }
+})
+
+

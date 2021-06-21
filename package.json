@@ -1,0 +1,16 @@
+{
+  "name": "valuebet-service",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.905.0",
+    "axios": "^0.21.1",
+    "node-html-parser": "^3.2.0",
+    "node-schedule": "^2.0.0"
+  }
+}
