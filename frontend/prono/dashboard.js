@@ -18,11 +18,43 @@ function changeTab(event) {
 }
 
 async function getDraws() {
-    
+    const rounds = ["1", "2", "3", "4", "Q", "S", "F"]
+    const response = await fetch("http://127.0.0.1:3000/draws?year=2019&user=" + sessionStorage.getItem("user"))
+    const team = await response.json()
+    const matches = team.map(player => player.draw).flat()
+    rounds.forEach(round => {
+        createRoundOverview(matches, round, players)
+    })
+}
+
+function createRoundOverview(matches, round) {
+    const roundMatches = matches.filter(match => match.roundCode === round)
+    let roundOverview = "<div><h2>Ronde " + round +"</h2><div id='captain'>Kies je kapitein: <select>" 
+    // filter players based on round and create option element <option value=,,,>label</option>
+    roundOverview += "</select><ul>"
+    roundMatches.forEach(roundMatch => {
+        const idTeam1 = roundMatch.team1.idA
+        const idTeam2 = roundMatch.team2.idA
+        const team1Category = players.filter(player => player.id === idTeam1)[0].category
+        const team2Category = players.filter(player => player.id === idTeam2)[0].category
+        roundOverview += "<li><div id=" + roundMatch.match_id + ">" + [roundMatch.team1.displayNameA + " (" + team1Category + ")", roundMatch.team2.displayNameA + " (" + team2Category + ")"].join(" - ") + " " + scoresDisplay(roundMatch) + pointsDisplay(roundMatch) + "</div></li>"
+    })
+    const totalPoints = roundMatches.map(match => match.points).reduce((a, b) => a + b, 0)
+    roundOverview += "</ul></div><div id=" + "round" + round + "_points >Totaal behaalde punten: " + totalPoints + "</div>"
+    document.getElementById("round" + round).innerHTML = roundOverview
+}
+
+function scoresDisplay(match) {
+    const setScores = match.scores.sets.map(set => [set[0].score, set[1].score].join("-"))
+    return setScores.join(", ")
+}
+
+function pointsDisplay(match) {
+    return " => " + match.points + " punten"
 }
 
 async function getTeams() {
-    const response = await fetch("http://127.0.0.1:3000/teams?user=" + sessionStorage.getItem("user"))
+    const response = await fetch("http://127.0.0.1:3000/teams?user=" + sessionStorage.getItem("user")).catch(error => console.log(error))
     teams = await response.json()
     selectedMalePlayers = teams.filter(player => player.gender === "M")
     selectedFemalePlayers = teams.filter(player => player.gender === "F")
@@ -42,6 +74,7 @@ async function saveTeam() {
         }).then(async response => {
         const text = await response.text()
     })
+    getDraws()
 }
 
 async function getPlayers() {
@@ -96,7 +129,7 @@ function addOrRemoveToSelection(event) {
         if(male) {
             addToTeam(malePlayers, selectedMalePlayers, event, checked)
         } else {
-            addToTeam(plafemalePlayersyersWomen, selectedFemalePlayers, event, checked)
+            addToTeam(femalePlayers, selectedFemalePlayers, event, checked)
         }
         
     } else {

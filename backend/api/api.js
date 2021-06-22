@@ -13,6 +13,38 @@ const port = 3000;
 const teams = {}
 const draws = {}
 
+function basePoints(category) {
+    if(category === "A") {
+        return 10
+    }
+    if(category === "B") {
+        return 20
+    }
+    if(category === "C") {
+        return 30
+    }
+    if(category === "D") {
+        return 40
+    }
+}
+
+function calculatePoints(team) {
+    const multipliers = {"1": 2, "2": 3, "3": 4, "4": 5, "Q": 6, "S": 7, "F": 7}
+    team.forEach(player => {
+        const category = player.category
+        const base = basePoints(category)
+        player.draw.forEach(match => {
+            if(player.captain) {
+                match["points"] = multipliers[match.roundCode] * base
+            } else {
+                match["points"] = base
+            }
+        })
+    })
+}
+
+
+
 api.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 })
@@ -26,15 +58,24 @@ api.get("/", (req, res) => {
 api.get("/draws", (req, res) => {
     const user = req.query.user
     const team = teams[user]
-    exec("./scripts/wimbledon/wimbledon_draw MS " + req.query.year, (err, stdout, stderr) => {
-        const draws = require("./draws_" + req.query.year + "_" + "MS" + ".json")
-        team.forEach(player => {
-            const playerMatches = draws.matches.filter(match => player.id === match.team1.idA || player.id === match.team2.idA)
-            player["draw"] = playerMatches
-        })
-        res.end(JSON.stringify(team))
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/json')
+    exec("./scripts/wimbledon/wimbledon_draw " + req.query.year, (err, stdout, stderr) => {
+        const maleDraws = require("./draws_" + req.query.year + "_MS.json")
+        const femaleDraws = require("./draws_" + req.query.year + "_LS.json")
+        const matches = maleDraws.matches.concat(femaleDraws.matches)
+        if(team) {
+            team.forEach(player => {
+                const playerMatches = matches.filter(match => player.id === match.team1.idA || player.id === match.team2.idA)
+                player["draw"] = playerMatches
+            })
+            calculatePoints(team)
+            res.statusCode = 200
+            res.setHeader('Content-Type', 'application/json')
+            res.end(JSON.stringify(team))
+        } else {
+            res.statusCode = 404
+            res.setHeader('Content-Type', 'text/plain')
+            res.end("Geen spelers in team")
+        } 
     })
 })
 
