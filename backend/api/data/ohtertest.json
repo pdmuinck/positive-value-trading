@@ -1,0 +1,10 @@
+{
+    "1": [{
+        "captainId": "id",
+        "matchId": "matchId",
+        "selectedPlayers": ["id", "id"],
+        "eventName": "Nadal - Federer",
+        "scores": "6-1, 6-2",
+        "points": 10
+    }]
+}

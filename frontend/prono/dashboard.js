@@ -23,21 +23,69 @@ async function getDraws() {
     const team = await response.json()
     const matches = team.map(player => player.draw).flat()
     rounds.forEach(round => {
-        createRoundOverview(matches, round, players)
+        createRoundOverview(matches, round, team)
     })
 }
 
-function createRoundOverview(matches, round) {
+function selectCaptain(event) {
+    const elementId = event
+    const playerId = document.getElementById(elementId).value.split("|")[0]
+    const round = document.getElementById(elementId).value.split("|")[1]
+    let name 
+    if(selectedFemalePlayers.filter(player => player.id === playerId)[0]) {
+        const player = selectedFemalePlayers.filter(player => player.id === playerId)[0]
+        player.captain.push(round)
+        name = player.last_name + player.first_name
+    } else {
+        const player = selectedMalePlayers.filter(player => player.id === playerId)[0]
+        player.captain.push(round)
+        name = player.last_name + player.first_name
+    }
+    saveTeam()
+}
+
+function createRoundOverview(matches, round, team) {
+    const playerIds = team.map(player => player.id)
+    const captain = team.filter(player => player.captain.includes(round))[0]
     const roundMatches = matches.filter(match => match.roundCode === round)
-    let roundOverview = "<div><h2>Ronde " + round +"</h2><div id='captain'>Kies je kapitein: <select>" 
-    // filter players based on round and create option element <option value=,,,>label</option>
+    const playersRound = []
+    roundMatches.forEach(match => {
+        if(playersRound.indexOf(match.team1.id) === -1) {
+            playersRound.push({id: match.team1.idA, name: match.team1.displayNameA})
+        }
+        if(playersRound.indexOf(match.team2.id) === -1) {
+            playersRound.push({id: match.team2.idA, name: match.team2.displayNameA})
+        }
+    })
+
+    let roundOverview = "<div><h2>Ronde " + round +"</h2>"
+    const foundPlayers = []
+    if(!captain) {
+        roundOverview += "<div id=" + "captain" + round +" >Kies je kapitein: <select id=" + "select-captain-" + round + " onchange='selectCaptain(this.id)'><option></option>" 
+        playersRound.forEach(player => {
+            if(playerIds.includes(player.id) && !foundPlayers.includes(player.id)) {
+                foundPlayers.push(player.id)
+                roundOverview += "<option value=" + player.id + "|" + round + " id=" + player.id + " >" + player.name + "</option>"
+            }
+        })
+    } else {
+        roundOverview += "<div id='chosen-captain'> Jouw kapitein: " + captain.first_name + " " + captain.last_name  +"</div>"
+    }
+    
+    
+    
     roundOverview += "</select><ul>"
+    const uniqueMatches = []
     roundMatches.forEach(roundMatch => {
         const idTeam1 = roundMatch.team1.idA
         const idTeam2 = roundMatch.team2.idA
-        const team1Category = players.filter(player => player.id === idTeam1)[0].category
-        const team2Category = players.filter(player => player.id === idTeam2)[0].category
-        roundOverview += "<li><div id=" + roundMatch.match_id + ">" + [roundMatch.team1.displayNameA + " (" + team1Category + ")", roundMatch.team2.displayNameA + " (" + team2Category + ")"].join(" - ") + " " + scoresDisplay(roundMatch) + pointsDisplay(roundMatch) + "</div></li>"
+        if(!uniqueMatches.includes(roundMatch.match_id)) {
+            uniqueMatches.push(roundMatch.match_id)
+            const team1Category = players.filter(player => player.id === idTeam1)[0]?.category
+            const team2Category = players.filter(player => player.id === idTeam2)[0]?.category
+            roundOverview += "<li><div id=" + roundMatch.match_id + ">" + [roundMatch.team1.displayNameA + " (" + team1Category + ")", roundMatch.team2.displayNameA + " (" + team2Category + ")"].join(" - ") + " " + scoresDisplay(roundMatch) + pointsDisplay(roundMatch) + "</div></li>"
+        }
+
     })
     const totalPoints = roundMatches.map(match => match.points).reduce((a, b) => a + b, 0)
     roundOverview += "</ul></div><div id=" + "round" + round + "_points >Totaal behaalde punten: " + totalPoints + "</div>"

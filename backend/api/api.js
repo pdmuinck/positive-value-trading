@@ -3,7 +3,7 @@ const cors = require("cors")
 const exec = require("child_process").exec
 
 const api = express()
-api.use(express.json())
+api.use(express.json({limit: "50mb"}))
 api.use(express.urlencoded())
 api.use(cors())
 
@@ -34,10 +34,13 @@ function calculatePoints(team) {
         const category = player.category
         const base = basePoints(category)
         player.draw.forEach(match => {
-            if(player.captain) {
+            const playerOrder = match.team1.idA === player.id ? "1" : "2"
+            if(playerOrder === match.winner && player.captain.includes(match.roundCode)) {
                 match["points"] = multipliers[match.roundCode] * base
-            } else {
+            } else if(playerOrder === match.winner){
                 match["points"] = base
+            } else {
+                match["points"] = 0
             }
         })
     })
@@ -63,11 +66,20 @@ api.get("/draws", (req, res) => {
         const femaleDraws = require("./draws_" + req.query.year + "_LS.json")
         const matches = maleDraws.matches.concat(femaleDraws.matches)
         if(team) {
+            const multipliers = {"1": 2, "2": 3, "3": 4, "4": 5, "Q": 6, "S": 7, "F": 7}
             team.forEach(player => {
+                const base = basePoints(player.category)
                 const playerMatches = matches.filter(match => player.id === match.team1.idA || player.id === match.team2.idA)
+                playerMatches.forEach(match => {
+                    const playerOrder = match.team1.idA === player.id ? "1" : "2"
+                    if(playerOrder === match.winner && player.captain.includes(match.roundCode)) {
+                        match["points"] = multipliers[match.roundCode] * base
+                    } else if(playerOrder === match.winner){
+                        match["points"] = base
+                    }
+                })
                 player["draw"] = playerMatches
             })
-            calculatePoints(team)
             res.statusCode = 200
             res.setHeader('Content-Type', 'application/json')
             res.end(JSON.stringify(team))
@@ -83,6 +95,7 @@ api.get("/players", (req, res) => {
     exec("./scripts/wimbledon/players " + req.query.year, (err, stdout, stderr) => {
         const players = require("./scripts/wimbledon/players" + req.query.year + ".json")
         const playersFiltered = players.players.filter(player => player.events_entered.filter(event => event.event_id === "MS" || event.event_id === "LS").length > 0)
+        playersFiltered.forEach(player => player["captain"] = [])
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify(playersFiltered))
@@ -129,9 +142,5 @@ api.post("/competitions/:competition/editions/:edition/teams", async (req, res) 
     res.statusCode = 200
     res.end()
 })
-
-async function getDraws(competition, edition, team) {
-    
-}
 
 
