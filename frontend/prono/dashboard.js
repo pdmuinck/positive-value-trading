@@ -1,12 +1,13 @@
 let players = []
-let selectedPlayersMen = []
-let selectedPlayersWomen = []
+let selectedMalePlayers = []
+let selectedFemalePlayers = []
 
 let tab = "team"
 
+const currentDate = new Date()
+getTeams()
 getPlayers()
-
-//getDashboardData()
+getDraws()
 
 function changeTab(event) {
     const id = event.id.split("span_")[1]
@@ -16,10 +17,22 @@ function changeTab(event) {
     tab = id
 }
 
+async function getDraws() {
+    
+}
+
+async function getTeams() {
+    const response = await fetch("http://127.0.0.1:3000/teams?user=" + sessionStorage.getItem("user"))
+    teams = await response.json()
+    selectedMalePlayers = teams.filter(player => player.gender === "M")
+    selectedFemalePlayers = teams.filter(player => player.gender === "F")
+
+}
+
 async function saveTeam() {
-    const allSelectedPlayers = selectedPlayersWomen.concat(selectedPlayersMen)
-    const body = {team: allSelectedPlayers}
-    await fetch("http://127.0.0.1:3000/teams?user=" + sessionStorage.getItem("user") + "&pass=" + sessionStorage.getItem("pass"), {
+    const allSelectedPlayers = selectedFemalePlayers.concat(selectedMalePlayers)
+    const body = allSelectedPlayers
+    await fetch("http://127.0.0.1:3000/competitions/wimbledon/editions/2019/teams?user=" + sessionStorage.getItem("user") + "&pass=" + sessionStorage.getItem("pass"), {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -32,18 +45,17 @@ async function saveTeam() {
 }
 
 async function getPlayers() {
-    const players = await fetch("http://127.0.0.1:3000/players?year=2019").then(response => response.json()).catch(error => console.log(error))
-    //console.log(players)
-    /*players.forEach(player => {
+    const response = await fetch("http://127.0.0.1:3000/players?year=2019")
+    players = await response.json()
+    players.forEach(player => {
         const category = determineCategory(parseInt(player.singles_rank))
         player["category"] = category
     })
-    /*
-    const playersMenCheckboxes = createPlayerCheckboxes(players.filter(player => player.gender === "M"), selectedPlayersMen)
-    const playersWomenCheckboxes = createPlayerCheckboxes(players.filter(player => player.gender === "F"), selectedPlayersWomen)
+
+    const playersMenCheckboxes = createPlayerCheckboxes(players.filter(player => player.gender === "M"), selectedMalePlayers)
+    const playersWomenCheckboxes = createPlayerCheckboxes(players.filter(player => player.gender === "F"), selectedFemalePlayers)
     document.getElementById("playersMen").innerHTML = playersMenCheckboxes
     document.getElementById("playersWomen").innerHTML = playersWomenCheckboxes
-    */
 }
 
 function determineCategory(rank) {
@@ -77,32 +89,34 @@ function createPlayerCheckboxes(players, selectedPlayers) {
 function addOrRemoveToSelection(event) {
     const checked = document.getElementById(event.id).checked
     const id = event.id.split("checkbox_")[1]
-    const isMenPlayer = id.includes("atp")
+    const male = id.includes("atp")
+    const malePlayers = players.filter(player => player.gender === "M")
+    const femalePlayers = players.filter(player => player.gender === "F")
     if(checked){
-        if(isMenPlayer) {
-            addToTeam(playersMen, selectedPlayersMen, event, checked)
+        if(male) {
+            addToTeam(malePlayers, selectedMalePlayers, event, checked)
         } else {
-            addToTeam(playersWomen, selectedPlayersWomen, event, checked)
+            addToTeam(plafemalePlayersyersWomen, selectedFemalePlayers, event, checked)
         }
         
     } else {
-        if(isMenPlayer) {
-            removeFromTeam(playersMen, selectedPlayersMen, event)
+        if(male) {
+            removeFromTeam(malePlayers, selectedMalePlayers, event)
         } else {
-            removeFromTeam(playersWomen, selectedPlayersWomen, event)
+            removeFromTeam(femalePlayers, selectedFemalePlayers, event)
         }
     }
 }
 
 function addToTeam(players, selectedPlayers, event, checked) {
     const selectedPlayer = players.filter(player => player.id === event.id.split("checkbox_")[1])[0]
-        if(selectedPlayers.filter(player => player.category === selectedPlayer.category).length === 3) {
-            document.getElementById("error").innerHTML = "<span style=color:red>Je hebt al 3 spelers uit de categorie " + selectedPlayer.category + " gekozen. Je kan uit je huidige selectie een speler verwijderen en daarna een nieuwe toevoegen."
-            document.getElementById(event.id).checked = !checked
-        } else {
-            selectedPlayers.push(selectedPlayer)
-            saveTeam()
-        }
+    if(selectedPlayers.filter(player => player.category === selectedPlayer.category).length === 3) {
+        document.getElementById("error").innerHTML = "<span style=color:red>Je hebt al 3 spelers uit de categorie " + selectedPlayer.category + " gekozen. Je kan uit je huidige selectie een speler verwijderen en daarna een nieuwe toevoegen."
+        document.getElementById(event.id).checked = !checked
+    } else {
+        selectedPlayers.push(selectedPlayer)
+        saveTeam()
+    }
     
 }
 

@@ -4,8 +4,7 @@
 wimbledon_draws(){
     competition=$1
     year=$2
-    local output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/draws/'"${competition}"'.json')
-    echo "${output}"
+    curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/draws/'"${competition}"'.json' > draws_"${year}"_"${competition}".json
 }
 
 wimbledon_draws $1 $2
