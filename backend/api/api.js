@@ -95,13 +95,25 @@ api.get("/players", (req, res) => {
     exec("./scripts/wimbledon/players " + req.query.year, (err, stdout, stderr) => {
         const players = require("./scripts/wimbledon/players" + req.query.year + ".json")
         const playersFiltered = players.players.filter(player => player.events_entered.filter(event => event.event_id === "MS" || event.event_id === "LS").length > 0)
-        playersFiltered.forEach(player => player["captain"] = [])
+        playersFiltered.forEach(player => {
+            player["captain"] = []
+            player["category"] = determineCategory(player.singles_rank)
+        })
+        const toReturn = playersFiltered.map(player => { return {id: player.id, category: player.category, name: [player.first_name[0], player.last_name].join(". ")}})
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify(playersFiltered))
+        res.end(JSON.stringify(toReturn))
         
     })
 })
+
+function determineCategory(rank) {
+    const rankParsed = parseInt(rank)
+    if(rankParsed <= 7) return "A"
+    if(rankParsed <= 17 && rankParsed > 7) return "B"
+    if(rankParsed <= 33 && rankParsed > 17) return "C"
+    if(rankParsed > 33) return "D"
+}
 
 api.get("/teams", (req, res) => {
     const team = teams[req.query.user]
