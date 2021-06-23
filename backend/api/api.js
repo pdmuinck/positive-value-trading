@@ -11,6 +11,7 @@ const hostname = '127.0.0.1'
 const port = 3000;
 
 const teams = {}
+const captains = {}
 const draws = {}
 
 function basePoints(category) {
@@ -27,26 +28,6 @@ function basePoints(category) {
         return 40
     }
 }
-
-function calculatePoints(team) {
-    const multipliers = {"1": 2, "2": 3, "3": 4, "4": 5, "Q": 6, "S": 7, "F": 7}
-    team.forEach(player => {
-        const category = player.category
-        const base = basePoints(category)
-        player.draw.forEach(match => {
-            const playerOrder = match.team1.idA === player.id ? "1" : "2"
-            if(playerOrder === match.winner && player.captain.includes(match.roundCode)) {
-                match["points"] = multipliers[match.roundCode] * base
-            } else if(playerOrder === match.winner){
-                match["points"] = base
-            } else {
-                match["points"] = 0
-            }
-        })
-    })
-}
-
-
 
 api.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
@@ -150,6 +131,21 @@ api.get("/teams", (req, res) => {
 
 })
 
+api.get("/captains", (req, res) => {
+    const foundCaptains = captains[req.query.user]
+    if(!foundCaptains) {
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/plain')
+        res.end("Geen kapiteinen gevonden voor gebruiker: " + req.query.user)
+    } else {
+        // check auth
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(foundCaptains[req.query.user]))
+    }
+
+})
+
 function checkAuth(req, res) {
     //TODO check valid auth
     if(!req.query.user || !req.query.pass) {
@@ -171,6 +167,17 @@ api.post("/competitions/:competition/editions/:edition/teams", async (req, res) 
 
     const team = req.body
     teams[req.query.user] = team
+    res.statusCode = 200
+    res.end()
+})
+
+api.post("/competitions/:competition/editions/:edition/captains", async (req, res) => {
+    checkAuth(req, res)
+    const competition = req.params.competition
+    const edition = req.params.edition
+
+    const captains = req.body
+    captains[req.query.user] = captains
     res.statusCode = 200
     res.end()
 })

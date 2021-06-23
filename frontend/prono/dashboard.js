@@ -1,12 +1,27 @@
 let players = []
 let team = []
+let captains = []
 
 let tab = "team"
 
 const currentDate = new Date()
-getTeams()
-getPlayers()
-//getDraws()
+
+async function getAllData() {
+    getTeams()
+    await getPlayers()
+    
+    
+    await getDraws()
+    getCaptains()
+}
+
+getAllData()
+
+async function getCaptains() {
+    const response = await fetch("http://127.0.0.1:3000/captains?year=2019&user=" + sessionStorage.getItem("user"))
+    captains = await response.json()
+}
+
 
 async function getPlayers() {
     const response = await fetch("http://127.0.0.1:3000/players?year=2019")
@@ -79,7 +94,7 @@ async function saveTeam() {
         }).then(async response => {
         const text = await response.text()
     })
-    //getDraws()
+    getDraws()
 }
 
 async function getTeams() {
@@ -96,78 +111,73 @@ function changeTab(event) {
 }
 
 async function getDraws() {
+    const playerIds = team.map(player => player.id)
     const rounds = ["1", "2", "3", "4", "Q", "S", "F"]
     const response = await fetch("http://127.0.0.1:3000/draws?year=2019&user=" + sessionStorage.getItem("user"))
-    const team = await response.json()
-    const matches = team.map(player => player.draw).flat()
-    rounds.forEach(round => {
-        createRoundOverview(matches, round, team)
+    const draws = await response.json()
+    rounds.forEach((round, index) => {
+        const roundMatches = draws[round].filter(match => {
+            match["participantInTeam"] = [playerIds.includes(match.participants[0].id), playerIds.includes(match.participants[1].id)]
+            return match["participantInTeam"].includes(true)
+        })
+        //console.log(round)
+        createRoundOverview(roundMatches, captains[index])
     })
 }
 
 function selectCaptain(event) {
+    const rounds = ["1", "2", "3", "4", "Q", "S", "F"]
     const elementId = event
     const playerId = document.getElementById(elementId).value.split("|")[0]
     const round = document.getElementById(elementId).value.split("|")[1]
-    let name 
-    if(selectedFemalePlayers.filter(player => player.id === playerId)[0]) {
-        const player = selectedFemalePlayers.filter(player => player.id === playerId)[0]
-        player.captain.push(round)
-        name = player.last_name + player.first_name
-    } else {
-        const player = selectedMalePlayers.filter(player => player.id === playerId)[0]
-        player.captain.push(round)
-        name = player.last_name + player.first_name
-    }
-    saveTeam()
+    const roundIndex = rounds.indexOf(round)
+    captains[roundIndex] = playerId
+    saveCaptain()
 }
 
-function createRoundOverview(matches, round, team) {
-    const playerIds = team.map(player => player.id)
-    const captain = team.filter(player => player.captain.includes(round))[0]
-    const roundMatches = matches.filter(match => match.roundCode === round)
-    const playersRound = []
-    roundMatches.forEach(match => {
-        if(playersRound.indexOf(match.team1.id) === -1) {
-            playersRound.push({id: match.team1.idA, name: match.team1.displayNameA})
-        }
-        if(playersRound.indexOf(match.team2.id) === -1) {
-            playersRound.push({id: match.team2.idA, name: match.team2.displayNameA})
-        }
+async function saveCaptain() {
+    await fetch("http://127.0.0.1:3000/competitions/wimbledon/editions/2019/captains?user=" + sessionStorage.getItem("user") + "&pass=" + sessionStorage.getItem("pass"), {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(captains)
+        }).then(async response => {
+        const text = await response.text()
     })
+}
 
-    let roundOverview = "<div><h2>Ronde " + round +"</h2>"
-    const foundPlayers = []
-    if(!captain) {
-        roundOverview += "<div id=" + "captain" + round +" >Kies je kapitein: <select id=" + "select-captain-" + round + " onchange='selectCaptain(this.id)'><option></option>" 
-        playersRound.forEach(player => {
-            if(playerIds.includes(player.id) && !foundPlayers.includes(player.id)) {
-                foundPlayers.push(player.id)
-                roundOverview += "<option value=" + player.id + "|" + round + " id=" + player.id + " >" + player.name + "</option>"
-            }
+function createRoundOverview(matches, captain) {
+    if(matches && matches.length > 0) {
+        let round = "<div><h2>Ronde " + matches[0].round +"</h2>"
+        let totalPoints = 0
+        if(!captain) {
+            round += "<div id=" + "captain" + matches[0].round +" >Kies je kapitein: <select id=" + "select-captain-" + matches[0].round + " onchange='selectCaptain(this.id)'><option></option>" 
+            matches.forEach(match => {
+                if(match.participantInTeam[0]) {
+                    round += "<option value=" + match.participants[0].id + "|" + match.round + " id=" + match.participants[0].id + " >" + match.participants[0].name + "</option>"
+                }
+                if(match.participantInTeam[1]) {
+                    round += "<option value=" + match.participants[1].id + "|" + match.round + " id=" + match.participants[1].id + " >" + match.participants[1].name + "</option>"
+                }
+            })
+            round += "</select><ul>"
+        } else {
+            round += "<div id='chosen-captain'> Jouw kapitein: " + captain   +"</div>"
+        }
+        matches.map(match => {
+            const winnerIndex = match.participants.map(participant => participant.id).indexOf(match.winner)
+            const winner = match.participants[winnerIndex]
+            const winnerInTeam = match.participantInTeam[winnerIndex]
+            const points = winnerInTeam ? match.points[winnerIndex] : 0
+            totalPoints += points
+            round += "<li><div id=" + match.matchId + ">" + [match.participants[0].name + " (" + match.participants[0].category + ")", match.participants[1].name + " (" + match.participants[1].category + ")"].join(" - ") + " " + match.scores + " => " + points + " punten</div></li>"
         })
-    } else {
-        roundOverview += "<div id='chosen-captain'> Jouw kapitein: " + captain.first_name + " " + captain.last_name  +"</div>"
+        round += "</ul></div><div>Totaal behaalde punten: " + totalPoints + "</div>"
+        document.getElementById("round" + matches[0].round).innerHTML = round
     }
-    
-    
-    
-    roundOverview += "</select><ul>"
-    const uniqueMatches = []
-    roundMatches.forEach(roundMatch => {
-        const idTeam1 = roundMatch.team1.idA
-        const idTeam2 = roundMatch.team2.idA
-        if(!uniqueMatches.includes(roundMatch.match_id)) {
-            uniqueMatches.push(roundMatch.match_id)
-            const team1Category = players.filter(player => player.id === idTeam1)[0]?.category
-            const team2Category = players.filter(player => player.id === idTeam2)[0]?.category
-            roundOverview += "<li><div id=" + roundMatch.match_id + ">" + [roundMatch.team1.displayNameA + " (" + team1Category + ")", roundMatch.team2.displayNameA + " (" + team2Category + ")"].join(" - ") + " " + scoresDisplay(roundMatch) + pointsDisplay(roundMatch) + "</div></li>"
-        }
 
-    })
-    const totalPoints = roundMatches.map(match => match.points).reduce((a, b) => a + b, 0)
-    roundOverview += "</ul></div><div id=" + "round" + round + "_points >Totaal behaalde punten: " + totalPoints + "</div>"
-    document.getElementById("round" + round).innerHTML = roundOverview
 }
 
 function scoresDisplay(match) {
