@@ -59,37 +59,57 @@ api.get("/", (req, res) => {
 })
 
 api.get("/draws", (req, res) => {
+    const players = require("./scripts/wimbledon/players" + req.query.year + ".json")
     const user = req.query.user
     const team = teams[user]
+    
     exec("./scripts/wimbledon/wimbledon_draw " + req.query.year, (err, stdout, stderr) => {
+        const output = {}
         const maleDraws = require("./draws_" + req.query.year + "_MS.json")
         const femaleDraws = require("./draws_" + req.query.year + "_LS.json")
-        const matches = maleDraws.matches.concat(femaleDraws.matches)
-        if(team) {
-            const multipliers = {"1": 2, "2": 3, "3": 4, "4": 5, "Q": 6, "S": 7, "F": 7}
-            team.forEach(player => {
-                const base = basePoints(player.category)
-                const playerMatches = matches.filter(match => player.id === match.team1.idA || player.id === match.team2.idA)
-                playerMatches.forEach(match => {
-                    const playerOrder = match.team1.idA === player.id ? "1" : "2"
-                    if(playerOrder === match.winner && player.captain.includes(match.roundCode)) {
-                        match["points"] = multipliers[match.roundCode] * base
-                    } else if(playerOrder === match.winner){
-                        match["points"] = base
-                    }
-                })
-                player["draw"] = playerMatches
+        const allDraws = [maleDraws, femaleDraws]
+        allDraws.forEach(draw => {
+            draw.matches.forEach(match => {
+                const matchConverted = convertMatch(match, players)
+                const round = match.roundCode
+                if(output[round]) {
+                    output[round].push(matchConverted)
+                } else {
+                    output[round] = [matchConverted]
+                }
             })
-            res.statusCode = 200
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify(team))
-        } else {
-            res.statusCode = 404
-            res.setHeader('Content-Type', 'text/plain')
-            res.end("Geen spelers in team")
-        } 
+        })
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(output))
     })
 })
+
+function convertMatch(match, players) {
+    const multipliers = {"1": 2, "2": 3, "3": 4, "4": 5, "Q": 6, "S": 7, "F": 7}
+    const player1 = players.players.filter(player => player.id === match.team1.idA)[0]
+    const player2 = players.players.filter(player => player.id === match.team2.idA)[0]
+    const category1 = determineCategory(player1.singles_rank)
+    const category2 = determineCategory(player2.singles_rank)
+    const setScores = match.scores.sets.map(set => [set[0].score, set[1].score].join("-")).join(", ")
+    return {
+        matchId: match.match_id,
+        round: match.roundCode,
+        participants: [createPlayerShort(match.team1, category1), createPlayerShort(match.team2, category2)],
+        winner: match.team1.won ? match.team1.idA : match.team2.idA,
+        scores: setScores,
+        points: [basePoints(category1), basePoints(category2)],
+        multiplier: multipliers[match.roundCode]
+    }
+}
+
+function createPlayerShort(player, category) {
+    return {
+        id: player.idA,
+        name: player.displayNameA,
+        category: category
+    }
+}
 
 api.get("/players", (req, res) => {
     exec("./scripts/wimbledon/players " + req.query.year, (err, stdout, stderr) => {
