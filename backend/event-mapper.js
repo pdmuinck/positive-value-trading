@@ -25,22 +25,17 @@ const requests = {
 
      */
     "EURO2020": [
-        /*
         getAltenarEventsForCompetition("3031"),
         getBetwayEventsForCompetition("matches", "euro-2020"),
         getBingoalEventsForCompetition("9153"),
-
-         */
-        //getCashPointEventsForCompetition("6898"),
-        //getBwinEventsForCompetition("16409"),
-        //getKambiEventsForCompetition("2000123941"),
+        getCashPointEventsForCompetition("56529"),
+        //getBwinEventsForCompetition("74435"),
+        getKambiEventsForCompetition("2000123941"),
         getLadbrokesEventsForCompetition("eu-euro-2020"),
-        /*getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
         getSbtechEventsForCompetition("44349"),
-        getStanleybetEventsForCompetition("-2690"),
+        //getStanleybetEventsForCompetition("-2690"),
         getZetBetEventsForCompetition("36147-euro_2020")
-
-         */
     ]
 }
 
@@ -51,7 +46,6 @@ exports.getEvents = async function getEvents() {
     const events = await Promise.all(leagueRequests).then(values => values)
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
     const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
-
     const requestsNotMappedToSportRadar = {
         /*
         "JUPILER_PRO_LEAGUE": [
@@ -68,6 +62,7 @@ exports.getEvents = async function getEvents() {
     }
     const leagueRequestsNotMapped = Object.values(requestsNotMappedToSportRadar).flat()
     return Promise.all(leagueRequestsNotMapped).then(values => {
+        //console.log(values)
         return mergeEvents(values.flat().filter(x => x).concat(events.flat()), sportRadarMatches)
     })
 }

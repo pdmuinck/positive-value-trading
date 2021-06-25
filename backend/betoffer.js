@@ -27,7 +27,7 @@ function identifyValueBets(eventInfo){
             const vigFreePrediction = pinnaclePrice.price * pinnaclePrice.margin
             return Object.keys(betOffers).filter(bookmaker => bookmaker !== "PINNACLE").map(bookmaker => {
                 const bookmakerPrice = betOffers[bookmaker]
-                const value = (1 / vigFreePrediction * bookmakerPrice.price) - 1;
+                const value = (1 / vigFreePrediction * bookmakerPrice.price) - 1
                 if (value > 0) {
                     return new ValueBetFoundEvent(betOfferKey, value, eventInfo, bookmaker, bookmakerPrice.price,
                         bookmakerPrice.margin, vigFreePrediction, pinnaclePrice.price, pinnaclePrice.margin);
@@ -71,7 +71,7 @@ async function getBetOffers(event) {
         let pinnacleOffers = []
         if(pinnacleRequests) {
             pinnacleOffers = await Promise.all(pinnacleRequests).then(values => {
-                return parsePinnacleBetOffers(new ApiResponse(Provider.PINNACLE, values))
+                return parsePinnacleBetOffers(values[0], values[1])
             })
         }
         return Promise.all(requests).then(values => {

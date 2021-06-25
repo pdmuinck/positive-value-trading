@@ -30,7 +30,7 @@ exports.ValueBetFoundEvent = class ValueBetFoundEvent {
         this.prediction = prediction
         this.pinnacleMargin = pinnacleMargin
         this.pinnaclePrice = pinnaclePrice
-        this.csvLine = [new Date(), this.betOfferKey, this.value, this.bookmaker, this.price, this.event.sportRadarEventUrl, this.prediction].join(";")
+        this.csvLine = [new Date(), this.betOfferKey, this.value, this.bookmaker, this.price, this.prediction, this.event.sportRadarEventUrl].join(";")
     }
 }
 

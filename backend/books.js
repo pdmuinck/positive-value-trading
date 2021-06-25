@@ -132,6 +132,7 @@ exports.getCashPointEventsForCompetition = async function getCashPointEventsForC
         }
     }
     const payload = {"leagueIds": [parseInt(id)], "sportId": 1,"gameTypes":[1, 4, 5],"limit":20000,"jurisdictionId":30}
+    const books = [Bookmaker.BETCENTER]
     const url = getGamesUrl(domains[Bookmaker.CASHPOINT])
     return axios.post(url, payload, headers)
         .then(response => {
@@ -201,9 +202,16 @@ exports.getPinnacleEventsForCompetition = async function getPinnacleEventsForCom
             "Content-Type": "application/json"
         }
     }
+
+    //console.log(sportRadarMatches.map(match => match.sportRadarEventUrl))
+
     const leagueUrl = "https://guest.api.arcadia.pinnacle.com/0.1/leagues/" + id + "/matchups"
     return axios.get(leagueUrl, requestConfig).then(response => {
+
         return response.data.filter(event => !event.parent).map(event => {
+            //console.log(pinnacle_sportradar[event.participants[0].name])
+            //console.log(pinnacle_sportradar[event.participants[1].name])
+            //console.log(sportRadarMatches.map(match => match.participants))
             const match = sportRadarMatches.filter(match => match && match.participants[0] === pinnacle_sportradar[event.participants[0].name] &&
                 match.participants[1] === pinnacle_sportradar[event.participants[1].name])[0]
             if(match) {
@@ -211,6 +219,7 @@ exports.getPinnacleEventsForCompetition = async function getPinnacleEventsForCom
                     leagueUrl, ["https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id + "/related",
                         "https://guest.api.arcadia.pinnacle.com/0.1/matchups/" + event.id + "/markets/related/straight"],
                     requestConfig, undefined, "GET")
+
                 return new Event(match.sportRadarId, match.sportRadarEventUrl, [bookmakerInfo])
             }
         })
@@ -235,8 +244,24 @@ const pinnacle_sportradar = {
     "Genk": 4675,
     "SV Zulte-Waregem": 548844,
     "Gent": 4677,
-    "Anderlecht": 4671
-};
+    "Anderlecht": 4671,
+    "Wales": 9541,
+    "Denmark": 9528,
+    "Austria": 9518,
+    "Italy": 9513,
+    "Netherlands": 150,
+    "Czech Republic": 57,
+    "Belgium": 9516,
+    "Portugal": 9531,
+    "Spain": 9535,
+    "Croatia": 10005,
+    "Switzerland": 9539,
+    "France": 77728,
+    "Germany": 6171,
+    "England": 6170,
+    "Ukraine": 9504,
+    "Sweden": 9537
+}
 
 exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompetition(id) {
     const books = [
