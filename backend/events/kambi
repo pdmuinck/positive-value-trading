@@ -1,0 +1,21 @@
+#!/bin/bash
+
+get_events() {
+  local events=$(curl 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'"${1}"'.json?includeParticipants=false')
+  local event_ids=$(echo "${events}" | jq '.events | .[] | .id')
+  for id in ${event_ids}; do
+    test=$(get_sport_radar_id "${id}")
+    echo "${test}"
+  done
+}
+
+get_sport_radar_id() {
+  local sportradar_match=$(curl 'https://nl.unibet.be/kambi-rest-api/sportradar/widget/event/nl/'"${1}")
+  local sportradar_widget_url=$(echo "${sportradar_match}" | jq '.content | .[0].Resource')
+  IFS='matchId='
+  read -ra ADDR <<<"$sportradar_widget_url"
+  id="${ADDR[*]: -1}" | sed "s/\\\"//g"
+  echo "${id}"
+}
+
+get_events $1

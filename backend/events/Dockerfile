@@ -2,4 +2,4 @@ FROM node
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install
-CMD [ "node", "get-events.js" ]
+CMD ["node", "get-events.js"]

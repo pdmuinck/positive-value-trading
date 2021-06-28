@@ -1,29 +1,5 @@
-const axios = require("axios")
+const axios = require('axios')
 const parser = require('node-html-parser')
-
-class Event {
-    constructor(sportRadarId, sportRadarEventUrl, bookmakerInfo, sportRadarMatch, betOffers) {
-        this.sportRadarId = sportRadarId
-        this.sportRadarEventUrl = sportRadarEventUrl
-        this.sportRadarMatch = sportRadarMatch
-        this.bookmakerInfo = bookmakerInfo
-        this.betOffers = betOffers
-    }
-}
-
-class BookmakerInfo {
-    constructor(provider, bookmaker, leagueId, eventId, leagueUrl, eventUrl, headers, requestBody, httpMethod) {
-        this.provider = provider
-        this.bookmaker = bookmaker
-        this.leagueId = leagueId
-        this.eventId = eventId
-        this.leagueUrl = leagueUrl
-        this.eventUrl = eventUrl
-        this.headers = headers
-        this.requestBody = requestBody
-        this.httpMethod = httpMethod
-    }
-}
 
 const Bookmaker = {
     "GOLDEN_PALACE": "GOLDEN_PALACE",
@@ -84,13 +60,134 @@ const Provider = {
     "ZETBET" : 'ZETBET'
 }
 
+class SportRadarMatch {
+    constructor(sportRadarId, sportRadarEventUrl, participants, response) {
+        this.sportRadarId = sportRadarId
+        this.sportRadarEventUrl = sportRadarEventUrl;
+        this.participants = participants
+        this.response = response
+    }
+}
+
+async function getSportRadarMatch(eventId) {
+    const url = getSportRadarEventUrl(eventId)
+    return axios.get(url).then(response => {
+        if(response.data.doc[0].data.match) {
+            const participants = [response.data.doc[0].data.match.teams.home._id, response.data.doc[0].data.match.teams.away._id]
+            return new SportRadarMatch(eventId, url, participants, response.data.doc[0].data.match)
+        }
+    })
+}
+
+const requests = {
+    /*
+    "JUPILER_PRO_LEAGUE": [
+        getAltenarEventsForCompetition("1000000490"),
+        getBetwayEventsForCompetition("belgium", "first-division-a"),
+        getBingoalEventsForCompetition("25"),
+        getCashPointEventsForCompetition("6898"),
+        getBwinEventsForCompetition("16409"),
+        getKambiEventsForCompetition("1000094965"),
+        getLadbrokesEventsForCompetition("be-jupiler-league1"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
+        getSbtechEventsForCompetition("40815"),
+        getScoooreEventsForCompetition("18340"),
+        getStanleybetEventsForCompetition("38"),
+        getZetBetEventsForCompetition("101-pro_league_1a"),
+    ],
+
+     */
+    "EURO2020": [
+        getAltenarEventsForCompetition("3031"),
+        getBetwayEventsForCompetition("matches", "euro-2020"),
+        getBingoalEventsForCompetition("9153"),
+        getCashPointEventsForCompetition("56529"),
+        //getBwinEventsForCompetition("74435"),
+        getKambiEventsForCompetition("2000123941"),
+        getLadbrokesEventsForCompetition("eu-euro-2020"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
+        getSbtechEventsForCompetition("44349"),
+        //getStanleybetEventsForCompetition("-2690"),
+        getZetBetEventsForCompetition("36147-euro_2020")
+    ]
+}
+
+async function getEvents() {
+    const leagueRequests = Object.values(requests).flat()
+    const events = await Promise.all(leagueRequests).then(values => values)
+    const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
+    const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
+    const requestsNotMappedToSportRadar = {
+        /*
+        "JUPILER_PRO_LEAGUE": [
+            getPinnacleEventsForCompetition("1817", sportRadarMatches),
+            //getBet90EventsForCompetition("457", sportRadarMatches)
+            //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
+            //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
+        ],
+
+         */
+        "EURO2020": [
+            getPinnacleEventsForCompetition("5264", sportRadarMatches),
+        ]
+    }
+    const leagueRequestsNotMapped = Object.values(requestsNotMappedToSportRadar).flat()
+    return Promise.all(leagueRequestsNotMapped).then(values => {
+        //console.log(values)
+        console.log(JSON.stringify(mergeEvents(values.flat().filter(x => x).concat(events.flat()), sportRadarMatches)))
+    })
+}
+
+function mergeEvents(events, sportRadarMatches) {
+    const result = {}
+    events.forEach(event => {
+        if (event && event.sportRadarId) {
+            const sportRadarId = event.sportRadarId.toString()
+            const storedEvent = result[sportRadarId]
+            if (storedEvent) {
+                if (storedEvent.bookmakerInfo) {
+                    const bookMakerInfos = storedEvent.bookmakerInfo.concat(event.bookmakerInfo)
+                    result[sportRadarId] = new Event(sportRadarId, event.sportRadarEventUrl, bookMakerInfos,
+                        storedEvent.sportRadarMatch, undefined)
+                }
+            } else {
+                event.sportRadarMatch = sportRadarMatches.filter(match => match.sportRadarId.toString() === event.sportRadarId.toString())[0]
+                result[sportRadarId] = event
+            }
+        }
+    })
+    return Object.values(result).filter(event => event.sportRadarId != "" && event.sportRadarMatch)
+}
+
+class Event {
+    constructor(sportRadarId, sportRadarEventUrl, bookmakerInfo, sportRadarMatch, betOffers) {
+        this.sportRadarId = sportRadarId
+        this.sportRadarEventUrl = sportRadarEventUrl
+        this.sportRadarMatch = sportRadarMatch
+        this.bookmakerInfo = bookmakerInfo
+        this.betOffers = betOffers
+    }
+}
+
+class BookmakerInfo {
+    constructor(provider, bookmaker, leagueId, eventId, leagueUrl, eventUrl, headers, requestBody, httpMethod) {
+        this.provider = provider
+        this.bookmaker = bookmaker
+        this.leagueId = leagueId
+        this.eventId = eventId
+        this.leagueUrl = leagueUrl
+        this.eventUrl = eventUrl
+        this.headers = headers
+        this.requestBody = requestBody
+        this.httpMethod = httpMethod
+    }
+}
+
 function getSportRadarEventUrl(id) {
     return "https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/" + id
 }
 
-
-
-exports.getKambiEventsForCompetition = async function getKambiEventsForCompetition(id) {
+async function getKambiEventsForCompetition(id) {
     const books = [Bookmaker.UNIBET_BELGIUM, Bookmaker.NAPOLEON_GAMES, Bookmaker.SCOOORE]
     return axios('https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'
         + id + '.json?includeParticipants=false').then(eventResponses => {
@@ -113,7 +210,7 @@ exports.getKambiEventsForCompetition = async function getKambiEventsForCompetiti
     })
 }
 
-exports.getAltenarEventsForCompetition = async function getAltenarEventsForCompetition(id) {
+async function getAltenarEventsForCompetition(id) {
     const books = [Bookmaker.GOLDEN_PALACE]
     const url = 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEvents?timezoneOffset=-120&langId=8&skinName=goldenpalace&configId=19&culture=en-gb&countryCode=BE&deviceType=Desktop&numformat=en&integration=goldenpalace&sportids=0&categoryids=0&champids=' + id + '&group=AllEvents&period=periodall&withLive=false&outrightsDisplay=none&marketTypeIds&couponType=0&startDate=2021-06-16T12%3A21%3A00.000Z&endDate=2030-06-23T12%3A21%3A00.000Z'
     return axios.get(url)
@@ -130,7 +227,7 @@ exports.getAltenarEventsForCompetition = async function getAltenarEventsForCompe
         }).catch(error => console.log(error))
 }
 
-exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompetition(groupCName, subCategoryCName) {
+async function getBetwayEventsForCompetition(groupCName, subCategoryCName) {
     const markets = ["win-draw-win", "double-chance", "goals-over", "handicap-goals-over"]
     const eventIdPayload = {"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,
         "ClientIntegratorId":1,"CategoryCName":"soccer","SubCategoryCName":subCategoryCName,"GroupCName":groupCName }
@@ -154,7 +251,7 @@ exports.getBetwayEventsForCompetition = async function getBetwayEventsForCompeti
         }).catch(error => console.log(error))
 }
 
-exports.getBingoalEventsForCompetition = async function getBingoalEventsForCompetition(id){
+async function getBingoalEventsForCompetition(id){
     return axios.get("https://www.bingoal.be/nl/Sport").then(response => {
         const headers = bingoalHeaders(response)
         const k = bingoalQueryKParam(response)
@@ -185,7 +282,7 @@ function bingoalHeaders(response) {
     return headers
 }
 
-exports.getBwinEventsForCompetition = async function getBwinEventsForCompetition(id) {
+async function getBwinEventsForCompetition(id) {
     const leagueUrl = 'https://cds-api.bwin.be/bettingoffer/fixtures?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwL' +
         'WJkMGQtMDhmOGViNGNiNmRk&lang=en&country=BE&userCountry=BE&fixtureTypes=Standard&state=Late' +
         'st&offerMapping=Filtered&offerCategories=Gridable&fixtureCategories=Gridable,NonGridable,Other&co' +
@@ -202,7 +299,7 @@ exports.getBwinEventsForCompetition = async function getBwinEventsForCompetition
     })
 }
 
-exports.getCashPointEventsForCompetition = async function getCashPointEventsForCompetition(id) {
+async function getCashPointEventsForCompetition(id) {
     const domains = {}
     domains[Bookmaker.TOTOLOTEK] = "oddsservice.totolotek.pl"
     domains[Bookmaker.MERKUR_SPORTS] = "oddsservice.merkur-sports.de"
@@ -246,7 +343,7 @@ function getGamesUrl(domain) {
 
 
 
-exports.getLadbrokesEventsForCompetition = async function getLadbrokesEventsForCompetition(id) {
+async function getLadbrokesEventsForCompetition(id) {
     const headers = {
         headers: {
             'x-eb-accept-language': 'en_BE',
@@ -268,7 +365,7 @@ exports.getLadbrokesEventsForCompetition = async function getLadbrokesEventsForC
     })
 }
 
-exports.getMeridianEventsForCompetition = async function getMeridianEventsForCompetition(id) {
+async function getMeridianEventsForCompetition(id) {
     return axios.get(id).then(response => {
         return response.data[0].events.map(event => {
             const eventUrl = "https://meridianbet.be/sails/events/" + event.id
@@ -279,7 +376,7 @@ exports.getMeridianEventsForCompetition = async function getMeridianEventsForCom
     })
 }
 
-exports.getPinnacleEventsForCompetition = async function getPinnacleEventsForCompetition(id, sportRadarMatches) {
+async function getPinnacleEventsForCompetition(id, sportRadarMatches) {
     const requestConfig = {
         headers: {
             "X-API-Key": "CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R",
@@ -349,7 +446,7 @@ const pinnacle_sportradar = {
     "Sweden": 9537
 }
 
-exports.getSbtechEventsForCompetition = async function getSbtechEventsForCompetition(id) {
+async function getSbtechEventsForCompetition(id) {
     const books = [
         {bookmaker: "bet777", url: "https://sbapi.sbtech.com/bet777/auth/platform/v1/api/GetTokenBySiteId/72", api: "V1"},
         {bookmaker: "betfirst", url: "https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28", api: "V1"},
@@ -407,22 +504,7 @@ function getToken(response, api) {
     }
 }
 
-exports.getScoooreEventsForCompetition = async function getScoooreEventsForCompetition(id){
-    const leagueUrl = "https://www.e-lotto.be/cache/evenueMarketGroupLimited/NL/" + id + ".1-0.json"
-    return axios.get(leagueUrl)
-        .then(response => {
-            return response.data.markets.map(event => {
-                const eventId = event.idfoevent.toString()
-                const eventUrl = "https://www.e-lotto.be/cache/evenueEventMarketGroupWithMarketsSB/NL/420/" + eventId + ".json"
-                const sportRadarId = event.extevents[0].idefevent.split('_')[1]
-                const bookmakerInfo = new BookmakerInfo(Provider.SCOOORE, Bookmaker.SCOOORE, id, eventId, leagueUrl,
-                    [eventUrl], undefined, undefined, "GET")
-                return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
-            })
-        }).catch(error => console.log(error))
-}
-
-exports.getStanleybetEventsForCompetition = async function getStanleybetEventsForCompetition(id){
+async function getStanleybetEventsForCompetition(id){
     const headers = {
         headers: {
             'Content-Type': 'text/plain'
@@ -464,7 +546,8 @@ exports.getStanleybetEventsForCompetition = async function getStanleybetEventsFo
     }).catch(error => console.log(error))
 }
 
-exports.getZetBetEventsForCompetition = async function getZetBetEventsForCompetition(id) {
+
+async function getZetBetEventsForCompetition(id) {
     const leagueUrl = "https://www.zebet.be/en/competition/" + id
     return axios.get(leagueUrl)
         .then(response => {
@@ -483,3 +566,5 @@ exports.getZetBetEventsForCompetition = async function getZetBetEventsForCompeti
             return Promise.all(requests).then(responses => responses)
         })
 }
+
+getEvents()
