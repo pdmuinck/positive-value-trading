@@ -2,11 +2,13 @@
 
 get_events() {
   local events=$(curl 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'"${1}"'.json?includeParticipants=false')
-  local event_ids=$(echo "${events}" | jq '.events | .[] | .id')
+  event_ids=$(echo "${events}" | jq '.events[] | select(.tags[] == "MATCH") | .id')
+  local output=[
   for id in ${event_ids}; do
-    test=$(get_sport_radar_id "${id}")
-    echo "${test}"
+    local test=$(get_sport_radar_id "${id}" | awk '{if($1 != "nul") { print $1 } else {print 0}}')
+    output+='{"kambi_id":'"${id}"',"sport_radar_id":'"${test}"'},'
   done
+  echo "${output%?}"]
 }
 
 get_sport_radar_id() {
@@ -14,8 +16,8 @@ get_sport_radar_id() {
   local sportradar_widget_url=$(echo "${sportradar_match}" | jq '.content | .[0].Resource')
   IFS='matchId='
   read -ra ADDR <<<"$sportradar_widget_url"
-  id="${ADDR[*]: -1}" | sed "s/\\\"//g"
-  echo "${id}"
+  match_id="${ADDR[*]: -1}"
+  echo "${match_id%?}"
 }
 
-get_events $1
+get_events $1 | jq . > test.json
