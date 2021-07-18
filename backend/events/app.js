@@ -35,9 +35,6 @@ const Bookmaker = {
 }
 
 Object.freeze(Bookmaker)
-
-
-
 const Provider = {
     "PLAYTECH" : "PLAYTECH",
     "CASHPOINT" : "CASHPOINT",
@@ -80,9 +77,9 @@ async function getSportRadarMatch(eventId) {
 }
 
 const requests = {
-    /*
+
     "JUPILER_PRO_LEAGUE": [
-        getAltenarEventsForCompetition("1000000490"),
+        getAltenarEventsForCompetition("2965"),
         getBetwayEventsForCompetition("belgium", "first-division-a"),
         getBingoalEventsForCompetition("25"),
         getCashPointEventsForCompetition("6898"),
@@ -91,25 +88,29 @@ const requests = {
         getLadbrokesEventsForCompetition("be-jupiler-league1"),
         getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/26/league/first-division-a"),
         getSbtechEventsForCompetition("40815"),
-        getScoooreEventsForCompetition("18340"),
         getStanleybetEventsForCompetition("38"),
         getZetBetEventsForCompetition("101-pro_league_1a"),
-    ],
+    ]
 
-     */
+     /*
+
     "EURO2020": [
         getAltenarEventsForCompetition("3031"),
         getBetwayEventsForCompetition("matches", "euro-2020"),
         getBingoalEventsForCompetition("9153"),
         getCashPointEventsForCompetition("56529"),
-        //getBwinEventsForCompetition("74435"),
-        getKambiEventsForCompetition("2000123941"),
+        getBwinEventsForCompetition("74435"),
+        //getKambiEventsForCompetition("2000123941"),
         getLadbrokesEventsForCompetition("eu-euro-2020"),
-        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
+        //getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2405/league/uefa-euro-2020"),
         getSbtechEventsForCompetition("44349"),
-        //getStanleybetEventsForCompetition("-2690"),
+        getStanleybetEventsForCompetition("-2690"),
         getZetBetEventsForCompetition("36147-euro_2020")
+
+
     ]
+    */
+
 }
 
 async function getEvents() {
@@ -118,7 +119,7 @@ async function getEvents() {
     const sportRadarIds = [...new Set(events.flat().filter(x => x && x.length !== 0).map(event => event.sportRadarId))]
     const sportRadarMatches = await Promise.all(sportRadarIds.map(id => getSportRadarMatch(id))).then(values => values.filter(x => x))
     const requestsNotMappedToSportRadar = {
-        /*
+
         "JUPILER_PRO_LEAGUE": [
             getPinnacleEventsForCompetition("1817", sportRadarMatches),
             //getBet90EventsForCompetition("457", sportRadarMatches)
@@ -126,14 +127,24 @@ async function getEvents() {
             //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
         ],
 
-         */
-        "EURO2020": [
-            getPinnacleEventsForCompetition("5264", sportRadarMatches),
+        "BUNDESLIGA": [
+            getPinnacleEventsForCompetition("1842", sportRadarMatches),
+        ],
+        "LA_LIGA": [
+            getPinnacleEventsForCompetition("2196", sportRadarMatches),
+        ],
+        "SERIE_A": [
+            getPinnacleEventsForCompetition("2436", sportRadarMatches),
+        ],
+        "PREMIER_LEAGUE": [
+            getPinnacleEventsForCompetition("1980", sportRadarMatches),
+        ],
+        "LIGUE_1": [
+            getPinnacleEventsForCompetition("2036", sportRadarMatches),
         ]
     }
     const leagueRequestsNotMapped = Object.values(requestsNotMappedToSportRadar).flat()
-    return Promise.all(leagueRequestsNotMapped).then(values => {
-        //console.log(values)
+    return Promise.all(leagueRequestsNotMapped).then(async values =>  {
         console.log(JSON.stringify(mergeEvents(values.flat().filter(x => x).concat(events.flat()), sportRadarMatches)))
     })
 }
@@ -207,7 +218,7 @@ async function getKambiEventsForCompetition(id) {
         return Promise.all(requests).then((sportRadarResponses) => {
             return sportRadarResponses
         })
-    })
+    }).catch(error => console.log("problem with kambi"))
 }
 
 async function getAltenarEventsForCompetition(id) {
@@ -264,7 +275,7 @@ async function getBingoalEventsForCompetition(id){
                         [url], headers, undefined, "GET")
                     return new Event(match.betradarID.toString(), getSportRadarEventUrl(match.betradarID), [bookmakerInfo])
                 })
-            })})
+            }).catch(error => console.log("error bingoal"))})
 }
 
 function bingoalQueryKParam(response) {
@@ -296,7 +307,7 @@ async function getBwinEventsForCompetition(id) {
                 undefined, undefined, "GET")
             return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
-    })
+    }).catch(error => console.log("error bwin"))
 }
 
 async function getCashPointEventsForCompetition(id) {
@@ -334,7 +345,7 @@ async function getCashPointEventsForCompetition(id) {
                 })
                 return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), bookmakerInfos)
             })
-        })
+        }).catch(error => console.log("error betcenter"))
 }
 
 function getGamesUrl(domain) {
@@ -362,7 +373,7 @@ async function getLadbrokesEventsForCompetition(id) {
             const bookmakerInfo = new BookmakerInfo(Provider.LADBROKES, Bookmaker.LADBROKES, id, eventId, leagueUrl, [eventUrl], headers, undefined, "GET")
             return new Event(sportRadarId.toString(), getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
-    })
+    }).catch(error => console.log("error ladbrokes"))
 }
 
 async function getMeridianEventsForCompetition(id) {
@@ -373,7 +384,7 @@ async function getMeridianEventsForCompetition(id) {
             const bookmakerInfo = new BookmakerInfo(Provider.MERIDIAN, Bookmaker.MERIDIAN, id, event.id, id, [eventUrl], undefined, undefined, "GET")
             return new Event(sportRadarId, getSportRadarEventUrl(sportRadarId), [bookmakerInfo])
         })
-    })
+    }).catch(error => console.log("error meridian"))
 }
 
 async function getPinnacleEventsForCompetition(id, sportRadarMatches) {
@@ -410,6 +421,9 @@ async function getPinnacleEventsForCompetition(id, sportRadarMatches) {
 }
 
 const pinnacle_sportradar = {
+    // JUPILER PRO LEAGUE
+    "Union St Gilloise": 9561099,
+    "Seraing United": 923905,
     "Sint Truiden": 4958,
     "Standard Liege": 4954,
     "KFCO Beerschot-Wilrijk": 10547664,
@@ -428,6 +442,27 @@ const pinnacle_sportradar = {
     "SV Zulte-Waregem": 548844,
     "Gent": 4677,
     "Anderlecht": 4671,
+
+    // BUNDESLIGA
+    "Borussia Monchengladbach": 31531,
+    "Bayern Munich": 55602,
+    "Stuttgart": 4903,
+    "Greutheer Furth": 6192378,
+    "Wolfsburg": 5174,
+    "Bochum": 4915,
+    "Union Berlin": 7114236,
+    "Bayer Leverkusen": 5089,
+    "Mainz 05": 366524,
+    'RB Leipzig': 8720196,
+    "Borussia Dortmund": 4912,
+    "Eintracht Frankfurt": 4908,
+    "Augsburg": 5344132,
+    "Hoffenheim": 1270229,
+    "FC Koln": 4899,
+    "Hertha Berlin": 5096,
+    "Arminia Bielefield": 115124,
+    "Freiburg": 4898,
+
     "Wales": 9541,
     "Denmark": 9528,
     "Austria": 9518,
@@ -564,7 +599,8 @@ async function getZetBetEventsForCompetition(id) {
                 })
             })
             return Promise.all(requests).then(responses => responses)
-        })
+        }).catch(error => console.log("error zetbet"))
 }
 
 getEvents()
+
