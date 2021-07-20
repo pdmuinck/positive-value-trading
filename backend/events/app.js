@@ -79,6 +79,9 @@ async function getSportRadarMatch(eventId) {
 const requests = {
 
     "JUPILER_PRO_LEAGUE": [
+        // BET90 "457"
+        // BETCONSTRUCT "227875758"
+        // MAGIC BETTING "soccer-be-sb_type_19372"
         getAltenarEventsForCompetition("2965"),
         getBetwayEventsForCompetition("belgium", "first-division-a"),
         getBingoalEventsForCompetition("25"),
@@ -90,6 +93,103 @@ const requests = {
         getSbtechEventsForCompetition("40815"),
         getStanleybetEventsForCompetition("38"),
         getZetBetEventsForCompetition("101-pro_league_1a"),
+    ],
+    "SERIA_A": [
+        // BET90 "401"
+        // BETCONSTRUCT "54344509"
+        // MAGIC BETTING "soccer-it-sb_type_19159"
+        getAltenarEventsForCompetition("2942"),
+        getBetwayEventsForCompetition("italy", "serie-a"),
+        getBingoalEventsForCompetition("39"),
+        getCashPointEventsForCompetition("7134"),
+        getBwinEventsForCompetition("42"),
+        getKambiEventsForCompetition("1000095001"),
+        getLadbrokesEventsForCompetition("it-serie-a"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/4/league/serie-a"),
+        getSbtechEventsForCompetition("40030"),
+        getStanleybetEventsForCompetition("33"),
+        getZetBetEventsForCompetition("305-serie_a"),
+    ],
+    "PREMIER_LEAGUE": [
+        // BET90 "56"
+        // BETCONSTRUCT "54210798"
+        // MAGIC BETTING "soccer-uk-sb_type_19157"
+        getAltenarEventsForCompetition("2936"),
+        getBetwayEventsForCompetition("england", "premier-league"),
+        getBingoalEventsForCompetition("35"),
+        getCashPointEventsForCompetition("6823"),
+        getBwinEventsForCompetition("46"),
+        getKambiEventsForCompetition("1000094985"),
+        getLadbrokesEventsForCompetition("ing-premier-league"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/1/league/premier-league"),
+        getSbtechEventsForCompetition("40253"),
+        getStanleybetEventsForCompetition("1"),
+        getZetBetEventsForCompetition("94-premier_league"),
+    ],
+    "BUNDESLIGA": [
+        // BET90 "30"
+        // BETCONSTRUCT "54297345"
+        // MAGIC BETTING "soccer-nl-sb_type_19358"
+        getAltenarEventsForCompetition("2950"),
+        getBetwayEventsForCompetition("germany", "bundesliga"),
+        getBingoalEventsForCompetition("38"),
+        getCashPointEventsForCompetition("6843"),
+        getBwinEventsForCompetition("43"),
+        getKambiEventsForCompetition("1000345237"),
+        getLadbrokesEventsForCompetition("de-bundesliga"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/2/league/bundesliga"),
+        getSbtechEventsForCompetition("40820"),
+        getStanleybetEventsForCompetition("42"),
+        getZetBetEventsForCompetition("268-bundesliga"),
+    ],
+    "LA_LIGA": [
+        // BET90 "117"
+        // BETCONSTRUCT "1397387603"
+        // MAGIC BETTING "soccer-es-sb_type_19160"
+        getAltenarEventsForCompetition("2941"),
+        getBetwayEventsForCompetition("spain", "la-liga"),
+        getBingoalEventsForCompetition("37"),
+        getCashPointEventsForCompetition("6938"),
+        getBwinEventsForCompetition("16108"),
+        getKambiEventsForCompetition("2000050115"),
+        getLadbrokesEventsForCompetition("es-liga"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/3/league/la-liga"),
+        getSbtechEventsForCompetition("40031"),
+        getStanleybetEventsForCompetition("36"),
+        getZetBetEventsForCompetition("306-primera_division"),
+    ],
+    "LIGUE_1": [
+        // BET90 "119"
+        // BETCONSTRUCT "54287323"
+        // MAGIC BETTING "soccer-fr-sb_type_19327"
+        getAltenarEventsForCompetition("2943"),
+        getBetwayEventsForCompetition("france", "ligue-1"),
+        getBingoalEventsForCompetition("26"),
+        getCashPointEventsForCompetition("6855"),
+        getBwinEventsForCompetition("4131"),
+        getKambiEventsForCompetition("1000094991"),
+        getLadbrokesEventsForCompetition("fr-ligue-1"),
+        getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/5/league/ligue-1"),
+        getSbtechEventsForCompetition("40032"),
+        getStanleybetEventsForCompetition("4"),
+        getZetBetEventsForCompetition("96-ligue_1_uber_eats"),
+    ],
+
+    "CHAMPIONS_LEAGUE": [
+        // BET90 "119"
+        // BETCONSTRUCT "54287323"
+        // MAGIC BETTING "soccer-fr-sb_type_19327"
+        getAltenarEventsForCompetition("16808"),
+        getBetwayEventsForCompetition("european-cups", "uefa-champions-league"),
+        getBingoalEventsForCompetition("96"),
+        getCashPointEventsForCompetition("19622"),
+        //getBwinEventsForCompetition("4131"),
+        //getKambiEventsForCompetition("1000094991"),
+        getLadbrokesEventsForCompetition("eu-champions-league"),
+        //getMeridianEventsForCompetition("https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league"),
+        //getSbtechEventsForCompetition("40032"),
+        getStanleybetEventsForCompetition("-474"),
+        getZetBetEventsForCompetition("111-champions_league"),
     ]
 
      /*
@@ -463,6 +563,95 @@ const pinnacle_sportradar = {
     "Arminia Bielefield": 115124,
     "Freiburg": 4898,
 
+    // LA LIGA
+    "Valencia": 5197,
+    "Getafe": 368362,
+    "ALaves": 5123,
+    "Real Madrid": 6543,
+    "Osasuna": 5116,
+    "Espanyol": 5203,
+    "Mallorca": 5206,
+    "Real Betis":32608,
+    "Cadiz": 525185,
+    "Levante UD": 368361,
+    "Celta Vigo": 5201,
+    "Atletico Madrid": 81076,
+    "Barcelona": 5198,
+    "Real Sociedad": 5134,
+    "Sevilla": 70660,
+    "Rayo Vallecano": 5121,
+    "Elche CF": 6669997,
+    "Athletic Club Bilbao": 5133,
+    "Villarreal CF": 5120,
+    "Granada CF": 5650995,
+
+    // PREMIER LEAGUE
+    "Brentford": 13241732,
+    "Arsenal": 4871,
+    "Everton": 4867,
+    "Southampton": 4869,
+    "Chelsea": 4870,
+    "Crystal Palace": 342002,
+    "Norwich City": 342012,
+    "Liverpool": 4878,
+    "Watford": 758242,
+    "Aston Villa": 4879,
+    "Manchester United": 4862,
+    "Leeds United": 4860,
+    "Burnley": 1463748,
+    "Brighton and Hove Albion": 6601990,
+    "Leicester City": 4876,
+    "Wolves": 176942,
+    "Newcastle United": 4873,
+    "West Ham United": 4865,
+    "Tottenham Hotspur": 5187,
+    "Manchester City": 4861,
+
+    // LIGUE 1
+    "Bordeaux": 4891,
+    "Clermont": 12899776,
+    "Metz": 4886,
+    "Lille": 4881,
+    "Lyon": 5225,
+    "Brest": 5432497,
+    "Troyes AC": 5525,
+    "Paris Saint Germain": 5227,
+    "Strasbourg": 4887,
+    "Angers SCO": 916307,
+    "Rennes": 5381,
+    "Lens": 4884,
+    "Nice": 119143,
+    "Reims": 6211075,
+    "St Etienne": 5806,
+    "Lorient": 10926,
+    "Montpellier HSC": 10940,
+    "Marseille": 5380,
+    "AS Monaco": 5524,
+    "Nantes": 4890,
+
+
+    // SERIA A
+    "Genoa": 565059,
+    "FC Internazionale": 9264,
+    "Torino": 32867,
+    "Atalanta BC": 9252,
+    "Hellas Verona FC": 916368,
+    "Sassuolo": 6641634,
+    "Empoli": 124891,
+    "Lazio": 9267,
+    "Udinese": 22208,
+    "Juventus": 9245,
+    "Napoli": 9244,
+    "Venezia": 32869,
+    "AS Roma": 9265,
+    "Fiorentina": 9247,
+    "Bologna": 9127,
+    "Sampdoria": 224907,
+    "AC Milan": 9246,
+    "Cagliari": 367849,
+    "Spezia": 13083576,
+
+    // NATIONAL TEAMS
     "Wales": 9541,
     "Denmark": 9528,
     "Austria": 9518,

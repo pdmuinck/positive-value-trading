@@ -1,0 +1,16 @@
+#!/bin/bash
+
+get_events() {
+  local url=$1
+  local league=$2
+  curl "${url}" | jq --raw-output '.[0].events[] | [.id, .betradarUnified["id"]] | @csv' >> "${league}"_league_events.csv
+}
+
+get_events https://meridianbet.be/sails/sport/58/region/26/league/first-division-a jupiler_pro_league &
+get_events https://meridianbet.be/sails/sport/58/region/4/league/serie-a serie_a
+
+wait
+echo event_id,sportradar_id > meridian_events.csv
+
+cat *_league_events.csv >> meridian_events.csv
+rm *_league_events.csv
