@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo START GETTING Events
+
+./meridian & ./altenar & ./cashpoint & ./bwin & ./kambi
+wait 
+
+echo event_id,sportradar_id,book,league > events.csv
+cat *_events.csv >> events.csv
+rm *_events.csv

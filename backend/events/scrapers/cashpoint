@@ -1,0 +1,35 @@
+#!/bin/bash
+
+get_events() {
+  local host=oddsservice.betcenter.be
+  local league_id=$1
+  local league=$2
+  local book='"cashpoint"'
+
+  curl -s --request POST \
+  --url https://"${host}"/odds/getGames/8 \
+  --header 'Content-Type: application/json' \
+  --header 'x-brand: 7' \
+  --header 'x-client-country: 21' \
+  --header 'x-language: 2' \
+  --header 'x-location: 21' \
+  --data '{"leagueIds":['"${league_id}"'], "sportId":1,"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}' \
+  | jq --raw-output '.games[] | [.id, .statisticsId] | @csv' \
+  | awk -v league="${league}" -v book="${book}" -F"," 'BEGIN { OFS = "," } {$3=book;$4=league; print}' >> "${league}"_cashpoint_league_events.csv
+}
+
+echo GETTING CASHPOINT events...
+
+get_events 6898 '"jupiler_pro_league"' &
+get_events 6843 '"bundesliga"' &
+get_events 6823 '"premier_league"' &
+get_events 6938 '"la_liga"' &
+get_events 7134 '"serie_a"' &
+get_events 6855 '"ligue_1"' &
+
+wait
+
+cat *_cashpoint_league_events.csv >> cashpoint_events.csv
+rm *_cashpoint_league_events.csv
+
+

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+get_events(){
+    local league=$1
+    local league_id=$2
+    local book='goldenpalace'
+    curl -G -s 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEvents' \
+    -d timezoneOffset=-120 \
+    -d langId=8 \
+    -d skinName="${book}" \
+    -d configId=19 \
+    -d culture=en-gb \
+    -d countryCode=BE \
+    -d deviceType=Desktop \
+    -d numformat=en \
+    -d integration="${book}" \
+    -d sportids=0 \
+    -d categoryids=0 \
+    -d champids="${league_id}" \
+    -d group=AllEvents \
+    -d period=periodall \
+    -d withLive=false \
+    -d outrightDisplay=none \
+    -d couponType=0 \
+    -d startDate=2021-06-16T12%3A21%3A00.000Z \
+    -d endDate=2030-06-23T12%3A21%3A00.000Z \
+    | jq --raw-output '.Result.Items[0].Events | map(.ExtId |= split(":"))[] | [.Id, .ExtId[2]] | @csv' \
+    | awk -v league="${league}" -v book="${book}" -F"," 'BEGIN { OFS = "," } {$3=book;$4=league; print}' >> "${league}"_altenar_league_events.csv
+}
+
+echo Getting ALTENAR events...
+
+get_events '"jupiler_pro_league"' 2965 &
+get_events '"seria_a"' 2942 &
+get_events '"premier_league"' 2936 &
+get_events '"bundesliga"' 2950 &
+get_events '"la_liga"' 2941 &
+get_events '"ligue_1"' 2943 &
+
+wait
+
+cat *_altenar_league_events.csv >> altenar_events.csv
+rm *_altenar_league_events.csv

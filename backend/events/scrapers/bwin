@@ -1,0 +1,40 @@
+#!/bin/bash
+
+get_events() {
+  local league=$1
+  local league_id=$2
+  local book='"bwin"'
+
+  curl -G -s 'https://cds-api.bwin.be/bettingoffer/fixtures' \
+  -d x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk \
+  -d lang=en \
+  -d country=BE \
+  -d userCountry=BE \
+  -d fixtureTypes=Standard \
+  -d state=Latest \
+  -d offerMapping=Filtered \
+  -d offerCategories=Gridable \
+  -d fixtureCategories=Gridable,NonGridable,Other \
+  -d competitionIds="${league_id}" \
+  -d skip=0 \
+  -d take=50 \
+  -d sortBy=Tags \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
+  | jq --raw-output '.fixtures[] | [.id, .addons.betRadar] | @csv' \
+  | awk -v league="${league}" -v book="${book}" -F"," 'BEGIN { OFS = "," } {$3=book;$4=league; print}' >> "${league}"_bwin_league_events.csv
+}
+
+echo GETTING BWIN events...
+
+get_events '"bundesliga"' 43 &
+get_events '"jupiler_pro_league"' 16409 &
+get_events '"premier_league"' 46 &
+get_events '"la_liga"' 16108 &
+get_events '"ligue_1"' 4131 &
+get_events '"seria_a"' 42
+
+wait
+
+cat *_bwin_league_events.csv >> bwin_events.csv
+rm *_bwin_league_events.csv
+
