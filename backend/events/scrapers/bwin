@@ -20,8 +20,7 @@ get_events() {
   -d take=50 \
   -d sortBy=Tags \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
-  | jq --raw-output '.fixtures[] | [.id, .addons.betRadar] | @csv' \
-  | awk -v league="${league}" -v book="${book}" -F"," 'BEGIN { OFS = "," } {$3=book;$4=league; print}' >> "${league}"_bwin_league_events.csv
+  | jq --raw-output '.fixtures[] | [.id, .addons.betRadar, "bwin",'"${league}"'] | @csv' >> "${league}"_bwin_league_events.csv 
 }
 
 echo GETTING BWIN events...

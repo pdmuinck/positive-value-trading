@@ -1,0 +1,44 @@
+#!/bin/bash
+
+get_events() {
+  sport=$1
+  country=$2
+  league=$3
+  league_pretty_name=$4
+
+  event_ids=$(curl -s --request POST \
+    --url https://sports.betway.be/api/Events/V2/GetGroup \
+    --header 'Content-Type: application/json; charset=UTF-8' \
+    --header 'Cookie: __cfduid=d6907bf62fe8d2b713c2ea14ed2cc633f1615035911; TrackingVisitId=f59932f9-4c35-4b08-882e-74e736da0dd5; hash=f59932f9-4c35-4b08-882e-74e736da0dd5; AMCVS_74756B615BE2FD4A0A495EB8%40AdobeOrg=1; _ga=GA1.2.2108562292.1615035915; _gid=GA1.2.282384272.1615035915; AMCV_74756B615BE2FD4A0A495EB8%40AdobeOrg=359503849%7CMCIDTS%7C18693%7CMCMID%7C50922974771529630150319276572080847196%7CMCAAMLH-1615640714%7C6%7CMCAAMB-1615640714%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1615043114s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.0.1; _gat_ens=1; s_cc=true; _gat_reg1=1; aam_uuid=50679068501786803650329298953965209270; BETWAY_ENSIGHTEN_PRIVACY_Marketing=1; BETWAY_ENSIGHTEN_PRIVACY_Analytics=1; bwui_cookieToastDismissed=true; s_sq=%5B%5BB%5D%5D; __cf_bm=a0ed7e80b68ac0fbb4237972f79bde2c5c659393-1615035924-1800-AR83i2t7+2v0UcZp3zD+75fxb5jzC9m1mUBuw3+txC10ntF0tD9INM7Aj/esPYrc23wjwT9fjC8c40qCmZnyN8g=; Referrer=https%3A%2F%2Fbetway.be%2Fen-be%2F; ssc_btag=f59932f9-4c35-4b08-882e-74e736da0dd5; ssc_DeviceId=0077c343-b1d4-4766-be68-e803dc26ff5d; TS01232bc6=01844e1b5c68d38d3eb53e56d243525309bf6e157d5e5ea398012d03605f31ccc2c94246f380bb0f6d71c48f098fd6c64cd00797b3; TS01326955=01844e1b5c68d38d3eb53e56d243525309bf6e157d5e5ea398012d03605f31ccc2c94246f380bb0f6d71c48f098fd6c64cd00797b3; userLanguage=en; SpinSportVisitId=becac4d6-7213-4320-b91e-276e55cddb53; ai_user=4NLPa|2021-03-06T13:05:27.779Z; domainCookie=betway.be; ai_session=7HrN7|1615035928692.28|1615035928692.28; _gat_UA-1515961-1=1; _gat=1; TimezoneOffset=60; TS07939ea4029=081027114cab2800a9b3840ef9a02356bae102a53ef7e576d8e05f8740a41d9c027e93e8c9da13bf6511786a55e085d3; TSae48ddcf027=081027114cab20002c0472aa017fb36831d70cf48f7fee496765b04e43e820215565afa90b5261f208669c3b0f113000cb24ac29057205923b08d7ea1b3a9aa9e6edf6ca2f5ae8bd542dd7a0fd958fd7199299d0725eecf5ea58e0c7a1bc696d; gpv_pn=en%3Asports%3Acat%3Asoccer' \
+    --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' \
+    --header 'X-Security-Request: required' \
+    --cookie 'TS01232bc6=01844e1b5c4ffa000ae7318a7b2f352cc5ada048ebf9591ad08bc43c04bc8799f299711a6d41af5c7be7d917afe58debbe94fe49d9; TSae48ddcf027=081027114cab20004396adaf5e6a868f958c967583f5820130c9ff6f33c7d75a1a47f7cb1e6812af089b93dae9113000841169239d5ec20ee03c83461ec278bd7486b13e3534373c6b286dc6e8e9d84e4f03010d43970ccc1b0e0f8e53688f2d' \
+    --data '{"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":'"${sport}"',"SubCategoryCName":'"${country}"',"GroupCName":'"${league}"'}' \
+    | jq --raw-output '.Categories[0].Events')
+
+  curl -s --request POST \
+    --url https://sports.betway.be/api/Events/V2/GetEvents \
+    --header 'Content-Type: application/json; charset=UTF-8' \
+    --header 'Cookie: __cfduid=d4bb5f86313ee3fa8f59f11c6bfb2ffda1615411510; TrackingVisitId=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; hash=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; AMCVS_74756B615BE2FD4A0A495EB8%40AdobeOrg=1; _ga=GA1.2.1660206364.1615411513; _gid=GA1.2.936896223.1615411513; AMCV_74756B615BE2FD4A0A495EB8%40AdobeOrg=359503849%7CMCIDTS%7C18697%7CMCMID%7C56534173400715071320222178797335263258%7CMCAAMLH-1616016312%7C6%7CMCAAMB-1616016312%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1615418713s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.0.1; _gat_reg1=1; _gat_ens=1; s_cc=true; aam_uuid=56597084811299582300282316716416960496; BETWAY_ENSIGHTEN_PRIVACY_Marketing=1; BETWAY_ENSIGHTEN_PRIVACY_Analytics=1; bwui_cookieToastDismissed=true; s_sq=%5B%5BB%5D%5D; __cf_bm=725c9fa35f985e7267e6c4e4786c06ccededdb26-1615411518-1800-Ac+UjwkTOv4i2H6BzORX01tYyfRxB6VQ04B6RUuwi1arW34+5PQHqHi7JWNRBaxTkV4pueUnpDqw7bgLHtYFY5o=; Referrer=https%3A%2F%2Fbetway.be%2Fen-be%2F; ssc_btag=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; ssc_DeviceId=0f452055-5a64-498c-863a-0c7a675615dd; TS01232bc6=01844e1b5cf1b77336ecc99aac7ff23756934d621c8a0f31019aa138a1dcfa14f71b9a42c95a11f226494747320e8ae517400fad99; TS01326955=01844e1b5cf1b77336ecc99aac7ff23756934d621c8a0f31019aa138a1dcfa14f71b9a42c95a11f226494747320e8ae517400fad99; userLanguage=en; SpinSportVisitId=104515d2-f91a-4a06-a578-ccc930d16e30; ai_user=dOH/H|2021-03-10T21:25:20.524Z; ai_session=3z7UJ|1615411520731.375|1615411520731.375; domainCookie=betway.be; _gat_UA-1515961-1=1; _gat=1; TimezoneOffset=60; gpv_pn=en%3Asports%3Agrp%3Asoccer%3Aeuropean-cups%3Auefa-champions-league; TS07939ea4029=081027114cab2800d49bc9ed8200f4b4fa2a6f2be749f4657e877852eaf2b4ba45d1c80a684d663a45df828f56dbb468; TSae48ddcf027=081027114cab2000460186c0db8cf19ec393a8cb61a024580a9a561444d08508304ba4988b2f5173083b12e1bd113000f03776852fe7abdb22dcd2fe5a68af44cc2305bce0be8b5fdc6ccddd517e7f4bbda18e583dc15d53a2d212abb8ff8bb5' \
+    --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' \
+    --header 'X-Security-Request: required' \
+    --cookie 'TS01232bc6=01844e1b5c4ffa000ae7318a7b2f352cc5ada048ebf9591ad08bc43c04bc8799f299711a6d41af5c7be7d917afe58debbe94fe49d9; TSae48ddcf027=081027114cab20004396adaf5e6a868f958c967583f5820130c9ff6f33c7d75a1a47f7cb1e6812af089b93dae9113000841169239d5ec20ee03c83461ec278bd7486b13e3534373c6b286dc6e8e9d84e4f03010d43970ccc1b0e0f8e53688f2d' \
+    --data '{"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":'"${event_ids}"',"MarketCName":"double-chance","ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}},"BrowserId":3,"OsId":4,"ApplicationVersion":"","BrowserVersion":"79.0.3945.130","OsVersion":"10.14.6","SessionId":null,"TerritoryId":21,"CorrelationId":"5106f22e-ad99-4609-ba3e-615a44fd3cf1","ViewName":"sports","JourneyId":"73a9bcef-c6ba-4425-b665-99c12b018fdb"}' \
+    | jq --raw-output '.Events[] | [.Id, .SportsRadarId,"betway",'"${league_pretty_name}"'] | @csv' >> "${league}"_betway_league_events.csv
+}
+
+echo GETTING BETWAY events...
+
+get_events '"soccer"' '"belgium"' '"first-division-a"' '"jupiler_pro_league"' &
+get_events '"soccer"' '"france"' '"ligue-1"' '"ligue_1"' &
+get_events '"soccer"' '"spain"' '"la-liga"' '"la_liga"' &
+get_events '"soccer"' '"germany"' '"bundesliga"' '"bundesliga"' &
+get_events '"soccer"' '"england"' '"premier-league"' '"premier_league"' &
+get_events '"soccer"' '"italy"' '"serie-a"' '"serie_a"' &
+wait 
+
+cat *_betway_league_events.csv >> betway_events.csv
+rm *_betway_league_events.csv
+
+
+

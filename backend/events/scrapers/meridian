@@ -4,8 +4,7 @@ get_events() {
   local url=$1
   local league=$2
   local book='"meridian"'
-  curl -s "${url}" | jq --raw-output '.[0].events[] | [.id, .betradarUnified["id"]] | @csv' \
-  | awk -v league="${league}" -v book="${book}" -F"," 'BEGIN { OFS = "," } {$3=book;$4=league; print}' >> "${league}"_meridian_league_events.csv
+  curl -s "${url}" | jq --raw-output '.[0].events[] | [.id, .betradarUnified["id"], "meridian",'"${league}"'] | @csv' >> "${league}"_meridian_league_events.csv
 }
 
 echo Getting MERIDIAN events...
