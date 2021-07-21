@@ -1,0 +1,22 @@
+#!/bin/bash
+
+curl -G 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEvents' \
+-d timezoneOffset=-120 \
+-d langId=8 \
+-d skinName=goldenpalace \
+-d configId=19 \
+-d culture=en-gb \
+-d countryCode=BE \
+-d deviceType=Desktop \
+-d numformat=en \
+-d integration=goldenpalace \
+-d sportids=0 \
+-d categoryids=0 \
+-d champids=2965 \
+-d group=AllEvents \
+-d period=periodall \
+-d withLive=false \
+-d outrightDisplay=none \
+-d couponType=0 \
+-d startDate=2021-06-16T12%3A21%3A00.000Z \
+-d endDate=2030-06-23T12%3A21%3A00.000Z 
