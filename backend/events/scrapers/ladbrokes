@@ -1,0 +1,23 @@
+#!/bin/bash
+
+get_events() {
+    league=$1
+    league_pretty_name=$2
+    curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'"${league}"'?prematch=1&live=0' \
+    --header 'x-eb-accept-language: en_BE' \
+    --header 'x-eb-marketid: 5' \
+    --header 'x-eb-platformid: 2' \
+    | jq --raw-output '.result.dataGroupList[].itemList[].eventInfo | [.aliasUrl, .programBetradarInfo.matchId, "ladbrokes",'"${league_pretty_name}"'] | @csv' >> "${league}"_ladbrokes_league_events.csv
+}
+
+get_events be-jupiler-league1 '"jupiler_pro_league"' &
+get_events it-serie-a '"serie_a"' &
+get_events ing-premier-league '"premier_league"' &
+get_events de-bundesliga '"bundesliga"' &
+get_events es-liga '"la_liga"' &
+get_events fr-ligue-1 '"ligue_1"'
+
+wait 
+
+cat *_ladbrokes_league_events.csv >> ladbrokes_events.csv
+rm *_ladbrokes_league_events.csv
