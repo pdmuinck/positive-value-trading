@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+bingoal_init_response=$(curl -s 'https://www.bingoal.be/nl/Sport' -header "accept-encoding: application/json" -D bingoal_headers)
+bingoal_headers=$(cat bingoal_headers)
+
+cookie=$(sed '8q;d' bingoal_headers | cut -d';' -f 1 | cut -d':' -f 2 | cut -c2-)
+
+
+
+
+
+
+
+
