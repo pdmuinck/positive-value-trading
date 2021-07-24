@@ -3,21 +3,35 @@
 
 curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
 
-cookie=$(cat bingoal_headers | grep -m 1 'SET-COOKIE: ' | cut -d':' -f 2)
-cookie_2=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -d':' -f 2)
+cookie1=$(cat bingoal_headers | grep -m 1 'SET-COOKIE: ' | cut -c 13-)
+cookie2=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+
 k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
 
+cookie=$(echo "${cookie2//[$'\t\r\n']}")
 
-cookie=Cookie:"${cookie}"
+echo "${cookie}"
 
 rm bingoal_headers
 rm bingoal_response
 
-
-
-  curl -v 'https://www.bingoal.be/A/sport?func=sport&id=25&k' "${k}"'' \
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
+curl 'https://www.bingoal.be/A/sport' \
+  -H 'Connection: keep-alive' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
   -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
-  -H "${cookie}" \
+  -H 'Accept: */*' \
+  -H 'Origin: https://www.bingoal.be' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://www.bingoal.be/nl/Sport' \
+  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'Cookie: '"${cookie}" \
+  --data-raw 'func=sport&action=SOCCER&id=35&k='"${k}" \
   --compressed
+
+
 
