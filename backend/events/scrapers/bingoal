@@ -1,37 +1,48 @@
 #!/bin/bash
 
+init() {
+    curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+}
 
-curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+get_cookies() {
+  cookie_raw=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+  rm bingoal_headers
+  echo "${cookie_raw//[$'\t\r\n']}"
+}
 
-cookie1=$(cat bingoal_headers | grep -m 1 'SET-COOKIE: ' | cut -c 13-)
-cookie2=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+get_k_parameter(){
+  k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+  rm bingoal_response
+  echo "${k}"
+}
 
-k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+get_events() {
+  cookie=$1
+  league=$2
+  league_id=$3
+  k=$4
 
-cookie=$(echo "${cookie2//[$'\t\r\n']}")
+  curl -s 'https://www.bingoal.be/A/sport' \
+    -H 'X-Requested-With: XMLHttpRequest' \
+    -H 'Cookie: '"${cookie}" \
+    --data-raw 'func=sport&action=SOCCER&id='"${league_id}"'&k='"${k}" \
+    --compressed \
+    | jq --raw-output '.sports[].matches[] | [.ID, .betradarID, "bingoal", '"${league}"'] | @csv' >> "${league}"_bingoal_league_events.csv
+}
 
-echo "${cookie}"
+init
+cookies=$(get_cookies)
+k=$(get_k_parameter)
 
-rm bingoal_headers
-rm bingoal_response
+get_events "${cookies}" '"premier_league"' 35 "${k}" &
+get_events "${cookies}" '"jupiler_pro_league"' 25 "${k}" &
+get_events "${cookies}" '"serie_a"' 39 "${k}" &
+get_events "${cookies}" '"la_liga"' 37 "${k}" &
+get_events "${cookies}" '"ligue_1"' 26 "${k}" &
+get_events "${cookies}" '"bundesliga"' 38 "${k}"
 
-curl 'https://www.bingoal.be/A/sport' \
-  -H 'Connection: keep-alive' \
-  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
-  -H 'X-Requested-With: XMLHttpRequest' \
-  -H 'sec-ch-ua-mobile: ?0' \
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
-  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
-  -H 'Accept: */*' \
-  -H 'Origin: https://www.bingoal.be' \
-  -H 'Sec-Fetch-Site: same-origin' \
-  -H 'Sec-Fetch-Mode: cors' \
-  -H 'Sec-Fetch-Dest: empty' \
-  -H 'Referer: https://www.bingoal.be/nl/Sport' \
-  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
-  -H 'Cookie: '"${cookie}" \
-  --data-raw 'func=sport&action=SOCCER&id=35&k='"${k}" \
-  --compressed
+wait
 
-
+cat *_bingoal_league_events.csv >> bingoal_events.csv
+rm *_bingoal_league_events.csv
 
