@@ -2,7 +2,7 @@
 
 echo START GETTING Events
 
-./meridian & ./altenar & ./cashpoint & ./bwin & ./kambi & ./betway & ./ladbrokes & ./sbtech & ./bingoal
+./meridian & ./altenar & ./cashpoint & ./bwin & ./kambi & ./betway & ./ladbrokes & ./sbtech & ./bingoal & ./circus
 wait 
 
 echo event_id,sportradar_id,book,league > events.csv
