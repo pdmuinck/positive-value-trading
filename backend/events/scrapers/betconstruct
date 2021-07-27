@@ -3,51 +3,53 @@
 # create persistent websocket client connection
 # call nc 127.0.0.1:1234 to get messages
 
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:1248 reuse-raw:wss://wss02.circus.be --max-messages-rev 1&
+PORT=$1
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://wss02.betconstruct.be --max-messages-rev 1&
 WS_PID=$!
 echo created websocket client with pid "${WS_PID}"
 
-nc 127.0.0.1 1248
+nc 127.0.0.1 "${PORT}"
 echo about to log in...
 echo '{"Id":"d91df36e-ddc3-ca27-5f38-689862a5d59b","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"fbb21005-c3a9-43ff-96f1-a8f0289e86f2\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36\",\"LanguageCode\":\"en\",\"RoomDomainName\":\"CIRCUS\"}}"}' \
-| nc 127.0.0.1 1248
-nc 127.0.0.1 1248
+| nc 127.0.0.1 "${PORT}"
+nc 127.0.0.1 "${PORT}"
 
 get_events() {
-  echo About to get circus events...
+  echo About to get betconstruct events...
   echo '{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds=227875758&LeagueIds=54287323&LeagueIds=54297345&LeagueIds=54344509&LeagueIds=1397387603&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}' \
-  | nc 127.0.0.1 1248
+  | nc 127.0.0.1 "${PORT}"
 
   # do it twice
-  nc 127.0.0.1 1248 \
+  nc 127.0.0.1 "${PORT}" \
   | jq --raw-output '.Message' \
   | jq --raw-output '.Requests[0].Content' \
-  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "circus", .LeagueId] | @csv' >> "${league}"_circus_league_events.csv
+  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv' >> "${league}"_betconstruct_league_events.csv
 
-  nc 127.0.0.1 1248 \
+  nc 127.0.0.1 "${PORT}" \
   | jq --raw-output '.Message' \
   | jq --raw-output '.Requests[0].Content' \
-  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "circus", .LeagueId] | @csv' >> "${league}"_circus_league_events.csv
+  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv' >> "${league}"_betconstruct_league_events.csv
 
 }
 
 get_events
 
 
-cat *_circus_league_events.csv >> circus_events_raw.csv
-rm *_circus_league_events.csv
+cat *_betconstruct_league_events.csv >> betconstruct_events_raw.csv
+rm *_betconstruct_league_events.csv
 
-circus_output=$(cat circus_events_raw.csv)
-circus_output=${circus_output//227875758/jupiler_pro_league}
-circus_output=${circus_output//54287323/ligue_1}
-circus_output=${circus_output//54297345/bundesliga}
-circus_output=${circus_output//54344509/serie_a}
-circus_output=${circus_output//1397387603/la_liga}
+betconstruct_output=$(cat betconstruct_events_raw.csv)
+betconstruct_output=${betconstruct_output//227875758/jupiler_pro_league}
+betconstruct_output=${betconstruct_output//54287323/ligue_1}
+betconstruct_output=${betconstruct_output//54297345/bundesliga}
+betconstruct_output=${betconstruct_output//54344509/serie_a}
+betconstruct_output=${betconstruct_output//1397387603/la_liga}
 
 
-echo "${circus_output}" > circus_events.csv
+echo "${betconstruct_output}" > betconstruct_events.csv
 
-rm circus_events_raw.csv
+rm betconstruct_events_raw.csv
 
 echo kill websocket client...
 kill -9 "${WS_PID}"

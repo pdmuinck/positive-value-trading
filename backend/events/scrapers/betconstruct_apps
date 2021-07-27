@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# create persistent websocket client connection
+# call nc 127.0.0.1:1234 to get messages
+
+PORT=$1
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
+WS_PID=$!
+echo created websocket client with pid "${WS_PID}"
+
+nc 127.0.0.1 "${PORT}"
+echo about to log in...
+echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"16062033821871"}' \
+| nc 127.0.0.1 "${PORT}"
+nc 127.0.0.1 "${PORT}"
+
+get_events() {
+  echo About to get betconstruct events...
+  echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":538}},"subscribe":true},"rid":"162740569711540"}' \
+  | nc 127.0.0.1 "${PORT}"
+
+  nc 127.0.0.1 "${PORT}" | jq '.' > bcapps.json
+}
+
+get_events
+
+echo kill websocket client...
+kill -9 "${WS_PID}"
+
