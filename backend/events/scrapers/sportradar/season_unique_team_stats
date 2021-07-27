@@ -1,0 +1,9 @@
+#!/bin/bash
+
+season_unique_team_stats() {
+    season_id=$1
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/stats_season_uniqueteamstats/'$season_id)
+    echo $output
+}
+
+season_unique_team_stats $1

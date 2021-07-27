@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+league_data=$'callCount=1\nnextReverseAjaxIndex=0\nc0-scriptName=IF_GetAvvenimenti\nc0-methodName=getEventi\nc0-id=0\nc0-param0=number:6\nc0-param1=string:\nc0-param2=string:\nc0-param3=number:1\nc0-param4=number:38\nc0-param5=boolean:false\nc0-param6=string:STANLEYBET\nc0-param7=number:0\nc0-param8=number:0\nc0-param9=string:nl\nbatchId=13\ninstanceId=0\npage=%2FXSport%2Fpages%2Fprematch.jsp%3Fsystem_code%3DSTANLEYBET%26language%3Dnl%26token%3D%26ip%3D\nscriptSessionId=3N6Nzw53MrgpypSzoOWP6nVj0BULPXUz5Hn/4BhypHn-jwNSVd24f\n'
+
+echo "${league_id}"
+
+curl 'https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimenti.getEventi.dwr' \
+  -H 'Connection: keep-alive' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
+  -H 'Content-Type: text/plain' \
+  -H 'Accept: */*' \
+  -H 'Origin: https://sportsbook.stanleybet.be' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://sportsbook.stanleybet.be/XSport/pages/prematch.jsp?system_code=STANLEYBET&language=nl&token=&ip=' \
+  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'Cookie: DWRSESSIONID=3N6Nzw53MrgpypSzoOWP6nVj0BULPXUz5Hn; JSESSIONID=BF819DD37680A7486240D6B58E4B6858; TS01df437e=014cba0256c1885b01d6af591a2ab86847e19a1207044f60df96dbfd97d4e00df621a5ff6feaf3992b2b6178d939c26b0f677f9e4c2917db99d02d64b4740017f505b904f3; _ga=GA1.2.2027441084.1623762223; _hjid=cf674d37-ab75-4caf-8731-d4345b7e5978; _gid=GA1.2.2111128173.1627147270; _gat_UA-15349515-20=1; _hjAbsoluteSessionInProgress=0; TS016e3817=014cba025658991b8492541a2e1e976696bdb695338549905568e63689eb1c213fd161d45eca5c7d3756f76203cc30e45c8e77e17c' \
+  --data-raw "${league_data}" \
+  --compressed  > testfile
+
+awk '/"AvvenimentoDTO"/' testfile > lol
+

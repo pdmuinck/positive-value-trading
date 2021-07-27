@@ -1,0 +1,8 @@
+#!/bin/bash
+
+event_full_feed() {
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/event_fullfeed/')
+    echo "${output}" | jq '.doc | .[0].data | .[] | {sport: .name, tournaments: .realcategories | .[] | .tournaments | .[] | {id: ._id, name: .name, matchIds: .matches | map(._id)}}'
+}
+
+event_full_feed

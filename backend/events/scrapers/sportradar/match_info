@@ -1,0 +1,9 @@
+#!/bin/bash
+
+match_info() {
+    match_id=$1
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/'$match_id)
+    echo $output
+}
+
+match_info $1

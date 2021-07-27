@@ -1,0 +1,9 @@
+#!/bin/bash
+
+season_form_table() {
+    season_id=$1
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/stats_formtable/'$season_id)
+    echo $output
+}
+
+season_form_table $1
