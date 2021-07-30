@@ -34,6 +34,8 @@ init
 cookies=$(get_cookies)
 k=$(get_k_parameter)
 
+echo GETTING BINGOAL...
+
 get_events "${cookies}" '"premier_league"' 35 "${k}" &
 get_events "${cookies}" '"jupiler_pro_league"' 25 "${k}" &
 get_events "${cookies}" '"serie_a"' 39 "${k}" &
@@ -45,4 +47,6 @@ wait
 
 cat *_bingoal_league_events.csv >> bingoal_events.csv
 rm *_bingoal_league_events.csv
+
+ECHO GOT BINGOAL...
 

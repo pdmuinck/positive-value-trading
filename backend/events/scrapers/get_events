@@ -17,5 +17,6 @@ wait
 echo event_id,sportradar_id,book,league > events.csv
 cat *_events.csv >> events.csv
 rm *_events.csv
-mlr --csv filter -S '$sportradar_id =~ "^[0-9]{8}$"' then uniq -g sportradar_id events.csv > sportradar_ids
+sportradar_ids=$(mlr --csv --headerless-csv-output filter -S '$sportradar_id =~ "^[0-9]{8}$"' then uniq -g sportradar_id events.csv)
+echo "${sportradar_ids}"
 

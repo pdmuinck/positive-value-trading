@@ -20,3 +20,5 @@ wait
 
 cat *_meridian_league_events.csv >> meridian_events.csv
 rm *_meridian_league_events.csv
+
+ECHO GOT MERIDIAN...

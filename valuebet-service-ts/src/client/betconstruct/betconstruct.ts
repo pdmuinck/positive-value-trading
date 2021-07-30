@@ -12,7 +12,7 @@ const books = {}
 const books_bcapps = {}
 
 books_bcapps[Bookmaker.STAR_CASINO] = "wss://eu-swarm-ws-re.bcapps.net/"
-books[Bookmaker.CIRCUS] = "wss://wss01.circus.be"
+books[Bookmaker.CIRCUS] = "wss://wss01.betconstruct.be"
 books[Bookmaker.GOLDENVEGAS] = "wss://wss.goldenvegas.be"
 
 let circusEvents = undefined
