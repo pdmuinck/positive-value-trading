@@ -40,5 +40,7 @@ wait
 cat *_betway_league_events.csv >> betway_events.csv
 rm *_betway_league_events.csv
 
+echo GOT BETWAY...
+
 
 

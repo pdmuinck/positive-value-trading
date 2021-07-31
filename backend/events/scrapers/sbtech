@@ -39,6 +39,8 @@ wait
 cat *_sbtech_league_events.csv >> sbtech_events.csv
 rm *_sbtech_league_events.csv
 
+echo GOT SBTECH...
+
 
 
 

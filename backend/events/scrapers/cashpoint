@@ -31,4 +31,6 @@ wait
 cat *_cashpoint_league_events.csv >> cashpoint_events.csv
 rm *_cashpoint_league_events.csv
 
+echo GOT CASHPOINT...
+
 

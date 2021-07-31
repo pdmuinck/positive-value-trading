@@ -47,6 +47,8 @@ betconstruct_output=${betconstruct_output//1397387603/la_liga}
 
 echo "${betconstruct_output}" > betconstruct_events.csv
 
+echo GOT BETCONSTRUCT...
+
 rm betconstruct_events_raw.csv
 
 echo kill websocket client...

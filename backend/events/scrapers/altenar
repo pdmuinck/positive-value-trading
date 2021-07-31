@@ -40,3 +40,5 @@ wait
 
 cat *_altenar_league_events.csv >> altenar_events.csv
 rm *_altenar_league_events.csv
+
+echo GOT ALTENAR...

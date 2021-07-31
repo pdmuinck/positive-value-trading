@@ -38,6 +38,8 @@ wait
 cat *_kambi_league_events.csv >> kambi_events.csv
 rm *_kambi_league_events.csv
 
+echo GOT KAMBI...
+
 
 
 

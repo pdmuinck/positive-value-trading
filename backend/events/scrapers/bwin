@@ -37,3 +37,5 @@ wait
 cat *_bwin_league_events.csv >> bwin_events.csv
 rm *_bwin_league_events.csv
 
+echo GOT BWIN...
+

@@ -21,3 +21,5 @@ wait
 
 cat *_ladbrokes_league_events.csv >> ladbrokes_events.csv
 rm *_ladbrokes_league_events.csv
+
+echo GOT LADBROKES...
