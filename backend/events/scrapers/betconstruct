@@ -3,39 +3,38 @@
 # create persistent websocket client connection
 # call nc 127.0.0.1:1234 to get messages
 
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:5679 reuse-raw:wss://wss02.circus.be --max-messages-rev 1&
+rm -f betconstruct_events.csv
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:5680 reuse-raw:wss://wss02.circus.be --max-messages-rev 1&
 WS_PID=$!
 echo created websocket client with pid "${WS_PID}"
 
-nc 127.0.0.1 5679
+nc 127.0.0.1 5680
 echo about to log in...
 echo '{"Id":"d91df36e-ddc3-ca27-5f38-689862a5d59b","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"fbb21005-c3a9-43ff-96f1-a8f0289e86f2\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36\",\"LanguageCode\":\"en\",\"RoomDomainName\":\"CIRCUS\"}}"}' \
-| nc 127.0.0.1 5679
-nc 127.0.0.1 5679
+| nc 127.0.0.1 5680
+nc 127.0.0.1 5680
 
 get_events() {
   echo About to get betconstruct events...
   echo '{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds=227875758&LeagueIds=54287323&LeagueIds=54297345&LeagueIds=54344509&LeagueIds=1397387603&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}' \
-  | nc 127.0.0.1 5679
+  | nc -w 1 127.0.0.1 5680
 
-  # do it twice
-  nc 127.0.0.1 5679 \
-  | jq --raw-output '.Message' \
-  | jq --raw-output '.Requests[0].Content' \
-  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv' >> "${league}"_betconstruct_league_events.csv
+  touch betconstruct_events_raw.csv
+  found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
 
-  nc 127.0.0.1 5679 \
-  | jq --raw-output '.Message' \
-  | jq --raw-output '.Requests[0].Content' \
-  | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv' >> "${league}"_betconstruct_league_events.csv
-
+  while [ "${found_events}" == 0 ]
+  do
+     nc 127.0.0.1 5680 \
+    | jq --raw-output '.Message' \
+    | jq --raw-output '.Requests[0].Content' \
+    | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[] | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv' >> betconstruct_events_raw.csv
+    found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
+  done
+  echo Found BETCONSTRUCT events = "${found_events}"
 }
 
 get_events
-
-
-cat *_betconstruct_league_events.csv >> betconstruct_events_raw.csv
-rm *_betconstruct_league_events.csv
 
 betconstruct_output=$(cat betconstruct_events_raw.csv)
 betconstruct_output=${betconstruct_output//227875758/jupiler_pro_league}
