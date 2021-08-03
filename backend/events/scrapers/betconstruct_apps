@@ -61,6 +61,8 @@ do
   fi
 done
 
+rm raw_bcapps_events.csv
+
 echo kill websocket client...
 kill -9 "${WS_PID}"
 
