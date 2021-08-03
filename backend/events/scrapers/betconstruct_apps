@@ -12,8 +12,7 @@ echo created websocket client with pid "${WS_PID}"
 nc 127.0.0.1 5695
 echo about to log in...
 rid=$(date +%s)
-echo "${rid}"
-echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"22/06/2021-19:17"},"rid":"'"${rid}"'"}' \
+echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
 | nc 127.0.0.1 5695
 
 login_success=$(nc 127.0.0.1 5695)
@@ -21,7 +20,7 @@ echo Login success: "${login_success}"
 
 get_events() {
   echo About to get betconstruct events...
-  echo echo '{"command":"get","params":{"source":"betting","what":{"game":"@count"},"where":{"game":{"type":1},"sport":{"type":{"@ne":1},"id":{"@nin":[181]}}}},"rid":"16279759443053"}' \
+  echo echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":538}},"subscribe":true},"rid":"'"${rid}"'"}' \ \
   | nc 127.0.0.1 5695
 
   touch betconstruct_apps_events_raw.csv
