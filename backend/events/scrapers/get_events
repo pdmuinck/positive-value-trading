@@ -36,4 +36,8 @@ echo GOT sportradar match info
 cat pinnacle_events.csv >> events.csv
 rm pinnacle_events.csv
 
+./betconstruct_apps 1589
+cat bcapps_events.csv >> events.csv
+rm bcapps_events.csv
+
 

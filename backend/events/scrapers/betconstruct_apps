@@ -3,56 +3,43 @@
 # create persistent websocket client connection
 # call nc 127.0.0.1:1234 to get messages
 
-rm -f betconstruct_apps_events.csv
+echo GETTING BCAPPS
 
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:5695 reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
+PORT=$1
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
 WS_PID=$!
 echo created websocket client with pid "${WS_PID}"
 
-nc 127.0.0.1 5695
-echo about to log in...
 rid=$(date +%s)
-echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
-| nc 127.0.0.1 5695
 
-login_success=$(nc 127.0.0.1 5695)
-echo Login success: "${login_success}"
+nc 127.0.0.1 "${PORT}"
+echo about to log in...
+echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
+| nc 127.0.0.1 "${PORT}"
+nc 127.0.0.1 "${PORT}"
 
 get_events() {
-  echo About to get betconstruct events...
-  echo echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":538}},"subscribe":true},"rid":"'"${rid}"'"}' \ \
-  | nc 127.0.0.1 5695
+  local league_id=$1
+  local league=$2
+  echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":'"${league_id}"'}},"subscribe":true},"rid":"'"${rid}"'"}' \
+  | nc 127.0.0.1 "${PORT}"
 
-  touch betconstruct_apps_events_raw.csv
-  found_events=$(wc -c betconstruct_apps_events_raw.csv | awk '{print $1}')
-
-  while [ "${found_events}" == 0 ]
-  do
-     nc 127.0.0.1 5695 >> betconstruct_apps_events_raw.csv
-     found_events=$(wc -c betconstruct_apps_events_raw.csv | awk '{print $1}')
-  done
-  echo Found BETCONSTRUCT APPS events = "${found_events}"
+  nc 127.0.0.1 "${PORT}" | jq --raw-output '.data.data.game | values[] | [.id, .team1_name, .team2_name, "bcapps",'"${league}"'] | @csv' >> "${league}"_bcapps_league_events.csv
 }
 
-if [ -n "${login_success}" ]
-  then
-  get_events
-fi
+get_events 538 '"premier_league"'
+get_events 545 '"la_liga"'
+get_events 541 '"bundesliga"'
+get_events 543 '"serie_a"'
+get_events 557 '"jupiler_pro_league"'
+get_events 548 '"ligue_1"'
 
-betconstruct_apps_output=$(cat betconstruct_apps_events_raw.csv)
-#betconstruct_apps_output=${betconstruct_apps_output//227875758/jupiler_pro_league}
-#betconstruct_apps_output=${betconstruct_apps_output//54287323/ligue_1}
-#betconstruct_apps_output=${betconstruct_apps_output//54297345/bundesliga}
-#betconstruct_apps_output=${betconstruct_apps_output//54344509/serie_a}
-#betconstruct_apps_output=${betconstruct_apps_output//1397387603/la_liga}
-
-
-echo "${betconstruct_apps_output}" > betconstruct_apps_events.csv
-
-echo GOT BETCONSTRUCT APPS...
-
-rm betconstruct_apps_events_raw.csv
+cat *_bcapps_league_events.csv >> bcapps_events.csv
+rm *_bcapps_league_events.csv
 
 echo kill websocket client...
 kill -9 "${WS_PID}"
+
+echo GOT BCAPPS
 
