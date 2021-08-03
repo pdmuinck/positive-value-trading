@@ -26,9 +26,14 @@ do ./sportradar/match_info "${id}" | jq --raw-output '.doc[0].data.match | [._id
 done
 
 wait
+
 echo sportradar_id,event_date,event_time,event_time_zone,home_id,home_name,away_id,away_name > sportradar_events.csv
 cat *_sportradar_match >> sportradar_events.csv
 rm *_sportradar_match
 echo GOT sportradar match info
+
+./pinnacle
+cat pinnacle_events.csv >> events.csv
+rm pinnacle_events.csv
 
 
