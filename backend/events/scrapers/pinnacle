@@ -20,15 +20,25 @@ get_events() {
     -H 'content-type: application/json' \
     -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
     --compressed \
-    | jq --raw-output '.[] | select(.parent == null) | [.id, .participants[].name, "pinnacle",'"${league}"'] | @csv ' >> pinnacle_league_events.csv
+    | jq --raw-output '.[] | select(.parent == null) | [.id, .participants[].name, "pinnacle",'"${league}"'] | @csv ' >> "${league}"_pinnacle_league_events.csv
 
 }
 
-get_events '"bundesliga"' 1842
+echo GETTING PINNACLE...
+
+get_events '"bundesliga"' 1842 &
+get_events '"la_liga"' 2196 &
+get_events '"premier_league"' 1980 &
+get_events '"serie_a"' 2436 &
+get_events '"ligue_1"' 2036 &
+get_events '"jupiler_pro_league"' 1817
 
 wait
 
-events=$(cat < pinnacle_league_events.csv)
+cat *_pinnacle_league_events.csv >> raw_pinnacle_events.csv
+rm *_pinnacle_league_events.csv
+
+events=$(cat < raw_pinnacle_events.csv)
 
 IFS=$'\n'
 for event in ${events}
@@ -40,12 +50,13 @@ do
   sportradar_id=$(grep ''"${home_team_id}"'' sportradar_events.csv | grep ''"${away_team_id}"'' | cut -d',' -f 1)
   if [ -n "${sportradar_id}" ]
   then
-  echo "${event}","${sportradar_id}" >> clean_pinnacle_league_events.csv
+  echo "${event}","${sportradar_id}" | awk -F"," -v OFS="," '{print $1,$6,$4,$5}' >> pinnacle_events.csv
   fi
 done
 
+rm raw_pinnacle_events.csv
 
-awk -F"," -v OFS="," '{print $1,$6,$4,$5}' clean_pinnacle_league_events.csv > pinnacle_league_events.csv
+echo GOT PINNACLE...
 
 
 
