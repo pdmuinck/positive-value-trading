@@ -3,6 +3,13 @@
 # create persistent websocket client connection
 # call nc 127.0.0.1:1234 to get messages
 
+get_participant_id() {
+  name=$1
+  jq_string='.['"${name}"']'
+  participant=$(cat < bcapps_sportradar.json | jq "${jq_string}")
+  echo "${participant}"
+}
+
 echo GETTING BCAPPS
 
 PORT=$1
@@ -35,8 +42,24 @@ get_events 543 '"serie_a"'
 get_events 557 '"jupiler_pro_league"'
 get_events 548 '"ligue_1"'
 
-cat *_bcapps_league_events.csv >> bcapps_events.csv
+cat *_bcapps_league_events.csv >> raw_bcapps_events.csv
 rm *_bcapps_league_events.csv
+
+events=$(cat < raw_bcapps_events.csv)
+
+IFS=$'\n'
+for event in ${events}
+do
+  home_team=$(echo "${event}" | cut -d',' -f 2)
+  away_team=$(echo "${event}" | cut -d',' -f 3)
+  home_team_id=$(get_participant_id "${home_team}")
+  away_team_id=$(get_participant_id "${away_team}")
+  sportradar_id=$(grep ''"${home_team_id}"'' sportradar_events.csv | grep ''"${away_team_id}"'' | cut -d',' -f 1)
+  if [ -n "${sportradar_id}" ]
+  then
+  echo "${event}","${sportradar_id}" | awk -F"," -v OFS="," '{print $1,$6,$4,$5}' >> bcapps_events.csv
+  fi
+done
 
 echo kill websocket client...
 kill -9 "${WS_PID}"
