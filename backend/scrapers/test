@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk -v var="$(date +%Y-%m-%d)" -F"," 'BEGIN { OFS = "," } {$5=var; print}' events.csv > lol_events.csv
