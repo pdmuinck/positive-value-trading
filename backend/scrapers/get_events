@@ -11,6 +11,7 @@ echo START GETTING Events
 ./ladbrokes &
 ./sbtech &
 ./bingoal &
+./zetbet &
 ./betconstruct
 wait 
 
