@@ -1,0 +1,38 @@
+#!/bin/bash
+
+host=https://www.zebet.be/
+
+curl 'https://www.zebet.be/en/competition/94-premier_league' \
+  -H 'Connection: keep-alive' \
+  -H 'Cache-Control: max-age=0' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'Sec-Fetch-Site: none' \
+  -H 'Sec-Fetch-Mode: navigate' \
+  -H 'Sec-Fetch-User: ?1' \
+  -H 'Sec-Fetch-Dest: document' \
+  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'Cookie: _ga=GA1.2.1564709784.1623582736; CookieConsent={stamp:%27LRB0ca7wib0tuPxp1+XOq6rt5o5s2CxBBkGNbZlzZf5Mj++u2Y35kg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:1%2Cutc:1623582744668%2Cregion:%27be%27}; AMFParams=dummy,false,false,false,false,true,mac,10_15_7,chrome,91.0.4472.114; AMFDetect=true; sSIDa8f730af82f8c54cf75007f13c1fe993=hl1dsdqbarjo4mnj9mfks0ml6m; _gid=GA1.2.131283800.1628260141; _gat_gtag_UA_50717562_4=1; preferences=%7B%22isFreeBet%22%3Afalse%7D' \
+  --compressed > zetbet.html
+
+
+events=$(grep 'href="/en/event/' zetbet.html | xargs)
+
+count=0
+
+IFS=' ' read -ra ADDR <<< "$events"
+for i in "${ADDR[@]}"; do
+  count=$(( count + 1 ))
+  if [[ "$i" == *href=* ]]; then
+  event_part=$(echo "${i}" | cut -c 6-)
+  curl -s $host$event_part > "${count}"_zetbet_events.html
+  xmllint --html --xpath '//*[@class="bet-stats"]' "${count}"_zetbet_events.html >> betstats
+  fi &
+done
+
+wait
+
+

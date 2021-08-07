@@ -17,7 +17,6 @@ wait
 echo event_id,sportradar_id,book,league,ds > events.csv
 awk -v var="$(date +%Y-%m-%d)" -F"," 'BEGIN { OFS = "," } {$5=var; print}' *_events.csv >> events.csv
 rm *_events.csv
-# TODO remove empty lines first from events.csv
 sportradar_ids=$(mlr --csv --headerless-csv-output filter -S '$sportradar_id =~ "^[0-9]{8}$"' then uniq -g sportradar_id events.csv)
 
 echo GET sportradar match info
@@ -28,7 +27,7 @@ done
 wait
 
 echo sportradar_id,event_date,event_time,event_time_zone,home_id,home_name,away_id,away_name,ds > sportradar_events.csv
-cat *_sportradar_match >> sportradar_events.csv
+awk -v var="$(date +%Y-%m-%d)" -F"," 'BEGIN { OFS = "," } {$9=var; print}' *_sportradar_match >> sportradar_events.csv
 rm *_sportradar_match
 echo GOT sportradar match info
 
