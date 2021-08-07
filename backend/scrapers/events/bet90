@@ -1,0 +1,21 @@
+#!/bin/bash
+
+curl 'https://bet90.be/Sports/SportLeagueGames' \
+  -H 'Connection: keep-alive' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'Accept: */*' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+  -H 'Content-Type: application/json; charset=UTF-8' \
+  -H 'Origin: https://bet90.be' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://bet90.be/Sports' \
+  -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'Cookie: ASP.NET_SessionId=neefmtmnpmaq4fptqh2evgyl; Culture=nl' \
+  --data-raw '{"leagueId":"30","categoryId":19,"sportId":1}' \
+  --compressed > bet90_leagues.html
+
+xmllint --html --xpath '//div[@class="divTableBody"]' bet90_leagues.html > test.html

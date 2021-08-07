@@ -15,7 +15,7 @@ get_events() {
 
   rm "${league}"_zetbet.html
 
-  IFS=' ' read -ra ADDR <<< "$events"
+  IFS='{' read -ra ADDR <<< "$events"
   for i in "${ADDR[@]}"; do
     count=$(( count + 1 ))
     if [[ "$i" == *href=* ]]; then

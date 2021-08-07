@@ -2,138 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1c779c3-30f1-4114-b20f-f020ab780724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/altenar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/bookmaker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/books/altenar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/event.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/valuebet-service/valuebet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/scrapers/betoffers/kambi/betoffer_map.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/scrapers/betoffers/kambi/kambi_betoffers" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/scrapers/events/bet90" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/events.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/schema.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/sportradar_events.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/models/sportradar/schema.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/models/sportradar/vw_events.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/main.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/provider.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/provider.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/prod/tf-state.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/prod/tf-state.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/test/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/test/main.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/infra/test/tf-state.tf" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/infra/test/tf-state.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/all_books.txt" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/all_books.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/altenar/altenar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/altenar/altenar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/apiResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/apiResponse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bet90/bet90.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bet90/leagues.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/leagues.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betconstruct/betconstruct.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betconstruct/betconstruct.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betconstruct/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betconstruct/participants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/betway/betway.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/betway/betway.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bingoal/bingoal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bingoal/bingoal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/bwin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/bwin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/cashpoint/cashpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/cashpoint/cashpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/bookmakers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/bookmakers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/kambi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/kambi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/leagues.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/leagues.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/sports.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/sports.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/unibet_betoffer_type_2_fake.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/unibet_betoffer_type_2_fake.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/kambi/unibet_betoffer_type_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/kambi/unibet_betoffer_type_6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/ladbrokes/ladbrokes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/ladbrokes/ladbrokes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/meridian/meridian.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/meridian/meridian.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/openbet/openbet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/openbet/openbet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/participants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/pinnacle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/pinnacle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/pinnacle/pinnacle_betoffer_fake.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/pinnacle/pinnacle_betoffer_fake.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/playtech/participants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/playtech/participants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/playtech/playtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/playtech/playtech.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/BUNDESLIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/BUNDESLIGA.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/CHAMPIONSHIP.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/CHAMPIONSHIP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/EREDIVISIE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/EREDIVISIE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/LA_LIGA.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/LA_LIGA.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/LIGUE_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/LIGUE_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/PREMIER_LEAGUE.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/PREMIER_LEAGUE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/resources/SERIE_A.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/resources/SERIE_A.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/sbtech/sbtech.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/sbtech/sbtech.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/scooore/scooore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/scooore/scooore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/scraper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/scraper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/sportradar/sportradar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/sportradar/sportradar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/stanleybet/stanleybet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/stanleybet/stanleybet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/client/zetbet/zetbet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/client/zetbet/zetbet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/domain/valuebet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/domain/valuebet.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/event-mapper/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/event-mapper/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/event-mapper/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/event-mapper/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/betoffers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/betoffers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/bookmaker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/bookmaker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/competitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/competitions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/events.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/events.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/parser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/parser.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/altenar/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/altenar/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/expected_special_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/expected_special_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bet90/special_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bet90/special_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betcenter/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betcenter/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betconstruct/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betconstruct/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/betway/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/betway/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bingoal/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bingoal/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bwin/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bwin/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/bwin/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/bwin/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/kambi/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/kambi/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/ladbrokes/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/ladbrokes/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/magicbetting/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/magicbetting/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/magicbetting/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/magicbetting/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/meridian/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/meridian/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/pinnacle/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/pinnacle/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sample.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sample.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/expected_betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/expected_betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/sbtech/expected_events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/sbtech/expected_events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/scooore/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/scooore/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/scooore/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/scooore/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/stanleybet/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/stanleybet/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/stanleybet/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/stanleybet/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/starcasino/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/starcasino/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/starcasino/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/starcasino/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/zetbet/betoffers.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/zetbet/betoffers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/resources/zetbet/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/resources/zetbet/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/scraper.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/scraper.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/service/test/utils.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/service/test/utils.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/betoffer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/betoffer.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/parser.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/parser.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/scraper.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/scraper.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/test-data.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/test-data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/src/test/valuebet-service.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/src/test/valuebet-service.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valuebet-service/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-service-ts/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/event-mapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/event-mapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/altenar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/altenar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/bcapps_sportradar.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bcapps_sportradar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/betconstruct" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betconstruct" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/betconstruct_apps" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betconstruct_apps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/betway" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betway" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/bingoal" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bingoal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/bwin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bwin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/cashpoint" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/cashpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/get_events" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/get_events" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/kambi" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/kambi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/ladbrokes" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/ladbrokes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/meridian" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/meridian" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/pinnacle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/pinnacle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/pinnacle_sportradar.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/pinnacle_sportradar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/sbtech" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/sbtech" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/stanleybet" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/stanleybet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/zetbet" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/zetbet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snowflake/sport-events/profiles.yml" beforeDir="false" afterPath="$PROJECT_DIR$/snowflake/sport-events/profiles.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,46 +70,48 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Scala" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/valuebet-service/infra/prod" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/scrapers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/valuebet-service/node_modules/mocha" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="/usr/local/lib/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="scala_project_settings_configurable.last_selected_tab_index" value="0" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/valuebet-service/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/valuebet-service/infra/prod" />
-      <recent name="$PROJECT_DIR$/test-service/src/client/playtech" />
-      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/betway" />
-      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/meridian" />
-      <recent name="$PROJECT_DIR$/test-service/src/service/test/resources/ladbrokes" />
+      <recent name="$PROJECT_DIR$/backend/scrapers" />
+      <recent name="$PROJECT_DIR$/snowflake/sport-events/data" />
+      <recent name="$PROJECT_DIR$/backend/events/scrapers" />
+      <recent name="$PROJECT_DIR$/backend/events/scrapers/sportradar" />
+      <recent name="$PROJECT_DIR$/backend/events" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test/src" />
-      <recent name="$PROJECT_DIR$/test" />
-      <recent name="$PROJECT_DIR$/valuebet-service/src/event-mapper" />
-      <recent name="$PROJECT_DIR$/valuebet-service/infra/test" />
-      <recent name="$PROJECT_DIR$/valuebet-service/src" />
+      <recent name="$PROJECT_DIR$/backend/scrapers/betoffers/kambi" />
+      <recent name="$PROJECT_DIR$/backend/scrapers/events" />
+      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/backend/events" />
+      <recent name="$PROJECT_DIR$/backend/test/resources/bwin" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Mocha.backend/test/parser_test.js">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -220,6 +120,9 @@
       <method v="2">
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
+    </configuration>
+    <configuration name="event-mapper.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/backend/event-mapper.js" working-dir="$PROJECT_DIR$/valuebet-service/event-mapper">
+      <method v="2" />
     </configuration>
     <configuration name="event.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="$USER_HOME$/Documents/projects/personal/positive-value-trading/workers/bingoal-service/services/event.js" working-dir="$PROJECT_DIR$">
       <method v="2">
@@ -231,57 +134,17 @@
         </option>
       </method>
     </configuration>
-    <configuration name="Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" type="mocha-javascript-test-runner" nameIsGenerated="true">
+    <configuration name="Altenar parser" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
-      <node-options>tsc</node-options>
-      <mocha-package>$PROJECT_DIR$/node-typescript-starter/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/node-typescript-starter</working-directory>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/backend/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/backend</working-directory>
       <pass-parent-env>true</pass-parent-env>
       <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <extra-mocha-options />
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/node-typescript-starter/src/service/test/parser.test.ts</test-file>
-      <test-names>
-        <name value="Kambi Parser Tests" />
-        <name value="#parse" />
-        <name value="should return 1X2 betOffer type for criterion 1001159858" />
-      </test-names>
+      <test-file />
       <method v="2" />
-    </configuration>
-    <configuration name="Parser tests" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/test-service</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
-      <test-names>
-        <name value="Parser tests" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
-      </method>
-    </configuration>
-    <configuration name="Parser tests.should parse betoffers for: BET90" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/test-service</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/parser.test.ts</test-file>
-      <test-names>
-        <name value="Parser tests" />
-        <name value="should parse betoffers for: BET90" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
-      </method>
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner">
       <node-interpreter>project</node-interpreter>
@@ -297,80 +160,30 @@
         <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
       </method>
     </configuration>
-    <configuration name="scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="backend/test/parser_test.js" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
-      <mocha-package>$PROJECT_DIR$/valuebet-service/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/test-service</working-directory>
+      <mocha-package>/usr/local/lib/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/backend</working-directory>
       <pass-parent-env>true</pass-parent-env>
       <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</test-file>
-      <test-names>
-        <name value="scraper should call third party api" />
-        <name value="get Sbtech events" />
-        <name value="should return betoffers with bookmaker ids" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
-      </method>
-    </configuration>
-    <configuration name="scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/test-service</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</test-file>
-      <test-names>
-        <name value="scraper should call third party api" />
-        <name value="getBetOffers" />
-        <name value="should return betoffers with bookmaker ids" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
-      </method>
-    </configuration>
-    <configuration name="scraper should call third party api.getEvents.should return events with bookmaker ids" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/test-service/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$/test-service</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>exports</ui>
-      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test-service/src/service/test/scraper.test.ts</test-file>
-      <test-names>
-        <name value="scraper should call third party api" />
-        <name value="getEvents" />
-        <name value="should return events with bookmaker ids" />
-      </test-names>
-      <method v="2">
-        <option name="TypeScript.Before.Run" enabled="true" FAIL_ON_ERROR="true" CONFIG_PATH="$PROJECT_DIR$/test-service/tsconfig.json" />
-      </method>
+      <extra-mocha-options />
+      <test-kind>TEST_FILE</test-kind>
+      <test-file>$PROJECT_DIR$/backend/test/parser_test.js</test-file>
+      <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Mocha.Kambi Parser Tests.#parse.should return 1X2 betOffer type for criterion 1001159858" />
-      <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" />
-      <item itemvalue="Mocha.scraper should call third party api.getEvents.should return events with bookmaker ids" />
-      <item itemvalue="Mocha.Parser tests" />
-      <item itemvalue="Mocha.Parser tests.should parse betoffers for: BET90" />
-      <item itemvalue="Mocha.scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids" />
+      <item itemvalue="Mocha.Altenar parser" />
+      <item itemvalue="Mocha.backend/test/parser_test.js" />
       <item itemvalue="Node.js.event.js" />
       <item itemvalue="Node.js.Unnamed" />
+      <item itemvalue="Node.js.event-mapper.js" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Mocha.scraper should call third party api.get Sbtech events.should return betoffers with bookmaker ids" />
-        <item itemvalue="Mocha.scraper should call third party api.getBetOffers.should return betoffers with bookmaker ids" />
-        <item itemvalue="Mocha.scraper should call third party api.getEvents.should return events with bookmaker ids" />
-        <item itemvalue="Mocha.Parser tests" />
-        <item itemvalue="Mocha.Parser tests.should parse betoffers for: BET90" />
+        <item itemvalue="Mocha.backend/test/parser_test.js" />
+        <item itemvalue="Mocha.Altenar parser" />
+        <item itemvalue="Node.js.event-mapper.js" />
       </list>
     </recent_temporary>
   </component>
@@ -506,352 +319,429 @@
       <workItem from="1619809619416" duration="5459000" />
       <workItem from="1619865743914" duration="6957000" />
       <workItem from="1619951955414" duration="15072000" />
-      <workItem from="1620109203928" duration="3737000" />
+      <workItem from="1620109203928" duration="4222000" />
+      <workItem from="1620151335562" duration="3609000" />
+      <workItem from="1620155104132" duration="1673000" />
+      <workItem from="1620472234181" duration="7377000" />
+      <workItem from="1620672402613" duration="4743000" />
+      <workItem from="1620747511374" duration="7092000" />
+      <workItem from="1620804512774" duration="15000" />
+      <workItem from="1620828252160" duration="943000" />
+      <workItem from="1620829480553" duration="2518000" />
+      <workItem from="1621145372217" duration="4689000" />
+      <workItem from="1621162638045" duration="6194000" />
+      <workItem from="1621302214685" duration="9708000" />
+      <workItem from="1621320087430" duration="13000" />
+      <workItem from="1621448652452" duration="1689000" />
+      <workItem from="1621493236655" duration="1819000" />
+      <workItem from="1621539087349" duration="1373000" />
+      <workItem from="1621576907429" duration="9615000" />
+      <workItem from="1621621596827" duration="5542000" />
+      <workItem from="1621679124781" duration="1560000" />
+      <workItem from="1621854574971" duration="5481000" />
+      <workItem from="1621921491377" duration="4399000" />
+      <workItem from="1622056905739" duration="3471000" />
+      <workItem from="1622144139026" duration="3848000" />
+      <workItem from="1622369307142" duration="5047000" />
+      <workItem from="1622571444031" duration="4164000" />
+      <workItem from="1622578130604" duration="2436000" />
+      <workItem from="1622658621833" duration="7490000" />
+      <workItem from="1623263594780" duration="4795000" />
+      <workItem from="1623310492065" duration="25000" />
+      <workItem from="1623352850164" duration="409000" />
+      <workItem from="1623582547733" duration="4175000" />
+      <workItem from="1623647185847" duration="12000" />
+      <workItem from="1623668828091" duration="202000" />
+      <workItem from="1623669047505" duration="4874000" />
+      <workItem from="1623754374337" duration="7689000" />
+      <workItem from="1623782209379" duration="1981000" />
+      <workItem from="1623840094198" duration="8799000" />
+      <workItem from="1623868924629" duration="3123000" />
+      <workItem from="1623908622372" duration="17000" />
+      <workItem from="1623908868642" duration="161000" />
+      <workItem from="1623910278651" duration="4000" />
+      <workItem from="1624648799161" duration="5388000" />
+      <workItem from="1624712627968" duration="2505000" />
+      <workItem from="1624792500688" duration="5000" />
+      <workItem from="1624904663747" duration="4332000" />
+      <workItem from="1624990325116" duration="5065000" />
+      <workItem from="1625039120273" duration="106000" />
+      <workItem from="1625078825693" duration="68000" />
+      <workItem from="1625122325444" duration="932000" />
+      <workItem from="1625598613237" duration="3599000" />
+      <workItem from="1626612578710" duration="3514000" />
+      <workItem from="1626790888238" duration="8142000" />
+      <workItem from="1626808164992" duration="4815000" />
+      <workItem from="1626813549896" duration="71000" />
+      <workItem from="1626870933547" duration="180000" />
+      <workItem from="1626873391271" duration="230000" />
+      <workItem from="1626931018909" duration="198000" />
+      <workItem from="1626939045636" duration="213000" />
+      <workItem from="1626968279256" duration="1285000" />
+      <workItem from="1627049841551" duration="3816000" />
+      <workItem from="1627128228719" duration="3576000" />
+      <workItem from="1627146851007" duration="2895000" />
+      <workItem from="1627319639485" duration="3573000" />
+      <workItem from="1627328233201" duration="1831000" />
+      <workItem from="1627384277523" duration="6560000" />
+      <workItem from="1627404163440" duration="6198000" />
+      <workItem from="1627666557908" duration="1158000" />
+      <workItem from="1627711674527" duration="2232000" />
+      <workItem from="1627794590504" duration="2564000" />
+      <workItem from="1627932366874" duration="6744000" />
+      <workItem from="1627971641224" duration="4901000" />
+      <workItem from="1628004500107" duration="9331000" />
+      <workItem from="1628106833492" duration="4164000" />
+      <workItem from="1628140313135" duration="260000" />
+      <workItem from="1628259062856" duration="3178000" />
+      <workItem from="1628311528592" duration="1886000" />
+      <workItem from="1628334536971" duration="6152000" />
+      <workItem from="1628347875453" duration="2545000" />
     </task>
-    <task id="LOCAL-00077" summary="bwin parser">
-      <created>1616445455954</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
+    <task id="LOCAL-00150" summary="fix bwin parser">
+      <created>1622370315140</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
       <option name="project" value="LOCAL" />
-      <updated>1616445455954</updated>
+      <updated>1622370315141</updated>
     </task>
-    <task id="LOCAL-00078" summary="betway parser">
-      <created>1616449105724</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
+    <task id="LOCAL-00151" summary="fix cashpoint parser">
+      <created>1622372416102</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
       <option name="project" value="LOCAL" />
-      <updated>1616449105724</updated>
+      <updated>1622372416102</updated>
     </task>
-    <task id="LOCAL-00079" summary="zebet parser">
-      <created>1616451304771</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
+    <task id="LOCAL-00152" summary="fix kambi parser">
+      <created>1622374410365</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
       <option name="project" value="LOCAL" />
-      <updated>1616451304771</updated>
+      <updated>1622374410365</updated>
     </task>
-    <task id="LOCAL-00080" summary="zebet parser">
-      <created>1616451742583</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
+    <task id="LOCAL-00153" summary="finish kambi parser">
+      <created>1622572115918</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
       <option name="project" value="LOCAL" />
-      <updated>1616451742583</updated>
+      <updated>1622572115918</updated>
     </task>
-    <task id="LOCAL-00081" summary="zetbet parser">
-      <created>1616485270824</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
+    <task id="LOCAL-00154" summary="finish ladbrokes parser">
+      <created>1622575684287</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
       <option name="project" value="LOCAL" />
-      <updated>1616485270824</updated>
+      <updated>1622575684287</updated>
     </task>
-    <task id="LOCAL-00082" summary="finish zetbet parser">
-      <created>1616620800397</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
+    <task id="LOCAL-00155" summary="fix meridian parser">
+      <created>1622580619369</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
       <option name="project" value="LOCAL" />
-      <updated>1616620800397</updated>
+      <updated>1622580619369</updated>
     </task>
-    <task id="LOCAL-00083" summary="new way of scraping">
-      <created>1616709644647</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
+    <task id="LOCAL-00156" summary="fix meridian parser">
+      <created>1622658938797</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
       <option name="project" value="LOCAL" />
-      <updated>1616709644647</updated>
+      <updated>1622658938798</updated>
     </task>
-    <task id="LOCAL-00084" summary="new way of scraping">
-      <created>1616710437606</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
+    <task id="LOCAL-00157" summary="fix pinnacle parser">
+      <created>1622666208526</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
       <option name="project" value="LOCAL" />
-      <updated>1616710437606</updated>
+      <updated>1622666208526</updated>
     </task>
-    <task id="LOCAL-00085" summary="enrich sbtech events">
-      <created>1616793673765</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
+    <task id="LOCAL-00158" summary="fix sbtech parser">
+      <created>1623267979821</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
       <option name="project" value="LOCAL" />
-      <updated>1616793673765</updated>
+      <updated>1623267979821</updated>
     </task>
-    <task id="LOCAL-00086" summary="enrich sbtech events">
-      <created>1616794038735</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
+    <task id="LOCAL-00159" summary="scooore is now on kambi">
+      <created>1623268395646</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
       <option name="project" value="LOCAL" />
-      <updated>1616794038735</updated>
+      <updated>1623268395646</updated>
     </task>
-    <task id="LOCAL-00087" summary="refactor sbtech">
-      <created>1617086559847</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
+    <task id="LOCAL-00160" summary="try zetbet">
+      <created>1623586618975</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
       <option name="project" value="LOCAL" />
-      <updated>1617086559847</updated>
+      <updated>1623586618975</updated>
     </task>
-    <task id="LOCAL-00088" summary="create merger for sportradar events">
-      <created>1617134740910</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
+    <task id="LOCAL-00161" summary="continue with zetbet">
+      <created>1623674087747</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
-      <updated>1617134740911</updated>
+      <updated>1623674087748</updated>
     </task>
-    <task id="LOCAL-00089" summary="add BwinScraper">
-      <created>1617136017044</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
+    <task id="LOCAL-00162" summary="get zetbet parser right">
+      <created>1623761916544</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
       <option name="project" value="LOCAL" />
-      <updated>1617136017044</updated>
+      <updated>1623761916544</updated>
     </task>
-    <task id="LOCAL-00090" summary="add BwinScraper">
-      <created>1617136055353</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
+    <task id="LOCAL-00163" summary="get stanleybet parser ok">
+      <created>1623843611534</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
       <option name="project" value="LOCAL" />
-      <updated>1617136055353</updated>
+      <updated>1623843611534</updated>
     </task>
-    <task id="LOCAL-00091" summary="merge betoffers together">
-      <created>1617691657314</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
+    <task id="LOCAL-00164" summary="fix golden palace new api endpoint">
+      <created>1623846676336</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
       <option name="project" value="LOCAL" />
-      <updated>1617691657318</updated>
+      <updated>1623846676336</updated>
     </task>
-    <task id="LOCAL-00092" summary="merge betoffers together">
-      <created>1617691668766</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
+    <task id="LOCAL-00165" summary="switch to new sbtech api">
+      <created>1623849098005</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
       <option name="project" value="LOCAL" />
-      <updated>1617691668766</updated>
+      <updated>1623849098005</updated>
     </task>
-    <task id="LOCAL-00093" summary="merge betoffers together">
-      <created>1617691811979</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
+    <task id="LOCAL-00166" summary="switch to new sbtech api">
+      <created>1623849353707</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
       <option name="project" value="LOCAL" />
-      <updated>1617691811979</updated>
+      <updated>1623849353707</updated>
     </task>
-    <task id="LOCAL-00094" summary="expand bwin parser">
-      <created>1617782893362</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
+    <task id="LOCAL-00167" summary="get all parsers in tests">
+      <created>1623871500120</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
       <option name="project" value="LOCAL" />
-      <updated>1617782893362</updated>
+      <updated>1623871500120</updated>
     </task>
-    <task id="LOCAL-00095" summary="clean kambiparser">
-      <created>1617827247275</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
+    <task id="LOCAL-00168" summary="fix bug in ladbrokes parser">
+      <created>1623872042940</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
       <option name="project" value="LOCAL" />
-      <updated>1617827247275</updated>
+      <updated>1623872042940</updated>
     </task>
-    <task id="LOCAL-00096" summary="move kambi parser logic to kambi.ts">
-      <created>1617867021305</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
+    <task id="LOCAL-00169" summary="fix pinnacle">
+      <created>1624654364400</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
       <option name="project" value="LOCAL" />
-      <updated>1617867021305</updated>
+      <updated>1624654364400</updated>
     </task>
-    <task id="LOCAL-00097" summary="move kambi parser logic to kambi.ts">
-      <created>1617867650024</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
+    <task id="LOCAL-00170" summary="test scripts kambi">
+      <created>1624909016500</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
       <option name="project" value="LOCAL" />
-      <updated>1617867650024</updated>
+      <updated>1624909016501</updated>
     </task>
-    <task id="LOCAL-00098" summary="cleanup">
-      <created>1617867771761</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
+    <task id="LOCAL-00171" summary="create kambi bash script">
+      <created>1624995406045</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
       <option name="project" value="LOCAL" />
-      <updated>1617867771761</updated>
+      <updated>1624995406046</updated>
     </task>
-    <task id="LOCAL-00099" summary="tes">
-      <created>1618059038076</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
+    <task id="LOCAL-00172" summary="creeate mapping pinnacle sportradar for bundesliga">
+      <created>1626616379662</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
       <option name="project" value="LOCAL" />
-      <updated>1618059038076</updated>
+      <updated>1626616379663</updated>
     </task>
-    <task id="LOCAL-00100" summary="tes">
-      <created>1618060300617</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
+    <task id="LOCAL-00173" summary="create meridian bash script to get events">
+      <created>1626813575394</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
       <option name="project" value="LOCAL" />
-      <updated>1618060300617</updated>
+      <updated>1626813575396</updated>
     </task>
-    <task id="LOCAL-00101" summary="start with pinnacle">
-      <created>1618087949497</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
+    <task id="LOCAL-00174" summary="create script files to scrape from bookmakers">
+      <created>1626870971970</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
       <option name="project" value="LOCAL" />
-      <updated>1618087949497</updated>
+      <updated>1626870971971</updated>
     </task>
-    <task id="LOCAL-00102" summary="map pinnacle events">
-      <created>1618342761722</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
+    <task id="LOCAL-00175" summary="create script files to scrape from bookmakers">
+      <created>1626870991561</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
       <option name="project" value="LOCAL" />
-      <updated>1618342761722</updated>
+      <updated>1626870991561</updated>
     </task>
-    <task id="LOCAL-00103" summary="add pinnacle to merged betoffers per sportradar event id">
-      <created>1618429574952</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
+    <task id="LOCAL-00176" summary="simplify scrapers">
+      <created>1626873438100</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
       <option name="project" value="LOCAL" />
-      <updated>1618429574953</updated>
+      <updated>1626873438101</updated>
     </task>
-    <task id="LOCAL-00104" summary="enrich pinnacle betoffer parsing">
-      <created>1618583224485</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
+    <task id="LOCAL-00177" summary="add sbtech and ladbrokes scripts">
+      <created>1626939077182</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
       <option name="project" value="LOCAL" />
-      <updated>1618583224486</updated>
+      <updated>1626939077183</updated>
     </task>
-    <task id="LOCAL-00105" summary="add betcenter">
-      <created>1618601242089</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
+    <task id="LOCAL-00178" summary="start bingoal">
+      <created>1626969556605</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
       <option name="project" value="LOCAL" />
-      <updated>1618601242090</updated>
+      <updated>1626969556605</updated>
     </task>
-    <task id="LOCAL-00106" summary="create cashpoint provider and altenar">
-      <created>1618659070195</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
+    <task id="LOCAL-00179" summary="add bingoal">
+      <created>1627053649976</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
       <option name="project" value="LOCAL" />
-      <updated>1618659070196</updated>
+      <updated>1627053649976</updated>
     </task>
-    <task id="LOCAL-00107" summary="add goldenpalace in betoffer list">
-      <created>1618749585408</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
+    <task id="LOCAL-00180" summary="make sure bingoal script works with cookie and k parameter">
+      <created>1627130800747</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
       <option name="project" value="LOCAL" />
-      <updated>1618749585409</updated>
+      <updated>1627130800748</updated>
     </task>
-    <task id="LOCAL-00108" summary="add meridian to betoffer list">
-      <created>1618750926851</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
+    <task id="LOCAL-00181" summary="finish bingoal scraping">
+      <created>1627131791399</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
       <option name="project" value="LOCAL" />
-      <updated>1618750926851</updated>
+      <updated>1627131791399</updated>
     </task>
-    <task id="LOCAL-00109" summary="fix betconstruct">
-      <created>1619122786069</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
+    <task id="LOCAL-00182" summary="start with circus">
+      <created>1627330106955</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
       <option name="project" value="LOCAL" />
-      <updated>1619122786069</updated>
+      <updated>1627330106955</updated>
     </task>
-    <task id="LOCAL-00110" summary="add betconstruct offers to ensemble of offers">
-      <created>1619162026887</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
+    <task id="LOCAL-00183" summary="finish circus">
+      <created>1627390878331</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
       <option name="project" value="LOCAL" />
-      <updated>1619162026888</updated>
+      <updated>1627390878331</updated>
     </task>
-    <task id="LOCAL-00111" summary="make sure starcasino is mapped ot events">
-      <created>1619209432390</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
+    <task id="LOCAL-00184" summary="start with betconstruct_apps">
+      <created>1627406445963</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
       <option name="project" value="LOCAL" />
-      <updated>1619209432390</updated>
+      <updated>1627406445964</updated>
     </task>
-    <task id="LOCAL-00112" summary="add star casino betoffers">
-      <created>1619469567156</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
+    <task id="LOCAL-00185" summary="experiment with miller">
+      <created>1627415199866</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
       <option name="project" value="LOCAL" />
-      <updated>1619469567157</updated>
+      <updated>1627415199866</updated>
     </task>
-    <task id="LOCAL-00113" summary="fix issue with circus and goldenvegas bets are missing.">
-      <created>1619679602449</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
+    <task id="LOCAL-00186" summary="get sport radar ids">
+      <created>1627667742726</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
       <option name="project" value="LOCAL" />
-      <updated>1619679602450</updated>
+      <updated>1627667742726</updated>
     </task>
-    <task id="LOCAL-00114" summary="add magic betting to ensemble">
-      <created>1619768455622</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
+    <task id="LOCAL-00187" summary="get sportradar matches">
+      <created>1627713843653</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
       <option name="project" value="LOCAL" />
-      <updated>1619768455622</updated>
+      <updated>1627713843654</updated>
     </task>
-    <task id="LOCAL-00115" summary="add zetbet and betway">
-      <created>1619814318466</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
+    <task id="LOCAL-00188" summary="make betconstruct more reliable">
+      <created>1627796749664</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
       <option name="project" value="LOCAL" />
-      <updated>1619814318466</updated>
+      <updated>1627796749665</updated>
     </task>
-    <task id="LOCAL-00116" summary="add stanleybet">
-      <created>1619815100708</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
+    <task id="LOCAL-00189" summary="get pinnacle">
+      <created>1627939176520</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
       <option name="project" value="LOCAL" />
-      <updated>1619815100708</updated>
+      <updated>1627939176520</updated>
     </task>
-    <task id="LOCAL-00117" summary="add scooore">
-      <created>1619867612643</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
+    <task id="LOCAL-00190" summary="try to get betconstruct apps">
+      <created>1627976510121</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
       <option name="project" value="LOCAL" />
-      <updated>1619867612645</updated>
+      <updated>1627976510121</updated>
     </task>
-    <task id="LOCAL-00118" summary="add ladbrokes">
-      <created>1619868320414</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
+    <task id="LOCAL-00191" summary="try to get betconstruct apps">
+      <created>1627977023693</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
       <option name="project" value="LOCAL" />
-      <updated>1619868320414</updated>
+      <updated>1627977023693</updated>
     </task>
-    <task id="LOCAL-00119" summary="add bingoal">
-      <created>1619869584289</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
+    <task id="LOCAL-00192" summary="try to get betconstruct apps">
+      <created>1627977033939</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
       <option name="project" value="LOCAL" />
-      <updated>1619869584289</updated>
+      <updated>1627977033939</updated>
     </task>
-    <task id="LOCAL-00120" summary="try out bete90">
-      <created>1619871175962</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
+    <task id="LOCAL-00193" summary="finish bcapps">
+      <created>1628008265637</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
       <option name="project" value="LOCAL" />
-      <updated>1619871175962</updated>
+      <updated>1628008265638</updated>
     </task>
-    <task id="LOCAL-00121" summary="add value bet detector">
-      <created>1619872672228</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
+    <task id="LOCAL-00194" summary="finish bcapps">
+      <created>1628008524122</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
       <option name="project" value="LOCAL" />
-      <updated>1619872672228</updated>
+      <updated>1628008524122</updated>
     </task>
-    <task id="LOCAL-00122" summary="cleanup">
-      <created>1619961603893</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
+    <task id="LOCAL-00195" summary="finish bcapps">
+      <created>1628008669116</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
       <option name="project" value="LOCAL" />
-      <updated>1619961603894</updated>
+      <updated>1628008669116</updated>
     </task>
-    <task id="LOCAL-00123" summary="cleanup">
-      <created>1619961886783</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
+    <task id="LOCAL-00196" summary="create new repo structure">
+      <created>1628025971109</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
       <option name="project" value="LOCAL" />
-      <updated>1619961886783</updated>
+      <updated>1628025971109</updated>
     </task>
-    <task id="LOCAL-00124" summary="setup lambda">
-      <created>1619964938359</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
+    <task id="LOCAL-00197" summary="get zetbet">
+      <created>1628313409481</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
       <option name="project" value="LOCAL" />
-      <updated>1619964938359</updated>
+      <updated>1628313409482</updated>
     </task>
-    <task id="LOCAL-00125" summary="attempt dockerfile and make file">
-      <created>1619980325753</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
+    <task id="LOCAL-00198" summary="get zetbet">
+      <created>1628337177880</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
       <option name="project" value="LOCAL" />
-      <updated>1619980325753</updated>
+      <updated>1628337177881</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <option name="localTasksCounter" value="199" />
     <option name="searchClosedTasks" value="true" />
     <servers />
   </component>
@@ -859,9 +749,11 @@
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/src/test.js.map" />
-        <option value="$PROJECT_DIR$/test/src/test.js" />
-        <option value="$PROJECT_DIR$/valuebet-service/src/client/altenar/altenar.js" />
+        <option value="$PROJECT_DIR$/backend/playtech/playtech.js" />
+        <option value="$PROJECT_DIR$/backend/playtech/participants.js" />
+        <option value="$PROJECT_DIR$/backend/bet90/leagues.js" />
+        <option value="$PROJECT_DIR$/backend/bet90/bet90.js" />
+        <option value="$PROJECT_DIR$/backend/openbet/openbet.js" />
       </list>
     </option>
   </component>
@@ -878,6 +770,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/pdemuinck/IdeaProjects/positive-value-trading/backend" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -885,35 +802,40 @@
         </entry>
       </map>
     </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tes" />
-    <MESSAGE value="start with pinnacle" />
-    <MESSAGE value="map pinnacle events" />
-    <MESSAGE value="add pinnacle to merged betoffers per sportradar event id" />
-    <MESSAGE value="enrich pinnacle betoffer parsing" />
-    <MESSAGE value="add betcenter" />
-    <MESSAGE value="create cashpoint provider and altenar" />
-    <MESSAGE value="add goldenpalace in betoffer list" />
-    <MESSAGE value="add meridian to betoffer list" />
-    <MESSAGE value="fix betconstruct" />
-    <MESSAGE value="add betconstruct offers to ensemble of offers" />
-    <MESSAGE value="make sure starcasino is mapped ot events" />
-    <MESSAGE value="add star casino betoffers" />
-    <MESSAGE value="fix issue with circus and goldenvegas bets are missing." />
-    <MESSAGE value="add magic betting to ensemble" />
-    <MESSAGE value="add zetbet and betway" />
-    <MESSAGE value="add stanleybet" />
-    <MESSAGE value="add scooore" />
-    <MESSAGE value="add ladbrokes" />
+    <MESSAGE value="fix pinnacle" />
+    <MESSAGE value="test scripts kambi" />
+    <MESSAGE value="create kambi bash script" />
+    <MESSAGE value="creeate mapping pinnacle sportradar for bundesliga" />
+    <MESSAGE value="create meridian bash script to get events" />
+    <MESSAGE value="create script files to scrape from bookmakers" />
+    <MESSAGE value="simplify scrapers" />
+    <MESSAGE value="add sbtech and ladbrokes scripts" />
+    <MESSAGE value="start bingoal" />
     <MESSAGE value="add bingoal" />
-    <MESSAGE value="try out bete90" />
-    <MESSAGE value="add value bet detector" />
-    <MESSAGE value="cleanup" />
-    <MESSAGE value="setup lambda" />
-    <MESSAGE value="attempt dockerfile and make file" />
-    <option name="LAST_COMMIT_MESSAGE" value="attempt dockerfile and make file" />
+    <MESSAGE value="make sure bingoal script works with cookie and k parameter" />
+    <MESSAGE value="finish bingoal scraping" />
+    <MESSAGE value="start with circus" />
+    <MESSAGE value="finish circus" />
+    <MESSAGE value="start with betconstruct_apps" />
+    <MESSAGE value="experiment with miller" />
+    <MESSAGE value="get sport radar ids" />
+    <MESSAGE value="get sportradar matches" />
+    <MESSAGE value="make betconstruct more reliable" />
+    <MESSAGE value="get pinnacle" />
+    <MESSAGE value="try to get betconstruct apps" />
+    <MESSAGE value="finish bcapps" />
+    <MESSAGE value="create new repo structure" />
+    <MESSAGE value="get zetbet" />
+    <MESSAGE value="test kambi betoffers" />
+    <option name="LAST_COMMIT_MESSAGE" value="test kambi betoffers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -984,22 +906,22 @@
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/backend/bet90/bet90.ts</url>
           <line>32</line>
           <option name="timeStamp" value="472" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/backend/bet90/bet90.ts</url>
           <line>33</line>
           <option name="timeStamp" value="473" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/backend/bet90/bet90.ts</url>
           <line>20</line>
           <option name="timeStamp" value="476" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/valuebet-service-ts/src/client/bet90/bet90.ts</url>
+          <url>file://$PROJECT_DIR$/backend/bet90/bet90.ts</url>
           <line>22</line>
           <option name="timeStamp" value="477" />
         </line-breakpoint>
@@ -1020,14 +942,6 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="mocha-javascript-test-runner">
-        <watch expression="response.data.betOffers[&quot;0&quot;]" />
-        <watch expression="betOffer.key" />
-        <watch expression="apiResponse._data.betOffers[&quot;243&quot;]" />
-        <watch expression="betOffers[&quot;0&quot;]._betOffers[&quot;1X2;X;&quot;].bet777" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

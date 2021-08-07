@@ -50,7 +50,7 @@ exports.getEvents = async function getEvents() {
         /*
         "JUPILER_PRO_LEAGUE": [
             getPinnacleEventsForCompetition("1817", sportRadarMatches),
-            //getBet90EventsForCompetition("457", sportRadarMatches)
+            getBet90EventsForCompetition("457", sportRadarMatches)
             //getBetconstructBcapsEventsForCompetition("557", sportRadarMatches),
             //getPlaytechEventsForCompetition("soccer-be-sb_type_19372", sportRadarMatches)
         ],

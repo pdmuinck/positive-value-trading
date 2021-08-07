@@ -22,7 +22,7 @@ sportradar_ids=$(mlr --csv --headerless-csv-output filter -S '$sportradar_id =~ 
 
 echo GET sportradar match info
 for id in ${sportradar_ids}
-do ./sportradar/match_info "${id}" | jq --raw-output '.doc[0].data.match | [._id, ._dt.date, ._dt.time, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] | @csv' > "${id}"_sportradar_match &
+do ../sportradar/match_info "${id}" | jq --raw-output '.doc[0].data.match | [._id, ._dt.date, ._dt.time, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] | @csv' > "${id}"_sportradar_match &
 done
 
 wait

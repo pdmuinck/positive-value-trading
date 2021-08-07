@@ -5,7 +5,7 @@ league_data=$'callCount=1\nnextReverseAjaxIndex=0\nc0-scriptName=IF_GetAvvenimen
 
 echo "${league_id}"
 
-curl 'https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimenti.getEventi.dwr' \
+events=$(curl 'https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimenti.getEventi.dwr' \
   -H 'Connection: keep-alive' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'sec-ch-ua-mobile: ?0' \
@@ -20,7 +20,5 @@ curl 'https://sportsbook.stanleybet.be/XSport/dwr/call/plaincall/IF_GetAvvenimen
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   -H 'Cookie: DWRSESSIONID=3N6Nzw53MrgpypSzoOWP6nVj0BULPXUz5Hn; JSESSIONID=BF819DD37680A7486240D6B58E4B6858; TS01df437e=014cba0256c1885b01d6af591a2ab86847e19a1207044f60df96dbfd97d4e00df621a5ff6feaf3992b2b6178d939c26b0f677f9e4c2917db99d02d64b4740017f505b904f3; _ga=GA1.2.2027441084.1623762223; _hjid=cf674d37-ab75-4caf-8731-d4345b7e5978; _gid=GA1.2.2111128173.1627147270; _gat_UA-15349515-20=1; _hjAbsoluteSessionInProgress=0; TS016e3817=014cba025658991b8492541a2e1e976696bdb695338549905568e63689eb1c213fd161d45eca5c7d3756f76203cc30e45c8e77e17c' \
   --data-raw "${league_data}" \
-  --compressed  > testfile
-
-awk '/"AvvenimentoDTO"/' testfile > lol
+  --compressed)
 
