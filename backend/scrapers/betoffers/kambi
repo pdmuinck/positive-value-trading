@@ -19,7 +19,7 @@ get_betoffers() {
   -H 'Referer: https://nl-sports.unibet.be/' \
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   --compressed \
-  | jq --raw-output '.betOffers[] | .criterion.id as $id | .eventId as $event_id | (.outcomes[] | select (.odds != null) | [$id, $event_id, '\""${book}"\"', .label, .odds?/1000] | @csv)' >> betoffers_kambi.csv
+  | jq --raw-output '.betOffers[] | .criterion.id as $id | .eventId as $event_id | (.outcomes[] | select (.odds != null) | [$id, $event_id, '\""${book}"\"', .label, .odds?/1000, (.line // 0) / 1000] | @csv)' >> betoffers_kambi.csv
 }
 
 get_betoffers "${event_id}" ubbe &
@@ -29,6 +29,6 @@ wait
 
 echo got betoffers...
 
-sed 's/1001159858/1X2/g; s/1001159922/DOUBLE_CHANCE/g' <betoffers_kambi.csv >${sport_radar_id}_kambi_betoffers.csv
+sed 's/1001159858/1X2/g; s/1001159922/DOUBLE_CHANCE/g; s/1000316018/1X2_H1/g; s/1001159826/1X2_H2/g; s/1001159666/DRAW_NO_BET/g; s/1001159668/DOUBLE_CHANCE_H1/g; s/1001159926/OVER_UNDER/g'<betoffers_kambi.csv >${sport_radar_id}_kambi_betoffers.csv
 rm betoffers_kambi.csv
 

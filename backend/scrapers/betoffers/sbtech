@@ -1,0 +1,53 @@
+#!/bin/bash
+
+event_id=$1
+sport_radar_id=$2
+
+get_token() {
+  book=$1
+  site_id=$2
+    token_message=$(curl -s 'https://sbapi.sbtech.com/'"${book}"'/auth/platform/v1/api/GetTokenBySiteId/'"${site_id}")
+
+    IFS=' = '
+    read -a strarr <<<"${token_message}"
+    token_raw="${strarr[1]}"
+
+    token_temp=${token_raw%\'}
+    echo ${token_temp#\'}
+}
+
+get_betoffers() {
+  book=$1
+  event_id=$2
+  token=$3
+  curl 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=id%20eq%20%'"${event_id}"'%27&includeMarkets=$filter=' \
+  -H 'authority: sbapi.sbtech.com' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'accept: application/json, text/javascript, */*; q=0.01' \
+  -H 'locale: en' \
+  -H 'authorization: Bearer '"${token}" \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+  -H 'content-type: application/json-patch+json' \
+  -H 'origin: https://betfirst.dhnet.be' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://betfirst.dhnet.be/' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  --compressed \
+  | jq --raw-output '.data.markets[] | .marketType.id as $type_id | .eventId as $event_id | (.selections[] | [$type_id, $event_id, '\""${book}"\"', .outcomeType, .displayOdds.decimal, .points // 0] | @csv )' >> betoffers_sbtech.csv
+}
+
+echo GET tokens...
+token_betfirst=$(get_token betfirst 28)
+token_bet777=$(get_token bet777 72)
+
+echo GOT tokens
+
+get_betoffers betfirst "${event_id}" "${token_betfirst}" &
+get_betoffers bet777 "${event_id}" "${token_bet777}"
+wait
+
+sed 's/1001159858/1X2/g; s/1001159922/DOUBLE_CHANCE/g; s/1000316018/1X2_H1/g; s/1001159826/1X2_H2/g; s/1001159666/DRAW_NO_BET/g; s/1001159668/DOUBLE_CHANCE_H1/g; s/1001159926/OVER_UNDER/g'<betoffers_kambi.csv >${sport_radar_id}_kambi_betoffers.csv
+rm betoffers_kambi.csv
