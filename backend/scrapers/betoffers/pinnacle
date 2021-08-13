@@ -1,10 +1,18 @@
 #!/bin/bash
 
-event_id=1374679436
+event_id=$1
 sport_radar_id=$2
 
+american_to_decimal() {
+  local input=$1
+  if [ $input -lt 0 ]
+    input_abs=$(echo ${1#-})
+    then awk "BEGIN {x=100/$input_abs; y=x+1; print y}"
+    else awk "BEGIN {x=$input_abs/100; y=x+1; print y}"
+  fi
+}
 
-curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/1374679436/markets/related/straight' \
+curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/markets/related/straight' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'X-Device-UUID: 9585db37-f7c6740c-e3129e9b-c7724b36' \
   -H 'sec-ch-ua-mobile: ?0' \
@@ -16,7 +24,7 @@ curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/1374679436/markets/
   --compressed \
   | jq -r --arg eventId "${event_id}" '.[] | .key as $type_id | .matchupId as $market_id | (.prices[] | [$market_id, $type_id, $eventId, "pinnacle", if (.designation) then .designation else .participantId end, .price, .points] | @csv)' > betoffers_pinnacle.csv
 
-curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/1374679436/related' \
+curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/related' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'X-Device-UUID: 9585db37-f7c6740c-e3129e9b-c7724b36' \
   -H 'sec-ch-ua-mobile: ?0' \
@@ -29,11 +37,20 @@ curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/1374679436/related'
     | jq -r '.[] | .parentId as $parent_id | .id as $id | .special.description as $description | (.participants[] | [$parent_id, $id, $description, .name, .order, .id] | @csv)' > markets_pinnacle.csv
 
 
-grep "${event_id}", ./betoffers_pinnacle.csv | sed 's/"s;0;m"/"1X2"/g; s/"s;1;m"/"1X2_H1"/g;' > all_main_offers.csv
-grep "1X2" all_main_offers.csv > main_offers.csv
+grep "${event_id}", ./betoffers_pinnacle.csv \
+| sed 's/"s;0;m"/"1X2"/g; s/"s;1;m"/"1X2_H1"/g; s/s;0;ou;[^"]*/OVER_UNDER/g' \
+| grep "1X2\|OVER_UNDER" > "${sport_radar_id}"_pinnacle_betoffers.csv
 grep -v "${event_id}", ./betoffers_pinnacle.csv > special_offers.csv
 
 
+double_chances=$(grep 'Double Chance' markets_pinnacle.csv)
+IFS=$'\n'
+for double_chance in $double_chances; do
+  label=$(echo "${double_chance}" | cut -d',' -f 4 | sed -e 's/.*or Draw/"1X/g; s/Draw or.*/X2"/g; s/.*or.*/"12"/g;')
+  outcome_id=$(echo "${double_chance}" | cut -d',' -f 6)
+  grep "${outcome_id}" special_offers.csv | sed "s/${outcome_id}/${label}/g; s/s;0;m/DOUBLE_CHANCE/g; s/s;1;m/DOUBLE_CHANCE_H1/g;" >> "${sport_radar_id}"_pinnacle_betoffers.csv &
+done
+wait
 
-grep -w '"Double Chance"' markets_pinnacle.csv
+awk -F ","  '{print $0}' blabla_pinnacle_betoffers.csv
 
