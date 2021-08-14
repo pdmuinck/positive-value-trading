@@ -52,5 +52,11 @@ for double_chance in $double_chances; do
 done
 wait
 
-awk -F ","  '{print $0}' blabla_pinnacle_betoffers.csv
+awk -F "," -v OFS=','  'function abs(v) {return v < 0 ? -v : v}
+            {if($6 < 0) $6=100/abs($6) + 1; else $6=abs($6)/100+1; print}' "${sport_radar_id}"_pinnacle_betoffers.csv \
+            | cut -d ',' -f 2- > "${sport_radar_id}"_pinnacle_betoffers_corrected.csv
 
+rm "${sport_radar_id}"_pinnacle_betoffers.csv
+rm markets_pinnacle.csv
+rm special_offers.csv
+rm betoffers_pinnacle.csv
