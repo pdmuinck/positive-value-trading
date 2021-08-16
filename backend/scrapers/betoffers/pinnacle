@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo About to get pinnacle betoffers
+
 event_id=$1
 sport_radar_id=$2
 
@@ -54,9 +56,12 @@ wait
 
 awk -F "," -v OFS=','  'function abs(v) {return v < 0 ? -v : v}
             {if($6 < 0) $6=100/abs($6) + 1; else $6=abs($6)/100+1; print}' "${sport_radar_id}"_pinnacle_betoffers.csv \
-            | cut -d ',' -f 2- > "${sport_radar_id}"_pinnacle_betoffers_corrected.csv
+            | cut -d ',' -f 2- \
+            | sed 's/home/1/g; s/away/2/g; s/draw/X/g; s/over/Over/g; s/under/Under/g;' > "${sport_radar_id}"_pinnacle_betoffers_corrected.csv
 
 rm "${sport_radar_id}"_pinnacle_betoffers.csv
 rm markets_pinnacle.csv
 rm special_offers.csv
 rm betoffers_pinnacle.csv
+
+echo GOT PINNACLE betoffers...

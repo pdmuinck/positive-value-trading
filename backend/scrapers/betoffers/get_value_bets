@@ -1,0 +1,19 @@
+#!/bin/bash
+
+sportradar_id=$1
+
+echo About to search value bets...
+
+prices=$(grep -w "1X2" "${sportradar_id}"_pinnacle_betoffers_corrected.csv \
+| cut -d ',' -f 5)
+
+awk 'BEGIN{margin=0; for (i = 1; i < ARGC; i++) margin = margin + 1/ARGV[i]; print margin}' ${prices}
+
+
+
+
+
+
+
+
+

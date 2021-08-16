@@ -8,10 +8,8 @@ pinnacle_id=$4
 echo About to get all betoffers...
 
 ./kambi "${kambi_id}" "${sportradar_id}" &
-./sbtech "${sbtech_id}" "${sportradar_id}"
-
-echo About to get predictions...
-
+./sbtech "${sbtech_id}" "${sportradar_id}" &
+./pinnacle "${pinnacle_id}" "${sportradar_id}"
 
 wait
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo About to get sbtech betoffers
+
 event_id=$1
 sport_radar_id=$2
 
