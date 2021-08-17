@@ -1,0 +1,36 @@
+#!/bin/bash
+
+betting_types='1X2 1X2_H1 OVER_UNDER'
+points='1.5 2.5'
+
+apply_margin(){
+    lines=$1
+    prices=$(awk 'BEGIN{margin=0; for (i = 1; i < ARGC; i++) print ARGV[i];}' ${1} | cut -d ',' -f 5)
+    margin=$(./utils/calculate_margin "${prices}")
+    for line in $lines;do
+        price=$(echo "${line}" | cut -d ',' -f 5)
+        vig_free_price=$(awk -v price="$price" -v margin="$margin" 'BEGIN {print price/margin;}')
+        echo "${line}","${vig_free_price}"
+    done
+}
+
+create_predictions(){
+    for betting_type in $betting_types;do
+        if [[ "$betting_type" == OVER_UNDER ]]
+            then 
+            for point in $points;do
+                lines=$(grep -w "${betting_type}" 27649226_pinnacle_betoffers_corrected.csv | grep -w "${point}")
+                apply_margin "$lines"
+            done
+            else 
+            lines=$(grep -w "${betting_type}" 27649226_pinnacle_betoffers_corrected.csv)
+            apply_margin "$lines"
+        fi &
+    done
+    wait
+}
+
+create_predictions
+
+
+
