@@ -3,6 +3,7 @@
 calculate_value() {
     local price=$1
     local prediction=$2
+    echo "${price}"
     echo $(awk -v prediction="$prediction" -v price="$price" 'BEGIN {print (1 / prediction * price) - 1;}')
 }
 
