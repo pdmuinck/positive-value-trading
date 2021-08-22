@@ -10,9 +10,9 @@ echo START GETTING Events
 ./betway &
 ./ladbrokes &
 ./sbtech &
-./bingoal &
-./zetbet &
-./betconstruct
+./bingoal
+#./zetbet &
+#./betconstruct
 wait 
 
 echo event_id,sportradar_id,book,league,ds > events.csv
@@ -40,5 +40,5 @@ rm pinnacle_events.csv
 awk -v var="$(date +%Y-%m-%d)" -F"," 'BEGIN { OFS = "," } {$5=var; print}' bcapps_events.csv >> events.csv
 rm bcapps_events.csv
 
-aws s3 cp events.csv s3://bookmaker-events/ds=$(date +%Y-%m-%d)/soccer.csv --profile=default
-aws s3 cp sportradar_events.csv s3://sport-radar-events/ds=$(date +%Y-%m-%d)/soccer.csv --profile=default
+#aws s3 cp events.csv s3://bookmaker-events/ds=$(date +%Y-%m-%d)/soccer.csv --profile=default
+#aws s3 cp sportradar_events.csv s3://sport-radar-events/ds=$(date +%Y-%m-%d)/soccer.csv --profile=default

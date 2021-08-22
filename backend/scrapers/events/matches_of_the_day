@@ -1,0 +1,14 @@
+#!/bin/bash
+
+current_date="\"$(date +%d/%m/%y)\""
+
+grep "${current_date}" ./sportradar_events.csv \
+| while read -r event; do
+    sport_radar_id=$(echo "${event}" | cut -d ',' -f 1)
+    events=$(grep "${sport_radar_id}" ./events.csv)
+    kambi_id=$(echo "${events}" | grep kambi | cut -d ',' -f 1)
+    sbtech_id=$(echo "${events}" | grep sbtech | cut -d ',' -f 1 | sed -e 's/^"//' -e 's/"$//')
+    pinnacle_id=$(echo "${events}" | grep pinnacle | cut -d ',' -f 1)
+    echo ../betoffers/find_value_bets "${sport_radar_id}" "${kambi_id}" "${sbtech_id}" "${pinnacle_id}"
+done
+
