@@ -2,15 +2,33 @@
 
 betoffers=$(cat *_betoffers.csv)
 
-IFS=$'\n'
-for betoffer in "${betoffers}";do
-prediction=$(echo "${betoffer}" | grep -w "1X2" | grep "pinnacle" | grep '"1"' | cut -d ',' -f 7)
-offers=$(echo "${betoffer}" | grep -w "1X2" | grep -v "pinnacle" | grep '"1"')
-    for offer in "${offers}";do
-        lol=$(./utils/calculate_value $(echo "${offer}" | cut -d ',' -f 5) 1.23)
-        echo "${lol}"
+add_value_calculations(){
+    bet_type=$1
+    bet_option=$2
+    bet_line=$3
+    IFS=$'\n'
+    for betoffer in "${betoffers}";do
+        prediction=$(echo "${betoffer}" | grep -w "${bet_type}" | grep "pinnacle" | grep "${bet_option}" | grep "${bet_line}" | cut -d ',' -f 7)
+        echo "${betoffer}" | grep -w "${bet_type}" | grep -v "pinnacle" | grep "${bet_option}" | grep "${bet_line}" \
+        | while read -r offer ; do
+            price=$(echo "${offer}" | cut -d ',' -f 5)
+            value=$(./utils/calculate_value "${price}" "${prediction}")
+
+        if (( $(echo "$value > 0" |bc -l) )); then
+            echo "${offer}","${value}"
+        fi 
+        done
     done
-done
+
+}
+
+add_value_calculations "1X2" '"1"' &
+add_value_calculations "1X2" '"X"' &
+add_value_calculations "1X2" '"2"' &
+add_value_calculations "OVER_UNDER" '"Over"' ",2.5" &
+add_value_calculations "OVER_UNDER" '"Under"' "2.5" 
+wait
+
 
 
 
