@@ -1,0 +1,6 @@
+#!/bin/bash
+
+odds=$1
+edge=$2
+
+awk -v odds="$odds" -v edge="$edge" 'BEGIN {print edge/odds;}'

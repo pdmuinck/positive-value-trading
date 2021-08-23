@@ -1,0 +1,14 @@
+#!/bin/bash
+
+budget=200
+
+grep "${book}" ./trades.csv | grep -v 'DEPOSIT' \
+| while read -r trade ; do
+    traded_amount=$(echo "${trade}" | cut -d ',' -f 10)
+    new=$(awk -v budget="${budget}" -v traded_amount="${traded_amount}" 'BEGIN {print budget-traded_amount;}')
+    echo "$new"
+done
+
+
+
+

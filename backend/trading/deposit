@@ -1,0 +1,7 @@
+#!/bin/bash
+
+book=$1
+amount=$2
+current_date=$(date '+%Y/%m/%d %H:%M:%S')
+
+echo "${current_date}",DEPOSIT,NA,"${book}",NA,NA,NA,NA,NA,"${amount}" >> trades.csv

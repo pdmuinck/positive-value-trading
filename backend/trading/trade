@@ -1,0 +1,22 @@
+#!/bin/bash
+
+event_id=$1
+book=$2
+bet_type=$3
+bet_option=$4
+points=$5
+odds=$6
+edge=$7
+
+kelly=$(./kelly "${odds}" "${edge}")
+kelly_percent=30
+start_budget=$(grep "${book}" ./trades.csv | grep 'DEPOSIT' | cut -d ',' -f 10)
+
+
+grep "${book}" ./trades.csv | grep -v 'DEPOSIT' \
+| while read -r trade ; do
+    traded_amount=$(echo "${trade}" | cut -d ',' -f 10)
+    awk -v start_budget="${start_budget}" -v traded_amount="${traded_amount}" 'BEGIN {print start_budget-traded_amount;}'
+done
+
+#echo date '+%Y/%m/%d %H:%M:%S',TRADE,"${event_id}","${book},"${bet_type}","${bet_option},"${odds}","${points}","${edge}", "${amount}" >> trades.csv
