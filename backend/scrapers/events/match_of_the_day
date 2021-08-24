@@ -1,0 +1,274 @@
+#!/bin/bash
+
+get_altenar_events() {
+    local league=$1
+    local league_id=$2
+    local book='goldenpalace'
+    curl -G -s 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEvents' \
+    -d timezoneOffset=-120 \
+    -d langId=8 \
+    -d skinName="${book}" \
+    -d configId=19 \
+    -d culture=en-gb \
+    -d countryCode=BE \
+    -d deviceType=Desktop \
+    -d numformat=en \
+    -d integration="${book}" \
+    -d sportids=0 \
+    -d categoryids=0 \
+    -d champids="${league_id}" \
+    -d group=AllEvents \
+    -d period=periodall \
+    -d withLive=false \
+    -d outrightDisplay=none \
+    -d couponType=0 \
+    -d startDate=2021-06-16T12%3A21%3A00.000Z \
+    -d endDate=2030-06-23T12%3A21%3A00.000Z \
+    | jq --raw-output '.Result.Items[0].Events | map(.ExtId |= split(":"))[] | [.Id, .ExtId[2], "altenar",'"${league}"'] | @csv'
+}
+
+get_betway_events() {
+    sport=$1
+    country=$2
+    league=$3
+    league_pretty_name=$4
+
+    event_ids=$(curl -s --request POST \
+        --url https://sports.betway.be/api/Events/V2/GetGroup \
+        --header 'Content-Type: application/json; charset=UTF-8' \
+        --header 'Cookie: __cfduid=d6907bf62fe8d2b713c2ea14ed2cc633f1615035911; TrackingVisitId=f59932f9-4c35-4b08-882e-74e736da0dd5; hash=f59932f9-4c35-4b08-882e-74e736da0dd5; AMCVS_74756B615BE2FD4A0A495EB8%40AdobeOrg=1; _ga=GA1.2.2108562292.1615035915; _gid=GA1.2.282384272.1615035915; AMCV_74756B615BE2FD4A0A495EB8%40AdobeOrg=359503849%7CMCIDTS%7C18693%7CMCMID%7C50922974771529630150319276572080847196%7CMCAAMLH-1615640714%7C6%7CMCAAMB-1615640714%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1615043114s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.0.1; _gat_ens=1; s_cc=true; _gat_reg1=1; aam_uuid=50679068501786803650329298953965209270; BETWAY_ENSIGHTEN_PRIVACY_Marketing=1; BETWAY_ENSIGHTEN_PRIVACY_Analytics=1; bwui_cookieToastDismissed=true; s_sq=%5B%5BB%5D%5D; __cf_bm=a0ed7e80b68ac0fbb4237972f79bde2c5c659393-1615035924-1800-AR83i2t7+2v0UcZp3zD+75fxb5jzC9m1mUBuw3+txC10ntF0tD9INM7Aj/esPYrc23wjwT9fjC8c40qCmZnyN8g=; Referrer=https%3A%2F%2Fbetway.be%2Fen-be%2F; ssc_btag=f59932f9-4c35-4b08-882e-74e736da0dd5; ssc_DeviceId=0077c343-b1d4-4766-be68-e803dc26ff5d; TS01232bc6=01844e1b5c68d38d3eb53e56d243525309bf6e157d5e5ea398012d03605f31ccc2c94246f380bb0f6d71c48f098fd6c64cd00797b3; TS01326955=01844e1b5c68d38d3eb53e56d243525309bf6e157d5e5ea398012d03605f31ccc2c94246f380bb0f6d71c48f098fd6c64cd00797b3; userLanguage=en; SpinSportVisitId=becac4d6-7213-4320-b91e-276e55cddb53; ai_user=4NLPa|2021-03-06T13:05:27.779Z; domainCookie=betway.be; ai_session=7HrN7|1615035928692.28|1615035928692.28; _gat_UA-1515961-1=1; _gat=1; TimezoneOffset=60; TS07939ea4029=081027114cab2800a9b3840ef9a02356bae102a53ef7e576d8e05f8740a41d9c027e93e8c9da13bf6511786a55e085d3; TSae48ddcf027=081027114cab20002c0472aa017fb36831d70cf48f7fee496765b04e43e820215565afa90b5261f208669c3b0f113000cb24ac29057205923b08d7ea1b3a9aa9e6edf6ca2f5ae8bd542dd7a0fd958fd7199299d0725eecf5ea58e0c7a1bc696d; gpv_pn=en%3Asports%3Acat%3Asoccer' \
+        --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' \
+        --header 'X-Security-Request: required' \
+        --cookie 'TS01232bc6=01844e1b5c4ffa000ae7318a7b2f352cc5ada048ebf9591ad08bc43c04bc8799f299711a6d41af5c7be7d917afe58debbe94fe49d9; TSae48ddcf027=081027114cab20004396adaf5e6a868f958c967583f5820130c9ff6f33c7d75a1a47f7cb1e6812af089b93dae9113000841169239d5ec20ee03c83461ec278bd7486b13e3534373c6b286dc6e8e9d84e4f03010d43970ccc1b0e0f8e53688f2d' \
+        --data '{"PremiumOnly":false,"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"CategoryCName":'"${sport}"',"SubCategoryCName":'"${country}"',"GroupCName":'"${league}"'}' \
+        | jq --raw-output '.Categories[0].Events')
+
+    curl -s --request POST \
+        --url https://sports.betway.be/api/Events/V2/GetEvents \
+        --header 'Content-Type: application/json; charset=UTF-8' \
+        --header 'Cookie: __cfduid=d4bb5f86313ee3fa8f59f11c6bfb2ffda1615411510; TrackingVisitId=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; hash=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; AMCVS_74756B615BE2FD4A0A495EB8%40AdobeOrg=1; _ga=GA1.2.1660206364.1615411513; _gid=GA1.2.936896223.1615411513; AMCV_74756B615BE2FD4A0A495EB8%40AdobeOrg=359503849%7CMCIDTS%7C18697%7CMCMID%7C56534173400715071320222178797335263258%7CMCAAMLH-1616016312%7C6%7CMCAAMB-1616016312%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1615418713s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.0.1; _gat_reg1=1; _gat_ens=1; s_cc=true; aam_uuid=56597084811299582300282316716416960496; BETWAY_ENSIGHTEN_PRIVACY_Marketing=1; BETWAY_ENSIGHTEN_PRIVACY_Analytics=1; bwui_cookieToastDismissed=true; s_sq=%5B%5BB%5D%5D; __cf_bm=725c9fa35f985e7267e6c4e4786c06ccededdb26-1615411518-1800-Ac+UjwkTOv4i2H6BzORX01tYyfRxB6VQ04B6RUuwi1arW34+5PQHqHi7JWNRBaxTkV4pueUnpDqw7bgLHtYFY5o=; Referrer=https%3A%2F%2Fbetway.be%2Fen-be%2F; ssc_btag=183f0b13-4493-47b2-8404-c4a8c7ecc5fc; ssc_DeviceId=0f452055-5a64-498c-863a-0c7a675615dd; TS01232bc6=01844e1b5cf1b77336ecc99aac7ff23756934d621c8a0f31019aa138a1dcfa14f71b9a42c95a11f226494747320e8ae517400fad99; TS01326955=01844e1b5cf1b77336ecc99aac7ff23756934d621c8a0f31019aa138a1dcfa14f71b9a42c95a11f226494747320e8ae517400fad99; userLanguage=en; SpinSportVisitId=104515d2-f91a-4a06-a578-ccc930d16e30; ai_user=dOH/H|2021-03-10T21:25:20.524Z; ai_session=3z7UJ|1615411520731.375|1615411520731.375; domainCookie=betway.be; _gat_UA-1515961-1=1; _gat=1; TimezoneOffset=60; gpv_pn=en%3Asports%3Agrp%3Asoccer%3Aeuropean-cups%3Auefa-champions-league; TS07939ea4029=081027114cab2800d49bc9ed8200f4b4fa2a6f2be749f4657e877852eaf2b4ba45d1c80a684d663a45df828f56dbb468; TSae48ddcf027=081027114cab2000460186c0db8cf19ec393a8cb61a024580a9a561444d08508304ba4988b2f5173083b12e1bd113000f03776852fe7abdb22dcd2fe5a68af44cc2305bce0be8b5fdc6ccddd517e7f4bbda18e583dc15d53a2d212abb8ff8bb5' \
+        --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' \
+        --header 'X-Security-Request: required' \
+        --cookie 'TS01232bc6=01844e1b5c4ffa000ae7318a7b2f352cc5ada048ebf9591ad08bc43c04bc8799f299711a6d41af5c7be7d917afe58debbe94fe49d9; TSae48ddcf027=081027114cab20004396adaf5e6a868f958c967583f5820130c9ff6f33c7d75a1a47f7cb1e6812af089b93dae9113000841169239d5ec20ee03c83461ec278bd7486b13e3534373c6b286dc6e8e9d84e4f03010d43970ccc1b0e0f8e53688f2d' \
+        --data '{"LanguageId":1,"ClientTypeId":2,"BrandId":3,"JurisdictionId":3,"ClientIntegratorId":1,"ExternalIds":'"${event_ids}"',"MarketCName":"double-chance","ScoreboardRequest":{"ScoreboardType":3,"IncidentRequest":{}},"BrowserId":3,"OsId":4,"ApplicationVersion":"","BrowserVersion":"79.0.3945.130","OsVersion":"10.14.6","SessionId":null,"TerritoryId":21,"CorrelationId":"5106f22e-ad99-4609-ba3e-615a44fd3cf1","ViewName":"sports","JourneyId":"73a9bcef-c6ba-4425-b665-99c12b018fdb"}' \
+        | jq --raw-output '.Events[] | [.Id, .SportsRadarId,"betway",'"${league_pretty_name}"'] | @csv'
+}
+
+init_bingoal() {
+    curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+}
+
+get_bingoal_cookies() {
+  cookie_raw=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+  rm bingoal_headers
+  echo "${cookie_raw//[$'\t\r\n']}"
+}
+
+get_k_bingoal_parameter(){
+  k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+  rm bingoal_response
+  echo "${k}"
+}
+
+get_bingoal_events() {
+  cookie=$1
+  league=$2
+  league_id=$3
+  k=$4
+
+  curl -s 'https://www.bingoal.be/A/sport' \
+    -H 'X-Requested-With: XMLHttpRequest' \
+    -H 'Cookie: '"${cookie}" \
+    --data-raw 'func=sport&action=SOCCER&id='"${league_id}"'&k='"${k}" \
+    --compressed \
+    | jq --raw-output '.sports[].matches[] | [.ID, .betradarID, "bingoal", '"${league}"'] | @csv' >> "${league}"_bingoal_league_events.csv
+}
+
+get_bwin_events() {
+  local league=$1
+  local league_id=$2
+  local book='"bwin"'
+
+  curl -G -s 'https://cds-api.bwin.be/bettingoffer/fixtures' \
+  -d x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk \
+  -d lang=en \
+  -d country=BE \
+  -d userCountry=BE \
+  -d fixtureTypes=Standard \
+  -d state=Latest \
+  -d offerMapping=Filtered \
+  -d offerCategories=Gridable \
+  -d fixtureCategories=Gridable,NonGridable,Other \
+  -d competitionIds="${league_id}" \
+  -d skip=0 \
+  -d take=50 \
+  -d sortBy=Tags \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
+  | jq --raw-output '.fixtures[] | [.id, .addons.betRadar, "bwin",'"${league}"'] | @csv'
+}
+
+get_cashpoint_events() {
+  local host=oddsservice.betcenter.be
+  local league_id=$1
+  local league=$2
+  local book='"cashpoint"'
+
+  curl -s --request POST \
+  --url https://"${host}"/odds/getGames/8 \
+  --header 'Content-Type: application/json' \
+  --header 'x-brand: 7' \
+  --header 'x-client-country: 21' \
+  --header 'x-language: 2' \
+  --header 'x-location: 21' \
+  --data '{"leagueIds":['"${league_id}"'], "sportId":1,"gameTypes":[1, 4],"limit":20000,"jurisdictionId":30}' \
+  | jq --raw-output '.games[] | [.id, .statisticsId, "cashpoint",'"${league}"'] | @csv'
+}
+
+get_kambi_events() {
+  league_id=$1
+  league=$2
+  event_ids=$(curl -s 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'"${league_id}"'.json?includeParticipants=false' \
+  | jq '.events[] | select(.tags[] == "MATCH") | .id')
+
+  for event_id in ${event_ids}; do
+      get_sport_radar_id "${event_id}" "${league}" &
+  done
+  wait 
+}
+
+get_ladbrokes_events() {
+    league=$1
+    league_pretty_name=$2
+    curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'"${league}"'?prematch=1&live=0' \
+    --header 'x-eb-accept-language: en_BE' \
+    --header 'x-eb-marketid: 5' \
+    --header 'x-eb-platformid: 2' \
+    | jq --raw-output '.result.dataGroupList[].itemList[].eventInfo | [.aliasUrl, .programBetradarInfo.matchId, "ladbrokes",'"${league_pretty_name}"'] | @csv'
+}
+
+get_meridian_events(){
+  local url=$1
+  local league=$2
+  local book='"meridian"'
+  curl -s "${url}" | jq --raw-output '.[0].events[] | [.id, .betradarUnified["id"], "meridian",'"${league}"'] | @csv'
+}
+
+get_pinnacle_participant_id() {
+  name=$1
+  jq_string='.['"${name}"']'
+  participant=$(cat < pinnacle_sportradar.json | jq "${jq_string}")
+  echo "${participant}"
+}
+
+get_pinnacle_events() {
+  league=$1
+  league_id=$2
+
+  curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/'"${league_id}"'/matchups' \
+    -H 'authority: guest.api.arcadia.pinnacle.com' \
+    -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+    -H 'accept: application/json' \
+    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
+    -H 'x-api-key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
+    -H 'content-type: application/json' \
+    -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+    --compressed \
+    | jq --raw-output '.[] | select(.parent == null) | [.id, .participants[].name, "pinnacle",'"${league}"'] | @csv ' >> "${league}"_pinnacle_league_events.csv
+
+}
+
+get_sbtech_token() {
+    site_id=$1
+    book=$2
+    token_message=$(curl 'https://sbapi.sbtech.com/'"${book}"'/auth/platform/v1/api/GetTokenBySiteId/'"${site_id}")
+
+    IFS=' = '
+    read -a strarr <<<"${token_message}"
+    token_raw="${strarr[1]}"
+
+    token_temp=${token_raw%\'}
+    echo ${token_temp#\'}
+}
+
+get_sbtech_league_events() {
+    local token=$1
+    local book=betfirst
+    local league_id=$2
+    local league=$3
+
+    curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=leagueId%20eq%20%'"${league_id}"'%27&locale=en' \
+    -H 'accept: application/json, text/javascript, */*; q=0.01' \
+    -H 'authorization: Bearer '"${token}" \
+    -H 'content-type: application/json-patch+json' \
+    --compressed \
+    | jq --raw-output '.data.events[] | [.id, .media[0].providerEventId, "sbtech", '"${league}"'] | @csv'
+}
+
+get_sbtech_events() {
+    sbtech_token=$1
+    get_sbtech_league_events "${sbtech_token}" 2740815 '"jupiler_pro_league"' &
+    get_sbtech_league_events "${sbtech_token}" 2740481 '"bundesliga"' &
+    get_sbtech_league_events "${sbtech_token}" 2740030 '"serie_a"' &
+    get_sbtech_league_events "${sbtech_token}" 2740031 '"la_liga"' &
+    get_sbtech_league_events "${sbtech_token}" 2740253 '"premier_league"' &
+    get_sbtech_league_events "${sbtech_token}" 2740032 '"ligue_1"'
+    wait
+}
+
+get_sbtech_betoffers() {
+    betfirst_token=$(get_sbtech_token 28 betfirst)
+    bet777_token=$(get_sbtech_token 72 bet777)
+    books='betfirst,'"${betfirst_token}"' bet777,'"${bet777_token}"
+    sport_radar_ids=$1
+    events=$(get_sbtech_events "${betfirst_token}" | grep "${sport_radar_ids}")
+    for book in $books;do
+        book_name=$(echo "${book}" | cut -d ',' -f 1)
+        book_name_2=$(echo "${book}" | cut -d ',' -f 2)
+        for event in $events;do
+            event_id=$(echo "${event}" | cut -d ',' -f 1 | sed -e 's/^"//' -e 's/"$//' )
+            curl -s 'https://sbapi.sbtech.com/'"${book_name}"'/sportsdata/v2/events?query=$filter=id%20eq%20%27'"${event_id}"'%27&includeMarkets=$filter=' \
+            -H 'authority: sbapi.sbtech.com' \
+            -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+            -H 'accept: application/json, text/javascript, */*; q=0.01' \
+            -H 'locale: en' \
+            -H 'authorization: Bearer '"${book_name_2}" \
+            -H 'sec-ch-ua-mobile: ?0' \
+            -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+            -H 'content-type: application/json-patch+json' \
+            -H 'origin: https://betfirst.dhnet.be' \
+            -H 'sec-fetch-site: cross-site' \
+            -H 'sec-fetch-mode: cors' \
+            -H 'sec-fetch-dest: empty' \
+            -H 'referer: https://betfirst.dhnet.be/' \
+            -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+            --compressed \
+            | jq --raw-output '.data.markets[] 
+            | .marketType.id as $type_id 
+            | .eventId as $event_id 
+            | (.selections[] 
+            | [$type_id, $event_id, '\""${book_name}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0] 
+            | @csv )' \
+            | sed 's/1_0/1X2/g; s/61/DOUBLE_CHANCE/g; s/1_1/1X2_H1/g; s/1_2/1X2_H2/g; s/2_157/DRAW_NO_BET/g; 
+                s/145/DOUBLE_CHANCE_H1/g; s/3_200/OVER_UNDER/g; s/Home/1/g; s/Away/2/g; s/Tie/X/g' \
+            | grep '"1X2"\|"DOUBLE_CHANCE"\|"1X2_H1"\|"DOUBLE_CHANCE_H1"\|"OVER_UNDER"\|"1X2_H2"' &
+        done
+    done
+    wait
+}
+
+get_sportradar_matches() {
+    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/event_fullfeed/0/24')
+    echo "${output}" \
+    | jq -r '.doc
+    | .[0].data[].realcategories[].tournaments[] 
+    | select(._id == 1339) 
+    | .matches[] 
+    | [._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] 
+    | @csv'
+}
+
+sportradar_matches=$(get_sportradar_matches)
+sportradar_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 1)
+
+sbtech_betoffers=$(get_sbtech_betoffers 27649256) #TODO replace with "${sportradar_ids}"
+echo "${sbtech_betoffers}"
