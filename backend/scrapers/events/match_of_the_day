@@ -124,18 +124,6 @@ get_cashpoint_events() {
   | jq --raw-output '.games[] | [.id, .statisticsId, "cashpoint",'"${league}"'] | @csv'
 }
 
-get_kambi_events() {
-  league_id=$1
-  league=$2
-  event_ids=$(curl -s 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/'"${league_id}"'.json?includeParticipants=false' \
-  | jq '.events[] | select(.tags[] == "MATCH") | .id')
-
-  for event_id in ${event_ids}; do
-      get_sport_radar_id "${event_id}" "${league}" &
-  done
-  wait 
-}
-
 get_ladbrokes_events() {
     league=$1
     league_pretty_name=$2
@@ -221,6 +209,7 @@ get_sbtech_betoffers() {
     books='betfirst,'"${betfirst_token}"' bet777,'"${bet777_token}"
     sport_radar_ids=$1
     events=$(get_sbtech_events "${betfirst_token}" | grep "${sport_radar_ids}")
+    echo "${events}"
     for book in $books;do
         book_name=$(echo "${book}" | cut -d ',' -f 1)
         book_name_2=$(echo "${book}" | cut -d ',' -f 2)
@@ -262,13 +251,111 @@ get_sportradar_matches() {
     | jq -r '.doc
     | .[0].data[].realcategories[].tournaments[] 
     | select(._id == 1339) 
+    | ._id as $league_id
     | .matches[] 
-    | [._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] 
+    | [$league_id, ._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] 
     | @csv'
 }
 
-sportradar_matches=$(get_sportradar_matches)
-sportradar_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 1)
+get_kambi_event_ids() {
+  sport_radar_id=$1
+  curl -s 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/livecalendar.json?externalEventProvider=EP_BETRADAR&includeparticipants=false&depth=1' \
+  | jq -r '.eventMappings[] | [.externalId, .eventId] | @csv' \
+  | grep "${sport_radar_id}" \
+  | cut -d ',' -f 2
+}
 
-sbtech_betoffers=$(get_sbtech_betoffers 27649256) #TODO replace with "${sportradar_ids}"
-echo "${sbtech_betoffers}"
+get_kambi_betoffers() {
+  local sport_radar_id=$1
+  event_ids=$(get_kambi_event_ids "${sport_radar_id}")
+  books='ubbe ngbe bnlbe'
+  for book in $books;do
+    for event_id in $event_ids;do
+      curl -s 'https://eu-offering.kambicdn.org/offering/v2018/'"${book}"'/betoffer/event/'"${event_id}"'.json?lang=nl_BE&market=BE&client_id=2&channel_id=1&ncid=1628348100620&includeParticipants=false' \
+      -H 'Connection: keep-alive' \
+      -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+      -H 'Accept: application/json, text/javascript, */*; q=0.01' \
+      -H 'sec-ch-ua-mobile: ?0' \
+      -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+      -H 'Origin: https://nl-sports.unibet.be' \
+      -H 'Sec-Fetch-Site: cross-site' \
+      -H 'Sec-Fetch-Mode: cors' \
+      -H 'Sec-Fetch-Dest: empty' \
+      -H 'Referer: https://nl-sports.unibet.be/' \
+      -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
+      --compressed \
+      | jq --raw-output '.betOffers[] 
+      | .criterion.id as $id 
+      | .eventId as $event_id 
+      | (.outcomes[] 
+      | select (.odds != null) 
+      | [$id, $event_id, '\""${book}"\"', .label, .odds?/1000, (.line // 0) / 1000] 
+      | @csv)' \
+      | sed 's/1001159858/"1X2"/g; s/1001159922/"DOUBLE_CHANCE"/g; s/1000316018/"1X2_H1"/g; 
+      s/1001159826/"1X2_H2"/g; s/1001159666/"DRAW_NO_BET"/g; s/1001159668/"DOUBLE_CHANCE_H1"/g; s/1001159926/"OVER_UNDER"/g' \
+      | grep '"1X2"\|"DOUBLE_CHANCE"\|"1X2_H1"\|"DOUBLE_CHANCE_H1"\|"OVER_UNDER"\|"1X2_H2"' &
+    done
+  done
+  wait
+}
+
+
+get_pinnacle_participant_id() {
+  name=$1
+  jq_string='.['"${name}"']'
+  participant=$(cat < pinnacle_sportradar_participant.json | jq "${jq_string}")
+  echo "${participant}"
+}
+
+get_pinnacle_events() {
+  sport_radar_league_ids=$1
+  pinnacle_league_ids=$(cat pinnacle_sportradar_league_mapping.csv | grep "${sport_radar_league_ids}" | cut -d ',' -f 3)
+
+  IFS=$'\n'
+  for league_id in $pinnacle_league_ids;do
+      events=$(curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/'"${league_id}"'/matchups' \
+    -H 'authority: guest.api.arcadia.pinnacle.com' \
+    -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+    -H 'accept: application/json' \
+    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
+    -H 'x-api-key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
+    -H 'content-type: application/json' \
+    -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+    --compressed \
+    | jq --raw-output '.[] | select(.parent == null) | [.id, .participants[].name] | @csv ')
+    
+    for event in ${events}
+    do
+      home_team=$(echo "${event}" | cut -d',' -f 2)
+      away_team=$(echo "${event}" | cut -d',' -f 3)
+      home_sportradar_team_id=$(get_pinnacle_participant_id "${home_team}")
+      away_sportradar_team_id=$(get_pinnacle_participant_id "${away_team}")
+      sportradar_id=$(grep ''"${home_team_id}"'' sportradar_events.csv | grep ''"${away_team_id}"'' | cut -d',' -f 1)
+      if [ -n "${sportradar_id}" ]
+      then
+      echo "${sportradar_id}"
+      fi
+    done
+
+  done
+
+}
+
+get_pinnacle_betoffers() {
+  league_ids=$1
+}
+
+sportradar_matches=$(get_sportradar_matches)
+echo "${sportradar_matches}"
+#sportradar_league_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 1)
+#sportradar_event_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 2)
+
+#sbtech_betoffers=$(get_sbtech_betoffers 28639546) #TODO replace with "${sportradar_event_ids}"
+#echo "${sbtech_betoffers}"
+
+#get_kambi_betoffers 28639546
+
+#get_pinnacle_events '38
+#42' # TODO replace with sportradar_matches
+
+
