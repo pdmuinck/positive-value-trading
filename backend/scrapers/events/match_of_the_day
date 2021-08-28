@@ -189,7 +189,12 @@ get_sbtech_league_events() {
     -H 'authorization: Bearer '"${token}" \
     -H 'content-type: application/json-patch+json' \
     --compressed \
-    | jq --raw-output '.data.events[] | [.media[0].providerEventId, .id, "sbtech", '"${league}"'] | @csv'
+    | jq --raw-output '.data.events[] 
+    | .id as $id 
+    | .media[] 
+    | select(.providerName == "BetRadarV3") 
+    | [.providerEventId, $id, "sbtech", '"${league}"'] 
+    | @csv'
 }
 
 get_sbtech_events() {
@@ -249,7 +254,7 @@ get_sportradar_matches() {
     echo "${output}" \
     | jq -r '.doc
     | .[0].data[].realcategories[].tournaments[] 
-    | select(._id == 1339) 
+    | select(._id == 38 or ._id == 1 or ._id == 42 or ._id == 4 or ._id == 33 or ._id == 36) 
     | ._id as $league_id
     | .matches[] 
     | [$league_id, ._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name] 
@@ -427,18 +432,21 @@ apply_vig_free_prices(){
 }
 
 add_value_calculations(){
-  betoffers=$1
-  predictions=$2
-  types='1X2|1|0 1X2|X|0 1X2|2|0 OVER_UNDER|Over|2.5 OVER_UNDER|Under|2.5'
-
-  
+  offers=$1
+  predictions=$(echo "${offers}" | grep pinnacle)
+  betoffers=$(echo "${offers}" | grep -v pinnacle)
+  types='"1X2"|"1"|0 "1X2"|"X"|0 "1X2"|"2"|0 "OVER_UNDER"|"Over"|2.5 "OVER_UNDER"|"Under"|2.5'
 
   for type in $types;do
     bet_type=$(echo "${type}" | cut -d '|' -f 1)
     bet_option=$(echo "${type}" | cut -d '|' -f 2)
     points=$(echo "${type}" | cut -d '|' -f 3)
+
+    #echo bet_type: "${bet_type}" , bet_option: "${bet_option}" , points: "${points}"
     prediction=$(echo "${predictions}" |grep -w "${bet_type}" |grep -w "${bet_option}" |grep -w "${points}" | cut -d ',' -f 7)
+    #echo PREDICTION: "${prediction}"
     offers=$(echo "${betoffers}" |grep -w "${bet_type}" |grep -w "${bet_option}" |grep -w "${points}")
+    #echo OFFERS: "${offers}"
     for offer in $offers;do
       price=$(echo "${offer}" | cut -d ',' -f 5)
       value=$(calculate_value "${price}" "${prediction}")
@@ -450,33 +458,33 @@ add_value_calculations(){
   done
 }
 
-#sportradar_matches=$(get_sportradar_matches)
-#echo "${sportradar_matches}"
-#sportradar_league_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 1)
-#sportradar_event_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 2)
+sportradar_matches=$(get_sportradar_matches)
 
-#sbtech_betoffers=$(get_sbtech_betoffers 28639546) #TODO replace with "${sportradar_event_ids}"
-#echo "${sbtech_betoffers}"
-
-#get_kambi_betoffers 28639546
-
-sportradar_matches='38,27649258,5325576,Eupen,923905,Seraing'
+#sportradar_matches='36,27965204,"22:00","28/08/21","CEST",32608,"Real Betis",6543,"Real Madrid"'
 #sportradar_matches='38,27649258,5325576,Eupen,923905,Seraing
 #38,27649254,4672,Charleroi,10547664,K Beerschot VA'
 
 sportradar_event_ids=$(echo "${sportradar_matches}" | cut -d ',' -f 2)
 
 mapped_events=$(map_events "${sportradar_matches}") # TODO replace with sportradar_matches
+#echo "${mapped_events}"
 
-
-for event_id in $sportradar_event_ids;do
+get_offers() {
+  event_id=$1
   event_offers=$(echo "${mapped_events}" | grep "${event_id}")
   kambi_offers=$(get_kambi_betoffers $(echo "${event_offers}" | grep "kambi" | cut -d ',' -f 2))
   sbtech_offers=$(get_sbtech_betoffers $(echo "${event_offers}" | grep "sbtech" | cut -d ',' -f 2 | sed "s/\"//g"))
   pinnacle_offers=$(get_pinnacle_betoffers $(echo "${event_offers}" | grep "pinnacle" | cut -d ',' -f 2))
-
   pinnacle_offers_vig_free=$(apply_vig_free_prices "${pinnacle_offers}")
-  add_value_calculations "${kambi_offers}" "${pinnacle_offers_vig_free}"
+  echo "${kambi_offers}"
+  echo "${sbtech_offers}"
+  echo "${pinnacle_offers_vig_free}"
+}
+
+
+for event_id in $sportradar_event_ids;do
+  offers=$(get_offers "${event_id}")
+  add_value_calculations "${offers}"
 done
 
 
