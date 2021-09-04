@@ -1,9 +1,6 @@
 #!/bin/bash
 
-match_info() {
-    match_id=$1
-    local output=$(curl -s 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/'$match_id)
-    echo $output
-}
-
-match_info $1
+curl -s 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/'$1 \
+| jq --raw-output '.doc[0].data.match.result 
+| [.home, .away, .home + .away, if (.winner == "home") then "1" elif (.winner == "away") then "2" else "X" end] 
+| @csv' 
