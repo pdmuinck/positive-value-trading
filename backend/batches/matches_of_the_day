@@ -28,7 +28,8 @@ for match in $matches;do
   kambi_id=$(echo "${kambi}" | grep "${match_id}" | cut -d ',' -f 1)
   sbtech_id=$(echo "${sbtech}" | grep "${match_id}" | cut -d ',' -f 1 | tr -d '"')
   pinnacle_id=$(echo "${pinnacle}" | grep "${match_id}" | cut -d ',' -f 1)
-  echo "${match_id}","${start_time}","${kambi_id}","${sbtech_id}","${pinnacle_id}"
+  echo "${match_id}","${start_time}","${pinnacle_id}","${kambi_id}","${sbtech_id}"
+
 done
 
 
