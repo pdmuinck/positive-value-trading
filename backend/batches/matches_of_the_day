@@ -1,0 +1,33 @@
+#!/bin/bash
+
+filterSports=Soccer
+
+jupiler_pro_league=38
+bundesliga=42
+premier_league=1
+ligue_1=4
+serie_a=33
+la_liga=36
+eredivisie=39
+
+# get sport radar
+matches=$(./event_full_feed \
+| grep "${filterSports}" \
+| grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},")
+
+# get books
+kambi=$(./kambi)
+sbtech=$(./sbtech)
+pinnacle=$(./pinnacle "${matches}")
+wait
+
+IFS=$'\n'
+for match in $matches;do
+  match_id=$(echo "${match}" | cut -d ',' -f 3)
+  kambi_id=$(echo "${kambi}" | grep "${match_id}" | cut -d ',' -f 1)
+  sbtech_id=$(echo "${sbtech}" | grep "${match_id}" | cut -d ',' -f 1 | tr -d '"')
+  echo "${match_id}","${kambi_id}","${sbtech_id}"
+done
+
+
+

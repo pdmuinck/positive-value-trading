@@ -1,0 +1,57 @@
+#!/bin/bash
+
+get_token() {
+    token_message=$(curl 'https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28')
+
+    IFS=' = '
+    read -a strarr <<<"${token_message}"
+    token_raw="${strarr[1]}"
+
+    token_temp=${token_raw%\'}
+    echo ${token_temp#\'}
+}
+
+get_events() {
+    local token=$1
+    local book=betfirst
+    local league_id=$2
+    local league=$3
+
+
+    curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=leagueId%20eq%20%'"${league_id}"'%27&locale=en' \
+    -H 'accept: application/json, text/javascript, */*; q=0.01' \
+    -H 'authorization: Bearer '"${token}" \
+    -H 'content-type: application/json-patch+json' \
+    --compressed \
+    | jq --raw-output '.data.events[]
+    | .id as $id
+    | .media[]
+    | select(.providerName == "BetRadarV3")
+    | [$id, .providerEventId, "sbtech", '"${league}"']
+    | @csv' \
+    | sort -u
+
+}
+
+token=$(get_token)
+
+get_events "${token}" 2740815 '"jupiler_pro_league"' &
+get_events "${token}" 2740481 '"bundesliga"' &
+get_events "${token}" 2740030 '"serie_a"' &
+get_events "${token}" 2740031 '"la_liga"' &
+get_events "${token}" 2740253 '"premier_league"' &
+get_events "${token}" 2740032 '"ligue_1"'
+
+wait
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ production:
       type: snowflake
       account: wb32444.eu-west-1
       user: pieterjandemuinck
-      password: "{{ env_var('PASS') }}"
+      password: PDMpette123
       role: SYSADMIN
       database: PRODUCTION
       warehouse: COMPUTE_WH

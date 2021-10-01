@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1c779c3-30f1-4114-b20f-f020ab780724" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/scrapers/betoffers/kambi/betoffer_map.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/scrapers/betoffers/kambi/kambi_betoffers" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/scrapers/events/bet90" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/events.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/schema.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/data/sportradar_events.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/models/sportradar/schema.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/snowflake/sport-events/models/sportradar/vw_events.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/event_full_feed" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/kambi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/match_info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/matches_of_the_day" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/pinnacle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/pinnacle_sportradar_league_mapping.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/pinnacle_sportradar_participant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/batches/sbtech" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/event-mapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/event-mapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/altenar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/altenar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/bcapps_sportradar.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bcapps_sportradar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/betconstruct" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betconstruct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/betconstruct_apps" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betconstruct_apps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/betway" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/betway" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/bingoal" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bingoal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/bwin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/bwin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/cashpoint" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/cashpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/get_events" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/get_events" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/kambi" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/kambi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/ladbrokes" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/ladbrokes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/meridian" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/meridian" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/pinnacle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/pinnacle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/pinnacle_sportradar.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/pinnacle_sportradar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/sbtech" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/sbtech" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/stanleybet" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/stanleybet" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/scrapers/zetbet" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/zetbet" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/betoffers/pinnacle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/betoffers/pinnacle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/betoffers/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/events/pinnacle_sportradar_league_mapping.csv" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/events/pinnacle_sportradar_league_mapping.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/scrapers/sportradar/event_full_feed" beforeDir="false" afterPath="$PROJECT_DIR$/backend/scrapers/sportradar/event_full_feed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snowflake/sport-events/profiles.yml" beforeDir="false" afterPath="$PROJECT_DIR$/snowflake/sport-events/profiles.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +54,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Scala" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/scrapers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/batches" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,30 +72,28 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/batches" />
+      <recent name="$PROJECT_DIR$/backend/scrapers/betoffers" />
       <recent name="$PROJECT_DIR$/backend/scrapers" />
       <recent name="$PROJECT_DIR$/snowflake/sport-events/data" />
       <recent name="$PROJECT_DIR$/backend/events/scrapers" />
-      <recent name="$PROJECT_DIR$/backend/events/scrapers/sportradar" />
-      <recent name="$PROJECT_DIR$/backend/events" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/scrapers/betoffers" />
       <recent name="$PROJECT_DIR$/backend/scrapers/betoffers/kambi" />
       <recent name="$PROJECT_DIR$/backend/scrapers/events" />
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/backend/events" />
-      <recent name="$PROJECT_DIR$/backend/test/resources/bwin" />
     </key>
   </component>
   <component name="RunManager" selected="Mocha.backend/test/parser_test.js">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -396,49 +378,19 @@
       <workItem from="1628259062856" duration="3178000" />
       <workItem from="1628311528592" duration="1886000" />
       <workItem from="1628334536971" duration="6152000" />
-      <workItem from="1628347875453" duration="2545000" />
-    </task>
-    <task id="LOCAL-00150" summary="fix bwin parser">
-      <created>1622370315140</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1622370315141</updated>
-    </task>
-    <task id="LOCAL-00151" summary="fix cashpoint parser">
-      <created>1622372416102</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1622372416102</updated>
-    </task>
-    <task id="LOCAL-00152" summary="fix kambi parser">
-      <created>1622374410365</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1622374410365</updated>
-    </task>
-    <task id="LOCAL-00153" summary="finish kambi parser">
-      <created>1622572115918</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1622572115918</updated>
-    </task>
-    <task id="LOCAL-00154" summary="finish ladbrokes parser">
-      <created>1622575684287</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1622575684287</updated>
-    </task>
-    <task id="LOCAL-00155" summary="fix meridian parser">
-      <created>1622580619369</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1622580619369</updated>
+      <workItem from="1628347875453" duration="2571000" />
+      <workItem from="1628359218878" duration="1355000" />
+      <workItem from="1628573628593" duration="5251000" />
+      <workItem from="1628705601496" duration="3689000" />
+      <workItem from="1628857340503" duration="11990000" />
+      <workItem from="1628883072710" duration="3900000" />
+      <workItem from="1632504067488" duration="681000" />
+      <workItem from="1632509866504" duration="83000" />
+      <workItem from="1632509966871" duration="599000" />
+      <workItem from="1632510848960" duration="586000" />
+      <workItem from="1632549357949" duration="717000" />
+      <workItem from="1632989115716" duration="527000" />
+      <workItem from="1633070939875" duration="8106000" />
     </task>
     <task id="LOCAL-00156" summary="fix meridian parser">
       <created>1622658938797</created>
@@ -741,7 +693,49 @@
       <option name="project" value="LOCAL" />
       <updated>1628337177881</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="test kambi betoffers">
+      <created>1628350426922</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1628350426923</updated>
+    </task>
+    <task id="LOCAL-00200" summary="create kambi betoffers">
+      <created>1628360769198</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1628360769199</updated>
+    </task>
+    <task id="LOCAL-00201" summary="get kambi betoffers">
+      <created>1628578921091</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1628578921091</updated>
+    </task>
+    <task id="LOCAL-00202" summary="finish kambi and start sbtech">
+      <created>1628709218982</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1628709218982</updated>
+    </task>
+    <task id="LOCAL-00203" summary="get pinnacle betoffers">
+      <created>1628869394545</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1628869394545</updated>
+    </task>
+    <task id="LOCAL-00204" summary="get pinnacle">
+      <created>1628886992894</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1628886992894</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <option name="searchClosedTasks" value="true" />
     <servers />
   </component>
@@ -810,10 +804,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix pinnacle" />
-    <MESSAGE value="test scripts kambi" />
-    <MESSAGE value="create kambi bash script" />
-    <MESSAGE value="creeate mapping pinnacle sportradar for bundesliga" />
     <MESSAGE value="create meridian bash script to get events" />
     <MESSAGE value="create script files to scrape from bookmakers" />
     <MESSAGE value="simplify scrapers" />
@@ -829,13 +819,17 @@
     <MESSAGE value="get sport radar ids" />
     <MESSAGE value="get sportradar matches" />
     <MESSAGE value="make betconstruct more reliable" />
-    <MESSAGE value="get pinnacle" />
     <MESSAGE value="try to get betconstruct apps" />
     <MESSAGE value="finish bcapps" />
     <MESSAGE value="create new repo structure" />
     <MESSAGE value="get zetbet" />
     <MESSAGE value="test kambi betoffers" />
-    <option name="LAST_COMMIT_MESSAGE" value="test kambi betoffers" />
+    <MESSAGE value="create kambi betoffers" />
+    <MESSAGE value="get kambi betoffers" />
+    <MESSAGE value="finish kambi and start sbtech" />
+    <MESSAGE value="get pinnacle betoffers" />
+    <MESSAGE value="get pinnacle" />
+    <option name="LAST_COMMIT_MESSAGE" value="get pinnacle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
