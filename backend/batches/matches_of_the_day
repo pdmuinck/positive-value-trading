@@ -24,9 +24,11 @@ wait
 IFS=$'\n'
 for match in $matches;do
   match_id=$(echo "${match}" | cut -d ',' -f 3)
+  start_time=$(echo "${match}" | cut -d ',' -f 4)
   kambi_id=$(echo "${kambi}" | grep "${match_id}" | cut -d ',' -f 1)
   sbtech_id=$(echo "${sbtech}" | grep "${match_id}" | cut -d ',' -f 1 | tr -d '"')
-  echo "${match_id}","${kambi_id}","${sbtech_id}"
+  pinnacle_id=$(echo "${pinnacle}" | grep "${match_id}" | cut -d ',' -f 1)
+  echo "${match_id}","${start_time}","${kambi_id}","${sbtech_id}","${pinnacle_id}"
 done
 
 

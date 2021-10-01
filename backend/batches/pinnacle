@@ -29,10 +29,10 @@ for league_id in $pinnacle_league_ids;do
         away_team=$(echo "${event}" | cut -d',' -f 3)
         home_sportradar_team_id=$(get_pinnacle_participant_id "${home_team}")
         away_sportradar_team_id=$(get_pinnacle_participant_id "${away_team}")
-        sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 2)
+        sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 3)
         if [ -n "${sportradar_id}" ]
         then
-        echo "${sportradar_id}","${event_id}",pinnacle
+        echo "${event_id}","${sportradar_id}",pinnacle
         fi
       done
 done
