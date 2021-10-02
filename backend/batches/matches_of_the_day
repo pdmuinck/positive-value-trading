@@ -16,7 +16,7 @@ matches=$(./event_full_feed \
 | grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},")
 
 # get books
-kambi=$(./kambi)
+#kambi=$(./kambi)
 sbtech=$(./sbtech)
 pinnacle=$(./pinnacle "${matches}")
 wait

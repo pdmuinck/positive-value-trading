@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ifconfig en0
+
+curl -s 'https://eu-offering.kambicdn.org/offering/v2018/ubbe/event/group/1000094965.json?includeParticipants=false'
