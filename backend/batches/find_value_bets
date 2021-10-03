@@ -15,10 +15,6 @@ wait
 betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")
 predictions=$(cat *_pinnacle_betoffers.csv | grep "pinnacle")
 
-echo Found betoffers...
-
-echo Look for value bets...
-
 find_value() {
     IFS=$'\n'
     for betoffer in ${betoffers};do
@@ -29,18 +25,42 @@ find_value() {
       prediction=$(echo "${predictions}" | grep -w "${bet_type}" | grep "${bet_option}" | grep ",${bet_line}," | cut -d ',' -f 7)
       if [ -n "$prediction" ]; then
         value=$(./utils/calculate_value "${price}" "${prediction}")
-        if (( $(echo "$value > 0" |bc -l) )); then
+        # apply filters
+        if (( $(echo "$value > 0.01" |bc -l) && $(echo "$price < 4.0" |bc -l))); then
             echo "${betoffer}","${value}"
         fi
       fi
     done
 }
 
-find_value
 
-echo Value bets found...
+filter_value_bets() {
+  value_bets=$1
 
-#rm *betoffers.csv
+  value_bets_sorted=$(echo "${value_bets}" | sort -t ',' -k1,1 -k4,4 -k6,6 -rk7,7)
+  max_value_bets=$(echo "${value_bets}" | mlr --ocsv stats1 -a max -f 7 -g 1,4,6)
+
+  IFS=$'\n'
+  for line in $max_value_bets;do
+    bet_type=$(echo "${line}" | cut -d ',' -f 1)
+    bet_option=$(echo "${line}" | cut -d ',' -f 2)
+    bet_option_clean="${bet_option%\"}"
+    bet_option_clean="${bet_option_clean#\"}"
+    bet_option_clean="${bet_option_clean%\"}"
+    bet_option_clean="${bet_option_clean#\"}"
+    bet_line=$(echo "${line}" | cut -d ',' -f 3)
+    price=$(echo "${line}" | cut -d ',' -f 4)
+    echo "${value_bets_sorted}"  | grep "${price}" |grep "${bet_option_clean}" | grep "${bet_line}" | head -1
+  done
+}
+
+value_bets=$(find_value)
+value_bets_filtered=$(filter_value_bets "${value_bets}")
+echo "${value_bets_filtered}"
+
+
+
+rm *betoffers.csv
 
 
 
