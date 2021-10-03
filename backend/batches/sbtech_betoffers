@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo About to get sbtech betoffers
-
 event_id=$1
 sport_radar_id=$2
 
@@ -23,7 +21,7 @@ get_betoffers() {
   event_id=$2
   token=$3
   curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=id%20eq%20%27'"${event_id}"'%27&includeMarkets=$filter=' \
-  -H 'authority: sbapi.sbtech.com' \
+  -H 'authority: sbapi.sbtech_betoffers.com' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'accept: application/json, text/javascript, */*; q=0.01' \
   -H 'locale: en' \
@@ -38,7 +36,12 @@ get_betoffers() {
   -H 'referer: https://betfirst.dhnet.be/' \
   -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
   --compressed \
-  | jq --raw-output '.data.markets[] | .marketType.id as $type_id | .eventId as $event_id | (.selections[] | [$type_id, $event_id, '\""${book}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0] | @csv )' >> betoffers_sbtech.csv
+  | jq --raw-output '.data.markets[]
+  | .marketType.id as $type_id
+  | .eventId as $event_id
+  | (.selections[]
+  | [$type_id, $event_id, '\""${book}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0]
+  | @csv )' >> betoffers_sbtech.csv
 }
 
 echo GET tokens...

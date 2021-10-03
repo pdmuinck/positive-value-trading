@@ -1,0 +1,22 @@
+#!/bin/bash
+
+calculate_margin() {
+    local prices=$1
+    echo $(awk 'BEGIN{margin=0; for (i = 1; i < ARGC; i++) margin = margin + 1/ARGV[i]; print margin}' ${prices})
+}
+
+calculate_margin "$1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo About to get pinnacle betoffers
+echo About to get pinnacle_betoffers betoffers
 
 event_id=$1
 sport_radar_id=$2
@@ -24,7 +24,7 @@ curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/mar
   -H 'Referer: https://www.pinnacle.com/' \
   -H 'X-API-Key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
   --compressed \
-  | jq -r --arg eventId "${event_id}" '.[] | .key as $type_id | .matchupId as $market_id | (.prices[] | [$market_id, $type_id, $eventId, "pinnacle", if (.designation) then .designation else .participantId end, .price, if (.points) then .points else 0 end] | @csv)' > betoffers_pinnacle.csv
+  | jq -r --arg eventId "${event_id}" '.[] | .key as $type_id | .matchupId as $market_id | (.prices[] | [$market_id, $type_id, $eventId, "pinnacle_betoffers", if (.designation) then .designation else .participantId end, .price, if (.points) then .points else 0 end] | @csv)' > betoffers_pinnacle.csv
 
 curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/related' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+calculate_value() {
+    local price=$1
+    local prediction=$2
+    echo $(awk -v prediction="$prediction" -v price="$price" 'BEGIN {print (1 / prediction * price) - 1;}')
+}
+
+calculate_value $1 $2
+
+
+
+
+
+
+
+
+
+
+
+

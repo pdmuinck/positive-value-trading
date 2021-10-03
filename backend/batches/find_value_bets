@@ -1,0 +1,47 @@
+#!/bin/bash
+
+match=$1
+sportradar_id=$(echo "${match}" | cut -d ',' -f 1)
+pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
+sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
+
+echo About to get all betoffers...
+
+./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
+./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}"
+
+wait
+
+betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")
+predictions=$(cat *_pinnacle_betoffers.csv | grep "pinnacle")
+
+echo Found betoffers...
+
+echo Look for value bets...
+
+find_value() {
+    IFS=$'\n'
+    for betoffer in ${betoffers};do
+      bet_type=$(echo "${betoffer}" | cut -d ',' -f 1)
+      bet_option=$(echo "${betoffer}" | cut -d ',' -f 4)
+      price=$(echo "${betoffer}" | cut -d ',' -f 5)
+      bet_line=$(echo "${betoffer}" | cut -d ',' -f 6)
+      prediction=$(echo "${predictions}" | grep -w "${bet_type}" | grep "${bet_option}" | grep ",${bet_line}," | cut -d ',' -f 7)
+      if [ -n "$prediction" ]; then
+        value=$(./utils/calculate_value "${price}" "${prediction}")
+        if (( $(echo "$value > 0" |bc -l) )); then
+            echo "${betoffer}","${value}"
+        fi
+      fi
+    done
+}
+
+find_value
+
+echo Value bets found...
+
+#rm *betoffers.csv
+
+
+
+

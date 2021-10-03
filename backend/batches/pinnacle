@@ -12,7 +12,7 @@ pinnacle_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_leagu
 IFS=$'\n'
 for league_id in $pinnacle_league_ids;do
     events=$(curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/'"${league_id}"'/matchups' \
-  -H 'authority: guest.api.arcadia.pinnacle.com' \
+  -H 'authority: guest.api.arcadia.pinnacle_betoffers.com' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'accept: application/json' \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
@@ -32,7 +32,7 @@ for league_id in $pinnacle_league_ids;do
         sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 3)
         if [ -n "${sportradar_id}" ]
         then
-        echo "${event_id}","${sportradar_id}",pinnacle
+        echo "${event_id}","${sportradar_id}",pinnacle_betoffers
         fi
       done
 done

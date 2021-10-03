@@ -13,7 +13,7 @@ api.getBookmakers = () => {
     [
         {id: 'UNIBET_BELGIUM', logo: '/assets/unibet.png', alt: 'unibet_be'}, 
         {id: 'NAPOLEON_GAMES', logo: '/assets/napoleon_games.png', alt: 'napoleon'},
-        {id: 'PINNACLE', logo: '/assets/pinnacle.png', alt: 'pinnacle'}, 
+        {id: 'PINNACLE', logo: '/assets/pinnacle_betoffers.png', alt: 'pinnacle_betoffers'},
         {id: 'BET777', logo: '/assets/bet777.png', alt: 'bet777'}, 
         {id: 'BETFIRST', logo: '/assets/betfirst.png', alt: 'betfirst'}
     ]

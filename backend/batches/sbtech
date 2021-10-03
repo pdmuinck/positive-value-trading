@@ -27,7 +27,7 @@ get_events() {
     | .id as $id
     | .media[]
     | select(.providerName == "BetRadarV3")
-    | [$id, .providerEventId, "sbtech", '"${league}"']
+    | [$id, .providerEventId, "sbtech_betoffers", '"${league}"']
     | @csv' \
     | sort -u
 

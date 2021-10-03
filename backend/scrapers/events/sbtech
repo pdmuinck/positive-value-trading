@@ -22,7 +22,7 @@ get_events() {
     -H 'authorization: Bearer '"${token}" \
     -H 'content-type: application/json-patch+json' \
     --compressed \
-    | jq --raw-output '.data.events[] | [.id, .media[0].providerEventId, "sbtech", '"${league}"'] | @csv' >> "${league}"_sbtech_league_events.csv
+    | jq --raw-output '.data.events[] | [.id, .media[0].providerEventId, "sbtech_betoffers", '"${league}"'] | @csv' >> "${league}"_sbtech_league_events.csv
 }
 
 token=$(get_token)
