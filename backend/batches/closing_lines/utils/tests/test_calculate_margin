@@ -1,0 +1,20 @@
+#!/bin/bash
+
+prices=$(grep -w "1X2" pinnacle_betoffers_corrected.csv | cut -d ',' -f 5)
+
+../calculate_margin "${prices}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

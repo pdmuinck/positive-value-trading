@@ -1,0 +1,23 @@
+#!/bin/bash
+
+vig_free_price() {
+    local price=$1
+    local margin=$2
+    echo $(awk -v price="$price" -v margin="$margin" 'BEGIN{print price/margin;}' ${price})
+}
+
+vig_free_price $1 $2
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,9 @@
-FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
-RUN apk --update add openjdk7-jre jq nodejs-current
+FROM alpine
+RUN apk --update add jq nodejs-current miller bash curl
 
 ENV PORT 8080
 
 COPY . .
+RUN chmod 777 find_value_bets
 
 CMD [ "node", "server.js" ]

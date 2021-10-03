@@ -1,0 +1,21 @@
+#!/bin/bash
+
+get_value_bets() {
+    local price=$1
+    local prediction=$2
+    echo $(awk -v prediction="$prediction" -v price="$price" 'BEGIN {print (1 / prediction * price) - 1;}')
+}
+
+get_value_bets $1 $2
+
+
+
+
+
+
+
+
+
+
+
+

@@ -62,7 +62,9 @@ rm markets_pinnacle.csv
 rm special_offers.csv
 rm betoffers_pinnacle.csv
 
-./utils/make_vig_free "${sport_radar_id}"_pinnacle_betoffers_corrected.csv > "${sport_radar_id}"_pinnacle_betoffers.csv
+betoffers=$(./utils/make_vig_free "${sport_radar_id}"_pinnacle_betoffers_corrected.csv)
+
+echo "${betoffers}"
 
 rm "${sport_radar_id}"_pinnacle_betoffers_corrected.csv
 

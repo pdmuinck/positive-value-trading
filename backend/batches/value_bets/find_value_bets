@@ -5,8 +5,6 @@ sportradar_id=$(echo "${match}" | cut -d ',' -f 1)
 pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
 sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
 
-echo About to get all betoffers...
-
 ./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
 ./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}"
 
