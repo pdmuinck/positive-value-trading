@@ -20,7 +20,7 @@ for league_id in $pinnacle_league_ids;do
   -H 'content-type: application/json' \
   -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
   --compressed \
-  | jq --raw-output '.[] | select(.parent == null) | [.id, .participants[].name] | @csv ')
+  | jq --raw-output '.[] | select(.parent == null and (.participants | length == 2)) | [.id, .participants[].name] | @csv ')
 
       for event in ${events}
       do
