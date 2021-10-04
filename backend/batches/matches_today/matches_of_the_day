@@ -1,6 +1,7 @@
 #!/bin/bash
 
-./delete_jobs
+./delete_jobs value-bets
+./delete_jobs closing-lines
 
 filterSports=Soccer
 
