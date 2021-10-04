@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+matches=$1
+
+prep_statement() {
+  IFS=$'\n'
+  for match in $matches;do
+    sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
+    echo "(${sport_radar_id}), "
+  done
+}
+
+export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+export SNOWSQL_USER=demuinckpieterjan
+export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
+export SNOWSQL_ROLE=SYSADMIN
+export SNOWSQL_DATABASE=PROTRADER
+export SNOWSQL_WAREHOUSE=COMPUTE_WH
+export SNOWSQL_SCHEMA=VALUE_BETS
+
+
+values=$(prep_statement)
+
+echo "${values}"
+
+modified="${values::-2}"
+
+echo "${modified}"
+
+#snowsql -q 'insert into sport_radar_matches(sport_radar_id) values (123)'

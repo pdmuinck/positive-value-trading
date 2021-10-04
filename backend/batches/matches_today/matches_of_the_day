@@ -49,5 +49,7 @@ for match in $matches;do
   ./create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
 done
 
+./insert_sportradar_snowflake "${matches}"
+
 
 
