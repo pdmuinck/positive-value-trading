@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+export SNOWSQL_USER=demuinckpieterjan
+export SNOWSQL_PWD=bla
+export SNOWSQL_ROLE=SYSADMIN
+export SNOWSQL_DATABASE=PROTRADER
+export SNOWSQL_WAREHOUSE=COMPUTE_WH
+export SNOWSQL_SCHEMA=VALUE_BETS
+
+
+snowsql -q 'select * from value_bets'

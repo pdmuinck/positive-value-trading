@@ -12,11 +12,12 @@ ligue_1=4
 serie_a=33
 la_liga=36
 eredivisie=39
+argentina=68
 
 # get sport radar
 matches=$(./event_full_feed \
 | grep "${filterSports}" \
-| grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},")
+| grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},\|,${argentina},")
 
 # get books
 sbtech=$(./sbtech)
@@ -26,14 +27,13 @@ wait
 IFS=$'\n'
 for match in $matches;do
   sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
-  start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':')
+  start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
-  # set system date to start time
-  date "${start_time}"
-  value_bet_start_hour=$(date -v-3H +%H)
-  value_bet_start_minutes=$(date -v-3H +%M)
-  closing_line_start_hour=$(date -v-1M +%H)
-  closing_line_start_minutes=$(date -v-1M +%M)
+  # to test locally replace date commands with gdate command
+  value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
+  value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
+  closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
+  closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
@@ -41,7 +41,7 @@ for match in $matches;do
   pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
 
   value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}"
-  closing_line_body=""${pinnacle_id}" "${sport_radar_id}""
+  closing_line_body="${pinnacle_id}","${sport_radar_id}"
 
   value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
   closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
