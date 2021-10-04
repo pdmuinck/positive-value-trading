@@ -2,7 +2,7 @@
 
 export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
 export SNOWSQL_USER=demuinckpieterjan
-export SNOWSQL_PWD=bla
+export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
 export SNOWSQL_ROLE=SYSADMIN
 export SNOWSQL_DATABASE=PROTRADER
 export SNOWSQL_WAREHOUSE=COMPUTE_WH
