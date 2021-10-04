@@ -9,7 +9,7 @@ name=$5
 gcloud scheduler jobs create http ${name} \
 	  --description "${description}" \
 	  --schedule "${schedule}" \
-	  --time-zone "Europe/Berlin" \
+	  --time-zone "Europe/Brussels" \
 	  --uri "${service_uri}" \
 	  --http-method POST \
 	  --oidc-service-account-email cloud-run-scheduler@trusty-cacao-327717.iam.gserviceaccount.com \

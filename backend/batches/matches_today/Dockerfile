@@ -1,5 +1,5 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
-RUN apk --update add openjdk7-jre jq nodejs-current
+RUN apk --update add openjdk7-jre jq nodejs-current coreutils
 
 ENV PORT 8080
 
