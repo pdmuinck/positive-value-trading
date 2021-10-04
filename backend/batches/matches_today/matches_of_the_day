@@ -24,7 +24,7 @@ wait
 
 IFS=$'\n'
 for match in $matches;do
-  match_id=$(echo "${match}" | cut -d ',' -f 3)
+  sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':')
 
   # set system date to start time
@@ -36,13 +36,16 @@ for match in $matches;do
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
-  sbtech_id=$(echo "${sbtech}" | grep "${match_id}" | cut -d ',' -f 1 | tr -d '"')
-  pinnacle_id=$(echo "${pinnacle}" | grep "${match_id}" | cut -d ',' -f 1)
+  sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"')
+  pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+
+  value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}"
+  closing_line_body=""${pinnacle_id}" "${sport_radar_id}""
 
   value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
   closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
-  ./create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${match_id}" "find-value-bets-${match_id}"
-  ./create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${match_id}" "find-closing-lines-${match_id}"
+  ./create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
+  ./create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
 done
 
 

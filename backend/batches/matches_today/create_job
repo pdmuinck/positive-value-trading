@@ -3,7 +3,7 @@
 description=$1
 schedule=$2
 service_uri=$3
-sport_radar_id=$4
+body=$4
 name=$5
 
 gcloud scheduler jobs create http ${name} \
@@ -13,4 +13,4 @@ gcloud scheduler jobs create http ${name} \
 	  --uri "${service_uri}" \
 	  --http-method POST \
 	  --oidc-service-account-email cloud-run-scheduler@trusty-cacao-327717.iam.gserviceaccount.com \
-	  --message-body "${sport_radar_id}"
+	  --message-body "${body}"
