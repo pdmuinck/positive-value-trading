@@ -1,0 +1,12 @@
+#!/bin/bash
+
+uri_contains=$1
+
+jobs_to_delete=$(gcloud scheduler jobs list --format json | jq --arg URI "$uri_contains" '.[] | select(.httpTarget.uri | contains($URI)) | .name')
+
+IFS=$'\n'
+for job in $jobs_to_delete;do
+  cleaned=$(echo "${job}" | tr -d '"')
+  gcloud scheduler jobs delete "${cleaned}" --quiet
+done
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+description=$1
+schedule=$2
+service_uri=$3
+sport_radar_id=$4
+name=$5
+
+gcloud scheduler jobs create http ${name} \
+	  --description "${description}" \
+	  --schedule "${schedule}" \
+	  --time-zone "Europe/Berlin" \
+	  --uri "${service_uri}" \
+	  --http-method POST \
+	  --oidc-service-account-email cloud-run-scheduler@trusty-cacao-327717.iam.gserviceaccount.com \
+	  --message-body "${sport_radar_id}"

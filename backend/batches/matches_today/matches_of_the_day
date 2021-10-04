@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./delete_jobs
+
 filterSports=Soccer
 
 jupiler_pro_league=38
@@ -20,36 +22,27 @@ sbtech=$(./sbtech)
 pinnacle=$(./pinnacle "${matches}")
 wait
 
-create_scheduled_job() {
-  schedule=$1
-  sport_radar_id=$2
-  description=$3
-  service_uri=$4
-  	gcloud scheduler jobs create http my-hourly-job \
-	  --description "${description}" \
-	  --schedule "${schedule}" \
-	  --time-zone "Europe/Berlin" \
-	  --uri "${service_uri}" \
-	  --http-method GET \
-	  --oidc-service-account-email cloud-run-scheduler@trusty-cacao-327717.iam.gserviceaccount.com \
-	  --message-body "${sport_radar_id}"
-}
-
 IFS=$'\n'
 for match in $matches;do
   match_id=$(echo "${match}" | cut -d ',' -f 3)
-  start_time=$(echo "${match}" | cut -d ',' -f 4)
+  start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':')
+
+  # set system date to start time
+  date "${start_time}"
+  value_bet_start_hour=$(date -v-3H +%H)
+  value_bet_start_minutes=$(date -v-3H +%M)
+  closing_line_start_hour=$(date -v-1M +%H)
+  closing_line_start_minutes=$(date -v-1M +%M)
+  value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
+  closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
+
   sbtech_id=$(echo "${sbtech}" | grep "${match_id}" | cut -d ',' -f 1 | tr -d '"')
   pinnacle_id=$(echo "${pinnacle}" | grep "${match_id}" | cut -d ',' -f 1)
-  hour=$(echo "${start_time}" | tr -d '"' | cut -d ':' -f 1)
-  minute=$(echo "${start_time}" | tr -d '"' | cut -d ':' -f 2)
-  range=3
-  hour_minus=$(echo "$((hour-$range))")
-  schedule=""${minute}" "${hour_minus}" * * *"
-  service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
-  description=\""Find value bets for sport radar id: "${match_id}"\""
-  create_scheduled_job "${schedule}" "${match_id}" "${description}" "${service_uri}"
-  #echo "${match_id}","${start_time}","${pinnacle_id}","${sbtech_id}"
+
+  value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
+  closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
+  ./create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${match_id}" "find-value-bets-${match_id}"
+  ./create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${match_id}" "find-closing-lines-${match_id}"
 done
 
 
