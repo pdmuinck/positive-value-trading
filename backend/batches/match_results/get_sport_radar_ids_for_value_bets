@@ -1,0 +1,16 @@
+#!/bin/bash
+
+days_to_travel=$1
+
+export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+export SNOWSQL_USER=demuinckpieterjan
+export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
+export SNOWSQL_ROLE=SYSADMIN
+export SNOWSQL_DATABASE=PROTRADER
+export SNOWSQL_WAREHOUSE=COMPUTE_WH
+export SNOWSQL_SCHEMA=VALUE_BETS
+
+
+sport_radar_ids=$(snowsql -q "select distinct sport_radar_id from value_bets where created_tstamp > current_timestamp - interval '${days_to_travel} days'" -o output_format=plain  -o header=false -o timing=false -o friendly=false)
+
+echo "${sport_radar_ids}"

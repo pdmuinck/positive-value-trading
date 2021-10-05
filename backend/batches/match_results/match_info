@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sport_radar_id=$1
+
+result=$(curl -s 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_info/'"${sport_radar_id}" \
+| jq --arg sport_radar_id "${sport_radar_id}" --raw-output '.doc[0].data.match.result
+| [$sport_radar_id, if (.winner == "home") then "1" elif (.winner == "away") then "2" else "X" end, .home // 0, .away // 0, .home + .away // 0]
+| @csv' | sed "s/\"/'/g")
+
+echo "${result}"
+

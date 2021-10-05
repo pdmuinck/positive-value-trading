@@ -1,0 +1,32 @@
+#!/bin/bash
+
+days_to_travel=$1
+
+export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+export SNOWSQL_USER=demuinckpieterjan
+export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
+export SNOWSQL_ROLE=SYSADMIN
+export SNOWSQL_DATABASE=PROTRADER
+export SNOWSQL_WAREHOUSE=COMPUTE_WH
+export SNOWSQL_SCHEMA=VALUE_BETS
+
+prep_statements() {
+  sport_radar_ids=$(./get_sport_radar_ids_for_value_bets "${days_to_travel}")
+
+  for sport_radar_id in $sport_radar_ids;do
+    result=$(./match_info "${sport_radar_id}")
+    echo "(${result}), "
+  done
+
+  wait
+}
+
+statements=$(prep_statements)
+
+modified=$(echo ${statements} |rev | cut -c2- |rev)
+
+echo "${modified}"
+
+snowsql -q "insert into sport_radar_results(sport_radar_id, outcome, home_points, away_points, total_goals) values ${modified}"
+
+

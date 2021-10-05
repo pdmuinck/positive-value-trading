@@ -1,6 +1,6 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 
-RUN apt-get update && apt-get install -y curl unzip nodejs jq miller bc
+RUN apt-get update && apt-get install -y curl unzip nodejs jq
 
 # install snowsql
 RUN groupadd --system snowflake --gid 444 && \
