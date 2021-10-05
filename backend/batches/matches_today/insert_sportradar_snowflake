@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 matches=$1
 
 prep_statement() {
