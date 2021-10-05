@@ -23,7 +23,7 @@ curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/mar
   -H 'Referer: https://www.pinnacle.com/' \
   -H 'X-API-Key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
   --compressed \
-  | jq -r --arg eventId "${event_id}" '.[] | .key as $type_id | .matchupId as $market_id | (.prices[] | [$market_id, $type_id, $eventId, "pinnacle_betoffers", if (.designation) then .designation else .participantId end, .price, if (.points) then .points else 0 end] | @csv)' > betoffers_pinnacle.csv
+  | jq -r --arg eventId "${event_id}" --arg sport_radar_id "${sport_radar_id}" '.[] | .key as $type_id | .matchupId as $market_id | (.prices[] | [$market_id, $type_id, $eventId, "pinnacle", if (.designation) then .designation else .participantId end, .price, if (.points) then .points else 0 end, $sport_radar_id] | @csv)' > betoffers_pinnacle.csv
 
 curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/related' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
@@ -65,7 +65,7 @@ rm betoffers_pinnacle.csv
 
 betoffers=$(./utils/make_vig_free "${sport_radar_id}"_pinnacle_betoffers_corrected.csv)
 
-echo "${betoffers}"
-
 rm "${sport_radar_id}"_pinnacle_betoffers_corrected.csv
+
+./insert_closing_lines_snowflake "${betoffers}"
 

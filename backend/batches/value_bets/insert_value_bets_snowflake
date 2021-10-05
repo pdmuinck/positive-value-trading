@@ -8,13 +8,14 @@ prep_statement() {
   IFS=$'\n'
   for value_bet in $value_bets;do
     bet_type=$(echo "${value_bet}" | cut -d ',' -f 1 |tr -d '"')
-    event_id=$(echo "${value_bet}" | cut -d ',' -f 2)
+    event_id=$(echo "${value_bet}" | cut -d ',' -f 2|tr -d '"')
     book=$(echo "${value_bet}" | cut -d ',' -f 3 |tr -d '"')
     bet_option=$(echo "${value_bet}" | cut -d ',' -f 4 |tr -d '"')
     price=$(echo "${value_bet}" | cut -d ',' -f 5)
     points=$(echo "${value_bet}" | cut -d ',' -f 6)
     edge=$(echo "${value_bet}" | cut -d ',' -f 7)
-    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${edge}), "
+    sport_radar_id=$(echo "${value_bet}" | cut -d ',' -f 8|tr -d '"')
+    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${edge}, ${sport_radar_id}), "
   done
 }
 
@@ -29,8 +30,8 @@ export SNOWSQL_SCHEMA=VALUE_BETS
 
 values=$(prep_statement)
 
-modified=$(echo "${values}" |rev | cut -c3- |rev)
+modified=$(echo ${values} |rev | cut -c2- |rev)
 
 echo "${modified}"
 
-snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge) values ${modified}"
+snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id) values ${modified}"
