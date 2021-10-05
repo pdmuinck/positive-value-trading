@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 RUN apt-get update && apt-get install -y curl unzip nodejs jq
 
 # install snowsql

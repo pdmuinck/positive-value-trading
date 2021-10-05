@@ -2,8 +2,6 @@
 
 value_bets=$1
 
-# example: "1X2",12345,"betfirst","1",2.34,0,0.0489
-
 prep_statement() {
   IFS=$'\n'
   for value_bet in $value_bets;do
@@ -19,19 +17,25 @@ prep_statement() {
   done
 }
 
-export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
-export SNOWSQL_USER=demuinckpieterjan
-export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
-export SNOWSQL_ROLE=SYSADMIN
-export SNOWSQL_DATABASE=PROTRADER
-export SNOWSQL_WAREHOUSE=COMPUTE_WH
-export SNOWSQL_SCHEMA=VALUE_BETS
+if [ -n "$value_bets" ]; then
+  # example: "1X2",12345,"betfirst","1",2.34,0,0.0489
+  export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+  export SNOWSQL_USER=demuinckpieterjan
+  export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
+  export SNOWSQL_ROLE=SYSADMIN
+  export SNOWSQL_DATABASE=PROTRADER
+  export SNOWSQL_WAREHOUSE=COMPUTE_WH
+  export SNOWSQL_SCHEMA=VALUE_BETS
 
 
-values=$(prep_statement)
+  values=$(prep_statement)
 
-modified=$(echo ${values} |rev | cut -c2- |rev)
+  modified=$(echo ${values} |rev | cut -c2- |rev)
 
-echo "${modified}"
+  echo "${modified}"
 
-snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id) values ${modified}"
+  snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id) values ${modified}"
+
+fi
+
+
