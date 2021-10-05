@@ -22,10 +22,6 @@ export SNOWSQL_SCHEMA=VALUE_BETS
 
 values=$(prep_statement)
 
-echo "${values}"
+modified=$(echo "${values}" |rev | cut -c3- |rev)
 
-modified="${values::-2}"
-
-echo "${modified}"
-
-#snowsql -q 'insert into sport_radar_matches(sport_radar_id) values (123)'
+snowsql -q "insert into sport_radar_matches(sport_radar_id) values ${modified}"
