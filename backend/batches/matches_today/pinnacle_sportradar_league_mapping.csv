@@ -1,10 +1,10 @@
-name,sportradar,pinnacle,sbtech
-jupiler_pro_league,38,1817,40815
-bundesliga,42,1842,40481
-premier_league,1,1980,40253
-ligue_1,4,2036,40032
-serie_a,33,2436,40030
-la_liga,36,2196,40031
+name,sportradar,pinnacle,sbtech,bwin
+jupiler_pro_league,38,1817,40815,16409
+bundesliga,42,1842,40481,43
+premier_league,1,1980,40253,46
+ligue_1,4,2036,40032,4131
+serie_a,33,2436,40030,42
+la_liga,36,2196,40031,18108
 eredivisie,39,1928,41372
 uefa_nations_league,67293,200719,110988
 fifa_world_cup_qualifiers_europe,1757,2015,24341
@@ -17,7 +17,7 @@ fifa_world_cup_qualifiers_europe,1762,2015,24341
 fifa_world_cup_qualifiers_europe,1761,2015,24341
 fifa_world_cup_qualifiers_europe,7255,2015,24341
 fifa_world_cup_qualifiers_europe,97878,2015,24341
-uefa_champions_league,1462,2627,40685
+uefa_champions_league,1462,2627,40685,1606
 uefa_champions_league,1463,2627,40685
 uefa_champions_league,1464,2627,40685
 uefa_champions_league,1465,2627,40685
