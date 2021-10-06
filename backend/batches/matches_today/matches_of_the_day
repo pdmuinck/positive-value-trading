@@ -13,6 +13,8 @@ matches=$(./event_full_feed \
 # get books
 sbtech=$(./sbtech "${matches}")
 pinnacle=$(./pinnacle "${matches}")
+#bwin=$(./bwin "${matches}")
+#echo "${bwin}"
 wait
 
 create_jobs() {
@@ -20,18 +22,19 @@ create_jobs() {
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
   # to test locally replace date commands with gdate command
-  value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
-  value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
-  closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
-  closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
+  value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
+  value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
+  closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
+  closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
   sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"')
   pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+  #bwin_id=$(echo "${bwin}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"')
 
   if [ -n "$pinnacle_id" ]; then
-      value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}"
+      value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}","${bwin}"
   closing_line_body="${pinnacle_id}","${sport_radar_id}"
 
   value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"

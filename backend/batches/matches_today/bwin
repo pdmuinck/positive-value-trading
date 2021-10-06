@@ -1,8 +1,11 @@
 #!/bin/bash
 
+sport_radar_matches=$1
+sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
+bwin_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 5)
+
 get_events() {
-  local league=$1
-  local league_id=$2
+  local league_id=$1
   local book='"bwin"'
 
   curl -G -s 'https://cds-api.bwin.be/bettingoffer/fixtures' \
@@ -20,22 +23,10 @@ get_events() {
   -d take=50 \
   -d sortBy=Tags \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
-  | jq --raw-output '.fixtures[] | [.id, .addons.betRadar, "bwin",'"${league}"'] | @csv' >> "${league}"_bwin_league_events.csv 
+  | jq --raw-output '.fixtures[] | [.id, .addons.liveMatchTracker.sportradarId, "bwin"] | @csv'
 }
 
-echo GETTING BWIN events...
-
-get_events '"bundesliga"' 43 &
-get_events '"jupiler_pro_league"' 16409 &
-get_events '"premier_league"' 46 &
-get_events '"la_liga"' 16108 &
-get_events '"ligue_1"' 4131 &
-get_events '"seria_a"' 42
-
-wait
-
-cat *_bwin_league_events.csv >> bwin_events.csv
-rm *_bwin_league_events.csv
-
-echo GOT BWIN...
+for league_id in $bwin_league_ids;do
+  get_events "${league_id}" &
+done
 
