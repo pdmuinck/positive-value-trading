@@ -6,6 +6,8 @@ wait
 
 filterSports=Soccer
 
+league_ids=$(cat < pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 2)
+
 jupiler_pro_league=38
 bundesliga=42
 premier_league=1
@@ -13,16 +15,15 @@ ligue_1=4
 serie_a=33
 la_liga=36
 eredivisie=39
-china_league_1=3583
-england_national_league=72
+uefa_nations_league=67293
 
 # get sport radar
 matches=$(./event_full_feed \
 | grep "${filterSports}" \
-| grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},\|,${china_league_1},\|,${england_national_league},")
+| grep ",${jupiler_pro_league},\|,${bundesliga},\|,${premier_league},\|,${ligue_1},\|,${serie_a},\|,${la_liga},\|,${eredivisie},\|,${uefa_nations_league},")
 
 # get books
-sbtech=$(./sbtech)
+sbtech=$(./sbtech "${matches}")
 pinnacle=$(./pinnacle "${matches}")
 wait
 
@@ -31,10 +32,10 @@ create_jobs() {
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
   # to test locally replace date commands with gdate command
-  value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
-  value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
-  closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
-  closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
+  value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
+  value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
+  closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
+  closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 

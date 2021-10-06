@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sport_radar_matches=$1
+sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
+sbtech_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 4)
+
 get_token() {
     token_message=$(curl 'https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28')
 
@@ -15,8 +19,6 @@ get_events() {
     local token=$1
     local book=betfirst
     local league_id=$2
-    local league=$3
-
 
     curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=leagueId%20eq%20%27'"${league_id}"'%27&locale=en' \
     -H 'accept: application/json, text/javascript, */*; q=0.01' \
@@ -27,7 +29,7 @@ get_events() {
     | .id as $id
     | .media[]
     | select(.providerName == "BetRadarV3")
-    | [$id, .providerEventId, "sbtech_betoffers", '"${league}"']
+    | [$id, .providerEventId, "sbtech"]
     | @csv' \
     | sort -u
 
@@ -35,15 +37,10 @@ get_events() {
 
 token=$(get_token)
 
-get_events "${token}" 40815 '"jupiler_pro_league"' &
-get_events "${token}" 40481 '"bundesliga"' &
-get_events "${token}" 40030 '"serie_a"' &
-get_events "${token}" 40031 '"la_liga"' &
-get_events "${token}" 40253 '"premier_league"' &
-get_events "${token}" 40032 '"ligue_1"' &
-get_events "${token}" 41372 '"eredivisie"' &
-get_events "${token}" 110988 '"nations_league"' &
-get_events "${token}" 42666 '"england_national_league"' &
+for league_id in $sbtech_league_ids;do
+  get_events "${token}" "${league_id}" &
+done
+
 wait
 
 

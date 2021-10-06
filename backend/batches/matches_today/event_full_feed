@@ -8,8 +8,9 @@ event_full_feed() {
     | .name as $sportName
     | .realcategories[].tournaments[]
     | ._id as $tournamentId
+    | .name as $tournamentName
     | .matches[] 
-    | [$sportName, $tournamentId, ._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name]
+    | [$sportName, $tournamentId, ._id, ._dt.time, ._dt.date, ._dt.tz, .teams.home._id, .teams.home.name, .teams.away._id, .teams.away.name, $tournamentName]
     | @csv'
 }
 
