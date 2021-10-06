@@ -53,10 +53,10 @@ filter_value_bets() {
 }
 
 value_bets=$(find_value)
-value_bets_filtered=$(filter_value_bets "${value_bets}")
-echo "${value_bets_filtered}"
+#value_bets_filtered=$(filter_value_bets "${value_bets}")
+#echo "${value_bets_filtered}"
 
-./insert_value_bets_snowflake "${value_bets_filtered}"
+./insert_value_bets_snowflake "${value_bets}"
 
 rm *betoffers.csv
 

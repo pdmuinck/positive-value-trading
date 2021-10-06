@@ -1,8 +1,9 @@
 #!/bin/bash
 get_pinnacle_participant_id() {
   name=$1
+  participants=$2
   jq_string='.['"${name}"']'
-  participant=$(cat < pinnacle_sportradar_participant.json | jq "${jq_string}")
+  participant=$(echo "${participants}" | jq "${jq_string}")
   echo "${participant}"
 }
 
@@ -11,6 +12,8 @@ sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
 pinnacle_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 3)
 IFS=$'\n'
 for league_id in $pinnacle_league_ids;do
+  jq_string='.["'"${league_id}"'"]'
+  league_participants=$(cat < pinnacle_sportradar_participant.json | jq "${jq_string}")
     events=$(curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/'"${league_id}"'/matchups' \
   -H 'authority: guest.api.arcadia.pinnacle_betoffers.com' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
@@ -27,8 +30,9 @@ for league_id in $pinnacle_league_ids;do
         event_id=$(echo "${event}" | cut -d',' -f 1)
         home_team=$(echo "${event}" | cut -d',' -f 2)
         away_team=$(echo "${event}" | cut -d',' -f 3)
-        home_sportradar_team_id=$(get_pinnacle_participant_id "${home_team}")
-        away_sportradar_team_id=$(get_pinnacle_participant_id "${away_team}")
+
+        home_sportradar_team_id=$(get_pinnacle_participant_id "${home_team}" "${league_participants}")
+        away_sportradar_team_id=$(get_pinnacle_participant_id "${away_team}" "${league_participants}")
         sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 3)
         if [ -n "${sportradar_id}" ]
         then
