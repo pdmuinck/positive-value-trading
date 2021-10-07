@@ -1,0 +1,15 @@
+#!/bin/bash
+
+event_id=$1
+
+curl 'https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=nl&country=BE&userCountry=BE&offerMapping=All&fixtureIds='"${event_id}"'&state=Latest&includePrecreatedBetBuilder=false&supportVirtual=false' \
+  -H 'authority: cds-api.bwin.be' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36' \
+  | jq --raw-output '.fixture
+  | .id as $event_id
+  | .optionMarkets[] // .games[]
+  | .name.value as $betType
+  | .options[] // .results[]
+  | [$betType, $event_id, "bwin", .sourceName.value, .attr]
+  | @csv'
