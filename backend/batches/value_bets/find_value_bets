@@ -5,10 +5,12 @@ sportradar_id=$(echo "${match}" | cut -d ',' -f 1)
 pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
 sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
 betcenter_id=$(echo "${match}" | cut -d ',' -f 5)
+meridian_id=$(echo "${match}" | cut -d ',' -f 6)
 
 ./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
 ./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}" &
 ./betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv
+./meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv
 
 wait
 
@@ -20,8 +22,8 @@ find_value() {
     for betoffer in ${betoffers};do
       bet_type=$(echo "${betoffer}" | cut -d ',' -f 1)
       bet_option=$(echo "${betoffer}" | cut -d ',' -f 4)
-      price=$(echo "${betoffer}" | cut -d ',' -f 5)
-      bet_line=$(echo "${betoffer}" | cut -d ',' -f 6)
+      price=$(echo "${betoffer}" | cut -d ',' -f 5 |tr -d '"')
+      bet_line=$(echo "${betoffer}" | cut -d ',' -f 6 |tr -d '"')
       prediction=$(echo "${predictions}" | grep -w "${bet_type}" | grep "${bet_option}" | grep ",${bet_line}," | cut -d ',' -f 7)
       if [ -n "$prediction" ]; then
         value=$(./utils/calculate_value "${price}" "${prediction}")
