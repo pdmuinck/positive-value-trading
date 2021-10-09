@@ -21,10 +21,10 @@ create_jobs() {
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
   # to test locally replace date commands with gdate command
-  value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
-  value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
-  closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
-  closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
+  value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
+  value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
+  closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
+  closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
