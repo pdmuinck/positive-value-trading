@@ -9,7 +9,8 @@ get_pinnacle_participant_id() {
 
 sport_radar_matches=$1
 sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-pinnacle_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 3)
+pinnacle_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 3 | sort -u)
+
 IFS=$'\n'
 for league_id in $pinnacle_league_ids;do
   jq_string='.["'"${league_id}"'"]'

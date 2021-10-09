@@ -1,0 +1,6 @@
+#!/bin/bash
+
+curl 'https://oddsservice.betcenter.be/odds/getGames/8' \
+  -H 'x-language: 2' \
+  -H 'x-brand: 7' \
+  --data-raw '{"gameIds":[3148161512],"gameTypes":[1,4,5],"jurisdictionId":30}'
