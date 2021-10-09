@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sport_radar_matches=$1
+sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
+betcenter_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 6 | sort -u)
+
+get_events() {
+  league_id=$1
+  curl -s 'https://oddsservice.betcenter.be/odds/getGames/8' \
+  -H 'x-language: 2' \
+  -H 'x-brand: 7' \
+  --data-raw '{"leagueIds":['"${league_id}"'],"gameTypes":[7],"jurisdictionId":30}' \
+  | jq --raw-output '.games[] | [.id, .statisticsId, "betcenter"]
+  | @csv'
+}
+
+
+
+for league_id in $betcenter_league_ids;do
+  get_events "${league_id}" &
+done
+
+wait
+
+
+

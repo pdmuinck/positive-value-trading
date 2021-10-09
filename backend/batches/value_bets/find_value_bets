@@ -4,9 +4,11 @@ match=$1
 sportradar_id=$(echo "${match}" | cut -d ',' -f 1)
 pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
 sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
+betcenter_id=$(echo "${match}" | cut -d ',' -f 5)
 
 ./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
-./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}"
+./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}" &
+./betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv
 
 wait
 
@@ -55,6 +57,8 @@ filter_value_bets() {
 value_bets=$(find_value)
 #value_bets_filtered=$(filter_value_bets "${value_bets}")
 #echo "${value_bets_filtered}"
+
+echo "${value_bets}"
 
 ./insert_value_bets_snowflake "${value_bets}"
 
