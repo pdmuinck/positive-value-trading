@@ -1,0 +1,45 @@
+#!/bin/bash
+
+sport_radar_matches=$1
+sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
+bingoal_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 10 | sort -u)
+
+init() {
+    curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+}
+
+get_cookies() {
+  cookie_raw=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+  rm bingoal_headers
+  echo "${cookie_raw//[$'\t\r\n']}"
+}
+
+get_k_parameter(){
+  k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+  rm bingoal_response
+  echo "${k}"
+}
+
+get_events() {
+  cookie=$1
+  league_id=$2
+  k=$3
+
+  curl -s 'https://www.bingoal.be/A/sport' \
+    -H 'X-Requested-With: XMLHttpRequest' \
+    -H 'Cookie: '"${cookie}" \
+    --data-raw 'func=sport&action=SOCCER&id='"${league_id}"'&k='"${k}" \
+    | jq --raw-output '.sports[].matches[] | [.ID, .betradarID, "bingoal"] | @csv'
+}
+
+init
+cookies=$(get_cookies)
+k=$(get_k_parameter)
+
+for league_id in $bingoal_league_ids;do
+  get_events "${cookies}" "${league_id}" "${k}" &
+done
+
+wait
+
+

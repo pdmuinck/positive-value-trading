@@ -1,8 +1,8 @@
 #!/bin/bash
 
-./gcloud/delete_jobs value-bets &
-./gcloud/delete_jobs closing-lines
-wait
+#./gcloud/delete_jobs value-bets &
+#./gcloud/delete_jobs closing-lines
+#wait
 
 filterSports=Soccer
 
@@ -11,10 +11,13 @@ matches=$(./sportradar/event_full_feed \
 | grep "${filterSports}")
 
 # get books
-sbtech=$(./books/sbtech "${matches}")
-pinnacle=$(./books/pinnacle "${matches}")
-betcenter=$(./books/betcenter "${matches}")
-meridian=$(./books/meridian "${matches}")
+./books/sbtech "${matches}" > sbtech_matches.csv &
+./books/pinnacle "${matches}" > pinnacle_matches.csv &
+./books/betcenter "${matches}" > betcenter_matches.csv &
+./books/meridian "${matches}" > meridian_matches.csv &
+./books/goldenpalace "${matches}" > goldenpalace_matches.csv &
+./books/ladbrokes "${matches}" > ladbrokes_matches.csv &
+./books/bingoal "${matches}" > bingoal_matches.csv
 wait
 
 create_jobs() {
@@ -22,29 +25,31 @@ create_jobs() {
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
   # to test locally replace date commands with gdate command
-  value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
-  value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
-  closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
-  closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
+  value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
+  value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
+  closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
+  closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
   value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
   closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
-  sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"')
-  pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
-  betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
-  meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-
+  sbtech_id=$(cat sbtech_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"')
+  pinnacle_id=$(cat pinnacle_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1)
+  betcenter_id=$(cat betcenter_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1)
+  meridian_id=$(cat meridian_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+  goldenpalace_id=$(cat goldenpalace_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+  ladbrokes_id=$(cat ladbrokes_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+  bingoal_id=$(cat bingoal_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
 
   if [ -n "$pinnacle_id" ]; then
-      value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}","${betcenter_id}","${meridian_id}"
+      value_bet_body="${sport_radar_id}","${start_time}","${pinnacle_id}","${sbtech_id}","${betcenter_id}","${meridian_id}","${goldenpalace_id}","${ladbrokes_id}","${bingoal_id}"
       closing_line_body="${pinnacle_id}","${sport_radar_id}"
 
-      #echo BODY: "${value_bet_body}"
+      echo BODY: "${value_bet_body}"
 
       value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
       closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
-      ./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
-      ./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+      #./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
+      #./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
   fi
 }
 
@@ -54,6 +59,8 @@ for match in $matches;do
 done
 
 wait
+
+rm *_matches.csv
 
 
 

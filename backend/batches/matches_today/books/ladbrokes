@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sport_radar_matches=$1
+sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
+ladbrokes_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 9 | sort -u)
+
+get_events() {
+    league=$1
+    curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'"${league}"'?prematch=1&live=0' \
+    --header 'x-eb-accept-language: en_BE' \
+    --header 'x-eb-marketid: 5' \
+    --header 'x-eb-platformid: 2' \
+    | jq --raw-output '.result.dataGroupList[].itemList[].eventInfo | [.aliasUrl, .programBetradarInfo.matchId, "ladbrokes"] | @csv'
+}
+
+for league_id in $ladbrokes_league_ids;do
+  get_events "${league_id}" &
+done
+
+wait
