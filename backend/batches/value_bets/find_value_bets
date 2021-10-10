@@ -9,7 +9,7 @@ meridian_id=$(echo "${match}" | cut -d ',' -f 6)
 
 ./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
 ./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}" &
-./betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv
+./betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv &
 ./meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv
 
 wait

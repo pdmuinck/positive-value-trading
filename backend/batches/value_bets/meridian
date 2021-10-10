@@ -1,6 +1,8 @@
 #!/bin/bash
 
-curl 'https://meridianbet.be/sails/events/10051119' \
+event_id=$1
+
+curl 'https://meridianbet.be/sails/events/'"${event_id}" \
 | jq --raw-output '.market[]
 | .templateId as $betType
 | .id as $eventId
