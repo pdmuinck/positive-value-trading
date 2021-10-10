@@ -7,7 +7,7 @@ http.createServer(async function (req, res) {
         body += chunk;
     })
     req.on('end', () => {
-        exec('./pinnacle_betoffers ' + body,
+        exec('./pinnacle ' + body,
             (error, stdout, stderr) => {
                 console.log(stdout);
                 console.log(stderr);

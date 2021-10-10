@@ -4,7 +4,7 @@ bet_offers=$1
 
 echo "${bet_offers}"
 
-# example: "OVER_UNDER","1402247459","pinnacle_betoffers","Under",1.64103,2.5,1.5801
+# example: "OVER_UNDER","1402247459","pinnacle","Under",1.64103,2.5,1.5801
 
 prep_statement() {
   IFS=$'\n'

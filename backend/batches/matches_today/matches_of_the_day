@@ -1,20 +1,20 @@
 #!/bin/bash
 
-./delete_jobs value-bets &
-./delete_jobs closing-lines
+./gcloud/delete_jobs value-bets &
+./gcloud/delete_jobs closing-lines
 wait
 
 filterSports=Soccer
 
 # get sport radar
-matches=$(./event_full_feed \
+matches=$(./sportradar/event_full_feed \
 | grep "${filterSports}")
 
 # get books
-sbtech=$(./sbtech "${matches}")
-pinnacle=$(./pinnacle "${matches}")
-betcenter=$(./betcenter "${matches}")
-meridian=$(./meridian "${matches}")
+sbtech=$(./books/sbtech "${matches}")
+pinnacle=$(./books/pinnacle "${matches}")
+betcenter=$(./books/betcenter "${matches}")
+meridian=$(./books/meridian "${matches}")
 wait
 
 create_jobs() {
@@ -43,8 +43,8 @@ create_jobs() {
 
       value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
       closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
-      ./create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
-      ./create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+      ./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
+      ./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
   fi
 }
 

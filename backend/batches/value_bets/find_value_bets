@@ -7,10 +7,10 @@ sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
 betcenter_id=$(echo "${match}" | cut -d ',' -f 5)
 meridian_id=$(echo "${match}" | cut -d ',' -f 6)
 
-./sbtech_betoffers "${sbtech_id}" "${sportradar_id}" &
-./pinnacle_betoffers "${pinnacle_id}" "${sportradar_id}" &
-./betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv &
-./meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv
+./books/sbtech "${sbtech_id}" "${sportradar_id}" > sbtech_"${sportradar_id}"_betoffers.csv &
+./books/pinnacle "${pinnacle_id}" "${sportradar_id}" &
+./books/betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv &
+./books/meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv
 
 wait
 
@@ -62,7 +62,7 @@ value_bets=$(find_value)
 
 echo "${value_bets}"
 
-./insert_value_bets_snowflake "${value_bets}"
+./snowflake/insert_value_bets_snowflake "${value_bets}"
 
 rm *betoffers.csv
 

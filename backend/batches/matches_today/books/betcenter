@@ -2,7 +2,7 @@
 
 sport_radar_matches=$1
 sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-betcenter_league_ids=$(grep "${sport_radar_league_ids}" pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 6 | sort -u)
+betcenter_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 6 | sort -u)
 
 get_events() {
   league_id=$1

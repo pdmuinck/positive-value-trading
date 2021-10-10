@@ -21,7 +21,7 @@ get_betoffers() {
   event_id=$2
   token=$3
   curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=id%20eq%20%27'"${event_id}"'%27&includeMarkets=$filter=' \
-  -H 'authority: sbapi.sbtech_betoffers.com' \
+  -H 'authority: sbapi.sbtech.com' \
   -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
   -H 'accept: application/json, text/javascript, */*; q=0.01' \
   -H 'locale: en' \
@@ -41,7 +41,9 @@ get_betoffers() {
   | .eventId as $event_id
   | (.selections[]
   | [$type_id, $event_id, '\""${book}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0]
-  | @csv )' >> betoffers_sbtech.csv
+  | @csv )' \
+  | sed 's/1_0/1X2/g; s/61/DOUBLE_CHANCE/g; s/1_1/1X2_H1/g; s/1_2/1X2_H2/g; s/2_157/DRAW_NO_BET/g; s/145/DOUBLE_CHANCE_H1/g; s/3_200/OVER_UNDER/g; s/Home/1/g; s/Away/2/g; s/Tie/X/g' \
+  | grep '"1X2"\|"DOUBLE_CHANCE"\|"1X2_H1"\|"DOUBLE_CHANCE_H1"\|"OVER_UNDER"\|"1X2_H2"'
 }
 
 token_betfirst=$(get_token betfirst 28)
@@ -50,8 +52,3 @@ token_bet777=$(get_token bet777 72)
 get_betoffers betfirst "${event_id}" "${token_betfirst}" &
 get_betoffers bet777 "${event_id}" "${token_bet777}"
 wait
-
-sed 's/1_0/1X2/g; s/61/DOUBLE_CHANCE/g; s/1_1/1X2_H1/g; s/1_2/1X2_H2/g; s/2_157/DRAW_NO_BET/g; s/145/DOUBLE_CHANCE_H1/g; s/3_200/OVER_UNDER/g; s/Home/1/g; s/Away/2/g; s/Tie/X/g'<betoffers_sbtech.csv >"${sport_radar_id}"_all_sbtech_betoffers.csv
-grep '"1X2"\|"DOUBLE_CHANCE"\|"1X2_H1"\|"DOUBLE_CHANCE_H1"\|"OVER_UNDER"\|"1X2_H2"' "${sport_radar_id}"_all_sbtech_betoffers.csv > "${sport_radar_id}"_sbtech_betoffers.csv
-rm "${sport_radar_id}"_all_sbtech_betoffers.csv
-rm betoffers_sbtech.csv
