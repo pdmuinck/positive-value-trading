@@ -6,12 +6,17 @@ pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
 sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
 betcenter_id=$(echo "${match}" | cut -d ',' -f 5)
 meridian_id=$(echo "${match}" | cut -d ',' -f 6)
+goldenpalace_id=$(echo "${match}" | cut -d ',' -f 7)
+ladbrokes_id=$(echo "${match}" | cut -d ',' -f 8)
+bingoal_id=$(echo "${match}" | cut -d ',' -f 9)
 
 ./books/sbtech "${sbtech_id}" "${sportradar_id}" > sbtech_"${sportradar_id}"_betoffers.csv &
 ./books/pinnacle "${pinnacle_id}" "${sportradar_id}" &
 ./books/betcenter "${betcenter_id}" > betcenter_"${sportradar_id}"_betoffers.csv &
-./books/meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv
-
+./books/meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv &
+./books/goldenpalace "${goldenpalace_id}" > goldenpalace_"${sportradar_id}"_betoffers.csv &
+./books/ladbrokes "${ladbrokes_id}" > ladbrokes_"${sportradar_id}"_betoffers.csv &
+./books/bingoal "${bingoal_id}" > bingoal_"${sportradar_id}"_betoffers.csv
 wait
 
 betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")

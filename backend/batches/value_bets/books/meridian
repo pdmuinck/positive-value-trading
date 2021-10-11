@@ -8,7 +8,7 @@ curl 'https://meridianbet.be/sails/events/'"${event_id}" \
 | .id as $eventId
 | .overUnder as $points
 | .selection[]
-| [$betType, $eventId, "meridian", .name, .price, $points // 0]
+| [$betType, $eventId, "meridian", .name, (.price | tonumber), $points // 0]
 | @csv' \
 | sed ' s/[][]//g; s/Rival2/2/g; s/Rival1/1/g; s/draw/X/g; s/under/Under/g; s/over/Over/g' \
 | sed 's/"3999"/"1X2"/g; s/"4004"/"OVER_UNDER"/g' \

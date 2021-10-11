@@ -1,0 +1,18 @@
+#!/bin/bash
+
+event_id=$1
+
+curl -s 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEventDetails?timezoneOffset=-120&langId=8&skinName=goldenpalace&configId=19&culture=en-gb&countryCode=BE&deviceType=Desktop&numformat=en&integration=goldenpalace&eventId='"${event_id}"'&sportId=66' \
+  | jq --raw-output '.Result.MarketGroups[]
+  | select(.Name == "Main")
+  | .Items[]
+  | .Name as $betType
+  | .SpecialOddsValue as $points
+  | .Id as $eventId
+  | .Items[]
+  | [$betType, $eventId, "golden_palace", .Name, (.Price | tonumber), .SPOV]
+  | @csv' \
+  | sed 's/"1x2"/"1X2"/g; s/"Total"/"OVER_UNDER"/g; s/"Over [0-9].[0-9][0-9]"/"Over"/g; s/"Over [0-9].[0-9]"/"Over"/g; s/"Over [0-9]"/"Over"/g' \
+  | sed 's/"Under [0-9].[0-9][0-9]"/"Under"/g; s/"Under [0-9].[0-9]"/"Under"/g; s/"Under [0-9]"/"Under"/g'\
+  | sed 's/"Draw"/"X"/g; s/,""/,"0"/g' \
+  | grep '"1X2"\|"OVER_UNDER"'

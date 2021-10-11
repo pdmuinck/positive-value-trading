@@ -1,0 +1,20 @@
+#!/bin/bash
+
+event_id=$1
+
+curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/wd-qual-mondiali/'"${event_id}"'?prematch=1&live=0' \
+  -H 'x-eb-accept-language: nl_BE' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'x-eb-marketid: 5' \
+  -H 'x-eb-platformid: 2' \
+  | jq --raw-output '.result
+  | .eventInfo.aliasUrl as $eventId
+  | .betGroupList[].oddGroupList[]
+  | .betId as $betType
+  | .oddList[]
+  | [$betType, $eventId, "ladbrokes", .oddDescription, .oddValue /100, .additionalInfo[0] / 100]
+  | @csv' \
+  | grep '24,\|1907' \
+  | sed 's/24,/"1X2",/g; s/1907,/"OVER_UNDER",/g' \
+  | sed 's/"Meer"/"Over"/g; s/"Minder"/"Under"/g' \
+  | grep '"1X2"\|"OVER_UNDER"'

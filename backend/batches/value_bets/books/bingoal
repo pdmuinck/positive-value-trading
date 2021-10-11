@@ -1,0 +1,45 @@
+#!/bin/bash
+
+event_id=$1
+
+init() {
+    curl -s 'https://www.bingoal.be/nl/Sport#/detail/'"${event_id}" --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+}
+
+get_cookies() {
+  cookie_raw=$(cat bingoal_headers | grep -m 2 'SET-COOKIE: ' | cut -c 12-)
+  rm bingoal_headers
+  echo "${cookie_raw//[$'\t\r\n']}"
+}
+
+get_k_parameter(){
+  k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+  rm bingoal_response
+  echo "${k}"
+}
+
+init
+cookies=$(get_cookies)
+k=$(get_k_parameter)
+
+curl -s 'https://www.bingoal.be/A/sport' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Cookie: '"${cookies}" \
+  --data-raw 'func=detail&action=SOCCER&id='"${event_id}"'&b=1&k='"${k}" \
+  | jq --raw-output '.box[0].match
+  | .ID as $eventId
+  | .categories[].subbets[]
+  | .name as $betType
+  | .tips[]
+  | [$betType, $eventId, "bingoal", .shortName, (.odd | tonumber), .sov]
+  | @csv' \
+  | sed 's/Totaal aantal doelpunten/OVER_UNDER/g; s/U [0-9].[0-9]/Under/g; s/O [0-9].[0-9]/Over/g; s/,""/,"0"/g' \
+  | grep '"1X2"\|"OVER_UNDER"' \
+  | sort -u
+
+
+
+
+
+
