@@ -1,8 +1,7 @@
 #!/bin/bash
 
-sport_radar_matches=$1
-sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-golden_palace_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 8 | sort -u)
+sport_radar_matches=$2
+golden_palace_league_ids=$1
 
 
 get_events() {

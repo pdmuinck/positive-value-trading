@@ -7,7 +7,7 @@ echo "${bet_offers}"
 # example: "OVER_UNDER","1402247459","pinnacle","Under",1.64103,2.5,1.5801
 
 prep_statement() {
-  IFS=$'\n'
+  c
   for bet_offer in $bet_offers;do
     bet_type=$(echo "${bet_offer}" | cut -d ',' -f 1 |tr -d '"')
     event_id=$(echo "${bet_offer}" | cut -d ',' -f 2|tr -d '"')

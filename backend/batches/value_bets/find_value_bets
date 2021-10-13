@@ -1,14 +1,14 @@
 #!/bin/bash
 
 match=$1
-sportradar_id=$(echo "${match}" | cut -d ',' -f 1)
-pinnacle_id=$(echo "${match}" | cut -d ',' -f 3)
-sbtech_id=$(echo "${match}" | cut -d ',' -f 4)
-betcenter_id=$(echo "${match}" | cut -d ',' -f 5)
-meridian_id=$(echo "${match}" | cut -d ',' -f 6)
-goldenpalace_id=$(echo "${match}" | cut -d ',' -f 7)
-ladbrokes_id=$(echo "${match}" | cut -d ',' -f 8)
-bingoal_id=$(echo "${match}" | cut -d ',' -f 9)
+sportradar_id=$(echo "${match}" | jq '.sport_radar')
+pinnacle_id=$(echo "${match}" | jq '.pinnacle')
+sbtech_id=$(echo "${match}" | jq '.sbtech')
+betcenter_id=$(echo "${match}" | jq '.betcenter')
+meridian_id=$(echo "${match}" | jq '.meridian')
+goldenpalace_id=$(echo "${match}" | jq '.goldenpalace')
+ladbrokes_id=$(echo "${match}" | jq '.ladbrokes')
+bingoal_id=$(echo "${match}" | jq '.bingoal')
 
 ./books/sbtech "${sbtech_id}" "${sportradar_id}" > sbtech_"${sportradar_id}"_betoffers.csv &
 ./books/pinnacle "${pinnacle_id}" "${sportradar_id}" &
@@ -67,7 +67,7 @@ value_bets=$(find_value)
 
 echo "${value_bets}"
 
-./snowflake/insert_value_bets_snowflake "${value_bets}"
+#./snowflake/insert_value_bets_snowflake "${value_bets}"
 
 rm *betoffers.csv
 

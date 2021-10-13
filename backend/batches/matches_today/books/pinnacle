@@ -1,4 +1,5 @@
 #!/bin/bash
+
 get_pinnacle_participant_id() {
   name=$1
   participants=$2
@@ -7,9 +8,8 @@ get_pinnacle_participant_id() {
   echo "${participant}"
 }
 
-sport_radar_matches=$1
-sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-pinnacle_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 3 | sort -u)
+pinnacle_league_ids=$1
+sport_radar_matches=$2
 
 IFS=$'\n'
 for league_id in $pinnacle_league_ids;do
@@ -25,7 +25,6 @@ for league_id in $pinnacle_league_ids;do
   -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
   --compressed \
   | jq --raw-output '.[] | select(.parent == null and (.participants | length == 2)) | [.id, .participants[].name] | @csv ')
-
       for event in ${events}
       do
         event_id=$(echo "${event}" | cut -d',' -f 1)

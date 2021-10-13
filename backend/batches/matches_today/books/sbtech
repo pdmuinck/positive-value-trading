@@ -1,8 +1,7 @@
 #!/bin/bash
 
-sport_radar_matches=$1
-sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-sbtech_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 4 | sort -u)
+sport_radar_matches=$2
+sbtech_league_ids=$1
 
 get_token() {
     token_message=$(curl 'https://sbapi.sbtech.com/betfirst/auth/platform/v1/api/GetTokenBySiteId/28')

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+sport_radar_matches=$2
+zetbet_league_ids=$1
+
+get_sportradar_id() {
+  event=$1
+  event_url=$(echo "${event}" |tr -d '"' | sed 's/<a href=/https:\/\/www.zebet.be/g;' | xargs)
+  event_id=$(echo "${event_url}" | cut -d '/' -f 6)
+  sport_radar_id=$(curl -s "${event_url}" | grep 'LMT.loadStats(' | cut -d ';' -f 1 | cut -d ',' -f 1 | cut -d '(' -f 2)
+  echo "${event_id}","${sport_radar_id}","zebet"
+}
+
+get_events() {
+  league_id=$1
+  events=$(curl -s 'https://www.zebet.be/en/competition/'"${league_id}" \
+  --compressed \
+  | grep 'href="/en/event/')
+
+  IFS=$'\n'
+  for event in $events;do
+    get_sportradar_id "${event}" &
+  done
+
+  wait
+}
+
+for league in $zetbet_league_ids;do
+  get_events "${league}" &
+done
+
+

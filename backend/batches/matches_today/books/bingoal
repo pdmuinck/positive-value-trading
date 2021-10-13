@@ -1,8 +1,7 @@
 #!/bin/bash
 
-sport_radar_matches=$1
-sport_radar_league_ids=$(echo "${sport_radar_matches}" | cut -d ',' -f 2)
-bingoal_league_ids=$(grep "${sport_radar_league_ids}" ./books/pinnacle_sportradar_league_mapping.csv | cut -d ',' -f 10 | sort -u)
+sport_radar_matches=$2
+bingoal_league_ids=$1
 
 init() {
     curl -s 'https://www.bingoal.be/nl/Sport' --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response

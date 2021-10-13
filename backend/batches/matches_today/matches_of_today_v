@@ -1,0 +1,96 @@
+#!/bin/bash
+
+#TODO delete old scheduled tasks first
+
+matches=$(./sportradar/event_full_feed | grep Soccer)
+league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
+books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet'
+
+get_all_leagues_for_each_book() {
+  for league_id in $league_ids;do
+  jq_string='.["'"${league_id}"'"]'
+  mapped_leagues=$(jq "${jq_string}" ./books/league_map.json)
+  if [[ "${mapped_leagues}" != 'null' ]]
+  then
+    for book in $books;do
+      echo "${mapped_leagues}" | jq '.["'"${book}"'"]' |tr -d '"' >> "${book}"_leagues &
+    done
+    wait
+  fi
+  done
+}
+
+create_jobs() {
+  match=$1
+  sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
+  start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
+
+  pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |sort -u)
+
+  if [ -n "$pinnacle_id" ]; then
+    # to test locally replace date commands with gdate command
+    value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
+    value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
+    closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
+    closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
+    value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
+    closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
+
+    sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+    betcenter_id=$(echo "${betcenteer}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+    meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    bingoal_id=$(echo "${bingoal}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #bwin_id=$(cat bwin_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+
+    closing_line_body="${pinnacle_id}","${sport_radar_id}"
+
+    value_bet_body=$(jq -n \
+    --arg sport_radar_id "${sport_radar_id}" \
+    --arg pinnacle_id "${pinnacle_id}" \
+    --arg sbtech_id "${sbtech_id}" \
+    --arg betcenter_id "${betcenter_id}" \
+    --arg meridian_id "${meridian_id}" \
+    --arg goldenpalace_id "${goldenpalace_id}" \
+    --arg ladbrokes_id "${ladbrokes_id}" \
+    --arg bingoal_id "${bingoal_id}" \
+    --arg zetbet_id "${zetbet_id}" \
+    '{"sport_radar":$sport_radar_id, "pinnacle":$pinnacle_id, "betcenter":$betcenter_id, "sbtech":$sbtech_id, "meridian":$meridian_id, "goldenpalade":$goldenpalace_id,
+    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id}')
+
+    echo BODY: "${value_bet_body}"
+
+    value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
+    closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
+    #./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
+    #./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+  fi
+}
+
+get_all_leagues_for_each_book
+
+pinnacle=$(./books/pinnacle $(cat pinnacle_leagues | sort -u) "${matches}")
+betcenter=$(./books/betcenter $(cat betcenter_leagues | sort -u) "${matches}")
+meridian=$(./books/meridian $(cat meridian_leagues | sort -u) "${matches}")
+sbtech=$(./books/sbtech $(cat sbtech_leagues | sort -u) "${matches}")
+goldenpalace=$(./books/goldenpalace $(cat goldenpalace_leagues | sort -u) "${matches}")
+zetbet=$(./books/zetbet $(cat zetbet_leagues | sort -u) "${matches}")
+bingoal=$(./books/bingoal $(cat bingoal_leagues | sort -u) "${matches}")
+ladbrokes=$(./books/ladbrokes $(cat ladbrokes_leagues | sort -u) "${matches}")
+
+wait
+
+rm *_leagues
+
+IFS=$'\n'
+for match in $matches;do
+  create_jobs "${match}"
+done
+
+
+
+
+
+

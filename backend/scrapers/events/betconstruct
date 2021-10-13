@@ -11,7 +11,7 @@ echo created websocket client with pid "${WS_PID}"
 
 nc 127.0.0.1 5682
 echo about to log in...
-echo '{"Id":"d91df36e-ddc3-ca27-5f38-689862a5d59b","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"fbb21005-c3a9-43ff-96f1-a8f0289e86f2\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36\",\"LanguageCode\":\"en\",\"RoomDomainName\":\"CIRCUS\"}}"}' \
+echo '{"Id":"8d717d3e-0174-c289-c818-ab8463a98708","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"f56e40a4-237d-4be4-997e-ffb4adad4ffe\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"CIRCUS\"},\"SupportedCompressions\":\"LZS2\"}"}' \
 | nc 127.0.0.1 5682
 
 login_success=$(nc 127.0.0.1 5682)
