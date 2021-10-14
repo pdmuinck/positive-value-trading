@@ -3,8 +3,10 @@
 event_id=$1
 
 bet_slip_ids=$(curl -s https://www.zebet.be/en/event/hji92-club_brugge_kv_kortrijk \
-| grep -m3 /en/bettingslip/bet \
+| grep /en/bettingslip/bet | grep 'odd2\|odd3' \
 | cut -d ' ' -f 10 | cut -d '=' -f 2 | tr -d '"')
+
+echo "${bet_slip_ids}" > betslips
 
 for id in $bet_slip_ids;do
   curl -s https://www.zebet.be/en/bettingslip/bet/"${id}" \
@@ -13,10 +15,13 @@ for id in $bet_slip_ids;do
   | .libShortActorExternal as $awayTeam
   | .libShortActorDom as $homeTeam
   | .libTypePari as $betType
+  | .libQuestion as $points
   | .odds[$betId]
-  | [$betType, $eventId, "zetbet", if .long == $homeTeam then "1" elif .short == $awayTeam then "2" else "X" end, .odds, 0]
-  | @csv' \
-  | sed 's/Win-Draw-Win/1X2/g' &
+  | [$betType, $eventId, "zetbet", if .long == $homeTeam then "1" elif .short == $awayTeam then "2" else .long end, .odds, if $betType == "Over Under" then $points else 0 end]
+  | @csv' 2>/dev/null \
+  | sed 's/Win-Draw-Win/1X2/g; s/Over Under/OVER_UNDER/g;' \
+  | sed 's/Over \/ Under //g; s/ goals?//g; s/Draw/X/g;' \
+  | grep '"1X2"\|"OVER_UNDER"' &
 done
 
 wait
