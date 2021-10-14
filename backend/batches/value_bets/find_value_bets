@@ -9,6 +9,7 @@ meridian_id=$(echo "${match}" | jq '.meridian')
 goldenpalace_id=$(echo "${match}" | jq '.goldenpalace')
 ladbrokes_id=$(echo "${match}" | jq '.ladbrokes')
 bingoal_id=$(echo "${match}" | jq '.bingoal')
+zetbet_id=$(echo "${match}" | jq '.zetbet')
 
 ./books/sbtech "${sbtech_id}" "${sportradar_id}" > sbtech_"${sportradar_id}"_betoffers.csv &
 ./books/pinnacle "${pinnacle_id}" "${sportradar_id}" &
@@ -16,7 +17,8 @@ bingoal_id=$(echo "${match}" | jq '.bingoal')
 ./books/meridian "${meridian_id}" > meridian_"${sportradar_id}"_betoffers.csv &
 ./books/goldenpalace "${goldenpalace_id}" > goldenpalace_"${sportradar_id}"_betoffers.csv &
 ./books/ladbrokes "${ladbrokes_id}" > ladbrokes_"${sportradar_id}"_betoffers.csv &
-./books/bingoal "${bingoal_id}" > bingoal_"${sportradar_id}"_betoffers.csv
+./books/bingoal "${bingoal_id}" > bingoal_"${sportradar_id}"_betoffers.csv &
+./books/zetbet "${zetbet_id}" > zetbet_"${sportradar_id}"_betoffers.csv &
 wait
 
 betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")

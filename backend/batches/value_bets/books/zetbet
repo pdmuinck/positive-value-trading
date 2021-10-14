@@ -16,5 +16,8 @@ for id in $bet_slip_ids;do
   | .odds[$betId]
   | [$betType, $eventId, "zetbet", if .long == $homeTeam then "1" elif .short == $awayTeam then "2" else "X" end, .odds, 0]
   | @csv' \
-  | sed 's/Win-Draw-Win/1X2/g'
+  | sed 's/Win-Draw-Win/1X2/g' &
 done
+
+wait
+
