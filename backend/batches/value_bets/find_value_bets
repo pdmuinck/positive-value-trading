@@ -21,7 +21,7 @@ zetbet_id=$(echo "${match}" | jq --raw-output '.zetbet')
 ./books/goldenpalace "${goldenpalace_id}" > goldenpalace_"${sportradar_id}"_betoffers.csv &
 ./books/ladbrokes "${ladbrokes_id}" > ladbrokes_"${sportradar_id}"_betoffers.csv &
 ./books/bingoal "${bingoal_id}" > bingoal_"${sportradar_id}"_betoffers.csv &
-#./books/zetbet "${zetbet_id}" > zetbet_"${sportradar_id}"_betoffers.csv &
+./books/zetbet "${zetbet_id}" > zetbet_"${sportradar_id}"_betoffers.csv &
 wait
 
 betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")

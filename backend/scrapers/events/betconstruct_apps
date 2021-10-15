@@ -32,7 +32,7 @@ get_events() {
   echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":'"${league_id}"'}},"subscribe":true},"rid":"'"${rid}"'"}' \
   | nc 127.0.0.1 "${PORT}"
 
-  nc 127.0.0.1 "${PORT}" | jq --raw-output '.data.data.game | values[] | [.id, .team1_name, .team2_name, "bcapps",'"${league}"'] | @csv' >> "${league}"_bcapps_league_events.csv
+  nc 127.0.0.1 "${PORT}" | jq --raw-output '.data.data.game | values[] | [.id, .team1_name, .team2_name, "bcapps",'"${league}"'] | @csv'
 }
 
 get_events 538 '"premier_league"'
@@ -57,7 +57,7 @@ do
   sportradar_id=$(grep ''"${home_team_id}"'' sportradar_events.csv | grep ''"${away_team_id}"'' | cut -d',' -f 1)
   if [ -n "${sportradar_id}" ]
   then
-  echo "${event}","${sportradar_id}" | awk -F"," -v OFS="," '{print $1,$6,$4,$5}' >> bcapps_events.csv
+  echo "${event}","${sportradar_id}" | awk -F"," -v OFS="," '{print $1,$6,$4,$5}'
   fi
 done
 

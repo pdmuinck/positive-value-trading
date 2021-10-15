@@ -1,0 +1,59 @@
+#!/bin/bash
+
+league_ids=$1
+sport_radar_matches=$2
+
+get_participant_id() {
+  name=$1
+  jq_string='.['"${name}"']'
+  participant=$(cat < ./books/bcapps_sportradar.json | jq "${jq_string}")
+  echo "${participant}"
+}
+
+PORT=4575
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
+WS_PID=$!
+echo created websocket client with pid "${WS_PID}"
+
+rid=$(date +%s)
+
+nc 127.0.0.1 "${PORT}"
+echo about to log in...
+echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
+| nc 127.0.0.1 "${PORT}"
+nc 127.0.0.1 "${PORT}"
+
+get_events() {
+  local league_id=$1
+  local league=$2
+  echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":'"${league_id}"'}},"subscribe":true},"rid":"'"${rid}"'"}' \
+  | nc 127.0.0.1 "${PORT}"
+
+  events=$(nc 127.0.0.1 "${PORT}" | jq --raw-output '.data.data.game | values[] | [.id, .team1_name, .team2_name] | @csv')
+
+  IFS=$'\n'
+  for event in ${events}
+  do
+    event_id=$(echo "${event}" | cut -d',' -f 1)
+    home_team=$(echo "${event}" | cut -d',' -f 2)
+    away_team=$(echo "${event}" | cut -d',' -f 3)
+    home_sportradar_team_id=$(get_participant_id "${home_team}")
+    away_sportradar_team_id=$(get_participant_id "${away_team}")
+    sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 3)
+    if [ -n "${sportradar_id}" ]
+    then
+    echo "${event_id}","${sportradar_id}",starcasino
+    fi
+  done
+}
+
+
+for league_id in $league_ids;do
+  get_events "${league_id}"
+done
+
+
+kill -9 "${WS_PID}"
+
+

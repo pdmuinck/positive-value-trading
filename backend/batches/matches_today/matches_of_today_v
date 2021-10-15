@@ -6,7 +6,7 @@ wait
 
 matches=$(./sportradar/event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
-books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet'
+books='pinnacle starcasino'
 
 get_all_leagues_for_each_book() {
   for league_id in $league_ids;do
@@ -38,14 +38,15 @@ create_jobs() {
     value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
     closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
-    sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
-    betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
-    meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    bingoal_id=$(echo "${bingoal}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+    #betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+    #meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #bingoal_id=$(echo "${bingoal}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    #zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     #bwin_id=$(cat bwin_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    starcasino_id=$(echo "${starcasino}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
 
     closing_line_body="${pinnacle_id}","${sport_radar_id}"
 
@@ -59,8 +60,9 @@ create_jobs() {
     --arg ladbrokes_id "${ladbrokes_id}" \
     --arg bingoal_id "${bingoal_id}" \
     --arg zetbet_id "${zetbet_id}" \
+    --arg starcasino_id "${starcasino_id}" \
     '{"sport_radar":$sport_radar_id, "pinnacle":$pinnacle_id, "betcenter":$betcenter_id, "sbtech":$sbtech_id, "meridian":$meridian_id, "goldenpalade":$goldenpalace_id,
-    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id}')
+    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id, "starcasino":$starcasino_id}')
 
     echo BODY: "${value_bet_body}"
 
@@ -81,6 +83,7 @@ goldenpalace_leagues_uniq=$(cat goldenpalace_leagues | sort -u)
 zetbet_leagues_uniq=$(cat zetbet_leagues | sort -u)
 bingoal_leagues_uniq=$(cat bingoal_leagues | sort -u)
 ladbrokes_leagues_uniq=$(cat ladbrokes_leagues | sort -u)
+starcasino_leagues_uniq=$(cat starcasino_leagues | sort -u)
 
 pinnacle=$(./books/pinnacle "${pinnacle_leagues_uniq}" "${matches}")
 betcenter=$(./books/betcenter "${betcenter_leagues_uniq}" "${matches}")
@@ -90,6 +93,7 @@ goldenpalace=$(./books/goldenpalace "${goldenpalace_leagues_uniq}" "${matches}")
 zetbet=$(./books/zetbet "${zetbet_leagues_uniq}" "${matches}")
 bingoal=$(./books/bingoal "${bingoal_leagues_uniq}" "${matches}")
 ladbrokes=$(./books/ladbrokes "${ladbrokes_leagues_uniq}" "${matches}")
+starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
 
 wait
 
