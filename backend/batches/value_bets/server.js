@@ -7,7 +7,7 @@ http.createServer(async function (req, res) {
         body += chunk;
     })
     req.on('end', () => {
-        exec('./find_value_bets ' + body,
+        exec('./find_value_bets \'' + body + '\'',
             (error, stdout, stderr) => {
                 console.log(stdout);
                 console.log(stderr);

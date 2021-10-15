@@ -2,7 +2,7 @@ const http = require('http')
 const {exec} = require('child_process')
 
 http.createServer(async function (req, res) {
-    exec('./matches_of_the_day',
+    exec('./matches_of_today_v',
         (error, stdout, stderr) => {
             console.log(stdout);
             console.log(stderr);

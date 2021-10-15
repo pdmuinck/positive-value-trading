@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#TODO delete old scheduled tasks first
+./gcloud/delete_jobs value-bets &
+./gcloud/delete_jobs closing-lines
+wait
 
 matches=$(./sportradar/event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
@@ -29,10 +31,10 @@ create_jobs() {
 
   if [ -n "$pinnacle_id" ]; then
     # to test locally replace date commands with gdate command
-    value_bet_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%H)
-    value_bet_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 3 hours" +%M)
-    closing_line_start_hour=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%H)
-    closing_line_start_minutes=$(gdate -d "$(gdate -Iseconds -d "${start_time}") - 1 minute" +%M)
+    value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
+    value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
+    closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
+    closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
     value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
     closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
@@ -64,8 +66,8 @@ create_jobs() {
 
     value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
     closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
-    #./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
-    #./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+    ./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
+    ./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
   fi
 }
 

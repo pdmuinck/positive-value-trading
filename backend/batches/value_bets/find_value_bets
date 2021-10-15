@@ -2,6 +2,8 @@
 
 match=$1
 
+echo MATCH: "${match}"
+
 sportradar_id=$(echo "${match}" | jq --raw-output '.sport_radar')
 pinnacle_id=$(echo "${match}" | jq --raw-output '.pinnacle')
 sbtech_id=$(echo "${match}" | jq --raw-output '.sbtech')
@@ -19,7 +21,7 @@ zetbet_id=$(echo "${match}" | jq --raw-output '.zetbet')
 ./books/goldenpalace "${goldenpalace_id}" > goldenpalace_"${sportradar_id}"_betoffers.csv &
 ./books/ladbrokes "${ladbrokes_id}" > ladbrokes_"${sportradar_id}"_betoffers.csv &
 ./books/bingoal "${bingoal_id}" > bingoal_"${sportradar_id}"_betoffers.csv &
-./books/zetbet "${zetbet_id}" > zetbet_"${sportradar_id}"_betoffers.csv &
+#./books/zetbet "${zetbet_id}" > zetbet_"${sportradar_id}"_betoffers.csv &
 wait
 
 betoffers=$(cat *_betoffers.csv | grep -v "pinnacle" | grep -w "OVER_UNDER\|1X2\|1X2_H1")
@@ -70,9 +72,9 @@ value_bets=$(find_value)
 
 echo "${value_bets}"
 
-#./snowflake/insert_value_bets_snowflake "${value_bets}"
+./snowflake/insert_value_bets_snowflake "${value_bets}"
 
-#rm *betoffers.csv
+rm *betoffers.csv
 
 
 
