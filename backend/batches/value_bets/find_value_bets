@@ -1,15 +1,16 @@
 #!/bin/bash
 
 match=$1
-sportradar_id=$(echo "${match}" | jq '.sport_radar')
-pinnacle_id=$(echo "${match}" | jq '.pinnacle')
-sbtech_id=$(echo "${match}" | jq '.sbtech')
-betcenter_id=$(echo "${match}" | jq '.betcenter')
-meridian_id=$(echo "${match}" | jq '.meridian')
-goldenpalace_id=$(echo "${match}" | jq '.goldenpalace')
-ladbrokes_id=$(echo "${match}" | jq '.ladbrokes')
-bingoal_id=$(echo "${match}" | jq '.bingoal')
-zetbet_id=$(echo "${match}" | jq '.zetbet')
+
+sportradar_id=$(echo "${match}" | jq --raw-output '.sport_radar')
+pinnacle_id=$(echo "${match}" | jq --raw-output '.pinnacle')
+sbtech_id=$(echo "${match}" | jq --raw-output '.sbtech')
+betcenter_id=$(echo "${match}" | jq --raw-output '.betcenter')
+meridian_id=$(echo "${match}" | jq --raw-output '.meridian')
+goldenpalace_id=$(echo "${match}" | jq --raw-output '.goldenpalace')
+ladbrokes_id=$(echo "${match}" | jq --raw-output '.ladbrokes')
+bingoal_id=$(echo "${match}" | jq --raw-output '.bingoal')
+zetbet_id=$(echo "${match}" | jq --raw-output '.zetbet')
 
 ./books/sbtech "${sbtech_id}" "${sportradar_id}" > sbtech_"${sportradar_id}"_betoffers.csv &
 ./books/pinnacle "${pinnacle_id}" "${sportradar_id}" &
@@ -71,7 +72,7 @@ echo "${value_bets}"
 
 #./snowflake/insert_value_bets_snowflake "${value_bets}"
 
-rm *betoffers.csv
+#rm *betoffers.csv
 
 
 

@@ -37,7 +37,7 @@ create_jobs() {
     closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
     sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
-    betcenter_id=$(echo "${betcenteer}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+    betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
     meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
@@ -71,14 +71,23 @@ create_jobs() {
 
 get_all_leagues_for_each_book
 
-pinnacle=$(./books/pinnacle $(cat pinnacle_leagues | sort -u) "${matches}")
-betcenter=$(./books/betcenter $(cat betcenter_leagues | sort -u) "${matches}")
-meridian=$(./books/meridian $(cat meridian_leagues | sort -u) "${matches}")
-sbtech=$(./books/sbtech $(cat sbtech_leagues | sort -u) "${matches}")
-goldenpalace=$(./books/goldenpalace $(cat goldenpalace_leagues | sort -u) "${matches}")
-zetbet=$(./books/zetbet $(cat zetbet_leagues | sort -u) "${matches}")
-bingoal=$(./books/bingoal $(cat bingoal_leagues | sort -u) "${matches}")
-ladbrokes=$(./books/ladbrokes $(cat ladbrokes_leagues | sort -u) "${matches}")
+pinnacle_leagues_uniq=$(cat pinnacle_leagues | sort -u)
+betcenter_leagues_uniq=$(cat betcenter_leagues | sort -u)
+meridian_leagues_uniq=$(cat meridian_leagues | sort -u)
+sbtech_leagues_uniq=$(cat sbtech_leagues | sort -u)
+goldenpalace_leagues_uniq=$(cat goldenpalace_leagues | sort -u)
+zetbet_leagues_uniq=$(cat zetbet_leagues | sort -u)
+bingoal_leagues_uniq=$(cat bingoal_leagues | sort -u)
+ladbrokes_leagues_uniq=$(cat ladbrokes_leagues | sort -u)
+
+pinnacle=$(./books/pinnacle "${pinnacle_leagues_uniq}" "${matches}")
+betcenter=$(./books/betcenter "${betcenter_leagues_uniq}" "${matches}")
+meridian=$(./books/meridian "${meridian_leagues_uniq}" "${matches}")
+sbtech=$(./books/sbtech "${sbtech_leagues_uniq}" "${matches}")
+goldenpalace=$(./books/goldenpalace "${goldenpalace_leagues_uniq}" "${matches}")
+zetbet=$(./books/zetbet "${zetbet_leagues_uniq}" "${matches}")
+bingoal=$(./books/bingoal "${bingoal_leagues_uniq}" "${matches}")
+ladbrokes=$(./books/ladbrokes "${ladbrokes_leagues_uniq}" "${matches}")
 
 wait
 

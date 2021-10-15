@@ -42,8 +42,8 @@ get_betoffers() {
   | (.selections[]
   | [$type_id, $event_id, '\""${book}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0]
   | @csv )' \
-  | sed 's/1_0/1X2/g; s/61/DOUBLE_CHANCE/g; s/1_1/1X2_H1/g; s/1_2/1X2_H2/g; s/2_157/DRAW_NO_BET/g; s/145/DOUBLE_CHANCE_H1/g; s/3_200/OVER_UNDER/g; s/Home/1/g; s/Away/2/g; s/Tie/X/g' \
-  | grep '"1X2"\|"DOUBLE_CHANCE"\|"1X2_H1"\|"DOUBLE_CHANCE_H1"\|"OVER_UNDER"\|"1X2_H2"'
+  | sed 's/"1_0"/"1X2"/g; s/"1_1"/"1X2_H1"/g; s/"1_2"/"1X2_H2"/g; s/"3_200"/"OVER_UNDER"/g; s/"Home"/"1"/g; s/"Away"/"2"/g; s/"Tie"/"X"/g' \
+  | grep '"1X2"\|"OVER_UNDER"'
 }
 
 token_betfirst=$(get_token betfirst 28)
