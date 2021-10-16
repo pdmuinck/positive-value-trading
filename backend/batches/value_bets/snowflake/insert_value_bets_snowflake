@@ -13,7 +13,8 @@ prep_statement() {
     points=$(echo "${value_bet}" | cut -d ',' -f 6 |tr -d '"')
     edge=$(echo "${value_bet}" | cut -d ',' -f 7)
     sport_radar_id=$(echo "${value_bet}" | cut -d ',' -f 8|tr -d '"')
-    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${edge}, ${sport_radar_id}), "
+    prediction=$(echo "${value_bet}" | cut -d ',' -f 9|tr -d '"')
+    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${edge}, ${sport_radar_id}, ${prediction}), "
   done
 }
 
@@ -34,7 +35,7 @@ if [ -n "$value_bets" ]; then
 
   echo "${modified}"
 
-  snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id) values ${modified}"
+  snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id, prediction) values ${modified}"
 
 fi
 

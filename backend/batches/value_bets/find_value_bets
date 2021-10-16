@@ -41,7 +41,7 @@ find_value() {
         value=$(./utils/calculate_value "${price}" "${prediction}")
         # apply filters
         if (( $(echo "$value > 0.01" |bc -l) && $(echo "$price < 4.0" |bc -l))); then
-            echo "${betoffer}","${value}","${sportradar_id}"
+            echo "${betoffer}","${value}","${sportradar_id}","${prediction}"
         fi
       fi
     done

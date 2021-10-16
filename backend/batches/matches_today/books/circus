@@ -5,32 +5,35 @@
 
 rm -f betconstruct_events.csv
 
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:5691 reuse-raw:wss://wss01.circus.be --max-messages-rev 1&
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:5695 reuse-raw:wss://wss01.circus.be --max-messages-rev 1&
 WS_PID=$!
 echo created websocket client with pid "${WS_PID}"
 
-nc 127.0.0.1 5691
+nc 127.0.0.1 5695
 echo about to log in...
 echo '{"Id":"8d717d3e-0174-c289-c818-ab8463a98708","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"f56e40a4-237d-4be4-997e-ffb4adad4ffe\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"CIRCUS\"},\"SupportedCompressions\":\"LZS2\"}"}' \
-| nc 127.0.0.1 5691
+| nc 127.0.0.1 5695
 
-login_success=$(nc 127.0.0.1 5691)
+login_success=$(nc 127.0.0.1 5695)
 echo Login success: "${login_success}"
 
 get_events() {
   echo About to get betconstruct events...
   echo '{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds=227875758&LeagueIds=54287323&LeagueIds=54297345&LeagueIds=54344509&LeagueIds=1397387603&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}' \
-  | nc 127.0.0.1 5691
+  | nc 127.0.0.1 5695
 
   touch betconstruct_events_raw.csv
   found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
 
   while [ "${found_events}" == 0 ]
   do
-     nc 127.0.0.1 5691 \
+     circus_response=$(nc 127.0.0.1 5695 \
     | jq --raw-output '.Message' \
-    | jq --raw-output '.Requests[0].Content' >> test_file.txt
+    | jq --raw-output '.Requests[0].Content')
+
+    node ./lzstring_parser "${circus_response}"
     found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
+
   done
   echo Found BETCONSTRUCT events = "${found_events}"
 }
