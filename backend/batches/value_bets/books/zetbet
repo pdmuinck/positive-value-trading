@@ -2,7 +2,7 @@
 
 event_id=$1
 
-bet_slip_ids=$(curl -s https://www.zebet.be/en/event/hji92-club_brugge_kv_kortrijk \
+bet_slip_ids=$(curl -s https://www.zebet.be/en/event/"${event_id}" \
 | grep /en/bettingslip/bet | grep 'odd2\|odd3' \
 | cut -d ' ' -f 10 | cut -d '=' -f 2 | tr -d '"')
 
