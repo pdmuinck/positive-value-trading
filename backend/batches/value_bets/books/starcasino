@@ -1,0 +1,40 @@
+#!/bin/bash
+
+event_id=$1
+
+PORT=2689
+
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
+WS_PID=$!
+echo created websocket client with pid "${WS_PID}"
+
+rid=$(date +%s)
+
+echo about to nc...
+
+nc 127.0.0.1 "${PORT}"
+echo about to log in...
+echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
+| nc 127.0.0.1 "${PORT}"
+nc 127.0.0.1 "${PORT}"
+
+
+  echo '{"command":"get","params":{"source":"betting","what":{"game":["id","show_type","markets_count","start_ts","is_live","is_blocked","is_neutral_venue","team1_id","team2_id","game_number","text_info","is_stat_available","type","info","team1_name","team2_name","tv_info","stats","add_info_name"],"market":["id","col_count","type","name_template","sequence","point_sequence","express_id","cashout","display_key","display_sub_key","group_id","name","group_name","order","extra_info","group_order"],"event":["order","id","type_1","type","type_id","original_order","name","price","nonrunner","ew_allowed","sp_enabled","extra_info","base","home_value","away_value","display_column"]},"where":{"game":{"id":'"${event_id}"'},"sport":{"id":1},"region":{"id":290001},"competition":{"id":557}},"subscribe":true},"rid":"'"${rid}"'"}' \
+  | nc 127.0.0.1 "${PORT}"
+
+  nc 127.0.0.1 "${PORT}" | jq --raw-output '.data.data.game["'"${event_id}"'"] | .id as $eventId | .market
+  | to_entries
+  | .[]
+  | .value
+  | .type as $betType
+  | .event
+  | to_entries
+  | .[]
+  | .value
+  | [$betType, $eventId, "starcasino", .type, .price, .base]
+  | @csv' \
+  | sed 's/"OverUnder"/"OVER_UNDER"/g; s/"P1XP2"/"1X2"/g; s/"P1"/"1"/g; s/"P2"/"2"/g; ' \
+  | grep '"1X2"\|"OVER_UNDER"'
+
+kill -9 "${WS_PID}"
+
