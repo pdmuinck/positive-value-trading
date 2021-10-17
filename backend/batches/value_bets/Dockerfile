@@ -26,6 +26,6 @@ ENV PORT 8080
 
 COPY . .
 
-RUN npm install -g lz-string
+#RUN npm install -g lz-string
 
 CMD [ "node", "server.js" ]

@@ -6,7 +6,7 @@ wait
 
 matches=$(./sportradar/event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
-books='pinnacle starcasino'
+books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet'
 
 get_all_leagues_for_each_book() {
   for league_id in $league_ids;do
@@ -22,8 +22,28 @@ get_all_leagues_for_each_book() {
   done
 }
 
-create_jobs() {
+create_closing_line_job() {
   match=$1
+  sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
+  start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
+  pinnacle_id=$(echo "${pinnacle}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |sort -u)
+
+  if [ -n "$pinnacle_id" ]; then
+    closing_line_body="${pinnacle_id}","${sport_radar_id}"
+
+    closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
+    closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
+    closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
+
+    closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
+
+    ./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+  fi
+}
+
+create_value_bet_job() {
+  match=$1
+  minutes_before=$2
   sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
   start_time=$(echo "${match}" | cut -d ',' -f 4 |tr -d ':' |tr -d '"')
 
@@ -31,24 +51,19 @@ create_jobs() {
 
   if [ -n "$pinnacle_id" ]; then
     # to test locally replace date commands with gdate command
-    value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%H)
-    value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 3 hours" +%M)
-    closing_line_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%H)
-    closing_line_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - 1 minute" +%M)
+    value_bet_start_hour=$(date -d "$(date -Iseconds -d "${start_time}") - ${minutes_before} minutes" +%H)
+    value_bet_start_minutes=$(date -d "$(date -Iseconds -d "${start_time}") - ${minutes_before} minutes" +%M)
     value_bet_schedule=""${value_bet_start_minutes}" "${value_bet_start_hour}" * * *"
-    closing_line_schedule=""${closing_line_start_minutes}" "${closing_line_start_hour}" * * *"
 
-    #sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
-    #betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
-    #meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    #goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    #ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    #bingoal_id=$(echo "${bingoal}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    #zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    sbtech_id=$(echo "${sbtech}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+    betcenter_id=$(echo "${betcenter}" | grep "${sport_radar_id}" | cut -d ',' -f 1)
+    meridian_id=$(echo "${meridian}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    goldenpalace_id=$(echo "${goldenpalace}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    ladbrokes_id=$(echo "${ladbrokes}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    bingoal_id=$(echo "${bingoal}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
+    zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     #bwin_id=$(cat bwin_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    starcasino_id=$(echo "${starcasino}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
-
-    closing_line_body="${pinnacle_id}","${sport_radar_id}"
+    #starcasino_id=$(echo "${starcasino}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
 
     value_bet_body=$(jq -n \
     --arg sport_radar_id "${sport_radar_id}" \
@@ -60,16 +75,13 @@ create_jobs() {
     --arg ladbrokes_id "${ladbrokes_id}" \
     --arg bingoal_id "${bingoal_id}" \
     --arg zetbet_id "${zetbet_id}" \
-    --arg starcasino_id "${starcasino_id}" \
+    --arg minutes_before "${minutes_before}" \
     '{"sport_radar":$sport_radar_id, "pinnacle":$pinnacle_id, "betcenter":$betcenter_id, "sbtech":$sbtech_id, "meridian":$meridian_id, "goldenpalade":$goldenpalace_id,
-    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id, "starcasino":$starcasino_id}')
-
-    echo BODY: "${value_bet_body}"
+    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id, "minutesBeforeGame":$minutes_before}')
 
     value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
-    closing_line_service_uri="https://closing-lines-sah63l2xba-ew.a.run.app"
-    ./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}"
-    ./gcloud/create_job "find-closing-lines" "${closing_line_schedule}" "${closing_line_service_uri}" "${closing_line_body}" "find-closing-lines-${sport_radar_id}"
+
+    ./gcloud/create_job "find-value-bets" "${value_bet_schedule}" "${value_bet_service_uri}" "${value_bet_body}" "find-value-bets-${sport_radar_id}-${minutes_before}"
   fi
 }
 
@@ -83,7 +95,8 @@ goldenpalace_leagues_uniq=$(cat goldenpalace_leagues | sort -u)
 zetbet_leagues_uniq=$(cat zetbet_leagues | sort -u)
 bingoal_leagues_uniq=$(cat bingoal_leagues | sort -u)
 ladbrokes_leagues_uniq=$(cat ladbrokes_leagues | sort -u)
-starcasino_leagues_uniq=$(cat starcasino_leagues | sort -u)
+#starcasino_leagues_uniq=$(cat starcasino_leagues | sort -u)
+#bwin_league_uniq=$(cat bwin_leagues | sort -u)
 
 pinnacle=$(./books/pinnacle "${pinnacle_leagues_uniq}" "${matches}")
 betcenter=$(./books/betcenter "${betcenter_leagues_uniq}" "${matches}")
@@ -93,7 +106,8 @@ goldenpalace=$(./books/goldenpalace "${goldenpalace_leagues_uniq}" "${matches}")
 zetbet=$(./books/zetbet "${zetbet_leagues_uniq}" "${matches}")
 bingoal=$(./books/bingoal "${bingoal_leagues_uniq}" "${matches}")
 ladbrokes=$(./books/ladbrokes "${ladbrokes_leagues_uniq}" "${matches}")
-starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
+#starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
+#bwin=$(./books/bwin "${bwin_leagues_uniq}" "${matches}")
 
 wait
 
@@ -101,8 +115,13 @@ rm *_leagues
 
 IFS=$'\n'
 for match in $matches;do
-  create_jobs "${match}"
+  create_value_bet_job "${match}" 180
+  create_value_bet_job "${match}" 120
+  create_value_bet_job "${match}" 60
+  create_closing_line_job "${match}"
 done
+
+wait
 
 
 
