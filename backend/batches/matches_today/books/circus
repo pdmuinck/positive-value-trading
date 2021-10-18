@@ -3,60 +3,61 @@
 # create persistent websocket client connection
 # call nc 127.0.0.1:1234 to get messages
 
+circus_league_ids=$1
+
 rm -f betconstruct_events.csv
 
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:5695 reuse-raw:wss://wss01.circus.be --max-messages-rev 1&
+websocat -t -B 1000000 -E tcp-l:127.0.0.1:2389 reuse-raw:wss://wss01.circus.be --max-messages-rev 1&
 WS_PID=$!
 echo created websocket client with pid "${WS_PID}"
 
-nc 127.0.0.1 5695
+nc 127.0.0.1 2389
 echo about to log in...
 echo '{"Id":"8d717d3e-0174-c289-c818-ab8463a98708","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"f56e40a4-237d-4be4-997e-ffb4adad4ffe\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"CIRCUS\"},\"SupportedCompressions\":\"LZS2\"}"}' \
-| nc 127.0.0.1 5695
+| nc 127.0.0.1 2389
 
-login_success=$(nc 127.0.0.1 5695)
+login_success=$(nc 127.0.0.1 2389)
 echo Login success: "${login_success}"
 
 get_events() {
   echo About to get betconstruct events...
-  echo '{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds=227875758&LeagueIds=54287323&LeagueIds=54297345&LeagueIds=54344509&LeagueIds=1397387603&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}' \
-  | nc 127.0.0.1 5695
+  echo '{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"'"${circus_league_ids}"'&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}' \
+  | nc 127.0.0.1 2389
 
-  touch betconstruct_events_raw.csv
-  found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
+  found_events=''
 
-  while [ "${found_events}" == 0 ]
+  while [ -z "${found_events}" ]
   do
-     circus_response=$(nc 127.0.0.1 5695 \
+     circus_response=$(nc 127.0.0.1 2389 \
     | jq --raw-output '.Message' \
     | jq --raw-output '.Requests[0].Content')
 
-    node ./lzstring_parser "${circus_response}"
-    found_events=$(wc -c betconstruct_events_raw.csv | awk '{print $1}')
+    found_events=$(node ./books/lzstring_parser "${circus_response}")
+
+    null_string='null'
+
+    if [ "${found_events}" == "${null_string}" ]; then
+      found_events=''
+    else
+      echo "${found_events}" | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[]
+      | [.EventId, (.UrlBetStats | split("/")[6]), "betconstruct", .LeagueId] | @csv'
+    fi
 
   done
-  echo Found BETCONSTRUCT events = "${found_events}"
+
+
 }
 
 if [ -n "${login_success}" ]
   then
+    circus_league_ids='LeagueIds='${circus_league_ids// /&leagueIds=}
+    echo LEAGUE IDS "${circus_league_ids}"
   get_events
 fi
 
-betconstruct_output=$(cat betconstruct_events_raw.csv)
-betconstruct_output=${betconstruct_output//227875758/jupiler_pro_league}
-betconstruct_output=${betconstruct_output//54287323/ligue_1}
-betconstruct_output=${betconstruct_output//54297345/bundesliga}
-betconstruct_output=${betconstruct_output//54344509/serie_a}
-betconstruct_output=${betconstruct_output//1397387603/la_liga}
-
-
-echo "${betconstruct_output}" > betconstruct_events.csv
-
-echo GOT BETCONSTRUCT...
-
-rm betconstruct_events_raw.csv
 
 echo kill websocket client...
 kill -9 "${WS_PID}"
+
+
 
