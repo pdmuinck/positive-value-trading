@@ -6,7 +6,7 @@
 
 matches=$(./sportradar/event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
-books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet circus'
+books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet circus starcasino'
 
 get_all_leagues_for_each_book() {
   for league_id in $league_ids;do
@@ -64,7 +64,7 @@ create_value_bet_job() {
     zetbet_id=$(echo "${zetbet}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     circus_id=$(echo "${circus}" | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
     #bwin_id=$(cat bwin_matches.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 |tr -d '"')
-    #starcasino_id=$(echo "${starcasino}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+    starcasino_id=$(echo "${starcasino}" | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
 
     value_bet_body=$(jq -n \
     --arg sport_radar_id "${sport_radar_id}" \
@@ -78,8 +78,9 @@ create_value_bet_job() {
     --arg zetbet_id "${zetbet_id}" \
     --arg minutes_before "${minutes_before}" \
     --arg circus_id "${circus_id}" \
+    --arg starcasino_id "${starcasino_id}" \
     '{"sport_radar":$sport_radar_id, "pinnacle":$pinnacle_id, "betcenter":$betcenter_id, "sbtech":$sbtech_id, "meridian":$meridian_id, "goldenpalade":$goldenpalace_id,
-    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id, "circus":$circus_id, "minutesBeforeGame":$minutes_before}')
+    "ladbrokes":$ladbrokes_id, "bingoal":$bingoal_id, "zetbet":$zetbet_id, "circus":$circus_id, "starcasino":$starcasino_id, "minutesBeforeGame":$minutes_before}')
 
     echo "${value_bet_body}"
     value_bet_service_uri="https://find-value-bets-sah63l2xba-ew.a.run.app"
@@ -99,7 +100,7 @@ zetbet_leagues_uniq=$(cat zetbet_leagues | sort -u)
 bingoal_leagues_uniq=$(cat bingoal_leagues | sort -u)
 ladbrokes_leagues_uniq=$(cat ladbrokes_leagues | sort -u)
 circus_leagues_uniq=$(cat circus_leagues | sort -u)
-#starcasino_leagues_uniq=$(cat starcasino_leagues | sort -u)
+starcasino_leagues_uniq=$(cat starcasino_leagues | sort -u)
 #bwin_league_uniq=$(cat bwin_leagues | sort -u)
 
 pinnacle=$(./books/pinnacle "${pinnacle_leagues_uniq}" "${matches}")
@@ -111,7 +112,7 @@ zetbet=$(./books/zetbet "${zetbet_leagues_uniq}" "${matches}")
 bingoal=$(./books/bingoal "${bingoal_leagues_uniq}" "${matches}")
 ladbrokes=$(./books/ladbrokes "${ladbrokes_leagues_uniq}" "${matches}")
 circus=$(./books/circus ${circus_leagues_uniq})
-#starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
+starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
 #bwin=$(./books/bwin "${bwin_leagues_uniq}" "${matches}")
 
 wait
