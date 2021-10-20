@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PORT=$1
+login_success=''
+WS_PID=''
+
+connect() {
+  websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
+  WS_PID=$!
+  echo created websocket client with pid "${WS_PID}"
+
+  rid=$(date +%s)
+
+  echo about to log in...
+  echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
+  | nc 127.0.0.1 "${PORT}"
+
+  nc 127.0.0.1 "${PORT}"
+}
+
+connect
+
+while [ -n "${login_success}" ]
+do
+  kill -9 "${WS_PID}"
+  login_success=$(connect)
+done
+
+echo "${WS_PID}"

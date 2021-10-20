@@ -2,6 +2,7 @@
 
 league_ids=$1
 sport_radar_matches=$2
+PORT=$3
 
 get_participant_id() {
   name=$1
@@ -11,25 +12,10 @@ get_participant_id() {
   echo "${participant}"
 }
 
-PORT=4577
-
-websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://eu-swarm-ws-re.bcapps.net --max-messages-rev 1&
-WS_PID=$!
-echo created websocket client with pid "${WS_PID}"
-
-rid=$(date +%s)
-
-echo about to log in...
-echo '{"command":"request_session","params":{"language":"eng","site_id":"385","release_date":"15/09/2020-16:48"},"rid":"'"${rid}"'"}' \
-| nc 127.0.0.1 "${PORT}"
-
-login_success=$(nc 127.0.0.1 "${PORT}")
-echo Login success: "${login_success}"
-
 get_events() {
   local league_id=$1
   jq_string='.["'"${league_id}"'"]'
-  league_participants=$(cat < ./bcaps_sportradar_participant.json | jq "${jq_string}")
+  league_participants=$(cat < ./books/bcaps_sportradar_participant.json | jq "${jq_string}")
   echo '{"command":"get","params":{"source":"betting","what":{"game":["id", "team1_name", "team1_id", "team2_name", "team2_id"]},"where":{"competition":{"id":'"${league_id}"'}},"subscribe":true},"rid":"'"${rid}"'"}' \
   | nc 127.0.0.1 "${PORT}"
 
@@ -53,16 +39,9 @@ get_events() {
   done
 }
 
-if [ -n "${login_success}" ]
-  then
-    for league_id in $league_ids;do
-      get_events "${league_id}"
-    done
-fi
+for league_id in $league_ids;do
+  get_events "${league_id}"
+done
 
-
-
-
-kill -9 "${WS_PID}"
 
 

@@ -4,9 +4,17 @@
 #./gcloud/delete_jobs closing-lines
 #wait
 
+# init websockets
+CIRCUS_PORT=8946
+STARCASINO_PORT=8906
+./books/init_circus "${CIRCUS_PORT}"
+./books/init_starcasino "${STARCASINO_PORT}"
+
+echo websockets are available
+
 matches=$(./sportradar/event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
-books='pinnacle sbtech betcenter meridian ladbrokes goldenpalace bingoal zetbet circus starcasino'
+books='pinnacle circus starcasino'
 
 get_all_leagues_for_each_book() {
   for league_id in $league_ids;do
@@ -111,9 +119,11 @@ goldenpalace=$(./books/goldenpalace "${goldenpalace_leagues_uniq}" "${matches}")
 zetbet=$(./books/zetbet "${zetbet_leagues_uniq}" "${matches}")
 bingoal=$(./books/bingoal "${bingoal_leagues_uniq}" "${matches}")
 ladbrokes=$(./books/ladbrokes "${ladbrokes_leagues_uniq}" "${matches}")
-circus=$(./books/circus ${circus_leagues_uniq})
-starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}")
+circus=$(./books/circus "${circus_leagues_uniq}" "${CIRCUS_PORT}")
+starcasino=$(./books/starcasino "${starcasino_leagues_uniq}" "${matches}" "${STARCASINO_PORT}")
 #bwin=$(./books/bwin "${bwin_leagues_uniq}" "${matches}")
+
+
 
 wait
 
@@ -128,6 +138,7 @@ for match in $matches;do
 done
 
 wait
+
 
 
 

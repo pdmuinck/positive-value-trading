@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PORT=$1
+login_success=''
+WS_PID=''
+
+connect() {
+  websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${PORT}" reuse-raw:wss://wss01.circus.be --max-messages-rev 1&
+  WS_PID=$!
+  echo created websocket client with pid "${WS_PID}"
+
+  nc 127.0.0.1 "${PORT}"
+  echo about to log in...
+  echo '{"Id":"8d717d3e-0174-c289-c818-ab8463a98708","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"f56e40a4-237d-4be4-997e-ffb4adad4ffe\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"CIRCUS\"},\"SupportedCompressions\":\"LZS2\"}"}' \
+  | nc 127.0.0.1 "${PORT}"
+
+  nc 127.0.0.1 "${PORT}"
+
+}
+
+connect
+
+while [ -n "${login_success}" ]
+do
+  kill -9 "${WS_PID}"
+  login_success=$(connect)
+done
+
+echo "${WS_PID}"
