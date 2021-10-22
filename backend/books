@@ -1,0 +1,257 @@
+#!/bin/bash
+
+source websocket
+
+readonly SBTECH_SITE_IDS=$(cat ./sbtech_site_ids.json)
+
+#######################################
+# Returns cashpoint sport events for given league id
+# Globals:
+#   None
+# Arguments:
+#   league
+# Outputs:
+#   csv lines containing event id and sport radar id
+#######################################
+cashpoint_provider_events() {
+  local league_id=$1
+  local host=$2
+  curl -s 'https://'"${host}"'/odds/getGames/8' \
+  -H 'x-language: 2' \
+  -H 'x-brand: 7' \
+  --data-raw '{"leagueIds":['"${league_id}"'],"gameTypes":[7],"jurisdictionId":30}' \
+  | jq --raw-output '.games[] | [.id, .statisticsId]
+  | @csv'
+}
+
+#######################################
+# BETCENTER
+#######################################
+
+betcenter_events() {
+  local league_id=$1
+  cashpoint_provider_events "${league_id}" oddsservice.betcenter.be
+}
+
+betcenter_betoffers() {
+  event_id=$1
+
+  curl -s 'https://oddsservice.betcenter.be/odds/getGames/8' \
+    -H 'x-language: 2' \
+    -H 'x-brand: 7' \
+    --data-raw '{"gameIds":['"${event_id}"'],"gameTypes":[1,4,5],"jurisdictionId":30}' \
+    | jq --raw-output '.games[]
+    | .id as $eventId
+    | .markets[]
+    | .id as $betType
+    | .anchor as $points
+    | .tips[]
+    | [$betType, $eventId, "betcenter", .text, .odds / 100, $points // 0] | @csv' \
+    | sed 's/22242/1X2/g; s/22462/OVER_UNDER/g; s/22252/OVER_UNDER/g; s/22482/OVER_UNDER/g; s/22492/OVER_UNDER/g; s/22502/OVER_UNDER/g; s/22512/OVER_UNDER/g; s/22472/OVER_UNDER/g' \
+    | sed 's/"0-1"/"Under"/g; s/"2+"/"Over"/g; s/"0-2"/"Under"/g; s/"0-3"/"Under"/g; s/"0-4"/"Under"/g; s/"0-5"/"Under"/g; s/"0-6"/"Under"/g; s/"1+"/"Over"/g; s/"2+"/"Over"/g; s/"3+"/"Over"/g; s/"4+"/"Over"/g; s/"5+"/"Over"/g; s/"6+"/"Over"/g; s/"7+"/"Over"/g; s/"0"/"Under"/g' \
+    | grep '1X2\|OVER_UNDER'
+}
+
+#######################################
+# BWIN
+#######################################
+
+bwin_events() {
+  local league_id=$1
+  local book='"bwin"'
+
+  curl -G -s 'https://cds-api.bwin.be/bettingoffer/fixtures' \
+  -d x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk \
+  -d lang=en \
+  -d country=BE \
+  -d userCountry=BE \
+  -d fixtureTypes=Standard \
+  -d state=Latest \
+  -d offerMapping=Filtered \
+  -d offerCategories=Gridable \
+  -d fixtureCategories=Gridable \
+  -d competitionIds="${league_id}" \
+  -d skip=0 \
+  -d take=100 \
+  -d sortBy=Tags \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36' \
+  | jq --raw-output '.fixtures[] | [.id, .addons.liveMatchTracker.sportradarId // .addons.betRadar] | @csv'
+}
+
+bwin_betoffers() {
+  event_id=$1
+
+  curl 'https://cds-api.bwin.be/bettingoffer/fixture-view?x-bwin-accessid=NTE3MjUyZDUtNGU5Ni00MTkwLWJkMGQtMDhmOGViNGNiNmRk&lang=nl&country=BE&userCountry=BE&offerMapping=All&fixtureIds='"${event_id}"'&state=Latest&includePrecreatedBetBuilder=false&supportVirtual=false' \
+    -H 'authority: cds-api.bwin.be' \
+    -H 'accept: application/json, text/plain, */*' \
+    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36' \
+    | jq --raw-output '.fixture
+    | .id as $event_id
+    | .optionMarkets[] // .games[]
+    | .name.value as $betType
+    | .options[] // .results[]
+    | .attr as $points
+    | .sourceName.value as $option1
+    | .name.value as $option2
+    | [$betType, $event_id, "bwin", $option1 // $option2, .price.odds, $points // .name.value // 0]
+    | @csv' \
+    | grep '"Resultaat"\|"Aantal doelpunten"' \
+    | sed 's/"Resultaat"/"1X2"/g; s/"Aantal doelpunten"/"OVER_UNDER"/g;'
+}
+
+
+#######################################
+# SBTECH
+#######################################
+sbtech_token() {
+  local book=$1
+  site_id=$(echo "${SBTECH_SITE_IDS}" | jq '.["'"${book}"'"]')
+  token_message=$(curl -s 'https://sbapi.sbtech.com/'"${book}"'/auth/platform/v1/api/GetTokenBySiteId/'"${site_id}")
+  IFS=' = '
+  read -a strarr <<<"${token_message}"
+  token_raw="${strarr[1]}"
+  token_temp=${token_raw%\'}
+  echo "${token_temp#\'}"
+}
+
+sbtech_events() {
+  local league_id=$1
+  local token=$2
+  local book=betfirst
+
+  if [ -z "${token}" ]
+  then
+    token=$(sbtech_token "${book}")
+  fi
+
+  curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=leagueId%20eq%20%27'"${league_id}"'%27&locale=en' \
+  -H 'accept: application/json, text/javascript, */*; q=0.01' \
+  -H 'authorization: Bearer '"${token}" \
+  -H 'content-type: application/json-patch+json' \
+  --compressed \
+  | jq --raw-output '.data.events[]
+  | .id as $id
+  | .media[]
+  | select(.providerName == "BetRadarV3")
+  | [$id, .providerEventId]
+  | @csv' \
+  | sort -u
+}
+
+sbtech_betoffers() {
+  local event_id=$1
+  local book=$2
+  local token=$3
+
+  if [ -z "${token}" ]
+  then
+    token=$(sbtech_token "${book}")
+  fi
+
+    curl -s 'https://sbapi.sbtech.com/'"${book}"'/sportsdata/v2/events?query=$filter=id%20eq%20%27'"${event_id}"'%27&includeMarkets=$filter=' \
+  -H 'authority: sbapi.sbtech.com' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'accept: application/json, text/javascript, */*; q=0.01' \
+  -H 'locale: en' \
+  -H 'authorization: Bearer '"${token}" \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+  -H 'content-type: application/json-patch+json' \
+  -H 'origin: https://betfirst.dhnet.be' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://betfirst.dhnet.be/' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  --compressed \
+  | jq --raw-output '.data.markets[]
+  | .marketType.id as $type_id
+  | .eventId as $event_id
+  | (.selections[]
+  | [$type_id, $event_id, '\""${book}"\"', .outcomeType, (.displayOdds.decimal | tonumber), .points // 0]
+  | @csv )' \
+  | sed 's/"1_0"/"1X2"/g; s/"1_1"/"1X2_H1"/g; s/"1_2"/"1X2_H2"/g; s/"3_200"/"OVER_UNDER"/g; s/"Home"/"1"/g; s/"Away"/"2"/g; s/"Tie"/"X"/g' \
+  | grep '"1X2"\|"OVER_UNDER"'
+}
+
+#######################################
+# BINGOAL
+#######################################
+init_bingoal() {
+    curl -s 'https://www.bingoal.be/nl/Sport#/detail/'"${event_id}" --header "accept-encoding: application/json" -D bingoal_headers > bingoal_response
+}
+
+get_bingoal_cookies() {
+  cookie_raw=$(grep -m 2 'SET-COOKIE: ' bingoal_headers | cut -c 12-)
+  rm bingoal_headers
+  echo "${cookie_raw//[$'\t\r\n']}"
+}
+
+get_bingoal_k_parameter(){
+  k=$(cat bingoal_response | grep '_k = ' | cut -d\' -f 2)
+  rm bingoal_response
+  echo "${k}"
+}
+
+bingoal_events() {
+  league_id=$1
+  init_bingoal
+  cookie=$(get_bingoal_cookies)
+  k=$(get_bingoal_k_parameter)
+
+  curl -s 'https://www.bingoal.be/A/sport' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Cookie: '"${cookie}" \
+  --data-raw 'func=sport&action=SOCCER&id='"${league_id}"'&k='"${k}" \
+  | jq --raw-output '.sports[].matches[] | [.ID, .betradarID] | @csv'
+}
+
+bingoal_betoffers() {
+  event_id=$1
+  init_bingoal
+  cookie=$(get_bingoal_cookies)
+  k=$(get_bingoal_k_parameter)
+
+  curl -s 'https://www.bingoal.be/A/sport' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Cookie: '"${cookie}" \
+  --data-raw 'func=detail&action=SOCCER&id='"${event_id}"'&b=1&k='"${k}" \
+  | jq --raw-output '.box[0].match
+  | .ID as $eventId
+  | .categories[].subbets[]
+  | .name as $betType
+  | .tips[]
+  | [$betType, $eventId, "bingoal", .shortName, (.odd | tonumber), .sov]
+  | @csv' \
+  | sed 's/Totaal aantal doelpunten/OVER_UNDER/g; s/U [0-9].[0-9]/Under/g; s/O [0-9].[0-9]/Over/g; s/,""/,"0"/g' \
+  | grep '"1X2"\|"OVER_UNDER"' \
+  | sort -u
+}
+
+#######################################
+# CIRCUS
+#######################################
+
+circus_events() {
+  league_id=$1
+  port=8761
+
+  create_connection wss01.circus.be "${port}"
+  circus_ws_pid=$!
+
+  echo PID: "${circus_ws_pid}"
+
+  login_message='{"Id":"8d717d3e-0174-c289-c818-ab8463a98708","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"f56e40a4-237d-4be4-997e-ffb4adad4ffe\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"CIRCUS\"},\"SupportedCompressions\":\"LZS2\"}"}'
+  send_message "${login_message}" "${port}"
+
+
+
+  if [ -n "${login_success}" ]
+  then
+    events_message='{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds='"${league_id}"'&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}'
+    send_message "${login_message}" "${port}"
+  fi
+
+  kill -9 "${circus_ws_pid}"
+}

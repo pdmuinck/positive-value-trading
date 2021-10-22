@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#######################################
+# Creates a local process that listens to given tcp port
+# Globals:
+#   None
+# Arguments:
+#   host, port
+# Outputs:
+#   process id
+#######################################
+create_connection() {
+  local host=$1
+  local port=$2
+  websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${port}" reuse-raw:wss://"${host}" --max-messages-rev 1&
+}
+
+#######################################
+# Sends a message to the websocket target.
+# Globals:
+#   None
+# Arguments:
+#   message, port
+# Outputs:
+#   server response
+#######################################
+send_message() {
+  local message=$1
+  local port=$2
+  echo "${message}" | nc 127.0.0.1 "${port}"
+}
+
+get_message() {
+  local port=$1
+  nc 127.0.0.1 "${port}"
+}
