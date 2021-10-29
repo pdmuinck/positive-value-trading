@@ -1,0 +1,77 @@
+#!/bin/bash
+
+betting_types='1X2 OVER_UNDER'
+points='1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4'
+
+calculate_value() {
+    local price=$1
+    local prediction=$2
+    echo $(awk -v prediction="$prediction" -v price="$price" 'BEGIN {print (1 / prediction * price) - 1;}')
+}
+
+get_value_bets() {
+    local price=$1
+    local prediction=$2
+    echo $(awk -v prediction="$prediction" -v price="$price" 'BEGIN {print (1 / prediction * price) - 1;}')
+}
+
+vig_free_price() {
+    local price=$1
+    local margin=$2
+    echo $(awk -v price="$price" -v margin="$margin" 'BEGIN{print price/margin;}' ${price})
+}
+
+american_to_decimal() {
+  local input=$1
+  if [ $input -lt 0 ]
+    input_abs=$(echo ${1#-})
+    then awk "BEGIN {x=100/$input_abs; y=x+1; print y}"
+    else awk "BEGIN {x=$input_abs/100; y=x+1; print y}"
+  fi
+}
+
+calculate_margin_three_way() {
+  price1=$1
+  price2=$2
+  price3=$3
+  echo "scale=4; 1/$price1 + 1/$price2 + 1/$price3" | bc
+}
+
+calculate_margin_two_way() {
+  price1=$1
+  price2=$2
+  echo "scale=4; 1/$price1 + 1/$price2" | bc
+}
+
+apply_margin(){
+  price=$1
+  margin=$2
+  echo "scale=2; $price/$margin" | bc
+}
+
+vig_free(){
+  lines=$1
+  IFS=$'\n'
+  for line in $lines;
+  do
+    betting_type=$(echo "${line}" | cut -d ',' -f 1)
+    point=$(echo "${line}" | cut -d ',' -f 6)
+    price=$(echo "${line}" | cut -d ',' -f 5)
+    same_offer_lines=$(echo "${lines}" | awk -v betting_type="${betting_type}" -v points="${point}" -F "," '{if ($6 == points && $1 == betting_type) print}')
+    if [[ "${betting_type}" == '"OVER_UNDER"' ]]
+    then
+      price_over=$(echo "${same_offer_lines}" | grep -w '"Over"' | cut -d ',' -f 5)
+      price_under=$(echo "${same_offer_lines}" | grep -w '"Under"' | cut -d ',' -f 5)
+      margin=$(calculate_margin_two_way "${price_over}" "${price_under}")
+      price_vig_free=$(apply_margin "${price}" "${margin}")
+      echo "${line}","${price_vig_free}"
+    else
+      price_1=$(echo "${same_offer_lines}" | grep -w '"1"' | cut -d ',' -f 5)
+      price_x=$(echo "${same_offer_lines}" | grep -w '"X"' | cut -d ',' -f 5)
+      price_2=$(echo "${same_offer_lines}" | grep -w '"2"' | cut -d ',' -f 5)
+      margin=$(calculate_margin_three_way "${price_1}" "${price_x}" "${price_2}")
+      price_vig_free=$(apply_margin "${price}" "${margin}")
+      echo "${line}","${price_vig_free}"
+    fi
+  done
+}

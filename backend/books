@@ -2,6 +2,7 @@
 
 source websocket
 source sportradar
+source transformations
 
 readonly SBTECH_SITE_IDS=$(cat ./sbtech_site_ids.json)
 
@@ -437,5 +438,217 @@ starcasino_events() {
 
 }
 
+starcasino_betoffers() {
+  event_id=$1
+  port=8531
+
+  create_connection eu-swarm-ws-re.bcapps.net "${port}"
+  ws_pid=$!
+
+  starcasino_login "${port}"
+
+  rid=$(date +%s)
+
+  echo '{"command":"get","params":{"source":"betting","what":{"game":["id","show_type","markets_count","start_ts","is_live","is_blocked","is_neutral_venue","team1_id","team2_id","game_number","text_info","is_stat_available","type","info","team1_name","team2_name","tv_info","stats","add_info_name"],"market":["id","col_count","type","name_template","sequence","point_sequence","express_id","cashout","display_key","display_sub_key","group_id","name","group_name","order","extra_info","group_order"],"event":["order","id","type_1","type","type_id","original_order","name","price","nonrunner","ew_allowed","sp_enabled","extra_info","base","home_value","away_value","display_column"]},"where":{"game":{"id":'"${event_id}"'}},"subscribe":false},"rid":'"${rid}"'}' \
+  | nc 127.0.0.1 "${port}"
+
+  get_message "${port}" \
+   | jq --raw-output '.data.data.game["'"${event_id}"'"] | .id as $eventId | .market
+  | to_entries
+  | .[]
+  | .value
+  | .type as $betType
+  | .event
+  | to_entries
+  | .[]
+  | .value
+  | [$betType, $eventId, "starcasino", .type, .price, .base]
+  | @csv' \
+  | sed 's/"OverUnder"/"OVER_UNDER"/g; s/"P1XP2"/"1X2"/g; s/"P1"/"1"/g; s/"P2"/"2"/g; ' \
+  | grep '"1X2"\|"OVER_UNDER"'
 
 
+  kill -9 "${ws_pid}"
+}
+
+#######################################
+# goldenpalace
+#######################################
+
+goldenpalace_events() {
+  league_id=$1
+  book='goldenpalace'
+  curl -G -s 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEvents' \
+  -d timezoneOffset=-120 \
+  -d langId=8 \
+  -d skinName="${book}" \
+  -d configId=19 \
+  -d culture=en-gb \
+  -d countryCode=BE \
+  -d deviceType=Desktop \
+  -d numformat=en \
+  -d integration="${book}" \
+  -d sportids=0 \
+  -d categoryids=0 \
+  -d champids="${league_id}" \
+  -d group=AllEvents \
+  -d period=periodall \
+  -d withLive=false \
+  -d outrightDisplay=none \
+  -d couponType=0 \
+  -d startDate=2021-06-16T12%3A21%3A00.000Z \
+  -d endDate=2030-06-23T12%3A21%3A00.000Z \
+  | jq --raw-output '.Result.Items[0].Events | map(.ExtId |= split(":"))[] | [.Id, .ExtId[2]] | @csv'
+}
+
+goldenpalace_betoffers() {
+  event_id=$1
+
+  curl -s 'https://sb2frontend-altenar2.biahosted.com/api/Sportsbook/GetEventDetails?timezoneOffset=-120&langId=8&skinName=goldenpalace&configId=19&culture=en-gb&countryCode=BE&deviceType=Desktop&numformat=en&integration=goldenpalace&eventId='"${event_id}"'&sportId=66' \
+    | jq --raw-output '.Result.MarketGroups[]
+    | select(.Name == "Main")
+    | .Items[]
+    | .Name as $betType
+    | .SpecialOddsValue as $points
+    | .Id as $eventId
+    | .Items[]
+    | [$betType, $eventId, "golden_palace", .Name, (.Price | tonumber), .SPOV]
+    | @csv' \
+    | sed 's/"1x2"/"1X2"/g; s/"Total"/"OVER_UNDER"/g; s/"Over [0-9].[0-9][0-9]"/"Over"/g; s/"Over [0-9].[0-9]"/"Over"/g; s/"Over [0-9]"/"Over"/g' \
+    | sed 's/"Under [0-9].[0-9][0-9]"/"Under"/g; s/"Under [0-9].[0-9]"/"Under"/g; s/"Under [0-9]"/"Under"/g'\
+    | sed 's/"Draw"/"X"/g; s/,""/,"0"/g' \
+    | grep '"1X2"\|"OVER_UNDER"'
+}
+
+#######################################
+# ladbrokes
+#######################################
+
+ladbrokes_events() {
+    league=$1
+    curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/meeting/calcio/'"${league}"'?prematch=1&live=0' \
+    --header 'x-eb-accept-language: en_BE' \
+    --header 'x-eb-marketid: 5' \
+    --header 'x-eb-platformid: 2' \
+    | jq --raw-output --arg league "${league}" '.result.dataGroupList[].itemList[].eventInfo | [($league + "/" + .aliasUrl), .programBetradarInfo.matchId] | @csv'
+}
+
+ladbrokes_betoffers() {
+  event_id=$1
+
+  curl -s 'https://www.ladbrokes.be/detail-service/sport-schedule/services/event/calcio/'"${event_id}"'?prematch=1&live=0' \
+    -H 'x-eb-accept-language: nl_BE' \
+    -H 'accept: application/json, text/plain, */*' \
+    -H 'x-eb-marketid: 5' \
+    -H 'x-eb-platformid: 2' \
+    | jq --raw-output '.result
+    | .eventInfo.aliasUrl as $eventId
+    | .betGroupList[].oddGroupList[]
+    | .betId as $betType
+    | .oddList[]
+    | [$betType, $eventId, "ladbrokes", .oddDescription, .oddValue /100, .additionalInfo[0] / 100]
+    | @csv' \
+    | grep '24,\|1907' \
+    | sed 's/24,/"1X2",/g; s/1907,/"OVER_UNDER",/g' \
+    | sed 's/"Meer"/"Over"/g; s/"Minder"/"Under"/g' \
+    | grep '"1X2"\|"OVER_UNDER"'
+}
+
+#######################################
+# meridian
+#######################################
+
+meridian_events() {
+  url=$1
+  curl -s "${url}" | jq --raw-output '.[0].events[] | [.id, .betradarUnified["id"]] | @csv'
+}
+
+meridian_betoffers() {
+  event_id=$1
+
+  curl 'https://meridianbet.be/sails/events/'"${event_id}" \
+  | jq --raw-output '.market[]
+  | .templateId as $betType
+  | .id as $eventId
+  | .overUnder as $points
+  | .selection[]
+  | [$betType, $eventId, "meridian", .name, (.price | tonumber), $points // 0]
+  | @csv' \
+  | sed ' s/[][]//g; s/Rival2/2/g; s/Rival1/1/g; s/draw/X/g; s/under/Under/g; s/over/Over/g' \
+  | sed 's/"3999"/"1X2"/g; s/"4004"/"OVER_UNDER"/g' \
+  | grep '"1X2"\|"OVER_UNDER"'
+}
+
+#######################################
+# pinnacle
+#######################################
+
+get_pinnacle_participant_id() {
+  name=$1
+  participants=$2
+  jq_string='.['"${name}"']'
+  participant=$(echo "${participants}" | jq "${jq_string}")
+  echo "${participant}"
+}
+
+pinnacle_events() {
+  league_id=$1
+  sport_radar_matches=$(event_full_feed | grep Soccer)
+
+  jq_string='.["'"${league_id}"'"]'
+  league_participants=$(cat < ./pinnacle_sportradar_participant.json | jq "${jq_string}")
+    events=$(curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/leagues/'"${league_id}"'/matchups' \
+  -H 'authority: guest.api.arcadia.pinnacle.com' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'accept: application/json' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36' \
+  -H 'x-api-key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
+  -H 'content-type: application/json' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  --compressed \
+  | jq --raw-output '.[] | select(.parent == null and (.participants | length == 2)) | [.id, .participants[].name] | @csv ')
+      for event in ${events}
+      do
+        event_id=$(echo "${event}" | cut -d',' -f 1)
+        home_team=$(echo "${event}" | cut -d',' -f 2)
+        away_team=$(echo "${event}" | cut -d',' -f 3)
+
+        home_sportradar_team_id=$(get_pinnacle_participant_id "${home_team}" "${league_participants}")
+        away_sportradar_team_id=$(get_pinnacle_participant_id "${away_team}" "${league_participants}")
+        sportradar_id=$(echo "${sport_radar_matches}" | grep ''"${home_sportradar_team_id}"'' | grep ''"${away_sportradar_team_id}"'' | cut -d',' -f 3)
+        if [ -n "${sportradar_id}" ]
+        then
+        echo "${event_id}","${sportradar_id}",pinnacle
+        fi
+      done
+}
+
+pinnacle_betoffers() {
+  event_id=$1
+  prices=$(curl -s 'https://guest.api.arcadia.pinnacle.com/0.1/matchups/'"${event_id}"'/markets/related/straight' \
+  -H 'sec-ch-ua: "Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"' \
+  -H 'X-Device-UUID: 9585db37-f7c6740c-e3129e9b-c7724b36' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Referer: https://www.pinnacle.com/' \
+  -H 'X-API-Key: CmX2KcMrXuFmNg6YFbmTxE0y9CIrOi0R' \
+  --compressed \
+  | jq -r --arg eventId "${event_id}" '.[]
+  | .key as $type_id
+  | .matchupId as $market_id
+  | (.prices[]
+  | [$market_id, $type_id, $eventId, "pinnacle", if (.designation) then .designation else .participantId end, .price, if (.points) then .points else 0 end] | @csv)'\
+  | grep "${event_id}", \
+  | sed 's/"s;0;m"/"1X2"/g; s/"s;1;m"/"1X2_H1"/g; s/s;0;ou;[^"]*/OVER_UNDER/g' \
+  | grep '"1X2"\|"OVER_UNDER"' \
+  | awk -F "," -v OFS=','  'function abs(v) {return v < 0 ? -v : v}
+            {if($6 < 0) $6=100/abs($6) + 1; else $6=abs($6)/100+1; print}' \
+  | cut -d ',' -f 2- \
+  | sed 's/home/1/g; s/away/2/g; s/draw/X/g; s/over/Over/g; s/under/Under/g;'
+  )
+
+  vig_free "${prices}"
+
+}
