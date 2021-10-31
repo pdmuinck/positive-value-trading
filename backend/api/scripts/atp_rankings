@@ -1,8 +1,0 @@
-#!/bin/bash
-
-atp_rankings() {
-    local output=$(curl 'https://api.sporza.be/tennis/rankings/82')
-    echo "${output}"
-}
-
-atp_rankings

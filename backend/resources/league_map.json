@@ -1,0 +1,494 @@
+{
+  "38": {
+    "name": "jupiler_pro_league",
+    "pinnacle": 1817,
+    "sbtech": 40815,
+    "bwin": 102836,
+    "betcenter": 6898,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/26/league/first-division-a",
+    "goldenpalace": 2965,
+    "ladbrokes": "be-jupiler-league1",
+    "bingoal": 25,
+    "zetbet": "101-pro_league_1a",
+    "starcasino": 557,
+    "circus": 227875758
+  },
+
+  "42": {
+    "name": "bundesliga",
+    "pinnacle": 1842,
+    "sbtech": 40481,
+    "bwin": 102842,
+    "betcenter": 6843,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/2/league/bundesliga",
+    "goldenpalace": 2950,
+    "ladbrokes": "de-bundesliga",
+    "bingoal": 38,
+    "zetbet": "268-bundesliga",
+    "starcasino": 541,
+    "circus": 54297345
+  },
+
+  "42": {
+    "name": "premier_league",
+    "pinnacle": 1980,
+    "sbtech": 40253,
+    "bwin": 102841,
+    "betcenter": 6823,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1/league/premier-league",
+    "goldenpalace": 2936,
+    "ladbrokes": "ing-premier-league",
+    "bingoal": 35,
+    "zetbet": "94-premier_league",
+    "starcasino": 538,
+    "circus": 54210798
+  },
+
+  "4": {
+    "name": "ligue_1",
+    "pinnacle": 2036,
+    "sbtech": 40032,
+    "bwin": 102843,
+    "betcenter": 6855,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/5/league/ligue-1",
+    "goldenpalace": 2943,
+    "ladbrokes": "fr-ligue-1",
+    "bingoal": 26,
+    "zetbet": "96-ligue_1_uber_eats",
+    "starcasino": 548,
+    "circus": 54287323
+  },
+
+  "33": {
+    "name": "serie_a",
+    "pinnacle": 2436,
+    "sbtech": 40030,
+    "bwin": 102846,
+    "betcenter": 7134,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/4/league/serie-a",
+    "goldenpalace": 2942,
+    "ladbrokes": "it-serie-a",
+    "bingoal": 39,
+    "zetbet": "305-serie_a",
+    "starcasino": 543,
+    "circus": 54344509
+  },
+
+  "36": {
+    "name": "la_liga",
+    "pinnacle": 2196,
+    "sbtech": 40031,
+    "bwin": 102829,
+    "betcenter": 6938,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/3/league/la-liga",
+    "goldenpalace": 2941,
+    "ladbrokes": "es-liga",
+    "bingoal": 37,
+    "zetbet": "306-primera_division",
+    "starcasino": 545,
+    "circus": 1397387603
+  },
+
+  "39": {
+    "name": "eredivisie",
+    "pinnacle": 1928,
+    "sbtech": 41372,
+    "bwin": 102847,
+    "betcenter": 6931,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/25/league/eredivisie",
+    "goldenpalace": 3065,
+    "ladbrokes": "nl-eredivisie1",
+    "bingoal": 24,
+    "zetbet": "102-eredivisie",
+    "starcasino": 1957,
+    "circus": 54375423
+  },
+
+  "67293": {
+    "name": "uefa_nations_league",
+    "pinnacle": 200719,
+    "sbtech": 110988,
+    "bwin": 102857,
+    "betcenter": 38941,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-nations-league",
+    "goldenpalace": 5098,
+    "ladbrokes": "uefa-nations-league",
+    "bingoal": 6595
+  },
+
+  "1757": {
+    "name": "World Cup Qual. UEFA Group A",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14443,
+    "betcenter": 14539,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1758": {
+    "name": "World Cup Qual. UEFA Group B",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14444,
+    "betcenter": 14540,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1759": {
+    "name": "World Cup Qual. UEFA Group C",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14445,
+    "betcenter": 14541,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1760": {
+    "name": "World Cup Qual. UEFA Group D",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14446,
+    "betcenter": 14542,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1761": {
+    "name": "World Cup Qual. UEFA Group E",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14447,
+    "betcenter": 14543,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1762": {
+    "name": "World Cup Qual. UEFA Group F",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14448,
+    "betcenter": 14544,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1763": {
+    "name": "World Cup Qual. UEFA Group G",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14449,
+    "betcenter": 14545,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1764": {
+    "name": "World Cup Qual. UEFA Group H",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14450,
+    "betcenter": 14546,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "7255": {
+    "name": "World Cup Qual. UEFA Group I",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 14451,
+    "betcenter": 14547,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "97878": {
+    "name": "World Cup Qual. UEFA Group J",
+    "pinnacle": 2015,
+    "sbtech": 24341,
+    "bwin": 77830,
+    "betcenter": 54355,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/21/league/fifa-world-cup-2022-european-qualifiers",
+    "goldenpalace": 19414,
+    "ladbrokes": "wd-qual-mondiali",
+    "bingoal": 9617,
+    "zetbet": "39613-wc_qualification_uefa",
+    "starcasino": 18277589
+  },
+
+  "1462": {
+    "name": "Uefa Champions League Group A",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13914,
+    "betcenter": 27958,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1463": {
+    "name": "Uefa Champions League Group B",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13915,
+    "betcenter": 27959,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1464": {
+    "name": "Uefa Champions League Group C",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13916,
+    "betcenter": 27960,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1465": {
+    "name": "Uefa Champions League Group D",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13917,
+    "betcenter": 27961,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1466": {
+    "name": "Uefa Champions League Group E",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13918,
+    "betcenter": 27962,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1467": {
+    "name": "Uefa Champions League Group F",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 1320,
+    "betcenter": 27963,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1468": {
+    "name": "Uefa Champions League Group G",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13921,
+    "betcenter": 27964,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "1469": {
+    "name": "Uefa Champions League Group H",
+    "pinnacle": 2627,
+    "sbtech": 40685,
+    "bwin": 13922,
+    "betcenter": 27965,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-champions-league",
+    "goldenpalace": 16808,
+    "ladbrokes": "eu-champions-league",
+    "bingoal": 375,
+    "zetbet": "6674-champions_league",
+    "starcasino": 566,
+    "circus": 1351379392
+  },
+
+  "10908": {
+    "name": "Uefa Europa League Group A",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18254,
+    "betcenter": 27967,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+  "10911": {
+    "name": "Uefa Europa League Group B",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18256,
+    "betcenter": 27968,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+  "10912": {
+    "name": "Uefa Europa League Group C",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18258,
+    "betcenter": 27969,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+  "10913": {
+    "name": "Uefa Europa League Group D",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18260,
+    "betcenter": 27970,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+  "10914": {
+    "name": "Uefa Europa League Group E",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18262,
+    "betcenter": 27971,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+
+  "10915": {
+  "name": "Uefa Europa League Group F",
+  "pinnacle": 2630,
+  "sbtech": 41410,
+  "bwin": 18264,
+  "betcenter": 27972,
+  "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+  "goldenpalace": 16809,
+  "ladbrokes": "eu-europa-league",
+  "bingoal": 376,
+  "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+},
+
+  "10916": {
+    "name": "Uefa Europa League Group G",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18266,
+    "betcenter": 27973,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  },
+
+  "10917": {
+    "name": "Uefa Europa League Group H",
+    "pinnacle": 2630,
+    "sbtech": 41410,
+    "bwin": 18268,
+    "betcenter": 27974,
+    "meridian": "https://meridianbet.be/sails/sport/58/region/1641/league/uefa-europa-league",
+    "goldenpalace": 16809,
+    "ladbrokes": "eu-europa-league",
+    "bingoal": 376,
+    "zetbet": "6675-europa_league",
+    "starcasino": 1861,
+    "circus": 54139136
+  }
+}

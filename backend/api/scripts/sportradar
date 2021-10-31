@@ -1,3 +1,0 @@
-#!/bin/bash
-events="$(./event_full_feed | jq .)" 
-echo "${events}"

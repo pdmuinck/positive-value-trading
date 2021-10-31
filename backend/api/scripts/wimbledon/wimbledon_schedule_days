@@ -1,9 +1,0 @@
-#!/bin/bash
-
-wimbledon_schedule_days() {
-    year=$1
-    output=$(curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/schedule/scheduleDays.json')
-    echo "${output}"
-}
-
-wimbledon_schedule_days $1

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-event_get() {
-    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/event_get/')
-    echo $output
-}
-
-event_get

@@ -1,0 +1,116 @@
+#!/bin/bash
+
+source sportradar
+
+export_env_vars() {
+  export SNOWSQL_ACCOUNT=bs92548.europe-west4.gcp
+  export SNOWSQL_USER=demuinckpieterjan
+  export SNOWSQL_PWD=$(gcloud secrets versions access latest --secret="snowflake_pass")
+  export SNOWSQL_ROLE=SYSADMIN
+  export SNOWSQL_DATABASE=PROTRADER
+  export SNOWSQL_WAREHOUSE=COMPUTE_WH
+  export SNOWSQL_SCHEMA=VALUE_BETS
+}
+
+prep_sport_radar_statement() {
+  IFS=$'\n'
+  for match in $matches;do
+    sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
+    echo "(${sport_radar_id}), "
+  done
+}
+
+insert_sport_radar_matches() {
+  matches=$1
+
+  export_env_vars
+
+  values=$(prep_sport_radar_statement | rev | cut -c3- | rev)
+
+  snowsql -q "insert into sport_radar_matches(sport_radar_id) values ${values}"
+}
+
+prep_closing_lines_statement() {
+  for bet_offer in $bet_offers;do
+    bet_type=$(echo "${bet_offer}" | cut -d ',' -f 1 |tr -d '"')
+    event_id=$(echo "${bet_offer}" | cut -d ',' -f 2|tr -d '"')
+    book=$(echo "${bet_offer}" | cut -d ',' -f 3 |tr -d '"')
+    bet_option=$(echo "${bet_offer}" | cut -d ',' -f 4 |tr -d '"')
+    price=$(echo "${bet_offer}" | cut -d ',' -f 5)
+    points=$(echo "${bet_offer}" | cut -d ',' -f 6)
+    sport_radar_id=$(echo "${bet_offer}" | cut -d ',' -f 7 |tr -d '"')
+    vig_free_price=$(echo "${bet_offer}" | cut -d ',' -f 8)
+    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${vig_free_price}, ${sport_radar_id}), "
+  done
+}
+
+insert_closing_lines() {
+  bet_offers=$1
+
+  export_env_vars
+
+  values=$(prep_closing_lines_statement | rev | cut -c2- | rev)
+
+  snowsql -q "insert into closing_lines(bet_type, event_id, book, bet_option, price, points, vig_free_price, sport_radar_id) values ${values}"
+}
+
+get_sport_radar_ids_for_value_bets() {
+  days_to_travel=$1
+
+  export_env_vars
+
+  sport_radar_ids=$(snowsql -q "select distinct sport_radar_id from value_bets where created_tstamp > current_timestamp - interval '${days_to_travel} days'" -o output_format=plain  -o header=false -o timing=false -o friendly=false)
+
+  echo "${sport_radar_ids}"
+}
+
+prep_match_results_statement() {
+  days_to_travel=$1
+
+  sport_radar_ids=$(get_sport_radar_ids_for_value_bets "${days_to_travel}")
+
+  for sport_radar_id in $sport_radar_ids;do
+    result=$(match_info "${sport_radar_id}")
+    echo "(${result}), "
+  done
+
+  wait
+}
+
+insert_match_results() {
+  statements=$(prep_statements)
+
+  modified=$(echo ${statements} |rev | cut -c2- |rev)
+
+  snowsql -q "insert into sport_radar_results(sport_radar_id, outcome, home_points, away_points, total_goals) values ${modified}"
+}
+
+prep_value_bets_statement() {
+  IFS=$'\n'
+  for value_bet in $value_bets;do
+    bet_type=$(echo "${value_bet}" | cut -d ',' -f 1 |tr -d '"')
+    event_id=$(echo "${value_bet}" | cut -d ',' -f 2|tr -d '"')
+    book=$(echo "${value_bet}" | cut -d ',' -f 3 |tr -d '"')
+    bet_option=$(echo "${value_bet}" | cut -d ',' -f 4 |tr -d '"')
+    price=$(echo "${value_bet}" | cut -d ',' -f 5 |tr -d '"')
+    points=$(echo "${value_bet}" | cut -d ',' -f 6 |tr -d '"')
+    edge=$(echo "${value_bet}" | cut -d ',' -f 7)
+    sport_radar_id=$(echo "${value_bet}" | cut -d ',' -f 8|tr -d '"')
+    prediction=$(echo "${value_bet}" | cut -d ',' -f 9|tr -d '"')
+    minutes_before_game=$(echo "${value_bet}" | cut -d ',' -f 10|tr -d '"')
+    echo "('${bet_type}', '${event_id}', '${book}', '${bet_option}', ${price}, ${points}, ${edge}, ${sport_radar_id}, ${prediction}, ${minutes_before_game}), "
+  done
+}
+
+insert_value_bets() {
+  value_bets=$1
+  if [ -n "$value_bets" ]; then
+
+  export_env_vars
+  values=$(prep_value_bets_statement)
+  modified=$(echo ${values} |rev | cut -c2- |rev)
+
+  snowsql -q "insert into value_bets(bet_type, event_id, book, bet_option, price, points, edge, sport_radar_id, prediction, minutes_before_game) values ${modified}"
+
+  fi
+}

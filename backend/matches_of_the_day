@@ -1,0 +1,43 @@
+#!/bin/bash
+
+source sportradar
+source books
+
+books='sbtech betcenter'
+matches=$(event_full_feed | grep Soccer)
+league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
+
+get_all_leagues_for_each_book() {
+  for league_id in $league_ids;do
+    jq_string='.["'"${league_id}"'"]'
+    mapped_leagues=$(jq "${jq_string}" ./resources/league_map.json)
+    if [[ "${mapped_leagues}" != 'null' ]]
+    then
+      IFS=$' '
+      for book in $books;do
+        echo "${mapped_leagues}" | jq '.["'"${book}"'"]' |tr -d '"' | sort -u >> "${book}"_leagues &
+      done
+      wait
+    fi
+  done
+}
+
+get_all_leagues_for_each_book "${league_ids}"
+
+for book in $books;do
+  book_leagues=$(cat "${book}"_leagues | sort -u)
+  IFS=$'\n'
+  for book_league_id in $book_leagues;do
+    "${book}"_events "${book_league_id}" >> "${book}"_events.csv  &
+  done
+  wait
+done
+
+for match in $matches;do
+  sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
+  betcenter_id=$(cat betcenter_events.csv | grep "${sport_radar_id}" | cut -d ',' -f 1)
+  sbtech_id=$(cat sbtech_events.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+
+  ECHO "${sport_radar_id}","${betcenter_id}","${sbtech_id}"
+done
+

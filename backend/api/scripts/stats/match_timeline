@@ -1,9 +1,0 @@
-#!/bin/bash
-
-match_timeline() {
-    match_id=$1
-    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/match_timeline/'$1)
-    echo $output
-}
-
-match_timeline $1

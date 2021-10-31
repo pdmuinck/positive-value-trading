@@ -12,7 +12,7 @@
 create_connection() {
   local host=$1
   local port=$2
-  websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${port}" reuse-raw:wss://"${host}" --max-messages-rev 1&
+  websocat -t -B 1000000 -E tcp-l:127.0.0.1:"${port}" reuse-raw:"${host}" --max-messages-rev 1&
 }
 
 #######################################

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-wimbledon_players(){
-    year=$1
-    curl 'https://www.wimbledon.com/en_GB/scores/feeds/'"${year}"'/players/players.json' > players"${year}".json
-}
-  
-wimbledon_players $1

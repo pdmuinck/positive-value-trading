@@ -1,9 +1,0 @@
-#!/bin/bash
-
-season_dynamic_table() {
-    season_id=$1
-    local output=$(curl 'https://lsc.fn.sportradar.com/sportradar/en/Europe:Berlin/gismo/season_dynamictable/'$season_id)
-    echo $output
-}
-
-season_dynamic_table $1

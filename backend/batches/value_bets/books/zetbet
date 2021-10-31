@@ -3,10 +3,8 @@
 event_id=$1
 
 bet_slip_ids=$(curl -s https://www.zebet.be/en/event/"${event_id}" \
-| grep /en/bettingslip/bet | grep 'odd2\|odd3' \
+| grep /en/bettingslip/bet | grep 'odd2\|odd3' | head -n 30 \
 | cut -d ' ' -f 10 | cut -d '=' -f 2 | tr -d '"')
-
-echo "${bet_slip_ids}" > betslips
 
 for id in $bet_slip_ids;do
   curl -s https://www.zebet.be/en/bettingslip/bet/"${id}" \

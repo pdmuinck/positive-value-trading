@@ -1,0 +1,30 @@
+#!/bin/bash
+
+create_job() {
+  description=$1
+  schedule=$2
+  service_uri=$3
+  body=$4
+  name=$5
+
+  gcloud scheduler jobs create http ${name} \
+      --description "${description}" \
+      --schedule "${schedule}" \
+      --time-zone "Europe/Brussels" \
+      --uri "${service_uri}" \
+      --http-method POST \
+      --oidc-service-account-email cloud-run-scheduler@trusty-cacao-327717.iam.gserviceaccount.com \
+      --message-body "${body}"
+}
+
+delete_jobs() {
+  uri_contains=$1
+
+  jobs_to_delete=$(gcloud scheduler jobs list --format json | jq --arg URI "$uri_contains" '.[] | select(.httpTarget.uri | contains($URI)) | .name')
+
+  IFS=$'\n'
+  for job in $jobs_to_delete;do
+    cleaned=$(echo "${job}" | tr -d '"')
+    gcloud scheduler jobs delete "${cleaned}" --quiet
+  done
+}
