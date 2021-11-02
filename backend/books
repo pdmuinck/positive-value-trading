@@ -285,7 +285,7 @@ betconstruct_events() {
 circus_events() {
   league_id=$1
   host=wss://wss01.circus.be
-  port=8712
+  port=8727
 
   create_connection "${host}" "${port}"
   ws_pid=$!
@@ -397,7 +397,7 @@ get_participant_id() {
 
 starcasino_events() {
   league_id=$1
-  port=8711
+  port=8712
 
   sport_radar_matches=$(event_full_feed | grep Soccer)
 
@@ -675,7 +675,7 @@ zetbet_events() {
 
   IFS=$'\n'
   for event in $events;do
-    (get_sportradar_id_for_zetbet "${event}" &)
+    get_sportradar_id_for_zetbet "${event}"
   done
   wait
 }

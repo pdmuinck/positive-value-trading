@@ -3,7 +3,7 @@
 source sportradar
 source books
 
-books='sbtech betcenter'
+books='pinnacle sbtech betcenter bingoal goldenpalace meridian ladbrokes zetbet circus'
 matches=$(event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
 
@@ -25,19 +25,46 @@ get_all_leagues_for_each_book() {
 get_all_leagues_for_each_book "${league_ids}"
 
 for book in $books;do
+  while [ ! -f "${book}"_leagues ]
+  do
+    sleep 2
+  done
   book_leagues=$(cat "${book}"_leagues | sort -u)
   IFS=$'\n'
   for book_league_id in $book_leagues;do
-    "${book}"_events "${book_league_id}" >> "${book}"_events.csv  &
+    if [ "${book}" == circus ]
+    then
+      "${book}"_events "${book_league_id}" >> "${book}"_events.csv
+    else "${book}"_events "${book_league_id}" >> "${book}"_events.csv &
+    fi
   done
   wait
 done
 
-for match in $matches;do
-  sport_radar_id=$(echo "${match}" | cut -d ',' -f 3)
-  betcenter_id=$(cat betcenter_events.csv | grep "${sport_radar_id}" | cut -d ',' -f 1)
-  sbtech_id=$(cat sbtech_events.csv | grep "${sport_radar_id}" | cut -d ',' -f 1 | tr -d '"' |sort -u)
+pinnacle_events=$(cat pinnacle_events.csv)
 
-  ECHO "${sport_radar_id}","${betcenter_id}","${sbtech_id}"
+create_json_body() {
+  pinnacle_event=$1
+  sport_radar_id=$(echo "${pinnacle_event}" | cut -d ',' -f 2 | sort -u)
+  echo '"sport_radar": '"${sport_radar_id}"','
+  IFS=' '
+  for book in $books;do
+    while [ ! -f "${book}"_events.csv ]
+    do
+      sleep 2
+    done
+    book_event_id=$(grep "${sport_radar_id}" "${book}"_events.csv | sort -u | cut -d ',' -f 1 | tr -d '"' | sort -u)
+    echo '"'"${book}"'": '"${book_event_id}",
+  done
+}
+
+IFS=$'\n'
+for pinnacle_event in $pinnacle_events;do
+  body=$(create_json_body "${pinnacle_event}" | rev)
+  body_corrected=$(echo ${body/,/} | rev)
+  echo {"${body_corrected}"}
 done
+
+rm *_events.csv
+rm *_leagues
 
