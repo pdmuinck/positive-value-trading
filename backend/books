@@ -5,6 +5,7 @@ source sportradar
 source transformations
 
 readonly SBTECH_SITE_IDS=$(cat ./resources/sbtech_site_ids.json)
+readonly BETCONSTRUCT_CONF=$(cat ./resources/betconstruct_books.json)
 
 #######################################
 # Returns cashpoint sport events for given league id
@@ -254,7 +255,7 @@ circus_login() {
   betconstruct_login "${login_message}" "${port}"
 }
 
-golden_vegas_login() {
+goldenvegas_login() {
   port=$1
   login_message='{"Id":"73a8944c-8b4e-2d5b-6781-957e8c1945ac","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"4f92eaff-b795-46a7-8070-42035e5ec551\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"GOLDENVEGAS\"}}"}'
   betconstruct_login "${login_message}" "${port}"
@@ -262,109 +263,73 @@ golden_vegas_login() {
 
 betconstruct_events() {
   league_id=$1
-  compressed=$2
+  host=wss://wss.goldenvegas.be
+  port=8738
+  login_message='{"Id":"73a8944c-8b4e-2d5b-6781-957e8c1945ac","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"4f92eaff-b795-46a7-8070-42035e5ec551\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"GOLDENVEGAS\"}}"}'
+  create_connection "${host}" "${port}"
+  ws_pid=$!
+  betconstruct_login "${login_message}" "${port}"
+
   events_parsed=null
 
   while [ "${events_parsed}" == null ]
   do
     events_message='{"Id":"49b9e428-925c-4b45-0149-b17b3985c6ab","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"6907a9a1-28ea-c6b5-6d54-caa981a70599\",\"Requests\":[{\"Id\":\"c6ce7092-ad23-b92d-dafb-8d029cb63024\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"OnlyShowcaseMarket\\\":true,\\\"IncludeSportList\\\":true,\\\"EventSkip\\\":0,\\\"EventTake\\\":500,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RequestString\\\":\\\"LeagueIds='"${league_id}"'&OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}'
     send_message "${events_message}" "${port}"
-    response=$(get_message "${port}" | jq --raw-output '.Message|fromjson|.Requests[0].Content')
-    if [ "${compressed}" == true ]
-    then
-      events_parsed=$(node ./lzstring_parser "${response}")
-    else
-      events_parsed=$(echo "${response}")
-    fi
+    events_parsed=$(get_message "${port}" | jq --raw-output '.Message|fromjson|.Requests[0].Content')
   done
 
   echo "${events_parsed}" | jq --raw-output '.LeagueDataSource.LeagueItems[].EventItems[]
   | [.EventId, (.UrlBetStats | split("/")[6])] | @csv'
-}
-
-circus_events() {
-  league_id=$1
-  host=wss://wss01.circus.be
-  port=8731
-
-  create_connection "${host}" "${port}"
-  ws_pid=$!
-  circus_login "${port}"
-  betconstruct_events "${league_id}" true
-  kill -9 "${ws_pid}"
-}
-
-golden_vegas_events() {
-  league_id=$1
-  host=wss://wss.goldenvegas.be
-  port=8736
-
-  create_connection "${host}" "${port}"
-  ws_pid=$!
-  golden_vegas_login "${port}"
-  betconstruct_events "${league_id}" false
   kill -9 "${ws_pid}"
 }
 
 betconstruct_betoffers() {
   event_id=$1
-  book=$2
-  compressed=$3
-  betoffers_parsed=null
+  books='circus goldenvegas'
+  IFS=' '
+  for book in $books;do
+    compressed=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .compressed')
+    host=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .host')
+    port=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .port')
 
-  while [ "${betoffers_parsed}" == null ]
-  do
+    echo COMPRESSED: "${compressed}"
 
-    betoffers_message='{"Id":"0c503c67-1d84-457f-7da1-cc6d77ace742","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"b67f908a-0d89-8c65-244c-bf4b3d5fa8dc\",\"Requests\":[{\"Id\":\"3f9689ba-8ea5-a7a4-3cab-49c26ca63fb3\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"IncludeSportList\\\":false,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RegionId\\\":0,\\\"EventId\\\":'"${event_id}"',\\\"RequestString\\\":\\\"OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}'
-    send_message "${betoffers_message}" "${port}"
-    response=$(get_message "${port}" | jq --raw-output '.Message|fromjson|.Requests[0].Content')
-    if [ "${compressed}" == true ]
-    then
-      betoffers_parsed=$(node ./lzstring_parser "${response}")
-    else
-      betoffers_parsed=$(echo "${response}")
-    fi
+    create_connection "${host}" "${port}"
+    ws_pid=$!
+
+    "${book}"_login "${port}"
+
+    betoffers_parsed=null
+
+    while [ "${betoffers_parsed}" == null ]
+    do
+
+      betoffers_message='{"Id":"0c503c67-1d84-457f-7da1-cc6d77ace742","TTL":10,"MessageType":1000,"Message":"{\"Direction\":1,\"Id\":\"b67f908a-0d89-8c65-244c-bf4b3d5fa8dc\",\"Requests\":[{\"Id\":\"3f9689ba-8ea5-a7a4-3cab-49c26ca63fb3\",\"Type\":201,\"Identifier\":\"GetLeaguesDataSourceFromCache\",\"AuthRequired\":false,\"Content\":\"{\\\"Entity\\\":{\\\"Language\\\":\\\"en\\\",\\\"BettingActivity\\\":0,\\\"PageNumber\\\":0,\\\"IncludeSportList\\\":false,\\\"EventType\\\":0,\\\"SportId\\\":844,\\\"RegionId\\\":0,\\\"EventId\\\":'"${event_id}"',\\\"RequestString\\\":\\\"OnlyMarketGroup=Main\\\"}}\"}],\"Groups\":[]}"}'
+      send_message "${betoffers_message}" "${port}"
+      response=$(get_message "${port}" | jq --raw-output '.Message|fromjson|.Requests[0].Content')
+      if [ "${compressed}" == true ]
+      then
+        betoffers_parsed=$(node ./lzstring_parser "${response}")
+      else
+        betoffers_parsed=$(echo "${response}")
+      fi
+    done
+
+    echo "${betoffers_parsed}" | jq --arg book "${book}" --raw-output '.LeagueDataSource.LeagueItems[].EventItems[]
+    | .EventId as $eventId
+    | .Team1Name as $homeTeam
+    | .Team2Name as $awayTeam
+    | .MarketItems[]
+    | .BetType as $betType
+    | .OutcomeItems[]
+    | [$betType, $eventId, $book, if .Name == $homeTeam then "1" elif .Name == $awayTeam then "2" else "X" end, .Odd, 0]
+    | @csv' \
+    | sed 's/"P1XP2"/"1X2"/g;' \
+    | grep '"1X2"'
+
+    kill -9 "${ws_pid}"
   done
-
-  echo "${betoffers_parsed}" | jq --arg book "${book}" --raw-output '.LeagueDataSource.LeagueItems[].EventItems[]
-  | .EventId as $eventId
-  | .Team1Name as $homeTeam
-  | .Team2Name as $awayTeam
-  | .MarketItems[]
-  | .BetType as $betType
-  | .OutcomeItems[]
-  | [$betType, $eventId, $book, if .Name == $homeTeam then "1" elif .Name == $awayTeam then "2" else "X" end, .Odd, 0]
-  | @csv' \
-  | sed 's/"P1XP2"/"1X2"/g;' \
-  | grep '"1X2"'
-}
-
-circus_betoffers() {
-  event_id=$1
-  port=8541
-
-  create_connection wss://wss01.circus.be "${port}"
-  circus_ws_pid=$!
-
-  circus_login "${port}"
-
-  betconstruct_betoffers "${event_id}" circus true
-
-  kill -9 "${circus_ws_pid}"
-}
-
-golden_vegas_betoffers() {
-  event_id=$1
-  port=8534
-
-  create_connection wss://wss.goldenvegas.be "${port}"
-  ws_pid=$!
-
-  golden_vegas_login "${port}"
-
-  betconstruct_betoffers "${event_id}" golden_vegas false
-
-  kill -9 "${ws_pid}"
 }
 
 #######################################

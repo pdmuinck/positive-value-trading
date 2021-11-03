@@ -3,7 +3,7 @@
 source sportradar
 source books
 
-books='pinnacle sbtech betcenter bingoal goldenpalace meridian ladbrokes zetbet circus starcasino'
+books='pinnacle sbtech betcenter bingoal goldenpalace meridian ladbrokes zetbet betconstruct'
 matches=$(event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
 
@@ -33,7 +33,7 @@ for book in $books;do
       book_leagues=$(cat "${book}"_leagues | sort -u)
       IFS=$'\n'
       for book_league_id in $book_leagues;do
-        if [ "${book}" == circus ]
+        if [ "${book}" == betconstruct ]
         then
           "${book}"_events "${book_league_id}" >> "${book}"_events.csv
         elif [ "${book}" == starcasino ]

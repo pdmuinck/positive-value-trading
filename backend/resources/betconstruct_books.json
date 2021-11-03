@@ -1,0 +1,14 @@
+{
+  "circus": {
+    "compressed": true,
+    "host": "wss://wss01.circus.be",
+    "port": 8541,
+    "name": "circus"
+  },
+  "goldenvegas": {
+    "compressed": false,
+    "host": "wss://wss.goldenvegas.be",
+    "port": 8534,
+    "name": "goldenvegas"
+  }
+}
