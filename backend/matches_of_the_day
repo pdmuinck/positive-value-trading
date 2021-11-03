@@ -3,7 +3,7 @@
 source sportradar
 source books
 
-books='pinnacle sbtech betcenter bingoal goldenpalace meridian ladbrokes zetbet circus'
+books='pinnacle sbtech betcenter bingoal goldenpalace meridian ladbrokes zetbet circus starcasino'
 matches=$(event_full_feed | grep Soccer)
 league_ids=$(echo "${matches}" | cut -d ',' -f 2 | sort -u)
 
@@ -25,20 +25,27 @@ get_all_leagues_for_each_book() {
 get_all_leagues_for_each_book "${league_ids}"
 
 for book in $books;do
-  while [ ! -f "${book}"_leagues ]
+  for i in {1..10};
   do
-    sleep 2
-  done
-  book_leagues=$(cat "${book}"_leagues | sort -u)
-  IFS=$'\n'
-  for book_league_id in $book_leagues;do
-    if [ "${book}" == circus ]
-    then
-      "${book}"_events "${book_league_id}" >> "${book}"_events.csv
-    else "${book}"_events "${book_league_id}" >> "${book}"_events.csv &
+    if [ ! -f "${book}"_leagues ]
+    then sleep 2
+    else
+      book_leagues=$(cat "${book}"_leagues | sort -u)
+      IFS=$'\n'
+      for book_league_id in $book_leagues;do
+        if [ "${book}" == circus ]
+        then
+          "${book}"_events "${book_league_id}" >> "${book}"_events.csv
+        elif [ "${book}" == starcasino ]
+        then
+          "${book}"_events "${book_league_id}" >> "${book}"_events.csv
+        else "${book}"_events "${book_league_id}" >> "${book}"_events.csv &
+        fi
+      done
+      wait
+      break
     fi
   done
-  wait
 done
 
 pinnacle_events=$(cat pinnacle_events.csv)
@@ -49,12 +56,17 @@ create_json_body() {
   echo '"sport_radar": '"${sport_radar_id}"','
   IFS=' '
   for book in $books;do
-    while [ ! -f "${book}"_events.csv ]
+    for i in {1..10};
     do
-      sleep 2
+      if [ ! -f "${book}"_events.csv ]
+      then
+        sleep 2
+      else
+        book_event_id=$(grep "${sport_radar_id}" "${book}"_events.csv | sort -u | cut -d ',' -f 1 | tr -d '"' | sort -u)
+        echo '"'"${book}"'": '"${book_event_id}",
+        break
+      fi
     done
-    book_event_id=$(grep "${sport_radar_id}" "${book}"_events.csv | sort -u | cut -d ',' -f 1 | tr -d '"' | sort -u)
-    echo '"'"${book}"'": '"${book_event_id}",
   done
 }
 

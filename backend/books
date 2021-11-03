@@ -285,7 +285,7 @@ betconstruct_events() {
 circus_events() {
   league_id=$1
   host=wss://wss01.circus.be
-  port=8727
+  port=8731
 
   create_connection "${host}" "${port}"
   ws_pid=$!
@@ -297,7 +297,7 @@ circus_events() {
 golden_vegas_events() {
   league_id=$1
   host=wss://wss.goldenvegas.be
-  port=8734
+  port=8736
 
   create_connection "${host}" "${port}"
   ws_pid=$!
@@ -397,7 +397,7 @@ get_participant_id() {
 
 starcasino_events() {
   league_id=$1
-  port=8712
+  port=8715
 
   sport_radar_matches=$(event_full_feed | grep Soccer)
 
@@ -440,7 +440,7 @@ starcasino_events() {
 
 starcasino_betoffers() {
   event_id=$1
-  port=8531
+  port=8532
 
   create_connection wss://eu-swarm-ws-re.bcapps.net "${port}"
   ws_pid=$!
