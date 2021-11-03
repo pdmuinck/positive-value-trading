@@ -5,7 +5,6 @@ source sportradar
 source transformations
 
 readonly SBTECH_SITE_IDS=$(cat ./resources/sbtech_site_ids.json)
-readonly BETCONSTRUCT_CONF=$(cat ./resources/betconstruct_books.json)
 
 #######################################
 # Returns cashpoint sport events for given league id
@@ -261,6 +260,12 @@ goldenvegas_login() {
   betconstruct_login "${login_message}" "${port}"
 }
 
+blitz_login() {
+  port=$1
+  login_message='{"Id":"73a8944c-8b4e-2d5b-6781-957e8c1945ac","TTL":10,"MessageType":1,"Message":"{\"NodeType\":1,\"Identity\":\"4f92eaff-b795-46a7-8070-42035e5ec551\",\"EncryptionKey\":\"\",\"ClientInformations\":{\"AppName\":\"Front;Registration-Origin: default\",\"ClientType\":\"Responsive\",\"Version\":\"1.0.0\",\"UserAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36\",\"LanguageCode\":\"nl\",\"RoomDomainName\":\"BLITZ\"}}"}'
+  betconstruct_login "${login_message}" "${port}"
+}
+
 betconstruct_events() {
   league_id=$1
   host=wss://wss.goldenvegas.be
@@ -286,14 +291,16 @@ betconstruct_events() {
 
 betconstruct_betoffers() {
   event_id=$1
-  books='circus goldenvegas'
+  books='circus goldenvegas blitz'
   IFS=' '
   for book in $books;do
-    compressed=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .compressed')
-    host=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .host')
-    port=$(echo "${BETCONSTRUCT_CONF}" | jq --raw-output '.["'"${book}"'"] | .port')
+    echo BOOK: '.["'"${book}"'"]'
+    compressed=$(jq --raw-output '.["'"${book}"'"] | .compressed' ./resources/betconstruct_books.json)
+    host=$(jq --raw-output '.["'"${book}"'"] | .host' ./resources/betconstruct_books.json)
+    port=$(jq --raw-output '.["'"${book}"'"] | .port' ./resources/betconstruct_books.json)
 
     echo COMPRESSED: "${compressed}"
+    echo PORT: "${port}"
 
     create_connection "${host}" "${port}"
     ws_pid=$!

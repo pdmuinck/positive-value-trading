@@ -10,5 +10,11 @@
     "host": "wss://wss.goldenvegas.be",
     "port": 8534,
     "name": "goldenvegas"
+  },
+  "blitz": {
+    "compressed": false,
+    "host": "wss://wss.blitz.be",
+    "port": 8834,
+    "name": "blitz"
   }
 }
